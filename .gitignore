@@ -1,0 +1,14 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Semana 1: respaldos locales y dataset descargable
+semana-01/*.bak-*
+semana-01/input.txt
