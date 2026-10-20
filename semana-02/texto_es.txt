@@ -1,0 +1,9 @@
+La política de reorden define cuándo y cuánto comprar de cada producto. Para cada SKU, el punto de reorden es la cantidad de unidades que se consumen durante el tiempo de entrega del proveedor, más un inventario de seguridad que absorbe retrasos y variaciones en la demanda. Cuando el inventario disponible cae por debajo de ese punto, se genera una orden de compra por la cantidad económica de pedido.
+
+Este cálculo depende de tres datos: el consumo promedio diario, la variación de la demanda y el tiempo de entrega real del proveedor. Si alguno de esos datos está desactualizado, la política produce faltantes o exceso de inventario, y ambos cuestan dinero.
+
+Por eso conviene revisar los parámetros cada mes y comparar la política contra lo que realmente ocurrió. Un producto que se agota dos veces al año en lugar de cuatro indica que el inventario de seguridad es insuficiente. Un producto que nunca se vende completo indica lo contrario.
+
+En una empresa con miles de SKU, esta revisión manual no escala. La automatización calcula los puntos de reorden por lote, marca las excepciones para una persona y deja registro de cada decisión para auditoría.
+
+Al final, la pregunta de negocio es simple: cuánto capital queremos tener parado en bodega para no quedarnos sin producto. La respuesta depende del costo de faltar, del costo de almacenar y de la confiabilidad del proveedor.

@@ -12,3 +12,5 @@ wheels/
 # Semana 1: respaldos locales y dataset descargable
 semana-01/*.bak-*
 semana-01/input.txt
+.env
+semana-02/*.bak-*

@@ -1,0 +1,9 @@
+The reorder policy defines when and how much to buy of each product. For each SKU, the reorder point is the number of units consumed during the supplier's lead time, plus safety stock that absorbs delays and demand variation. When available inventory falls below that point, a purchase order is generated for the economic order quantity.
+
+This calculation depends on three inputs: average daily consumption, demand variability, and the supplier's actual lead time. If any of those inputs is out of date, the policy produces stockouts or excess inventory, and both cost money.
+
+That is why it is worth reviewing the parameters every month and comparing the policy with what actually happened. A product that runs out twice a year instead of four times signals insufficient safety stock. A product that never sells out completely signals the opposite.
+
+In a company with thousands of SKUs, this manual review does not scale. Automation calculates reorder points in batches, flags exceptions for a person, and keeps a record of every decision for audit.
+
+In the end, the business question is simple: how much capital do we want tied up in the warehouse to avoid running out of product? The answer depends on the cost of stockouts, the cost of storage, and the reliability of the supplier.
