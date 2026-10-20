@@ -14,3 +14,6 @@ semana-01/*.bak-*
 semana-01/input.txt
 .env
 semana-02/*.bak-*
+
+# Jupyter
+.ipynb_checkpoints/

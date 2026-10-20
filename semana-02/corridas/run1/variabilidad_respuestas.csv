@@ -1,0 +1,314 @@
+barrido,valor,corrida,respuesta
+temperature,0.0,1,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarlo, debe activarse una nueva orden para evitar quiebres de stock. Conviene revisarlo cuando cambian la demanda, el tiempo de entrega del proveedor, la variabilidad de las ventas o los costos de almacenamiento. También es recomendable hacerlo de forma periódica, por ejemplo cada mes o trimestre, para mantener el nivel de servicio deseado."
+temperature,0.0,2,"El punto de reorden de un SKU es el nivel de inventario disponible que, al alcanzarlo, debe dispararse una orden de compra o producción para reponer el stock antes de que se agote.  
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor, la variabilidad de consumo o los costos y objetivos de servicio.  
+También es útil revisarlo periódicamente con datos históricos para evitar quiebres de stock o exceso de inventario."
+temperature,0.0,3,"El punto de reorden de un SKU es el nivel de inventario disponible que, al alcanzarlo, debe dispararse una orden de compra o producción para reponer el stock antes de que se agote.  
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor, la variabilidad de consumo o los costos y objetivos de servicio.  
+También es útil revisarlo periódicamente con datos históricos para evitar quiebres de stock o exceso de inventario."
+temperature,0.0,4,"El punto de reorden de un SKU es el nivel de inventario disponible que, al alcanzarlo, debe dispararse una orden de compra o producción para reponer el stock antes de que se agote.  
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor, la variabilidad de consumo o los costos y objetivos de servicio.  
+También es útil revisarlo periódicamente con datos históricos para evitar quiebres de stock o exceso de inventario."
+temperature,0.0,5,"El punto de reorden de un SKU es el nivel de inventario disponible que, al alcanzarlo, debe dispararse una orden de compra o producción para reponer el stock antes de que se agote.  
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor, la variabilidad de consumo o los costos y objetivos de servicio.  
+También es útil revisarlo periódicamente con datos históricos para evitar quiebres de stock o exceso de inventario."
+temperature,0.0,6,"El punto de reorden de un SKU es el nivel de inventario disponible que, al alcanzarlo, debe dispararse una orden de compra o producción para reponer el stock antes de que se agote.  
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor, la variabilidad de consumo o los costos y objetivos de servicio.  
+También es útil revisarlo periódicamente con datos históricos para evitar quiebres de stock o exceso de inventario."
+temperature,0.0,7,"El punto de reorden de un SKU es el nivel de inventario disponible que, al alcanzarlo, debe dispararse una orden de compra o producción para reponer el stock antes de que se agote.  
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor, la variabilidad de consumo o los costos y objetivos de servicio.  
+También es útil revisarlo periódicamente con datos históricos para evitar quiebres de stock o exceso de inventario."
+temperature,0.0,8,"El punto de reorden de un SKU es el nivel de inventario disponible que, al alcanzarlo, debe dispararse una orden de compra o producción para reponer el stock antes de que se agote.  
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor, la variabilidad de consumo o los costos y objetivos de servicio.  
+También es útil revisarlo periódicamente con datos históricos para evitar quiebres de stock o exceso de inventario."
+temperature,0.0,9,"El punto de reorden de un SKU es el nivel de inventario disponible que, al alcanzarlo, debe dispararse una orden de compra o producción para reponer el stock antes de que se agote.  
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor, la variabilidad de consumo o los costos y objetivos de servicio.  
+También es útil revisarlo periódicamente con datos históricos para evitar quiebres de stock o exceso de inventario."
+temperature,0.0,10,"El punto de reorden de un SKU es el nivel de inventario disponible que, al alcanzarlo, debe dispararse una orden de compra o producción para reponer el stock antes de que se agote.  
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor, la variabilidad de consumo o los costos y objetivos de servicio.  
+También es útil revisarlo periódicamente con datos históricos para evitar quiebres de stock o exceso de inventario."
+temperature,0.0,11,"El punto de reorden de un SKU es el nivel de inventario disponible que, al alcanzarlo, debe dispararse una orden de compra o producción para reponer el stock antes de que se agote.  
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor, la variabilidad de consumo o los costos y objetivos de servicio.  
+También es útil revisarlo periódicamente con datos históricos para evitar quiebres de stock o exceso de inventario."
+temperature,0.0,12,"El punto de reorden de un SKU es el nivel de inventario disponible que, al alcanzarlo, debe dispararse una orden de compra o producción para reponer el stock antes de que se agote.  
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor, la variabilidad de consumo o los costos y objetivos de servicio.  
+También es útil revisarlo periódicamente con datos históricos para evitar quiebres de stock o exceso de inventario."
+temperature,0.0,13,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarlo, debe dispararse una orden de compra o producción para reponer el stock antes de que se agote.  
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor, la variabilidad de los consumos o el nivel de servicio deseado.  
+También es útil revisarlo periódicamente o tras episodios de quiebre, exceso de inventario o cambios en costos y políticas de abastecimiento."
+temperature,0.0,14,"El punto de reorden de un SKU es el nivel de inventario disponible que, al alcanzarlo, debe dispararse una orden de compra o producción para reponer el stock antes de que se agote.  
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor, la variabilidad de consumo o los costos y objetivos de servicio.  
+También es útil revisarlo periódicamente con datos históricos para evitar quiebres de stock o exceso de inventario."
+temperature,0.0,15,"El punto de reorden de un SKU es el nivel de inventario disponible que, al alcanzarlo, debe dispararse una orden de compra o producción para reponer el stock antes de que se agote.  
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor, la variabilidad de consumo o los costos y objetivos de servicio.  
+También es útil revisarlo periódicamente con datos históricos para evitar quiebres de stock o exceso de inventario."
+temperature,0.0,16,"El punto de reorden de un SKU es el nivel de inventario disponible que, al alcanzarlo, debe dispararse una orden de compra o producción para reponer el stock antes de que se agote.  
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor, la variabilidad de consumo o los costos y objetivos de servicio.  
+También es útil revisarlo periódicamente con datos históricos para evitar quiebres de stock o exceso de inventario."
+temperature,0.0,17,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarlo, debe dispararse una orden de compra o producción para reponer el stock antes de que se agote.  
+Conviene revisarlo cuando cambian la demanda, el tiempo de entrega del proveedor, la variabilidad de consumo o los costos y objetivos de servicio.  
+También es útil revisarlo periódicamente o tras quiebres de stock y excesos de inventario para mantener el equilibrio entre disponibilidad y capital inmovilizado."
+temperature,0.0,18,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarlo, debe dispararse una orden de compra o producción para reponer el stock antes de que se agote.  
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor, la variabilidad de consumo o los costos y objetivos de servicio.  
+También es útil revisarlo periódicamente o tras quiebres de stock y excesos de inventario para mantener el equilibrio entre disponibilidad y capital inmovilizado."
+temperature,0.0,19,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarlo, debe dispararse una orden de compra o producción para reponer el stock antes de que se agote.  
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor, la variabilidad de consumo o los costos y objetivos de servicio.  
+También es útil revisarlo periódicamente o tras quiebres de stock y excesos de inventario para mantener el equilibrio entre disponibilidad y capital inmovilizado."
+temperature,0.0,20,"El punto de reorden de un SKU es el nivel de inventario disponible que, al alcanzarlo, debe dispararse una orden de compra o producción para reponer el stock antes de que se agote.  
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor, la variabilidad de consumo o los costos y objetivos de servicio.  
+También es útil revisarlo periódicamente con datos históricos para evitar quiebres de stock o exceso de inventario."
+temperature,0.7,1,
+temperature,0.7,2,"El punto de reorden de un SKU es el nivel de inventario al que se debe iniciar una nueva orden para evitar quiebres antes del próximo abastecimiento.  
+Se calcula considerando la demanda promedio durante el plazo de entrega y un inventario de seguridad que cubra variaciones imprevistas.  
+Conviene revisarlo cuando cambian los patrones de venta, el plazo de entrega del proveedor o la política de servicio, especialmente ante lanzamientos, estacionalidad o ajustes de costos."
+temperature,0.7,3,"El punto de reorden de un SKU es el nivel mínimo de existencias que, al alcanzarse, debe activar una orden para reponer el producto antes de agotarse.  
+Conviene revisarlo cuando cambien la demanda, el tiempo de abastecimiento, los costos o la política de nivel de servicio.  
+También es oportuno hacerlo ante estacionalidad, quiebres de stock o acumulación excesiva de inventario."
+temperature,0.7,4,"El punto de reorden de un SKU es el nivel de inventario disponible que, al alcanzarlo, dispara la emisión de una nueva orden para cubrir el consumo durante el tiempo de reabastecimiento.
+
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor o su variabilidad.
+
+También debe revisarse ante promociones, estacionalidad, cambios de nivel de servicio o cuando se observan quiebres y sobreinventario."
+temperature,0.7,5,"El punto de reorden de un SKU es el nivel de inventario en el que se debe lanzar una orden para reponer ese artículo antes de que se agote.  
+Se calcula considerando la demanda durante el plazo de entrega, su variabilidad y un stock de seguridad o nivel de servicio deseado.  
+Conviene revisarlo cuando cambian la demanda, los tiempos de entrega, el coste o las políticas de servicio, y también con cierta periodicidad para ajustarlo a la realidad."
+temperature,0.7,6,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarlo, debe activarse una nueva compra o producción para evitar quedarse sin stock antes de recibir la reposición. Conviene revisarlo cuando cambia la demanda histórica, el lead time del proveedor o la variabilidad de las ventas. También es útil actualizarlo ante cambios en costos, nivel de servicio deseado o temporada."
+temperature,0.7,7,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarse, activa la emisión de una orden para evitar quiebres durante el tiempo de abastecimiento. Normalmente se estima sumando la demanda esperada durante el lead time a un stock de seguridad que cubra variabilidades. Conviene revisarlo cuando cambien la demanda, el lead time del proveedor, los costos de ruptura o inventario, la temporada comercial o el nivel de servicio deseado."
+temperature,0.7,8,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarlo, activa una nueva compra para recibir la mercancía antes del agotamiento.
+
+Depende de la demanda media durante el plazo de entrega, su variabilidad y el stock de seguridad deseado.
+
+Conviene revisarlo cuando cambien la demanda, el plazo de entrega, los costos o las metas de servicio, y también en revisiones periódicas por temporada."
+temperature,0.7,9,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarse, activa la emisión de una orden de compra o producción para evitar quiebres antes de recibir el pedido.
+
+Conviene revisarlo cuando cambie la demanda, el tiempo de entrega del proveedor o la variabilidad del consumo, porque esos factores alteran la cantidad que debe mantenerse como cobertura.
+
+También es útil revisarlo ante cambios de costos, estacionalidad, políticas de servicio o si se observan quiebres frecuentes y exceso de inventario."
+temperature,0.7,10,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarse, debe disparar una nueva orden para evitar quiebres de stock.
+Se calcula considerando la demanda promedio durante el tiempo de entrega y un inventario de seguridad para cubrir variaciones.
+Conviene revisarlo cuando cambian la demanda, los plazos de entrega, el costo del stock o se detectan quiebres y excesos repetidos."
+temperature,0.7,11,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarse, dispara la emisión de un pedido para recibir mercancía antes de agotarla.  
+Normalmente se calcula considerando la demanda promedio durante el tiempo de entrega y un stock de seguridad para cubrir variaciones.  
+Conviene revisarlo cuando cambien la demanda, los plazos de suministro, el nivel de servicio deseado o los costos de inventario."
+temperature,0.7,12,"El punto de reorden es el nivel de inventario de un SKU en el que se debe emitir la orden de compra para evitar quiebres antes de recibir la reposición.  
+Conviene revisarlo cuando cambian significativamente la demanda, el tiempo de entrega del proveedor o los costos de mantener inventario.  
+También es recomendable hacerlo periódicamente, por ejemplo cada trimestre o ante cambios estacionales, para que la política de compra siga siendo adecuada."
+temperature,0.7,13,"El punto de reorden de un SKU es el nivel mínimo de inventario al que se debe lanzar una nueva compra o producción para evitar quedarnos sin stock. Conviene revisarlo cuando cambian la demanda, el tiempo de entrega del proveedor o la variabilidad en los consumos. También es recomendable revisarlo periódicamente, especialmente ante cambios estacionales, promociones o variaciones en la rotación del producto."
+temperature,0.7,14,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarse, indica que ya debe solicitarse una nueva compra o producción para cubrir la demanda durante el tiempo hasta recibir el suministro.  
+Conviene revisarlo cuando cambian de forma significativa la demanda, el tiempo de entrega del proveedor, la variabilidad de los consumos o los costos asociados a stockouts y almacenamiento.  
+También es recomendable revisarlo de forma periódica, por ejemplo cada mes o en temporadas altas y bajas, para ajustar el inventario a la política de servicio elegida."
+temperature,0.7,15,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarlo, activa la compra o producción para evitar quiebres de stock. Conviene revisarlo cuando cambian significativamente la demanda, el plazo de entrega del proveedor o los costos de mantención. También es útil revisarlo tras estacionalidades, promociones, cambios en el nivel de servicio o cuando se observan constantes faltantes o exceso de inventario."
+temperature,0.7,16,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarse, dispara una nueva orden para cubrir la demanda durante el tiempo de entrega.  
+Se calcula considerando la demanda promedio, su variabilidad y el stock de seguridad necesario para evitar roturas.  
+Conviene revisarlo cuando cambian la estacionalidad, los plazos de entrega del proveedor, el objetivo de servicio o aparecen faltantes frecuentes y sobreinventario."
+temperature,0.7,17,"El punto de reorden es el nivel mínimo de inventario al que un SKU debe llegar para iniciar una nueva compra o producción, evitando quiebres y demoras.  
+Se calcula usualmente a partir de la demanda esperada, el tiempo de entrega del proveedor y una cobertura de seguridad frente a variaciones.  
+Conviene revisarlo cuando cambian los patrones de venta, el lead time del proveedor, la estacionalidad o el nivel de servicio deseado."
+temperature,0.7,18,"El punto de reorden de un SKU es el nivel de inventario en el que se debe lanzar una orden para evitar rupturas antes de recibir la mercancía.  
+Se calcula en función de la demanda durante el plazo de entrega, su variabilidad y el stock de seguridad deseado.  
+Conviene revisarlo cuando cambien la velocidad de venta, el plazo del proveedor o aparezcan patrones estacionales."
+temperature,0.7,19,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarse, debe disparar una nueva orden de compra o producción para evitar quiebres de stock.  
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor, los costos de pedido o el nivel de servicio objetivo.  
+También es útil auditarlo periódicamente y tras eventos como promociones, estacionalidad o cambios en el rendimiento del proveedor."
+temperature,0.7,20,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarse, debe activar una nueva orden de compra o producción para evitar quiebres de stock.  
+Típicamente se calcula con la demanda promedio, el tiempo de entrega del proveedor y un inventario de seguridad.  
+Conviene revisarlo cuando cambian la demanda, los tiempos de aprovisionamiento o el nivel de servicio deseado, y también de forma periódica para validar su precisión."
+temperature,1.0,1,"El punto de reorden de un SKU es el nivel de stock al que se debe iniciar una nueva orden o reposición para evitar agotamientos, considerando la demanda esperada, el tiempo de espera del proveedor y su variabilidad.  
+Sirve como umbral operativo: cuando el inventario disponible baja por debajo de ese nivel, conviene activar la reposición antes que se produzca un quiebre.  
+Debo revisarlo cuando cambien la demanda, la estacionalidad, el tiempo de entrega del proveedor o los objetivos de servicio y de costo de almacenaje."
+temperature,1.0,2,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarlo, debe disparar una nueva compra para cubrir la demanda durante el tiempo de reposición y evitar quiebres. Conviene revisarlo cuando cambian la demanda, el lead time del proveedor, la variabilidad de las ventas o el nivel de servicio deseado. También es recomendable revisarlo ante estacionalidad, lanzamientos, interrupciones de suministro o si aparecen quiebres o excesos de stock."
+temperature,1.0,3,"El punto de reorden de un SKU es el nivel de inventario en el que conviene ordenar más unidades para recibir a tiempo una nueva compra.
+Se estima con la demanda esperada durante el plazo"
+temperature,1.0,4,"El punto de reorden de un SKU es el nivel mínimo de inventario que, al alcanzarse o superarse a la baja, activa una nueva compra o producción para evitar rupturas.
+Se calcula considerando la demanda durante el tiempo de entrega y un stock de seguridad que cubra variaciones de consumo o retrasos.
+Conviene revisarlo cuando cambian la demanda, el proveedor, los costos, la política de servicio o el inventario disponible."
+temperature,1.0,5,"El punto de reorden de un SKU es el nivel mínimo de stock disponible que debe alcanzarse para lanzar una nueva compra o fabricación.  
+Se calcula considerando la demanda esperada durante el tiempo de reposición y una cantidad adicional como cobertura ante variaciones.  
+Conviene revisarlo cuando cambian los patrones de demanda, los plazos de entrega, los costos de reposición o la forma de control del inventario."
+temperature,1.0,6,"El punto de reorden de un SKU es el nivel de inventario al que se debe lanzar la orden de compra para reponer stock antes de agotarse.
+
+Conviene revisarlo cuando cambian la demanda, el tiempo de entrega del proveedor, los costos de reposición o el nivel de servicio requerido.
+
+También se"
+temperature,1.0,7,"El punto de reorden de un SKU es el nivel mínimo de inventario al que se debe iniciar una nueva orden para evitar quedarse sin stock.  
+Se calcula considerando la demanda esperada durante el tiempo de entrega y un stock de seguridad para cubrir variaciones.  
+Conviene revisarlo cuando cambien la demanda, los plazos de abastecimiento, el nivel de servicio deseado o haya variaciones estacionales."
+temperature,1.0,8,"El punto de reorden de un SKU es el nivel mínimo de existencias que, al alcanzarse, debe"
+temperature,1.0,9,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarse, debe disparar la compra para cubrir la demanda durante el tiempo de entrega antes del agotamiento.
+Conviene revisarlo cuando cambian la demanda, los tiempos de suministro o el nivel de servicio deseado, especialmente tras lanzamientos, campañas estacionales, rupturas de stock o si hay frecuentes faltantes.
+Mantenerlo actualizado ayuda a evitar desabastecimientos y acumulación innecesaria de inventario en cada referencia."
+temperature,1.0,10,El punto de reorden es el nivel de stock en que se
+temperature,1.0,11,"El punto de reorden de un SKU es el nivel de inventario al que se debe emitir una nueva orden para evitar quedarse sin stock antes del próximo suministro. Suele calcularse sumando la demanda prevista durante el plazo de entrega a un stock de seguridad que cubra variaciones. Conviene revisarlo cuando cambien la demanda, el plazo de entrega del proveedor o los objetivos de disponibilidad y costos."
+temperature,1.0,12,
+temperature,1.0,13,"El punto de reorden de un SKU es el nivel mínimo de inventario al que, al alcanzarlo, debe activarse una nueva orden de compra. Permite evitar quiebres de stock cubriendo la demanda prevista durante el plazo de entrega y una seguridad adicional. Conviene revisarlo cuando cambian la demanda, el lead time del proveedor o la estabilidad del suministro."
+temperature,1.0,14,"El punto de reorden de un SKU es el nivel de inventario al que se debe lanzar un pedido para cubrir la demanda hasta recibirlo.
+Depende de la velocidad de consumo, el tiempo de entrega y un stock de seguridad ante variaciones.
+Conviene revisarlo cuando cambien ventas, plazos, proveedores o se detecten rupturas y excesos."
+temperature,1.0,15,"Es el nivel de inventario de un SKU que, al alcanzarse, dispara una orden de compra para evitar quiebres antes del próximo suministro. Se calcula considerando la demanda promedio, su variabilidad y el tiempo de entrega. Conviene revisarlo cuando cambian la demanda, el lead time, la confiabilidad del proveedor o los objetivos de servicio."
+temperature,1.0,16,"El punto de reorden de un SKU es el nivel de inventario que, cuando se alcanza o queda por debajo de él, dispara una orden para evitar quedarse sin stock.  
+Se debe calcular sumando la demanda esperada durante el plazo de suministro a una cobertura o inventario de seguridad.  
+Conviene revisarlo cuando cambian la demanda, el plazo de entrega del proveedor o se detectan faltantes y excesos de inventario."
+temperature,1.0,17,"El punto de reorden de un SKU es el nivel de inventario disponible en que se debe iniciar una nueva compra para reponerlo antes de quedarse sin stock.
+Se calcula considerando la demanda esperada durante el tiempo de entrega y un margen de seguridad que cubre variaciones.
+Conviene revisarlo cuando cambian los patrones de venta, el plazo de suministro, la variabilidad del stock o se observan quiebres y excesos recurrentes."
+temperature,1.0,18,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarlo o superarlo hacia abajo, debe disparar una nueva compra para evitar quiebres de stock.  
+Se calcula considerando la demanda esperada durante el tiempo de entrega del proveedor y un inventario de seguridad para cubrir incertidumbres.  
+Conviene revisarlo cuando cambie la demanda, el lead time del proveedor, la variabilidad o el nivel de servicio deseado."
+temperature,1.0,19,"El punto de reorden de un SKU es el nivel mínimo de inventario que, al alcanzarse o superarse a la baja, debe activar una orden de compra para reponer el producto.  
+Se define a partir de la demanda esperada durante el lead time, las variaciones históricas y un stock de seguridad para cubrir imprevistos.  
+Conviene revisarlo con frecuencia cuando cambian los niveles de venta, los plazos de entrega del proveedor o se acerca una temporada atípica."
+temperature,1.0,20,"El punto de reorden de un SKU es el nivel de inventario en el que se debe emitir una nueva orden para reabastecer antes de quedarse sin existencias. Suele calcularse considerando la demanda prevista durante el tiempo de entrega y un stock de seguridad para cubrir variaciones. Conviene revisarlo cuando cambian la demanda, los plazos del proveedor, el nivel de servicio deseado o se observan quiebres, sobreinventario o cambios estacionales."
+top_p,0.5,1,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarlo, debe activar una nueva orden de compra o producción para evitar quiebres de stock.  
+Se calcula considerando la demanda esperada durante el tiempo de entrega, su variabilidad y el stock de seguridad que se desea mantener.  
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor, los costos de almacenamiento o rotura, o cuando hay estacionalidad y quiebres frecuentes."
+top_p,0.5,2,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarlo, debe dispararse una orden de compra o producción para reponer stock antes de que se agote.  
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor, la variabilidad de consumo o los costos y objetivos de servicio.  
+También es útil recalcularlo periódicamente con datos históricos y simulaciones para evitar excesos de inventario o quiebres."
+top_p,0.5,3,"El punto de reorden es el nivel de inventario de un SKU en el que se debe iniciar una nueva compra o producción para evitar quiebres de stock.  
+Depende de la demanda esperada, el tiempo de entrega del proveedor y el stock de seguridad que se quiera mantener.  
+Conviene revisarlo cuando cambian la demanda, los plazos de entrega, el costo del inventario o se observan quiebres y excesos frecuentes."
+top_p,0.5,4,"El punto de reorden de un SKU es el nivel de inventario disponible que, al alcanzarlo, debe dispararse una orden de compra o producción para reponer el stock antes de que se agote.  
+Generalmente se calcula como la demanda esperada durante el tiempo de entrega más un stock de seguridad que cubre variaciones.  
+Conviene revisarlo cuando cambian la demanda, la estacionalidad, el lead time del proveedor o los niveles de servicio objetivo."
+top_p,0.5,5,"El punto de reorden es el nivel de inventario en que se debe lanzar una nueva orden para un SKU antes de que se agote.  
+Se calcula considerando la demanda esperada durante el tiempo de entrega y un stock de seguridad para cubrir variaciones.  
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor o los costos de almacenamiento, y también si aparecen quiebres de stock o exceso de inventario."
+top_p,0.5,6,"El punto de reorden de un SKU es el nivel de inventario al que se debe iniciar una nueva compra o producción para evitar quiebres de stock. Se calcula considerando la demanda esperada durante el tiempo de entrega y un stock de seguridad para cubrir variaciones. Conviene revisarlo cuando cambian la demanda, el plazo de entrega del proveedor, la variabilidad del consumo o los costos de almacenamiento y rotura."
+top_p,0.5,7,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarlo, debe activarse una nueva orden para evitar quedarse sin stock antes de recibir la reposición.  
+Depende principalmente de la demanda esperada, el tiempo de entrega del proveedor y la variabilidad de ambos.  
+Conviene revisarlo cuando cambian la demanda, el lead time, los costos, la estacionalidad o se observan quiebres de stock y excesos de inventario."
+top_p,0.5,8,"El punto de reorden de un SKU es el nivel de inventario disponible que, al alcanzarlo, dispara la emisión de una orden para recibir más unidades antes de agotarse.  
+Se calcula considerando la demanda esperada durante el tiempo de entrega, su variabilidad y un stock de seguridad que garantice el nivel de servicio deseado.  
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor, los costos de ruptura o pedido, o cuando se observan quiebres de stock y excesos recurrentes."
+top_p,0.5,9,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarlo, debe dispararse una nueva orden para reponer el producto antes de agotarse.  
+Conviene revisarlo cuando cambian la demanda, el tiempo de entrega del proveedor o la variabilidad de ambos.  
+También debe revisarse periódicamente y cada vez que se modifique el nivel de servicio deseado, los costos o la política de inventario."
+top_p,0.5,10,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarlo, debe dispararse una nueva orden para evitar quiebres antes de recibir la reposición.  
+Conviene revisarlo cuando cambian la demanda, el tiempo de entrega del proveedor o su variabilidad.  
+También debe ajustarse si cambian los costos de stockout, el nivel de servicio deseado o la estacionalidad del producto."
+top_p,0.5,11,"El punto de reorden es el nivel de inventario disponible de un SKU que, al alcanzarlo, debe dispararse una orden de compra o producción para reponer stock antes de agotarse.  
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor o su variabilidad.  
+También es útil actualizarlo ante cambios en el nivel de servicio deseado, costos, estacionalidad o errores recurrentes de pronóstico."
+top_p,0.5,12,"El punto de reorden de un SKU es el nivel de inventario disponible que, al alcanzarlo, debe dispararse una orden de compra o producción para evitar un quiebre.  
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor, la variabilidad de consumo o los costos y niveles de servicio deseados.  
+También es recomendable hacerlo periódicamente, por ejemplo cada mes o trimestre, para ajustar la cobertura y mantener el equilibrio entre disponibilidad y capital inmovilizado."
+top_p,0.5,13,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarlo, debe dispararse una orden para reponer stock antes de agotarse.  
+Depende de la demanda promedio, su variabilidad y el tiempo de entrega del proveedor.  
+Conviene revisarlo cuando cambian la demanda, el lead time, los costos de quiebre o exceso de inventario, o tras episodios de desabastecimiento y sobreinventario."
+top_p,0.5,14,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarlo, dispara una orden de compra o producción para evitar quiebres de stock.  
+Depende de la demanda promedio, el tiempo de entrega del proveedor y el inventario de seguridad deseado.  
+Conviene revisarlo cuando cambian la demanda, los plazos de entrega, el costo del inventario o se observan quiebres y exceso de stock."
+top_p,0.5,15,"El punto de reorden de un SKU es el nivel de inventario en el que se debe iniciar una nueva compra o producción para evitar quiebres de stock.  
+Depende de la demanda esperada, el tiempo de entrega del proveedor y el stock de seguridad que se quiera mantener.  
+Conviene revisarlo cuando cambian la demanda, los plazos de entrega, el costo del inventario o se detectan frecuentes faltantes o excesos."
+top_p,0.5,16,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarlo, debe activarse una nueva orden para evitar quedarse sin stock. Conviene revisarlo cuando cambian la demanda, el tiempo de entrega del proveedor o la variabilidad de los consumos. También debe ajustarse si se modifica el nivel de servicio deseado, el costo de la ruptura o las condiciones de compra."
+top_p,0.5,17,"El punto de reorden de un SKU es el nivel de inventario disponible que, al alcanzarlo, debe dispararse una orden de compra o producción para evitar rupturas.  
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor, la variabilidad de los consumos o el nivel de servicio deseado.  
+También es útil recalcularlo periódicamente y ante cambios estacionales, promociones o nuevos proveedores para mantener el stock óptimo."
+top_p,0.5,18,"El punto de reorden de un SKU es el nivel de inventario disponible que, al alcanzarlo, debe dispararse una orden de compra o producción para reponer el stock antes de que se agote.  
+Se calcula considerando la demanda promedio durante el tiempo de entrega, su variabilidad y el stock de seguridad deseado.  
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor, los costos o la estacionalidad, o cuando se observan quiebres de stock y excesos de inventario."
+top_p,0.5,19,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarlo, debe activarse una nueva orden para evitar quedarse sin stock. Conviene revisarlo cuando cambian la demanda, el tiempo de entrega del proveedor o la variabilidad de ambos. También es recomendable revisarlo periódicamente y tras cambios en costos, políticas de servicio o condiciones del mercado."
+top_p,0.5,20,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarlo, debe dispararse una nueva orden para evitar quiebres.  
+Se calcula considerando la demanda esperada durante el tiempo de entrega del proveedor y un stock de seguridad que cubra su variabilidad.  
+Conviene revisarlo cuando cambian los patrones de venta, la estacionalidad, el lead time del proveedor o los costos y objetivos de nivel de servicio."
+top_p,0.9,1,"El punto de reorden es el nivel de inventario al que se debe iniciar una nueva orden para un SKU, evitando quedarte sin stock durante el tiempo de entrega.  
+Se calcula en función de la demanda media, el plazo de abastecimiento y un stock de seguridad.  
+Conviene revisarlo cuando cambie la demanda, los plazos de entrega, la variabilidad o la política de servicio."
+top_p,0.9,2,
+top_p,0.9,3,"El punto de reorden de un SKU es el nivel mínimo de inventario que, al alcanzarse, debe disparar una nueva compra para cubrir la demanda durante el plazo de entrega sin quedarse sin stock.  
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor, la estacionalidad o la variabilidad de las ventas.  
+También es oportuno hacerlo después de quiebres de stock, ajustes de precios, cambios de almacén o cada cierto periodo según la criticidad del producto."
+top_p,0.9,4,"El punto de reorden de un SKU es el nivel de inventario en que se debe lanzar una nueva orden para cubrir la demanda hasta que llegue el pedido.  
+Su cálculo suele considerar la demanda media, la variabilidad de la demanda y del plazo de abastecimiento, junto con un inventario de seguridad.  
+Conviene revisarlo cuando cambian los patrones de venta, los plazos de entrega, los costos, la estacionalidad o la fiabilidad del inventario."
+top_p,0.9,5,"El punto de reorden de un SKU es el nivel de inventario al que se debe lanzar una orden para que la reposición llegue antes de agotarse el stock.  
+Conviene revisarlo cuando cambian la demanda, su variabilidad, los tiempos de entrega del proveedor o el nivel de servicio que se quiere ofrecer.  
+También debe actualizarse si aparecen quiebres de stock, sobreinventario o nuevas campañas que alteren el consumo."
+top_p,0.9,6,"El punto de reorden de un SKU es el nivel de inventario en el que se debe lanzar una nueva orden para cubrir la demanda durante el plazo de entrega sin agotarse.  
+Se calcula considerando la demanda promedio, su variabilidad y el tiempo de entrega, más un inventario de seguridad.  
+Conviene revisarlo cuando cambian las ventas, la estacionalidad, los plazos de proveedor, la política de servicio o se detectan quiebres y excesos de stock."
+top_p,0.9,7,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarlo, activa una nueva orden para evitar quiebres de stock.  
+Conviene revisarlo cuando cambian la demanda, los plazos de entrega del proveedor o el nivel de servicio deseado.  
+También debe revisarse ante estacionalidad, promociones o variaciones de costo que alteren el consumo."
+top_p,0.9,8,"El punto de reorden de un SKU es el nivel de inventario disponible que, al llegar a él, debe dispararse la orden de compra o producción para reponer el producto antes de que se agote.  
+Se calcula considerando la demanda prevista durante el tiempo de entrega y un stock de seguridad para absorber variaciones o imprevistos.  
+Conviene revisarlo cuando cambien la demanda, el plazo de suministro, los costos, la política de nivel de servicio o se observen con frecuencia roturas o exceso de inventario."
+top_p,0.9,9,"El punto de reorden de un SKU es el nivel de inventario disponible en que se debe lanzar una orden de compra o producción para reponerlo antes de agotarse.  
+Generalmente se calcula considerando la demanda promedio durante el tiempo de reabastecimiento y un stock de seguridad para cubrir variaciones.  
+Conviene revisarlo cuando cambian la demanda, los plazos de entrega, el nivel de servicio deseado o cuando se observan quiebres de stock y excesos."
+top_p,0.9,10,"El punto de reorden es el nivel de inventario de un SKU que, al alcanzarlo, dispara una orden de compra para reponer stock antes del agotamiento.  
+Normalmente se calcula con la demanda esperada durante el plazo de entrega del proveedor, sumando un stock de seguridad para cubrir variaciones.  
+Conviene revisarlo cuando cambian la demanda, los plazos de entrega, la variabilidad del consumo o el nivel de servicio que se desea mantener."
+top_p,0.9,11,"El punto de reorden es el nivel de inventario disponible al que se debe emitir una nueva orden para un SKU.  
+Se calcula considerando la demanda promedio durante el tiempo de entrega y un stock de seguridad para cubrir su variabilidad.  
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor, su fiabilidad o los objetivos de nivel de servicio y costos."
+top_p,0.9,12,"El punto de reorden es el nivel de inventario mínimo al que un SKU debe llegar para iniciar una nueva orden de compra. Conviene revisarlo cuando cambian la demanda, el tiempo de entrega del proveedor o las condiciones comerciales. También es útil revisarlo si hay rupturas frecuentes, exceso de stock o cambios en la estrategia del producto."
+top_p,0.9,13,"El punto de reorden de un SKU es el nivel de inventario que, al llegar a él o quedar por debajo, indica que ya se debe iniciar una nueva compra o producción para evitar quedarse sin stock durante el tiempo de abastecimiento.
+
+Se calcula a partir del consumo esperado, la variabilidad de la demanda, el lead time y el stock de seguridad"
+top_p,0.9,14,"El punto de reorden es el nivel de inventario de un SKU en el que se debe lanzar una nueva compra o producción para evitar quiebres de stock. Generalmente se calcula considerando la demanda promedio, el tiempo de entrega del proveedor y un inventario de seguridad. Conviene revisarlo cuando cambian las ventas, los tiempos de suministro, la estacionalidad o los costos de faltantes y almacenamiento."
+top_p,0.9,15,"El punto de reorden de un SKU es el nivel mínimo de inventario que, al alcanzarse, debe activar una orden de compra o producción para reponerlo antes de que se agote.  
+Se determina con base en la demanda promedio, el tiempo de entrega del proveedor y un stock de seguridad que cubra variaciones imprevistas.  
+Conviene revisarlo cuando cambian la estacionalidad, los lead times, el costo de servicio o la rotación del producto, y siempre que ocurran roturas de stock o excesos sostenidos."
+top_p,0.9,16,"El punto de reorden de un SKU es el nivel de inventario en el que conviene lanzar una orden para evitar quedarse sin stock antes de recibir la reposición. Generalmente se calcula considerando la demanda esperada durante el tiempo de entrega, su variabilidad y un stock de seguridad. Conviene revisarlo cuando cambian la demanda, los plazos del proveedor o el nivel de servicio deseado, o si se observan desabastecimientos y excesos de inventario."
+top_p,0.9,17,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarlo, debe disparar una nueva orden para cubrir la demanda hasta recibir el suministro.  
+Conviene revisarlo cuando cambian la demanda, el tiempo de entrega del proveedor o el nivel de servicio deseado.  
+También debe revisarse periódicamente o cuando se detectan roturas de stock, exceso de inventario o cambios estacionales."
+top_p,0.9,18,"El punto de reorden es el nivel de inventario de un SKU al que se debe emitir una nueva orden para evitar rupturas.
+
+Debe calcularse considerando la demanda esperada, el tiempo de reposición y un inventario de seguridad adecuado.
+
+Conviene revisarlo cuando cambie la demanda, el lead time, los costos o las condiciones de suministro, y también en revisiones periódicas."
+top_p,0.9,19,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarse, dispara una nueva orden para evitar quiebres de stock.  
+Depende de la demanda durante el tiempo de entrega, su variabilidad y el stock de seguridad deseado.  
+Conviene revisarlo cuando cambien la demanda, los plazos de suministro, los costos o el nivel de servicio objetivo."
+top_p,0.9,20,"El punto de reorden de un SKU es el nivel de inventario en el que conviene iniciar una nueva compra o producción para reponerlo antes de que se agote, considerando la demanda esperada y el tiempo de entrega.  
+Conviene revisarlo cuando cambian factores clave como la demanda, la estacionalidad, las promociones, el lead time del proveedor o los costos.  
+También es prudente revisarlo periódicamente, por ejemplo cada mes o trimestre, para evitar quiebres de stock y exceso de inventario."
+top_p,1.0,1,"El punto de reorden de un SKU es el nivel mínimo de stock al que se debe emitir una orden para cubrir la demanda durante el tiempo de entrega, sumando un inventario de seguridad.  
+Conviene revisarlo cuando cambie la demanda o su variabilidad, el plazo de entrega del proveedor, los costos de pedido y almacenamiento, o cuando se detecten rupturas frecuentes o excesos de inventario.  
+Debería actualizarse periódicamente con datos reales, sobre todo en épocas estacionales, promociones o cambios importantes de la cadena de suministro."
+top_p,1.0,2,"El punto de reorden de un SKU es el nivel de inventario en el que conviene iniciar una nueva orden para recibirstock antes de agotarse.  
+Se calcula con base en la demanda esperada durante el tiempo de entrega y un stock de seguridad para cubrir variaciones e imprevistos.  
+Conviene revisarlo cuando cambian la demanda, el tiempo de suministro, los costos o se presentan recurrentes quiebres o excesos de inventario."
+top_p,1.0,3,"El punto de reorden de un SKU es el nivel mínimo de inventario que, al alcanzarse por las salidas o la demanda, dispara la orden para recargar antes de quedarte sin stock.  
+Conviene revisarlo cuando cambie la demanda, los tiempos de entrega del proveedor o el nivel de servicio deseado.  
+También es útil actualizarlo tras observar quiebres de stock, excesos de inventario o variaciones estacionales."
+top_p,1.0,4,"El punto de reorden es el nivel mínimo de existencias de un SKU que, al alcanzarlo, debe activarse una nueva orden de compra o producción.  
+Se determina según la demanda esperada durante el plazo de reabastecimiento y un inventario de seguridad para cubrir imprevistos.  
+Conviene revisarlo cuando cambian la demanda, el lead time, los costos de almacenamiento o se detectan quiebres y excesos de inventario."
+top_p,1.0,5,"El punto de reorden de un SKU es el nivel mínimo de inventario en que se debe lanzar un pedido para recibir mercancía antes del agotamiento.  
+Ese punto normalmente combina la demanda esperada durante el plazo de entrega con un stock de seguridad para absorber variaciones.  
+Conviene revisarlo periódicamente o cuando cambian la demanda, los plazos del proveedor, el costo del stock, el nivel de servicio deseado o la estacionalidad."
+top_p,1.0,6,"El punto de reorden es el nivel de inventario que, al alcanzarse, indica que hay que emitir un pedido para evitar quiebres de stock. Debe considerarlo cuando la demanda, el tiempo de entrega o los niveles de servicio camben con frecuencia. Conviene revisarlo periódicamente y ante cambios relevantes para mantener la disponibilidad sin exceso de existencias."
+top_p,1.0,7,"El punto de reorden es el nivel mínimo de existencias de un SKU que, al alcanzarse, debe disparar una orden de compra o producción para cubrir la demanda hasta que llegue el pedido.  
+Se suele calcular a partir de la demanda promedio durante el lead time, más un stock de seguridad que absorbe variaciones inesperadas.  
+Conviene revisarlo periódicamente y cada vez que cambien la demanda, el tiempo de entrega, el nivel de servicio deseado o la estacionalidad del producto."
+top_p,1.0,8,"El punto de reorden de un SKU es el nivel de existencias que, al alcanzarlo, debe detonar una nueva orden para recomponer inventario antes de que el stock llegue a cero.  
+Habitualmente se calcula con la demanda esperada durante el tiempo de entrega, más un stock de seguridad para cubrir variaciones sin causar quiebres.  
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor, los niveles de servicio objetivo o se observan quiebres, sobrestocks persistentes o cambios estacionales."
+top_p,1.0,9,"El punto de reorden de un SKU es el nivel de inventario en la que conviene iniciar un pedido para cubrir la demanda prevista durante su tiempo de entrega.  
+Se calcula considerando la demanda, su variabilidad y el plazo de suministro del proveedor.  
+Conviene revisarlo cuando cambian la demanda, los plazos, los costes o las restricciones de compra, o cuando aparecen roturas, exceso de inventario o cobertura inestable."
+top_p,1.0,10,"El punto de reorden de un SKU es el nivel de inventario en existencia al que se debe lanzar una nueva orden para evitar rupturas antes del próximo suministro.  
+Depende de la demanda media, el tiempo de reaprovisionamiento y el stock de seguridad que se quiera mantener para cubrir variaciones.  
+Conviene revisarlo cuando cambien los patrones de venta, el plazo del proveedor, existan estacionalidades o promociones mayorales, o se observen demoras y roturas recientes."
+top_p,1.0,11,"El punto de reorden es el nivel exacto de inventario de un SKU que, al alcanzarlo, indica que se debe emitir una nueva orden para evitar quiebre de stock.
+Se calcula considerando la demanda esperada durante el plazo de entrega del proveedor, su variabilidad y el inventario de seguridad necesario.
+Conviene revisarlo cuando cambian la demanda, los plazos de entrega o el nivel de servicio deseado."
+top_p,1.0,12,"El punto de reorden de un SKU es el nivel de inventario que debe alertar para lanzar una orden de abastecimiento.  
+Se determina con la demanda prevista durante el plazo de entrega y un stock de seguridad frente a variaciones.  
+Conviene revisarlo cuando cambian la demanda, los plazos del proveedor, el servicio deseado o aparecen estacionalidades y anomalías."
+top_p,1.0,13,"El punto de reorden de un SKU es el nivel de inventario al que conviene lanzar una orden de compra o producción para evitar quiebres de stock. Se calcula sumando la demanda esperada durante el tiempo de cumplimiento del proveedor o taller al stock de seguridad. Conviene revisarlo cuando cambian la demanda, la estacionalidad, el plazo de entrega o los objetivos de nivel de servicio y coste."
+top_p,1.0,14,"El punto de reorden de un SKU es el nivel de inventario al que se debe lanzar una orden de compra para evitar rupturas hasta que llegue el nuevo suministro. Generalmente se calcula considerando la demanda promedio, el tiempo de entrega del proveedor y un stock de seguridad. Conviene revisarlo cuando cambia la demanda, aumentan los plazos o incertidumbre del proveedor, hay estacionalidad, introduces新品 o cambian costos y objetivos de servicio."
+top_p,1.0,15,"El punto de reorden de un SKU es el nivel de inventario que, al alcanzarse, debe disparar una nueva compra o producción para evitar quiebres de stock.  
+Conviene revisarlo cuando cambian la demanda, el lead time del proveedor o sus niveles de incertidumbre.  
+También debe actualizarse por cambios de estacionalidad, servicio objetivo o si se observa stock frecuente excesivo o recurrente insuficiente."
+top_p,1.0,16,"El punto de reorden de un SKU es el nivel de stock al que se debe iniciar un pedido para cubrir la demanda hasta recibir nuevos abastecimientos. Debe tener en cuenta la media de consumo, el plazo de entrega del proveedor y su variabilidad para mantener un nivel de servicio adecuado. Conviene revisarlo cuando cambian los patrones de demanda, los plazos de suministro o las cargas estacionales."
+top_p,1.0,17,"El punto de reorden de un SKU es el nivel mínimo de inventario que, al alcanzarse, activa la compra o producción para evitar quiebres durante el plazo de entrega. Conviene revisarlo cuando cambian la demanda, el lead time del proveedor o los costos de compra y almacenamiento. También es útil revisarlo ante cambios estacionales, caducidad, precisos de inventario o niveles deseables de servicio."
+top_p,1.0,18,"El punto de reorden de un SKU es el nivel mínimo de inventario disponible que, al alcanzarlo, debe disparar una orden de compra para cubrir la demanda prevista durante el tiempo de entrega y el posible retraso. Conviene revisarlo cuando cambian la demanda histórica, el lead time del proveedor, su fiabilidad, el nivel de servicio deseado o los costos de almacenamiento. También es prudente revisarlo con periodicidad —por ejemplo, cada mes o trimestre— y tras cambios estacionales, promociones o quiebres de stock para mantener el equilibrio entre servicio al cliente y capital inmovilizado."
+top_p,1.0,19,El punto de reorden de un SKU es el nivel de inventario que
+top_p,1.0,20,"El punto de reorden de un SKU es el nivel de inventario que debe alcanzarse para lanzar una nueva orden o fabricación y evitar quiebres.  
+Normalmente se calcula sumando la demanda esperada durante el tiempo de entrega y un stock de seguridad para cubrir variaciones.  
+Conviene revisarlo cuando cambian la demanda, el tiempo de entrega del proveedor, la estacionalidad, los costos de almacenaje o el objetivo de disponibilidad."
