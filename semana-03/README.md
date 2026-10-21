@@ -59,6 +59,50 @@ Pruebas pareadas (McNemar, coincide en resultado):
 - 27B + reglas contra 27B + RAG-lite: 7 casos solo de reglas, 3 solo de RAG, p = 0.344. No significativa.
 - 27B base contra 7B base: solo el 27B acierta 5 casos y solo el 7B acierta 1, p = 0.219. No significativa.
 
+## Antes y después
+
+Mismos 46 pares de evaluación, misma métrica. Cada cambio se mide contra su línea base del mismo modelo.
+
+**Ajuste (LoRA), en el 7B**
+
+| Métrica | Antes: 7B base | Después: 7B + LoRA v1 | Cambio |
+|---|---|---|---|
+| Ejecuta | 80.4 % (37/46) | 84.8 % (39/46) | +2 casos |
+| Coincide en resultado | 37.0 % (17/46) | 37.0 % (17/46) | 0 |
+| Exact match (SQL) | 0.0 % | 0.0 % | 0 |
+
+Los mismos 17 casos aciertan antes y después (McNemar p = 1.000). El ajuste cambia la sintaxis, no el resultado.
+
+**Prompt con reglas, en el 27B**
+
+| Métrica | Antes: 27B base | Después: 27B + reglas | Cambio |
+|---|---|---|---|
+| Ejecuta | 73.9 % (34/46) | 69.6 % (32/46) | −2 casos |
+| Coincide en resultado | 45.7 % (21/46) | 50.0 % (23/46) | +2 casos |
+| Exact match (SQL) | 0.0 % | 0.0 % | 0 |
+
+El cambio no es significativo (McNemar p = 0.774). Las reglas mejoran el resultado sin mejorar la sintaxis.
+
+**RAG-lite, en el 27B** (referencia, no se adopta)
+
+| Métrica | Antes: 27B base | Después: 27B + RAG-lite | Cambio |
+|---|---|---|---|
+| Ejecuta | 73.9 % (34/46) | 58.7 % (27/46) | −7 casos |
+| Coincide en resultado | 45.7 % (21/46) | 41.3 % (19/46) | −2 casos |
+| Exact match (SQL) | 0.0 % | 6.5 % (3/46) | +3 casos |
+
+El exact match sube solo con RAG, pero el resultado baja. Es una señal de que el modelo escribe SQL distinto sin acertar el contenido. No se adopta.
+
+**Referencia: 7B con reglas en el prompt**
+
+| Métrica | Antes: 7B base | Después: 7B + reglas | Cambio |
+|---|---|---|---|
+| Ejecuta | 80.4 % (37/46) | 54.3 % (25/46) | −12 casos |
+| Coincide en resultado | 37.0 % (17/46) | 28.3 % (13/46) | −4 casos |
+| Exact match (SQL) | 0.0 % | 8.7 % (4/46) | +4 casos |
+
+Un prompt largo confunde al 7B: copia fragmentos de SQL de las reglas y eso se refleja en ejecución y en resultado.
+
 ## Lectura
 
 - **El LoRA v1 aprende el formato, no las reglas.** Ejecuta más (80.4 % a 84.8 %), pero acierta exactamente los mismos casos que el base.
