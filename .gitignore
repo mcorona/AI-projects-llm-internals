@@ -17,3 +17,8 @@ semana-02/*.bak-*
 
 # Jupyter
 .ipynb_checkpoints/
+
+# Semana 3: adaptadores de LoRA (pesados, se regeneran con mlx_lm.lora)
+semana-03/adapters/
+semana-03/resultados/prueba_*
+.DS_Store

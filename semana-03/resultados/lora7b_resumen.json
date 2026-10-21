@@ -1,0 +1,95 @@
+{
+  "modelo": "/Users/manuelcorona/.lmstudio/models/lmstudio-community/Qwen2.5-Coder-7B-Instruct-MLX-4bit",
+  "nombre": "lora7b",
+  "pares": 46,
+  "ejecuta": 0.848,
+  "coincide_resultado": 0.37,
+  "coincide_sql": 0.0,
+  "por_plantilla": {
+    "agentes_facturas_anio": {
+      "n": 1,
+      "ejecuta": 1,
+      "coincide_resultado": 0
+    },
+    "cliente_datos": {
+      "n": 4,
+      "ejecuta": 4,
+      "coincide_resultado": 4
+    },
+    "clientes_activos_estado": {
+      "n": 4,
+      "ejecuta": 4,
+      "coincide_resultado": 4
+    },
+    "costo_articulo": {
+      "n": 4,
+      "ejecuta": 4,
+      "coincide_resultado": 0
+    },
+    "existencia_almacen": {
+      "n": 2,
+      "ejecuta": 2,
+      "coincide_resultado": 0
+    },
+    "facturas_canceladas_anio": {
+      "n": 2,
+      "ejecuta": 2,
+      "coincide_resultado": 2
+    },
+    "facturas_cliente_inexistente": {
+      "n": 1,
+      "ejecuta": 1,
+      "coincide_resultado": 0
+    },
+    "facturas_fecha_invalida": {
+      "n": 1,
+      "ejecuta": 1,
+      "coincide_resultado": 0
+    },
+    "facturas_usd_anio": {
+      "n": 2,
+      "ejecuta": 2,
+      "coincide_resultado": 0
+    },
+    "facturas_vigentes_cliente": {
+      "n": 4,
+      "ejecuta": 4,
+      "coincide_resultado": 1
+    },
+    "lineas_factura": {
+      "n": 4,
+      "ejecuta": 4,
+      "coincide_resultado": 0
+    },
+    "precio_promedio_linea": {
+      "n": 3,
+      "ejecuta": 2,
+      "coincide_resultado": 2
+    },
+    "productos_activos_linea": {
+      "n": 3,
+      "ejecuta": 3,
+      "coincide_resultado": 3
+    },
+    "salidas_unidades_base": {
+      "n": 1,
+      "ejecuta": 0,
+      "coincide_resultado": 0
+    },
+    "total_factura": {
+      "n": 4,
+      "ejecuta": 3,
+      "coincide_resultado": 0
+    },
+    "ventas_mes_mxn": {
+      "n": 4,
+      "ejecuta": 2,
+      "coincide_resultado": 1
+    },
+    "ventas_moneda_anio": {
+      "n": 2,
+      "ejecuta": 0,
+      "coincide_resultado": 0
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "candidatos": 229,
+  "aceptados": 220,
+  "train": 174,
+  "eval": 46,
+  "rechazados": 9,
+  "motivos": {
+    "sin filas útiles": 9
+  },
+  "por_plantilla": {
+    "agentes_facturas_anio": 6,
+    "articulos_en_piezas": 2,
+    "cliente_datos": 18,
+    "clientes_activos_estado": 18,
+    "costo_articulo": 18,
+    "existencia_almacen": 12,
+    "facturas_canceladas_anio": 12,
+    "facturas_cliente_inexistente": 3,
+    "facturas_fecha_invalida": 3,
+    "facturas_usd_anio": 9,
+    "facturas_vigentes_cliente": 18,
+    "lineas_factura": 18,
+    "precio_promedio_linea": 15,
+    "productos_activos_linea": 15,
+    "proveedores_por_rfc": 2,
+    "salidas_unidades_base": 6,
+    "total_factura": 18,
+    "ventas_mes_mxn": 18,
+    "ventas_moneda_anio": 9
+  }
+}

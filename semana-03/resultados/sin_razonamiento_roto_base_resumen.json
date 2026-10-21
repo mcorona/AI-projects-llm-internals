@@ -1,0 +1,15 @@
+{
+  "modelo": "qwen3.8-27b-mlx@4bit",
+  "nombre": "base",
+  "pares": 46,
+  "ejecuta": 0.37,
+  "coincide_resultado": 0.326,
+  "coincide_sql": 0.022,
+  "por_plantilla": {
+    "desconocida": {
+      "n": 46,
+      "ejecuta": 17,
+      "coincide_resultado": 15
+    }
+  }
+}
