@@ -16,9 +16,11 @@ import argparse
 import math
 import os
 import random
-from datetime import timedelta
+from datetime import date, timedelta
 
-from src.tools.sql_tool import ANCHOR_DATE
+# Fecha ancla fija, copiada de src/tools/sql_tool.py (ANCHOR_DATE).
+# Se copia aquí para no depender del paquete src/ de inventory-copilot en CI.
+ANCHOR_DATE = date(2026, 9, 26)
 
 SEED = 42
 N_PRODUCTS = 200
