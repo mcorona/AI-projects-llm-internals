@@ -1,0 +1,7 @@
+{
+  "_doc": "Precios por millón de tokens en USD. 'fuente' indica de dónde salió cada cifra. Un precio null significa que no está verificado: el costo de ese modelo no se reporta.",
+  "anthropic:claude-haiku-5-5": {"in": 0.10, "out": 0.50, "fuente": "Precio indicado por el autor (hasta 100k tokens), 2026-10-21"},
+  "openai:gpt-5.6-luna": {"in": 1.00, "out": 6.00, "fuente": "LiteLLM, tercero, sin verificar en documentación oficial"},
+  "openai:gpt-5.6-terra": {"in": 2.50, "out": 15.00, "fuente": "LiteLLM, tercero, sin verificar en documentación oficial"},
+  "gemini:gemini-3.8-flash": {"in": null, "out": null, "fuente": "Sin verificar: el precio de terceros no se usó"}
+}

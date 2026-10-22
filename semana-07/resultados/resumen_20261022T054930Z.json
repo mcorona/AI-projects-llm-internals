@@ -1,0 +1,130 @@
+[
+  {
+    "modelo": "anthropic:claude-haiku-5-5",
+    "idioma": "en",
+    "n": 20,
+    "correctas": 5,
+    "exactitud": 0.25,
+    "costo_usd": 0.0018,
+    "costo_por_respuesta_correcta": 0.000361,
+    "errores": {
+      "resultado_distinto": 15
+    },
+    "set": "seguimiento",
+    "esquema": "corto",
+    "citas": false,
+    "sin_historial": true
+  },
+  {
+    "modelo": "anthropic:claude-haiku-5-5",
+    "idioma": "es",
+    "n": 20,
+    "correctas": 5,
+    "exactitud": 0.25,
+    "costo_usd": 0.0019,
+    "costo_por_respuesta_correcta": 0.00038,
+    "errores": {
+      "resultado_distinto": 15
+    },
+    "set": "seguimiento",
+    "esquema": "corto",
+    "citas": false,
+    "sin_historial": true
+  },
+  {
+    "modelo": "gemini:gemini-3.8-flash",
+    "idioma": "en",
+    "n": 20,
+    "correctas": 4,
+    "exactitud": 0.2,
+    "costo_usd": null,
+    "costo_por_respuesta_correcta": null,
+    "errores": {
+      "resultado_distinto": 16
+    },
+    "set": "seguimiento",
+    "esquema": "corto",
+    "citas": false,
+    "sin_historial": true
+  },
+  {
+    "modelo": "gemini:gemini-3.8-flash",
+    "idioma": "es",
+    "n": 20,
+    "correctas": 4,
+    "exactitud": 0.2,
+    "costo_usd": null,
+    "costo_por_respuesta_correcta": null,
+    "errores": {
+      "resultado_distinto": 16
+    },
+    "set": "seguimiento",
+    "esquema": "corto",
+    "citas": false,
+    "sin_historial": true
+  },
+  {
+    "modelo": "openai:gpt-5.6-luna",
+    "idioma": "en",
+    "n": 20,
+    "correctas": 3,
+    "exactitud": 0.15,
+    "costo_usd": 0.0198,
+    "costo_por_respuesta_correcta": 0.006601,
+    "errores": {
+      "resultado_distinto": 17
+    },
+    "set": "seguimiento",
+    "esquema": "corto",
+    "citas": false,
+    "sin_historial": true
+  },
+  {
+    "modelo": "openai:gpt-5.6-luna",
+    "idioma": "es",
+    "n": 20,
+    "correctas": 4,
+    "exactitud": 0.2,
+    "costo_usd": 0.0199,
+    "costo_por_respuesta_correcta": 0.004965,
+    "errores": {
+      "resultado_distinto": 16
+    },
+    "set": "seguimiento",
+    "esquema": "corto",
+    "citas": false,
+    "sin_historial": true
+  },
+  {
+    "modelo": "openai:gpt-5.6-terra",
+    "idioma": "en",
+    "n": 20,
+    "correctas": 4,
+    "exactitud": 0.2,
+    "costo_usd": 0.0412,
+    "costo_por_respuesta_correcta": 0.010307,
+    "errores": {
+      "resultado_distinto": 16
+    },
+    "set": "seguimiento",
+    "esquema": "corto",
+    "citas": false,
+    "sin_historial": true
+  },
+  {
+    "modelo": "openai:gpt-5.6-terra",
+    "idioma": "es",
+    "n": 20,
+    "correctas": 4,
+    "exactitud": 0.2,
+    "costo_usd": 0.042,
+    "costo_por_respuesta_correcta": 0.010501,
+    "errores": {
+      "resultado_distinto": 16
+    },
+    "set": "seguimiento",
+    "esquema": "corto",
+    "citas": false,
+    "sin_historial": true
+  }
+]
