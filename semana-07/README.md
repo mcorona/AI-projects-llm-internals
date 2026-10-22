@@ -196,7 +196,29 @@ The follow-up set is saturated with history, and its wording was tuned after rea
 - The chains include corrections ("Change it", "Remove the ones..."), references to a turn two steps back, ellipsis ("Now the same for Monterrey"), and unit-of-measure carry-over.
 - Every final question has a single reference SQL. Ambiguous references were avoided on purpose. Any change after the first run must be documented here and the earlier runs archived.
 
-Results: pending.
+### Results (run `20261022T061851Z`, short schema, no citations, 16 chains per language)
+
+| Model | Language | Execution accuracy | Cost (USD) | Cost per correct answer (USD) |
+|---|---|---|---|---|
+| claude-haiku-5-5 | EN | 15 / 16 (0.938) | 0.0024 | 0.000157 |
+| claude-haiku-5-5 | ES | 16 / 16 (1.000) | 0.0024 | 0.000149 |
+| gemini-3.8-flash | EN | 16 / 16 (1.000) | not verified | not verified |
+| gemini-3.8-flash | ES | 15 / 16 (0.938) | not verified | not verified |
+| gpt-5.6-luna | EN | 15 / 16 (0.938) | 0.0214 | 0.001429 |
+| gpt-5.6-luna | ES | 14 / 16 (0.875) | 0.0222 | 0.001588 |
+| gpt-5.6-terra | EN | 15 / 16 (0.938) | 0.0472 | 0.003146 |
+| gpt-5.6-terra | ES | 15 / 16 (0.938) | 0.0452 | 0.003017 |
+
+Totals out of 32: claude-haiku-5-5 31, gemini-3.8-flash 31, gpt-5.6-terra 30, gpt-5.6-luna 29. One question is 6.25 points, so these differences are small and come from one run per model.
+
+Failures, reviewed:
+
+- **`cad-14` (5 of 7 failures).** The follow-up "And how many units did they sell in August 2026?" refers to a list of products. Five answers from three models (Haiku EN, Luna EN and ES, Terra EN and ES) returned a per-SKU breakdown, and the reference expects one total. The wording is ambiguous, and the same problem appeared in `seg-016`. The reference SQL did not change.
+- **`cad-10` (gpt-5.6-luna, ES).** The model returned a ranking as a CTE. The truncated SQL does not show whether it applies `LIMIT 1`, so this is not fully inspected.
+- **`cad-14-es` (gemini-3.8-flash).** Empty output with no SQL. This is an output failure, not a reasoning error.
+
+The wording of `cad-14` is not changed here. Changing it would be another revision after results, and it would need its own rerun.
+
 
 ## Limits
 
