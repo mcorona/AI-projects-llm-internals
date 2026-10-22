@@ -35,6 +35,7 @@ SETS = {
     "facil": (RAIZ / "datasets" / "nlq_bilingual.jsonl", RAIZ / "datasets" / "nlq_validado.jsonl"),
     "dificil": (RAIZ / "datasets" / "nlq_hard_bilingual.jsonl", RAIZ / "datasets" / "nlq_hard_validado.jsonl"),
     "seguimiento": (RAIZ / "datasets" / "nlq_seguimiento.jsonl", RAIZ / "datasets" / "nlq_seguimiento_validado.jsonl"),
+    "cadenas": (RAIZ / "datasets" / "nlq_cadenas.jsonl", RAIZ / "datasets" / "nlq_cadenas_validado.jsonl"),
 }
 SCHEMA = RAIZ / "schema.sql"
 SCHEMAS = {"corto": SCHEMA, "completo": RAIZ / "schema_completo.sql"}
@@ -228,7 +229,7 @@ def main():
     parser.add_argument("--modelos", nargs="+", default=[])
     parser.add_argument("--limite", type=int, default=None)
     parser.add_argument("--workers", type=int, default=6)
-    parser.add_argument("--set", choices=sorted(SETS), default="facil", help="facil (100 casos), dificil (50 x 2 idiomas) o seguimiento (turno previo)")
+    parser.add_argument("--set", choices=sorted(SETS), default="facil", help="facil (100 casos), dificil (50 x 2 idiomas), seguimiento (turno previo) o cadenas (3 turnos)")
     parser.add_argument("--esquema", choices=sorted(SCHEMAS), default="corto", help="corto (schema.sql) o completo (schema_completo.sql)")
     parser.add_argument("--sin-historial", action="store_true", help="control: omite el turno previo de las preguntas de seguimiento")
     parser.add_argument("--citas", action="store_true", help="pide al modelo listar sus tablas y mide precision y exhaustividad")

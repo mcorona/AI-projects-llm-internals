@@ -188,6 +188,16 @@ The with-history score is not an independent result. The wording of `seg-003`, `
 
 Nothing pending for this iteration.
 
+## Third iteration: three-turn chains (`--set cadenas`)
+
+The follow-up set is saturated with history, and its wording was tuned after reading errors. This set replaces it as the discriminating test of memory, and it was written and committed before any run.
+
+- 16 chains in Spanish and English (`build_cadenas_dataset.py`, 32 lines). Each chain has two previous turns, with their reference SQL, and a final question that depends on them.
+- The chains include corrections ("Change it", "Remove the ones..."), references to a turn two steps back, ellipsis ("Now the same for Monterrey"), and unit-of-measure carry-over.
+- Every final question has a single reference SQL. Ambiguous references were avoided on purpose. Any change after the first run must be documented here and the earlier runs archived.
+
+Results: pending.
+
 ## Limits
 
 - **The easy set is saturated.** A perfect score for every model means the questions are too easy to rank models. The harder set below addresses this.
@@ -197,7 +207,8 @@ Nothing pending for this iteration.
 
 ## Status
 
-- Week 7 closed again after the `seg-011` fix. The follow-up set is saturated with history. The control shows the previous turn drives about 80 percent of correct follow-up answers.
+- Week 7 reopened for the three-turn chain set (committed before running). Earlier results stand.
+- Previously: week 7 closed again after the `seg-011` fix. The follow-up set is saturated with history. The control shows the previous turn drives about 80 percent of correct follow-up answers.
 - Easy set: 100 questions per language, validated, saturated.
 - Harder set: 48 questions, 43 valid per language, results recorded.
 - Context experiments: full schema, citations and the follow-up control, all recorded.
