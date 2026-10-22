@@ -6,6 +6,8 @@ on:
       - "semana-05/prompts/**"
       - "semana-05/run_prompts.py"
       - "semana-06/**"
+      - "semana-07/**"
+      - "**/prompts/**"
       - ".github/workflows/evals-semana-06.yml"
 
 jobs:

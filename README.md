@@ -27,6 +27,18 @@ uv run python train_minigpt_mlx.py
 uv run python practica_kv_cache.py
 ```
 
+## Criterio de salida de la Fase 2
+
+Cada semana de la Fase 2 se cierra solo si cumple lo siguiente:
+
+- [x] Los prompts y las evals viven en Git con versión (`semana-05/prompts/`, `semana-06/golden/`).
+- [x] Hay una eval automática de regresión (`semana-06/evaluar.py`) que corre en GitHub Actions cuando cambian prompts, evals o `semana-07/`.
+- [ ] Los cambios de prompt o modelo entran por pull request, no por push directo a `main`. Pendiente: activar la protección de rama con el check `regresion` como requisito.
+- [ ] La eval de NLQ (semana 7) corre en cada PR. Pendiente: una base de prueba en CI con datos sintéticos de semilla fija. Hoy corre a mano, porque requiere la base y las claves de tres proveedores.
+- [x] Cada semana publica sus resultados en su README, con costo y exactitud por modelo.
+
+Lo que no cumple el criterio queda marcado como pendiente hasta que se resuelva.
+
 ## Estado
 
 - Semana 1: completa. Mini-GPT de 2000 pasos con pérdida de validación de 1.72 (n=128, lr=1e-3). Ver `semana-01/README.md`.
