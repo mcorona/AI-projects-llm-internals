@@ -157,7 +157,8 @@ This score does not show that the previous turn is what makes the answers correc
 1. **Full-schema snapshot corrected.** The first snapshot dropped the value hints from `schema.sql`. They are restored, and the confounded run is archived.
 2. **Two follow-ups reworded to remove ambiguity (`seg-003`, `seg-016`, both languages).** The reference SQL did not change. The wording was changed after the first run had been read, and that run is archived as the before-state.
 3. **Control flag added.** `--sin-historial` omits the previous turn.
-4. **Two empty-result questions removed.** The old `hard-039` (category "Seguridad") and `hard-040` (a threshold) returned no rows. Rather than correct them after seeing results, I removed them. Questions old `hard-041` to `048` were renumbered to `039` to `046`. The validated set was remapped by language and SQL, so the 43 valid questions per language are unchanged and the results above still apply. The earlier runs in `resultados/previos/` use the old numbering.
+4. **Follow-up `seg-011` reworded (after the results were read).** The follow-up "And what is its average unit cost?" was read by one model as the average over critical products only. The reference averages all products in the category. The wording now says "all products ... including the non-critical ones". The reference SQL did not change. The runs with the earlier wording are archived in `resultados/previos/`.
+5. **Two empty-result questions removed.** The old `hard-039` (category "Seguridad") and `hard-040` (a threshold) returned no rows. Rather than correct them after seeing results, I removed them. Questions old `hard-041` to `048` were renumbered to `039` to `046`. The validated set was remapped by language and SQL, so the 43 valid questions per language are unchanged and the results above still apply. The earlier runs in `resultados/previos/` use the old numbering.
 
 ### Results after the corrected runs
 
@@ -185,7 +186,7 @@ The previous turn accounts for most of the answers: about 28 to 32 of 40 points 
 
 ### Pending
 
-Nothing pending for this iteration.
+- The follow-up table above predates the `seg-011` rewrite and is superseded. Rerun the follow-up set, with and without `--sin-historial`, and replace that table.
 
 ## Limits
 
@@ -196,7 +197,7 @@ Nothing pending for this iteration.
 
 ## Status
 
-- Week 7 closed.
+- Week 7 reopened for one follow-up wording fix. Rerun pending.
 - Easy set: 100 questions per language, validated, saturated.
 - Harder set: 48 questions, 43 valid per language, results recorded.
 - Context experiments: full schema, citations and the follow-up control, all recorded.
