@@ -173,20 +173,20 @@ Full schema, corrected snapshot, no citations. Correct out of 43 per language, w
 
 Across both languages, the totals move by −2 to +2 questions out of 86. That is within the noise of one run per model. The earlier drop came from the removed hints, not from the schema length. One run cannot show the schemas are equivalent, only that the difference is small.
 
-Follow-up questions, rewritten wording. Correct out of 20 per language, with and without the previous turn (`--sin-historial`):
+Follow-up questions, after the `seg-011` fix. Correct out of 20 per language, with the previous turn (`--set seguimiento`) and without it (`--sin-historial`):
 
 | Model | With history (EN / ES) | Without history (EN / ES) |
 |---|---|---|
-| claude-haiku-5-5 | 19 / 19 | 5 / 5 |
-| gemini-3.8-flash | 20 / 20 | 4 / 4 |
-| gpt-5.6-luna | 19 / 20 | 3 / 4 |
-| gpt-5.6-terra | 18 / 19 | 4 / 4 |
+| claude-haiku-5-5 | 20 / 20 | 4 / 4 |
+| gemini-3.8-flash | 20 / 20 | 5 / 5 |
+| gpt-5.6-luna | 20 / 20 | 3 / 4 |
+| gpt-5.6-terra | 20 / 20 | 4 / 4 |
 
-The previous turn accounts for most of the answers: about 28 to 32 of 40 points per model. The 3 to 5 correct answers without it are probably follow-ups whose wording stands alone or matches by chance. I have not inspected them. The rewrite did not change the totals (before: 38, 40, 38, 38; after: 38, 40, 39, 37).
+The with-history score is not an independent result. The wording of `seg-003`, `seg-016` and `seg-011` was changed after reading errors from earlier runs, so the set is tuned to these models and is now saturated, like the easy set. The control is the useful measure: without the previous turn, models get 3 to 5 of 20 per language. About 80 percent of the correct follow-up answers depend on the previous turn.
 
 ### Pending
 
-- The follow-up table above predates the `seg-011` rewrite and is superseded. Rerun the follow-up set, with and without `--sin-historial`, and replace that table.
+Nothing pending for this iteration.
 
 ## Limits
 
@@ -197,7 +197,7 @@ The previous turn accounts for most of the answers: about 28 to 32 of 40 points 
 
 ## Status
 
-- Week 7 reopened for one follow-up wording fix. Rerun pending.
+- Week 7 closed again after the `seg-011` fix. The follow-up set is saturated with history. The control shows the previous turn drives about 80 percent of correct follow-up answers.
 - Easy set: 100 questions per language, validated, saturated.
 - Harder set: 48 questions, 43 valid per language, results recorded.
 - Context experiments: full schema, citations and the follow-up control, all recorded.
