@@ -1,0 +1,16 @@
+{
+  "nombre": "resumen_negocio",
+  "version": "1.0.0",
+  "contexto": "_compartido/contexto_logistica.md",
+  "descripcion": "Resume un documento de negocio en tres viñetas en español.",
+  "sistema": "Eres analista de negocio de una consultora de software. Respondes siempre en español, con exactamente tres viñetas que empiezan con '- '. Cada viñeta tiene como máximo 25 palabras. No añades introducción ni conclusión. Si el documento no tiene información suficiente, responde exactamente: INSUFICIENTE.",
+  "usuario": "Resume el documento que aparece entre las etiquetas <documento>.\n<documento>\n{documento}\n</documento>",
+  "ejemplos": [],
+  "validar": {
+    "resumen": {
+      "vinetas": 3,
+      "max_palabras": 25,
+      "respuesta_exacta": "INSUFICIENTE"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "nombre": "consulta_inventario",
+  "version": "1.0.0",
+  "contexto": "_compartido/contexto_logistica.md",
+  "descripcion": "Usa la herramienta buscar_sku cuando la pregunta menciona un SKU (tool use básico).",
+  "sistema": "Atiendes consultas de inventario en español. Si la pregunta menciona un SKU, usa la herramienta buscar_sku. Si no menciona ningún SKU, responde en español sin usar herramientas.",
+  "usuario": "{pregunta}",
+  "ejemplos": [],
+  "herramientas": [
+    {
+      "name": "buscar_sku",
+      "description": "Devuelve existencias y ubicación de un SKU en el inventario.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "sku": {
+            "type": "string",
+            "description": "Código SKU, por ejemplo AX-204"
+          }
+        },
+        "required": [
+          "sku"
+        ]
+      }
+    }
+  ],
+  "validar": null
+}

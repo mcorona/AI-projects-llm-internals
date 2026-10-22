@@ -1,0 +1,27 @@
+{
+  "nombre": "clasificacion_intencion",
+  "version": "1.0.0",
+  "contexto": "_compartido/contexto_logistica.md",
+  "descripcion": "Clasifica un mensaje de cliente en una sola etiqueta, con ejemplos few-shot.",
+  "sistema": "Clasificas mensajes de clientes de una empresa de logística. Respondes solo con una etiqueta de esta lista, sin nada más: consulta_pedido, cotizacion, queja, cancelacion, otro.",
+  "usuario": "<mensaje>\n{mensaje}\n</mensaje>",
+  "ejemplos": [
+    {
+      "entrada": "<mensaje>\n¿Dónde va mi pedido 88421?\n</mensaje>",
+      "salida": "consulta_pedido"
+    },
+    {
+      "entrada": "<mensaje>\nQuiero cancelar la orden de ayer, ya no la necesitamos.\n</mensaje>",
+      "salida": "cancelacion"
+    }
+  ],
+  "validar": {
+    "etiquetas": [
+      "consulta_pedido",
+      "cotizacion",
+      "queja",
+      "cancelacion",
+      "otro"
+    ]
+  }
+}

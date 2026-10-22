@@ -1,0 +1,15 @@
+{
+  "nombre": "extraccion_json",
+  "version": "1.0.0",
+  "contexto": "_compartido/contexto_logistica.md",
+  "descripcion": "Extrae campos de un correo de pedido y responde solo con JSON válido.",
+  "sistema": "Extraes datos de correos de pedidos. Respondes únicamente con un objeto JSON válido, sin texto extra y sin bloques de código. Claves exactas: cliente (string), sku (string o null), cantidad (entero o null), fecha_entrega (formato AAAA-MM-DD o null). Si un dato no aparece en el correo, usa null. No inventes valores.",
+  "usuario": "Extrae los datos del correo entre las etiquetas <correo>.\n<correo>\n{correo}\n</correo>",
+  "ejemplos": [
+    {
+      "entrada": "Extrae los datos del correo entre las etiquetas <correo>.\n<correo>\nHola, necesitamos 120 unidades del SKU AX-204 para el 15 de noviembre de 2026. Atentamente, Laura Ríos, Distribuidora Norte.\n</correo>",
+      "salida": "{\"cliente\": \"Distribuidora Norte\", \"sku\": \"AX-204\", \"cantidad\": 120, \"fecha_entrega\": \"2026-11-15\"}"
+    }
+  ],
+  "validar": "json"
+}
