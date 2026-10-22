@@ -246,6 +246,15 @@ Failures, reviewed:
 
 Two of the three failures are wording or ambiguity issues. One, `cad-14-es`, is a real loss of earlier context.
 
+### Second rewrite of `cad-14` (rerun pending)
+
+Both versions of `cad-14` were reworded again so that the follow-up names the filter from the previous turn explicitly. The reference SQL did not change.
+
+- `cad-14-es`: "¿Y cuántas unidades vendieron en total en agosto de 2026?" became "¿Y cuántas unidades de esos productos críticos se vendieron en total en agosto de 2026?".
+- `cad-14-en`: "And how many units did they sell in total in August 2026?" became "And how many units of those critical products were sold in total in August 2026?".
+
+The results above (`20261022T062215Z`) are for the previous wording and remain as the record of that run. The chain set must be rerun with this wording before the chain results are final.
+
 ## Limits
 
 - **The easy set is saturated.** A perfect score for every model means the questions are too easy to rank models. The harder set below addresses this.
