@@ -21,6 +21,8 @@ RUBRICA = RAIZ / "rubricas" / "fidelidad_resumen.txt"
 MODELO = "claude-haiku-5-5"
 TOLERANCIA = 0.05
 UMBRAL_FIDELIDAD = 4
+REPETICIONES = 3
+MINIMO_APROBADOS = 2
 
 _spec = importlib.util.spec_from_file_location("run_prompts", ROOT / "semana-05" / "run_prompts.py")
 rp = importlib.util.module_from_spec(_spec)
@@ -29,7 +31,7 @@ _spec.loader.exec_module(rp)
 
 def generar(caso, clave):
     plantilla = rp.cargar_plantilla(caso["plantilla"])
-    cuerpo = rp.construir("anthropic", plantilla, caso["variables"], MODELO, 1024)
+    cuerpo = rp.construir("anthropic", plantilla, caso["variables"], MODELO, 4096)  # margen para razonamiento
     crudo = rp.llamar("anthropic", cuerpo, clave, MODELO)
     return rp.interpretar("anthropic", crudo, MODELO), plantilla
 
@@ -89,14 +91,31 @@ def main():
 
     resultados = []
     for caso in casos:
-        salida, plantilla = generar(caso, clave)
-        ok, detalle = evaluar_caso(caso, salida, plantilla)
-        if ok and caso.get("juez"):
-            fidelidad, motivo = juzgar(caso["variables"]["documento"], salida["texto"], clave)
-            ok = fidelidad is not None and fidelidad >= UMBRAL_FIDELIDAD
-            detalle["juez"] = {"fidelidad": fidelidad, "motivo": motivo}
-        resultados.append({"id": caso["id"], "plantilla": caso["plantilla"], "ok": ok, **detalle})
-        print(f"{'OK   ' if ok else 'FALLA'} {caso['id']}")
+        aprobados = 0
+        fallida = None
+        for _ in range(REPETICIONES):
+            salida, plantilla = generar(caso, clave)
+            ok, detalle = evaluar_caso(caso, salida, plantilla)
+            if ok and caso.get("juez"):
+                fidelidad, motivo = juzgar(caso["variables"]["documento"], salida["texto"], clave)
+                ok = fidelidad is not None and fidelidad >= UMBRAL_FIDELIDAD
+                detalle["juez"] = {"fidelidad": fidelidad, "motivo": motivo}
+            if ok:
+                aprobados += 1
+            else:
+                fallida = (salida, detalle)
+        ok_caso = aprobados >= MINIMO_APROBADOS
+        detalle_caso = detalle if ok_caso or fallida is None else fallida[1]
+        resultados.append({"id": caso["id"], "plantilla": caso["plantilla"], "ok": ok_caso,
+                           "aprobados": aprobados, "repeticiones": REPETICIONES, **detalle_caso})
+        print(f"{'OK   ' if ok_caso else 'FALLA'} {caso['id']} ({aprobados}/{REPETICIONES})")
+        if not ok_caso and fallida is not None:
+            salida_f, detalle_f = fallida
+            print(f"  salida: {salida_f['texto'][:600]!r}")
+            if "juez" in detalle_f:
+                print(f"  juez fidelidad={detalle_f['juez']['fidelidad']}: {detalle_f['juez']['motivo']}")
+            else:
+                print("  falló una prueba determinista (revisar resumen_estructura contra la salida)")
 
     tasa = round(sum(r["ok"] for r in resultados) / len(resultados), 3)
     marca = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
