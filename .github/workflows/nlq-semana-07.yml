@@ -1,0 +1,44 @@
+name: nlq-semana-07
+
+on:
+  pull_request:
+    paths:
+      - "semana-07/**"
+      - "semana-05/run_prompts.py"
+      - "**/prompts/**"
+      - ".github/workflows/nlq-semana-07.yml"
+
+jobs:
+  nlq:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_USER: admin
+          POSTGRES_PASSWORD: ci-admin
+          POSTGRES_DB: inventory
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U admin -d inventory"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      PG_ADMIN_DSN: postgresql://admin:ci-admin@localhost:5432/inventory
+      NLQ_DSN: postgresql://copilot_ro:ci-ro@localhost:5432/inventory
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Instalar dependencias
+        run: pip install "psycopg[binary]"
+      - name: Preparar base de CI
+        run: python semana-07/ci/preparar_base.py
+      - name: Validar preguntas y evaluar Haiku (set difícil)
+        run: |
+          python semana-07/run_eval.py --set dificil --validar
+          python semana-07/run_eval.py --set dificil --modelos anthropic:claude-haiku-5-5
+      - name: Umbral de exactitud
+        run: python semana-07/ci/umbral.py 0.80
