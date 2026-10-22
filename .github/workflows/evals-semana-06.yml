@@ -7,6 +7,7 @@ on:
       - "semana-05/run_prompts.py"
       - "semana-06/**"
       - "semana-07/**"
+      - "semana-08/**"
       - "**/prompts/**"
       - ".github/workflows/evals-semana-06.yml"
       - ".github/workflows/nlq-semana-07.yml"
