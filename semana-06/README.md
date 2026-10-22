@@ -52,3 +52,5 @@ La clave se lee de `ANTHROPIC_API_KEY` en el entorno o de `semana-05/.env`. En G
 - Línea base: pendiente. Se genera con una corrida real (`--actualizar-base`) y se commitea.
 - Secreto `ANTHROPIC_API_KEY` en GitHub: pendiente de configurar en Settings → Secrets and variables → Actions.
 - Juez de otra familia: pendiente, para la siguiente iteración.
+
+Prueba del workflow: 2026-10-21
