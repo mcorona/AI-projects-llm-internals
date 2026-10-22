@@ -11,7 +11,7 @@ import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from chunking_pasajes import ESTRATEGIAS, CORPUS, GOLD  # noqa: E402
+from chunking_pasajes import ESTRATEGIAS, CORPUS  # noqa: E402
 
 BASE = os.getenv("LMSTUDIO_BASE_URL", "http://localhost:1234/v1")
 MODELO = os.getenv("LMSTUDIO_EMBED_MODEL", "text-embedding-bge-m3")
@@ -34,19 +34,22 @@ def coseno(a, b):
 
 
 docs = {p.name: p.read_text(encoding="utf-8") for p in CORPUS.glob("*.md")}
-consultas = [json.loads(l) for l in (GOLD).read_text(encoding="utf-8").splitlines()]
+DATOS = Path(__file__).resolve().parents[1] / "datasets"
+IDIOMAS = {"es": DATOS / "recuperacion_es.jsonl", "en": DATOS / "recuperacion_en.jsonl"}
 
-for nombre, trocear in ESTRATEGIAS.items():
-    chunks = [(src, c) for src, texto in docs.items() for c in trocear(texto, src)]
-    vecs = embed([c for _, c in chunks])
-    qvecs = embed([q["question"] for q in consultas])
-    recall = {k: [] for k in KS}
-    for q, qv in zip(consultas, qvecs):
-        orden = sorted(range(len(chunks)), key=lambda i: -coseno(qv, vecs[i]))
-        for k in KS:
-            top = [chunks[i] for i in orden[:k]]
-            hits = sum(1 for g in q["gold"]
-                       if any(src == g["source"] and g["passage"] in c for src, c in top))
-            recall[k].append(hits / len(q["gold"]))
-    medias = {k: sum(v) / len(v) for k, v in recall.items()}
-    print(f"{nombre:<22} chunks={len(chunks):<4} recall@5={medias[5]:.3f}  recall@10={medias[10]:.3f}")
+for idioma, ruta in IDIOMAS.items():
+    consultas = [json.loads(l) for l in ruta.read_text(encoding="utf-8").splitlines()]
+    for nombre, trocear in ESTRATEGIAS.items():
+        chunks = [(src, c) for src, texto in docs.items() for c in trocear(texto, src)]
+        vecs = embed([c for _, c in chunks])
+        qvecs = embed([q["question"] for q in consultas])
+        recall = {k: [] for k in KS}
+        for q, qv in zip(consultas, qvecs):
+            orden = sorted(range(len(chunks)), key=lambda i: -coseno(qv, vecs[i]))
+            for k in KS:
+                top = [chunks[i] for i in orden[:k]]
+                hits = sum(1 for g in q["gold"]
+                           if any(src == g["source"] and g["passage"] in c for src, c in top))
+                recall[k].append(hits / len(q["gold"]))
+        medias = {k: sum(v) / len(v) for k, v in recall.items()}
+        print(f"{idioma} {nombre:<22} chunks={len(chunks):<4} recall@5={medias[5]:.3f}  recall@10={medias[10]:.3f}")
