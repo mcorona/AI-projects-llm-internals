@@ -63,7 +63,8 @@ def evaluar_caso(caso, salida, plantilla):
 
 def juzgar(documento, resumen, clave):
     prompt = RUBRICA.read_text(encoding="utf-8").replace("{documento}", documento).replace("{resumen}", resumen)
-    cuerpo = {"model": MODELO, "max_tokens": 300, "messages": [{"role": "user", "content": prompt}]}
+    # max_tokens: margen para razonamiento; con 300 el JSON del juez se cortaba.
+    cuerpo = {"model": MODELO, "max_tokens": 1024, "messages": [{"role": "user", "content": prompt}]}
     crudo = rp.llamar("anthropic", cuerpo, clave, MODELO)
     texto = rp.interpretar("anthropic", crudo, MODELO)["texto"]
     try:
