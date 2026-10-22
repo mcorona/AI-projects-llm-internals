@@ -85,20 +85,20 @@ Costs use the prices in `prices.json`. OpenAI prices come from a third-party sou
 
 ## Public results: NLQ-Inventory, harder set
 
-This is the table that discriminates between models. The easy set above is saturated, so it cannot rank them. Run: short schema (`schema.sql`), no citations, 43 valid questions per language. Costs come from the run summary, which rounds costs to four decimals.
+This is the table that discriminates between models. The easy set above is saturated, so it cannot rank them. Run: short schema (`schema.sql`), no citations, 43 valid questions per language. Costs are recomputed from the run's token counts with the official prices in `prices.json`. The run summary file still holds the old costs, which used third-party prices for OpenAI and no price for Gemini; they are superseded by this table.
 
 | Model | Language | Execution accuracy | Cost (USD) | Cost per correct answer (USD) |
 |---|---|---|---|---|
 | claude-haiku-5-5 | EN | 43 / 43 (1.000) | 0.0040 | 0.000093 |
-| claude-haiku-5-5 | ES | 41 / 43 (0.953) | 0.0057 | 0.000138 |
-| gemini-3.8-flash | EN | 41 / 43 (0.953) | not verified | not verified |
-| gemini-3.8-flash | ES | 41 / 43 (0.953) | not verified | not verified |
-| gpt-5.6-luna | EN | 42 / 43 (0.977) | 0.0483 | 0.001150 |
-| gpt-5.6-luna | ES | 43 / 43 (1.000) | 0.0506 | 0.001177 |
-| gpt-5.6-terra | EN | 42 / 43 (0.977) | 0.0949 | 0.002260 |
-| gpt-5.6-terra | ES | 41 / 43 (0.953) | 0.0964 | 0.002352 |
+| claude-haiku-5-5 | ES | 41 / 43 (0.953) | 0.0057 | 0.000139 |
+| gemini-3.8-flash | EN | 41 / 43 (0.953) | 0.0242 | 0.000590 |
+| gemini-3.8-flash | ES | 41 / 43 (0.953) | 0.0243 | 0.000593 |
+| gpt-5.6-luna | EN | 42 / 43 (0.977) | 0.0097 | 0.000231 |
+| gpt-5.6-luna | ES | 43 / 43 (1.000) | 0.0101 | 0.000235 |
+| gpt-5.6-terra | EN | 42 / 43 (0.977) | 0.0759 | 0.001807 |
+| gpt-5.6-terra | ES | 41 / 43 (0.953) | 0.0771 | 0.001880 |
 
-Single run per model, so differences of one or two questions are within noise. Costs use `prices.json`. OpenAI prices come from a third-party source and are not verified. Gemini has no verified price.
+Single run per model, so differences of one or two questions are within noise. Prices come from the official pages of each provider, consulted on 2026-10-22: OpenAI's model pages for Luna and Terra, and Google's Gemini API pricing page for Gemini 3.8 Flash. Gemini's price is valid through December 31, 2026; from January 1, 2027 it rises to 1.50 / 7.50 USD per million tokens, so its costs will change.
 
 ## Changes made during the evaluation
 
