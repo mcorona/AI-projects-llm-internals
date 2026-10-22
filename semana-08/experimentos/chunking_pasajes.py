@@ -10,8 +10,8 @@ from pathlib import Path
 RAIZ = Path(__file__).resolve().parents[1]
 CORPUS = RAIZ / "corpus"
 GOLD = RAIZ / "datasets" / "recuperacion_es.jsonl"
-sys.path.insert(0, str(Path.home() / "mnt" / "inventory-copilot"))
-from src.rag.chunking import chunk_markdown  # chunker actual de inventory-copilot
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from chunker_actual import chunk_markdown  # copia de inventory-copilot/src/rag/chunking.py
 
 
 def fijo(texto, n=400, solape=80):
