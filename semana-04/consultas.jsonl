@@ -1,0 +1,50 @@
+{"id": "c01", "categoria": "codigo", "pregunta": "Escribe una función en Python que invierta una lista sin usar reversed() ni slicing."}
+{"id": "c02", "categoria": "codigo", "pregunta": "Escribe una consulta SQL que devuelva los 5 clientes con mayor número de facturas en PostgreSQL."}
+{"id": "c03", "categoria": "codigo", "pregunta": "Explica qué hace este código y dónde puede fallar: def f(x): return x / len(x)"}
+{"id": "c04", "categoria": "codigo", "pregunta": "Escribe una función en JavaScript que cuente las palabras únicas de un texto ignorando mayúsculas."}
+{"id": "c05", "categoria": "codigo", "pregunta": "Corrige este bucle: for i in range(len(lista)): print(lista[i+1])"}
+{"id": "c06", "categoria": "codigo", "pregunta": "Escribe un script de bash que renombre todos los .txt de una carpeta añadiendo la fecha de hoy al nombre."}
+{"id": "c07", "categoria": "codigo", "pregunta": "¿Cuál es la diferencia entre una lista y una tupla en Python, y cuándo usar cada una?"}
+{"id": "c08", "categoria": "codigo", "pregunta": "Escribe una función que valide si un RFC mexicano tiene una longitud válida de 12 o 13 caracteres."}
+{"id": "c09", "categoria": "codigo", "pregunta": "Escribe un decorador en Python que mida y registre el tiempo de ejecución de una función."}
+{"id": "c10", "categoria": "codigo", "pregunta": "Explica en pocas líneas qué es una condición de carrera y cómo evitarla con un lock."}
+{"id": "c11", "categoria": "redaccion", "pregunta": "Redacta un correo de 80 palabras a un cliente para recordarle una factura vencida, en tono cordial."}
+{"id": "c12", "categoria": "redaccion", "pregunta": "Escribe un párrafo de presentación profesional de un consultor independiente en IA, de 60 palabras."}
+{"id": "c13", "categoria": "redaccion", "pregunta": "Resume en tres viñetas los beneficios de un sistema de inventario en la nube para una pequeña empresa."}
+{"id": "c14", "categoria": "redaccion", "pregunta": "Escribe un mensaje de WhatsApp de 40 palabras para confirmar una reunión el jueves a las 10 am."}
+{"id": "c15", "categoria": "redaccion", "pregunta": "Reescribe esta frase en lenguaje claro: 'Se procederá a la cancelación de los documentos pendientes de conciliación.'"}
+{"id": "c16", "categoria": "redaccion", "pregunta": "Escribe el asunto y el cuerpo de un correo para pedir una extensión de dos días para entregar un informe."}
+{"id": "c17", "categoria": "redaccion", "pregunta": "Redacta una disculpa breve a un proveedor por un pago retrasado, sin admitir culpa legal."}
+{"id": "c18", "categoria": "redaccion", "pregunta": "Escribe un anuncio de 50 palabras para un curso de introducción a la inteligencia artificial."}
+{"id": "c19", "categoria": "redaccion", "pregunta": "Resume en 4 líneas por qué es importante documentar las decisiones técnicas en un proyecto."}
+{"id": "c20", "categoria": "redaccion", "pregunta": "Escribe una respuesta a un cliente que pregunta si su pedido ya salió, sin tener el dato exacto."}
+{"id": "c21", "categoria": "razonamiento", "pregunta": "Si un inventario tiene 120 cajas de 12 piezas y se venden 350 piezas, ¿cuántas piezas quedan?"}
+{"id": "c22", "categoria": "razonamiento", "pregunta": "Tres agentes cobran 15, 22 y 38 por hora. ¿Cuál es el costo de 6 horas de los tres juntos?"}
+{"id": "c23", "categoria": "razonamiento", "pregunta": "Un cliente pagó 1,160 pesos con IVA incluido del 16 %. ¿Cuál es el subtotal sin IVA?"}
+{"id": "c24", "categoria": "razonamiento", "pregunta": "Si todas las facturas vigentes son válidas y algunas facturas válidas tienen fecha inválida, ¿puede existir una factura vigente con fecha inválida? Justifica."}
+{"id": "c25", "categoria": "razonamiento", "pregunta": "Un proyecto tarda 4 semanas con 3 personas. ¿Cuánto tardaría con 6 personas si el trabajo es el mismo?"}
+{"id": "c26", "categoria": "razonamiento", "pregunta": "Ordena de menor a mayor: 0.5, 1/3, 45 %, 0.4, 7/16."}
+{"id": "c27", "categoria": "razonamiento", "pregunta": "Una tarjeta cobra 3 % mensual de interés. ¿Cuánto se paga de interés sobre un saldo de 10,000 en un mes?"}
+{"id": "c28", "categoria": "razonamiento", "pregunta": "Si el modelo A tiene 80 % de exactitud y el B 75 %, ¿A siempre es mejor que B en cualquier conjunto de prueba? Explica."}
+{"id": "c29", "categoria": "razonamiento", "pregunta": "Un lote de 500 unidades tiene 2 % de defectos. ¿Cuántas unidades buenas hay?"}
+{"id": "c30", "categoria": "razonamiento", "pregunta": "Si una factura tiene tres partidas de 250, 375 y 125, y un descuento de 10 % sobre el total, ¿cuál es el total?"}
+{"id": "c31", "categoria": "negocio", "pregunta": "Explica la diferencia entre costo promedio y costo estándar en el valor de un inventario."}
+{"id": "c32", "categoria": "negocio", "pregunta": "¿Qué indicadores revisarías para saber si una línea de productos está perdiendo rentabilidad?"}
+{"id": "c33", "categoria": "negocio", "pregunta": "Explica qué es una conciliación bancaria y por qué se hace cada mes."}
+{"id": "c34", "categoria": "negocio", "pregunta": "¿Cuándo conviene usar un sistema de punto de venta en la nube frente a uno local?"}
+{"id": "c35", "categoria": "negocio", "pregunta": "Explica qué es el punto de reorden en inventarios y cómo se calcula de forma básica."}
+{"id": "c36", "categoria": "negocio", "pregunta": "¿Qué riesgos tiene un proyecto de migración de un sistema legado a la nube?"}
+{"id": "c37", "categoria": "negocio", "pregunta": "Describe tres formas de reducir la cartera vencida de una empresa mediana."}
+{"id": "c38", "categoria": "negocio", "pregunta": "¿Qué diferencia hay entre margen bruto y margen neto en un estado de resultados?"}
+{"id": "c39", "categoria": "negocio", "pregunta": "Explica qué es un SLA y qué debe incluir en un contrato de soporte técnico."}
+{"id": "c40", "categoria": "negocio", "pregunta": "¿Qué datos mínimos necesita un consultor para estimar el costo de implementar un chatbot de atención al cliente?"}
+{"id": "c41", "categoria": "explicacion", "pregunta": "Explica qué es el KV cache en un transformer y por qué crece con el contexto."}
+{"id": "c42", "categoria": "explicacion", "pregunta": "¿Qué es la temperatura en un modelo de lenguaje y qué efecto tiene sobre la respuesta?"}
+{"id": "c43", "categoria": "explicacion", "pregunta": "Explica la diferencia entre pre-entrenamiento y fine-tuning en un lenguaje sencillo."}
+{"id": "c44", "categoria": "explicacion", "pregunta": "¿Por qué un modelo de lenguaje puede alucinar datos que suenan plausibles?"}
+{"id": "c45", "categoria": "explicacion", "pregunta": "Explica qué es la cuantización de 4 bits y qué pierde un modelo al aplicarla."}
+{"id": "c46", "categoria": "explicacion", "pregunta": "¿Qué es RAG y en qué casos conviene más que fine-tuning?"}
+{"id": "c47", "categoria": "explicacion", "pregunta": "Explica qué es un token y por qué el español suele consumir más tokens que el inglés."}
+{"id": "c48", "categoria": "explicacion", "pregunta": "¿Qué es LoRA y por qué entrena menos parámetros que el ajuste completo?"}
+{"id": "c49", "categoria": "explicacion", "pregunta": "Explica qué mide la latencia p95 y por qué importa más que el promedio en un servicio."}
+{"id": "c50", "categoria": "explicacion", "pregunta": "¿Qué es la destilación de conocimiento en modelos de lenguaje?"}

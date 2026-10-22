@@ -1,0 +1,20 @@
+{
+  "nombre": "semana4_api",
+  "consultas_archivo": "/Users/manuelcorona/AI-projects-llm-internals/semana-04/consultas.jsonl",
+  "max_tokens": 8192,
+  "temp_local": 0.0,
+  "temp_api": null,
+  "resumenes": [
+    {
+      "destino": "api",
+      "consultas": 50,
+      "errores": 0,
+      "latencia_p50_s": 3.975,
+      "latencia_p95_s": 10.925,
+      "latencia_media_s": 4.89,
+      "tokens_por_s_mediana": 184.99,
+      "costo_total_usd": 0.023705,
+      "costo_por_1k_consultas_usd": 0.4741
+    }
+  ]
+}
