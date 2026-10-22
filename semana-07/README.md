@@ -221,6 +221,31 @@ Failures, reviewed:
 `cad-14` was reworded after this run (see Changes). This table is superseded, and its run is archived in `resultados/previos/`. A rerun is pending.
 
 
+### Results after the `cad-14` rewrite (run `20261022T062215Z`)
+
+Short schema, no citations, 16 chains per language. Earlier run `20261022T061851Z` is archived in `resultados/previos/`.
+
+| Model | Language | Execution accuracy | Cost (USD) | Cost per correct answer (USD) |
+|---|---|---|---|---|
+| claude-haiku-5-5 | EN | 15 / 16 (0.938) | 0.0023 | 0.000156 |
+| claude-haiku-5-5 | ES | 15 / 16 (0.938) | 0.0019 | 0.000128 |
+| gemini-3.8-flash | EN | 16 / 16 (1.000) | not verified | not verified |
+| gemini-3.8-flash | ES | 16 / 16 (1.000) | not verified | not verified |
+| gpt-5.6-luna | EN | 15 / 16 (0.938) | 0.0207 | 0.001379 |
+| gpt-5.6-luna | ES | 16 / 16 (1.000) | 0.0201 | 0.001257 |
+| gpt-5.6-terra | EN | 16 / 16 (1.000) | 0.0464 | 0.002902 |
+| gpt-5.6-terra | ES | 16 / 16 (1.000) | 0.0441 | 0.002753 |
+
+Totals out of 32: gemini-3.8-flash 32, gpt-5.6-terra 32, gpt-5.6-luna 31, claude-haiku-5-5 30. Single run per model, one question is 6.25 points.
+
+Failures, reviewed:
+
+- **`cad-14-es` (claude-haiku-5-5).** It dropped the product filter set two turns earlier (unit cost above 500 and critical), and summed all sales in August. This is a real context loss.
+- **`cad-14-en` (gpt-5.6-luna).** The English rewrite still allows a per-SKU breakdown, because "they" is plural. The rewrite fixed the Spanish wording and not the English one.
+- **`cad-10-en` (claude-haiku-5-5).** The question asks which SKU sold the most, in the singular. The model returned the full ranking instead of one SKU. The Spanish version of the same question was correct.
+
+Two of the three failures are wording or ambiguity issues. One, `cad-14-es`, is a real loss of earlier context.
+
 ## Limits
 
 - **The easy set is saturated.** A perfect score for every model means the questions are too easy to rank models. The harder set below addresses this.
