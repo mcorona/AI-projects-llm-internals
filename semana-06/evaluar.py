@@ -97,6 +97,12 @@ def main():
             detalle["juez"] = {"fidelidad": fidelidad, "motivo": motivo}
         resultados.append({"id": caso["id"], "plantilla": caso["plantilla"], "ok": ok, **detalle})
         print(f"{'OK   ' if ok else 'FALLA'} {caso['id']}")
+        if not ok:
+            print(f"  salida: {salida['texto'][:600]!r}")
+            if "juez" in detalle:
+                print(f"  juez fidelidad={detalle['juez']['fidelidad']}: {detalle['juez']['motivo']}")
+            else:
+                print("  falló una prueba determinista (revisar resumen_estructura contra la salida)")
 
     tasa = round(sum(r["ok"] for r in resultados) / len(resultados), 3)
     marca = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
