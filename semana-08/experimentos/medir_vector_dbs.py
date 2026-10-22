@@ -44,11 +44,11 @@ def buscar_qdrant(v, k, fuente=None):
 
 
 def buscar_opensearch(v, k, fuente=None):
+    # El filtro va dentro de la cláusula knn (filtrado eficiente), no junto a ella (filtrado posterior).
     knn = {"embedding": {"vector": v, "k": k}}
     if fuente:
-        consulta = {"bool": {"must": [{"knn": knn}], "filter": [{"term": {"source": fuente}}]}}
-    else:
-        consulta = {"knn": knn}
+        knn["embedding"]["filter"] = {"term": {"source": fuente}}
+    consulta = {"knn": knn}
     r = http("POST", f"{OPENSEARCH}/{COLECCION}/_search", {"size": k, "query": consulta})
     return [(h["_source"]["source"], h["_source"]["content"]) for h in r["hits"]["hits"]]
 
