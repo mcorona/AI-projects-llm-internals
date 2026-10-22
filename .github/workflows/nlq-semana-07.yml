@@ -41,4 +41,4 @@ jobs:
           python semana-07/run_eval.py --set dificil --validar
           python semana-07/run_eval.py --set dificil --modelos anthropic:claude-haiku-5-5
       - name: Umbral de exactitud
-        run: python semana-07/ci/umbral.py 0.80
+        run: python semana-07/ci/umbral.py 0.90
