@@ -1,0 +1,147 @@
+{
+  "fecha": "20261022T041329Z",
+  "modelo": "claude-haiku-5-5",
+  "juez": "claude-haiku-5-5",
+  "casos": 16,
+  "tasa": 1.0,
+  "resultados": [
+    {
+      "id": "clas-01",
+      "plantilla": "clasificacion_intencion",
+      "ok": true,
+      "obtenido": "consulta_pedido"
+    },
+    {
+      "id": "clas-02",
+      "plantilla": "clasificacion_intencion",
+      "ok": true,
+      "obtenido": "cotizacion"
+    },
+    {
+      "id": "clas-03",
+      "plantilla": "clasificacion_intencion",
+      "ok": true,
+      "obtenido": "queja"
+    },
+    {
+      "id": "clas-04",
+      "plantilla": "clasificacion_intencion",
+      "ok": true,
+      "obtenido": "cancelacion"
+    },
+    {
+      "id": "clas-05",
+      "plantilla": "clasificacion_intencion",
+      "ok": true,
+      "obtenido": "otro"
+    },
+    {
+      "id": "clas-06",
+      "plantilla": "clasificacion_intencion",
+      "ok": true,
+      "obtenido": "cotizacion"
+    },
+    {
+      "id": "ext-01",
+      "plantilla": "extraccion_json",
+      "ok": true,
+      "obtenido": {
+        "cliente": "Refaccionaria Sur",
+        "sku": "LT-9",
+        "cantidad": 60,
+        "fecha_entrega": "2026-12-03"
+      }
+    },
+    {
+      "id": "ext-02",
+      "plantilla": "extraccion_json",
+      "ok": true,
+      "obtenido": {
+        "cliente": null,
+        "sku": "AX-204",
+        "cantidad": 200,
+        "fecha_entrega": null
+      }
+    },
+    {
+      "id": "ext-03",
+      "plantilla": "extraccion_json",
+      "ok": true,
+      "obtenido": {
+        "cliente": null,
+        "sku": null,
+        "cantidad": null,
+        "fecha_entrega": null
+      }
+    },
+    {
+      "id": "ext-04",
+      "plantilla": "extraccion_json",
+      "ok": true,
+      "obtenido": {
+        "cliente": "Comercial Oeste",
+        "sku": "MX-7",
+        "cantidad": 15,
+        "fecha_entrega": "2027-01-10"
+      }
+    },
+    {
+      "id": "con-01",
+      "plantilla": "consulta_inventario",
+      "ok": true,
+      "herramientas": [
+        {
+          "nombre": "buscar_sku",
+          "entrada": {
+            "sku": "AX-204"
+          }
+        }
+      ]
+    },
+    {
+      "id": "con-02",
+      "plantilla": "consulta_inventario",
+      "ok": true,
+      "herramientas": []
+    },
+    {
+      "id": "con-03",
+      "plantilla": "consulta_inventario",
+      "ok": true,
+      "herramientas": [
+        {
+          "nombre": "buscar_sku",
+          "entrada": {
+            "sku": "LT-9"
+          }
+        }
+      ]
+    },
+    {
+      "id": "res-01",
+      "plantilla": "resumen_negocio",
+      "ok": true,
+      "obtenido": "- Distribuidora Norte opera 4 almacenes en Jalisco y Nuevo León, con un sistema legado de inventario basado en un esquema de 2003.\n- Los reportes de existencias tardan 3 horas en generarse, y se propone un asistente de lenguaje natural sobre la base actual, sin migrar datos.\n- La propuesta incluye acceso de solo lectura y un piloto de 6 semanas en un almacén.",
+      "juez": {
+        "fidelidad": 5,
+        "motivo": "Todos los datos coinciden con el documento: 4 almacenes, Jalisco y Nuevo León, esquema de 2003, 3 horas, solo lectura y piloto de 6 semanas. Cubre los puntos principales sin añadir información."
+      }
+    },
+    {
+      "id": "res-02",
+      "plantilla": "resumen_negocio",
+      "ok": true,
+      "obtenido": "INSUFICIENTE"
+    },
+    {
+      "id": "res-03",
+      "plantilla": "resumen_negocio",
+      "ok": true,
+      "obtenido": "- Las ventas del primer trimestre sumaron 1,200 unidades, con un crecimiento de 12% frente al año previo.\n- El almacén de Monterrey fue el de mayor crecimiento, con un aumento de 25%.\n- Se planea abrir un quinto almacén en 2027.",
+      "juez": {
+        "fidelidad": 5,
+        "motivo": "Todas las cifras (1,200 unidades, 12%, 25%, quinto almacén en 2027) coinciden con el documento y se cubren los puntos principales sin datos inventados."
+      }
+    }
+  ]
+}

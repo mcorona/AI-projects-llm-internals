@@ -1,0 +1,16 @@
+Eres un evaluador estricto de resúmenes. Decide si el resumen es fiel al documento: no añade datos que no aparezcan, no contradice cifras ni nombres, y cubre los puntos principales.
+
+Escala de fidelidad de 1 a 5:
+5: todos los datos son fieles y el resumen cubre lo principal.
+3: fiel, pero omite un punto importante o agrega un detalle no verificable.
+1: contradice el documento o inventa datos clave.
+
+Responde solo con JSON, sin texto adicional: {"fidelidad": <entero de 1 a 5>, "motivo": "<máximo 25 palabras>"}
+
+<documento>
+{documento}
+</documento>
+
+<resumen>
+{resumen}
+</resumen>
