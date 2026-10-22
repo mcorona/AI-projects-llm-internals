@@ -1,6 +1,6 @@
 # Fine-tune vs RAG vs prompt: numbers from my lab
 
-I am testing one question for enterprise clients: when is fine-tuning worth it? My test bed is a synthetic legacy billing and inventory schema with documented defects, and 46 natural-language questions that must return the exact right result from PostgreSQL.
+I am testing one question that comes up in almost every AI project: when is fine-tuning worth it? My test bed is a synthetic legacy billing and inventory schema with documented defects, and 46 natural-language questions that must return the exact right result from PostgreSQL.
 
 Exact-result match on those 46 questions:
 
@@ -15,7 +15,7 @@ The fine-tuned 7B ran more queries without errors (80% to 85%), but it got exact
 Two things I did not expect:
 
 - Full rules in the prompt helped the 27B and hurt the 7B. The small model copied SQL fragments from the rules into its answers.
-- With 46 questions, none of these differences is statistically significant. The prompt matched the base model without training anything, which is why my decision rule says: if prompt or RAG are enough, don't fine-tune.
+- With 46 questions, none of these differences is statistically significant. The prompt matched or slightly beat the base model without any training, which is why my decision rule says: if prompt or RAG are enough, don't fine-tune.
 
 Speed and cost on the same 50 queries, capped at 8,192 output tokens:
 
@@ -26,7 +26,7 @@ For local models, latency is the real trade-off, not the price per query.
 
 Limits: 46 test questions, one run each, training and test data share clients, invoices and products, and the speed benchmark does not measure answer quality.
 
-I also tried distillation: a 7B student trained on the 27B teacher's correct answers matched the base 7B exactly (37.0%), so the rules did not transfer with 95 training examples. DPO did not run in my current toolchain. Code and numbers: https://github.com/mcorona/AI-projects-llm-internals.
+I also tried distillation: a 7B student trained on the 27B teacher's correct answers matched the base 7B exactly (37.0%), so in this setup the rules did not transfer (95 training examples, and the run became unstable). DPO did not run in my current toolchain. Code and numbers: https://github.com/mcorona/AI-projects-llm-internals.
 
 If you are deciding between fine-tuning and prompting, run the cheapest test first. Happy to compare notes.
 
