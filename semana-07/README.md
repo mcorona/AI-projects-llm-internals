@@ -194,9 +194,10 @@ The follow-up set is saturated with history, and its wording was tuned after rea
 
 - 16 chains in Spanish and English (`build_cadenas_dataset.py`, 32 lines). Each chain has two previous turns, with their reference SQL, and a final question that depends on them.
 - The chains include corrections ("Change it", "Remove the ones..."), references to a turn two steps back, ellipsis ("Now the same for Monterrey"), and unit-of-measure carry-over.
+- `cad-14` was reworded after the first run (`cad-14-es`, `cad-14-en`): "¿Y cuántas unidades vendieron en agosto?" became "¿Y cuántas unidades vendieron en total en agosto de 2026?", because the first wording invited a per-SKU breakdown. The reference SQL did not change.
 - Every final question has a single reference SQL. Ambiguous references were avoided on purpose. Any change after the first run must be documented here and the earlier runs archived.
 
-### Results (run `20261022T061851Z`, short schema, no citations, 16 chains per language)
+### Results (run `20261022T061851Z`, superseded: `cad-14` was reworded, see below)
 
 | Model | Language | Execution accuracy | Cost (USD) | Cost per correct answer (USD) |
 |---|---|---|---|---|
@@ -217,7 +218,7 @@ Failures, reviewed:
 - **`cad-10` (gpt-5.6-luna, ES).** The model returned a ranking as a CTE. The truncated SQL does not show whether it applies `LIMIT 1`, so this is not fully inspected.
 - **`cad-14-es` (gemini-3.8-flash).** Empty output with no SQL. This is an output failure, not a reasoning error.
 
-The wording of `cad-14` is not changed here. Changing it would be another revision after results, and it would need its own rerun.
+`cad-14` was reworded after this run (see Changes). This table is superseded, and its run is archived in `resultados/previos/`. A rerun is pending.
 
 
 ## Limits
