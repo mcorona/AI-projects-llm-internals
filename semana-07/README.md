@@ -72,14 +72,14 @@ Run date: 2026-10-22. Dataset validated: 200 of 200 lines.
 |---|---|---|---|---|
 | claude-haiku-5-5 (Anthropic) | EN | 100 / 100 | 0.0034 | 0.000034 |
 | claude-haiku-5-5 (Anthropic) | ES | 100 / 100 | 0.0039 | 0.000039 |
-| gemini-3.8-flash (Google) | EN | 100 / 100 | not verified | not verified |
-| gemini-3.8-flash (Google) | ES | 100 / 100 | not verified | not verified |
-| gpt-5.6-luna (OpenAI) | EN | 100 / 100 | 0.0733 | 0.000733 |
-| gpt-5.6-luna (OpenAI) | ES | 100 / 100 | 0.0755 | 0.000755 |
-| gpt-5.6-terra (OpenAI) | EN | 100 / 100 | 0.1511 | 0.001511 |
-| gpt-5.6-terra (OpenAI) | ES | 100 / 100 | 0.1516 | 0.001516 |
+| gemini-3.8-flash (Google) | EN | 100 / 100 | 0.0434 | 0.000434 |
+| gemini-3.8-flash (Google) | ES | 100 / 100 | 0.0437 | 0.000437 |
+| gpt-5.6-luna (OpenAI) | EN | 100 / 100 | 0.0147 | 0.000147 |
+| gpt-5.6-luna (OpenAI) | ES | 100 / 100 | 0.0151 | 0.000151 |
+| gpt-5.6-terra (OpenAI) | EN | 100 / 100 | 0.1209 | 0.001209 |
+| gpt-5.6-terra (OpenAI) | ES | 100 / 100 | 0.1212 | 0.001212 |
 
-Costs use the prices in `prices.json`. OpenAI prices come from a third-party source and are not verified. Gemini has no verified price.
+Costs are recomputed from the run's token counts with the official prices in `prices.json`, consulted on 2026-10-22. The Gemini price is valid through December 31, 2026; see the public table above. The run summary file still holds the old costs, which used third-party prices for OpenAI and no price for Gemini.
 
 **Reading these results.** Every model answered every question correctly, in both languages. This set does not separate the models, so it cannot rank their accuracy. The only useful difference in this run is cost: Haiku was the cheapest per correct answer, and gpt-5.6-terra was the most expensive.
 
