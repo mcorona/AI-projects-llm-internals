@@ -26,7 +26,7 @@ For local models, latency is the real trade-off, not the price per query.
 
 Limits: 46 test questions, one run each, training and test data share clients, invoices and products, and the speed benchmark does not measure answer quality.
 
-I also tried distillation: a 7B student trained on the 27B teacher's correct answers matched the base 7B exactly (37.0%), so the rules did not transfer with 95 training examples. DPO did not run in my current toolchain. Code and numbers: [repo link].
+I also tried distillation: a 7B student trained on the 27B teacher's correct answers matched the base 7B exactly (37.0%), so the rules did not transfer with 95 training examples. DPO did not run in my current toolchain. Code and numbers: https://github.com/mcorona/AI-projects-llm-internals.
 
 If you are deciding between fine-tuning and prompting, run the cheapest test first. Happy to compare notes.
 
