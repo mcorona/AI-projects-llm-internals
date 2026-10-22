@@ -31,7 +31,7 @@ _spec.loader.exec_module(rp)
 
 def generar(caso, clave):
     plantilla = rp.cargar_plantilla(caso["plantilla"])
-    cuerpo = rp.construir("anthropic", plantilla, caso["variables"], MODELO, 1024)
+    cuerpo = rp.construir("anthropic", plantilla, caso["variables"], MODELO, 4096)  # margen para razonamiento
     crudo = rp.llamar("anthropic", cuerpo, clave, MODELO)
     return rp.interpretar("anthropic", crudo, MODELO), plantilla
 
