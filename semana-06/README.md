@@ -48,9 +48,8 @@ La clave se lee de `ANTHROPIC_API_KEY` en el entorno o de `semana-05/.env`. En G
 
 ## Estado
 
-- Evaluador y casos: creados. Checks deterministas probados sin llamadas a la API (10 de 10 casos de prueba correctos tras corregir un error de índice en la prueba).
-- Línea base: pendiente. Se genera con una corrida real (`--actualizar-base`) y se commitea.
-- Secreto `ANTHROPIC_API_KEY` en GitHub: pendiente de configurar en Settings → Secrets and variables → Actions.
-- Juez de otra familia: pendiente, para la siguiente iteración.
-
-Prueba del workflow: 2026-10-21
+- Semana 6: cerrada.
+- Evaluador y casos dorados: creados. Checks deterministas y juez LLM probados.
+- Línea base: 16/16 aprobados, guardada en `baseline/resultados_base.json`. El juez puntuó con fidelidad 5 los dos resúmenes con cifras.
+- Secreto `ANTHROPIC_API_KEY` en GitHub: configurado y verificado con el PR #1. El job `regresion` pasó en verde.
+- Pendiente para la siguiente iteración: juez de otra familia de modelos, y revisión de los casos dorados con el equipo.
