@@ -83,6 +83,23 @@ Costs use the prices in `prices.json`. OpenAI prices come from a third-party sou
 
 **Reading these results.** Every model answered every question correctly, in both languages. This set does not separate the models, so it cannot rank their accuracy. The only useful difference in this run is cost: Haiku was the cheapest per correct answer, and gpt-5.6-terra was the most expensive.
 
+## Public results: NLQ-Inventory, harder set
+
+This is the table that discriminates between models. The easy set above is saturated, so it cannot rank them. Run: short schema (`schema.sql`), no citations, 43 valid questions per language. Costs come from the run summary, which rounds costs to four decimals.
+
+| Model | Language | Execution accuracy | Cost (USD) | Cost per correct answer (USD) |
+|---|---|---|---|---|
+| claude-haiku-5-5 | EN | 43 / 43 (1.000) | 0.0040 | 0.000093 |
+| claude-haiku-5-5 | ES | 41 / 43 (0.953) | 0.0057 | 0.000138 |
+| gemini-3.8-flash | EN | 41 / 43 (0.953) | not verified | not verified |
+| gemini-3.8-flash | ES | 41 / 43 (0.953) | not verified | not verified |
+| gpt-5.6-luna | EN | 42 / 43 (0.977) | 0.0483 | 0.001150 |
+| gpt-5.6-luna | ES | 43 / 43 (1.000) | 0.0506 | 0.001177 |
+| gpt-5.6-terra | EN | 42 / 43 (0.977) | 0.0949 | 0.002260 |
+| gpt-5.6-terra | ES | 41 / 43 (0.953) | 0.0964 | 0.002352 |
+
+Single run per model, so differences of one or two questions are within noise. Costs use `prices.json`. OpenAI prices come from a third-party source and are not verified. Gemini has no verified price.
+
 ## Changes made during the evaluation
 
 These changes were made after the first runs, and they apply equally to every model. The earlier runs are kept in `resultados/previos/`.
@@ -100,9 +117,9 @@ Every run writes `set`, `esquema`, `citas` and `sin_historial` into its summary,
 
 ### Harder set (`--set dificil`)
 
-- 50 hand-written questions in Spanish and English (`build_hard_dataset.py`). Each question states its own tie-break and rounding rule. They cover multi-table joins, correlated subqueries, anti-joins, window functions, date windows and `HAVING` thresholds.
+- 48 hand-written questions in Spanish and English (`build_hard_dataset.py`). Each question states its own tie-break and rounding rule. They cover multi-table joins, correlated subqueries, anti-joins, window functions, date windows and `HAVING` thresholds.
 - Validation keeps 86 of 96 lines, which is 43 questions per language. The discarded questions are `hard-013`, `018`, `023`, `030` and `046`. Their reference SQL returns no rows, mostly because of the data (for example, every product has sales). Two more questions with empty results were removed after the runs (see Changes).
-- Result with the corrected schema and no citations, correct out of 43 per language:
+- Result with the short schema (`schema.sql`) and no citations, correct out of 43 per language:
 
 | Model | EN | ES |
 |---|---|---|
