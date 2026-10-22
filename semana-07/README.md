@@ -246,6 +246,35 @@ Failures, reviewed:
 
 Two of the three failures are wording or ambiguity issues. One, `cad-14-es`, is a real loss of earlier context.
 
+### Second rewrite of `cad-14` (rerun pending)
+
+Both versions of `cad-14` were reworded again so that the follow-up names the filter from the previous turn explicitly. The reference SQL did not change.
+
+- `cad-14-es`: "¿Y cuántas unidades vendieron en total en agosto de 2026?" became "¿Y cuántas unidades de esos productos críticos se vendieron en total en agosto de 2026?".
+- `cad-14-en`: "And how many units did they sell in total in August 2026?" became "And how many units of those critical products were sold in total in August 2026?".
+
+The results above (`20261022T062215Z`) are for the previous wording and remain as the record of that run.
+
+### Results after the second rewrite (run `20261022T223719Z`)
+
+Set `cadenas`, 16 chains per language, schema `corto`, without citations.
+
+| Model | EN | ES |
+|---|---|---|
+| claude-haiku-5-5 | 15/16 | 15/16 |
+| gpt-5.6-luna | 16/16 | 15/16 |
+| gpt-5.6-terra | 16/16 | 16/16 |
+| gemini-3.8-flash | 16/16 | 16/16 |
+
+`cad-14-en` now passes with all four models. Luna, which failed it before the rewrite, passes it now.
+
+Three failures remain, and they are not reworded. They are documented as they are:
+
+- **`cad-10-en` (claude-haiku-5-5) and `cad-10-es` (gpt-5.6-luna).** The question asks "which of those sold the most" (singular), and the reference uses `LIMIT 1`. Both models returned the full ranking ordered by sales, which is a defensible reading of the question but not the reference. This is an ambiguity in cardinality, not a SQL error. The set was not reworded again, to avoid tuning it to the models after each run.
+- **`cad-14-es` (claude-haiku-5-5).** No SQL was extracted from the answer. The detail file does not keep the raw response, so the cause (prose, a clarification request, or truncation) is not known. This is an output failure, not a reasoning error. The same kind of failure appeared with Gemini in earlier runs.
+
+The chains set is closed with these results. The three failures stay in the record as known limits.
+
 ## Limits
 
 - **The easy set is saturated.** A perfect score for every model means the questions are too easy to rank models. The harder set below addresses this.
