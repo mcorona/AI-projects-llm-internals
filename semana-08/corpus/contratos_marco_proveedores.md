@@ -1,0 +1,10 @@
+# Contratos marco con proveedores
+
+> Documento sintético de una empresa ficticia (Distribuidora Industrial Ficticia, DIF). Versión 1.0.
+
+## Vigencia
+La vigencia de un contrato marco con proveedor es de **24 meses**.
+
+## Penalizaciones
+Por cada semana de entrega tardía se aplica una penalización de **1.5%** del valor de la orden.
+La penalización máxima acumulada es de **10%** del valor del contrato.
