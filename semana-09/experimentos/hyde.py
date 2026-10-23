@@ -34,10 +34,12 @@ SISTEMA = ("Escribes un pasaje breve (2 o 3 oraciones) que respondería la pregu
            "Si hay pregunta previa, úsala como contexto. Responde SOLO con el pasaje, sin títulos ni texto adicional.")
 
 
+# max_tokens alto: Haiku consume tokens de razonamiento (bloque thinking) antes del texto.
+# Con 250 hubo 5 respuestas sin texto, que caían a la pregunta original.
 def pasaje_hipotetico(previa, pregunta):
     contenido = (f"Pregunta previa: {previa}\nPregunta: {pregunta}" if previa else f"Pregunta: {pregunta}")
     r = http("POST", "https://api.anthropic.com/v1/messages", {
-        "model": MODELO, "max_tokens": 250, "system": SISTEMA,
+        "model": MODELO, "max_tokens": 1500, "system": SISTEMA,
         "messages": [{"role": "user", "content": contenido}]},
         {"x-api-key": os.environ["ANTHROPIC_API_KEY"], "anthropic-version": "2023-06-01"})
     texto = "".join(b.get("text", "") for b in r["content"] if b.get("type") == "text").strip()
