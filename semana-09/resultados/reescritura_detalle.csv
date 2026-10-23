@@ -1,0 +1,131 @@
+id,tipo,idioma,previa,pregunta,reescrita,tokens_in,tokens_out,costo_usd,latencia_ms,acierto_original_r5,acierto_reescrita_r5
+seg-01,seguimiento,es,¿Cuál es el plazo para devolver un producto a un cliente?,¿Y el plazo si el producto tiene defecto de calidad y lo devuelvo a un proveedor?,¿Cuál es el plazo para devolver a un proveedor un producto que tiene defecto de calidad?,239,38,0.0000429,1198,1,1
+seg-02,seguimiento,es,¿Qué meta de exactitud de inventario tiene cada CEDIS?,¿Y cada cuánto se cuentan los SKUs de clase A para llegar a esa meta?,¿Cada cuánto se cuentan los SKUs de clase A para llegar a la meta de exactitud de inventario de cada CEDIS?,239,51,0.0000494,954,1,0
+seg-03,seguimiento,es,"¿Quién aprueba un ajuste de inventario de 15,000 pesos?",¿Y quién aprueba una orden de compra de 120 mil pesos?,¿Quién aprueba una orden de compra de 120 mil pesos?,232,27,0.0000367,887,1,1
+seg-04,seguimiento,es,"¿Quién aprueba una orden de compra de 120,000 pesos?",¿Y cuántas cotizaciones necesita esa misma orden?,"¿Cuántas cotizaciones necesita una orden de compra de 120,000 pesos?",227,34,0.0000397,717,1,1
+seg-05,seguimiento,es,¿Puede un asistente de IA aprobar una orden de compra?,"Entonces, ¿quién la aprueba en una compra de 120 mil pesos?",¿Quién aprueba una orden de compra de 120 mil pesos en una empresa?,229,32,0.0000389,872,1,1
+seg-06,seguimiento,es,¿Cómo se calcula el punto de reorden?,¿Y qué factor de seguridad usan los SKUs críticos en ese cálculo?,¿Qué factor de seguridad usan los SKUs críticos en el cálculo del punto de reorden?,227,38,0.0000417,742,1,1
+seg-07,seguimiento,es,¿Qué factor de seguridad usan los SKUs críticos?,¿Y para cuántos días de demanda se piden esos mismos SKUs?,¿Para cuántos días de demanda se piden los SKUs críticos?,228,27,0.0000363,970,1,1
+seg-08,seguimiento,es,¿Cuál es la meta de OTIF de un proveedor?,¿Y qué pasa si incumple dos de esas metas?,¿Qué pasa si un proveedor incumple dos de las metas de OTIF?,221,31,0.0000376,737,1,1
+seg-09,seguimiento,es,¿Cuánto tarda en entregar un proveedor de China?,¿Y cuál es la meta de OTIF de ese mismo proveedor?,¿Cuál es la meta de OTIF del proveedor de China por el que se preguntó cuánto tarda en entregar?,227,44,0.0000447,831,1,1
+seg-10,seguimiento,es,¿Cuándo un SKU crítico está en riesgo?,¿Y quién aprueba una compra urgente de ese SKU?,¿Quién aprueba una compra urgente de un SKU crítico que está en riesgo?,222,33,0.0000387,764,0,0
+seg-11,seguimiento,es,¿Quién aprueba una compra urgente?,¿Y desde cuántos días de cobertura hay que escalarla al gerente?,¿Desde cuántos días de cobertura hay que escalar una compra urgente al gerente?,222,34,0.0000392,893,1,1
+seg-12,seguimiento,es,¿Cuál es la cantidad mínima para transferir entre CEDIS?,¿Y cuándo un CEDIS se considera con excedente para esa transferencia?,¿Cuándo un CEDIS se considera con excedente para una transferencia entre CEDIS que supere la cantidad mínima para transferir?,234,51,0.0000489,2963,1,1
+seg-13,seguimiento,es,¿Qué puede consultar el copiloto sobre existencias?,¿Y puede modificar precios?,¿Puede el copiloto modificar precios de los productos del inventario?,212,26,0.0000342,1033,1,1
+seg-14,seguimiento,es,¿El copiloto puede modificar precios?,¿Y qué hago si me da una respuesta incorrecta?,¿Qué hago si el copiloto me da una respuesta incorrecta?,215,28,0.0000355,783,1,0
+seg-15,seguimiento,es,¿Cuánto dura la vigencia de un contrato marco con proveedor?,¿Y cuál es la penalización por entrega tardía en ese contrato?,¿Cuál es la penalización por entrega tardía en un contrato marco con proveedor?,231,33,0.0000396,698,1,1
+rec-01,base,es,,¿Cuál es el plazo para devolver un producto a un cliente?,¿Cuál es el plazo para devolver un producto a un cliente?,186,98,0.0000676,1278,1,1
+rec-02,base,es,,¿Se aceptan devoluciones de equipo de protección si el empaque ya fue abierto?,¿Se aceptan devoluciones de equipo de protección si el empaque ya fue abierto?,195,59,0.0000490,973,1,1
+rec-03,base,es,,¿En cuántos días debo devolver a un proveedor un producto con defecto de calidad?,¿En cuántos días debo devolver a un proveedor un producto con defecto de calidad?,193,155,0.0000968,1550,1,1
+rec-04,base,es,,¿Qué meta de exactitud de inventario tiene cada CEDIS?,¿Qué meta de exactitud de inventario tiene cada CEDIS?,189,259,0.0001484,1859,1,1
+rec-05,base,es,,"¿Quién aprueba un ajuste de inventario de 15,000 pesos?","¿Quién aprueba un ajuste de inventario de 15,000 pesos?",190,30,0.0000340,715,1,1
+rec-06,base,es,,¿Con qué frecuencia se cuentan los SKUs de clase A?,¿Con qué frecuencia se cuentan los SKUs de clase A?,188,208,0.0001228,1510,1,1
+rec-07,base,es,,"¿Quién aprueba una orden de compra de 120,000 pesos?","¿Quién aprueba una orden de compra de 120,000 pesos?",187,227,0.0001322,2567,1,1
+rec-08,base,es,,¿Puede un asistente de IA aprobar una orden de compra?,¿Puede un asistente de IA aprobar una orden de compra?,185,179,0.0001080,2158,1,1
+rec-09,base,es,,¿Cuántas cotizaciones se necesitan para una orden mayor a 100 mil pesos?,¿Cuántas cotizaciones se necesitan para una orden mayor a 100 mil pesos?,197,128,0.0000837,1211,1,1
+rec-10,base,es,,¿Cómo se calcula el punto de reorden?,¿Cómo se calcula el punto de reorden?,180,103,0.0000695,1141,1,1
+rec-11,base,es,,¿Qué factor de seguridad usan los SKUs críticos?,¿Qué factor de seguridad usan los SKUs críticos?,185,25,0.0000310,861,1,1
+rec-12,base,es,,¿Cada cuánto se revisa la categoría Empaque?,¿Cada cuánto se revisa la categoría Empaque?,184,203,0.0001199,1508,1,1
+rec-13,base,es,,¿Sobre qué stock se evalúa el punto de reorden?,¿Sobre qué stock se evalúa el punto de reorden?,185,224,0.0001305,1444,1,1
+rec-14,base,es,,¿Para cuántos días de demanda se pide un SKU crítico?,¿Para cuántos días de demanda se pide un SKU crítico?,186,65,0.0000511,1026,1,1
+rec-15,base,es,,¿Cuál es la meta de OTIF de un proveedor?,¿Cuál es la meta de OTIF de un proveedor?,184,133,0.0000849,1225,1,1
+rec-16,base,es,,¿Cuánto tarda en entregar un proveedor de China?,¿Cuánto tarda en entregar un proveedor de China?,184,232,0.0001344,1623,1,1
+rec-17,base,es,,¿Qué pasa con un proveedor que incumple dos metas?,¿Qué pasa con un proveedor que incumple dos metas?,185,300,0.0001685,2360,1,1
+rec-18,base,es,,¿Cuál es el horario de recepción del CEDIS Occidente?,¿Cuál es el horario de recepción del CEDIS Occidente?,187,27,0.0000322,810,1,1
+rec-19,base,es,,¿En cuánto tiempo se debe registrar una entrada en el sistema?,¿En cuánto tiempo se debe registrar una entrada en el sistema?,189,177,0.0001074,1927,1,1
+rec-20,base,es,,¿Qué se hace si la diferencia en recepción es de 3%?,¿Qué se hace si la diferencia en recepción es de 3%?,186,196,0.0001166,2300,1,1
+rec-21,base,es,,¿Cuándo un SKU crítico está en riesgo?,¿Cuándo un SKU crítico está en riesgo?,183,123,0.0000798,1185,1,1
+rec-22,base,es,,¿Quién aprueba una compra urgente?,¿Quién aprueba una compra urgente?,178,18,0.0000268,921,1,1
+rec-23,base,es,,¿Desde cuántos días de cobertura se escala al gerente de compras?,¿Desde cuántos días de cobertura se escala al gerente de compras?,188,28,0.0000328,785,1,1
+rec-24,base,es,,¿Cuál es la cantidad mínima para transferir entre CEDIS?,¿Cuál es la cantidad mínima para transferir entre CEDIS?,189,29,0.0000334,1363,1,1
+rec-25,base,es,,¿Cuánto tarda el tránsito de Guadalajara a Monterrey?,¿Cuánto tarda el tránsito de Guadalajara a Monterrey?,191,230,0.0001341,1658,1,1
+rec-26,base,es,,¿Cuándo se considera que un CEDIS tiene excedente?,¿Cuándo se considera que un CEDIS tiene excedente?,186,191,0.0001141,1610,1,1
+rec-27,base,es,,¿Qué puede consultar el copiloto sobre existencias?,¿Qué puede consultar el copiloto sobre existencias?,184,169,0.0001029,1315,1,1
+rec-28,base,es,,¿El copiloto puede modificar precios?,¿El copiloto puede modificar precios?,177,249,0.0001422,1749,1,1
+rec-29,base,es,,¿Qué debo hacer si el copiloto da una respuesta incorrecta?,¿Qué debo hacer si el copiloto da una respuesta incorrecta?,190,126,0.0000820,1116,1,1
+rec-30,base,es,,¿Cuántas horas de capacitación al año necesita un almacenista?,¿Cuántas horas de capacitación al año necesita un almacenista?,187,100,0.0000687,1208,1,1
+rec-31,base,es,,¿Qué descuento puede aprobar un ejecutivo de cuenta sin escalar?,¿Qué descuento puede aprobar un ejecutivo de cuenta sin escalar?,194,191,0.0001149,1528,1,1
+rec-32,base,es,,¿Cuándo se hace el cierre mensual de inventario?,¿Cuándo se hace el cierre mensual de inventario?,184,94,0.0000654,1064,1,1
+rec-33,base,es,,¿Cuánto tiempo se conservan los videos de vigilancia?,¿Cuánto tiempo se conservan los videos de vigilancia?,187,251,0.0001442,2299,1,1
+rec-34,base,es,,¿Qué SKUs perecederos se revisan cada semana?,¿Qué SKUs perecederos se revisan cada semana?,184,24,0.0000304,1023,1,1
+rec-35,base,es,,¿Cuál es la altura máxima de una tarima?,¿Cuál es la altura máxima de una tarima?,181,89,0.0000626,986,1,1
+rec-36,base,es,,¿Cuánto tiene el cliente para presentar una reclamación de entrega?,¿Cuánto tiene el cliente para presentar una reclamación de entrega?,190,30,0.0000340,1142,1,1
+rec-37,base,es,,¿Cuántas posiciones de tarima tiene el CEDIS de Monterrey?,¿Cuántas posiciones de tarima tiene el CEDIS de Monterrey?,193,155,0.0000968,1766,1,1
+rec-38,base,es,,¿Cuál es el nivel de servicio objetivo?,¿Cuál es el nivel de servicio objetivo?,182,191,0.0001137,1874,1,1
+rec-39,base,es,,¿A qué hora se hacen los respaldos del sistema de almacén?,¿A qué hora se hacen los respaldos del sistema de almacén?,187,27,0.0000322,791,1,1
+rec-40,base,es,,¿Cuál es el costo de referencia por kilómetro de la flota?,¿Cuál es el costo de referencia por kilómetro de la flota?,187,128,0.0000827,1575,1,1
+rec-41,base,es,,¿Cuánto dura la vigencia de un contrato marco con proveedor?,¿Cuánto dura la vigencia de un contrato marco con proveedor?,189,166,0.0001019,1280,1,1
+rec-42,base,es,,¿Cuál es la penalización por entrega tardía?,¿Cuál es la penalización por entrega tardía?,181,206,0.0001211,1490,1,1
+rec-43,base,es,,¿En cuánto tiempo se corrige un hallazgo mayor de auditoría?,¿En cuánto tiempo se corrige un hallazgo mayor de auditoría?,192,55,0.0000467,1117,1,1
+rec-44,base,es,,¿Qué límite de compra tiene un comprador nuevo durante su primer mes?,¿Qué límite de compra tiene un comprador nuevo durante su primer mes?,191,111,0.0000746,1206,1,1
+rec-45,base,es,,¿Qué es el stock de seguridad?,¿Qué es el stock de seguridad?,177,17,0.0000262,1060,1,1
+rec-46,base,es,,¿Qué es una merma?,¿Qué es una merma?,172,12,0.0000232,1559,1,1
+rec-47,base,es,,¿Qué revisar antes de una compra urgente y cuánto tarda el tránsito de Ciudad de México a Guadalajara?,¿Qué revisar antes de una compra urgente y cuánto tarda el tránsito de Ciudad de México a Guadalajara?,208,154,0.0000978,1225,1,1
+rec-48,base,es,,¿Qué pasa con un SKU crítico con menos de 7 días de cobertura y cuál es su factor de seguridad?,¿Qué pasa con un SKU crítico con menos de 7 días de cobertura y cuál es su factor de seguridad?,205,45,0.0000430,1019,1,1
+rec-49,base,es,,¿Quién aprueba un ajuste de inventario y quién aprueba una orden de compra de 300 mil pesos?,¿Quién aprueba un ajuste de inventario y quién aprueba una orden de compra de 300 mil,203,300,0.0001703,1967,1,1
+rec-50,base,es,,¿Cuál es la meta de calidad de piezas rechazadas de un proveedor?,¿Cuál es la meta de calidad de piezas rechazadas de un proveedor?,192,129,0.0000837,1237,1,1
+seg-01,seguimiento,en,What is the deadline for a customer to return a product?,And what is the deadline if the product has a quality defect and I return it to a supplier?,What is the deadline for returning a product to a supplier if the product has a quality defect?,217,116,0.0000797,1182,1,1
+seg-02,seguimiento,en,What inventory accuracy target does each distribution center have?,And how often are class A SKUs counted to reach that target?,How often are class A SKUs counted to reach the inventory accuracy target of each distribution center?,211,144,0.0000931,2120,0,1
+seg-03,seguimiento,en,"Who approves an inventory adjustment of 15,000 pesos?","And who approves a purchase order for 120,000 pesos?","Who approves a purchase order for 120,000 pesos?",217,170,0.0001067,1682,1,1
+seg-04,seguimiento,en,"Who approves a purchase order of 120,000 pesos?",And how many quotes does that same order need?,"How many quotes does a purchase order of 120,000 pesos need?",207,24,0.0000327,854,1,1
+seg-05,seguimiento,en,Can an AI assistant approve a purchase order?,"So who approves it for a 120,000 peso purchase?","Who approves a purchase order for a 120,000 peso purchase?",210,155,0.0000985,1902,1,1
+seg-06,seguimiento,en,How is the reorder point calculated?,And what safety factor do critical SKUs use in that calculation?,What safety factor do critical SKUs use in the reorder point calculation?,207,140,0.0000907,1218,1,1
+seg-07,seguimiento,en,What safety factor do critical SKUs use?,And for how many days of demand are those same SKUs ordered?,For how many days of demand are critical SKUs ordered?,209,196,0.0001189,1547,1,1
+seg-08,seguimiento,en,What is the OTIF target for a supplier?,And what happens if it misses two of those targets?,What happens if a supplier misses two OTIF targets?,204,104,0.0000724,1136,1,1
+seg-09,seguimiento,en,How long does a supplier from China take to deliver?,And what is the OTIF target for that same supplier?,What is the OTIF target for a supplier from China?,207,109,0.0000752,1131,1,1
+seg-10,seguimiento,en,When is a critical SKU considered at risk?,And who approves an urgent purchase of that SKU?,Who approves an urgent purchase of a critical SKU that is at risk?,207,152,0.0000967,1307,0,1
+seg-11,seguimiento,en,Who approves an urgent purchase?,And from how many days of coverage does it have to be escalated to the manager?,From how many days of coverage does an urgent purchase have to be escalated to the manager?,210,102,0.0000720,1023,1,1
+seg-12,seguimiento,en,What is the minimum quantity for a transfer between distribution centers?,And when is a CEDIS considered to have a surplus for that transfer?,When is a CEDIS (distribution center) considered to have a surplus for a transfer between distribution centers?,220,149,0.0000965,2055,1,1
+seg-13,seguimiento,en,What can the copilot query about stock?,And can it change prices?,And can the copilot change stock prices?,194,14,0.0000264,1799,1,1
+seg-14,seguimiento,en,Can the copilot change prices?,And what should I do if it gives me a wrong answer?,What should I do if the copilot gives me a wrong answer about changing prices?,203,123,0.0000818,1131,1,0
+seg-15,seguimiento,en,How long does a framework contract with a supplier last?,And what is the late-delivery penalty in that contract?,What is the late-delivery penalty in a framework contract with a supplier?,208,95,0.0000683,1030,1,1
+rec-01,base,en,,What is the deadline for a customer to return a product?,What is the deadline for a customer to return a product?,176,199,0.0001171,2407,1,1
+rec-02,base,en,,Are protective equipment returns accepted if the package was already opened?,Are protective equipment returns accepted if the package was already opened?,181,289,0.0001626,2133,1,1
+rec-03,base,en,,How many days do I have to return a product with a quality defect to a supplier?,How many days do I have to return a product with a quality defect to a supplier?,183,198,0.0001173,1676,1,1
+rec-04,base,en,,What inventory accuracy target does each distribution center have?,What inventory accuracy target does each distribution center have?,178,192,0.0001138,1672,1,1
+rec-05,base,en,,"Who approves an inventory adjustment of 15,000 pesos?","Who approves an inventory adjustment of 15,000 pesos?",183,199,0.0001178,1616,1,1
+rec-06,base,en,,How often are class A SKUs counted?,How often are class A SKUs counted?,173,14,0.0000243,1415,1,1
+rec-07,base,en,,"Who approves a purchase order of 120,000 pesos?","Who approves a purchase order of 120,000 pesos?",180,264,0.0001500,1782,1,1
+rec-08,base,en,,Can an AI assistant approve a purchase order?,Can an AI assistant approve a purchase order?,177,113,0.0000742,1426,1,1
+rec-09,base,en,,"How many quotes are needed for an order over 100,000 pesos?","How many quotes are needed for an order over 100,000 pesos?",182,124,0.0000802,1343,1,1
+rec-10,base,en,,How is the reorder point calculated?,How is the reorder point calculated?,172,151,0.0000927,1515,1,1
+rec-11,base,en,,What safety factor do critical SKUs use?,What safety factor do critical SKUs use?,175,186,0.0001105,1569,1,1
+rec-12,base,en,,How often is the Packaging category reviewed?,How often is the Packaging category reviewed?,175,16,0.0000255,893,1,1
+rec-13,base,en,,Which stock is the reorder point evaluated against?,Which stock is the reorder point evaluated against?,177,174,0.0001047,1492,1,1
+rec-14,base,en,,For how many days of demand is a critical SKU ordered?,For how many days of demand is a critical SKU ordered?,179,88,0.0000619,1741,1,1
+rec-15,base,en,,What is the OTIF target for a supplier?,What is the OTIF target for a supplier?,175,212,0.0001235,1702,1,1
+rec-16,base,en,,How long does a supplier from China take to deliver?,How long does a supplier from China take to deliver?,176,270,0.0001526,1945,1,1
+rec-17,base,en,,What happens to a supplier that misses two targets?,What happens to a supplier that misses two targets?,176,183,0.0001091,1368,1,1
+rec-18,base,en,,What are the receiving hours at the Occidente distribution center?,What are the receiving hours at the Occidente distribution center?,180,300,0.0001680,2154,1,1
+rec-19,base,en,,How quickly must a receipt be recorded in the system?,How quickly must a receipt be recorded in the system?,178,87,0.0000613,1029,1,1
+rec-20,base,en,,What happens if the receiving difference is 3%?,What happens if the receiving difference is 3%?,176,244,0.0001396,1711,1,1
+rec-21,base,en,,When is a critical SKU considered at risk?,When is a critical SKU considered at risk?,175,185,0.0001100,1791,1,1
+rec-22,base,en,,Who approves an urgent purchase?,Who approves an urgent purchase?,173,78,0.0000563,1382,1,1
+rec-23,base,en,,At how many days of coverage is a critical SKU escalated to the purchasing manager?,At how many days of coverage is a critical SKU escalated to the purchasing manager?,188,279,0.0001583,2029,1,1
+rec-24,base,en,,What is the minimum quantity for a transfer between distribution centers?,What is the minimum quantity for a transfer between distribution centers?,182,242,0.0001392,1673,1,1
+rec-25,base,en,,How long is transit time from Guadalajara to Monterrey?,How long is transit time from Guadalajara to Monterrey?,181,93,0.0000646,1041,1,1
+rec-26,base,en,,When is a distribution center considered to have a surplus?,When is a distribution center considered to have a surplus?,177,18,0.0000267,768,1,1
+rec-27,base,en,,What can the copilot query about stock?,What can the copilot query about stock?,172,160,0.0000972,1379,1,1
+rec-28,base,en,,Can the copilot change prices?,Can the copilot change prices?,171,47,0.0000406,893,1,1
+rec-29,base,en,,What should I do if the copilot gives a wrong answer?,What should I do if the copilot gives a wrong answer?,179,169,0.0001024,1489,1,1
+rec-30,base,en,,How many training hours per year does a warehouse worker need?,How many training hours per year does a warehouse worker need?,178,90,0.0000628,1174,1,1
+rec-31,base,en,,What discount can an account executive approve without escalation?,What discount can an account executive approve without escalation?,176,172,0.0001036,2886,1,1
+rec-32,base,en,,When is the monthly inventory close done?,When is the monthly inventory close done?,173,213,0.0001238,2831,1,1
+rec-33,base,en,,How long is surveillance video kept?,How long is surveillance video kept?,172,13,0.0000237,1379,1,1
+rec-34,base,en,,Which perishable SKUs are reviewed every week?,Which perishable SKUs are reviewed every week?,178,19,0.0000273,891,1,1
+rec-35,base,en,,What is the maximum height of a pallet?,What is the maximum height of a pallet?,174,196,0.0001154,1486,1,1
+rec-36,base,en,,How long does a customer have to file a delivery claim?,How long does a customer have to file a delivery claim?,177,221,0.0001282,2093,1,1
+rec-37,base,en,,How many pallet positions does the Monterrey distribution center have?,How many pallet positions does the Monterrey distribution center have?,181,145,0.0000906,1265,1,1
+rec-38,base,en,,What is the target service level?,What is the target service level?,168,145,0.0000893,1641,1,1
+rec-39,base,en,,What time are warehouse system backups made?,What time are warehouse system backups made?,173,190,0.0001123,1461,1,1
+rec-40,base,en,,What is the reference cost per kilometer for the fleet?,What is the reference cost per kilometer for the fleet?,179,253,0.0001444,2586,1,1
+rec-41,base,en,,How long does a framework contract with a supplier last?,How long does a framework contract with a supplier last?,176,90,0.0000626,1046,1,1
+rec-42,base,en,,What is the penalty for late delivery?,What is the penalty for late delivery?,173,213,0.0001238,1504,1,1
+rec-43,base,en,,How long does a major audit finding have to be corrected?,How long does a major audit finding have to be corrected?,177,133,0.0000842,1383,1,1
+rec-44,base,en,,What purchase limit does a new buyer have during their first month?,What purchase limit does a new buyer have during their first month?,179,129,0.0000824,1112,1,1
+rec-45,base,en,,What is safety stock?,What is safety stock?,168,207,0.0001203,1865,1,1
+rec-46,base,en,,What is shrinkage?,What is shrinkage?,169,131,0.0000824,1642,1,1
+rec-47,base,en,,"What should be checked before an urgent purchase, and how long does transit take from Mexico City to Guadalajara?","What should be checked before an urgent purchase, and how long does transit take from Mexico City to Guadalajara?",196,197,0.0001181,1645,1,1
+rec-48,base,en,,"What happens to a critical SKU with less than 7 days of coverage, and what is its safety factor?","What happens to a critical SKU with less than 7 days of coverage, and what is its safety factor?",192,115,0.0000767,1129,1,1
+rec-49,base,en,,"Who approves an inventory adjustment, and who approves a purchase order of 300,000 pesos?","Who approves an inventory adjustment, and who approves a purchase order of 300,000 pesos?",193,269,0.0001538,1799,1,1
+rec-50,base,en,,What is the quality target for rejected parts from a supplier?,What is the quality target for rejected parts from a supplier?,179,96,0.0000659,1169,1,1
