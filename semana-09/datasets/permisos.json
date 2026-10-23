@@ -1,0 +1,106 @@
+{
+  "tenants": {
+    "alfa": "tenant de prueba 1; por ahora contiene todos los documentos"
+  },
+  "roles_por_documento": {
+    "auditoria_interna.md": [
+      "finanzas",
+      "calidad"
+    ],
+    "capacitacion_almacen.md": [
+      "operaciones",
+      "almacen"
+    ],
+    "cedis_monterrey.md": [
+      "operaciones"
+    ],
+    "cierre_mensual_inventario.md": [
+      "finanzas"
+    ],
+    "contratos_marco_proveedores.md": [
+      "compras",
+      "finanzas"
+    ],
+    "descuentos_clientes.md": [
+      "ventas",
+      "finanzas"
+    ],
+    "devoluciones.md": [
+      "ventas",
+      "almacen"
+    ],
+    "embalaje_etiquetado.md": [
+      "almacen",
+      "operaciones"
+    ],
+    "flota_reparto.md": [
+      "operaciones",
+      "finanzas"
+    ],
+    "glosario_inventario.md": [
+      "operaciones",
+      "almacen",
+      "compras",
+      "ventas",
+      "finanzas",
+      "calidad"
+    ],
+    "indicadores_operacion.md": [
+      "operaciones",
+      "finanzas"
+    ],
+    "inventario_ciclico.md": [
+      "almacen",
+      "finanzas"
+    ],
+    "mermas_caducidad.md": [
+      "almacen",
+      "calidad"
+    ],
+    "onboarding_compradores.md": [
+      "compras"
+    ],
+    "ordenes_de_compra.md": [
+      "compras",
+      "finanzas"
+    ],
+    "politica_reorden.md": [
+      "compras",
+      "almacen"
+    ],
+    "proveedores.md": [
+      "compras",
+      "calidad"
+    ],
+    "reclamaciones_clientes.md": [
+      "ventas",
+      "calidad"
+    ],
+    "recepcion_almacen.md": [
+      "almacen"
+    ],
+    "seguridad_instalaciones.md": [
+      "operaciones"
+    ],
+    "skus_criticos.md": [
+      "compras",
+      "almacen"
+    ],
+    "transferencias_cedis.md": [
+      "almacen",
+      "operaciones"
+    ],
+    "uso_copiloto.md": [
+      "operaciones",
+      "almacen",
+      "compras",
+      "ventas",
+      "finanzas",
+      "calidad"
+    ],
+    "wms_respaldos.md": [
+      "operaciones"
+    ]
+  },
+  "nota": "Modelo sintético de prueba. Los roles son asignaciones de este experimento, no permisos reales de inventory-copilot."
+}
