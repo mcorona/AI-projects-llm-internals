@@ -48,7 +48,7 @@ Diferencia observada en la segunda corrida: seguimiento ES tiene 227 tokens de e
 ## Conclusión
 
 - Sin efecto demostrable en esta muestra. EN seguimiento mejora en una corrida y empeora en la otra, con diferencias de una o dos preguntas.
-- ES seguimiento baja en ambas corridas (0.933 → 0.800 y 0.933 → 0.800 en la primera), pero los casos que cambian son reescrituras fieles; no es un error de reescritura.
+- ES seguimiento baja de 0.933 a 0.800 en ambas corridas, pero los casos que cambian son reescrituras fieles; no es un error de reescritura.
 - No se adopta la reescritura como paso por defecto.
 - Para decidir de verdad: tres corridas por idioma y promediar, con el mismo golden set congelado.
 
