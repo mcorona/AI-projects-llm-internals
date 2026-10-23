@@ -1,0 +1,31 @@
+name: recuperacion-semana-08
+
+on:
+  pull_request:
+    paths:
+      - "semana-08/**"
+      - ".github/workflows/recuperacion-semana-08.yml"
+
+jobs:
+  recuperacion:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_PASSWORD: ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres" --health-interval 5s
+          --health-timeout 5s --health-retries 10
+    env:
+      PG_DSN: postgresql://postgres:ci@localhost:5432/postgres
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install "psycopg[binary]"
+      - run: python semana-08/ci/recuperacion_ci.py
