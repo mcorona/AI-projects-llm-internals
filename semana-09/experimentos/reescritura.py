@@ -9,7 +9,9 @@ Requiere LM Studio con bge-m3, OpenSearch con el índice semana8 y ANTHROPIC_API
 """
 import json
 import os
+import statistics
 import sys
+import time
 from pathlib import Path
 
 AQUI = Path(__file__).resolve().parent
@@ -43,16 +45,18 @@ def promedio(filas):
 
 
 def main():
-    print("| Tipo | Idioma | Variante | recall@5 | nDCG@10 | MRR | sin cambios | costo por consulta |")
-    print("|---|---|---|---|---|---|---|---|")
+    print("| Tipo | Idioma | Variante | recall@5 | nDCG@10 | MRR | sin cambios | costo por consulta | latencia reescritura p50 / p95 (ms) |")
+    print("|---|---|---|---|---|---|---|---|---|")
     for idioma in ("es", "en"):
         items = [json.loads(l) for l in (DATOS / f"avanzado_{idioma}.jsonl").read_text(encoding="utf-8").splitlines()]
         for tipo in ("seguimiento", "base"):
             sel = [x for x in items if x["tipo"] == tipo]
             previas = [x.get("pregunta_previa") if tipo == "seguimiento" else None for x in sel]
-            reescritas, tin, tout = [], 0, 0
+            reescritas, tin, tout, latencias = [], 0, 0, []
             for x, p in zip(sel, previas):
+                t0 = time.perf_counter()
                 t, a, b = reescribir(p, x["question"])
+                latencias.append((time.perf_counter() - t0) * 1000)
                 reescritas.append(t)
                 tin += a
                 tout += b
@@ -67,7 +71,9 @@ def main():
             for nombre, filas, cambio in (("original", filas_o, "-"), ("reescrita", filas_r, f"{sin_cambio}/{len(sel)}")):
                 r5, nd, mr = promedio(filas)
                 c = f"${costo:.6f}" if nombre == "reescrita" else "-"
-                print(f"| {tipo} | {idioma} | {nombre} | {r5:.3f} | {nd:.3f} | {mr:.3f} | {cambio} | {c} |")
+                lat = (f"{statistics.median(latencias):.0f} / {statistics.quantiles(latencias, n=20)[18]:.0f}"
+                       if nombre == "reescrita" else "-")
+                print(f"| {tipo} | {idioma} | {nombre} | {r5:.3f} | {nd:.3f} | {mr:.3f} | {cambio} | {c} | {lat} |")
 
 
 if __name__ == "__main__":
