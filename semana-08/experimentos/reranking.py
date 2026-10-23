@@ -68,7 +68,17 @@ def relevante(c, gold):
 
 def metricas(consulta, ranking):
     gold = consulta["gold"]
-    rel = [1 if relevante(c, gold) else 0 for c in ranking[:10]]
+    # Cada pasaje de referencia cuenta una sola vez: con chunks solapados, un mismo pasaje
+    # puede estar en dos chunks, y sin este control nDCG podría pasar de 1.
+    rel, usados = [], set()
+    for c in ranking[:10]:
+        idx = next((i for i, g in enumerate(gold)
+                    if i not in usados and c[0] == g["source"] and g["passage"] in c[1]), None)
+        if idx is not None:
+            usados.add(idx)
+            rel.append(1)
+        else:
+            rel.append(0)
     rec = {}
     for corte in (5, 10):
         hits = sum(1 for g in gold
