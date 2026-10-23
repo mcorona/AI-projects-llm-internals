@@ -105,7 +105,7 @@ it as wrong. Treat it as a proxy. The judge is also a model, so its verdicts are
 Workflow `.github/workflows/recuperacion-semana-08.yml` runs on every PR that touches `semana-08/**`.
 It uses a `pgvector/pgvector:pg16` service and `text-embedding-3-small` (`ci/recuperacion_ci.py`), because
 bge-m3 runs in LM Studio, which GitHub Actions cannot reach. Threshold: recall@5 >= 0.90 per language.
-The OpenAI key is the repository secret `OPENAI_API_KEY`. The check passed on the PR for this week.
+The OpenAI key is the repository secret `OPENAI_API_KEY`. The check passed on the PR for this week. First CI run: recall@5 ES 0.990, EN 0.950 (threshold kept at 0.90; see `resultados/ci_recuperacion.md`).
 
 ## Limits
 
