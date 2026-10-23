@@ -39,6 +39,19 @@ Cada semana de la Fase 2 se cierra solo si cumple lo siguiente:
 
 Lo que no cumple el criterio queda marcado como pendiente hasta que se resuelva.
 
+## Criterio de salida de la Fase 3
+
+La Fase 3 cubre las semanas 8, 9 y 10 (recuperación y RAG avanzado). Solo se marca lo verificado con evidencia en el repo.
+
+- [x] La eval de recuperación corre en CI en cada PR que toca `semana-08/**` y `semana-09/**`, con umbral de recall@5 por idioma (0.90), calibrado con la primera corrida (ES 0.990, EN 0.950). Verificado en los PR #15 y #17 (`semana-08/resultados/ci_recuperacion.md`).
+- [x] Hay una comparación documentada de chunking, embeddings y bases vectoriales con recall@k, latencia y costo, en ES y EN (`semana-08/README.md`, actividades 2 a 5).
+- [ ] La búsqueda híbrida y el reranking se miden contra la línea base. El reranking está medido (nDCG@10 ES 0.904 → 0.982, EN 0.885 → 0.974). La híbrida no tiene resultados registrados en el repo; pendiente.
+- [x] Las respuestas con citas se evalúan con juez, con exactitud y precisión de citas reportadas (`semana-08/README.md`, actividad 8).
+- [ ] Las técnicas avanzadas (reescritura, HyDE y contextual retrieval) se miden con el mismo golden set congelado, y se adoptan solo si mejoran. Reescritura (sin adopción) y HyDE (sin adopción) están medidas; contextual retrieval pendiente.
+- [ ] Los filtros por tenant y roles se aplican dentro de la consulta en pgvector, Qdrant y OpenSearch, con fuga de permisos igual a 0 y prueba cruzada entre tenants. Criterio no negociable; pendiente (semana 9, actividades 5 y 6).
+
+Lo que no cumple el criterio queda marcado como pendiente hasta que se resuelva.
+
 ## Estado
 
 - Semana 1: completa. Mini-GPT de 2000 pasos con pérdida de validación de 1.72 (n=128, lr=1e-3). Ver `semana-01/README.md`.

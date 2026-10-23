@@ -9,6 +9,7 @@ on:
       - "semana-07/**"
       - "semana-08/**"
       - "semana-09/**"
+      - "README.md"
       - "**/prompts/**"
       - ".github/workflows/evals-semana-06.yml"
       - ".github/workflows/nlq-semana-07.yml"
