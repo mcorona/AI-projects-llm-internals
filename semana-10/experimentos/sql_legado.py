@@ -140,14 +140,16 @@ def main():
                 f[k] = int(f[k])
             f["latencia_s"], f["costo_usd"] = float(f["latencia_s"]), float(f["costo_usd"])
             f["recuperacion_completa"] = "" if f["recuperacion_completa"] == "" else int(f["recuperacion_completa"])
-            detalle.append(f)
-        print(f"reanudando: {len(detalle)} combinaciones ya hechas", file=sys.stderr)
+            if f["categoria"] != "error_api":  # los errores de API se vuelven a intentar
+                detalle.append(f)
+        print(f"reanudando: {len(detalle)} combinaciones ya hechas (los errores de API se reintentan)", file=sys.stderr)
     hechas = {(d["id"], d["variante"]) for d in detalle}
-    nuevo = not (args.reanudar and salida.exists())
-    fh = salida.open("w" if nuevo else "a", encoding="utf-8", newline="")
+    # El archivo se reescribe con lo ya hecho y se completa con lo nuevo, sin duplicados.
+    fh = salida.open("w", encoding="utf-8", newline="")
     escritor = csv.DictWriter(fh, fieldnames=CAMPOS)
-    if nuevo:
-        escritor.writeheader()
+    escritor.writeheader()
+    escritor.writerows(detalle)
+    fh.flush()
     for x in items:
         tablas_ref = re7.tablas_del_sql(x["sql"])
         necesarias = {ORIGINAL_A_LEGADO[t] for t in tablas_ref if t in ORIGINAL_A_LEGADO}
