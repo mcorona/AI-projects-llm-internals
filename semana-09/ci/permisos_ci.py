@@ -15,7 +15,9 @@ La fuga no tiene umbral: debe ser 0.
 import json
 import os
 import sys
+import time
 from pathlib import Path
+from urllib.error import HTTPError
 from urllib.request import Request, urlopen
 
 import psycopg
@@ -39,8 +41,18 @@ def embed(textos):
                       data=json.dumps({"model": MODELO, "input": textos[i:i + 100]}).encode("utf-8"),
                       headers={"Content-Type": "application/json",
                                "Authorization": f"Bearer {os.environ['OPENAI_API_KEY']}"})
-        with urlopen(req, timeout=120) as r:
-            datos = json.loads(r.read())["data"]
+        # Reintentos solo para errores transitorios del proveedor (429 y 5xx); el resto falla de inmediato.
+        for intento in range(4):
+            try:
+                with urlopen(req, timeout=120) as r:
+                    datos = json.loads(r.read())["data"]
+                break
+            except HTTPError as e:
+                if e.code not in (429, 500, 502, 503, 504) or intento == 3:
+                    raise
+                espera = 2 ** (intento + 1)
+                print(f"embeddings: HTTP {e.code}, reintento {intento + 1}/3 en {espera} s", file=sys.stderr)
+                time.sleep(espera)
         out += [d["embedding"] for d in sorted(datos, key=lambda d: d["index"])]
     return out
 
