@@ -46,6 +46,19 @@ These are recorded in each results file, because they changed how a result shoul
 - **Multi-tenant contrast:** the first version summed unfiltered other-tenant chunks across both users, which is always 10 per question by construction. It was split per tenant.
 - **CI:** the first run failed on an HTTP 500 from the embeddings API. Retries with backoff were added for transient errors only.
 
+## Failed cases
+
+Questions where a technique lost a gold passage from the top 5 that the vector baseline had found. Taken from the per-query detail files; partial losses on two-passage questions are not listed one by one, which is why some averages do not move in whole questions.
+
+| Technique | Lost (ES) | Lost (EN) | What happened | Detail |
+|---|---|---|---|---|
+| Query rewriting (follow-up) | `seg-02`, `seg-14` | `seg-14` | Rewrites were faithful (e.g. "what do I do if the copilot gives a wrong answer?"); the rephrasing moved the vector ranking. EN also gained `seg-02` and `seg-10`. | `resultados/reescritura_detalle.csv` |
+| HyDE (base) | `rec-23`, `rec-44` | `rec-26`, `rec-38`, `rec-44`, `rec-46`, `rec-50` | Hypothetical passages drifted away from the real wording, mostly on short definitional or threshold questions. | `resultados/hyde_detalle.csv` |
+| Contextual retrieval | `rec-34`, `seg-14` | `rec-34`, `seg-13`, `seg-14` | Same questions fail in both languages, so the index caused it: long contexts (267 chars vs 348 per chunk) that repeat the company name dilute each chunk. `seg-10` gained in both. | `resultados/contextual_detalle.csv` |
+| GraphRAG, expansion (G) | bridge `pt-08`, `pt-10` | compound `ms-07` | Graph neighbors pushed correct vector results out of the top 5. | `resultados/graphrag_detalle.csv` |
+| GraphRAG, query entities (G+Q) | none below baseline | bridge `pt-01`, `pt-03`, `pt-05` (one passage of two) | Best GraphRAG variant still misses one hop on three bridge questions; vector + reranking finds both. | `resultados/graphrag_detalle.csv` |
+| Role filters, multi-tenant, CI | none | none | Leakage 0 in every run. | `resultados/permisos.md`, `resultados/multitenant.md`, `resultados/ci_semana09.md` |
+
 ## Limits
 
 - Small corpus (24 documents, 57 chunks). The baseline already has recall@5 1.000 on base questions, and the vector top 20 covers 35% of the corpus, which favors reranking over GraphRAG.
