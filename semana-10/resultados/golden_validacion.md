@@ -37,4 +37,4 @@ Resultados de las mixtas en la validación:
 ## Limitaciones
 
 - Los nombres de proveedores de la matriz en PDF (por ejemplo, Shenzhen Industrial Parts) no coinciden con los de la base (por ejemplo, Shenzhen Components). Son mundos sintéticos separados; ninguna pregunta cruza la matriz con la base, pero un asistente podría confundirlos si alguna lo hiciera.
-- Los resultados SQL dependen de los datos sintéticos actuales de inventory-copilot (semilla 42). Si se regeneran con otra semilla, las respuestas esperadas cambian, aunque las consultas siguen siendo válidas.
+- Los resultados SQL dependen de los datos sintéticos actuales de la base de inventory-copilot. Si se regeneran, las respuestas esperadas pueden cambiar, aunque las consultas siguen siendo válidas; la evaluación por ejecución compara contra el resultado del SQL de referencia en la misma base, no contra estos valores.
