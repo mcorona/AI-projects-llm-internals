@@ -1,0 +1,9 @@
+# Acta de inventario físico, CEDIS Norte (Monterrey)
+
+> Documento sintético de una empresa ficticia (Distribuidora Industrial Ficticia, DIF). Formato de entrega: escaneo.
+
+Fecha del conteo: 30 de septiembre de 2026
+Ubicaciones contadas: 1,240
+Exactitud obtenida: 96.4%
+Diferencia total valorizada: $18,240 MXN
+Responsable: Laura Méndez, jefa de almacén
