@@ -43,12 +43,12 @@ Lo que no cumple el criterio queda marcado como pendiente hasta que se resuelva.
 
 La Fase 3 cubre las semanas 8, 9 y 10 (recuperación y RAG avanzado). Solo se marca lo verificado con evidencia en el repo.
 
-- [x] La eval de recuperación corre en CI en cada PR que toca `semana-08/**` y `semana-09/**`, con umbral de recall@5 por idioma (0.90), calibrado con la primera corrida (ES 0.990, EN 0.950). Verificado en los PR #15 y #17 (`semana-08/resultados/ci_recuperacion.md`).
+- [x] La eval de recuperación corre en CI en cada PR que toca `semana-08/**` o `semana-09/**`, con umbral de recall@5 por idioma (0.90), calibrado con la primera corrida (ES 0.990, EN 0.950). Verificado en los PR #15 y #17 para semana 8 (`semana-08/resultados/ci_recuperacion.md`) y en el PR #29 para semana 9 (`semana-09/resultados/ci_semana09.md`).
 - [x] Hay una comparación documentada de chunking, embeddings y bases vectoriales con recall@k, latencia y costo, en ES y EN (`semana-08/README.md`, actividades 2 a 5).
 - [ ] La búsqueda híbrida y el reranking se miden contra la línea base. El reranking está medido (nDCG@10 ES 0.904 → 0.982, EN 0.885 → 0.974). La híbrida no tiene resultados registrados en el repo; pendiente.
 - [x] Las respuestas con citas se evalúan con juez, con exactitud y precisión de citas reportadas (`semana-08/README.md`, actividad 8).
-- [ ] Las técnicas avanzadas (reescritura, HyDE y contextual retrieval) se miden con el mismo golden set congelado, y se adoptan solo si mejoran. Reescritura (sin adopción) y HyDE (sin adopción) están medidas; contextual retrieval pendiente.
-- [ ] Los filtros por tenant y roles se aplican dentro de la consulta en pgvector, Qdrant y OpenSearch, con fuga de permisos igual a 0 y prueba cruzada entre tenants. Criterio no negociable; pendiente (semana 9, actividades 5 y 6).
+- [x] Las técnicas avanzadas (reescritura, HyDE y contextual retrieval) se miden con el mismo golden set congelado, y se adoptan solo si mejoran. Las tres están medidas; ninguna mejora a la línea base y ninguna se adopta (`semana-09/resultados/comparacion_final.md`; PR #19, #20, #21 y #23).
+- [x] Los filtros por tenant y roles se aplican dentro de la consulta en pgvector, Qdrant y OpenSearch, con fuga de permisos igual a 0 y prueba cruzada entre tenants. Criterio no negociable. Verificado con fuga 0 en las tres bases (PR #25 y #26) y con un check de CI que falla ante cualquier fuga en cada PR de semana 9 (PR #29).
 
 Lo que no cumple el criterio queda marcado como pendiente hasta que se resuelva.
 
