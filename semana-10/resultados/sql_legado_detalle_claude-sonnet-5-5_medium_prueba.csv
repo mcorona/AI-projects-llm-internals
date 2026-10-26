@@ -1,0 +1,162 @@
+id,lang,variante,categoria,ok,tablas_necesarias,tablas_recuperadas,recuperacion_completa,tokens_in,tokens_out,latencia_s,costo_usd,sql
+hard-001-es,es,copilot,correcta,1,artmst|exidet,,,889,148,1.801,0.003258,"SELECT p.sku, p.name, p.reorder_point, COALESCE(SUM(s.on_hand), 0) AS existencias_totales
+FROM products p
+LEFT JOIN stock s ON s.sku = p.sku
+GROUP BY p.sku, p.name, p.reorder_point
+HAVING COALESCE(SUM(s.on_hand), 0) < p.reorder_point
+ORDER BY p.sku"
+hard-001-es,es,legado,correcta,1,artmst|exidet,,,517,170,1.602,0.002734,"SELECT a.art_cd, a.art_dsc, a.art_ptr, COALESCE(SUM(e.exi_qty), 0) AS existencias_totales
+FROM artmst a
+LEFT JOIN exidet e ON e.exi_art = a.art_cd
+GROUP BY a.art_cd, a.art_dsc, a.art_ptr
+HAVING COALESCE(SUM(e.exi_qty), 0) < a.art_ptr
+ORDER BY a.art_cd"
+hard-001-es,es,legado_dic,correcta,1,artmst|exidet,,,1508,169,1.479,0.004706,"SELECT a.art_cd, a.art_dsc, a.art_ptr, COALESCE(SUM(e.exi_qty), 0) AS existencia_total
+FROM artmst a
+LEFT JOIN exidet e ON e.exi_art = a.art_cd
+GROUP BY a.art_cd, a.art_dsc, a.art_ptr
+HAVING COALESCE(SUM(e.exi_qty), 0) < a.art_ptr
+ORDER BY a.art_cd"
+hard-001-es,es,legado_rec,correcta,1,artmst|exidet,exidet|almmst|artmst,1,925,169,1.53,0.00354,"SELECT a.art_cd, a.art_dsc, a.art_ptr, COALESCE(SUM(e.exi_qty), 0) AS existencia_total
+FROM artmst a
+LEFT JOIN exidet e ON e.exi_art = a.art_cd
+GROUP BY a.art_cd, a.art_dsc, a.art_ptr
+HAVING COALESCE(SUM(e.exi_qty), 0) < a.art_ptr
+ORDER BY a.art_cd"
+hard-002-es,es,copilot,resultado_distinto,0,artmst|exidet|prvmst,,,896,207,1.77,0.003862,"SELECT DISTINCT p.sku, p.name, p.category, p.reorder_point, s.name AS supplier_name, w.name AS warehouse_name, w.city, st.on_hand
+FROM products p
+JOIN suppliers s ON s.supplier_id = p.supplier_id
+JOIN stock st ON st.sku = p.sku
+JOIN warehouses w ON w.warehouse_id = st.warehouse_id
+WHERE p.critical = TRUE
+  AND s.country = 'DE'
+  AND st.on_hand < p.reorder_point
+ORDER BY p.sku, w.name"
+hard-002-es,es,legado,correcta,1,artmst|exidet|prvmst,,,524,416,3.167,0.005208,"SELECT a.art_cd, a.art_dsc
+FROM artmst a
+JOIN prvmst p ON p.prv_id = a.art_prv
+WHERE a.art_crt = TRUE
+  AND p.prv_pais ILIKE ANY (ARRAY['Alemania','Germany','DE'])
+  AND EXISTS (
+    SELECT 1
+    FROM exidet e
+    WHERE e.exi_art = a.art_cd
+      AND e.exi_qty < a.art_ptr
+  )
+ORDER BY a.art_cd"
+hard-002-es,es,legado_dic,correcta,1,artmst|exidet|prvmst,,,1515,163,1.93,0.00466,"SELECT DISTINCT a.art_cd, a.art_dsc, a.art_lin, a.art_ptr
+FROM artmst a
+JOIN prvmst p ON p.prv_id = a.art_prv
+JOIN exidet e ON e.exi_art = a.art_cd
+WHERE a.art_crt = TRUE
+  AND p.prv_pais = 'DE'
+  AND e.exi_qty < a.art_ptr
+ORDER BY a.art_cd"
+hard-002-es,es,legado_rec,resultado_distinto,0,artmst|exidet|prvmst,exidet|prvmst|artmst,1,947,187,1.804,0.003764,"SELECT DISTINCT a.art_cd, a.art_dsc, a.art_lin, a.art_ptr, e.exi_alm, e.exi_qty
+FROM artmst a
+JOIN prvmst p ON p.prv_id = a.art_prv
+JOIN exidet e ON e.exi_art = a.art_cd
+WHERE a.art_crt = TRUE
+  AND p.prv_pais = 'DE'
+  AND e.exi_qty < a.art_ptr
+ORDER BY a.art_cd, e.exi_alm"
+hard-003-es,es,copilot,correcta,1,artmst|vtadia,,,892,128,1.624,0.003064,"SELECT p.category, SUM(s.units) AS total_units
+FROM sales_daily s
+JOIN products p ON p.sku = s.sku
+WHERE s.day >= DATE '2026-04-01' AND s.day < DATE '2026-05-01'
+GROUP BY p.category
+ORDER BY total_units DESC, p.category ASC
+LIMIT 1"
+hard-003-es,es,legado,correcta,1,artmst|vtadia,,,520,213,3.013,0.00317,"SELECT a.art_lin, SUM(v.vta_und) AS total_unidades
+FROM vtadia v
+JOIN artmst a ON a.art_cd = v.vta_art
+WHERE v.vta_fch >= DATE '2026-04-01' AND v.vta_fch < DATE '2026-05-01'
+GROUP BY a.art_lin
+ORDER BY total_unidades DESC, a.art_lin ASC
+LIMIT 1"
+hard-003-es,es,legado_dic,correcta,1,artmst|vtadia,,,1511,152,1.491,0.004542,"SELECT a.art_lin, SUM(v.vta_und) AS unidades
+FROM vtadia v
+JOIN artmst a ON a.art_cd = v.vta_art
+WHERE v.vta_fch >= DATE '2026-04-01' AND v.vta_fch < DATE '2026-05-01'
+GROUP BY a.art_lin
+ORDER BY unidades DESC, a.art_lin ASC
+LIMIT 1"
+hard-003-es,es,legado_rec,resultado_distinto,0,artmst|vtadia,vtadia|exidet|ocpcab,0,729,214,2.599,0.003598,SELECT 'No es posible responder: el esquema disponible no contiene tablas ni columnas de categoría (artmst no está disponible)' AS error
+hard-001-en,en,copilot,correcta,1,artmst|exidet,,,877,147,1.644,0.003224,"SELECT p.sku, p.name, p.reorder_point, COALESCE(SUM(s.on_hand), 0) AS total_on_hand
+FROM products p
+LEFT JOIN stock s ON s.sku = p.sku
+GROUP BY p.sku, p.name, p.reorder_point
+HAVING COALESCE(SUM(s.on_hand), 0) < p.reorder_point
+ORDER BY p.sku"
+hard-001-en,en,legado,correcta,1,artmst|exidet,,,505,168,1.496,0.00269,"SELECT a.art_cd, a.art_dsc, a.art_ptr, COALESCE(SUM(e.exi_qty), 0) AS total_stock
+FROM artmst a
+LEFT JOIN exidet e ON e.exi_art = a.art_cd
+GROUP BY a.art_cd, a.art_dsc, a.art_ptr
+HAVING COALESCE(SUM(e.exi_qty), 0) < a.art_ptr
+ORDER BY a.art_cd"
+hard-001-en,en,legado_dic,correcta,1,artmst|exidet,,,1496,169,1.41,0.004682,"SELECT a.art_cd, a.art_dsc, a.art_ptr, COALESCE(SUM(e.exi_qty), 0) AS total_existencia
+FROM artmst a
+LEFT JOIN exidet e ON e.exi_art = a.art_cd
+GROUP BY a.art_cd, a.art_dsc, a.art_ptr
+HAVING COALESCE(SUM(e.exi_qty), 0) < a.art_ptr
+ORDER BY a.art_cd"
+hard-001-en,en,legado_rec,correcta,1,artmst|exidet,exidet|artmst|ocpcab,1,963,168,1.667,0.003606,"SELECT a.art_cd, a.art_dsc, a.art_ptr, COALESCE(SUM(e.exi_qty), 0) AS total_stock
+FROM artmst a
+LEFT JOIN exidet e ON e.exi_art = a.art_cd
+GROUP BY a.art_cd, a.art_dsc, a.art_ptr
+HAVING COALESCE(SUM(e.exi_qty), 0) < a.art_ptr
+ORDER BY a.art_cd"
+hard-002-en,en,copilot,correcta,1,artmst|exidet|prvmst,,,879,129,2.231,0.003048,"SELECT DISTINCT p.sku, p.name, p.category, p.reorder_point
+FROM products p
+JOIN suppliers s ON s.supplier_id = p.supplier_id
+JOIN stock st ON st.sku = p.sku
+WHERE p.critical = TRUE
+  AND s.country = 'DE'
+  AND st.on_hand < p.reorder_point"
+hard-002-en,en,legado,correcta,1,artmst|exidet|prvmst,,,507,207,1.933,0.003084,"SELECT DISTINCT a.art_cd, a.art_dsc, p.prv_nm
+FROM artmst a
+JOIN prvmst p ON p.prv_id = a.art_prv
+JOIN exidet e ON e.exi_art = a.art_cd
+WHERE a.art_crt = TRUE
+  AND (p.prv_pais ILIKE 'Germany' OR p.prv_pais ILIKE 'Alemania' OR p.prv_pais ILIKE 'Deutschland' OR p.prv_pais = 'DE')
+  AND e.exi_qty < a.art_ptr"
+hard-002-en,en,legado_dic,correcta,1,artmst|exidet|prvmst,,,1498,163,1.981,0.004626,"SELECT DISTINCT a.art_cd, a.art_dsc, a.art_lin, a.art_ptr
+FROM artmst a
+JOIN prvmst p ON p.prv_id = a.art_prv
+JOIN exidet e ON e.exi_art = a.art_cd
+WHERE a.art_crt = TRUE
+  AND p.prv_pais = 'DE'
+  AND e.exi_qty < a.art_ptr
+ORDER BY a.art_cd"
+hard-002-en,en,legado_rec,correcta,1,artmst|exidet|prvmst,exidet|prvmst|artmst,1,930,164,1.579,0.0035,"SELECT DISTINCT a.art_cd, a.art_dsc, a.art_lin, a.art_ptr
+FROM artmst a
+JOIN prvmst p ON p.prv_id = a.art_prv
+JOIN exidet e ON e.exi_art = a.art_cd
+WHERE a.art_crt = TRUE
+  AND p.prv_pais = 'DE'
+  AND e.exi_qty < a.art_ptr
+ORDER BY a.art_cd"
+hard-003-en,en,copilot,correcta,1,artmst|vtadia,,,874,127,1.477,0.003018,"SELECT p.category, SUM(s.units) AS total_units
+FROM sales_daily s
+JOIN products p ON p.sku = s.sku
+WHERE s.day >= DATE '2026-04-01' AND s.day < DATE '2026-05-01'
+GROUP BY p.category
+ORDER BY total_units DESC, p.category ASC
+LIMIT 1"
+hard-003-en,en,legado,correcta,1,artmst|vtadia,,,502,155,1.691,0.002554,"SELECT a.art_lin AS category, SUM(v.vta_und) AS total_units
+FROM vtadia v
+JOIN artmst a ON a.art_cd = v.vta_art
+WHERE v.vta_fch >= DATE '2026-04-01' AND v.vta_fch < DATE '2026-05-01'
+GROUP BY a.art_lin
+ORDER BY total_units DESC, a.art_lin ASC
+LIMIT 1"
+hard-003-en,en,legado_dic,correcta,1,artmst|vtadia,,,1493,152,2.022,0.004506,"SELECT a.art_lin, SUM(v.vta_und) AS total_units
+FROM vtadia v
+JOIN artmst a ON a.art_cd = v.vta_art
+WHERE v.vta_fch >= DATE '2026-04-01' AND v.vta_fch < DATE '2026-05-01'
+GROUP BY a.art_lin
+ORDER BY total_units DESC, a.art_lin ASC
+LIMIT 1"
+hard-003-en,en,legado_rec,no_es_select,0,artmst|vtadia,vtadia|exidet|ocpcab,0,711,534,4.998,0.006762,"I can't write this query because the schema has no category information. The `artmst` table that the dictionary mentions isn't available to me, and none of the three tables (`vtadia`, `exidet`, `ocpcab`) has a category column. I won't invent a table or column.
+
+The closest query I can write ranks ar"
