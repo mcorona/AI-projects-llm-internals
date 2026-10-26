@@ -53,7 +53,7 @@ Questions where a technique lost a gold passage from the top 5 that the vector b
 | Technique | Lost (ES) | Lost (EN) | What happened | Detail |
 |---|---|---|---|---|
 | Query rewriting (follow-up) | `seg-02`, `seg-14` | `seg-14` | Rewrites were faithful (e.g. "what do I do if the copilot gives a wrong answer?"); the rephrasing moved the vector ranking. EN also gained `seg-02` and `seg-10`. | `resultados/reescritura_detalle.csv` |
-| HyDE (base) | `rec-23`, `rec-44` | `rec-26`, `rec-38`, `rec-44`, `rec-46`, `rec-50` | Hypothetical passages drifted away from the real wording, mostly on short definitional or threshold questions. | `resultados/hyde_detalle.csv` |
+| HyDE (base) | `rec-23`, `rec-44` | `rec-26`, `rec-38`, `rec-44`, `rec-46`, `rec-50` | Searching with the generated passage instead of the question lost these gold passages; the cause was not analyzed question by question. The generated passages are in the detail file. | `resultados/hyde_detalle.csv` |
 | Contextual retrieval | `rec-34`, `seg-14` | `rec-34`, `seg-13`, `seg-14` | Same questions fail in both languages, so the index caused it: long contexts (267 chars vs 348 per chunk) that repeat the company name dilute each chunk. `seg-10` gained in both. | `resultados/contextual_detalle.csv` |
 | GraphRAG, expansion (G) | bridge `pt-08`, `pt-10` | compound `ms-07` | Graph neighbors pushed correct vector results out of the top 5. | `resultados/graphrag_detalle.csv` |
 | GraphRAG, query entities (G+Q) | none below baseline | bridge `pt-01`, `pt-03`, `pt-05` (one passage of two) | Best GraphRAG variant still misses one hop on three bridge questions; vector + reranking finds both. | `resultados/graphrag_detalle.csv` |
