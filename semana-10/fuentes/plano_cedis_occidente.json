@@ -1,0 +1,11 @@
+{
+  "tipo": "plano",
+  "titulo": "Plano del CEDIS Occidente (Guadalajara)",
+  "zonas": [
+    "Andenes de recepción: 1 a 4",
+    "Andenes de embarque: 5 a 8",
+    "Zona de SKUs críticos: junto al andén 2",
+    "Zona de cuarentena: pasillo 12"
+  ],
+  "nota": "Documento sintético de una empresa ficticia (DIF). Formato de entrega: imagen PNG."
+}
