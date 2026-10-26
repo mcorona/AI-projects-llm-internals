@@ -49,6 +49,9 @@ La Fase 3 cubre las semanas 8, 9 y 10 (recuperación y RAG avanzado). Solo se ma
 - [x] Las respuestas con citas se evalúan con juez, con exactitud y precisión de citas reportadas (`semana-08/README.md`, actividad 8).
 - [x] Las técnicas avanzadas (reescritura, HyDE y contextual retrieval) se miden con el mismo golden set congelado, y se adoptan solo si mejoran. Las tres están medidas; ninguna mejora a la línea base y ninguna se adopta (`semana-09/resultados/comparacion_final.md`; PR #19, #20, #21 y #23).
 - [x] Los filtros por tenant y roles se aplican dentro de la consulta en pgvector, Qdrant y OpenSearch, con fuga de permisos igual a 0 y prueba cruzada entre tenants. Criterio no negociable. Verificado con fuga 0 en las tres bases (PR #25 y #26) y con un check de CI que falla ante cualquier fuga en cada PR de semana 9 (PR #29).
+- [ ] El text-to-SQL sobre un esquema legado (vistas con nombres crípticos) se mide por ejecución en tres variantes (sin diccionario, con diccionario completo y con diccionario recuperado) contra el esquema original con el mismo modelo, con costo y latencia. Semana 10, actividad 2.
+- [ ] Los documentos no textuales (PDFs con tablas, escaneos con OCR e imágenes) se extraen e indexan, y se mide su exactitud contra la referencia congelada (exactitud por celda, tasa de error por carácter y respuestas correctas) y el recall después de indexar. Semana 10, actividades 3 a 5.
+- [ ] El asistente integrado (NLQ + RAG documental) se mide por tipo de pregunta (SQL, documental, no textual y mixta): ruteo, exactitud con citas, costo y latencia. Su seguridad es no negociable: cero escrituras SQL, fuga 0 por rol y entre tenants a través del asistente, y ninguna instrucción inyectada en documentos ejecutada, con check en CI. Semana 10, actividades 6 a 9.
 
 Lo que no cumple el criterio queda marcado como pendiente hasta que se resuelva.
 
