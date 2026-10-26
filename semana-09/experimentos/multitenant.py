@@ -7,7 +7,8 @@ Vectores bge-m3 y chunking fijo 400/80 en ambos. Filtro dentro de la consulta, i
 
 Mide, por base e idioma:
 - Barrido: 50 preguntas base x 2 tenants, usuario con todos los roles (solo actúa el filtro de tenant).
-  Fuga entre tenants con filtro (debe ser 0) y chunks del otro tenant sin filtro (contraste).
+  Fuga entre tenants con filtro (debe ser 0) y, sin filtro, cuántos chunks del otro tenant verían
+  un usuario de alfa y uno de beta (por separado: sumados dan siempre 10 por pregunta).
 - Casos solapados (datasets/multitenant_*.jsonl): 10 preguntas x 2 tenants, con un rol que ve el documento.
   Cifra propia en el top 5 con filtro; cifra del otro tenant devuelta (sin / con filtro; con filtro debe ser 0);
   veces que, sin filtro, el pasaje del otro tenant sale antes que el propio.
@@ -136,7 +137,8 @@ def posicion(res, pasaje, tenant):
 
 
 def medir(nombre, buscar, fs, idioma, base, vb, solap, vs):
-    fuga = otro_sin = cortos = barrido = 0
+    fuga = cortos = barrido = 0
+    otro_sin = {t: 0 for t in TENANTS}
     for x, v in zip(base, vb):
         res_n = buscar(v, None)
         for t in TENANTS:
@@ -144,7 +146,7 @@ def medir(nombre, buscar, fs, idioma, base, vb, solap, vs):
             res_f = buscar(v, u)
             barrido += 1
             fuga += sum(no_autorizado(r, u) for r in res_f)
-            otro_sin += sum(r[2] != t for r in res_n)
+            otro_sin[t] += sum(r[2] != t for r in res_n)
             if len(res_f) < min(K, sum(f["tenant_id"] == t for f in fs)):
                 cortos += 1
     propia = otra_sin = otra_con = antes = casos = 0
@@ -164,7 +166,7 @@ def medir(nombre, buscar, fs, idioma, base, vb, solap, vs):
             antes += po is not None and (pp is None or po < pp)
             if len(res_f) < min(K, sum(f["tenant_id"] == t and bool(set(ROLES_DOC[f["source"]]) & set(u["roles"])) for f in fs)):
                 cortos += 1
-    print(f"| {nombre} | {idioma} | {barrido} | {fuga} | {otro_sin} | {casos} | {propia}/{casos} | "
+    print(f"| {nombre} | {idioma} | {barrido} | {fuga} | {otro_sin['alfa']} / {otro_sin['beta']} | {casos} | {propia}/{casos} | "
           f"{otra_sin}/{casos} / {otra_con}/{casos} | {antes}/{casos} | {cortos} |")
     return fuga + otra_con
 
@@ -182,7 +184,7 @@ def main():
           f"opensearch {cargar_opensearch(fs, vecs)} chunks\n")
 
     bases = [("pgvector", lambda v, u: buscar_pgvector(conn, v, u)), ("Qdrant", buscar_qdrant), ("OpenSearch", buscar_opensearch)]
-    print("| Base | Idioma | Barrido (pregunta x tenant) | Fuga con filtro | Chunks del otro tenant sin filtro | "
+    print("| Base | Idioma | Barrido (pregunta x tenant) | Fuga con filtro | Chunks del otro tenant sin filtro (en el top 10 de alfa / de beta) | "
           "Casos solapados | Cifra propia en top 5 (con filtro) | Cifra del otro tenant devuelta (sin / con filtro) | "
           "Otro tenant antes que el propio (sin filtro) | Resultados cortos |")
     print("|---|---|---|---|---|---|---|---|---|---|")
