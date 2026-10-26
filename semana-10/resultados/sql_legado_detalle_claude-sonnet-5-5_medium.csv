@@ -1,0 +1,1549 @@
+id,lang,variante,categoria,ok,tablas_necesarias,tablas_recuperadas,recuperacion_completa,tokens_in,tokens_out,latencia_s,costo_usd,sql
+hard-001-es,es,copilot,correcta,1,artmst|exidet,,,889,147,1.598,0.003248,"SELECT p.sku, p.name, p.reorder_point, COALESCE(SUM(s.on_hand), 0) AS total_on_hand
+FROM products p
+LEFT JOIN stock s ON s.sku = p.sku
+GROUP BY p.sku, p.name, p.reorder_point
+HAVING COALESCE(SUM(s.on_hand), 0) < p.reorder_point
+ORDER BY p.sku"
+hard-001-es,es,legado,correcta,1,artmst|exidet,,,517,170,1.642,0.002734,"SELECT a.art_cd, a.art_dsc, a.art_ptr, COALESCE(SUM(e.exi_qty), 0) AS existencias_totales
+FROM artmst a
+LEFT JOIN exidet e ON e.exi_art = a.art_cd
+GROUP BY a.art_cd, a.art_dsc, a.art_ptr
+HAVING COALESCE(SUM(e.exi_qty), 0) < a.art_ptr
+ORDER BY a.art_cd"
+hard-001-es,es,legado_dic,correcta,1,artmst|exidet,,,1508,169,1.768,0.004706,"SELECT a.art_cd, a.art_dsc, a.art_ptr, COALESCE(SUM(e.exi_qty), 0) AS existencia_total
+FROM artmst a
+LEFT JOIN exidet e ON e.exi_art = a.art_cd
+GROUP BY a.art_cd, a.art_dsc, a.art_ptr
+HAVING COALESCE(SUM(e.exi_qty), 0) < a.art_ptr
+ORDER BY a.art_cd"
+hard-001-es,es,legado_rec,correcta,1,artmst|exidet,exidet|almmst|artmst,1,925,183,1.793,0.00368,"SELECT a.art_cd, a.art_dsc, a.art_lin, a.art_ptr, COALESCE(SUM(e.exi_qty), 0) AS existencia_total
+FROM artmst a
+LEFT JOIN exidet e ON e.exi_art = a.art_cd
+GROUP BY a.art_cd, a.art_dsc, a.art_lin, a.art_ptr
+HAVING COALESCE(SUM(e.exi_qty), 0) < a.art_ptr
+ORDER BY a.art_cd"
+hard-001-en,en,copilot,correcta,1,artmst|exidet,,,877,147,2.259,0.003224,"SELECT p.sku, p.name, p.reorder_point, COALESCE(SUM(s.on_hand), 0) AS total_on_hand
+FROM products p
+LEFT JOIN stock s ON s.sku = p.sku
+GROUP BY p.sku, p.name, p.reorder_point
+HAVING COALESCE(SUM(s.on_hand), 0) < p.reorder_point
+ORDER BY p.sku"
+hard-001-en,en,legado,correcta,1,artmst|exidet,,,505,168,1.464,0.00269,"SELECT a.art_cd, a.art_dsc, a.art_ptr, COALESCE(SUM(e.exi_qty), 0) AS total_stock
+FROM artmst a
+LEFT JOIN exidet e ON e.exi_art = a.art_cd
+GROUP BY a.art_cd, a.art_dsc, a.art_ptr
+HAVING COALESCE(SUM(e.exi_qty), 0) < a.art_ptr
+ORDER BY a.art_cd"
+hard-001-en,en,legado_dic,correcta,1,artmst|exidet,,,1496,169,1.446,0.004682,"SELECT a.art_cd, a.art_dsc, a.art_ptr, COALESCE(SUM(e.exi_qty), 0) AS existencia_total
+FROM artmst a
+LEFT JOIN exidet e ON e.exi_art = a.art_cd
+GROUP BY a.art_cd, a.art_dsc, a.art_ptr
+HAVING COALESCE(SUM(e.exi_qty), 0) < a.art_ptr
+ORDER BY a.art_cd"
+hard-001-en,en,legado_rec,correcta,1,artmst|exidet,exidet|artmst|ocpcab,1,963,168,1.651,0.003606,"SELECT a.art_cd, a.art_dsc, a.art_ptr, COALESCE(SUM(e.exi_qty), 0) AS total_stock
+FROM artmst a
+LEFT JOIN exidet e ON e.exi_art = a.art_cd
+GROUP BY a.art_cd, a.art_dsc, a.art_ptr
+HAVING COALESCE(SUM(e.exi_qty), 0) < a.art_ptr
+ORDER BY a.art_cd"
+hard-002-es,es,copilot,resultado_distinto,0,artmst|exidet|prvmst,,,896,207,1.54,0.003862,"SELECT DISTINCT p.sku, p.name, p.category, p.reorder_point, s.name AS supplier_name, w.name AS warehouse_name, w.city, st.on_hand
+FROM products p
+JOIN suppliers s ON s.supplier_id = p.supplier_id
+JOIN stock st ON st.sku = p.sku
+JOIN warehouses w ON w.warehouse_id = st.warehouse_id
+WHERE p.critical = TRUE
+  AND s.country = 'DE'
+  AND st.on_hand < p.reorder_point
+ORDER BY p.sku, w.name"
+hard-002-es,es,legado,correcta,1,artmst|exidet|prvmst,,,524,452,3.674,0.005568,"SELECT DISTINCT a.art_cd, a.art_dsc, a.art_lin, a.art_ptr, p.prv_nm
+FROM artmst a
+JOIN prvmst p ON p.prv_id = a.art_prv
+WHERE a.art_crt = TRUE
+  AND p.prv_pais ILIKE ANY (ARRAY['Alemania', 'Germany', 'DE'])
+  AND EXISTS (
+    SELECT 1
+    FROM exidet e
+    WHERE e.exi_art = a.art_cd
+      AND e.exi_qty < a.art_ptr
+  )
+ORDER BY a.art_cd"
+hard-002-es,es,legado_dic,resultado_distinto,0,artmst|exidet|prvmst,,,1515,220,2.132,0.00523,"SELECT DISTINCT a.art_cd, a.art_dsc, a.art_lin, a.art_ptr, p.prv_nm, al.alm_dsc, e.exi_qty
+FROM artmst a
+JOIN prvmst p ON p.prv_id = a.art_prv
+JOIN exidet e ON e.exi_art = a.art_cd
+JOIN almmst al ON al.alm_id = e.exi_alm
+WHERE a.art_crt = TRUE
+AND p.prv_pais = 'DE'
+AND e.exi_qty < a.art_ptr
+ORDER BY a.art_cd, al.alm_dsc"
+hard-002-es,es,legado_rec,resultado_distinto,0,artmst|exidet|prvmst,exidet|prvmst|artmst,1,947,185,1.767,0.003744,"SELECT DISTINCT a.art_cd, a.art_dsc, a.art_lin, a.art_ptr, e.exi_alm, e.exi_qty
+FROM artmst a
+JOIN prvmst p ON p.prv_id = a.art_prv
+JOIN exidet e ON e.exi_art = a.art_cd
+WHERE a.art_crt = TRUE
+AND p.prv_pais = 'DE'
+AND e.exi_qty < a.art_ptr
+ORDER BY a.art_cd, e.exi_alm"
+hard-002-en,en,copilot,correcta,1,artmst|exidet|prvmst,,,879,129,1.879,0.003048,"SELECT DISTINCT p.sku, p.name, p.category, p.reorder_point
+FROM products p
+JOIN suppliers s ON s.supplier_id = p.supplier_id
+JOIN stock st ON st.sku = p.sku
+WHERE p.critical = TRUE
+  AND s.country = 'DE'
+  AND st.on_hand < p.reorder_point"
+hard-002-en,en,legado,resultado_distinto,0,artmst|exidet|prvmst,,,507,246,1.87,0.003474,"SELECT DISTINCT a.art_cd, a.art_dsc, p.prv_nm, e.exi_alm, al.alm_dsc, e.exi_qty, a.art_ptr
+FROM artmst a
+JOIN prvmst p ON p.prv_id = a.art_prv
+JOIN exidet e ON e.exi_art = a.art_cd
+LEFT JOIN almmst al ON al.alm_id = e.exi_alm
+WHERE a.art_crt = TRUE
+AND p.prv_pais IN ('Germany', 'Alemania', 'DE', 'Deutschland')
+AND e.exi_qty < a.art_ptr
+ORDER BY a.art_cd, e.exi_alm"
+hard-002-en,en,legado_dic,correcta,1,artmst|exidet|prvmst,,,1498,163,1.915,0.004626,"SELECT DISTINCT a.art_cd, a.art_dsc, a.art_lin, a.art_ptr
+FROM artmst a
+JOIN prvmst p ON p.prv_id = a.art_prv
+JOIN exidet e ON e.exi_art = a.art_cd
+WHERE a.art_crt = TRUE
+  AND p.prv_pais = 'DE'
+  AND e.exi_qty < a.art_ptr
+ORDER BY a.art_cd"
+hard-002-en,en,legado_rec,correcta,1,artmst|exidet|prvmst,exidet|prvmst|artmst,1,930,163,1.624,0.00349,"SELECT DISTINCT a.art_cd, a.art_dsc, a.art_lin, a.art_ptr
+FROM artmst a
+JOIN prvmst p ON p.prv_id = a.art_prv
+JOIN exidet e ON e.exi_art = a.art_cd
+WHERE a.art_crt = TRUE
+  AND p.prv_pais = 'DE'
+  AND e.exi_qty < a.art_ptr
+ORDER BY a.art_cd"
+hard-003-es,es,copilot,correcta,1,artmst|vtadia,,,892,127,1.515,0.003054,"SELECT p.category, SUM(s.units) AS total_units
+FROM sales_daily s
+JOIN products p ON p.sku = s.sku
+WHERE s.day >= DATE '2026-04-01' AND s.day < DATE '2026-05-01'
+GROUP BY p.category
+ORDER BY total_units DESC, p.category ASC
+LIMIT 1"
+hard-003-es,es,legado,correcta,1,artmst|vtadia,,,520,229,2.143,0.00333,"SELECT a.art_lin AS categoria, SUM(v.vta_und) AS unidades_vendidas
+FROM vtadia v
+JOIN artmst a ON a.art_cd = v.vta_art
+WHERE v.vta_fch >= DATE '2026-04-01' AND v.vta_fch < DATE '2026-05-01'
+GROUP BY a.art_lin
+ORDER BY unidades_vendidas DESC, a.art_lin ASC
+LIMIT 1"
+hard-003-es,es,legado_dic,correcta,1,artmst|vtadia,,,1511,152,1.3,0.004542,"SELECT a.art_lin, SUM(v.vta_und) AS unidades
+FROM vtadia v
+JOIN artmst a ON a.art_cd = v.vta_art
+WHERE v.vta_fch >= DATE '2026-04-01' AND v.vta_fch < DATE '2026-05-01'
+GROUP BY a.art_lin
+ORDER BY unidades DESC, a.art_lin ASC
+LIMIT 1"
+hard-003-es,es,legado_rec,resultado_distinto,0,artmst|vtadia,vtadia|exidet|ocpcab,0,729,283,3.461,0.004288,SELECT 'No es posible responder: el esquema disponible no incluye una tabla ni columna de categorías de artículos (artmst no está definida)' AS aviso
+hard-003-en,en,copilot,correcta,1,artmst|vtadia,,,874,128,1.455,0.003028,"SELECT p.category, SUM(s.units) AS total_units
+FROM sales_daily s
+JOIN products p ON p.sku = s.sku
+WHERE s.day >= DATE '2026-04-01' AND s.day < DATE '2026-05-01'
+GROUP BY p.category
+ORDER BY total_units DESC, p.category ASC
+LIMIT 1"
+hard-003-en,en,legado,correcta,1,artmst|vtadia,,,502,155,1.637,0.002554,"SELECT a.art_lin AS category, SUM(v.vta_und) AS total_units
+FROM vtadia v
+JOIN artmst a ON a.art_cd = v.vta_art
+WHERE v.vta_fch >= DATE '2026-04-01' AND v.vta_fch < DATE '2026-05-01'
+GROUP BY a.art_lin
+ORDER BY total_units DESC, a.art_lin ASC
+LIMIT 1"
+hard-003-en,en,legado_dic,correcta,1,artmst|vtadia,,,1493,152,1.928,0.004506,"SELECT a.art_lin, SUM(v.vta_und) AS total_units
+FROM vtadia v
+JOIN artmst a ON a.art_cd = v.vta_art
+WHERE v.vta_fch >= DATE '2026-04-01' AND v.vta_fch < DATE '2026-05-01'
+GROUP BY a.art_lin
+ORDER BY total_units DESC, a.art_lin ASC
+LIMIT 1"
+hard-003-en,en,legado_rec,no_es_select,0,artmst|vtadia,vtadia|exidet|ocpcab,0,711,501,5.189,0.006432,"I can't write this query because the schema has no category information. `vtadia` only has the article code (`vta_art`), and the category would have to come from an article master table like `artmst`, which isn't in the schema. Without a table or column linking articles to categories, any query woul"
+hard-004-es,es,copilot,correcta,1,vtadia,,,927,105,2.812,0.002904,"SELECT sku, AVG(units) AS promedio_diario
+FROM sales_daily
+WHERE day >= DATE '2026-04-01' AND day < DATE '2026-07-01'
+GROUP BY sku
+ORDER BY AVG(units) DESC, sku ASC
+LIMIT 1"
+hard-004-es,es,legado,correcta,1,vtadia,,,555,116,1.346,0.00227,"SELECT vta_art, AVG(vta_und) AS promedio_diario FROM vtadia WHERE vta_fch >= DATE '2026-04-01' AND vta_fch < DATE '2026-07-01' GROUP BY vta_art ORDER BY promedio_diario DESC, vta_art ASC LIMIT 1"
+hard-004-es,es,legado_dic,correcta,1,vtadia,,,1546,124,2.226,0.004332,"SELECT vta_art, AVG(vta_und) AS promedio_diario
+FROM vtadia
+WHERE vta_fch >= DATE '2026-04-01' AND vta_fch < DATE '2026-07-01'
+GROUP BY vta_art
+ORDER BY AVG(vta_und) DESC, vta_art ASC
+LIMIT 1"
+hard-004-es,es,legado_rec,correcta,1,vtadia,vtadia|artmst|exidet,1,899,119,1.865,0.002988,"SELECT vta_art, AVG(vta_und) AS promedio_diario FROM vtadia WHERE vta_fch >= DATE '2026-04-01' AND vta_fch < DATE '2026-07-01' GROUP BY vta_art ORDER BY AVG(vta_und) DESC, vta_art ASC LIMIT 1"
+hard-004-en,en,copilot,correcta,1,vtadia,,,899,110,1.738,0.002898,"SELECT sku, AVG(units)::numeric AS avg_daily_units
+FROM sales_daily
+WHERE day >= DATE '2026-04-01' AND day < DATE '2026-07-01'
+GROUP BY sku
+ORDER BY AVG(units) DESC, sku ASC
+LIMIT 1"
+hard-004-en,en,legado,correcta,1,vtadia,,,527,125,1.506,0.002304,"SELECT vta_art, AVG(vta_und) AS avg_daily_units
+FROM vtadia
+WHERE vta_fch >= DATE '2026-04-01' AND vta_fch < DATE '2026-07-01'
+GROUP BY vta_art
+ORDER BY AVG(vta_und) DESC, vta_art ASC
+LIMIT 1"
+hard-004-en,en,legado_dic,correcta,1,vtadia,,,1518,124,1.878,0.004276,"SELECT vta_art, AVG(vta_und) AS promedio_diario
+FROM vtadia
+WHERE vta_fch >= DATE '2026-04-01' AND vta_fch < DATE '2026-07-01'
+GROUP BY vta_art
+ORDER BY AVG(vta_und) DESC, vta_art ASC
+LIMIT 1"
+hard-004-en,en,legado_rec,correcta,1,vtadia,vtadia|exidet|artmst,1,871,124,1.961,0.002982,"SELECT vta_art, AVG(vta_und) AS promedio_diario
+FROM vtadia
+WHERE vta_fch >= DATE '2026-04-01' AND vta_fch < DATE '2026-07-01'
+GROUP BY vta_art
+ORDER BY AVG(vta_und) DESC, vta_art ASC
+LIMIT 1"
+hard-005-es,es,copilot,correcta,1,vtadia,,,901,165,2.055,0.003452,"WITH monthly AS (SELECT date_trunc('month', day) AS month, SUM(units) AS total_units FROM sales_daily GROUP BY date_trunc('month', day)), compared AS (SELECT month, total_units, LAG(total_units) OVER (ORDER BY month) AS prev_units FROM monthly) SELECT COUNT(*) AS meses_con_aumento FROM compared WHERE prev_units IS NOT NULL AND total_units > prev_units"
+hard-005-es,es,legado,correcta,1,vtadia,,,529,148,1.658,0.002538,"WITH m AS (SELECT date_trunc('month', vta_fch)::date AS mes, SUM(vta_und) AS total FROM vtadia GROUP BY 1), c AS (SELECT mes, total, LAG(total) OVER (ORDER BY mes) AS prev FROM m) SELECT COUNT(*) AS meses_con_aumento FROM c WHERE prev IS NOT NULL AND total > prev"
+hard-005-es,es,legado_dic,correcta,1,vtadia,,,1520,195,1.774,0.00499,"WITH mensual AS (
+  SELECT date_trunc('month', vta_fch)::date AS mes, SUM(vta_und) AS total
+  FROM vtadia
+  GROUP BY date_trunc('month', vta_fch)
+),
+comparado AS (
+  SELECT mes, total, LAG(total) OVER (ORDER BY mes) AS total_anterior
+  FROM mensual
+)
+SELECT COUNT(*) AS meses_con_aumento
+FROM comparado
+WHERE total_anterior IS NOT NULL
+  AND total > total_anterior"
+hard-005-es,es,legado_rec,correcta,1,vtadia,vtadia|exidet|ocpcab,1,738,155,1.671,0.003026,"WITH m AS (SELECT date_trunc('month', vta_fch) AS mes, SUM(vta_und) AS total FROM vtadia GROUP BY date_trunc('month', vta_fch)), c AS (SELECT mes, total, LAG(total) OVER (ORDER BY mes) AS anterior FROM m) SELECT COUNT(*) AS meses FROM c WHERE anterior IS NOT NULL AND total > anterior"
+hard-005-en,en,copilot,correcta,1,vtadia,,,881,184,1.949,0.003602,"WITH monthly AS (
+  SELECT date_trunc('month', day)::date AS month, SUM(units) AS total_units
+  FROM sales_daily
+  GROUP BY date_trunc('month', day)
+),
+compared AS (
+  SELECT month, total_units, LAG(total_units) OVER (ORDER BY month) AS prev_units
+  FROM monthly
+)
+SELECT COUNT(*) AS months_higher_than_previous
+FROM compared
+WHERE prev_units IS NOT NULL AND total_units > prev_units"
+hard-005-en,en,legado,correcta,1,vtadia,,,509,162,1.686,0.002638,"WITH m AS (SELECT date_trunc('month', vta_fch) AS mes, SUM(vta_und) AS total FROM vtadia GROUP BY date_trunc('month', vta_fch)), c AS (SELECT mes, total, LAG(total) OVER (ORDER BY mes) AS prev_total FROM m) SELECT COUNT(*) AS meses_mayores FROM c WHERE prev_total IS NOT NULL AND total > prev_total"
+hard-005-en,en,legado_dic,correcta,1,vtadia,,,1500,148,1.614,0.00448,"WITH m AS (SELECT date_trunc('month', vta_fch)::date AS mes, SUM(vta_und) AS total FROM vtadia GROUP BY 1), c AS (SELECT mes, total, LAG(total) OVER (ORDER BY mes) AS prev FROM m) SELECT COUNT(*) AS meses_con_aumento FROM c WHERE prev IS NOT NULL AND total > prev"
+hard-005-en,en,legado_rec,correcta,1,vtadia,vtadia|exidet|ocpcab,1,718,162,2.059,0.003056,"WITH monthly AS (SELECT date_trunc('month', vta_fch)::date AS mes, SUM(vta_und) AS total FROM vtadia GROUP BY 1), cmp AS (SELECT mes, total, LAG(total) OVER (ORDER BY mes) AS prev_total FROM monthly) SELECT COUNT(*) AS meses_con_aumento FROM cmp WHERE prev_total IS NOT NULL AND total > prev_total"
+hard-006-es,es,copilot,correcta,1,artmst|prvmst,,,897,125,1.782,0.003044,"SELECT s.supplier_id, s.name, COUNT(*) AS critical_products
+FROM suppliers s
+JOIN products p ON p.supplier_id = s.supplier_id
+WHERE p.critical = TRUE
+GROUP BY s.supplier_id, s.name
+ORDER BY critical_products DESC, s.name ASC
+LIMIT 1"
+hard-006-es,es,legado,correcta,1,artmst|prvmst,,,525,141,1.477,0.00246,"SELECT p.prv_id, p.prv_nm, COUNT(*) AS productos_criticos
+FROM prvmst p
+JOIN artmst a ON a.art_prv = p.prv_id
+WHERE a.art_crt = TRUE
+GROUP BY p.prv_id, p.prv_nm
+ORDER BY productos_criticos DESC, p.prv_nm ASC
+LIMIT 1"
+hard-006-es,es,legado_dic,correcta,1,artmst|prvmst,,,1516,141,1.918,0.004442,"SELECT p.prv_id, p.prv_nm, COUNT(*) AS productos_criticos
+FROM prvmst p
+JOIN artmst a ON a.art_prv = p.prv_id
+WHERE a.art_crt = TRUE
+GROUP BY p.prv_id, p.prv_nm
+ORDER BY productos_criticos DESC, p.prv_nm ASC
+LIMIT 1"
+hard-006-es,es,legado_rec,resultado_distinto,0,artmst|prvmst,prvmst|ocpcab|exidet,0,813,279,3.409,0.004416,SELECT 'No se puede responder con el esquema disponible: no existe la tabla artmst (que vincula artículos con proveedores mediante art_prv) ni una definición de producto crítico' AS error
+hard-006-en,en,copilot,correcta,1,artmst|prvmst,,,877,126,1.801,0.003014,"SELECT s.supplier_id, s.name, COUNT(*) AS critical_products
+FROM suppliers s
+JOIN products p ON p.supplier_id = s.supplier_id
+WHERE p.critical = TRUE
+GROUP BY s.supplier_id, s.name
+ORDER BY critical_products DESC, s.name ASC
+LIMIT 1"
+hard-006-en,en,legado,correcta,1,artmst|prvmst,,,505,137,1.511,0.00238,"SELECT p.prv_id, p.prv_nm, COUNT(*) AS critical_products
+FROM prvmst p
+JOIN artmst a ON a.art_prv = p.prv_id
+WHERE a.art_crt = TRUE
+GROUP BY p.prv_id, p.prv_nm
+ORDER BY critical_products DESC, p.prv_nm ASC
+LIMIT 1"
+hard-006-en,en,legado_dic,correcta,1,artmst|prvmst,,,1496,137,1.346,0.004362,"SELECT p.prv_id, p.prv_nm, COUNT(*) AS critical_products
+FROM artmst a
+JOIN prvmst p ON p.prv_id = a.art_prv
+WHERE a.art_crt = TRUE
+GROUP BY p.prv_id, p.prv_nm
+ORDER BY critical_products DESC, p.prv_nm ASC
+LIMIT 1"
+hard-006-en,en,legado_rec,resultado_distinto,0,artmst|prvmst,prvmst|ocpcab|exidet,0,793,301,3.606,0.004596,"SELECT 'No se puede responder con el esquema disponible: la tabla artmst (que vincula artículos con proveedores mediante art_prv) no está en el esquema, y no existe una definición de producto crítico' AS aviso"
+hard-007-es,es,copilot,correcta,1,almmst|exidet|vtadia,,,913,180,2.07,0.003626,"SELECT COUNT(DISTINCT s.sku) AS total_productos
+FROM sales_daily s
+WHERE s.day BETWEEN DATE '2026-09-01' AND DATE '2026-09-26'
+  AND s.units >= 1
+  AND NOT EXISTS (
+    SELECT 1
+    FROM stock st
+    JOIN warehouses w ON w.warehouse_id = st.warehouse_id
+    WHERE st.sku = s.sku
+      AND w.city = 'Monterrey'
+  )"
+hard-007-es,es,legado,correcta,1,almmst|exidet|vtadia,,,541,195,2.161,0.003032,SELECT COUNT(DISTINCT v.vta_art) FROM vtadia v WHERE v.vta_fch BETWEEN '2026-09-01' AND '2026-09-26' AND v.vta_und > 0 AND NOT EXISTS (SELECT 1 FROM exidet e JOIN almmst a ON a.alm_id = e.exi_alm WHERE e.exi_art = v.vta_art AND (a.alm_dsc ILIKE '%Monterrey%' OR a.alm_cdd ILIKE '%Monterrey%'))
+hard-007-es,es,legado_dic,correcta,1,almmst|exidet|vtadia,,,1532,187,2.11,0.004934,"SELECT COUNT(DISTINCT v.vta_art) AS total_productos
+FROM vtadia v
+WHERE v.vta_fch BETWEEN '2026-09-01' AND '2026-09-26'
+  AND v.vta_und > 0
+  AND NOT EXISTS (
+    SELECT 1
+    FROM exidet e
+    JOIN almmst a ON a.alm_id = e.exi_alm
+    WHERE e.exi_art = v.vta_art
+      AND a.alm_cdd = 'Monterrey'
+  )"
+hard-007-es,es,legado_rec,no_es_select,0,almmst|exidet|vtadia,exidet|vtadia|artmst,0,885,653,5.829,0.0083,"No puedo generar la consulta con el esquema disponible. `exidet.exi_alm` solo guarda el ID del almacén, y la tabla `almmst`, que tendría el nombre ""Monterrey"", no está en el esquema. Sin ese dato tendría que inventar el ID.
+
+Si me indicas el `alm_id` de Monterrey, la consulta quedaría así (con `:id`"
+hard-007-en,en,copilot,correcta,1,almmst|exidet|vtadia,,,895,184,1.793,0.00363,"SELECT COUNT(DISTINCT sd.sku) AS product_count
+FROM sales_daily sd
+WHERE sd.day BETWEEN DATE '2026-09-01' AND DATE '2026-09-26'
+  AND sd.units >= 1
+  AND NOT EXISTS (
+    SELECT 1
+    FROM stock s
+    JOIN warehouses w ON w.warehouse_id = s.warehouse_id
+    WHERE s.sku = sd.sku
+      AND w.city = 'Monterrey'
+  )"
+hard-007-en,en,legado,correcta,1,almmst|exidet|vtadia,,,523,222,1.835,0.003266,"SELECT COUNT(DISTINCT v.vta_art) AS product_count
+FROM vtadia v
+WHERE v.vta_fch BETWEEN DATE '2026-09-01' AND DATE '2026-09-26'
+  AND v.vta_und > 0
+  AND NOT EXISTS (
+    SELECT 1
+    FROM exidet e
+    JOIN almmst a ON a.alm_id = e.exi_alm
+    WHERE e.exi_art = v.vta_art
+      AND (a.alm_dsc ILIKE '%Monterrey%' OR a.alm_cdd ILIKE '%Monterrey%')
+  )"
+hard-007-en,en,legado_dic,correcta,1,almmst|exidet|vtadia,,,1514,190,2.226,0.004928,"SELECT COUNT(DISTINCT v.vta_art) AS total
+FROM vtadia v
+WHERE v.vta_fch BETWEEN DATE '2026-09-01' AND DATE '2026-09-26'
+  AND v.vta_und > 0
+  AND NOT EXISTS (
+    SELECT 1
+    FROM exidet e
+    JOIN almmst a ON a.alm_id = e.exi_alm
+    WHERE e.exi_art = v.vta_art
+      AND a.alm_cdd = 'Monterrey'
+  )"
+hard-007-en,en,legado_rec,no_es_select,0,almmst|exidet|vtadia,vtadia|artmst|exidet,0,867,456,4.797,0.006294,"I can't write this query reliably. The Monterrey warehouse would have to be identified through the warehouse master table (`almmst`, referenced by `exidet.exi_alm`), and that table isn't in the schema I have. `exidet` only stores a numeric warehouse ID, so I can't tell which ID is Monterrey, and gue"
+hard-008-es,es,copilot,correcta,1,artmst,,,897,69,1.69,0.002484,SELECT percentile_cont(0.5) WITHIN GROUP (ORDER BY unit_cost) AS mediana_unit_cost FROM products WHERE category = 'Hidraulico'
+hard-008-es,es,legado,correcta,1,artmst,,,525,70,1.294,0.00175,SELECT percentile_cont(0.5) WITHIN GROUP (ORDER BY art_cst) AS mediana_costo FROM artmst WHERE art_lin = 'Hidraulico'
+hard-008-es,es,legado_dic,correcta,1,artmst,,,1516,75,1.684,0.003782,SELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY art_cst) AS mediana_costo FROM artmst WHERE art_lin = 'Hidraulico'
+hard-008-es,es,legado_rec,correcta,1,artmst,artmst|vtadia|prvmst,1,884,75,2.148,0.002518,SELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY art_cst) AS mediana_costo FROM artmst WHERE art_lin = 'Hidraulico'
+hard-008-en,en,copilot,correcta,1,artmst,,,881,72,1.839,0.002482,SELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY unit_cost) AS median_unit_cost FROM products WHERE category = 'Hidraulico'
+hard-008-en,en,legado,correcta,1,artmst,,,509,76,1.262,0.001778,SELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY art_cst) AS median_unit_cost FROM artmst WHERE art_lin = 'Hidraulico'
+hard-008-en,en,legado_dic,correcta,1,artmst,,,1500,73,1.916,0.00373,SELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY art_cst) AS median_cost FROM artmst WHERE art_lin = 'Hidraulico'
+hard-008-en,en,legado_rec,correcta,1,artmst,artmst|vtadia|prvmst,1,868,73,1.267,0.002466,SELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY art_cst) AS median_cost FROM artmst WHERE art_lin = 'Hidraulico'
+hard-009-es,es,copilot,correcta,1,artmst|prvmst,,,913,76,1.83,0.002586,SELECT AVG(p.unit_cost) AS costo_unitario_promedio FROM products p JOIN suppliers s ON s.supplier_id = p.supplier_id WHERE s.lead_time_days > 30
+hard-009-es,es,legado,correcta,1,artmst|prvmst,,,541,74,1.136,0.001822,SELECT AVG(a.art_cst) AS costo_unitario_promedio FROM artmst a JOIN prvmst p ON a.art_prv = p.prv_id WHERE p.prv_dte > 30
+hard-009-es,es,legado_dic,correcta,1,artmst|prvmst,,,1532,74,1.143,0.003804,SELECT AVG(a.art_cst) AS costo_unitario_promedio FROM artmst a JOIN prvmst p ON p.prv_id = a.art_prv WHERE p.prv_dte > 30
+hard-009-es,es,legado_rec,resultado_distinto,0,artmst|prvmst,prvmst|vtadia|ocpcab,0,765,293,3.569,0.00446,"SELECT 'No es posible responder: el esquema no incluye la tabla artmst ni ninguna columna de costo unitario, solo prvmst, vtadia y ocpcab.' AS error"
+hard-009-en,en,copilot,correcta,1,artmst|prvmst,,,889,73,1.576,0.002508,SELECT AVG(p.unit_cost) AS average_unit_cost FROM products p JOIN suppliers s ON s.supplier_id = p.supplier_id WHERE s.lead_time_days > 30
+hard-009-en,en,legado,correcta,1,artmst|prvmst,,,517,62,1.263,0.001654,SELECT AVG(a.art_cst) FROM artmst a JOIN prvmst p ON a.art_prv = p.prv_id WHERE p.prv_dte > 30
+hard-009-en,en,legado_dic,correcta,1,artmst|prvmst,,,1508,69,1.176,0.003706,SELECT AVG(a.art_cst) AS avg_cost FROM artmst a JOIN prvmst p ON p.prv_id = a.art_prv WHERE p.prv_dte > 30
+hard-009-en,en,legado_rec,resultado_distinto,0,artmst|prvmst,prvmst|vtadia|ocpcab,0,741,335,3.657,0.004832,SELECT 'Cannot be answered: the schema has no unit cost column and no artmst table linking articles to suppliers' AS error
+hard-010-es,es,copilot,correcta,1,vtadia,,,894,110,1.468,0.002888,"SELECT COUNT(*) AS sku_count
+FROM (
+    SELECT sku
+    FROM sales_daily
+    WHERE day BETWEEN DATE '2026-08-28' AND DATE '2026-09-26'
+    GROUP BY sku
+    HAVING SUM(units) > 500
+) AS t"
+hard-010-es,es,legado,correcta,1,vtadia,,,522,99,1.38,0.002034,SELECT COUNT(*) AS total_sku FROM (SELECT vta_art FROM vtadia WHERE vta_fch BETWEEN '2026-08-28' AND '2026-09-26' GROUP BY vta_art HAVING SUM(vta_und) > 500) t
+hard-010-es,es,legado_dic,correcta,1,vtadia,,,1513,99,1.87,0.004016,SELECT COUNT(*) AS total_skus FROM (SELECT vta_art FROM vtadia WHERE vta_fch BETWEEN '2026-08-28' AND '2026-09-26' GROUP BY vta_art HAVING SUM(vta_und) > 500) t
+hard-010-es,es,legado_rec,correcta,1,vtadia,artmst|vtadia|exidet,1,866,99,1.227,0.002722,SELECT COUNT(*) AS total_skus FROM (SELECT vta_art FROM vtadia WHERE vta_fch BETWEEN '2026-08-28' AND '2026-09-26' GROUP BY vta_art HAVING SUM(vta_und) > 500) t
+hard-010-en,en,copilot,correcta,1,vtadia,,,883,103,2.018,0.002796,"SELECT COUNT(*) AS sku_count
+FROM (
+    SELECT sku
+    FROM sales_daily
+    WHERE day BETWEEN '2026-08-28' AND '2026-09-26'
+    GROUP BY sku
+    HAVING SUM(units) > 500
+) AS t"
+hard-010-en,en,legado,correcta,1,vtadia,,,511,95,1.429,0.001972,SELECT COUNT(*) FROM (SELECT vta_art FROM vtadia WHERE vta_fch BETWEEN '2026-08-28' AND '2026-09-26' GROUP BY vta_art HAVING SUM(vta_und) > 500) AS t
+hard-010-en,en,legado_dic,correcta,1,vtadia,,,1502,111,1.39,0.004114,"SELECT COUNT(*) AS sku_count
+FROM (
+  SELECT vta_art
+  FROM vtadia
+  WHERE vta_fch BETWEEN '2026-08-28' AND '2026-09-26'
+  GROUP BY vta_art
+  HAVING SUM(vta_und) > 500
+) t"
+hard-010-en,en,legado_rec,correcta,1,vtadia,artmst|vtadia|ocpcab,1,905,101,1.503,0.00282,SELECT COUNT(*) AS sku_count FROM (SELECT vta_art FROM vtadia WHERE vta_fch BETWEEN '2026-08-28' AND '2026-09-26' GROUP BY vta_art HAVING SUM(vta_und) > 500) AS t
+hard-011-es,es,copilot,correcta,1,almmst|artmst|exidet,,,892,149,1.593,0.003274,"SELECT w.warehouse_id, w.name, w.city, SUM(s.on_hand * p.unit_cost) AS inventory_value
+FROM warehouses w
+JOIN stock s ON s.warehouse_id = w.warehouse_id
+JOIN products p ON p.sku = s.sku
+GROUP BY w.warehouse_id, w.name, w.city
+ORDER BY inventory_value DESC
+LIMIT 1"
+hard-011-es,es,legado,correcta,1,almmst|artmst|exidet,,,520,170,1.706,0.00274,"SELECT a.alm_id, a.alm_dsc, a.alm_cdd, SUM(e.exi_qty * r.art_cst) AS valor_inventario
+FROM exidet e
+JOIN artmst r ON r.art_cd = e.exi_art
+JOIN almmst a ON a.alm_id = e.exi_alm
+GROUP BY a.alm_id, a.alm_dsc, a.alm_cdd
+ORDER BY valor_inventario DESC
+LIMIT 1"
+hard-011-es,es,legado_dic,correcta,1,almmst|artmst|exidet,,,1511,170,2.065,0.004722,"SELECT a.alm_id, a.alm_dsc, a.alm_cdd, SUM(e.exi_qty * m.art_cst) AS valor_inventario
+FROM exidet e
+JOIN artmst m ON m.art_cd = e.exi_art
+JOIN almmst a ON a.alm_id = e.exi_alm
+GROUP BY a.alm_id, a.alm_dsc, a.alm_cdd
+ORDER BY valor_inventario DESC
+LIMIT 1"
+hard-011-es,es,legado_rec,correcta,1,almmst|artmst|exidet,exidet|almmst|artmst,1,928,170,1.424,0.003556,"SELECT a.alm_id, a.alm_dsc, a.alm_cdd, SUM(e.exi_qty * m.art_cst) AS valor_inventario
+FROM exidet e
+JOIN almmst a ON a.alm_id = e.exi_alm
+JOIN artmst m ON m.art_cd = e.exi_art
+GROUP BY a.alm_id, a.alm_dsc, a.alm_cdd
+ORDER BY valor_inventario DESC
+LIMIT 1"
+hard-011-en,en,copilot,correcta,1,almmst|artmst|exidet,,,882,143,2.522,0.003194,"SELECT w.warehouse_id, w.name, w.city, SUM(s.on_hand * p.unit_cost) AS inventory_value FROM warehouses w JOIN stock s ON s.warehouse_id = w.warehouse_id JOIN products p ON p.sku = s.sku GROUP BY w.warehouse_id, w.name, w.city ORDER BY inventory_value DESC LIMIT 1"
+hard-011-en,en,legado,correcta,1,almmst|artmst|exidet,,,510,144,1.925,0.00246,"SELECT a.alm_id, a.alm_dsc, SUM(e.exi_qty * r.art_cst) AS inventory_value FROM almmst a JOIN exidet e ON e.exi_alm = a.alm_id JOIN artmst r ON r.art_cd = e.exi_art GROUP BY a.alm_id, a.alm_dsc ORDER BY inventory_value DESC LIMIT 1"
+hard-011-en,en,legado_dic,correcta,1,almmst|artmst|exidet,,,1501,168,1.752,0.004682,"SELECT a.alm_id, a.alm_dsc, a.alm_cdd, SUM(e.exi_qty * r.art_cst) AS inventory_value
+FROM exidet e
+JOIN artmst r ON r.art_cd = e.exi_art
+JOIN almmst a ON a.alm_id = e.exi_alm
+GROUP BY a.alm_id, a.alm_dsc, a.alm_cdd
+ORDER BY inventory_value DESC
+LIMIT 1"
+hard-011-en,en,legado_rec,correcta,1,almmst|artmst|exidet,exidet|artmst|almmst,1,918,144,1.52,0.003276,"SELECT a.alm_id, a.alm_dsc, SUM(e.exi_qty * m.art_cst) AS inventory_value FROM exidet e JOIN artmst m ON m.art_cd = e.exi_art JOIN almmst a ON a.alm_id = e.exi_alm GROUP BY a.alm_id, a.alm_dsc ORDER BY inventory_value DESC LIMIT 1"
+hard-012-es,es,copilot,correcta,1,exidet,,,875,74,1.411,0.00249,"SELECT s.sku
+FROM stock s
+GROUP BY s.sku
+HAVING COUNT(DISTINCT s.warehouse_id) = (SELECT COUNT(*) FROM warehouses)"
+hard-012-es,es,legado,correcta,1,exidet,,,503,337,3.445,0.004376,"SELECT e.exi_art AS sku
+FROM exidet e
+JOIN almmst a ON a.alm_id = e.exi_alm
+GROUP BY e.exi_art
+HAVING COUNT(DISTINCT e.exi_alm) = 3
+ORDER BY e.exi_art"
+hard-012-es,es,legado_dic,correcta,1,exidet,,,1494,86,1.765,0.003848,SELECT e.exi_art FROM exidet e GROUP BY e.exi_art HAVING COUNT(DISTINCT e.exi_alm) = (SELECT COUNT(*) FROM almmst) ORDER BY e.exi_art
+hard-012-es,es,legado_rec,correcta,1,exidet,exidet|artmst|almmst,1,911,81,1.276,0.002632,"SELECT e.exi_art AS sku
+FROM exidet e
+GROUP BY e.exi_art
+HAVING COUNT(DISTINCT e.exi_alm) = (SELECT COUNT(*) FROM almmst)"
+hard-012-en,en,copilot,correcta,1,exidet,,,868,120,1.577,0.002936,"SELECT s.sku
+FROM stock s
+JOIN warehouses w ON w.warehouse_id = s.warehouse_id
+WHERE w.city IN ('Ciudad de Mexico', 'Guadalajara', 'Monterrey')
+GROUP BY s.sku
+HAVING COUNT(DISTINCT w.city) = 3"
+hard-012-en,en,legado,correcta,1,exidet,,,496,331,2.792,0.004302,"SELECT e.exi_art AS art_cd
+FROM exidet e
+JOIN almmst a ON a.alm_id = e.exi_alm
+GROUP BY e.exi_art
+HAVING COUNT(DISTINCT e.exi_alm) = (SELECT COUNT(*) FROM almmst)"
+hard-012-en,en,legado_dic,correcta,1,exidet,,,1487,77,1.228,0.003744,"SELECT e.exi_art
+FROM exidet e
+GROUP BY e.exi_art
+HAVING COUNT(DISTINCT e.exi_alm) = (SELECT COUNT(*) FROM almmst)"
+hard-012-en,en,legado_rec,correcta,1,exidet,exidet|artmst|almmst,1,904,161,1.428,0.003418,"SELECT e.exi_art AS art_cd, a.art_dsc
+FROM exidet e
+JOIN artmst a ON a.art_cd = e.exi_art
+JOIN almmst w ON w.alm_id = e.exi_alm
+GROUP BY e.exi_art, a.art_dsc
+HAVING COUNT(DISTINCT e.exi_alm) = (SELECT COUNT(*) FROM almmst)
+ORDER BY e.exi_art"
+hard-014-es,es,copilot,resultado_distinto,0,almmst|exidet,,,897,145,2.206,0.003244,"SELECT warehouse_id, sku, on_hand
+FROM (
+    SELECT s.warehouse_id, s.sku, s.on_hand,
+           ROW_NUMBER() OVER (PARTITION BY s.warehouse_id ORDER BY s.on_hand DESC, s.sku ASC) AS rn
+    FROM stock s
+) t
+WHERE rn = 1
+ORDER BY warehouse_id"
+hard-014-es,es,legado,correcta,1,almmst|exidet,,,525,202,2.145,0.00307,"WITH ranked AS (SELECT e.exi_alm, e.exi_art, e.exi_qty, ROW_NUMBER() OVER (PARTITION BY e.exi_alm ORDER BY e.exi_qty DESC, e.exi_art ASC) AS rn FROM exidet e) SELECT a.alm_id, a.alm_dsc, r.exi_art AS sku, r.exi_qty AS cantidad FROM almmst a JOIN ranked r ON r.exi_alm = a.alm_id AND r.rn = 1 ORDER BY a.alm_id"
+hard-014-es,es,legado_dic,correcta,1,almmst|exidet,,,1516,193,2.376,0.004962,"SELECT alm_id, alm_dsc, exi_art AS sku, exi_qty
+FROM (
+  SELECT a.alm_id, a.alm_dsc, e.exi_art, e.exi_qty,
+         ROW_NUMBER() OVER (PARTITION BY a.alm_id ORDER BY e.exi_qty DESC, e.exi_art ASC) AS rn
+  FROM almmst a
+  JOIN exidet e ON e.exi_alm = a.alm_id
+) t
+WHERE rn = 1
+ORDER BY alm_id"
+hard-014-es,es,legado_rec,resultado_distinto,0,almmst|exidet,exidet|artmst|ocpcab,0,983,138,1.674,0.003346,"SELECT exi_alm, exi_art, exi_qty
+FROM (
+  SELECT exi_alm, exi_art, exi_qty,
+         ROW_NUMBER() OVER (PARTITION BY exi_alm ORDER BY exi_qty DESC, exi_art ASC) AS rn
+  FROM exidet
+) t
+WHERE rn = 1
+ORDER BY exi_alm"
+hard-014-en,en,copilot,resultado_distinto,0,almmst|exidet,,,884,148,2.755,0.003248,"SELECT warehouse_id, sku, on_hand
+FROM (
+    SELECT s.warehouse_id, s.sku, s.on_hand,
+           ROW_NUMBER() OVER (PARTITION BY s.warehouse_id ORDER BY s.on_hand DESC, s.sku ASC) AS rn
+    FROM stock s
+) ranked
+WHERE rn = 1
+ORDER BY warehouse_id"
+hard-014-en,en,legado,correcta,1,almmst|exidet,,,512,188,1.793,0.002904,"WITH ranked AS (SELECT a.alm_id, a.alm_dsc, e.exi_art, e.exi_qty, ROW_NUMBER() OVER (PARTITION BY a.alm_id ORDER BY e.exi_qty DESC, e.exi_art ASC) AS rn FROM almmst a JOIN exidet e ON e.exi_alm = a.alm_id) SELECT alm_id, alm_dsc, exi_art, exi_qty FROM ranked WHERE rn = 1 ORDER BY alm_id"
+hard-014-en,en,legado_dic,correcta,1,almmst|exidet,,,1503,195,1.687,0.004956,"SELECT alm_id, alm_dsc, exi_art AS art_cd, exi_qty
+FROM (
+  SELECT a.alm_id, a.alm_dsc, e.exi_art, e.exi_qty,
+         ROW_NUMBER() OVER (PARTITION BY a.alm_id ORDER BY e.exi_qty DESC, e.exi_art ASC) AS rn
+  FROM almmst a
+  JOIN exidet e ON e.exi_alm = a.alm_id
+) t
+WHERE rn = 1
+ORDER BY alm_id"
+hard-014-en,en,legado_rec,resultado_distinto,0,almmst|exidet,exidet|artmst|vtadia,0,856,138,1.724,0.003092,"SELECT exi_alm, exi_art, exi_qty
+FROM (
+  SELECT exi_alm, exi_art, exi_qty,
+         ROW_NUMBER() OVER (PARTITION BY exi_alm ORDER BY exi_qty DESC, exi_art ASC) AS rn
+  FROM exidet
+) t
+WHERE rn = 1
+ORDER BY exi_alm"
+hard-015-es,es,copilot,correcta,1,artmst,,,902,104,5.275,0.002844,"SELECT p.category, COUNT(DISTINCT p.supplier_id) AS num_proveedores
+FROM products p
+WHERE p.supplier_id IS NOT NULL
+GROUP BY p.category
+ORDER BY num_proveedores DESC, p.category ASC
+LIMIT 3"
+hard-015-es,es,legado,correcta,1,artmst,,,530,107,1.478,0.00213,"SELECT art_lin, COUNT(DISTINCT art_prv) AS proveedores FROM artmst WHERE art_lin IS NOT NULL AND art_prv IS NOT NULL GROUP BY art_lin ORDER BY proveedores DESC, art_lin ASC LIMIT 3"
+hard-015-es,es,legado_dic,correcta,1,artmst,,,1521,107,1.965,0.004112,"SELECT art_lin, COUNT(DISTINCT art_prv) AS proveedores FROM artmst WHERE art_lin IS NOT NULL AND art_prv IS NOT NULL GROUP BY art_lin ORDER BY proveedores DESC, art_lin ASC LIMIT 3"
+hard-015-es,es,legado_rec,resultado_distinto,0,artmst,prvmst|exidet|ocpcab,0,818,245,3.096,0.004086,SELECT 'No es posible responder con el esquema disponible: no existe ninguna tabla ni columna de categorías de artículos (artmst no está en el esquema)' AS aviso
+hard-015-en,en,copilot,correcta,1,artmst,,,883,86,1.648,0.002626,"SELECT category, COUNT(DISTINCT supplier_id) AS supplier_count FROM products WHERE supplier_id IS NOT NULL GROUP BY category ORDER BY supplier_count DESC, category ASC LIMIT 3"
+hard-015-en,en,legado,correcta,1,artmst,,,511,79,2.465,0.001812,"SELECT art_lin, COUNT(DISTINCT art_prv) AS supplier_count FROM artmst GROUP BY art_lin ORDER BY supplier_count DESC, art_lin ASC LIMIT 3"
+hard-015-en,en,legado_dic,correcta,1,artmst,,,1502,111,1.875,0.004114,"SELECT art_lin, COUNT(DISTINCT art_prv) AS num_proveedores FROM artmst WHERE art_lin IS NOT NULL AND art_prv IS NOT NULL GROUP BY art_lin ORDER BY num_proveedores DESC, art_lin ASC LIMIT 3"
+hard-015-en,en,legado_rec,resultado_distinto,0,artmst,prvmst|exidet|ocpcab,0,799,230,2.788,0.003898,SELECT 'Cannot answer: the available schema has no category column and no article master table (artmst) linking articles to categories and suppliers' AS error_message
+hard-016-es,es,copilot,correcta,1,vtadia,,,900,106,1.439,0.00286,"SELECT COALESCE(SUM(units), 0) AS unidades_fin_de_semana
+FROM sales_daily
+WHERE day BETWEEN DATE '2026-04-01' AND DATE '2026-09-26'
+  AND EXTRACT(DOW FROM day) IN (0, 6)"
+hard-016-es,es,legado,correcta,1,vtadia,,,528,109,1.35,0.002146,"SELECT COALESCE(SUM(vta_und), 0) AS unidades_vendidas FROM vtadia WHERE vta_fch BETWEEN DATE '2026-04-01' AND DATE '2026-09-26' AND EXTRACT(DOW FROM vta_fch) IN (0, 6)"
+hard-016-es,es,legado_dic,correcta,1,vtadia,,,1519,112,1.842,0.004158,"SELECT COALESCE(SUM(vta_und), 0) AS unidades_fin_de_semana FROM vtadia WHERE vta_fch BETWEEN DATE '2026-04-01' AND DATE '2026-09-26' AND EXTRACT(DOW FROM vta_fch) IN (0, 6)"
+hard-016-es,es,legado_rec,correcta,1,vtadia,vtadia|exidet|ocpcab,1,737,112,1.868,0.002594,"SELECT COALESCE(SUM(vta_und), 0) AS unidades_fin_de_semana FROM vtadia WHERE vta_fch BETWEEN DATE '2026-04-01' AND DATE '2026-09-26' AND EXTRACT(DOW FROM vta_fch) IN (0, 6)"
+hard-016-en,en,copilot,correcta,1,vtadia,,,888,99,1.5,0.002766,"SELECT COALESCE(SUM(units), 0) AS weekend_units_sold FROM sales_daily WHERE day BETWEEN DATE '2026-04-01' AND DATE '2026-09-26' AND EXTRACT(DOW FROM day) IN (0, 6)"
+hard-016-en,en,legado,correcta,1,vtadia,,,516,98,1.587,0.002012,"SELECT COALESCE(SUM(vta_und), 0) AS total_units FROM vtadia WHERE vta_fch BETWEEN '2026-04-01' AND '2026-09-26' AND EXTRACT(DOW FROM vta_fch) IN (0, 6)"
+hard-016-en,en,legado_dic,correcta,1,vtadia,,,1507,98,1.278,0.003994,"SELECT COALESCE(SUM(vta_und), 0) AS total_units FROM vtadia WHERE vta_fch BETWEEN '2026-04-01' AND '2026-09-26' AND EXTRACT(DOW FROM vta_fch) IN (0, 6)"
+hard-016-en,en,legado_rec,correcta,1,vtadia,vtadia|exidet|ocpcab,1,725,98,1.799,0.00243,"SELECT COALESCE(SUM(vta_und), 0) AS total_units FROM vtadia WHERE vta_fch BETWEEN '2026-04-01' AND '2026-09-26' AND EXTRACT(DOW FROM vta_fch) IN (0, 6)"
+hard-017-es,es,copilot,correcta,1,vtadia,,,915,167,1.764,0.0035,"WITH daily_totals AS (
+  SELECT day, SUM(units) AS total_units
+  FROM sales_daily
+  GROUP BY day
+)
+SELECT EXTRACT(ISODOW FROM day)::int AS iso_dow,
+       AVG(total_units) AS avg_units
+FROM daily_totals
+GROUP BY EXTRACT(ISODOW FROM day)::int
+ORDER BY avg_units DESC, iso_dow ASC
+LIMIT 1"
+hard-017-es,es,legado,correcta,1,vtadia,,,543,286,2.385,0.003946,"WITH diario AS (
+  SELECT vta_fch, SUM(vta_und) AS total_und
+  FROM vtadia
+  GROUP BY vta_fch
+)
+SELECT EXTRACT(ISODOW FROM vta_fch)::int AS dia_semana_iso,
+       AVG(total_und) AS promedio_unidades
+FROM diario
+GROUP BY EXTRACT(ISODOW FROM vta_fch)::int
+ORDER BY promedio_unidades DESC, dia_semana_iso ASC
+LIMIT 1"
+hard-017-es,es,legado_dic,correcta,1,vtadia,,,1534,191,1.662,0.004978,"WITH diario AS (
+  SELECT vta_fch, SUM(vta_und) AS total_dia
+  FROM vtadia
+  GROUP BY vta_fch
+)
+SELECT EXTRACT(ISODOW FROM vta_fch)::int AS dia_semana_iso, AVG(total_dia) AS promedio_unidades
+FROM diario
+GROUP BY EXTRACT(ISODOW FROM vta_fch)::int
+ORDER BY promedio_unidades DESC, dia_semana_iso ASC
+LIMIT 1"
+hard-017-es,es,legado_rec,correcta,1,vtadia,vtadia|exidet|prvmst,1,717,171,1.848,0.003144,"WITH diario AS (SELECT vta_fch, SUM(vta_und) AS total FROM vtadia GROUP BY vta_fch) SELECT EXTRACT(ISODOW FROM vta_fch)::int AS dia_semana_iso, AVG(total) AS promedio_unidades FROM diario GROUP BY EXTRACT(ISODOW FROM vta_fch) ORDER BY promedio_unidades DESC, dia_semana_iso ASC LIMIT 1"
+hard-017-en,en,copilot,correcta,1,vtadia,,,900,171,1.807,0.00351,"WITH daily_totals AS (
+  SELECT day, SUM(units) AS total_units
+  FROM sales_daily
+  GROUP BY day
+)
+SELECT EXTRACT(ISODOW FROM day)::int AS iso_weekday,
+       AVG(total_units) AS avg_total_units
+FROM daily_totals
+GROUP BY EXTRACT(ISODOW FROM day)
+ORDER BY avg_total_units DESC, iso_weekday ASC
+LIMIT 1"
+hard-017-en,en,legado,correcta,1,vtadia,,,528,173,1.507,0.002786,"WITH daily AS (SELECT vta_fch, SUM(vta_und) AS total_units FROM vtadia GROUP BY vta_fch) SELECT EXTRACT(ISODOW FROM vta_fch)::int AS iso_weekday, AVG(total_units) AS avg_daily_units FROM daily GROUP BY EXTRACT(ISODOW FROM vta_fch)::int ORDER BY avg_daily_units DESC, iso_weekday ASC LIMIT 1"
+hard-017-en,en,legado_dic,correcta,1,vtadia,,,1519,185,1.69,0.004888,"WITH daily AS (
+  SELECT vta_fch, SUM(vta_und) AS total_und
+  FROM vtadia
+  GROUP BY vta_fch
+)
+SELECT EXTRACT(ISODOW FROM vta_fch)::int AS iso_weekday,
+       AVG(total_und) AS avg_total_units
+FROM daily
+GROUP BY EXTRACT(ISODOW FROM vta_fch)::int
+ORDER BY avg_total_units DESC, iso_weekday ASC
+LIMIT 1"
+hard-017-en,en,legado_rec,correcta,1,vtadia,vtadia|exidet|prvmst,1,702,171,2.038,0.003114,"WITH daily AS (SELECT vta_fch, SUM(vta_und) AS total_und FROM vtadia GROUP BY vta_fch) SELECT EXTRACT(ISODOW FROM vta_fch)::int AS iso_weekday, AVG(total_und) AS avg_daily_units FROM daily GROUP BY EXTRACT(ISODOW FROM vta_fch) ORDER BY avg_daily_units DESC, iso_weekday ASC LIMIT 1"
+hard-019-es,es,copilot,correcta,1,artmst,,,886,110,1.891,0.002872,"SELECT p.sku, p.name, p.category, p.unit_cost
+FROM products p
+WHERE p.unit_cost > (
+    SELECT AVG(p2.unit_cost)
+    FROM products p2
+    WHERE p2.category = p.category
+)
+ORDER BY p.category, p.unit_cost DESC"
+hard-019-es,es,legado,correcta,1,artmst,,,514,125,1.263,0.002278,"SELECT a.art_cd, a.art_dsc, a.art_lin, a.art_cst
+FROM artmst a
+WHERE a.art_cst > (
+  SELECT AVG(b.art_cst)
+  FROM artmst b
+  WHERE b.art_lin = a.art_lin
+)
+ORDER BY a.art_lin, a.art_cst DESC"
+hard-019-es,es,legado_dic,correcta,1,artmst,,,1505,118,1.24,0.00419,"SELECT a.art_cd, a.art_dsc, a.art_lin, a.art_cst
+FROM artmst a
+WHERE a.art_cst > (SELECT AVG(b.art_cst) FROM artmst b WHERE b.art_lin = a.art_lin)
+ORDER BY a.art_lin, a.art_cst DESC"
+hard-019-es,es,legado_rec,correcta,1,artmst,artmst|vtadia|ocpcab,1,908,125,1.477,0.003066,"SELECT a.art_cd, a.art_dsc, a.art_lin, a.art_cst
+FROM artmst a
+WHERE a.art_cst > (
+  SELECT AVG(b.art_cst)
+  FROM artmst b
+  WHERE b.art_lin = a.art_lin
+)
+ORDER BY a.art_lin, a.art_cst DESC"
+hard-019-en,en,copilot,correcta,1,artmst,,,870,101,4.058,0.00275,"SELECT p.sku, p.name, p.category, p.unit_cost FROM products p WHERE p.unit_cost > (SELECT AVG(p2.unit_cost) FROM products p2 WHERE p2.category = p.category) ORDER BY p.category, p.unit_cost DESC"
+hard-019-en,en,legado,correcta,1,artmst,,,498,126,1.328,0.002256,"SELECT a.art_cd, a.art_dsc, a.art_lin, a.art_cst
+FROM artmst a
+WHERE a.art_cst > (
+  SELECT AVG(b.art_cst)
+  FROM artmst b
+  WHERE b.art_lin = a.art_lin
+)
+ORDER BY a.art_lin, a.art_cst DESC"
+hard-019-en,en,legado_dic,correcta,1,artmst,,,1489,125,3.144,0.004228,"SELECT a.art_cd, a.art_dsc, a.art_lin, a.art_cst
+FROM artmst a
+WHERE a.art_cst > (
+  SELECT AVG(b.art_cst)
+  FROM artmst b
+  WHERE b.art_lin = a.art_lin
+)
+ORDER BY a.art_lin, a.art_cst DESC"
+hard-019-en,en,legado_rec,correcta,1,artmst,artmst|vtadia|ocpcab,1,892,125,1.334,0.003034,"SELECT a.art_cd, a.art_dsc, a.art_lin, a.art_cst
+FROM artmst a
+WHERE a.art_cst > (
+  SELECT AVG(b.art_cst)
+  FROM artmst b
+  WHERE b.art_lin = a.art_lin
+)
+ORDER BY a.art_lin, a.art_cst DESC"
+hard-020-es,es,copilot,correcta,1,artmst|ocpcab,,,880,93,1.434,0.00269,"SELECT COUNT(*) AS ordenes_pendientes_criticas
+FROM purchase_orders po
+JOIN products p ON p.sku = po.sku
+WHERE po.status = 'PENDING_APPROVAL'
+  AND p.critical = TRUE"
+hard-020-es,es,legado,correcta,1,artmst|ocpcab,,,508,236,2.129,0.003376,"SELECT COUNT(*) AS total_ordenes
+FROM ocpcab o
+JOIN artmst a ON a.art_cd = o.ocp_art
+WHERE a.art_crt = TRUE
+  AND o.ocp_sts ILIKE '%pendiente%'"
+hard-020-es,es,legado_dic,correcta,1,artmst|ocpcab,,,1499,86,1.784,0.003858,SELECT COUNT(*) FROM ocpcab o JOIN artmst a ON a.art_cd = o.ocp_art WHERE o.ocp_sts = 'PENDING_APPROVAL' AND a.art_crt = TRUE
+hard-020-es,es,legado_rec,correcta,1,artmst|ocpcab,ocpcab|artmst|prvmst,1,981,94,1.406,0.002902,SELECT COUNT(*) AS total_ordenes FROM ocpcab o JOIN artmst a ON a.art_cd = o.ocp_art WHERE o.ocp_sts = 'PENDING_APPROVAL' AND a.art_crt = TRUE
+hard-020-en,en,copilot,correcta,1,artmst|ocpcab,,,866,83,2.396,0.002562,SELECT COUNT(*) AS pending_critical_orders FROM purchase_orders po JOIN products p ON p.sku = po.sku WHERE po.status = 'PENDING_APPROVAL' AND p.critical = TRUE
+hard-020-en,en,legado,correcta,1,artmst|ocpcab,,,494,267,2.389,0.003658,"SELECT COUNT(*) AS pending_critical_orders
+FROM ocpcab o
+JOIN artmst a ON a.art_cd = o.ocp_art
+WHERE a.art_crt = TRUE
+  AND o.ocp_sts ILIKE 'pend%'"
+hard-020-en,en,legado_dic,correcta,1,artmst|ocpcab,,,1485,94,1.251,0.00391,SELECT COUNT(*) AS total_ordenes FROM ocpcab o JOIN artmst a ON a.art_cd = o.ocp_art WHERE o.ocp_sts = 'PENDING_APPROVAL' AND a.art_crt = TRUE
+hard-020-en,en,legado_rec,correcta,1,artmst|ocpcab,ocpcab|artmst|prvmst,1,967,100,1.406,0.002934,"SELECT COUNT(*) AS pending_critical_orders
+FROM ocpcab o
+JOIN artmst a ON a.art_cd = o.ocp_art
+WHERE o.ocp_sts = 'PENDING_APPROVAL'
+AND a.art_crt = TRUE"
+hard-021-es,es,copilot,correcta,1,almmst|artmst|exidet,,,889,140,1.637,0.003178,"SELECT p.sku, p.name, s.on_hand, p.reorder_point
+FROM stock s
+JOIN products p ON p.sku = s.sku
+JOIN warehouses w ON w.warehouse_id = s.warehouse_id
+WHERE w.city = 'Guadalajara'
+  AND s.on_hand > 2 * p.reorder_point
+ORDER BY s.on_hand DESC"
+hard-021-es,es,legado,correcta,1,almmst|artmst|exidet,,,517,169,1.751,0.002724,"SELECT a.art_cd, a.art_dsc, e.exi_qty, a.art_ptr
+FROM artmst a
+JOIN exidet e ON e.exi_art = a.art_cd
+JOIN almmst m ON m.alm_id = e.exi_alm
+WHERE (m.alm_cdd ILIKE '%Guadalajara%' OR m.alm_dsc ILIKE '%Guadalajara%')
+AND e.exi_qty > 2 * a.art_ptr"
+hard-021-es,es,legado_dic,correcta,1,almmst|artmst|exidet,,,1508,209,2.242,0.005106,"SELECT a.art_cd, a.art_dsc, a.art_ptr, SUM(e.exi_qty) AS existencia_guadalajara
+FROM artmst a
+JOIN exidet e ON e.exi_art = a.art_cd
+JOIN almmst m ON m.alm_id = e.exi_alm
+WHERE m.alm_cdd = 'Guadalajara'
+GROUP BY a.art_cd, a.art_dsc, a.art_ptr
+HAVING SUM(e.exi_qty) > 2 * a.art_ptr
+ORDER BY existencia_guadalajara DESC"
+hard-021-es,es,legado_rec,correcta,1,almmst|artmst|exidet,exidet|almmst|artmst,1,925,172,1.795,0.00357,"SELECT a.art_cd, a.art_dsc, al.alm_id, al.alm_dsc, e.exi_qty, a.art_ptr
+FROM exidet e
+JOIN artmst a ON a.art_cd = e.exi_art
+JOIN almmst al ON al.alm_id = e.exi_alm
+WHERE al.alm_cdd = 'Guadalajara'
+  AND e.exi_qty > 2 * a.art_ptr
+ORDER BY e.exi_qty DESC"
+hard-021-en,en,copilot,correcta,1,almmst|artmst|exidet,,,880,123,1.886,0.00299,"SELECT p.sku, p.name, s.on_hand, p.reorder_point
+FROM products p
+JOIN stock s ON s.sku = p.sku
+JOIN warehouses w ON w.warehouse_id = s.warehouse_id
+WHERE w.city = 'Guadalajara'
+  AND s.on_hand > 2 * p.reorder_point"
+hard-021-en,en,legado,correcta,1,almmst|artmst|exidet,,,508,159,1.391,0.002606,"SELECT a.art_cd, a.art_dsc, e.exi_qty, a.art_ptr
+FROM artmst a
+JOIN exidet e ON e.exi_art = a.art_cd
+JOIN almmst w ON w.alm_id = e.exi_alm
+WHERE w.alm_cdd ILIKE 'Guadalajara'
+AND e.exi_qty > 2 * a.art_ptr
+ORDER BY e.exi_qty DESC"
+hard-021-en,en,legado_dic,correcta,1,almmst|artmst|exidet,,,1499,203,1.654,0.005028,"SELECT a.art_cd, a.art_dsc, SUM(e.exi_qty) AS existencia_guadalajara, a.art_ptr
+FROM artmst a
+JOIN exidet e ON e.exi_art = a.art_cd
+JOIN almmst w ON w.alm_id = e.exi_alm
+WHERE w.alm_cdd = 'Guadalajara'
+GROUP BY a.art_cd, a.art_dsc, a.art_ptr
+HAVING SUM(e.exi_qty) > 2 * a.art_ptr
+ORDER BY a.art_cd"
+hard-021-en,en,legado_rec,correcta,1,almmst|artmst|exidet,artmst|exidet|almmst,1,916,171,1.682,0.003542,"SELECT a.art_cd, a.art_dsc, a.art_lin, a.art_ptr, e.exi_qty, w.alm_dsc
+FROM artmst a
+JOIN exidet e ON e.exi_art = a.art_cd
+JOIN almmst w ON w.alm_id = e.exi_alm
+WHERE w.alm_cdd = 'Guadalajara'
+AND e.exi_qty > 2 * a.art_ptr
+ORDER BY e.exi_qty DESC"
+hard-022-es,es,copilot,correcta,1,vtadia,,,881,84,1.323,0.002602,"SELECT COUNT(*) AS dias
+FROM (
+    SELECT day
+    FROM sales_daily
+    WHERE units > 0
+    GROUP BY day
+    HAVING COUNT(DISTINCT sku) > 10
+) t"
+hard-022-es,es,legado,correcta,1,vtadia,,,509,85,1.24,0.001868,SELECT COUNT(*) AS dias FROM (SELECT vta_fch FROM vtadia WHERE vta_und > 0 GROUP BY vta_fch HAVING COUNT(DISTINCT vta_art) > 10) t
+hard-022-es,es,legado_dic,correcta,1,vtadia,,,1500,85,1.244,0.00385,SELECT COUNT(*) AS dias FROM (SELECT vta_fch FROM vtadia WHERE vta_und > 0 GROUP BY vta_fch HAVING COUNT(DISTINCT vta_art) > 10) t
+hard-022-es,es,legado_rec,correcta,1,vtadia,vtadia|artmst|exidet,1,853,81,1.896,0.002516,SELECT COUNT(*) FROM (SELECT vta_fch FROM vtadia WHERE vta_und > 0 GROUP BY vta_fch HAVING COUNT(DISTINCT vta_art) > 10) t
+hard-022-en,en,copilot,correcta,1,vtadia,,,871,76,5.338,0.002502,SELECT COUNT(*) AS num_days FROM (SELECT day FROM sales_daily WHERE units > 0 GROUP BY day HAVING COUNT(DISTINCT sku) > 10) AS d
+hard-022-en,en,legado,correcta,1,vtadia,,,499,76,1.198,0.001758,SELECT COUNT(*) AS days_count FROM (SELECT vta_fch FROM vtadia GROUP BY vta_fch HAVING COUNT(DISTINCT vta_art) > 10) AS d
+hard-022-en,en,legado_dic,correcta,1,vtadia,,,1490,85,1.222,0.00383,SELECT COUNT(*) AS dias FROM (SELECT vta_fch FROM vtadia WHERE vta_und > 0 GROUP BY vta_fch HAVING COUNT(DISTINCT vta_art) > 10) t
+hard-022-en,en,legado_rec,correcta,1,vtadia,vtadia|artmst|exidet,1,843,73,1.744,0.002416,SELECT COUNT(*) AS dias FROM (SELECT vta_fch FROM vtadia GROUP BY vta_fch HAVING COUNT(DISTINCT vta_art) > 10) t
+hard-024-es,es,copilot,correcta,1,vtadia,,,883,52,1.642,0.002286,"SELECT COALESCE(SUM(units), 0) AS total_units FROM sales_daily WHERE day <= DATE '2026-08-31'"
+hard-024-es,es,legado,correcta,1,vtadia,,,511,60,1.279,0.001622,"SELECT COALESCE(SUM(vta_und), 0) AS total_unidades FROM vtadia WHERE vta_fch <= DATE '2026-08-31'"
+hard-024-es,es,legado_dic,correcta,1,vtadia,,,1502,60,1.148,0.003604,"SELECT COALESCE(SUM(vta_und), 0) AS total_unidades FROM vtadia WHERE vta_fch <= DATE '2026-08-31'"
+hard-024-es,es,legado_rec,correcta,1,vtadia,vtadia|exidet|artmst,1,855,60,1.566,0.00231,"SELECT COALESCE(SUM(vta_und), 0) AS total_unidades FROM vtadia WHERE vta_fch <= DATE '2026-08-31'"
+hard-024-en,en,copilot,correcta,1,vtadia,,,868,43,1.302,0.002166,SELECT SUM(units) AS total_units FROM sales_daily WHERE day <= DATE '2026-08-31'
+hard-024-en,en,legado,correcta,1,vtadia,,,496,52,1.701,0.001512,SELECT SUM(vta_und) AS total_units_sold FROM vtadia WHERE vta_fch <= DATE '2026-08-31'
+hard-024-en,en,legado_dic,correcta,1,vtadia,,,1487,52,1.721,0.003494,SELECT SUM(vta_und) AS total_units_sold FROM vtadia WHERE vta_fch <= DATE '2026-08-31'
+hard-024-en,en,legado_rec,correcta,1,vtadia,vtadia|exidet|ocpcab,1,705,49,1.499,0.0019,SELECT SUM(vta_und) AS total_units FROM vtadia WHERE vta_fch <= DATE '2026-08-31'
+hard-025-es,es,copilot,correcta,1,almmst|exidet,,,877,161,1.71,0.003364,"SELECT w.warehouse_id, w.name, w.city, COUNT(DISTINCT s.sku) AS distinct_skus
+FROM warehouses w
+JOIN stock s ON s.warehouse_id = w.warehouse_id
+WHERE s.on_hand > 0
+GROUP BY w.warehouse_id, w.name, w.city
+HAVING COUNT(DISTINCT s.sku) > 50
+ORDER BY distinct_skus DESC"
+hard-025-es,es,legado,correcta,1,almmst|exidet,,,505,245,8.983,0.00346,"SELECT a.alm_id, a.alm_dsc, a.alm_cdd, COUNT(DISTINCT e.exi_art) AS skus_distintos
+FROM almmst a
+JOIN exidet e ON e.exi_alm = a.alm_id
+WHERE e.exi_qty > 0
+GROUP BY a.alm_id, a.alm_dsc, a.alm_cdd
+HAVING COUNT(DISTINCT e.exi_art) > 50
+ORDER BY skus_distintos DESC"
+hard-025-es,es,legado_dic,correcta,1,almmst|exidet,,,1496,160,2.04,0.004592,"SELECT a.alm_id, a.alm_dsc, COUNT(DISTINCT e.exi_art) AS skus_distintos
+FROM almmst a
+JOIN exidet e ON e.exi_alm = a.alm_id
+WHERE e.exi_qty > 0
+GROUP BY a.alm_id, a.alm_dsc
+HAVING COUNT(DISTINCT e.exi_art) > 50
+ORDER BY skus_distintos DESC"
+hard-025-es,es,legado_rec,correcta,1,almmst|exidet,artmst|exidet|almmst,1,913,182,1.703,0.003646,"SELECT a.alm_id, a.alm_dsc, a.alm_cdd, COUNT(DISTINCT e.exi_art) AS skus_en_existencia
+FROM almmst a
+JOIN exidet e ON e.exi_alm = a.alm_id
+WHERE e.exi_qty > 0
+GROUP BY a.alm_id, a.alm_dsc, a.alm_cdd
+HAVING COUNT(DISTINCT e.exi_art) > 50
+ORDER BY skus_en_existencia DESC"
+hard-025-en,en,copilot,correcta,1,almmst|exidet,,,870,228,2.427,0.00402,"SELECT w.warehouse_id, w.name, w.city, COUNT(DISTINCT s.sku) AS distinct_skus
+FROM warehouses w
+JOIN stock s ON s.warehouse_id = w.warehouse_id
+WHERE s.on_hand > 0
+GROUP BY w.warehouse_id, w.name, w.city
+HAVING COUNT(DISTINCT s.sku) > 50
+ORDER BY distinct_skus DESC"
+hard-025-en,en,legado,correcta,1,almmst|exidet,,,498,160,1.341,0.002596,"SELECT a.alm_id, a.alm_dsc, COUNT(DISTINCT e.exi_art) AS distinct_skus
+FROM almmst a
+JOIN exidet e ON e.exi_alm = a.alm_id
+WHERE e.exi_qty > 0
+GROUP BY a.alm_id, a.alm_dsc
+HAVING COUNT(DISTINCT e.exi_art) > 50
+ORDER BY distinct_skus DESC"
+hard-025-en,en,legado_dic,correcta,1,almmst|exidet,,,1489,242,2.635,0.005398,"SELECT a.alm_id, a.alm_dsc, COUNT(DISTINCT e.exi_art) AS distinct_skus
+FROM almmst a
+JOIN exidet e ON e.exi_alm = a.alm_id
+WHERE e.exi_qty > 0
+GROUP BY a.alm_id, a.alm_dsc
+HAVING COUNT(DISTINCT e.exi_art) > 50
+ORDER BY distinct_skus DESC"
+hard-025-en,en,legado_rec,correcta,1,almmst|exidet,artmst|exidet|almmst,1,906,160,1.464,0.003412,"SELECT a.alm_id, a.alm_dsc, COUNT(DISTINCT e.exi_art) AS distinct_skus
+FROM almmst a
+JOIN exidet e ON e.exi_alm = a.alm_id
+WHERE e.exi_qty > 0
+GROUP BY a.alm_id, a.alm_dsc
+HAVING COUNT(DISTINCT e.exi_art) > 50
+ORDER BY distinct_skus DESC"
+hard-026-es,es,copilot,correcta,1,artmst|prvmst,,,895,80,1.547,0.00259,"SELECT s.lead_time_days
+FROM products p
+JOIN suppliers s ON s.supplier_id = p.supplier_id
+ORDER BY p.unit_cost DESC, p.sku ASC
+LIMIT 1"
+hard-026-es,es,legado,correcta,1,artmst|prvmst,,,523,76,1.16,0.001806,"SELECT p.prv_dte FROM artmst a JOIN prvmst p ON p.prv_id = a.art_prv ORDER BY a.art_cst DESC, a.art_cd ASC LIMIT 1"
+hard-026-es,es,legado_dic,correcta,1,artmst|prvmst,,,1514,80,1.381,0.003828,"SELECT p.prv_dte
+FROM artmst a
+JOIN prvmst p ON p.prv_id = a.art_prv
+ORDER BY a.art_cst DESC, a.art_cd ASC
+LIMIT 1"
+hard-026-es,es,legado_rec,correcta,1,artmst|prvmst,prvmst|artmst|ocpcab,1,996,76,1.456,0.002752,"SELECT p.prv_dte FROM artmst a JOIN prvmst p ON p.prv_id = a.art_prv ORDER BY a.art_cst DESC, a.art_cd ASC LIMIT 1"
+hard-026-en,en,copilot,correcta,1,artmst|prvmst,,,882,80,1.474,0.002564,"SELECT s.lead_time_days
+FROM products p
+JOIN suppliers s ON s.supplier_id = p.supplier_id
+ORDER BY p.unit_cost DESC, p.sku ASC
+LIMIT 1"
+hard-026-en,en,legado,correcta,1,artmst|prvmst,,,510,76,1.387,0.00178,"SELECT p.prv_dte FROM artmst a JOIN prvmst p ON p.prv_id = a.art_prv ORDER BY a.art_cst DESC, a.art_cd ASC LIMIT 1"
+hard-026-en,en,legado_dic,correcta,1,artmst|prvmst,,,1501,88,1.594,0.003882,"SELECT p.prv_dte AS lead_time_days
+FROM artmst a
+JOIN prvmst p ON p.prv_id = a.art_prv
+ORDER BY a.art_cst DESC, a.art_cd ASC
+LIMIT 1"
+hard-026-en,en,legado_rec,resultado_distinto,0,artmst|prvmst,prvmst|vtadia|ocpcab,0,734,278,3.531,0.004248,"SELECT 'Cannot answer: the schema does not include artmst (product prices and supplier link art_prv), so the most expensive product and its supplier cannot be determined' AS error"
+hard-027-es,es,copilot,correcta,1,artmst,,,883,54,1.736,0.002306,SELECT 100.0 * COUNT(*) FILTER (WHERE critical) / COUNT(*) AS porcentaje_criticos FROM products
+hard-027-es,es,legado,correcta,1,artmst,,,511,64,1.269,0.001662,SELECT 100.0 * COUNT(*) FILTER (WHERE art_crt IS TRUE) / COUNT(*) AS porcentaje_criticos FROM artmst
+hard-027-es,es,legado_dic,correcta,1,artmst,,,1502,64,1.226,0.003644,SELECT 100.0 * COUNT(*) FILTER (WHERE art_crt IS TRUE) / COUNT(*) AS porcentaje_criticos FROM artmst
+hard-027-es,es,legado_rec,correcta,1,artmst,artmst|ocpcab|vtadia,1,905,64,1.143,0.00245,SELECT 100.0 * COUNT(*) FILTER (WHERE art_crt IS TRUE) / COUNT(*) AS porcentaje_criticos FROM artmst
+hard-027-en,en,copilot,correcta,1,artmst,,,871,51,1.488,0.002252,SELECT 100.0 * COUNT(*) FILTER (WHERE critical) / COUNT(*) AS critical_percentage FROM products
+hard-027-en,en,legado,correcta,1,artmst,,,499,73,1.28,0.001728,"SELECT (COUNT(*) FILTER (WHERE art_crt IS TRUE))::numeric * 100 / NULLIF(COUNT(*), 0) AS critical_percentage FROM artmst"
+hard-027-en,en,legado_dic,correcta,1,artmst,,,1490,64,1.352,0.00362,SELECT 100.0 * COUNT(*) FILTER (WHERE art_crt IS TRUE) / COUNT(*) AS porcentaje_criticos FROM artmst
+hard-027-en,en,legado_rec,correcta,1,artmst,artmst|ocpcab|exidet,1,957,61,1.455,0.002524,SELECT 100.0 * COUNT(*) FILTER (WHERE art_crt IS TRUE) / COUNT(*) AS critical_percentage FROM artmst
+hard-028-es,es,copilot,correcta,1,exidet,,,875,40,1.851,0.00215,SELECT COUNT(*) AS registros_sin_existencia FROM stock WHERE on_hand = 0
+hard-028-es,es,legado,correcta,1,exidet,,,503,44,1.057,0.001446,SELECT COUNT(*) AS registros_con_cero_existencias FROM exidet WHERE exi_qty = 0
+hard-028-es,es,legado_dic,correcta,1,exidet,,,1494,42,1.087,0.003408,SELECT COUNT(*) AS registros_sin_existencia FROM exidet WHERE exi_qty = 0
+hard-028-es,es,legado_rec,correcta,1,exidet,exidet|artmst|vtadia,1,847,42,1.114,0.002114,SELECT COUNT(*) AS registros_sin_existencia FROM exidet WHERE exi_qty = 0
+hard-028-en,en,copilot,correcta,1,exidet,,,862,38,2.579,0.002104,SELECT COUNT(*) AS zero_stock_records FROM stock WHERE on_hand = 0
+hard-028-en,en,legado,correcta,1,exidet,,,490,44,1.257,0.00142,SELECT COUNT(*) AS stock_records_with_zero_units FROM exidet WHERE exi_qty = 0
+hard-028-en,en,legado_dic,correcta,1,exidet,,,1481,42,1.518,0.003382,SELECT COUNT(*) AS registros_sin_existencia FROM exidet WHERE exi_qty = 0
+hard-028-en,en,legado_rec,correcta,1,exidet,exidet|vtadia|artmst,1,834,42,1.119,0.002088,SELECT COUNT(*) AS registros_sin_existencia FROM exidet WHERE exi_qty = 0
+hard-029-es,es,copilot,correcta,1,artmst|prvmst|vtadia,,,887,146,1.789,0.003234,"SELECT COALESCE(SUM(sd.units), 0) AS unidades_vendidas
+FROM sales_daily sd
+JOIN products p ON p.sku = sd.sku
+JOIN suppliers s ON s.supplier_id = p.supplier_id
+WHERE s.country = 'CN'
+  AND sd.day >= DATE '2026-04-01'
+  AND sd.day < DATE '2026-05-01'"
+hard-029-es,es,legado,resultado_distinto,0,artmst|prvmst|vtadia,,,515,160,1.574,0.00263,"SELECT COALESCE(SUM(v.vta_und), 0) AS unidades_vendidas
+FROM vtadia v
+JOIN artmst a ON a.art_cd = v.vta_art
+JOIN prvmst p ON p.prv_id = a.art_prv
+WHERE p.prv_pais ILIKE 'China'
+AND v.vta_fch >= DATE '2026-04-01'
+AND v.vta_fch < DATE '2026-05-01'"
+hard-029-es,es,legado_dic,correcta,1,artmst|prvmst|vtadia,,,1506,159,1.375,0.004602,"SELECT COALESCE(SUM(v.vta_und), 0) AS unidades_vendidas
+FROM vtadia v
+JOIN artmst a ON a.art_cd = v.vta_art
+JOIN prvmst p ON p.prv_id = a.art_prv
+WHERE p.prv_pais = 'CN'
+  AND v.vta_fch >= DATE '2026-04-01'
+  AND v.vta_fch < DATE '2026-05-01'"
+hard-029-es,es,legado_rec,no_es_select,0,artmst|prvmst|vtadia,vtadia|prvmst|ocpcab,0,739,445,4.338,0.005928,"No puedo generar esta consulta con el esquema disponible. Para relacionar las ventas (vtadia.vta_art) con los proveedores (prvmst) hace falta la tabla artmst, que une art_cd con art_prv. Esa tabla se menciona en el diccionario de datos, pero no está definida en el esquema, y no puedo usar tablas ni "
+hard-029-en,en,copilot,correcta,1,artmst|prvmst|vtadia,,,872,144,1.988,0.003184,"SELECT COALESCE(SUM(sd.units), 0) AS total_units_sold
+FROM sales_daily sd
+JOIN products p ON p.sku = sd.sku
+JOIN suppliers s ON s.supplier_id = p.supplier_id
+WHERE s.country = 'CN'
+  AND sd.day >= DATE '2026-04-01'
+  AND sd.day < DATE '2026-05-01'"
+hard-029-en,en,legado,resultado_distinto,0,artmst|prvmst|vtadia,,,500,155,1.366,0.00255,"SELECT COALESCE(SUM(v.vta_und), 0) AS total_units
+FROM vtadia v
+JOIN artmst a ON a.art_cd = v.vta_art
+JOIN prvmst p ON p.prv_id = a.art_prv
+WHERE p.prv_pais ILIKE 'China'
+AND v.vta_fch >= DATE '2026-04-01'
+AND v.vta_fch < DATE '2026-05-01'"
+hard-029-en,en,legado_dic,correcta,1,artmst|prvmst|vtadia,,,1491,154,2.372,0.004522,"SELECT COALESCE(SUM(v.vta_und), 0) AS total_units
+FROM vtadia v
+JOIN artmst a ON a.art_cd = v.vta_art
+JOIN prvmst p ON p.prv_id = a.art_prv
+WHERE p.prv_pais = 'CN'
+  AND v.vta_fch >= DATE '2026-04-01'
+  AND v.vta_fch < DATE '2026-05-01'"
+hard-029-en,en,legado_rec,resultado_distinto,0,artmst|prvmst|vtadia,vtadia|prvmst|ocpcab,0,724,340,4.001,0.004848,"SELECT 'No se puede responder: falta la tabla artmst (art_cd, art_prv), necesaria para relacionar vtadia con prvmst, y no está en el esquema' AS error"
+hard-031-es,es,copilot,correcta,1,vtadia,,,881,48,1.424,0.002242,"SELECT sku
+FROM sales_daily
+GROUP BY sku
+HAVING COUNT(DISTINCT day) >= 100"
+hard-031-es,es,legado,correcta,1,vtadia,,,509,52,1.06,0.001538,SELECT vta_art FROM vtadia GROUP BY vta_art HAVING COUNT(DISTINCT vta_fch) >= 100
+hard-031-es,es,legado_dic,resultado_distinto,0,vtadia,,,1500,122,1.408,0.00422,"SELECT vta_art AS sku, COUNT(DISTINCT vta_fch) AS dias_con_ventas
+FROM vtadia
+WHERE vta_und > 0
+GROUP BY vta_art
+HAVING COUNT(DISTINCT vta_fch) >= 100
+ORDER BY dias_con_ventas DESC, vta_art"
+hard-031-es,es,legado_rec,correcta,1,vtadia,vtadia|artmst|exidet,1,853,52,1.502,0.002226,SELECT vta_art FROM vtadia GROUP BY vta_art HAVING COUNT(DISTINCT vta_fch) >= 100
+hard-031-en,en,copilot,correcta,1,vtadia,,,870,86,1.427,0.0026,"SELECT sku, COUNT(DISTINCT day) AS days_with_sales FROM sales_daily GROUP BY sku HAVING COUNT(DISTINCT day) >= 100 ORDER BY days_with_sales DESC, sku"
+hard-031-en,en,legado,correcta,1,vtadia,,,498,52,1.088,0.001516,SELECT vta_art FROM vtadia GROUP BY vta_art HAVING COUNT(DISTINCT vta_fch) >= 100
+hard-031-en,en,legado_dic,resultado_distinto,0,vtadia,,,1489,117,1.453,0.004148,"SELECT vta_art AS art_cd, COUNT(DISTINCT vta_fch) AS dias_con_venta
+FROM vtadia
+WHERE vta_und > 0
+GROUP BY vta_art
+HAVING COUNT(DISTINCT vta_fch) >= 100
+ORDER BY dias_con_venta DESC"
+hard-031-en,en,legado_rec,correcta,1,vtadia,vtadia|artmst|exidet,1,842,99,2.059,0.002674,"SELECT vta_art, COUNT(DISTINCT vta_fch) AS dias_con_venta
+FROM vtadia
+GROUP BY vta_art
+HAVING COUNT(DISTINCT vta_fch) >= 100
+ORDER BY dias_con_venta DESC"
+hard-032-es,es,copilot,correcta,1,vtadia,,,889,95,1.485,0.002728,"SELECT sku, total_units
+FROM (
+    SELECT sku, SUM(units) AS total_units
+    FROM sales_daily
+    GROUP BY sku
+) t
+ORDER BY total_units DESC, sku ASC
+LIMIT 1 OFFSET 1"
+hard-032-es,es,legado,correcta,1,vtadia,,,517,94,1.296,0.001974,"SELECT vta_art AS sku, SUM(vta_und) AS unidades_totales
+FROM vtadia
+GROUP BY vta_art
+ORDER BY SUM(vta_und) DESC, vta_art ASC
+LIMIT 1 OFFSET 1"
+hard-032-es,es,legado_dic,correcta,1,vtadia,,,1508,94,1.905,0.003956,"SELECT vta_art AS sku, SUM(vta_und) AS unidades_totales
+FROM vtadia
+GROUP BY vta_art
+ORDER BY SUM(vta_und) DESC, vta_art ASC
+LIMIT 1 OFFSET 1"
+hard-032-es,es,legado_rec,correcta,1,vtadia,artmst|vtadia|exidet,1,861,118,1.54,0.002902,"SELECT a.art_cd, SUM(v.vta_und) AS total_unidades
+FROM artmst a
+JOIN vtadia v ON v.vta_art = a.art_cd
+GROUP BY a.art_cd
+ORDER BY total_unidades DESC, a.art_cd ASC
+LIMIT 1 OFFSET 1"
+hard-032-en,en,copilot,correcta,1,vtadia,,,879,108,1.397,0.002838,"SELECT p.sku, p.name, SUM(s.units) AS total_units
+FROM sales_daily s
+JOIN products p ON p.sku = s.sku
+GROUP BY p.sku, p.name
+ORDER BY total_units DESC, p.sku ASC
+LIMIT 1 OFFSET 1"
+hard-032-en,en,legado,correcta,1,vtadia,,,507,81,1.277,0.001824,"SELECT vta_art, SUM(vta_und) AS total_units
+FROM vtadia
+GROUP BY vta_art
+ORDER BY total_units DESC, vta_art ASC
+LIMIT 1 OFFSET 1"
+hard-032-en,en,legado_dic,correcta,1,vtadia,,,1498,81,1.977,0.003806,"SELECT vta_art AS sku, SUM(vta_und) AS total_units FROM vtadia GROUP BY vta_art ORDER BY total_units DESC, vta_art ASC LIMIT 1 OFFSET 1"
+hard-032-en,en,legado_rec,correcta,1,vtadia,artmst|vtadia|exidet,1,851,77,1.21,0.002472,"SELECT vta_art, SUM(vta_und) AS total_units FROM vtadia GROUP BY vta_art ORDER BY total_units DESC, vta_art ASC LIMIT 1 OFFSET 1"
+hard-033-es,es,copilot,correcta,1,artmst|prvmst,,,894,131,1.903,0.003098,"SELECT s.supplier_id, s.name, AVG(p.unit_cost) AS costo_unitario_promedio
+FROM suppliers s
+JOIN products p ON p.supplier_id = s.supplier_id
+GROUP BY s.supplier_id, s.name
+HAVING AVG(p.unit_cost) > (SELECT AVG(unit_cost) FROM products)"
+hard-033-es,es,legado,correcta,1,artmst|prvmst,,,522,148,1.472,0.002524,"SELECT p.prv_id, p.prv_nm, AVG(a.art_cst) AS costo_promedio
+FROM prvmst p
+JOIN artmst a ON a.art_prv = p.prv_id
+GROUP BY p.prv_id, p.prv_nm
+HAVING AVG(a.art_cst) > (SELECT AVG(art_cst) FROM artmst)
+ORDER BY costo_promedio DESC"
+hard-033-es,es,legado_dic,correcta,1,artmst|prvmst,,,1513,148,2.418,0.004506,"SELECT p.prv_id, p.prv_nm, AVG(a.art_cst) AS costo_promedio
+FROM prvmst p
+JOIN artmst a ON a.art_prv = p.prv_id
+GROUP BY p.prv_id, p.prv_nm
+HAVING AVG(a.art_cst) > (SELECT AVG(art_cst) FROM artmst)
+ORDER BY costo_promedio DESC"
+hard-033-es,es,legado_rec,correcta,1,artmst|prvmst,prvmst|artmst|vtadia,1,881,148,1.591,0.003242,"SELECT p.prv_id, p.prv_nm, AVG(a.art_cst) AS costo_promedio
+FROM prvmst p
+JOIN artmst a ON a.art_prv = p.prv_id
+GROUP BY p.prv_id, p.prv_nm
+HAVING AVG(a.art_cst) > (SELECT AVG(art_cst) FROM artmst)
+ORDER BY costo_promedio DESC"
+hard-033-en,en,copilot,correcta,1,artmst|prvmst,,,876,147,1.663,0.003222,"SELECT s.supplier_id, s.name, AVG(p.unit_cost) AS avg_unit_cost
+FROM suppliers s
+JOIN products p ON p.supplier_id = s.supplier_id
+GROUP BY s.supplier_id, s.name
+HAVING AVG(p.unit_cost) > (SELECT AVG(unit_cost) FROM products)
+ORDER BY avg_unit_cost DESC"
+hard-033-en,en,legado,correcta,1,artmst|prvmst,,,504,146,1.496,0.002468,"SELECT p.prv_id, p.prv_nm, AVG(a.art_cst) AS avg_cost
+FROM prvmst p
+JOIN artmst a ON a.art_prv = p.prv_id
+GROUP BY p.prv_id, p.prv_nm
+HAVING AVG(a.art_cst) > (SELECT AVG(art_cst) FROM artmst)
+ORDER BY avg_cost DESC"
+hard-033-en,en,legado_dic,correcta,1,artmst|prvmst,,,1495,146,1.984,0.00445,"SELECT p.prv_id, p.prv_nm, AVG(a.art_cst) AS avg_cost
+FROM prvmst p
+JOIN artmst a ON a.art_prv = p.prv_id
+GROUP BY p.prv_id, p.prv_nm
+HAVING AVG(a.art_cst) > (SELECT AVG(art_cst) FROM artmst)
+ORDER BY avg_cost DESC"
+hard-033-en,en,legado_rec,correcta,1,artmst|prvmst,artmst|prvmst|vtadia,1,863,148,1.337,0.003206,"SELECT p.prv_id, p.prv_nm, AVG(a.art_cst) AS costo_promedio
+FROM prvmst p
+JOIN artmst a ON a.art_prv = p.prv_id
+GROUP BY p.prv_id, p.prv_nm
+HAVING AVG(a.art_cst) > (SELECT AVG(art_cst) FROM artmst)
+ORDER BY costo_promedio DESC"
+hard-034-es,es,copilot,correcta,1,artmst|exidet|vtadia,,,903,177,2.106,0.003576,"SELECT COALESCE(SUM(s.on_hand), 0) AS unidades_en_existencia
+FROM stock s
+JOIN products p ON p.sku = s.sku
+WHERE p.critical = TRUE
+  AND NOT EXISTS (
+    SELECT 1
+    FROM sales_daily sd
+    WHERE sd.sku = p.sku
+      AND sd.day BETWEEN DATE '2026-04-01' AND DATE '2026-09-26'
+      AND sd.units > 0
+  )"
+hard-034-es,es,legado,correcta,1,artmst|exidet|vtadia,,,531,186,1.627,0.002922,"SELECT COALESCE(SUM(e.exi_qty), 0) AS unidades_en_existencia
+FROM exidet e
+JOIN artmst a ON a.art_cd = e.exi_art
+WHERE a.art_crt = TRUE
+AND NOT EXISTS (
+SELECT 1
+FROM vtadia v
+WHERE v.vta_art = a.art_cd
+AND v.vta_fch BETWEEN DATE '2026-04-01' AND DATE '2026-09-26'
+AND v.vta_und > 0
+)"
+hard-034-es,es,legado_dic,correcta,1,artmst|exidet|vtadia,,,1522,191,1.738,0.004954,"SELECT COALESCE(SUM(e.exi_qty), 0) AS unidades_en_existencia
+FROM exidet e
+JOIN artmst a ON a.art_cd = e.exi_art
+WHERE a.art_crt = TRUE
+AND NOT EXISTS (
+  SELECT 1
+  FROM vtadia v
+  WHERE v.vta_art = a.art_cd
+  AND v.vta_fch BETWEEN DATE '2026-04-01' AND DATE '2026-09-26'
+  AND v.vta_und > 0
+)"
+hard-034-es,es,legado_rec,resultado_distinto,0,artmst|exidet|vtadia,exidet|vtadia|ocpcab,0,740,316,4.012,0.00464,SELECT 'No se puede responder: el esquema no define qué es un producto crítico (no hay columna ni tabla que lo indique).' AS aviso
+hard-034-en,en,copilot,correcta,1,artmst|exidet|vtadia,,,883,174,1.817,0.003506,"SELECT COALESCE(SUM(s.on_hand), 0) AS total_on_hand
+FROM stock s
+JOIN products p ON p.sku = s.sku
+WHERE p.critical = TRUE
+  AND NOT EXISTS (
+    SELECT 1
+    FROM sales_daily sd
+    WHERE sd.sku = p.sku
+      AND sd.day BETWEEN DATE '2026-04-01' AND DATE '2026-09-26'
+      AND sd.units > 0
+  )"
+hard-034-en,en,legado,correcta,1,artmst|exidet|vtadia,,,511,188,1.64,0.002902,"SELECT COALESCE(SUM(e.exi_qty), 0) AS units_on_hand
+FROM exidet e
+JOIN artmst a ON a.art_cd = e.exi_art
+WHERE a.art_crt = TRUE
+AND NOT EXISTS (
+  SELECT 1
+  FROM vtadia v
+  WHERE v.vta_art = a.art_cd
+  AND v.vta_fch BETWEEN DATE '2026-04-01' AND DATE '2026-09-26'
+  AND v.vta_und > 0
+)"
+hard-034-en,en,legado_dic,correcta,1,artmst|exidet|vtadia,,,1502,185,1.661,0.004854,"SELECT COALESCE(SUM(e.exi_qty), 0) AS total_units
+FROM exidet e
+JOIN artmst a ON a.art_cd = e.exi_art
+WHERE a.art_crt = TRUE
+AND NOT EXISTS (
+  SELECT 1
+  FROM vtadia v
+  WHERE v.vta_art = a.art_cd
+  AND v.vta_fch BETWEEN DATE '2026-04-01' AND DATE '2026-09-26'
+  AND v.vta_und > 0
+)"
+hard-034-en,en,legado_rec,resultado_distinto,0,artmst|exidet|vtadia,exidet|ocpcab|vtadia,0,720,422,4.854,0.00566,"SELECT 'The schema has no definition or column for ""critical"" products, so this cannot be computed. Please specify how critical products are identified.' AS note"
+hard-035-es,es,copilot,correcta,1,almmst|artmst|exidet,,,909,166,1.632,0.003478,"SELECT w.warehouse_id, w.name, COUNT(*) AS skus_bajo_reorden
+FROM stock s
+JOIN products p ON p.sku = s.sku
+JOIN warehouses w ON w.warehouse_id = s.warehouse_id
+WHERE s.on_hand < p.reorder_point
+GROUP BY w.warehouse_id, w.name
+ORDER BY skus_bajo_reorden DESC, w.name ASC
+LIMIT 1"
+hard-035-es,es,legado,correcta,1,almmst|artmst|exidet,,,537,191,1.626,0.002984,"SELECT a.alm_id, a.alm_dsc, COUNT(DISTINCT e.exi_art) AS skus_bajo_reorden
+FROM exidet e
+JOIN artmst r ON r.art_cd = e.exi_art
+JOIN almmst a ON a.alm_id = e.exi_alm
+WHERE e.exi_qty < r.art_ptr
+GROUP BY a.alm_id, a.alm_dsc
+ORDER BY skus_bajo_reorden DESC, a.alm_dsc ASC
+LIMIT 1"
+hard-035-es,es,legado_dic,correcta,1,almmst|artmst|exidet,,,1528,191,1.533,0.004966,"SELECT a.alm_id, a.alm_dsc, COUNT(DISTINCT e.exi_art) AS skus_bajo_reorden
+FROM exidet e
+JOIN artmst r ON r.art_cd = e.exi_art
+JOIN almmst a ON a.alm_id = e.exi_alm
+WHERE e.exi_qty < r.art_ptr
+GROUP BY a.alm_id, a.alm_dsc
+ORDER BY skus_bajo_reorden DESC, a.alm_dsc ASC
+LIMIT 1"
+hard-035-es,es,legado_rec,correcta,1,almmst|artmst|exidet,exidet|almmst|artmst,1,945,191,1.614,0.0038,"SELECT a.alm_id, a.alm_dsc, COUNT(DISTINCT e.exi_art) AS skus_bajo_reorden
+FROM exidet e
+JOIN artmst m ON m.art_cd = e.exi_art
+JOIN almmst a ON a.alm_id = e.exi_alm
+WHERE e.exi_qty < m.art_ptr
+GROUP BY a.alm_id, a.alm_dsc
+ORDER BY skus_bajo_reorden DESC, a.alm_dsc ASC
+LIMIT 1"
+hard-035-en,en,copilot,correcta,1,almmst|artmst|exidet,,,890,161,1.598,0.00339,"SELECT w.warehouse_id, w.name, COUNT(*) AS skus_below_reorder
+FROM stock s
+JOIN products p ON p.sku = s.sku
+JOIN warehouses w ON w.warehouse_id = s.warehouse_id
+WHERE s.on_hand < p.reorder_point
+GROUP BY w.warehouse_id, w.name
+ORDER BY skus_below_reorder DESC, w.name ASC
+LIMIT 1"
+hard-035-en,en,legado,correcta,1,almmst|artmst|exidet,,,518,179,1.516,0.002826,"SELECT a.alm_id, a.alm_dsc, COUNT(DISTINCT e.exi_art) AS sku_count
+FROM exidet e
+JOIN artmst m ON m.art_cd = e.exi_art
+JOIN almmst a ON a.alm_id = e.exi_alm
+WHERE e.exi_qty < m.art_ptr
+GROUP BY a.alm_id, a.alm_dsc
+ORDER BY sku_count DESC, a.alm_dsc ASC
+LIMIT 1"
+hard-035-en,en,legado_dic,correcta,1,almmst|artmst|exidet,,,1509,187,1.567,0.004888,"SELECT a.alm_id, a.alm_dsc, COUNT(DISTINCT e.exi_art) AS skus_below_reorder
+FROM exidet e
+JOIN artmst m ON m.art_cd = e.exi_art
+JOIN almmst a ON a.alm_id = e.exi_alm
+WHERE e.exi_qty < m.art_ptr
+GROUP BY a.alm_id, a.alm_dsc
+ORDER BY skus_below_reorder DESC, a.alm_dsc ASC
+LIMIT 1"
+hard-035-en,en,legado_rec,correcta,1,almmst|artmst|exidet,exidet|almmst|artmst,1,926,191,1.868,0.003762,"SELECT a.alm_id, a.alm_dsc, COUNT(DISTINCT e.exi_art) AS skus_bajo_reorden
+FROM exidet e
+JOIN artmst m ON m.art_cd = e.exi_art
+JOIN almmst a ON a.alm_id = e.exi_alm
+WHERE e.exi_qty < m.art_ptr
+GROUP BY a.alm_id, a.alm_dsc
+ORDER BY skus_bajo_reorden DESC, a.alm_dsc ASC
+LIMIT 1"
+hard-036-es,es,copilot,correcta,1,prvmst,,,899,106,1.498,0.002858,"SELECT country, AVG(lead_time_days) AS avg_lead_time_days
+FROM suppliers
+GROUP BY country
+HAVING AVG(lead_time_days) > (SELECT AVG(lead_time_days) FROM suppliers)
+ORDER BY avg_lead_time_days DESC"
+hard-036-es,es,legado,correcta,1,prvmst,,,527,296,2.371,0.004014,"SELECT prv_pais, AVG(prv_dte) AS tiempo_entrega_promedio
+FROM prvmst
+GROUP BY prv_pais
+HAVING AVG(prv_dte) > (SELECT AVG(prv_dte) FROM prvmst)
+ORDER BY tiempo_entrega_promedio DESC"
+hard-036-es,es,legado_dic,correcta,1,prvmst,,,1518,117,1.281,0.004206,"SELECT prv_pais, AVG(prv_dte) AS tiempo_entrega_promedio
+FROM prvmst
+GROUP BY prv_pais
+HAVING AVG(prv_dte) > (SELECT AVG(prv_dte) FROM prvmst)
+ORDER BY tiempo_entrega_promedio DESC"
+hard-036-es,es,legado_rec,correcta,1,prvmst,prvmst|ocpcab|almmst,1,815,113,2.497,0.00276,"SELECT prv_pais, AVG(prv_dte) AS tiempo_entrega_promedio FROM prvmst GROUP BY prv_pais HAVING AVG(prv_dte) > (SELECT AVG(prv_dte) FROM prvmst) ORDER BY tiempo_entrega_promedio DESC"
+hard-036-en,en,copilot,correcta,1,prvmst,,,875,102,1.806,0.00277,"SELECT country, AVG(lead_time_days) AS avg_lead_time_days FROM suppliers GROUP BY country HAVING AVG(lead_time_days) > (SELECT AVG(lead_time_days) FROM suppliers) ORDER BY avg_lead_time_days DESC"
+hard-036-en,en,legado,correcta,1,prvmst,,,503,87,1.183,0.001876,"SELECT prv_pais, AVG(prv_dte) AS avg_lead_time FROM prvmst GROUP BY prv_pais HAVING AVG(prv_dte) > (SELECT AVG(prv_dte) FROM prvmst)"
+hard-036-en,en,legado_dic,correcta,1,prvmst,,,1494,87,1.757,0.003858,"SELECT prv_pais, AVG(prv_dte) AS avg_lead_time FROM prvmst GROUP BY prv_pais HAVING AVG(prv_dte) > (SELECT AVG(prv_dte) FROM prvmst)"
+hard-036-en,en,legado_rec,correcta,1,prvmst,prvmst|ocpcab|almmst,1,791,87,1.468,0.002452,"SELECT prv_pais, AVG(prv_dte) AS avg_lead_time FROM prvmst GROUP BY prv_pais HAVING AVG(prv_dte) > (SELECT AVG(prv_dte) FROM prvmst)"
+hard-037-es,es,copilot,correcta,1,artmst|exidet,,,884,96,1.918,0.002728,"SELECT COUNT(*) AS total_productos
+FROM products p
+WHERE p.supplier_id IS NOT NULL
+  AND COALESCE((SELECT SUM(s.on_hand) FROM stock s WHERE s.sku = p.sku), 0) = 0"
+hard-037-es,es,legado,correcta,1,artmst|exidet,,,512,93,1.184,0.001954,"SELECT COUNT(*) FROM artmst a WHERE a.art_prv IS NOT NULL AND COALESCE((SELECT SUM(e.exi_qty) FROM exidet e WHERE e.exi_art = a.art_cd), 0) = 0"
+hard-037-es,es,legado_dic,correcta,1,artmst|exidet,,,1503,97,1.261,0.003976,"SELECT COUNT(*)
+FROM artmst a
+WHERE a.art_prv IS NOT NULL
+  AND COALESCE((SELECT SUM(e.exi_qty) FROM exidet e WHERE e.exi_art = a.art_cd), 0) = 0"
+hard-037-es,es,legado_rec,resultado_distinto,0,artmst|exidet,exidet|prvmst|almmst,0,750,441,4.505,0.00591,"SELECT 'No se puede responder con este esquema: la relación producto-proveedor (artmst.art_prv) no está disponible, solo existen exidet, prvmst y almmst' AS aviso"
+hard-037-en,en,copilot,correcta,1,artmst|exidet,,,871,291,4.08,0.004652,"SELECT COUNT(*) AS product_count
+FROM products p
+WHERE p.supplier_id IS NOT NULL
+  AND NOT EXISTS (
+    SELECT 1
+    FROM stock s
+    WHERE s.sku = p.sku
+      AND s.on_hand > 0
+  )"
+hard-037-en,en,legado,correcta,1,artmst|exidet,,,499,443,3.893,0.005428,"SELECT COUNT(*)
+FROM artmst a
+WHERE a.art_prv IS NOT NULL
+  AND EXISTS (SELECT 1 FROM prvmst p WHERE p.prv_id = a.art_prv)
+  AND NOT EXISTS (
+    SELECT 1 FROM exidet e
+    WHERE e.exi_art = a.art_cd
+      AND COALESCE(e.exi_qty, 0) <> 0
+  )"
+hard-037-en,en,legado_dic,correcta,1,artmst|exidet,,,1490,134,1.57,0.00432,SELECT COUNT(*) FROM artmst a WHERE a.art_prv IS NOT NULL AND EXISTS (SELECT 1 FROM exidet e WHERE e.exi_art = a.art_cd) AND NOT EXISTS (SELECT 1 FROM exidet e WHERE e.exi_art = a.art_cd AND e.exi_qty <> 0)
+hard-037-en,en,legado_rec,correcta,1,artmst|exidet,exidet|prvmst|artmst,1,922,144,1.339,0.003284,"SELECT COUNT(*) FROM artmst a WHERE a.art_prv IS NOT NULL AND EXISTS (SELECT 1 FROM exidet e WHERE e.exi_art = a.art_cd) AND NOT EXISTS (SELECT 1 FROM exidet e WHERE e.exi_art = a.art_cd AND COALESCE(e.exi_qty, 0) <> 0)"
+hard-038-es,es,copilot,correcta,1,almmst|artmst|exidet,,,892,304,3.27,0.004824,"WITH cat_stock AS (
+  SELECT p.category,
+         COALESCE(SUM(CASE WHEN w.city = 'Monterrey' THEN s.on_hand END), 0) AS monterrey_units,
+         COALESCE(SUM(CASE WHEN w.city = 'Guadalajara' THEN s.on_hand END), 0) AS guadalajara_units
+  FROM stock s
+  JOIN products p ON p.sku = s.sku
+  JOIN warehouses w ON w.warehouse_id = s.warehouse_id
+  WHERE w.city IN ('Monterrey', 'Guadalajara')
+  GROUP BY p.category
+)
+SELECT category, monterrey_units, guadalajara_units
+FROM cat_stock
+WHERE monterrey_units > guadalajara_units
+ORDER BY monterrey_units - guadalajara_units DESC"
+hard-038-es,es,legado,correcta,1,almmst|artmst|exidet,,,520,547,3.711,0.00651,"SELECT a.art_lin,
+       SUM(CASE WHEN al.alm_cdd = 'Monterrey' THEN e.exi_qty ELSE 0 END) AS unidades_monterrey,
+       SUM(CASE WHEN al.alm_cdd = 'Guadalajara' THEN e.exi_qty ELSE 0 END) AS unidades_guadalajara
+FROM exidet e
+JOIN artmst a ON a.art_cd = e.exi_art
+JOIN almmst al ON al.alm_id = e.exi_alm
+WHERE al.alm_cdd IN ('Monterrey', 'Guadalajara')
+GROUP BY a.art_lin
+HAVING SUM(CASE WHEN al.alm_cdd = 'Monterrey' THEN e.exi_qty ELSE 0 END) > SUM(CASE WHEN al.alm_cdd = 'Guadalajara' THEN e.exi_qty ELSE 0 END)
+ORDER BY a.art_lin"
+hard-038-es,es,legado_dic,correcta,1,almmst|artmst|exidet,,,1511,215,1.703,0.005172,"SELECT a.art_lin
+FROM exidet e
+JOIN artmst a ON a.art_cd = e.exi_art
+JOIN almmst m ON m.alm_id = e.exi_alm
+WHERE m.alm_cdd IN ('Monterrey', 'Guadalajara')
+GROUP BY a.art_lin
+HAVING SUM(CASE WHEN m.alm_cdd = 'Monterrey' THEN e.exi_qty ELSE 0 END) > SUM(CASE WHEN m.alm_cdd = 'Guadalajara' THEN e.exi_qty ELSE 0 END)"
+hard-038-es,es,legado_rec,correcta,1,almmst|artmst|exidet,almmst|exidet|artmst,1,928,328,2.276,0.005136,"WITH t AS (
+  SELECT a.art_lin,
+         SUM(CASE WHEN m.alm_cdd = 'Monterrey' THEN e.exi_qty ELSE 0 END) AS qty_monterrey,
+         SUM(CASE WHEN m.alm_cdd = 'Guadalajara' THEN e.exi_qty ELSE 0 END) AS qty_guadalajara
+  FROM exidet e
+  JOIN almmst m ON m.alm_id = e.exi_alm
+  JOIN artmst a ON a.art_cd = e.exi_art
+  WHERE m.alm_cdd IN ('Monterrey', 'Guadalajara')
+  GROUP BY a.art_lin
+)
+SELECT art_lin, qty_monterrey, qty_guadalajara
+FROM t
+WHERE qty_monterrey > qty_guadalajara
+ORDER BY qty_monterrey - qty_guadalajara DESC"
+hard-038-en,en,copilot,correcta,1,almmst|artmst|exidet,,,886,176,2.227,0.003532,"SELECT p.category
+FROM products p
+JOIN stock s ON s.sku = p.sku
+JOIN warehouses w ON w.warehouse_id = s.warehouse_id
+GROUP BY p.category
+HAVING COALESCE(SUM(CASE WHEN w.city = 'Monterrey' THEN s.on_hand END), 0) > COALESCE(SUM(CASE WHEN w.city = 'Guadalajara' THEN s.on_hand END), 0)
+ORDER BY p.category"
+hard-038-en,en,legado,correcta,1,almmst|artmst|exidet,,,514,392,3.098,0.004948,"SELECT a.art_lin
+FROM exidet e
+JOIN artmst a ON a.art_cd = e.exi_art
+JOIN almmst w ON w.alm_id = e.exi_alm
+GROUP BY a.art_lin
+HAVING COALESCE(SUM(e.exi_qty) FILTER (WHERE w.alm_cdd = 'Monterrey'), 0) > COALESCE(SUM(e.exi_qty) FILTER (WHERE w.alm_cdd = 'Guadalajara'), 0)"
+hard-038-en,en,legado_dic,correcta,1,almmst|artmst|exidet,,,1505,215,2.291,0.00516,"SELECT a.art_lin
+FROM artmst a
+JOIN exidet e ON e.exi_art = a.art_cd
+JOIN almmst w ON w.alm_id = e.exi_alm
+WHERE w.alm_cdd IN ('Monterrey', 'Guadalajara')
+GROUP BY a.art_lin
+HAVING SUM(CASE WHEN w.alm_cdd = 'Monterrey' THEN e.exi_qty ELSE 0 END) > SUM(CASE WHEN w.alm_cdd = 'Guadalajara' THEN e.exi_qty ELSE 0 END)"
+hard-038-en,en,legado_rec,correcta,1,almmst|artmst|exidet,almmst|artmst|exidet,1,922,283,2.08,0.004674,"WITH t AS (SELECT a.art_lin, SUM(CASE WHEN w.alm_cdd = 'Monterrey' THEN e.exi_qty ELSE 0 END) AS mty, SUM(CASE WHEN w.alm_cdd = 'Guadalajara' THEN e.exi_qty ELSE 0 END) AS gdl FROM exidet e JOIN artmst a ON a.art_cd = e.exi_art JOIN almmst w ON w.alm_id = e.exi_alm WHERE w.alm_cdd IN ('Monterrey', 'Guadalajara') GROUP BY a.art_lin) SELECT art_lin, mty AS unidades_monterrey, gdl AS unidades_guadalajara FROM t WHERE mty > gdl ORDER BY art_lin"
+hard-039-es,es,copilot,correcta,1,artmst|vtadia,,,887,132,1.696,0.003094,"SELECT COUNT(DISTINCT p.supplier_id) AS proveedores_distintos
+FROM sales_daily s
+JOIN products p ON p.sku = s.sku
+WHERE s.day >= DATE '2026-09-01'
+  AND s.day < DATE '2026-10-01'
+  AND s.units > 0
+  AND p.supplier_id IS NOT NULL"
+hard-039-es,es,legado,correcta,1,artmst|vtadia,,,515,146,1.639,0.00249,"SELECT COUNT(DISTINCT a.art_prv) AS proveedores_distintos
+FROM artmst a
+JOIN vtadia v ON v.vta_art = a.art_cd
+WHERE v.vta_fch >= DATE '2026-09-01'
+  AND v.vta_fch < DATE '2026-10-01'
+  AND v.vta_und > 0
+  AND a.art_prv IS NOT NULL"
+hard-039-es,es,legado_dic,correcta,1,artmst|vtadia,,,1506,142,1.351,0.004432,"SELECT COUNT(DISTINCT a.art_prv) AS proveedores
+FROM artmst a
+JOIN vtadia v ON v.vta_art = a.art_cd
+WHERE v.vta_fch >= DATE '2026-09-01'
+  AND v.vta_fch < DATE '2026-10-01'
+  AND v.vta_und > 0
+  AND a.art_prv IS NOT NULL"
+hard-039-es,es,legado_rec,resultado_distinto,0,artmst|vtadia,prvmst|vtadia|ocpcab,0,739,330,3.964,0.004778,SELECT 'No es posible responder con el esquema disponible: la relación artículo-proveedor (artmst.art_prv) no está en las tablas permitidas' AS aviso
+hard-039-en,en,copilot,correcta,1,artmst|vtadia,,,872,129,1.598,0.003034,"SELECT COUNT(DISTINCT p.supplier_id) AS supplier_count
+FROM sales_daily s
+JOIN products p ON p.sku = s.sku
+WHERE s.day >= DATE '2026-09-01'
+  AND s.day < DATE '2026-10-01'
+  AND s.units > 0
+  AND p.supplier_id IS NOT NULL"
+hard-039-en,en,legado,correcta,1,artmst|vtadia,,,500,146,1.46,0.00246,"SELECT COUNT(DISTINCT a.art_prv) AS distinct_suppliers
+FROM vtadia v
+JOIN artmst a ON a.art_cd = v.vta_art
+WHERE v.vta_fch >= DATE '2026-09-01'
+  AND v.vta_fch < DATE '2026-10-01'
+  AND v.vta_und > 0
+  AND a.art_prv IS NOT NULL"
+hard-039-en,en,legado_dic,correcta,1,artmst|vtadia,,,1491,142,1.579,0.004402,"SELECT COUNT(DISTINCT a.art_prv) AS proveedores
+FROM vtadia v
+JOIN artmst a ON a.art_cd = v.vta_art
+WHERE v.vta_fch >= DATE '2026-09-01'
+  AND v.vta_fch < DATE '2026-10-01'
+  AND v.vta_und > 0
+  AND a.art_prv IS NOT NULL"
+hard-039-en,en,legado_rec,resultado_distinto,0,artmst|vtadia,prvmst|vtadia|ocpcab,0,724,408,4.832,0.005528,"SELECT 'No se puede responder con el esquema dado: falta la tabla artmst (art_cd, art_prv) que relaciona los artículos de vtadia con los proveedores de prvmst' AS aviso"
+hard-040-es,es,copilot,correcta,1,almmst|artmst|exidet,,,876,152,1.844,0.003272,"SELECT w.warehouse_id, w.name AS warehouse, w.city, SUM(s.on_hand) AS total_on_hand
+FROM stock s
+JOIN products p ON p.sku = s.sku
+JOIN warehouses w ON w.warehouse_id = s.warehouse_id
+WHERE p.category = 'Electrico'
+GROUP BY w.warehouse_id, w.name, w.city
+ORDER BY w.name"
+hard-040-es,es,legado,correcta,1,almmst|artmst|exidet,,,504,156,1.373,0.002568,"SELECT a.alm_id, a.alm_dsc, SUM(e.exi_qty) AS total_existencias
+FROM exidet e
+JOIN artmst m ON m.art_cd = e.exi_art
+JOIN almmst a ON a.alm_id = e.exi_alm
+WHERE m.art_lin ILIKE 'Electrico'
+GROUP BY a.alm_id, a.alm_dsc
+ORDER BY a.alm_id"
+hard-040-es,es,legado_dic,correcta,1,almmst|artmst|exidet,,,1495,146,2.174,0.00445,"SELECT a.alm_id, a.alm_dsc, SUM(e.exi_qty) AS total_existencias FROM almmst a JOIN exidet e ON e.exi_alm = a.alm_id JOIN artmst r ON r.art_cd = e.exi_art WHERE r.art_lin = 'Electrico' GROUP BY a.alm_id, a.alm_dsc ORDER BY a.alm_id"
+hard-040-es,es,legado_rec,correcta,1,almmst|artmst|exidet,exidet|artmst|almmst,1,912,152,1.391,0.003344,"SELECT a.alm_id, a.alm_dsc, SUM(e.exi_qty) AS total_existencias
+FROM exidet e
+JOIN artmst m ON m.art_cd = e.exi_art
+JOIN almmst a ON a.alm_id = e.exi_alm
+WHERE m.art_lin = 'Electrico'
+GROUP BY a.alm_id, a.alm_dsc
+ORDER BY a.alm_id"
+hard-040-en,en,copilot,correcta,1,almmst|artmst|exidet,,,872,159,1.596,0.003334,"SELECT w.warehouse_id, w.name AS warehouse_name, w.city, SUM(s.on_hand) AS total_on_hand
+FROM warehouses w
+JOIN stock s ON s.warehouse_id = w.warehouse_id
+JOIN products p ON p.sku = s.sku
+WHERE p.category = 'Electrico'
+GROUP BY w.warehouse_id, w.name, w.city
+ORDER BY w.warehouse_id"
+hard-040-en,en,legado,correcta,1,almmst|artmst|exidet,,,500,151,1.459,0.00251,"SELECT a.alm_id, a.alm_dsc, SUM(e.exi_qty) AS total_stock
+FROM almmst a
+JOIN exidet e ON e.exi_alm = a.alm_id
+JOIN artmst r ON r.art_cd = e.exi_art
+WHERE r.art_lin = 'Electrico'
+GROUP BY a.alm_id, a.alm_dsc
+ORDER BY a.alm_id"
+hard-040-en,en,legado_dic,correcta,1,almmst|artmst|exidet,,,1491,151,1.392,0.004492,"SELECT a.alm_id, a.alm_dsc, SUM(e.exi_qty) AS total_stock
+FROM exidet e
+JOIN artmst r ON r.art_cd = e.exi_art
+JOIN almmst a ON a.alm_id = e.exi_alm
+WHERE r.art_lin = 'Electrico'
+GROUP BY a.alm_id, a.alm_dsc
+ORDER BY a.alm_id"
+hard-040-en,en,legado_rec,resultado_distinto,0,almmst|artmst|exidet,exidet|artmst|vtadia,0,844,107,1.365,0.002758,"SELECT e.exi_alm, SUM(e.exi_qty) AS total_existencia FROM exidet e JOIN artmst a ON a.art_cd = e.exi_art WHERE a.art_lin = 'Electrico' GROUP BY e.exi_alm ORDER BY e.exi_alm"
+hard-041-es,es,copilot,correcta,1,artmst|vtadia,,,879,83,1.251,0.002588,"SELECT DISTINCT p.sku, p.name, p.unit_cost
+FROM products p
+JOIN sales_daily s ON s.sku = p.sku
+WHERE p.unit_cost < 10
+ORDER BY p.sku"
+hard-041-es,es,legado,correcta,1,artmst|vtadia,,,507,111,1.59,0.002124,"SELECT a.art_cd, a.art_dsc, a.art_cst
+FROM artmst a
+WHERE a.art_cst < 10
+AND EXISTS (SELECT 1 FROM vtadia v WHERE v.vta_art = a.art_cd)
+ORDER BY a.art_cst, a.art_cd"
+hard-041-es,es,legado_dic,correcta,1,artmst|vtadia,,,1498,101,1.752,0.004006,"SELECT a.art_cd, a.art_dsc, a.art_cst FROM artmst a WHERE a.art_cst < 10 AND EXISTS (SELECT 1 FROM vtadia v WHERE v.vta_art = a.art_cd) ORDER BY a.art_cd"
+hard-041-es,es,legado_rec,correcta,1,artmst|vtadia,artmst|vtadia|ocpcab,1,901,91,1.195,0.002712,"SELECT DISTINCT a.art_cd, a.art_dsc, a.art_cst FROM artmst a JOIN vtadia v ON v.vta_art = a.art_cd WHERE a.art_cst < 10 ORDER BY a.art_cd"
+hard-041-en,en,copilot,correcta,1,artmst|vtadia,,,871,95,1.515,0.002692,"SELECT p.sku, p.name, p.unit_cost
+FROM products p
+WHERE p.unit_cost < 10
+  AND EXISTS (SELECT 1 FROM sales_daily s WHERE s.sku = p.sku)
+ORDER BY p.sku"
+hard-041-en,en,legado,correcta,1,artmst|vtadia,,,499,101,1.641,0.002008,"SELECT a.art_cd, a.art_dsc, a.art_cst FROM artmst a WHERE a.art_cst < 10 AND EXISTS (SELECT 1 FROM vtadia v WHERE v.vta_art = a.art_cd) ORDER BY a.art_cd"
+hard-041-en,en,legado_dic,correcta,1,artmst|vtadia,,,1490,101,2.474,0.00399,"SELECT a.art_cd, a.art_dsc, a.art_cst FROM artmst a WHERE a.art_cst < 10 AND EXISTS (SELECT 1 FROM vtadia v WHERE v.vta_art = a.art_cd) ORDER BY a.art_cd"
+hard-041-en,en,legado_rec,correcta,1,artmst|vtadia,artmst|vtadia|ocpcab,1,893,90,1.409,0.002686,"SELECT DISTINCT a.art_cd, a.art_dsc, a.art_cst FROM artmst a JOIN vtadia v ON v.vta_art = a.art_cd WHERE a.art_cst < 10 ORDER BY a.art_cd"
+hard-042-es,es,copilot,correcta,1,artmst|prvmst|vtadia,,,882,145,1.724,0.003214,"SELECT s.supplier_id, s.name, s.country
+FROM suppliers s
+WHERE EXISTS (
+    SELECT 1
+    FROM products p
+    JOIN sales_daily sd ON sd.sku = p.sku
+    WHERE p.supplier_id = s.supplier_id
+    GROUP BY p.sku
+    HAVING SUM(sd.units) > 1000
+)
+ORDER BY s.name"
+hard-042-es,es,legado,correcta,1,artmst|prvmst|vtadia,,,510,147,2.724,0.00249,"SELECT p.prv_id, p.prv_nm, p.prv_pais
+FROM prvmst p
+WHERE EXISTS (
+  SELECT 1
+  FROM artmst a
+  JOIN vtadia v ON v.vta_art = a.art_cd
+  WHERE a.art_prv = p.prv_id
+  GROUP BY a.art_cd
+  HAVING SUM(v.vta_und) > 1000
+)"
+hard-042-es,es,legado_dic,correcta,1,artmst|prvmst|vtadia,,,1501,148,2.004,0.004482,"SELECT p.prv_id, p.prv_nm
+FROM prvmst p
+WHERE p.prv_id IN (
+  SELECT a.art_prv
+  FROM artmst a
+  JOIN vtadia v ON v.vta_art = a.art_cd
+  GROUP BY a.art_cd, a.art_prv
+  HAVING SUM(v.vta_und) > 1000
+)
+ORDER BY p.prv_nm"
+hard-042-es,es,legado_rec,correcta,1,artmst|prvmst|vtadia,prvmst|vtadia|artmst,1,869,138,1.521,0.003118,"SELECT p.prv_id, p.prv_nm FROM prvmst p WHERE EXISTS (SELECT 1 FROM artmst a JOIN vtadia v ON v.vta_art = a.art_cd WHERE a.art_prv = p.prv_id GROUP BY a.art_cd HAVING SUM(v.vta_und) > 1000) ORDER BY p.prv_nm"
+hard-042-en,en,copilot,correcta,1,artmst|prvmst|vtadia,,,872,135,4.159,0.003094,"SELECT s.supplier_id, s.name, s.country
+FROM suppliers s
+WHERE EXISTS (
+    SELECT 1
+    FROM products p
+    JOIN sales_daily sd ON sd.sku = p.sku
+    WHERE p.supplier_id = s.supplier_id
+    GROUP BY p.sku
+    HAVING SUM(sd.units) > 1000
+)"
+hard-042-en,en,legado,correcta,1,artmst|prvmst|vtadia,,,500,156,1.619,0.00256,"SELECT p.prv_id, p.prv_nm, p.prv_pais
+FROM prvmst p
+WHERE p.prv_id IN (
+  SELECT a.art_prv
+  FROM artmst a
+  JOIN vtadia v ON v.vta_art = a.art_cd
+  GROUP BY a.art_cd, a.art_prv
+  HAVING SUM(v.vta_und) > 1000
+)
+ORDER BY p.prv_nm"
+hard-042-en,en,legado_dic,correcta,1,artmst|prvmst|vtadia,,,1491,161,1.417,0.004592,"SELECT DISTINCT p.prv_id, p.prv_nm
+FROM prvmst p
+JOIN artmst a ON a.art_prv = p.prv_id
+JOIN (
+  SELECT vta_art, SUM(vta_und) AS total_und
+  FROM vtadia
+  GROUP BY vta_art
+  HAVING SUM(vta_und) > 1000
+) v ON v.vta_art = a.art_cd
+ORDER BY p.prv_id"
+hard-042-en,en,legado_rec,resultado_distinto,0,artmst|prvmst|vtadia,vtadia|prvmst|ocpcab,0,724,426,4.901,0.005708,"SELECT 'Cannot be answered with the given schema: linking suppliers to articles requires artmst (art_cd, art_prv), which is not available' AS error_message"
+hard-043-es,es,copilot,correcta,1,almmst|exidet,,,896,150,2.26,0.003292,"SELECT w.name, SUM(s.on_hand) AS unidades, SUM(s.on_hand)::NUMERIC / SUM(SUM(s.on_hand)) OVER () AS proporcion FROM stock s JOIN warehouses w ON w.warehouse_id = s.warehouse_id GROUP BY w.warehouse_id, w.name ORDER BY unidades DESC, w.name ASC LIMIT 1"
+hard-043-es,es,legado,correcta,1,almmst|exidet,,,524,215,1.743,0.003198,"WITH tot AS (SELECT a.alm_id, a.alm_dsc, COALESCE(SUM(e.exi_qty), 0) AS unidades FROM almmst a LEFT JOIN exidet e ON e.exi_alm = a.alm_id GROUP BY a.alm_id, a.alm_dsc) SELECT alm_id, alm_dsc, unidades, ROUND(100.0 * unidades / NULLIF(SUM(unidades) OVER (), 0), 2) AS proporcion_pct FROM tot ORDER BY unidades DESC, alm_dsc ASC LIMIT 1"
+hard-043-es,es,legado_dic,correcta,1,almmst|exidet,,,1515,185,2.38,0.00488,"SELECT a.alm_id, a.alm_dsc, SUM(e.exi_qty) AS unidades, ROUND(100.0 * SUM(e.exi_qty) / SUM(SUM(e.exi_qty)) OVER (), 2) AS proporcion_pct
+FROM exidet e
+JOIN almmst a ON a.alm_id = e.exi_alm
+GROUP BY a.alm_id, a.alm_dsc
+ORDER BY unidades DESC, a.alm_dsc ASC
+LIMIT 1"
+hard-043-es,es,legado_rec,correcta,1,almmst|exidet,exidet|almmst|vtadia,1,683,185,2.924,0.003216,"SELECT a.alm_id, a.alm_dsc, SUM(e.exi_qty) AS unidades, SUM(e.exi_qty)::numeric / NULLIF(SUM(SUM(e.exi_qty)) OVER (), 0) AS proporcion FROM exidet e JOIN almmst a ON a.alm_id = e.exi_alm GROUP BY a.alm_id, a.alm_dsc ORDER BY proporcion DESC NULLS LAST, a.alm_dsc ASC LIMIT 1"
+hard-043-en,en,copilot,correcta,1,almmst|exidet,,,883,174,1.9,0.003506,"SELECT w.warehouse_id, w.name, SUM(s.on_hand) AS total_on_hand, SUM(s.on_hand)::numeric / NULLIF(SUM(SUM(s.on_hand)) OVER (), 0) AS share
+FROM warehouses w
+JOIN stock s ON s.warehouse_id = w.warehouse_id
+GROUP BY w.warehouse_id, w.name
+ORDER BY total_on_hand DESC, w.name ASC
+LIMIT 1"
+hard-043-en,en,legado,correcta,1,almmst|exidet,,,511,177,1.683,0.002792,"SELECT a.alm_id, a.alm_dsc, SUM(e.exi_qty) AS total_units, ROUND(100.0 * SUM(e.exi_qty) / SUM(SUM(e.exi_qty)) OVER (), 2) AS share_pct FROM exidet e JOIN almmst a ON a.alm_id = e.exi_alm GROUP BY a.alm_id, a.alm_dsc ORDER BY total_units DESC, a.alm_dsc ASC LIMIT 1"
+hard-043-en,en,legado_dic,correcta,1,almmst|exidet,,,1502,182,1.737,0.004824,"SELECT a.alm_id, a.alm_dsc, SUM(e.exi_qty) AS total_units, ROUND(100.0 * SUM(e.exi_qty) / SUM(SUM(e.exi_qty)) OVER (), 2) AS share_pct
+FROM almmst a
+JOIN exidet e ON e.exi_alm = a.alm_id
+GROUP BY a.alm_id, a.alm_dsc
+ORDER BY total_units DESC, a.alm_dsc ASC
+LIMIT 1"
+hard-043-en,en,legado_rec,correcta,1,almmst|exidet,exidet|almmst|vtadia,1,670,179,2.27,0.00313,"WITH tot AS (SELECT exi_alm, SUM(exi_qty) AS qty FROM exidet GROUP BY exi_alm) SELECT a.alm_id, a.alm_dsc, t.qty AS total_units, t.qty::numeric / NULLIF(SUM(t.qty) OVER (), 0) AS share FROM tot t JOIN almmst a ON a.alm_id = t.exi_alm ORDER BY t.qty DESC, a.alm_dsc ASC LIMIT 1"
+hard-044-es,es,copilot,correcta,1,artmst,,,882,46,1.279,0.002224,SELECT COUNT(*) AS total_productos FROM products WHERE reorder_point > 20 AND critical = FALSE
+hard-044-es,es,legado,correcta,1,artmst,,,510,62,1.187,0.00164,SELECT COUNT(*) AS total_productos FROM artmst WHERE art_ptr > 20 AND (art_crt = FALSE OR art_crt IS NULL)
+hard-044-es,es,legado_dic,correcta,1,artmst,,,1501,50,1.319,0.003502,SELECT COUNT(*) AS total_productos FROM artmst WHERE art_ptr > 20 AND art_crt = FALSE
+hard-044-es,es,legado_rec,correcta,1,artmst,artmst|ocpcab|exidet,1,968,44,1.233,0.002376,SELECT COUNT(*) FROM artmst WHERE art_ptr > 20 AND art_crt = FALSE
+hard-044-en,en,copilot,correcta,1,artmst,,,868,44,1.643,0.002176,SELECT COUNT(*) AS product_count FROM products WHERE reorder_point > 20 AND critical = FALSE
+hard-044-en,en,legado,correcta,1,artmst,,,496,47,1.244,0.001462,SELECT COUNT(*) FROM artmst WHERE art_ptr > 20 AND art_crt IS NOT TRUE
+hard-044-en,en,legado_dic,correcta,1,artmst,,,1487,51,1.138,0.003484,SELECT COUNT(*) AS total_articulos FROM artmst WHERE art_ptr > 20 AND art_crt = FALSE
+hard-044-en,en,legado_rec,correcta,1,artmst,artmst|ocpcab|exidet,1,954,48,1.72,0.002388,SELECT COUNT(*) AS total_products FROM artmst WHERE art_ptr > 20 AND art_crt = FALSE
+hard-045-es,es,copilot,correcta,1,artmst|prvmst,,,901,124,2.002,0.003042,"SELECT s.supplier_id, s.name, AVG(p.unit_cost) AS avg_unit_cost
+FROM suppliers s
+JOIN products p ON p.supplier_id = s.supplier_id
+GROUP BY s.supplier_id, s.name
+ORDER BY avg_unit_cost DESC, s.name ASC
+LIMIT 1"
+hard-045-es,es,legado,correcta,1,artmst|prvmst,,,529,129,1.541,0.002348,"SELECT p.prv_id, p.prv_nm, AVG(a.art_cst) AS costo_promedio
+FROM prvmst p
+JOIN artmst a ON a.art_prv = p.prv_id
+GROUP BY p.prv_id, p.prv_nm
+ORDER BY costo_promedio DESC, p.prv_nm ASC
+LIMIT 1"
+hard-045-es,es,legado_dic,correcta,1,artmst|prvmst,,,1520,129,2.036,0.00433,"SELECT p.prv_id, p.prv_nm, AVG(a.art_cst) AS costo_promedio
+FROM prvmst p
+JOIN artmst a ON a.art_prv = p.prv_id
+GROUP BY p.prv_id, p.prv_nm
+ORDER BY costo_promedio DESC, p.prv_nm ASC
+LIMIT 1"
+hard-045-es,es,legado_rec,correcta,1,artmst|prvmst,prvmst|ocpcab|artmst,1,1002,129,1.985,0.003294,"SELECT p.prv_id, p.prv_nm, AVG(a.art_cst) AS costo_promedio
+FROM prvmst p
+JOIN artmst a ON a.art_prv = p.prv_id
+GROUP BY p.prv_id, p.prv_nm
+ORDER BY costo_promedio DESC, p.prv_nm ASC
+LIMIT 1"
+hard-045-en,en,copilot,correcta,1,artmst|prvmst,,,880,124,1.5,0.003,"SELECT s.supplier_id, s.name, AVG(p.unit_cost) AS avg_unit_cost
+FROM suppliers s
+JOIN products p ON p.supplier_id = s.supplier_id
+GROUP BY s.supplier_id, s.name
+ORDER BY avg_unit_cost DESC, s.name ASC
+LIMIT 1"
+hard-045-en,en,legado,correcta,1,artmst|prvmst,,,508,127,1.266,0.002286,"SELECT p.prv_id, p.prv_nm, AVG(a.art_cst) AS avg_cost
+FROM prvmst p
+JOIN artmst a ON a.art_prv = p.prv_id
+GROUP BY p.prv_id, p.prv_nm
+ORDER BY avg_cost DESC, p.prv_nm ASC
+LIMIT 1"
+hard-045-en,en,legado_dic,correcta,1,artmst|prvmst,,,1499,127,1.322,0.004268,"SELECT p.prv_id, p.prv_nm, AVG(a.art_cst) AS avg_cost
+FROM prvmst p
+JOIN artmst a ON a.art_prv = p.prv_id
+GROUP BY p.prv_id, p.prv_nm
+ORDER BY avg_cost DESC, p.prv_nm ASC
+LIMIT 1"
+hard-045-en,en,legado_rec,correcta,1,artmst|prvmst,prvmst|vtadia|artmst,1,867,127,1.543,0.003004,"SELECT p.prv_id, p.prv_nm, AVG(a.art_cst) AS avg_cost
+FROM prvmst p
+JOIN artmst a ON a.art_prv = p.prv_id
+GROUP BY p.prv_id, p.prv_nm
+ORDER BY avg_cost DESC, p.prv_nm ASC
+LIMIT 1"
+hard-047-es,es,copilot,correcta,1,exidet|vtadia,,,880,75,1.789,0.00251,SELECT COUNT(*) AS registros_sin_ventas FROM stock s WHERE NOT EXISTS (SELECT 1 FROM sales_daily sd WHERE sd.sku = s.sku)
+hard-047-es,es,legado,correcta,1,exidet|vtadia,,,508,66,1.255,0.001676,SELECT COUNT(*) FROM exidet e WHERE NOT EXISTS (SELECT 1 FROM vtadia v WHERE v.vta_art = e.exi_art)
+hard-047-es,es,legado_dic,correcta,1,exidet|vtadia,,,1499,85,1.245,0.003848,"SELECT COUNT(*) AS registros_sin_ventas
+FROM exidet e
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM vtadia v
+  WHERE v.vta_art = e.exi_art
+)"
+hard-047-es,es,legado_rec,correcta,1,exidet|vtadia,artmst|exidet|vtadia,1,852,77,1.295,0.002474,SELECT COUNT(*) AS registros_sin_ventas FROM exidet e WHERE NOT EXISTS (SELECT 1 FROM vtadia v WHERE v.vta_art = e.exi_art)
+hard-047-en,en,copilot,correcta,1,exidet|vtadia,,,869,70,1.682,0.002438,SELECT COUNT(*) AS stock_records FROM stock s WHERE NOT EXISTS (SELECT 1 FROM sales_daily sd WHERE sd.sku = s.sku)
+hard-047-en,en,legado,correcta,1,exidet|vtadia,,,497,77,1.132,0.001764,SELECT COUNT(*) AS stock_records_without_sales FROM exidet e WHERE NOT EXISTS (SELECT 1 FROM vtadia v WHERE v.vta_art = e.exi_art)
+hard-047-en,en,legado_dic,correcta,1,exidet|vtadia,,,1488,66,1.127,0.003636,SELECT COUNT(*) FROM exidet e WHERE NOT EXISTS (SELECT 1 FROM vtadia v WHERE v.vta_art = e.exi_art)
+hard-047-en,en,legado_rec,correcta,1,exidet|vtadia,artmst|vtadia|exidet,1,841,66,1.096,0.002342,SELECT COUNT(*) FROM exidet e WHERE NOT EXISTS (SELECT 1 FROM vtadia v WHERE v.vta_art = e.exi_art)
+hard-048-es,es,copilot,correcta,1,artmst|exidet,,,895,97,3.167,0.00276,"SELECT p.category, SUM(s.on_hand * p.unit_cost) AS total_value
+FROM products p
+JOIN stock s ON s.sku = p.sku
+GROUP BY p.category
+ORDER BY total_value DESC, p.category ASC
+LIMIT 1"
+hard-048-es,es,legado,correcta,1,artmst|exidet,,,523,224,2.363,0.003286,"SELECT a.art_lin AS categoria, SUM(e.exi_qty * a.art_cst) AS valor_total
+FROM artmst a
+JOIN exidet e ON e.exi_art = a.art_cd
+GROUP BY a.art_lin
+ORDER BY valor_total DESC, a.art_lin ASC
+LIMIT 1"
+hard-048-es,es,legado_dic,correcta,1,artmst|exidet,,,1514,115,1.316,0.004178,"SELECT a.art_lin, SUM(e.exi_qty * a.art_cst) AS valor_total
+FROM artmst a
+JOIN exidet e ON e.exi_art = a.art_cd
+GROUP BY a.art_lin
+ORDER BY valor_total DESC, a.art_lin ASC
+LIMIT 1"
+hard-048-es,es,legado_rec,correcta,1,artmst|exidet,exidet|artmst|vtadia,1,867,115,1.383,0.002884,"SELECT a.art_lin, SUM(e.exi_qty * a.art_cst) AS valor_total
+FROM exidet e
+JOIN artmst a ON a.art_cd = e.exi_art
+GROUP BY a.art_lin
+ORDER BY valor_total DESC, a.art_lin ASC
+LIMIT 1"
+hard-048-en,en,copilot,correcta,1,artmst|exidet,,,877,97,1.976,0.002724,"SELECT p.category, SUM(s.on_hand * p.unit_cost) AS total_value
+FROM products p
+JOIN stock s ON s.sku = p.sku
+GROUP BY p.category
+ORDER BY total_value DESC, p.category ASC
+LIMIT 1"
+hard-048-en,en,legado,correcta,1,artmst|exidet,,,505,113,1.741,0.00214,"SELECT a.art_lin, SUM(e.exi_qty * a.art_cst) AS total_value
+FROM exidet e
+JOIN artmst a ON a.art_cd = e.exi_art
+GROUP BY a.art_lin
+ORDER BY total_value DESC, a.art_lin ASC
+LIMIT 1"
+hard-048-en,en,legado_dic,correcta,1,artmst|exidet,,,1496,110,1.951,0.004092,"SELECT a.art_lin, SUM(e.exi_qty * a.art_cst) AS valor_total FROM artmst a JOIN exidet e ON e.exi_art = a.art_cd GROUP BY a.art_lin ORDER BY valor_total DESC, a.art_lin ASC LIMIT 1"
+hard-048-en,en,legado_rec,correcta,1,artmst|exidet,artmst|vtadia|exidet,1,849,113,1.542,0.002828,"SELECT a.art_lin, SUM(e.exi_qty * a.art_cst) AS total_value
+FROM artmst a
+JOIN exidet e ON e.exi_art = a.art_cd
+GROUP BY a.art_lin
+ORDER BY total_value DESC, a.art_lin ASC
+LIMIT 1"

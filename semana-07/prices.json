@@ -8,6 +8,16 @@
     "umbral_prompt_tokens": 100000,
     "fuente": "https://platform.claude.com/docs/en/about-claude/pricing (consultado 2026-10-26). 'in' y 'out' son el tramo de prompts hasta 100,000 tokens; por encima, cada petición paga 0.50 de entrada y 2.50 de salida. Todas las corridas del repo quedan bajo el umbral."
   },
+  "anthropic:claude-sonnet-5-5": {
+    "in": 2.0,
+    "out": 10.0,
+    "fuente": "https://platform.claude.com/docs/en/about-claude/pricing (consultado 2026-10-26). Sin tramo por largo de prompt."
+  },
+  "anthropic:claude-opus-5-5": {
+    "in": 4.0,
+    "out": 20.0,
+    "fuente": "https://platform.claude.com/docs/en/about-claude/pricing (consultado 2026-10-26). Sin tramo por largo de prompt."
+  },
   "openai:gpt-5.6-luna": {
     "in": 0.2,
     "out": 1.2,
