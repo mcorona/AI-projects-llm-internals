@@ -33,12 +33,12 @@ Sin errores de SQL ni salidas truncadas. Detalle por pregunta: `sql_legado_detal
 
 ## Comparación con semana 7
 
-En el mismo set y con el esquema original, semana 7 midió claude-haiku-5-5: ES 41/43 (0.953) y EN 43/43 (1.000), con un costo de $0.0040 a $0.0057 por idioma (unos $0.0001 por pregunta). Sonnet 5.5 en la variante `copilot` sacó ES 0.953 y EN 0.977, a $0.0030 por pregunta: **la misma exactitud dentro del ruido, a unas 30 veces el costo**. Haiku no se midió sobre el esquema legado, así que no se sabe si alcanzaría para los nombres crípticos.
+En el mismo set y con el esquema original, semana 7 midió claude-haiku-5-5: ES 41/43 (0.953) y EN 43/43 (1.000), con un costo de $0.0040 a $0.0057 por idioma (unos $0.0001 por pregunta). Sonnet 5.5 en la variante `copilot` sacó ES 0.953 y EN 0.977, a $0.0030 por pregunta: **la misma exactitud dentro del ruido, a entre 22 y 32 veces el costo por pregunta**. Haiku no se midió sobre el esquema legado, así que no se sabe si alcanzaría para los nombres crípticos.
 
 ## Lectura
 
 - **Los nombres crípticos no afectaron a Sonnet:** `legado` saca lo mismo que `copilot` (una pregunta de diferencia, en direcciones opuestas por idioma). En un esquema de 6 tablas, con nombres como `artmst` o `exi_qty` y llaves que se pueden inferir, el DDL basta.
-- **El diccionario completo no mejoró la exactitud** y subió el costo por pregunta en torno a 60 % frente a `legado`, por el prompt más largo.
+- **El diccionario completo no mejoró la exactitud** y subió el costo por pregunta frente a `legado` (62 % en ES y 73 % en EN), por el prompt más largo.
 - **El diccionario recuperado bajó la exactitud a 0.72–0.74, y la causa es la recuperación, no el SQL:** con todas las tablas necesarias recuperadas, 63 de 64 correctas; con alguna faltante, 0 de 22. La tabla que más faltó fue `artmst`, el maestro de artículos (17 de 22), y luego `almmst` (5). La búsqueda por similitud prioriza las tablas que la pregunta menciona (ventas, existencias) y deja fuera el maestro que se necesita para el JOIN.
 - **Cuando faltó una tabla, Sonnet no inventó nombres:** las 4 salidas que no fueron SELECT son negativas explícitas ("artmst no está disponible"). Es el comportamiento correcto ante un esquema incompleto.
 
