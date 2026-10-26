@@ -82,9 +82,13 @@ def llamar(modelo, esfuerzo, sis, pregunta):
                 d = json.loads(r.read())
             break
         except urllib.error.HTTPError as e:
-            if e.code not in (429, 500, 502, 503, 529) or intento == 3:
-                raise
-            time.sleep(2 ** (intento + 1))
+            cuerpo_error = e.read().decode("utf-8", "replace")[:500]
+            if e.code in (429, 500, 502, 503, 529) and intento < 3:
+                time.sleep(2 ** (intento + 1))
+                continue
+            # Error no reintentable (o reintentos agotados): se registra y la corrida sigue.
+            print(f"  API HTTP {e.code}: {cuerpo_error}", file=sys.stderr)
+            return f"API HTTP {e.code}: {cuerpo_error}", 0, 0, round(time.perf_counter() - t0, 3), "error_api"
     texto = "".join(b.get("text", "") for b in d["content"] if b.get("type") == "text")
     return (texto, d["usage"]["input_tokens"], d["usage"]["output_tokens"], round(time.perf_counter() - t0, 3),
             d.get("stop_reason"))
@@ -96,6 +100,7 @@ def main():
     ap.add_argument("--esfuerzo", required=True, choices=["low", "medium", "high", "xhigh", "max"])
     ap.add_argument("--variantes", default=",".join(VARIANTES))
     ap.add_argument("--limite", type=int, default=0, help="solo las primeras N preguntas por idioma (prueba)")
+    ap.add_argument("--reanudar", action="store_true", help="salta las combinaciones pregunta-variante ya guardadas en el CSV")
     args = ap.parse_args()
     variantes = args.variantes.split(",")
     precio = PRECIOS[f"anthropic:{args.modelo}"]
@@ -124,11 +129,31 @@ def main():
 
     esquema_copilot = (REPO / "semana-07" / "schema.sql").read_text(encoding="utf-8")
     ddl_completo = "\n".join(DDL_LEGADO[t] for t in DICCIONARIO)
+    RES.mkdir(parents=True, exist_ok=True)
+    salida = RES / f"sql_legado_detalle_{args.modelo}_{args.esfuerzo}{'_prueba' if args.limite else ''}.csv"
+    CAMPOS = ["id", "lang", "variante", "categoria", "ok", "tablas_necesarias", "tablas_recuperadas",
+              "recuperacion_completa", "tokens_in", "tokens_out", "latencia_s", "costo_usd", "sql"]
     detalle = []
+    if args.reanudar and salida.exists():
+        for f in csv.DictReader(salida.open(encoding="utf-8")):
+            for k in ("ok", "tokens_in", "tokens_out"):
+                f[k] = int(f[k])
+            f["latencia_s"], f["costo_usd"] = float(f["latencia_s"]), float(f["costo_usd"])
+            f["recuperacion_completa"] = "" if f["recuperacion_completa"] == "" else int(f["recuperacion_completa"])
+            detalle.append(f)
+        print(f"reanudando: {len(detalle)} combinaciones ya hechas", file=sys.stderr)
+    hechas = {(d["id"], d["variante"]) for d in detalle}
+    nuevo = not (args.reanudar and salida.exists())
+    fh = salida.open("w" if nuevo else "a", encoding="utf-8", newline="")
+    escritor = csv.DictWriter(fh, fieldnames=CAMPOS)
+    if nuevo:
+        escritor.writeheader()
     for x in items:
         tablas_ref = re7.tablas_del_sql(x["sql"])
         necesarias = {ORIGINAL_A_LEGADO[t] for t in tablas_ref if t in ORIGINAL_A_LEGADO}
         for var in variantes:
+            if (x["id"], var) in hechas:
+                continue
             recuperadas = None
             if var == "copilot":
                 sis, conn = sistema(esquema_copilot), conn_ref
@@ -143,7 +168,9 @@ def main():
                 conn = conn_leg
             texto, tin, tout, lat, stop = llamar(args.modelo, args.esfuerzo, sis, x["question"])
             sql = re7.extraer_sql(texto)
-            if stop == "max_tokens":
+            if stop == "error_api":
+                cat, sql = "error_api", None
+            elif stop == "max_tokens":
                 cat = "salida_truncada"
             elif sql is None:
                 cat = "no_es_select"
@@ -158,7 +185,10 @@ def main():
                             "recuperacion_completa": "" if recuperadas is None else int(necesarias <= set(recuperadas)),
                             "tokens_in": tin, "tokens_out": tout, "latencia_s": lat,
                             "costo_usd": round((tin * precio["in"] + tout * precio["out"]) / 1e6, 7), "sql": sql or texto[:300]})
-        print(f"{x['id']}: " + " ".join(f"{d['variante']}={d['categoria']}" for d in detalle[-len(variantes):]), file=sys.stderr)
+            escritor.writerow(detalle[-1])
+            fh.flush()
+        print(f"{x['id']}: " + " ".join(f"{d['variante']}={d['categoria']}" for d in detalle if d["id"] == x["id"]), file=sys.stderr)
+    fh.close()
 
     print(f"\nModelo {args.modelo}, esfuerzo {args.esfuerzo}. Precio: {precio['in']} / {precio['out']} USD por millón.\n")
     print("| Variante | Idioma | Exactitud | Correctas | Errores SQL | Resultado distinto | Recuperación completa de tablas | Costo por pregunta (USD) | Latencia p50 (s) | Tokens de salida (media) |")
@@ -173,13 +203,9 @@ def main():
                   f"{statistics.mean(d['costo_usd'] for d in f):.5f} | {statistics.median(d['latencia_s'] for d in f):.1f} | "
                   f"{statistics.mean(d['tokens_out'] for d in f):.0f} |")
     otros = [d for d in detalle if d["categoria"] in ("salida_truncada", "no_es_select")]
-    print(f"\nSalidas truncadas o que no son SELECT: {len(otros)}. Costo total: ${sum(d['costo_usd'] for d in detalle):.4f}")
-    RES.mkdir(parents=True, exist_ok=True)
-    salida = RES / f"sql_legado_detalle_{args.modelo}_{args.esfuerzo}{'_prueba' if args.limite else ''}.csv"
-    with salida.open("w", encoding="utf-8", newline="") as fh:
-        w = csv.DictWriter(fh, fieldnames=list(detalle[0].keys()))
-        w.writeheader()
-        w.writerows(detalle)
+    api = [d for d in detalle if d["categoria"] == "error_api"]
+    print(f"\nSalidas truncadas o que no son SELECT: {len(otros)}. Errores de API: {len(api)}. "
+          f"Costo total: ${sum(d['costo_usd'] for d in detalle):.4f}")
     print(f"detalle: {salida}", file=sys.stderr)
 
 
