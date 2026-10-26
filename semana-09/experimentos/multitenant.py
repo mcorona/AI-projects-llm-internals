@@ -162,7 +162,7 @@ def medir(nombre, buscar, fs, idioma, base, vb, solap, vs):
             otra_sin += posicion(res_n, x["gold"][otro], otro) is not None
             pp, po = posicion(res_n, x["gold"][t], t), posicion(res_n, x["gold"][otro], otro)
             antes += po is not None and (pp is None or po < pp)
-            if len(res_f) < min(K, sum(f["tenant_id"] == t and set(ROLES_DOC[f["source"]]) & set(u["roles"]) for f in fs)):
+            if len(res_f) < min(K, sum(f["tenant_id"] == t and bool(set(ROLES_DOC[f["source"]]) & set(u["roles"])) for f in fs)):
                 cortos += 1
     print(f"| {nombre} | {idioma} | {barrido} | {fuga} | {otro_sin} | {casos} | {propia}/{casos} | "
           f"{otra_sin}/{casos} / {otra_con}/{casos} | {antes}/{casos} | {cortos} |")
