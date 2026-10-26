@@ -19,10 +19,18 @@ author's wording. Results are a first measurement, not a verdict.
 
 Chosen default: fixed window of 400 characters with 80 overlap (57 chunks). It was compared against a
 recursive splitter (paragraph and sentence packing) and the section-based chunker from inventory-copilot
-(`experimentos/chunker_actual.py`). The per-strategy recall numbers were not saved to a results file in
-the repo, so they are not reported here. Re-run `experimentos/recall_chunking.py` to reproduce them.
+(`experimentos/chunker_actual.py`). Results: [`resultados/chunking.md`](resultados/chunking.md) (run 2026-10-26).
 
-Reason for the default: it had the best recall in the first comparison and keeps the code and the
+| Strategy | Chunks | Avg chars | Whole passages | ES recall@5 | ES recall@10 | EN recall@5 | EN recall@10 |
+|---|---|---|---|---|---|---|---|
+| Fixed window 400, overlap 80 | 57 | 348 | 50/50 | 1.000 | 1.000 | 1.000 | 1.000 |
+| Recursive by paragraph, max 300 | 84 | 203 | 48/50 | 0.950 | 0.950 | 0.940 | 0.950 |
+| By section (inventory-copilot chunker) | 69 | 242 | 50/50 | 0.970 | 1.000 | 0.960 | 1.000 |
+
+The recursive splitter breaks two gold passages, so it cannot retrieve them whole at any k.
+Differences are one to three questions out of 50: a consistent trend, not a strong result.
+
+Reason for the default: it has the best or tied recall in every cell, keeps every gold passage whole, and keeps the code and the
 pipeline simple. Its known weakness is that it ignores section boundaries, so citations can be less precise.
 
 ## 3: embedding models
@@ -132,7 +140,7 @@ The OpenAI key is the repository secret `OPENAI_API_KEY`. The check passed on th
 - Gemini embedding price comes from the author; the source URL and the token count are pending.
 - CI uses OpenAI embeddings, not the local bge-m3 model used in the measurements.
 - Docker services are for local development: single node, security plugin disabled.
-- The root README has no Phase 3 exit criteria yet, so this week is not checked against them.
+- Week 8 is checked against the Phase 3 exit criteria in the root README.
 
 ## Status
 
