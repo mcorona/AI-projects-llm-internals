@@ -68,7 +68,9 @@ def normalizar(s):
     return re.sub(r"^(el|la|los|las|un|una) ", "", s)
 
 
-def llamar(sistema, contenido, max_tokens=2000):
+# max_tokens alto: Haiku razona (bloque thinking) antes del JSON. Con 2000, 14 de 57 extracciones se
+# cortaron en el límite y los JSON válidos llegaron a 1969 tokens de salida.
+def llamar(sistema, contenido, max_tokens=6000):
     r = http_api("POST", "https://api.anthropic.com/v1/messages", {
         "model": MODELO, "max_tokens": max_tokens, "system": sistema,
         "messages": [{"role": "user", "content": contenido}]},
