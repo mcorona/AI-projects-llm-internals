@@ -33,7 +33,26 @@ Sin errores de SQL ni salidas truncadas. Detalle por pregunta: `sql_legado_detal
 
 ## Comparación con semana 7
 
-En el mismo set y con el esquema original, semana 7 midió claude-haiku-5-5: ES 41/43 (0.953) y EN 43/43 (1.000), con un costo de $0.0040 a $0.0057 por idioma (unos $0.0001 por pregunta). Sonnet 5.5 en la variante `copilot` sacó ES 0.953 y EN 0.977, a $0.0030 por pregunta: **la misma exactitud dentro del ruido, a entre 22 y 32 veces el costo por pregunta**. Haiku no se midió sobre el esquema legado, así que no se sabe si alcanzaría para los nombres crípticos.
+En el mismo set y con el esquema original, semana 7 midió claude-haiku-5-5: ES 41/43 (0.953) y EN 43/43 (1.000), con un costo de $0.0040 a $0.0057 por idioma (unos $0.0001 por pregunta). Sonnet 5.5 en la variante `copilot` sacó ES 0.953 y EN 0.977, a $0.0030 por pregunta: **la misma exactitud dentro del ruido, a entre 22 y 32 veces el costo por pregunta**. Por eso se corrió también Haiku 5.5 en las cuatro variantes (sección siguiente).
+
+## Haiku 5.5 (corrida adicional)
+
+Mismas cuatro variantes con **claude-haiku-5-5, esfuerzo `medium`** ($0.10 / $0.50 por millón, prompts de hasta 100K tokens). Costo: **$0.0923** en 344 llamadas. Detalle: `sql_legado_detalle_claude-haiku-5-5_medium.csv`.
+
+| Variante | Idioma | Haiku: exactitud | Sonnet: exactitud | Haiku: costo por pregunta (USD) | Sonnet: costo por pregunta (USD) | Haiku: latencia p50 (s) |
+|---|---|---|---|---|---|---|
+| copilot | ES | 0.977 (42/43) | 0.953 | 0.00021 | 0.00298 | 1.7 |
+| copilot | EN | 1.000 (43/43) | 0.977 | 0.00018 | 0.00298 | 1.6 |
+| legado | ES | 0.884 (38/43) | 0.977 | 0.00028 | 0.00268 | 2.1 |
+| legado | EN | 0.953 (41/43) | 0.953 | 0.00025 | 0.00248 | 2.1 |
+| legado_dic | ES | **0.977 (42/43)** | 0.953 | **0.00033** | 0.00433 | 2.0 |
+| legado_dic | EN | **1.000 (43/43)** | 0.977 | **0.00032** | 0.00429 | 2.0 |
+| legado_rec | ES | 0.767 (33/43) | 0.744 | 0.00029 | 0.00348 | 2.1 |
+| legado_rec | EN | 0.721 (31/43) | 0.721 | 0.00029 | 0.00347 | 2.1 |
+
+- **Sin diccionario, Haiku falla por los valores, no por los nombres.** Entiende la estructura legado, pero escribe `'ALEMANIA'` o `'China'` donde la base guarda códigos ISO (`'DE'`, `'CN'`), y busca la ciudad en `alm_dsc` ("CEDIS Norte") en lugar de `alm_cdd`. Son 7 fallos de 86 en `legado`.
+- **El diccionario corrige exactamente eso:** trae el formato de los valores (códigos de país, ciudades) y qué columna guarda cada dato. Con él, Haiku iguala o supera a Sonnet en las cuatro celdas comparables.
+- **La recuperación del diccionario falla igual que con Sonnet y por la misma causa:** 63 de 64 correctas con las tablas completas, 1 de 22 sin ellas. Las 14 salidas que no son SELECT son todas de `legado_rec`: negativas ante tablas faltantes.
 
 ## Lectura
 
@@ -44,11 +63,13 @@ En el mismo set y con el esquema original, semana 7 midió claude-haiku-5-5: ES 
 
 ## Decisión
 
-Para un esquema de este tamaño, pasar el DDL legado completo, sin diccionario, es lo más barato y no pierde exactitud. La recuperación del diccionario solo se justifica en esquemas grandes, y tendría que ampliar las tablas recuperadas con sus tablas relacionadas por llave foránea (por ejemplo, agregar siempre el maestro `artmst` cuando se recupera `exidet` o `vtadia`). Esa variante no se probó.
+**Haiku 5.5 con el DDL legado y el diccionario completo** para el text-to-SQL del asistente: 0.977 ES y 1.000 EN, a $0.00033 por pregunta, unas 13 veces menos que Sonnet con el diccionario ($0.0043) y con igual o mejor exactitud. El diccionario es necesario con Haiku (aporta el formato de los valores), aunque Sonnet no lo necesitó.
+
+La recuperación del diccionario solo se justifica en esquemas grandes, y tendría que ampliar las tablas recuperadas con sus tablas relacionadas por llave foránea (por ejemplo, agregar siempre el maestro `artmst` cuando se recupera `exidet` o `vtadia`). Esa variante no se probó.
 
 ## Limitaciones
 
 - Una corrida por variante; 43 preguntas por idioma, así que una pregunta mueve la exactitud 0.023.
 - Esquema pequeño (6 tablas) y con nombres crípticos pero adivinables. Un esquema legado real, con cientos de tablas y abreviaturas sin patrón, haría más necesario el diccionario.
-- Un solo modelo en las variantes legado. Haiku 5.5, más barato e igual de exacto en el esquema original, no se midió sobre el esquema legado.
+- Dos modelos (Sonnet 5.5 y Haiku 5.5), ambos con esfuerzo `medium`; una corrida de cada uno.
 - k = 3 fijo en la recuperación; no se probaron otros valores ni recuperación por columnas.
