@@ -55,7 +55,8 @@ import seguridad as sg  # noqa: E402
 sl, re7 = a.sl, a.sl.re7
 MODELO_EMB = "text-embedding-3-small"
 # Umbrales por check e idioma, calibrados con la primera corrida de CI (ver resultados/ci_calibracion.md).
-UMBRALES = None
+UMBRALES = {"ruteo": {"es": 0.85, "en": 0.85}, "legado": {"es": 0.90, "en": 0.90},
+            "recall_extraidos": {"es": 0.90, "en": 0.90}}
 HILOS = 4
 costos = {"anthropic": 0.0}
 
