@@ -1,0 +1,133 @@
+acierto_r5,cer,documento,extractor,idioma,pregunta,tipo
+,0.0,acta_inventario_norte,original (sin escanear),,,
+,0.0,remision_r4471,original (sin escanear),,,
+,0.0,devoluciones,original (sin escanear),,,
+,0.0,inventario_ciclico,original (sin escanear),,,
+,0.0,recepcion_almacen,original (sin escanear),,,
+,0.0029,acta_inventario_norte,Tesseract (spa),,,
+,0.0071,remision_r4471,Tesseract (spa),,,
+,0.0164,devoluciones,Tesseract (spa),,,
+,0.0166,inventario_ciclico,Tesseract (spa),,,
+,0.0043,recepcion_almacen,Tesseract (spa),,,
+,0.0029,acta_inventario_norte,Claude claude-haiku-5-5 (low),,,
+,0.0,remision_r4471,Claude claude-haiku-5-5 (low),,,
+,0.0,devoluciones,Claude claude-haiku-5-5 (low),,,
+,0.0,inventario_ciclico,Claude claude-haiku-5-5 (low),,,
+,0.0,recepcion_almacen,Claude claude-haiku-5-5 (low),,,
+,0.0,acta_inventario_norte,Claude claude-sonnet-5-5 (low),,,
+,0.0,remision_r4471,Claude claude-sonnet-5-5 (low),,,
+,0.0,devoluciones,Claude claude-sonnet-5-5 (low),,,
+,0.0,inventario_ciclico,Claude claude-sonnet-5-5 (low),,,
+,0.0,recepcion_almacen,Claude claude-sonnet-5-5 (low),,,
+1,,,original (sin escanear),es,rec-01,pasaje
+1,,,original (sin escanear),es,rec-02,pasaje
+1,,,original (sin escanear),es,rec-03,pasaje
+1,,,original (sin escanear),es,rec-04,pasaje
+1,,,original (sin escanear),es,rec-05,pasaje
+0,,,original (sin escanear),es,rec-06,pasaje
+1,,,original (sin escanear),es,rec-18,pasaje
+1,,,original (sin escanear),es,rec-19,pasaje
+1,,,original (sin escanear),es,rec-20,pasaje
+1,,,original (sin escanear),es,int-ocr-06,respuesta
+1,,,original (sin escanear),es,int-ocr-07,respuesta
+1,,,original (sin escanear),es,int-ocr-08,respuesta
+1,,,original (sin escanear),es,int-ocr-09,respuesta
+1,,,original (sin escanear),es,int-ocr-10,respuesta
+1,,,original (sin escanear),en,rec-01,pasaje
+1,,,original (sin escanear),en,rec-02,pasaje
+1,,,original (sin escanear),en,rec-03,pasaje
+1,,,original (sin escanear),en,rec-04,pasaje
+1,,,original (sin escanear),en,rec-05,pasaje
+0,,,original (sin escanear),en,rec-06,pasaje
+1,,,original (sin escanear),en,rec-18,pasaje
+1,,,original (sin escanear),en,rec-19,pasaje
+1,,,original (sin escanear),en,rec-20,pasaje
+1,,,original (sin escanear),en,int-ocr-06,respuesta
+1,,,original (sin escanear),en,int-ocr-07,respuesta
+1,,,original (sin escanear),en,int-ocr-08,respuesta
+1,,,original (sin escanear),en,int-ocr-09,respuesta
+1,,,original (sin escanear),en,int-ocr-10,respuesta
+1,,,Tesseract (spa),es,rec-01,pasaje
+1,,,Tesseract (spa),es,rec-02,pasaje
+1,,,Tesseract (spa),es,rec-03,pasaje
+1,,,Tesseract (spa),es,rec-04,pasaje
+1,,,Tesseract (spa),es,rec-05,pasaje
+0,,,Tesseract (spa),es,rec-06,pasaje
+1,,,Tesseract (spa),es,rec-18,pasaje
+1,,,Tesseract (spa),es,rec-19,pasaje
+1,,,Tesseract (spa),es,rec-20,pasaje
+1,,,Tesseract (spa),es,int-ocr-06,respuesta
+1,,,Tesseract (spa),es,int-ocr-07,respuesta
+1,,,Tesseract (spa),es,int-ocr-08,respuesta
+1,,,Tesseract (spa),es,int-ocr-09,respuesta
+1,,,Tesseract (spa),es,int-ocr-10,respuesta
+1,,,Tesseract (spa),en,rec-01,pasaje
+1,,,Tesseract (spa),en,rec-02,pasaje
+1,,,Tesseract (spa),en,rec-03,pasaje
+1,,,Tesseract (spa),en,rec-04,pasaje
+1,,,Tesseract (spa),en,rec-05,pasaje
+0,,,Tesseract (spa),en,rec-06,pasaje
+1,,,Tesseract (spa),en,rec-18,pasaje
+1,,,Tesseract (spa),en,rec-19,pasaje
+1,,,Tesseract (spa),en,rec-20,pasaje
+1,,,Tesseract (spa),en,int-ocr-06,respuesta
+1,,,Tesseract (spa),en,int-ocr-07,respuesta
+1,,,Tesseract (spa),en,int-ocr-08,respuesta
+1,,,Tesseract (spa),en,int-ocr-09,respuesta
+1,,,Tesseract (spa),en,int-ocr-10,respuesta
+1,,,Claude claude-haiku-5-5 (low),es,rec-01,pasaje
+1,,,Claude claude-haiku-5-5 (low),es,rec-02,pasaje
+1,,,Claude claude-haiku-5-5 (low),es,rec-03,pasaje
+1,,,Claude claude-haiku-5-5 (low),es,rec-04,pasaje
+1,,,Claude claude-haiku-5-5 (low),es,rec-05,pasaje
+0,,,Claude claude-haiku-5-5 (low),es,rec-06,pasaje
+1,,,Claude claude-haiku-5-5 (low),es,rec-18,pasaje
+1,,,Claude claude-haiku-5-5 (low),es,rec-19,pasaje
+1,,,Claude claude-haiku-5-5 (low),es,rec-20,pasaje
+1,,,Claude claude-haiku-5-5 (low),es,int-ocr-06,respuesta
+1,,,Claude claude-haiku-5-5 (low),es,int-ocr-07,respuesta
+1,,,Claude claude-haiku-5-5 (low),es,int-ocr-08,respuesta
+1,,,Claude claude-haiku-5-5 (low),es,int-ocr-09,respuesta
+1,,,Claude claude-haiku-5-5 (low),es,int-ocr-10,respuesta
+1,,,Claude claude-haiku-5-5 (low),en,rec-01,pasaje
+1,,,Claude claude-haiku-5-5 (low),en,rec-02,pasaje
+1,,,Claude claude-haiku-5-5 (low),en,rec-03,pasaje
+1,,,Claude claude-haiku-5-5 (low),en,rec-04,pasaje
+1,,,Claude claude-haiku-5-5 (low),en,rec-05,pasaje
+0,,,Claude claude-haiku-5-5 (low),en,rec-06,pasaje
+1,,,Claude claude-haiku-5-5 (low),en,rec-18,pasaje
+1,,,Claude claude-haiku-5-5 (low),en,rec-19,pasaje
+1,,,Claude claude-haiku-5-5 (low),en,rec-20,pasaje
+1,,,Claude claude-haiku-5-5 (low),en,int-ocr-06,respuesta
+1,,,Claude claude-haiku-5-5 (low),en,int-ocr-07,respuesta
+1,,,Claude claude-haiku-5-5 (low),en,int-ocr-08,respuesta
+1,,,Claude claude-haiku-5-5 (low),en,int-ocr-09,respuesta
+1,,,Claude claude-haiku-5-5 (low),en,int-ocr-10,respuesta
+1,,,Claude claude-sonnet-5-5 (low),es,rec-01,pasaje
+1,,,Claude claude-sonnet-5-5 (low),es,rec-02,pasaje
+1,,,Claude claude-sonnet-5-5 (low),es,rec-03,pasaje
+1,,,Claude claude-sonnet-5-5 (low),es,rec-04,pasaje
+1,,,Claude claude-sonnet-5-5 (low),es,rec-05,pasaje
+0,,,Claude claude-sonnet-5-5 (low),es,rec-06,pasaje
+1,,,Claude claude-sonnet-5-5 (low),es,rec-18,pasaje
+1,,,Claude claude-sonnet-5-5 (low),es,rec-19,pasaje
+1,,,Claude claude-sonnet-5-5 (low),es,rec-20,pasaje
+1,,,Claude claude-sonnet-5-5 (low),es,int-ocr-06,respuesta
+1,,,Claude claude-sonnet-5-5 (low),es,int-ocr-07,respuesta
+1,,,Claude claude-sonnet-5-5 (low),es,int-ocr-08,respuesta
+1,,,Claude claude-sonnet-5-5 (low),es,int-ocr-09,respuesta
+1,,,Claude claude-sonnet-5-5 (low),es,int-ocr-10,respuesta
+1,,,Claude claude-sonnet-5-5 (low),en,rec-01,pasaje
+1,,,Claude claude-sonnet-5-5 (low),en,rec-02,pasaje
+1,,,Claude claude-sonnet-5-5 (low),en,rec-03,pasaje
+1,,,Claude claude-sonnet-5-5 (low),en,rec-04,pasaje
+1,,,Claude claude-sonnet-5-5 (low),en,rec-05,pasaje
+0,,,Claude claude-sonnet-5-5 (low),en,rec-06,pasaje
+1,,,Claude claude-sonnet-5-5 (low),en,rec-18,pasaje
+1,,,Claude claude-sonnet-5-5 (low),en,rec-19,pasaje
+1,,,Claude claude-sonnet-5-5 (low),en,rec-20,pasaje
+1,,,Claude claude-sonnet-5-5 (low),en,int-ocr-06,respuesta
+1,,,Claude claude-sonnet-5-5 (low),en,int-ocr-07,respuesta
+1,,,Claude claude-sonnet-5-5 (low),en,int-ocr-08,respuesta
+1,,,Claude claude-sonnet-5-5 (low),en,int-ocr-09,respuesta
+1,,,Claude claude-sonnet-5-5 (low),en,int-ocr-10,respuesta

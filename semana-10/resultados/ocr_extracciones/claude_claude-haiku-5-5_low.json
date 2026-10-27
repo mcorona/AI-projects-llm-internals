@@ -1,0 +1,37 @@
+{
+  "acta_inventario_norte": {
+    "texto": "# Acta de inventario físico, CEDIS Norte (Monterrey)\n\nDocumento sintético de una empresa ficticia (Distribuidora Industrial Ficticia, DIF): Formato de entrega: escaneo.\n\nFecha del conteo: 30 de septiembre de 2026 Ubicaciones contadas: 1,240 Exactitud obtenida: 96.4%\nDiferencia total valorizada: $18,240 MXN Responsable: Laura Méndez, jefa de almacén",
+    "tokens_in": 4840,
+    "tokens_out": 172,
+    "latencia_s": 4.31,
+    "costo_usd": 0.00057
+  },
+  "remision_r4471": {
+    "texto": "# Nota de remisión R-4471\n\nDocumento sintético de una empresa ficticia (Distribuidora Industrial Ficticia, DIF). Formato de entrega: escaneo.\n\nProveedor: Aceros del Norte SKU: SKU-0042 Cantidad remitida: 120 piezas Observaciones: 3 piezas dañadas en el empaque; se rechazan en recepción.",
+    "tokens_in": 4840,
+    "tokens_out": 137,
+    "latencia_s": 2.34,
+    "costo_usd": 0.000553
+  },
+  "devoluciones": {
+    "texto": "# Política de devoluciones\n\nDocumento sintético de una empresa ficticia (Distribuidora Industrial Ficticia, DIF). Versión 1.8.\n\n## Devoluciones de clientes\n\n- Plazo: 30 días naturales desde la entrega.\n- El producto debe estar en su empaque original y sin uso.\n- Los productos de la categoría Seguridad (equipo de protección personal: guantes, cascos, lentes, arneses) no se aceptan si el empaque fue abierto, por razones de higiene.\n- Productos de Empaque cortados a la medida no tienen devolución.\n- La nota de crédito se emite en un máximo de 10 días hábiles después de recibir la devolución.\n\n## Devoluciones a proveedores\n\n- Por defecto de calidad: dentro de los 15 días siguientes a la recepción.\n- Por exceso de entrega: se devuelve la diferencia o se negocia su aceptación con nota de cargo.\n- Toda devolución a proveedor se registra y cuenta para su indicador de calidad.\n\n## Reingreso a inventario\n\nEl producto devuelto en buen estado se reingresa al CEDIS que lo recibió después de inspección. El producto dañado se da de baja con aprobación de contraloría.",
+    "tokens_in": 4840,
+    "tokens_out": 422,
+    "latencia_s": 2.94,
+    "costo_usd": 0.000695
+  },
+  "inventario_ciclico": {
+    "texto": "# Inventario cíclico y ajustes\n\nDocumento sintético de una empresa ficticia (Distribuidora Industrial Ficticia, DIF). Versión 2.1.\n\n## Clasificación ABC para conteos\n\n- A: SKUs críticos y el 20% de SKUs con mayor valor de inventario. Conteo mensual.\n- B: siguiente 30% del valor de inventario. Conteo trimestral.\n- C: resto del catálogo. Conteo semestral.\n\n## Exactitud de inventario\n\nLa meta de exactitud por CEDIS es de 98% (porcentaje de ubicaciones contadas sin diferencia). Un CEDIS por debajo de 95% durante dos meses seguidos pasa a conteo completo.\n\n## Durante el conteo\n\n- La ubicación contada se bloquea para surtido y recepción.\n- Se cuenta dos veces por personas distintas si la primera diferencia supera 5 unidades.\n\n## Ajustes de inventario\n\n- Ajustes con valor absoluto de hasta $10,000 MXN: los aprueba el jefe de almacén.\n- Ajustes mayores a $10,000 MXN: requieren aprobación de contraloría.\n- Todo ajuste registra el motivo: merma, error de captura, robo, daño o diferencia de conteo.",
+    "tokens_in": 4840,
+    "tokens_out": 443,
+    "latencia_s": 2.38,
+    "costo_usd": 0.000705
+  },
+  "recepcion_almacen": {
+    "texto": "# Recepción de mercancía en CEDIS\n\nDocumento sintético de una empresa ficticia (Distribuidora Industrial Ficticia, DIF). Versión 2.3.\n\n## Horarios de recepción\n\n- CEDIS Centro (Ciudad de México): lunes a viernes de 7:00 a 15:00.\n- CEDIS Occidente (Guadalajara): lunes a viernes de 8:00 a 16:00.\n- CEDIS Norte (Monterrey): lunes a sábado de 6:00 a 14:00.\n\nLas entregas fuera de horario requieren cita autorizada por el jefe de almacén.\n\n## Proceso de recepción\n\n- 1. Validar que exista una orden de compra aprobada para la entrega.\n- 2. Inspección visual del empaque y del transporte.\n- 3. Conteo ciego: quien cuenta no ve la cantidad esperada de la orden.\n- 4. Comparar el conteo contra la orden y la factura.\n- 5. Registrar la entrada en el sistema en un plazo máximo de 4 horas.\n\n## Discrepancias\n\n- Diferencia de cantidad menor o igual a 2%: se acepta y se notifica al comprador.\n- Diferencia mayor a 2%: se hace un rechazo parcial de la diferencia y se notifica al proveedor.\n- Producto dañado o fuera de especificación: se rechaza y se registra para la evaluación del proveedor.\n\n## SKUs críticos\n\nLa recepción de SKUs críticos tiene prioridad en el andén y se registra antes que cualquier otra entrada.",
+    "tokens_in": 4840,
+    "tokens_out": 540,
+    "latencia_s": 3.84,
+    "costo_usd": 0.000754
+  }
+}

@@ -1,0 +1,6 @@
+Nota de remisión R-4471
+
+Documento sintético de una empresa ficticia (Distribuidora Industrial Ficticia, DIF). Formato de eritrega: escaneo.
+
+Proveedor: Aceros del Norte SKU: SKU-0042 Cantidad remitida: 120 piezas Observaciones: 3 piezas
+dañadas en el empaque; se rechazan en recepción.
