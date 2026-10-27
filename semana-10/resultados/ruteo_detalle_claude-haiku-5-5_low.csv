@@ -1,0 +1,103 @@
+id,lang,tipo,esperado,mayoritaria,claude,ok_mayoritaria,ok_claude,tokens_in,tokens_out,latencia_s,costo_usd,pregunta
+int-sql-001,es,sql,sql,documental,sql,0,1,557,13,1.011,6.22e-05,¿Qué productos tienen existencias totales (suma de todos los almacenes) por debajo de su punto de reorden?
+int-sql-002,es,sql,sql,documental,sql,0,1,564,118,1.172,0.0001154,¿Qué productos críticos surtidos por un proveedor de Alemania están por debajo de su punto de reorden en al menos un almacén?
+int-sql-003,es,sql,sql,documental,sql,0,1,560,13,0.96,6.25e-05,¿Qué categoría vendió más unidades en abril de 2026? Desempata por nombre de categoría en orden ascendente.
+int-sql-004,es,sql,sql,documental,sql,0,1,595,13,0.812,6.6e-05,"Considerando solo los días con registro de venta, ¿qué SKU tuvo el mayor promedio diario de unidades en el segundo trimestre de 2026 (abril a junio)? Desempata por SKU en orden ascendente."
+int-sql-005,es,sql,sql,documental,sql,0,1,569,13,0.671,6.34e-05,¿En cuántos meses calendario las unidades vendidas totales fueron mayores que en el mes anterior? No cuentes el primer mes de los datos.
+int-sql-006,es,sql,sql,documental,sql,0,1,565,79,1.119,9.6e-05,¿Qué proveedor tiene la mayor cantidad de productos críticos? Desempata por nombre de proveedor en orden ascendente.
+int-sql-007,es,sql,sql,documental,sql,0,1,581,13,0.927,6.46e-05,¿Cuántos productos vendieron al menos una unidad entre el 2026-09-01 y el 2026-09-26 y no tienen registro de existencias en el almacén de Monterrey?
+int-sql-008,es,sql,sql,documental,sql,0,1,565,13,0.723,6.3e-05,"¿Cuál es la mediana del costo unitario de los productos de la categoría Hidraulico? Da el valor exacto, sin redondear."
+int-sql-009,es,sql,sql,documental,sql,0,1,581,13,0.744,6.46e-05,"¿Cuál es el costo unitario promedio de los productos cuyo proveedor tiene un tiempo de entrega mayor a 30 días? Da el valor exacto, sin redondear."
+int-sql-010,es,sql,sql,documental,sql,0,1,562,13,0.804,6.27e-05,¿Cuántos SKU vendieron más de 500 unidades en total entre el 2026-08-28 y el 2026-09-26?
+int-sql-011,es,sql,sql,documental,sql,0,1,560,13,0.839,6.25e-05,¿Qué almacén tiene el mayor valor de inventario a costo (suma de unidades en existencia por costo unitario)?
+int-sql-012,es,sql,sql,documental,sql,0,1,543,13,0.747,6.08e-05,¿Qué SKU tienen registro de existencias en los tres almacenes?
+int-sql-014,es,sql,sql,documental,sql,0,1,565,13,1.002,6.3e-05,"Para cada almacén, ¿qué SKU tiene la mayor cantidad en existencia? Desempata por SKU en orden ascendente."
+int-sql-015,es,sql,sql,documental,sql,0,1,570,13,0.705,6.35e-05,¿Qué tres categorías son surtidas por la mayor cantidad de proveedores distintos? Desempata por nombre de categoría en orden ascendente.
+int-sql-016,es,sql,sql,documental,sql,0,1,568,13,0.903,6.33e-05,¿Cuántas unidades se vendieron en fin de semana (sábado y domingo) entre el 2026-04-01 y el 2026-09-26?
+int-doc-02,es,documental,documental,documental,documental,1,1,550,13,0.839,6.15e-05,¿Se aceptan devoluciones de equipo de protección si el empaque ya fue abierto?
+int-doc-03,es,documental,documental,documental,documental,1,1,548,13,0.835,6.13e-05,¿En cuántos días debo devolver a un proveedor un producto con defecto de calidad?
+int-doc-06,es,documental,documental,documental,documental,1,1,543,68,0.914,8.83e-05,¿Con qué frecuencia se cuentan los SKUs de clase A?
+int-doc-09,es,documental,documental,documental,documental,1,1,552,13,0.81,6.17e-05,¿Cuántas cotizaciones se necesitan para una orden mayor a 100 mil pesos?
+int-doc-12,es,documental,documental,documental,documental,1,1,539,84,0.984,9.59e-05,¿Cada cuánto se revisa la categoría Empaque?
+int-doc-17,es,documental,documental,documental,documental,1,1,540,84,1.106,9.6e-05,¿Qué pasa con un proveedor que incumple dos metas?
+int-doc-19,es,documental,documental,documental,documental,1,1,544,47,0.932,7.79e-05,¿En cuánto tiempo se debe registrar una entrada en el sistema?
+int-doc-20,es,documental,documental,documental,documental,1,1,541,13,0.929,6.06e-05,¿Qué se hace si la diferencia en recepción es de 3%?
+int-doc-24,es,documental,documental,documental,documental,1,1,544,13,1.31,6.09e-05,¿Cuál es la cantidad mínima para transferir entre CEDIS?
+int-doc-27,es,documental,documental,documental,sql,1,0,539,195,1.628,0.0001514,¿Qué puede consultar el copiloto sobre existencias?
+int-doc-29,es,documental,documental,documental,documental,1,1,545,13,0.821,6.1e-05,¿Qué debo hacer si el copiloto da una respuesta incorrecta?
+int-doc-31,es,documental,documental,documental,documental,1,1,549,13,0.843,6.14e-05,¿Qué descuento puede aprobar un ejecutivo de cuenta sin escalar?
+int-doc-35,es,documental,documental,documental,documental,1,1,536,13,0.628,6.01e-05,¿Cuál es la altura máxima de una tarima?
+int-doc-39,es,documental,documental,documental,documental,1,1,542,13,0.879,6.07e-05,¿A qué hora se hacen los respaldos del sistema de almacén?
+int-doc-43,es,documental,documental,documental,documental,1,1,547,13,0.894,6.12e-05,¿En cuánto tiempo se corrige un hallazgo mayor de auditoría?
+int-pdf-01,es,no_textual/pdf,documental,documental,documental,1,1,547,13,0.928,6.12e-05,¿Cuánto cuesta el flete normal de Guadalajara a Monterrey?
+int-pdf-02,es,no_textual/pdf,documental,documental,documental,1,1,545,13,0.844,6.1e-05,¿Qué recargo tiene el flete exprés sobre la tarifa normal?
+int-pdf-03,es,no_textual/pdf,documental,documental,documental,1,1,549,13,0.768,6.14e-05,¿Cuál es la tarifa de flete normal de Ciudad de México a Monterrey?
+int-pdf-04,es,no_textual/pdf,documental,documental,sql,1,0,550,115,1.096,0.0001125,¿Qué tiempo de entrega pactado tiene Shenzhen Industrial Parts?
+int-pdf-05,es,no_textual/pdf,documental,documental,mixta,1,0,545,145,1.879,0.000127,¿Qué proveedor de la categoría Seguridad tiene clasificación C?
+int-ocr-06,es,no_textual/ocr,documental,documental,documental,1,1,554,141,1.279,0.0001259,¿Qué exactitud se obtuvo en el inventario físico de septiembre del CEDIS Norte?
+int-ocr-07,es,no_textual/ocr,documental,documental,documental,1,1,553,13,0.665,6.18e-05,¿Cuál fue la diferencia total valorizada en el acta de inventario del CEDIS Norte?
+int-ocr-08,es,no_textual/ocr,documental,documental,documental,1,1,544,114,1.139,0.0001114,¿Quién fue la responsable del inventario físico del CEDIS Norte?
+int-ocr-09,es,no_textual/ocr,documental,documental,documental,1,1,545,61,1.531,8.5e-05,¿Cuántas piezas llegaron dañadas en la remisión R-4471?
+int-ocr-10,es,no_textual/ocr,documental,documental,documental,1,1,541,70,0.994,8.91e-05,¿Cuántas piezas se remitieron en la nota R-4471?
+int-imagen-11,es,no_textual/imagen,documental,documental,sql,1,0,555,134,1.249,0.0001225,¿Cuál fue el nivel de servicio más bajo entre los CEDIS en septiembre de 2026?
+int-imagen-12,es,no_textual/imagen,documental,documental,mixta,1,0,552,177,2.3,0.0001437,¿Qué nivel de servicio tuvo el CEDIS Norte en septiembre de 2026?
+int-imagen-13,es,no_textual/imagen,documental,documental,sql,1,0,552,136,1.33,0.0001232,¿Qué nivel de servicio tuvo el CEDIS Centro en septiembre de 2026?
+int-imagen-14,es,no_textual/imagen,documental,documental,documental,1,1,547,13,0.86,6.12e-05,¿En qué pasillo está la zona de cuarentena del CEDIS Occidente?
+int-imagen-15,es,no_textual/imagen,documental,documental,documental,1,1,550,144,1.289,0.000127,¿Junto a qué andén está la zona de SKUs críticos del CEDIS Occidente?
+int-mix-01,es,mixta,mixta,documental,mixta,0,1,560,14,0.897,6.3e-05,¿Cuántos SKUs críticos hay en el catálogo y qué factor de seguridad usan en el punto de reorden?
+int-mix-02,es,mixta,mixta,documental,mixta,0,1,562,14,0.73,6.32e-05,¿Cuántas unidades se vendieron en total en septiembre de 2026 y cuál es el nivel de servicio objetivo?
+int-mix-03,es,mixta,mixta,documental,mixta,0,1,565,14,0.741,6.35e-05,¿Qué proveedores tienen un tiempo de entrega mayor a 20 días y qué deben tener los SKUs críticos que surten?
+int-mix-04,es,mixta,mixta,documental,mixta,0,1,568,107,1.306,0.0001103,¿Cuántas unidades hay en existencia en el almacén de Monterrey y cuántas posiciones de tarima tiene ese CEDIS?
+int-mix-05,es,mixta,mixta,documental,mixta,0,1,553,68,1.019,8.93e-05,¿Cuántos productos tiene la categoría Seguridad y se les pueden aplicar descuentos?
+int-mix-06,es,mixta,mixta,documental,mixta,0,1,552,14,0.743,6.22e-05,¿Qué SKUs críticos están en riesgo hoy y quién aprueba su compra urgente?
+int-sql-001,en,sql,sql,documental,sql,0,1,545,13,0.844,6.1e-05,Which products have total on-hand stock (summed across all warehouses) below their reorder point?
+int-sql-002,en,sql,sql,documental,sql,0,1,547,109,1.067,0.0001092,Which critical products supplied by a German supplier are below their reorder point in at least one warehouse?
+int-sql-003,en,sql,sql,documental,sql,0,1,542,13,0.848,6.07e-05,Which category sold the most units in April 2026? Break ties by category name ascending.
+int-sql-004,en,sql,sql,documental,sql,0,1,567,13,0.907,6.32e-05,"Considering only days that have a sales record, which SKU had the highest average daily units in Q2 2026 (April to June)? Break ties by SKU ascending."
+int-sql-005,en,sql,sql,documental,sql,0,1,549,13,0.879,6.14e-05,In how many calendar months were total units sold higher than in the previous month? Do not count the first month in the data.
+int-sql-006,en,sql,sql,documental,sql,0,1,545,136,1.296,0.0001225,Which supplier has the largest number of critical products? Break ties by supplier name ascending.
+int-sql-007,en,sql,sql,documental,sql,0,1,563,13,0.79,6.28e-05,How many products sold at least one unit between 2026-09-01 and 2026-09-26 and have no stock record at the Monterrey warehouse?
+int-sql-008,en,sql,sql,documental,sql,0,1,549,80,0.93,9.49e-05,"What is the median unit cost of products in the Hidraulico category? Give the exact value, without rounding."
+int-sql-009,en,sql,sql,documental,sql,0,1,557,13,0.866,6.22e-05,"What is the average unit cost of products whose supplier has a lead time greater than 30 days? Give the exact value, without rounding."
+int-sql-010,en,sql,sql,documental,sql,0,1,551,13,0.713,6.16e-05,How many SKUs sold more than 500 units in total between 2026-08-28 and 2026-09-26?
+int-sql-011,en,sql,sql,documental,sql,0,1,550,13,0.944,6.15e-05,Which warehouse has the largest inventory value at cost (sum of on-hand units times unit cost)?
+int-sql-012,en,sql,sql,documental,sql,0,1,536,13,0.744,6.01e-05,Which SKUs have a stock record in all three warehouses?
+int-sql-014,en,sql,sql,documental,sql,0,1,552,13,1.195,6.17e-05,"For each warehouse, which SKU has the largest on-hand quantity? Break ties by SKU ascending."
+int-sql-015,en,sql,sql,documental,sql,0,1,551,13,0.887,6.16e-05,Which three categories are supplied by the largest number of distinct suppliers? Break ties by category name ascending.
+int-sql-016,en,sql,sql,documental,sql,0,1,556,13,0.707,6.21e-05,How many units were sold on weekends (Saturday and Sunday) between 2026-04-01 and 2026-09-26?
+int-doc-02,en,documental,documental,documental,documental,1,1,537,67,1.05,8.72e-05,Are protective equipment returns accepted if the package was already opened?
+int-doc-03,en,documental,documental,documental,documental,1,1,539,13,0.782,6.04e-05,How many days do I have to return a product with a quality defect to a supplier?
+int-doc-06,en,documental,documental,documental,documental,1,1,529,60,1.087,8.29e-05,How often are class A SKUs counted?
+int-doc-09,en,documental,documental,documental,documental,1,1,538,99,1.037,0.0001033,"How many quotes are needed for an order over 100,000 pesos?"
+int-doc-12,en,documental,documental,documental,documental,1,1,531,13,0.889,5.96e-05,How often is the Packaging category reviewed?
+int-doc-17,en,documental,documental,documental,documental,1,1,532,82,1.047,9.42e-05,What happens to a supplier that misses two targets?
+int-doc-19,en,documental,documental,documental,documental,1,1,534,58,1.535,8.24e-05,How quickly must a receipt be recorded in the system?
+int-doc-20,en,documental,documental,documental,documental,1,1,532,104,1.161,0.0001052,What happens if the receiving difference is 3%?
+int-doc-24,en,documental,documental,documental,documental,1,1,538,68,1.317,8.78e-05,What is the minimum quantity for a transfer between distribution centers?
+int-doc-27,en,documental,documental,documental,sql,1,0,528,196,2.017,0.0001508,What can the copilot query about stock?
+int-doc-29,en,documental,documental,documental,documental,1,1,535,187,1.829,0.000147,What should I do if the copilot gives a wrong answer?
+int-doc-31,en,documental,documental,documental,documental,1,1,532,13,1.332,5.97e-05,What discount can an account executive approve without escalation?
+int-doc-35,en,documental,documental,documental,documental,1,1,530,64,0.956,8.5e-05,What is the maximum height of a pallet?
+int-doc-39,en,documental,documental,documental,documental,1,1,529,13,1.514,5.94e-05,What time are warehouse system backups made?
+int-doc-43,en,documental,documental,documental,documental,1,1,533,13,0.714,5.98e-05,How long does a major audit finding have to be corrected?
+int-pdf-01,en,no_textual/pdf,documental,documental,documental,1,1,540,115,1.195,0.0001115,How much does standard freight from Guadalajara to Monterrey cost?
+int-pdf-02,en,no_textual/pdf,documental,documental,documental,1,1,534,81,1.084,9.39e-05,What surcharge does express freight have over the standard rate?
+int-pdf-03,en,no_textual/pdf,documental,documental,documental,1,1,539,114,1.146,0.0001109,What is the standard freight rate from Mexico City to Monterrey?
+int-pdf-04,en,no_textual/pdf,documental,documental,sql,1,0,541,234,2.141,0.0001711,What is the agreed lead time for Shenzhen Industrial Parts?
+int-pdf-05,en,no_textual/pdf,documental,documental,mixta,1,0,534,315,2.422,0.0002109,Which supplier in the Safety category has a C rating?
+int-ocr-06,en,no_textual/ocr,documental,documental,documental,1,1,542,158,1.424,0.0001332,What accuracy was obtained in the September physical inventory at the North distribution center?
+int-ocr-07,en,no_textual/ocr,documental,documental,sql,1,0,537,354,2.425,0.0002307,What was the total valued difference in the North distribution center inventory record?
+int-ocr-08,en,no_textual/ocr,documental,documental,documental,1,1,538,91,1.941,9.93e-05,Who was responsible for the physical inventory at the North distribution center?
+int-ocr-09,en,no_textual/ocr,documental,documental,documental,1,1,538,13,0.775,6.03e-05,How many pieces arrived damaged in delivery note R-4471?
+int-ocr-10,en,no_textual/ocr,documental,documental,documental,1,1,536,59,1.377,8.31e-05,How many pieces were shipped in delivery note R-4471?
+int-imagen-11,en,no_textual/imagen,documental,documental,sql,1,0,538,119,1.012,0.0001133,What was the lowest service level among the distribution centers in September 2026?
+int-imagen-12,en,no_textual/imagen,documental,documental,sql,1,0,534,189,1.643,0.0001479,What service level did the North distribution center have in September 2026?
+int-imagen-13,en,no_textual/imagen,documental,documental,mixta,1,0,535,336,2.176,0.0002215,What service level did the Central distribution center have in September 2026?
+int-imagen-14,en,no_textual/imagen,documental,documental,documental,1,1,538,13,0.797,6.03e-05,In which aisle is the quarantine zone of the West distribution center?
+int-imagen-15,en,no_textual/imagen,documental,documental,documental,1,1,540,102,1.467,0.000105,Next to which dock is the critical SKU zone of the West distribution center?
+int-mix-01,en,mixta,mixta,documental,mixta,0,1,548,64,1.082,8.68e-05,"How many critical SKUs are in the catalog, and what safety factor do they use in the reorder point?"
+int-mix-02,en,mixta,mixta,documental,mixta,0,1,539,14,0.821,6.09e-05,"How many units were sold in total in September 2026, and what is the target service level?"
+int-mix-03,en,mixta,mixta,documental,mixta,0,1,549,78,0.967,9.39e-05,"Which suppliers have a lead time over 20 days, and what must the critical SKUs they supply have?"
+int-mix-04,en,mixta,mixta,documental,mixta,0,1,549,134,1.26,0.0001219,"How many units are on hand in the Monterrey warehouse, and how many pallet positions does that center have?"
+int-mix-05,en,mixta,mixta,documental,mixta,0,1,539,14,0.944,6.09e-05,"How many products are in the Safety category, and can discounts be applied to them?"
+int-mix-06,en,mixta,mixta,documental,mixta,0,1,543,14,1.014,6.13e-05,"Which critical SKUs are at risk today, and who approves their urgent purchase?"
