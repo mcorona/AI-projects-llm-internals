@@ -116,9 +116,12 @@ def dibujar_plano(destino):
     d.text((mx0 + 1.5 * anden_w, my0 - 110), "Recepción", fill="#1F4E79", font=fuente(26))
     d.text((mx0 + 5.5 * anden_w, my0 - 110), "Embarque", fill="#7F3F00", font=fuente(26))
     # zona de SKUs críticos, justo bajo el andén 2
-    zx0 = mx0 + anden_w + 8
-    d.rectangle((zx0, my0 + 20, zx0 + anden_w * 1.6, my0 + 150), outline="#C00000", width=3, fill="#FDECEC")
-    d.text((zx0 + 12, my0 + 60), "Zona de SKUs críticos", fill="#C00000", font=fuente(22))
+    # del mismo ancho que el andén 2, para que no quede ambigua con el andén 3
+    zx0, zx1 = mx0 + anden_w + 8, mx0 + 2 * anden_w - 8
+    d.rectangle((zx0, my0 + 20, zx1, my0 + 150), outline="#C00000", width=3, fill="#FDECEC")
+    f19 = fuente(19)
+    for k, linea in enumerate(("Zona de SKUs", "críticos")):
+        d.text(((zx0 + zx1) / 2 - d.textlength(linea, font=f19) / 2, my0 + 55 + k * 26), linea, fill="#C00000", font=f19)
     # pasillos 10 a 14 como franjas verticales; la cuarentena dentro del pasillo 12
     for k, p in enumerate(range(10, 15)):
         px = mx0 + 240 + k * 200
