@@ -11,7 +11,7 @@ Composición por idioma (75 preguntas):
 
 Respuesta de referencia (`referencia`): Haiku 5.5 low la redacta solo con el pasaje (o con el documento fuente y la
 respuesta exacta, en las no textuales), en el idioma de la pregunta, en una o dos oraciones. Validación automática:
-toda cifra de la referencia aparece en el pasaje, la fuente o la pregunta; ninguna referencia de una pregunta
+toda cifra de la referencia aparece en el pasaje (o en la línea del documento que lo contiene), la fuente o la pregunta; ninguna referencia de una pregunta
 respondible dice que no hay respuesta; y en las no textuales la respuesta exacta aparece en la
 referencia. Las respuestas del modelo se guardan en resultados/referencias_cache.json (se reutilizan al reconstruir).
 Muestra para revisión manual: 20 respondibles (10 por idioma, semilla 11) en resultados/revision_referencias.md.
@@ -69,7 +69,7 @@ SIN_RESPUESTA = [
     ("nr-10", "¿Qué pasa con los pedidos de clientes durante una huelga de transportistas?",
      "What happens to customer orders during a carriers' strike?", ["huelga"]),
 ]
-NEGATIVA = re.compile(r"no (hay|contiene|se (indica|menciona|especifica))|no est[aá] en|cannot be answered|does not (contain|say|specify|mention)|not (in|mentioned in) the", re.I)
+NEGATIVA = re.compile(r"\bno (hay|contiene|se (indica|menciona|especifica))\b|\bno est[aá] en\b|cannot be answered|does not (contain|say|specify|mention)|not (in|mentioned in) the", re.I)
 NO_ESTA = {"es": "La información no está en los documentos.", "en": "The information is not in the documents."}
 
 
@@ -98,7 +98,14 @@ def llamar(contenido):
 
 
 def cifras(t):
+    t = re.sub(r"(\d+)\s*(mil|thousand)\b", lambda m: m.group(1) + "000", t)  # "300 mil" -> 300000
     return {n.replace(",", "") for n in re.findall(r"\d[\d,]*(?:\.\d+)?", t)}
+
+
+def lineas_con(doc, pasaje):
+    """Líneas completas del documento que contienen el pasaje (o su inicio, si el pasaje cruza líneas)."""
+    inicio = pasaje.strip().splitlines()[0][:40]
+    return "\n".join(l for l in doc.splitlines() if inicio in l)
 
 
 def norm(t):
@@ -124,7 +131,9 @@ def main():
             items.append({"id": x["id"], "lang": lang, "tipo": "base", "question": x["question"], "gold": x["gold"],
                           "respondible": True, "origen": "semana-08/datasets/recuperacion",
                           "_contenido": f"Documento:\n{docs}\n\nPasaje de referencia:\n{texto}\n\nPregunta: {x['question']}",
-                          "_fuente": texto})
+                          # Para validar cifras: el pasaje más la línea completa del documento que lo contiene (por ejemplo,
+                          # el "Nivel 2" del inicio de la línea, que el pasaje literal omite).
+                          "_fuente": texto + "\n" + "\n".join(lineas_con((CORPUS / g["source"]).read_text(encoding="utf-8"), g["passage"]) for g in x["gold"])})
         for x in integ:
             if x["tipo"] != "no_textual":
                 continue
