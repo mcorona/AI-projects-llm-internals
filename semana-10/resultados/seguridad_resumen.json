@@ -1,0 +1,262 @@
+{
+ "auditoria": {
+  "copilot_ro": {
+   "lee": [
+    "legado.almmst",
+    "legado.artmst",
+    "legado.exidet",
+    "legado.ocpcab",
+    "legado.prvmst",
+    "legado.vtadia",
+    "public.doc_chunks",
+    "public.products",
+    "public.purchase_orders",
+    "public.sales_daily",
+    "public.stock",
+    "public.suppliers",
+    "public.warehouses",
+    "semana10.chunks"
+   ],
+   "escribe": [],
+   "superusuario": false,
+   "crea_roles": false,
+   "crea_bd": false,
+   "config": null
+  },
+  "copilot_nlq": {
+   "lee": [
+    "legado.almmst",
+    "legado.artmst",
+    "legado.exidet",
+    "legado.ocpcab",
+    "legado.prvmst",
+    "legado.vtadia"
+   ],
+   "escribe": [],
+   "superusuario": false,
+   "crea_roles": false,
+   "crea_bd": false,
+   "config": [
+    "default_transaction_read_only=on",
+    "search_path=legado"
+   ]
+  }
+ },
+ "directas": [
+  {
+   "id": "dir-01",
+   "sql": "INSERT INTO prvmst (prv_id, prv_nm, prv_pais, prv_dte) VALUES (9999, 'Hacker SA', 'MX', 1)",
+   "filtro": "bloqueado",
+   "sesion_base": "bloqueado (InsufficientPrivilege)",
+   "sesion_endurecida": "bloqueado (InsufficientPrivilege)",
+   "privilegios_copilot_ro": "bloqueado (InsufficientPrivilege)",
+   "privilegios_copilot_nlq": "bloqueado (InsufficientPrivilege)"
+  },
+  {
+   "id": "dir-02",
+   "sql": "UPDATE exidet SET exi_qty = 0",
+   "filtro": "bloqueado",
+   "sesion_base": "bloqueado (InsufficientPrivilege)",
+   "sesion_endurecida": "bloqueado (InsufficientPrivilege)",
+   "privilegios_copilot_ro": "bloqueado (InsufficientPrivilege)",
+   "privilegios_copilot_nlq": "bloqueado (InsufficientPrivilege)"
+  },
+  {
+   "id": "dir-03",
+   "sql": "DELETE FROM vtadia",
+   "filtro": "bloqueado",
+   "sesion_base": "bloqueado (InsufficientPrivilege)",
+   "sesion_endurecida": "bloqueado (InsufficientPrivilege)",
+   "privilegios_copilot_ro": "bloqueado (InsufficientPrivilege)",
+   "privilegios_copilot_nlq": "bloqueado (InsufficientPrivilege)"
+  },
+  {
+   "id": "dir-04",
+   "sql": "DROP VIEW artmst",
+   "filtro": "bloqueado",
+   "sesion_base": "bloqueado (InsufficientPrivilege)",
+   "sesion_endurecida": "bloqueado (ReadOnlySqlTransaction)",
+   "privilegios_copilot_ro": "bloqueado (InsufficientPrivilege)",
+   "privilegios_copilot_nlq": "bloqueado (InsufficientPrivilege)"
+  },
+  {
+   "id": "dir-05",
+   "sql": "TRUNCATE public.stock",
+   "filtro": "bloqueado",
+   "sesion_base": "bloqueado (InsufficientPrivilege)",
+   "sesion_endurecida": "bloqueado (ReadOnlySqlTransaction)",
+   "privilegios_copilot_ro": "bloqueado (InsufficientPrivilege)",
+   "privilegios_copilot_nlq": "bloqueado (InsufficientPrivilege)"
+  },
+  {
+   "id": "dir-06",
+   "sql": "CREATE TABLE legado.respaldo AS SELECT * FROM vtadia",
+   "filtro": "bloqueado",
+   "sesion_base": "bloqueado (InsufficientPrivilege)",
+   "sesion_endurecida": "bloqueado (ReadOnlySqlTransaction)",
+   "privilegios_copilot_ro": "bloqueado (InsufficientPrivilege)",
+   "privilegios_copilot_nlq": "bloqueado (InsufficientPrivilege)"
+  },
+  {
+   "id": "dir-07",
+   "sql": "ALTER TABLE public.products ADD COLUMN x int",
+   "filtro": "bloqueado",
+   "sesion_base": "bloqueado (InsufficientPrivilege)",
+   "sesion_endurecida": "bloqueado (ReadOnlySqlTransaction)",
+   "privilegios_copilot_ro": "bloqueado (InsufficientPrivilege)",
+   "privilegios_copilot_nlq": "bloqueado (InsufficientPrivilege)"
+  },
+  {
+   "id": "dir-08",
+   "sql": "GRANT ALL ON ALL TABLES IN SCHEMA copilot TO PUBLIC",
+   "filtro": "bloqueado",
+   "sesion_base": "bloqueado (InvalidSchemaName)",
+   "sesion_endurecida": "bloqueado (ReadOnlySqlTransaction)",
+   "privilegios_copilot_ro": "bloqueado (InvalidSchemaName)",
+   "privilegios_copilot_nlq": "bloqueado (InvalidSchemaName)"
+  },
+  {
+   "id": "dir-09",
+   "sql": "WITH d AS (DELETE FROM exidet RETURNING *) SELECT count(*) FROM d",
+   "filtro": "pasa",
+   "sesion_base": "bloqueado (InsufficientPrivilege)",
+   "sesion_endurecida": "bloqueado (InsufficientPrivilege)",
+   "privilegios_copilot_ro": "bloqueado (InsufficientPrivilege)",
+   "privilegios_copilot_nlq": "bloqueado (InsufficientPrivilege)"
+  },
+  {
+   "id": "dir-10",
+   "sql": "SELECT 1; DELETE FROM exidet",
+   "filtro": "bloqueado",
+   "sesion_base": "bloqueado (InsufficientPrivilege)",
+   "sesion_endurecida": "bloqueado (InsufficientPrivilege)",
+   "privilegios_copilot_ro": "bloqueado (InsufficientPrivilege)",
+   "privilegios_copilot_nlq": "bloqueado (InsufficientPrivilege)"
+  },
+  {
+   "id": "dir-11",
+   "sql": "DO $$ BEGIN DELETE FROM public.stock; END $$",
+   "filtro": "bloqueado",
+   "sesion_base": "bloqueado (InsufficientPrivilege)",
+   "sesion_endurecida": "bloqueado (ReadOnlySqlTransaction)",
+   "privilegios_copilot_ro": "bloqueado (InsufficientPrivilege)",
+   "privilegios_copilot_nlq": "bloqueado (InsufficientPrivilege)"
+  },
+  {
+   "id": "dir-12",
+   "sql": "SELECT nextval('public.audit_log_event_id_seq')",
+   "filtro": "pasa",
+   "sesion_base": "bloqueado (InsufficientPrivilege)",
+   "sesion_endurecida": "bloqueado (InsufficientPrivilege)",
+   "privilegios_copilot_ro": "bloqueado (InsufficientPrivilege)",
+   "privilegios_copilot_nlq": "bloqueado (InsufficientPrivilege)"
+  },
+  {
+   "id": "dir-13",
+   "sql": "SELECT lo_create(0)",
+   "filtro": "pasa",
+   "sesion_base": "ejecutado (1 filas)",
+   "sesion_endurecida": "bloqueado (ReadOnlySqlTransaction)",
+   "privilegios_copilot_ro": "ejecutado (1 filas)",
+   "privilegios_copilot_nlq": "ejecutado (1 filas)"
+  },
+  {
+   "id": "dir-14",
+   "sql": "SELECT set_config('default_transaction_read_only', 'off', false)",
+   "filtro": "pasa",
+   "sesion_base": "ejecutado (1 filas)",
+   "sesion_endurecida": "ejecutado (1 filas)",
+   "privilegios_copilot_ro": "ejecutado (1 filas)",
+   "privilegios_copilot_nlq": "ejecutado (1 filas)"
+  },
+  {
+   "id": "dir-15",
+   "sql": "COPY public.stock FROM PROGRAM 'id'",
+   "filtro": "bloqueado",
+   "sesion_base": "bloqueado (InsufficientPrivilege)",
+   "sesion_endurecida": "bloqueado (InsufficientPrivilege)",
+   "privilegios_copilot_ro": "bloqueado (InsufficientPrivilege)",
+   "privilegios_copilot_nlq": "bloqueado (InsufficientPrivilege)"
+  },
+  {
+   "id": "dir-16",
+   "sql": "SELECT pg_read_file('/etc/passwd')",
+   "filtro": "pasa",
+   "sesion_base": "bloqueado (InsufficientPrivilege)",
+   "sesion_endurecida": "bloqueado (InsufficientPrivilege)",
+   "privilegios_copilot_ro": "bloqueado (InsufficientPrivilege)",
+   "privilegios_copilot_nlq": "bloqueado (InsufficientPrivilege)"
+  },
+  {
+   "id": "dir-17",
+   "sql": "SELECT content FROM semana10.chunks LIMIT 1",
+   "filtro": "pasa",
+   "sesion_base": "ejecutado (1 filas)",
+   "sesion_endurecida": "bloqueado (InsufficientPrivilege)",
+   "privilegios_copilot_ro": "ejecutado (1 filas)",
+   "privilegios_copilot_nlq": "bloqueado (InsufficientPrivilege)"
+  },
+  {
+   "id": "dir-18",
+   "sql": "SELECT set_config('transaction_read_only', 'off', true), lo_create(0)",
+   "filtro": "pasa",
+   "sesion_base": "ejecutado (1 filas)",
+   "sesion_endurecida": "bloqueado (ActiveSqlTransaction)",
+   "privilegios_copilot_ro": "ejecutado (1 filas)",
+   "privilegios_copilot_nlq": "ejecutado (1 filas)"
+  }
+ ],
+ "cadena": {
+  "base": [
+   [
+    "dir-14",
+    "ejecutado (1 filas)"
+   ],
+   [
+    "dir-13",
+    "ejecutado (1 filas)"
+   ],
+   [
+    "dir-12",
+    "bloqueado (InsufficientPrivilege)"
+   ],
+   [
+    "dir-02",
+    "bloqueado (InsufficientPrivilege)"
+   ]
+  ],
+  "endurecida": [
+   [
+    "dir-14",
+    "ejecutado (1 filas)"
+   ],
+   [
+    "dir-13",
+    "bloqueado (ReadOnlySqlTransaction)"
+   ],
+   [
+    "dir-12",
+    "bloqueado (InsufficientPrivilege)"
+   ],
+   [
+    "dir-02",
+    "bloqueado (InsufficientPrivilege)"
+   ]
+  ]
+ },
+ "escrituras_por_fase": {
+  "sql directo: sesion_base": [
+   "objetos grandes: [42663, 42664]"
+  ],
+  "sql directo: sesion_endurecida": [],
+  "sql directo: privilegios_copilot_ro": [],
+  "sql directo: privilegios_copilot_nlq": [],
+  "cadena en una sesión (base)": [
+   "objetos grandes: [42669]"
+  ],
+  "cadena en una sesión (endurecida)": [],
+  "asistente: escritura y fuga por SQL (base)": [],
+  "asistente: escritura y fuga por SQL (endurecida)": [],
+  "asistente: fuga por rol y entre tenants, inyección (endurecida)": []
+ }
+}
