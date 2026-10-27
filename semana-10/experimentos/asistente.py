@@ -1,8 +1,12 @@
 """Actividad 7: asistente integrado (NLQ + RAG documental) con citas.
 
 Configuraciones, sobre el golden set integrado (102 preguntas):
-- integrado: ruteo de la actividad 6 (Haiku low) con respaldo: si la ruta es sql y la consulta da error o 0 filas,
-  también se consultan los documentos. Ruta mixta: ambas herramientas.
+- integrado: ruteo de la actividad 6 (Haiku low) con respaldo: si la ruta es sql y la consulta da error, 0 filas o la
+  herramienta NLQ se abstiene (NO_SQL: el dato no está en el esquema), también se consultan los documentos. Ruta mixta:
+  ambas herramientas.
+- integrado_sin_abstencion: igual, pero la herramienta NLQ no puede abstenerse (respaldo de la actividad 6 tal cual).
+  Mide lo que aporta la abstención; se agregó tras el piloto, donde int-imagen-11 se ruteó a sql y la consulta
+  inventó un "nivel de servicio" con filas, sin activar el respaldo.
 - solo_sql: siempre la herramienta NLQ.
 - solo_docs: siempre la herramienta documental.
 Herramientas:
@@ -53,7 +57,7 @@ ROLES = {**json.loads((REPO / "semana-09" / "datasets" / "permisos.json").read_t
 ROLES = {Path(k).stem: v for k, v in ROLES.items()}
 ROLES.update(json.loads((RAIZ / "datasets" / "permisos_semana10.json").read_text(encoding="utf-8"))["roles_por_documento"])
 USUARIO = {"tenant": "alfa", "roles": sorted({r for rs in ROLES.values() for r in rs})}
-CONFIGS = ("integrado", "solo_sql", "solo_docs")
+CONFIGS = ("integrado", "integrado_sin_abstencion", "solo_sql", "solo_docs")
 
 SIS_RESP = ("Eres el asistente de una distribuidora industrial. Responde la pregunta usando SOLO el contexto dado, en el "
             "idioma de la pregunta, de forma breve y completa. Cita la fuente de cada dato: [SQL] para el resultado de la "
@@ -129,6 +133,11 @@ def indexar():
 
 # ---------- herramientas ----------
 
+ABSTENCION = ("\n\nIf the schema and dictionary do not contain the data the question asks for (for example service "
+              "levels, freight rates, policies, approvals, warehouse layouts or documents), do not approximate it with "
+              "other columns: output exactly NO_SQL instead of a query.")
+
+
 class Herramientas:
     def __init__(self):
         self.conn_ref = sl.re7.conectar(os.environ["NLQ_DSN"])
@@ -137,10 +146,13 @@ class Herramientas:
         self.conn_doc = sl.re7.conectar(os.environ["NLQ_DSN"])
         self.conn_doc.execute("SET hnsw.ef_search = 100")
         self.conn_doc.execute("SET hnsw.iterative_scan = strict_order")
-        self.sis_sql = sl.sistema("\n".join(sl.DDL_LEGADO[t] for t in sl.DICCIONARIO), sl.texto_diccionario(list(sl.DICCIONARIO)))
+        self.sis_sql_base = sl.sistema("\n".join(sl.DDL_LEGADO[t] for t in sl.DICCIONARIO), sl.texto_diccionario(list(sl.DICCIONARIO)))
+        self.sis_sql = self.sis_sql_base + ABSTENCION
 
-    def sql(self, pregunta):
-        texto, costo, lat = anthropic(HAIKU, "low", self.sis_sql, pregunta, max_tokens=8000)
+    def sql(self, pregunta, abstener=True):
+        texto, costo, lat = anthropic(HAIKU, "low", self.sis_sql if abstener else self.sis_sql_base, pregunta, max_tokens=8000)
+        if abstener and texto.strip().upper().startswith("NO_SQL"):
+            return {"sql": None, "filas": None, "error": "abstencion", "costo": costo, "lat": lat}
         consulta = sl.re7.extraer_sql(texto)
         filas, error = None, None
         if consulta is None:
@@ -170,7 +182,9 @@ class Herramientas:
 def contexto(res_sql, res_docs):
     partes = []
     if res_sql:
-        if res_sql["error"]:
+        if res_sql["error"] == "abstencion":
+            partes.append("[SQL] La base de datos no contiene este dato; no se ejecutó consulta.")
+        elif res_sql["error"]:
             partes.append(f"[SQL] La consulta falló ({res_sql['error']}).")
         else:
             filas = res_sql["filas"]
@@ -186,16 +200,16 @@ def contexto(res_sql, res_docs):
 def correr(h, x, config):
     t0 = time.perf_counter()
     costo, ruta, res_sql, res_docs, respaldo = 0.0, None, None, None, False
-    if config == "integrado":
+    if config.startswith("integrado"):
         r = ruteo.clasificar(HAIKU, "low", x["question"])
         costo += r["costo_usd"]
         ruta = r["ruta"] or "mixta"
     else:
         ruta = {"solo_sql": "sql", "solo_docs": "documental"}[config]
     if ruta in ("sql", "mixta"):
-        res_sql = h.sql(x["question"])
+        res_sql = h.sql(x["question"], abstener=config != "integrado_sin_abstencion")
         costo += res_sql["costo"]
-        if config == "integrado" and ruta == "sql" and (res_sql["error"] or not res_sql["filas"]):
+        if config.startswith("integrado") and ruta == "sql" and (res_sql["error"] or not res_sql["filas"]):
             respaldo = True
     if ruta in ("documental", "mixta") or respaldo:
         res_docs = h.docs(x["question"])
@@ -285,7 +299,7 @@ def main():
                             "citas_doc": len(citadas), "citas_doc_con_evidencia": len(con_ev),
                             "cita_sql_correcta": "" if sql_ok is None else sql_ok,
                             "costo_usd": r["costo"], "costo_juez_usd": r["costo_juez"], "latencia_s": r["latencia_s"]})
-        print(f"{x['id']} {x['lang']}: " + " ".join(f"{d['config']}={d['correcta']}" for d in detalle[-3:]), file=sys.stderr)
+        print(f"{x['id']} {x['lang']}: " + " ".join(f"{d['config']}={d['correcta']}" for d in detalle[-len(CONFIGS):]), file=sys.stderr)
 
     print("| Configuración | Tipo | Idioma | Exactitud (juez) | Precisión de citas de documentos | Cita SQL correcta | Costo por pregunta (USD) | Latencia p50 (s) |")
     print("|---|---|---|---|---|---|---|---|")
@@ -304,8 +318,9 @@ def main():
                 print(f"| {config} | {nombre} | {lang} | {sum(jz) / len(jz):.3f} ({sum(jz)}/{len(jz)}) | {prec} | "
                       f"{f'{sum(cs)}/{len(cs)}' if cs else '-'} | {statistics.mean(d['costo_usd'] for d in f):.5f} | "
                       f"{statistics.median(d['latencia_s'] for d in f):.1f} |")
-    integ = [d for d in detalle if d["config"] == "integrado"]
-    print(f"\nRespaldo a documentos activado en el integrado: {sum(d['respaldo'] for d in integ)} de {len(integ)} preguntas.")
+    for cf in ("integrado", "integrado_sin_abstencion"):
+        integ = [d for d in detalle if d["config"] == cf]
+        print(f"\nRespaldo a documentos activado en {cf}: {sum(d['respaldo'] for d in integ)} de {len(integ)} preguntas.")
     print(f"Costo total sin juez: ${sum(d['costo_usd'] for d in detalle):.4f}; juez: ${sum(d['costo_juez_usd'] for d in detalle):.4f}; "
           f"juicios sin JSON válido: {sum(1 for d in detalle if d['correcta'] == '')}")
     with (RES / ("asistente_detalle_prueba.csv" if args.limite else "asistente_detalle.csv")).open("w", encoding="utf-8", newline="") as fh:
