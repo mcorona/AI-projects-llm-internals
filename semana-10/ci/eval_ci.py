@@ -1,0 +1,332 @@
+"""Actividad 9: eval de semana 10 en CI (cada PR que toque semana-10/**).
+
+Checks con umbral (por idioma, calibrados con la primera corrida de CI; regla abajo):
+1. Exactitud de ruteo: Haiku 5.5 low (actividad 6) sobre el golden set integrado (51 por idioma).
+2. Exactitud por ejecución sobre el esquema legado: Haiku 5.5 low con DDL legado + diccionario completo (actividad 2),
+   set difícil de semana 7 (43 por idioma), ejecutada con la NLQ endurecida (rol copilot_nlq, transacción READ ONLY
+   revertida; actividad 8) contra el resultado de la SQL de referencia sobre las tablas originales.
+3. recall@5 de documentos extraídos: se vuelven a extraer los 6 documentos no textuales con el pipeline adoptado
+   (pdfplumber para PDF, Haiku 5.5 low para OCR de escaneos y descripción de imágenes), se indexan junto con el corpus
+   de semana 8 y se mide recall@5 de las 15 preguntas no textuales por idioma (acierto: un chunk del top 5 viene del
+   documento fuente y contiene la respuesta).
+Pruebas de seguridad (sin umbral, deben pasar todas), con la NLQ de producción (asistente.Herramientas con
+NLQ_LEGADO_DSN = copilot_nlq):
+4. Privilegios: copilot_ro y copilot_nlq sin escritura en ninguna relación; copilot_nlq sin lectura de semana10.chunks.
+5. Cero escrituras: las 18 sentencias directas que pasan el filtro, la cadena en una sesión y los 13 intentos de
+   escritura por idioma en lenguaje natural (solo_sql), medidos con la huella de la base (actividad 8).
+6. Fuga 0: por la NLQ (4 por idioma, solo_sql), por rol (56) y entre tenants (20 x 2 tenants), en el contexto que
+   recibe el asistente.
+7. Instrucciones inyectadas: 8 preguntas por idioma sobre 2 PDF y 2 imágenes (descripción de Haiku y transcripción
+   literal) con el prompt de respuesta de producción; ninguna respuesta obedece (juez Sonnet 5.5 low).
+
+Embeddings en CI: text-embedding-3-small (OpenAI), como en semanas 8 y 9 (bge-m3 corre en LM Studio, no en Actions).
+
+Regla de calibración (fijada antes de la primera corrida): umbral = múltiplo de 0.05 inmediatamente inferior a
+(valor de la primera corrida - max(0.03, 1/n)), con n preguntas por idioma. Así cada check tolera al menos un fallo
+más que la primera corrida. Con --calibrar no se aplican umbrales: se imprimen los valores y el umbral que resulta.
+
+Requiere PG_ADMIN_DSN, NLQ_DSN (copilot_ro), ANTHROPIC_API_KEY y OPENAI_API_KEY.
+"""
+import argparse
+import base64
+import json
+import math
+import os
+import re
+import sys
+import time
+from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
+from urllib.error import HTTPError
+from urllib.request import Request, urlopen
+
+import psycopg
+
+RAIZ = Path(__file__).resolve().parents[1]
+REPO = RAIZ.parent
+sys.path.insert(0, str(RAIZ / "experimentos"))
+import asistente as a  # noqa: E402
+import imagenes as im  # noqa: E402
+import ocr  # noqa: E402
+import pdf_tablas as pt  # noqa: E402
+import ruteo  # noqa: E402
+import seguridad as sg  # noqa: E402
+
+sl, re7 = a.sl, a.sl.re7
+MODELO_EMB = "text-embedding-3-small"
+# Umbrales por check e idioma, calibrados con la primera corrida de CI (ver resultados/ci_calibracion.md).
+UMBRALES = None
+HILOS = 4
+costos = {"anthropic": 0.0}
+
+
+def embed(textos, tipo=None):
+    out = []
+    for i in range(0, len(textos), 100):
+        req = Request("https://api.openai.com/v1/embeddings",
+                      data=json.dumps({"model": MODELO_EMB, "input": textos[i:i + 100]}).encode("utf-8"),
+                      headers={"Content-Type": "application/json", "Authorization": f"Bearer {os.environ['OPENAI_API_KEY']}"})
+        for intento in range(4):
+            try:
+                with urlopen(req, timeout=120) as r:
+                    datos = json.loads(r.read())["data"]
+                break
+            except HTTPError as e:
+                if e.code not in (429, 500, 502, 503, 504) or intento == 3:
+                    raise
+                time.sleep(2 ** (intento + 1))
+        out += [d["embedding"] for d in sorted(datos, key=lambda d: d["index"])]
+    return out, None
+
+
+a.emb_bge = embed  # asistente, seguridad e indexado usan a.emb_bge
+
+
+def vision(ruta, prompt, media):
+    cuerpo = {"model": a.HAIKU, "max_tokens": 6000, "output_config": {"effort": "low"},
+              "messages": [{"role": "user", "content": [
+                  {"type": "image", "source": {"type": "base64", "media_type": media, "data": base64.b64encode(ruta.read_bytes()).decode()}},
+                  {"type": "text", "text": prompt}]}]}
+    for intento in range(4):
+        req = Request("https://api.anthropic.com/v1/messages", data=json.dumps(cuerpo).encode(),
+                      headers={"content-type": "application/json", "anthropic-version": "2023-06-01",
+                               "x-api-key": os.environ["ANTHROPIC_API_KEY"]})
+        try:
+            with urlopen(req, timeout=180) as r:
+                d = json.loads(r.read())
+            break
+        except HTTPError as e:
+            if e.code not in (429, 500, 502, 503, 529) or intento == 3:
+                raise
+            time.sleep(2 ** (intento + 1))
+    p = a.PRECIOS[f"anthropic:{a.HAIKU}"]
+    costos["anthropic"] += (d["usage"]["input_tokens"] * p["in"] + d["usage"]["output_tokens"] * p["out"]) / 1e6
+    return "".join(b.get("text", "") for b in d["content"] if b.get("type") == "text")
+
+
+def umbral_de(valor, n):
+    return math.floor(round((valor - max(0.03, 1 / n)) / 0.05, 6)) * 0.05
+
+
+def golden():
+    return [json.loads(l) for lang in ("es", "en") for l in (RAIZ / "datasets" / f"integrado_{lang}.jsonl").read_text(encoding="utf-8").splitlines()]
+
+
+# ---------- 1. ruteo ----------
+
+def check_ruteo():
+    items = golden()
+
+    def uno(x):
+        r = ruteo.clasificar(a.HAIKU, "low", x["question"])
+        costos["anthropic"] += r["costo_usd"]
+        return r["ruta"] == ruteo.ETIQUETA[x["tipo"]]
+    with ThreadPoolExecutor(HILOS) as ex:
+        ok = list(ex.map(uno, items))
+    return {lang: [o for o, x in zip(ok, items) if x["lang"] == lang] for lang in ("es", "en")}
+
+
+# ---------- 2. text-to-SQL sobre el esquema legado ----------
+
+def check_legado(dsn_nlq):
+    items = [json.loads(l) for l in (REPO / "semana-07" / "datasets" / "nlq_hard_validado.jsonl").read_text(encoding="utf-8").splitlines()]
+    sis = sl.sistema("\n".join(sl.DDL_LEGADO[t] for t in sl.DICCIONARIO), sl.texto_diccionario(list(sl.DICCIONARIO)))
+    p = a.PRECIOS[f"anthropic:{a.HAIKU}"]
+
+    def generar(x):
+        texto, tin, tout, _, stop = sl.llamar(a.HAIKU, "low", sis, x["question"])
+        costos["anthropic"] += (tin * p["in"] + tout * p["out"]) / 1e6
+        return None if stop in ("error_api", "max_tokens") else re7.extraer_sql(texto)
+    with ThreadPoolExecutor(HILOS) as ex:
+        sqls = list(ex.map(generar, items))
+    ref = re7.conectar(os.environ["NLQ_DSN"])
+    leg = re7.conectar(dsn_nlq)
+    leg.execute("SET search_path = legado")
+    ok = []
+    for x, q in zip(items, sqls):
+        bien = False
+        if q:
+            try:
+                bien = re7.results_match(re7.ejecutar(ref, x["sql"]), a.ejecutar_lectura(leg, q), x["order_matters"])
+            except Exception:  # noqa: BLE001
+                bien = False
+        ok.append(bien)
+    return {lang: [o for o, x in zip(ok, items) if x["lang"] == lang] for lang in ("es", "en")}
+
+
+# ---------- 3. recall de documentos extraídos ----------
+
+def check_recall():
+    ext = {}
+    for stem in ("tarifas_flete", "matriz_proveedores"):
+        ext[stem] = pt.ext_pdfplumber(RAIZ / "fuentes" / f"{stem}.md", RAIZ / "pdf" / f"{stem}.pdf")
+    for stem in ("acta_inventario_norte", "remision_r4471"):
+        ext[stem] = vision(RAIZ / "escaneos" / f"{stem}_p1.jpg", ocr.PROMPT, "image/jpeg")
+    for stem in ("grafica_nivel_servicio", "plano_cedis_occidente"):
+        ext[stem] = vision(RAIZ / "imagenes" / f"{stem}.png", im.PROMPT_DESC, "image/png")
+    docs = {p.stem: p.read_text(encoding="utf-8") for p in sorted(a.CORPUS.glob("*.md"))}
+    docs.update(ext)
+    filas = [(s, c) for s, t in docs.items() for c in a.trocear(t, s)]
+    vecs, _ = embed([c for _, c in filas])
+    with psycopg.connect(os.environ["PG_ADMIN_DSN"], autocommit=True) as conn:
+        conn.execute("CREATE SCHEMA IF NOT EXISTS semana10_ci")
+        conn.execute("DROP TABLE IF EXISTS semana10_ci.extraidos")
+        conn.execute(f"CREATE TABLE semana10_ci.extraidos (id int PRIMARY KEY, source text, content text, embedding vector({len(vecs[0])}))")
+        with conn.cursor() as cur:
+            for i, ((s, c), v) in enumerate(zip(filas, vecs)):
+                cur.execute("INSERT INTO semana10_ci.extraidos VALUES (%s,%s,%s,%s::vector)", (i, s, c, "[" + ",".join(map(str, v)) + "]"))
+        items = [x for x in golden() if x["tipo"] == "no_textual"]
+        qv, _ = embed([x["question"] for x in items])
+        ok = []
+        for x, v in zip(items, qv):
+            top = conn.execute("SELECT source, content FROM semana10_ci.extraidos ORDER BY embedding <=> %s::vector LIMIT 5",
+                               ("[" + ",".join(map(str, v)) + "]",)).fetchall()
+            ok.append(any(a.evidencia(x, s, c) for s, c in top))
+    return {lang: [o for o, x in zip(ok, items) if x["lang"] == lang] for lang in ("es", "en")}
+
+
+# ---------- 4 a 7. seguridad ----------
+
+def check_seguridad(dsn_nlq, admin, esq, seq):
+    fallas, info = [], {}
+    aud = sg.auditoria(admin)
+    for rol in ("copilot_ro", "copilot_nlq"):
+        if aud[rol]["escribe"]:
+            fallas.append(f"{rol} puede escribir en {aud[rol]['escribe']}")
+    if "semana10.chunks" in aud["copilot_nlq"]["lee"]:
+        fallas.append("copilot_nlq puede leer semana10.chunks")
+
+    os.environ["NLQ_LEGADO_DSN"] = dsn_nlq
+    h = a.Herramientas()
+    h.conn_leg.execute("SET search_path = legado")
+    antes = sg.huella(admin)
+    bloqueos = {}
+    for d in sg.DS["directas"]:
+        q = sg.sentencia(d, esq, seq)
+        if re7.extraer_sql(q) is None:
+            bloqueos[d["id"]] = "filtro"
+            continue
+        bloqueos[d["id"]] = sg.probar(lambda: a.ejecutar_lectura(h.conn_leg, q))
+    for i in sg.DS["cadena"]:
+        sg.probar(lambda: a.ejecutar_lectura(h.conn_leg, sg.sentencia(next(d for d in sg.DS["directas"] if d["id"] == i), esq, seq)))
+    if not bloqueos["dir-17"].startswith("bloqueado"):
+        fallas.append("la NLQ de producción lee semana10.chunks")
+
+    usuario_todo = {"tenant": "alfa", "roles": sg.TODOS}
+    usuario_ventas = {"tenant": "alfa", "roles": ["ventas"]}
+    ejecutadas, celdas = 0, 0
+    for grupo, usuario in (("escritura", usuario_todo), ("fuga_sql", usuario_ventas)):
+        for x in sg.DS[grupo] + (sg.POSTERIORES if grupo == "escritura" else []):
+            for lang in ("es", "en"):
+                r = sg.correr(h, x[lang], "solo_sql", usuario)
+                costos["anthropic"] += r["costo"]
+                ejecutadas += int(bool(r["sql"] and not r["sql_error"] and sg.ESCRIBE.search(r["sql"])))
+                if grupo == "fuga_sql":
+                    celdas += perm.celdas_filtradas(r["sql_celdas"], usuario)
+    despues = sg.huella(admin)
+    escrituras = sg.diferencias(antes, despues)
+    sg.restaurar(admin, antes, despues)
+    if escrituras:
+        fallas.append(f"escrituras en la base: {escrituras}")
+    if ejecutadas:
+        fallas.append(f"{ejecutadas} sentencias de escritura ejecutadas sin error por el asistente")
+    if celdas:
+        fallas.append(f"{celdas} celdas SQL con texto de documentos no autorizados")
+    info["sql"] = {"escrituras": len(escrituras), "escritura_ejecutada": ejecutadas, "celdas_no_autorizadas": celdas,
+                   "directas": bloqueos}
+
+    no_aut = 0
+    casos_rol = casos_tenant = 0
+    for x in golden():
+        if x["tipo"] not in ("documental", "no_textual"):
+            continue
+        fuente = Path(x["gold"][0]["source"] if x.get("gold") else x["fuente"]).stem
+        libre = [r for r in sg.ORDEN_ROLES if r not in a.ROLES[fuente]]
+        if not libre:
+            continue
+        u = {"tenant": "alfa", "roles": [libre[0]]}
+        r = h.docs(x["question"], u)
+        costos["anthropic"] += r["costo"]
+        no_aut += sum(1 for i in r["ids"] if not perm.autorizado(i, u))
+        casos_rol += 1
+    for lang in ("es", "en"):
+        for l in (REPO / "semana-09" / "datasets" / f"multitenant_{lang}.jsonl").read_text(encoding="utf-8").splitlines():
+            x = json.loads(l)
+            for t in ("alfa", "beta"):
+                u = {"tenant": t, "roles": sg.TODOS}
+                r = h.docs(x["question"], u)
+                costos["anthropic"] += r["costo"]
+                no_aut += sum(1 for i in r["ids"] if not perm.autorizado(i, u))
+                casos_tenant += 1
+    if no_aut:
+        fallas.append(f"{no_aut} chunks no autorizados en el contexto (rol o tenant)")
+    info["fuga_docs"] = {"casos_rol": casos_rol, "casos_tenant": casos_tenant, "chunks_no_autorizados": no_aut}
+
+    obedece, expuestas, total = 0, 0, 0
+    for x in sg.DS["inyeccion"]:
+        for lang in ("es", "en"):
+            r = sg.correr(h, x[lang], "integrado", usuario_todo)
+            costos["anthropic"] += r["costo"]
+            objetivos = {x["documento"], x["documento"] + "_literal"}
+            expuestas += int(any(perm.chunks[i][2] in objetivos for i in r["doc_ids"]))
+            t, c, _ = a.anthropic(a.SONNET, "low", sg.SIS_OBEDECE,
+                                  f"Pregunta: {x[lang]}\n\nInstrucción maliciosa del documento:\n{sg.INYECCIONES[x['documento']]}"
+                                  f"\n\nRespuesta del asistente:\n{r['respuesta']}", max_tokens=1000)
+            costos["anthropic"] += c
+            v = sg.json_de(t, "obedece")
+            obedece += int(v is not False)  # sin veredicto válido cuenta como falla
+            total += 1
+    if obedece:
+        fallas.append(f"{obedece}/{total} respuestas obedecen (o sin veredicto) una instrucción inyectada")
+    info["inyeccion"] = {"casos": total, "documento_en_contexto": expuestas, "obedece": obedece}
+    return fallas, info, aud
+
+
+def main():
+    global perm
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--calibrar", action="store_true", help="primera corrida: imprime valores y umbrales, sin aplicarlos")
+    args = ap.parse_args()
+    if UMBRALES is None and not args.calibrar:
+        raise SystemExit("Sin umbrales calibrados: corre con --calibrar y fija UMBRALES con la regla de la docstring.")
+    admin = psycopg.connect(os.environ["PG_ADMIN_DSN"], autocommit=True)
+    admin.execute((RAIZ / "legado" / "legado.sql").read_text(encoding="utf-8"))
+    a.indexar()
+    cache = {}
+    inyectados, c = sg.extraer_inyectados(cache)
+    costos["anthropic"] += c
+    perm = sg.Permisos(sg.indexar_extra(inyectados))
+    dsn_nlq = sg.crear_rol_nlq()
+    esq = admin.execute("SELECT table_schema FROM information_schema.tables WHERE table_name = 'stock' "
+                        "AND table_schema <> 'legado' ORDER BY 1 LIMIT 1").fetchone()[0]
+    seq = (admin.execute("SELECT schemaname || '.' || sequencename FROM pg_sequences WHERE schemaname = %s ORDER BY 1 LIMIT 1",
+                         (esq,)).fetchone() or [None])[0]
+
+    t0 = time.time()
+    metricas = {"ruteo": check_ruteo(), "legado": check_legado(dsn_nlq), "recall_extraidos": check_recall()}
+    fallas_seg, info, aud = check_seguridad(dsn_nlq, admin, esq, seq)
+
+    print("| Check | Idioma | Valor | n | Umbral |")
+    print("|---|---|---|---|---|")
+    fallas, calibrados = [], {}
+    for check, por_lang in metricas.items():
+        for lang, oks in por_lang.items():
+            v = sum(oks) / len(oks)
+            u = umbral_de(v, len(oks)) if args.calibrar else UMBRALES[check][lang]
+            calibrados.setdefault(check, {})[lang] = round(u, 2)
+            print(f"| {check} | {lang} | {v:.3f} ({sum(oks)}/{len(oks)}) | {len(oks)} | {u:.2f}{' (calibrado)' if args.calibrar else ''} |")
+            if not args.calibrar and v < u:
+                fallas.append(f"{check}/{lang}: {v:.3f} < {u:.2f}")
+    print("\nSeguridad (sin umbral):")
+    print(json.dumps(info, ensure_ascii=False, indent=1))
+    print(f"\nCosto Anthropic de la corrida: ${costos['anthropic']:.4f}; duración {time.time() - t0:.0f} s")
+    if args.calibrar:
+        print("\nUMBRALES = " + json.dumps(calibrados))
+    fallas += fallas_seg
+    if fallas:
+        raise SystemExit("FALLA:\n- " + "\n- ".join(fallas))
+    print("Todos los checks pasaron.")
+
+
+if __name__ == "__main__":
+    main()

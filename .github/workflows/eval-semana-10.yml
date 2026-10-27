@@ -1,0 +1,40 @@
+name: eval-semana-10
+
+on:
+  pull_request:
+    paths:
+      - "semana-10/**"
+      - ".github/workflows/eval-semana-10.yml"
+
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_USER: admin
+          POSTGRES_PASSWORD: ci-admin
+          POSTGRES_DB: inventory
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U admin -d inventory"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      PG_ADMIN_DSN: postgresql://admin:ci-admin@localhost:5432/inventory
+      NLQ_DSN: postgresql://copilot_ro:ci-ro@localhost:5432/inventory
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Instalar dependencias
+        run: pip install "psycopg[binary]" pdfplumber
+      - name: Preparar base de CI (esquema, copilot_ro y datos sintéticos, semilla 42)
+        run: python semana-07/ci/preparar_base.py
+      - name: Ruteo, SQL legado, recall de extraídos y seguridad
+        run: python semana-10/ci/eval_ci.py --calibrar
