@@ -1,0 +1,85 @@
+documentos: 24 · pasajes de referencia únicos: 50
+estrategia              chunks  prom_chars    íntegros  partidos
+fijo_400_solape_80          57         348     50/50           0
+recursivo_300               84         203     48/50           2
+    partido: recepcion_almacen.md · Diferencia mayor a 2%: se hace un **rechazo parcial** de la diferencia
+    partido: skus_criticos.md · SKU crítico con menos de **7 días** de cobertura.
+actual_por_seccion          69         242     50/50           0
+## Métricas por configuración
+
+| Configuración | Idioma | Tipo | n | recall@1 | recall@3 | recall@5 | recall@10 | mrr | ndcg@10 | precision@5 | ap@5 | context_precision | context_recall | Latencia p50 (s) |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| base | es | base | 50 | 0.740 | 0.950 | 1.000 | 1.000 | 0.864 | 0.894 | 0.220 | 0.850 | 0.886 | 1.000 | 0.01 |
+| base | es | no_textual | 15 | 0.867 | 1.000 | 1.000 | 1.000 | 0.922 | 0.942 | 0.307 | 0.928 | 0.928 | 1.000 | 0.01 |
+| base | es | todas | 65 | 0.769 | 0.962 | 1.000 | 1.000 | 0.877 | 0.905 | 0.240 | 0.868 | 0.896 | 1.000 | 0.01 |
+| base | en | base | 50 | 0.700 | 0.900 | 1.000 | 1.000 | 0.831 | 0.873 | 0.220 | 0.828 | 0.865 | 1.000 | 0.01 |
+| base | en | no_textual | 15 | 0.867 | 0.933 | 1.000 | 1.000 | 0.917 | 0.937 | 0.293 | 0.882 | 0.882 | 1.000 | 0.01 |
+| base | en | todas | 65 | 0.738 | 0.908 | 1.000 | 1.000 | 0.851 | 0.888 | 0.237 | 0.841 | 0.869 | 1.000 | 0.01 |
+| adoptado | es | base | 50 | 0.840 | 1.000 | 1.000 | 1.000 | 0.927 | 0.945 | 0.232 | 0.928 | 0.972 | 1.000 | 2.22 |
+| adoptado | es | no_textual | 15 | 0.933 | 1.000 | 1.000 | 1.000 | 0.967 | 0.975 | 0.307 | 0.972 | 0.970 | 1.000 | 1.97 |
+| adoptado | es | todas | 65 | 0.862 | 1.000 | 1.000 | 1.000 | 0.936 | 0.952 | 0.249 | 0.938 | 0.972 | 1.000 | 2.18 |
+| adoptado | en | base | 50 | 0.840 | 1.000 | 1.000 | 1.000 | 0.927 | 0.945 | 0.232 | 0.924 | 0.955 | 1.000 | 2.15 |
+| adoptado | en | no_textual | 15 | 0.933 | 1.000 | 1.000 | 1.000 | 0.967 | 0.975 | 0.320 | 0.972 | 0.972 | 1.000 | 2.21 |
+| adoptado | en | todas | 65 | 0.862 | 1.000 | 1.000 | 1.000 | 0.936 | 0.952 | 0.252 | 0.935 | 0.959 | 1.000 | 2.16 |
+
+## Diferencia adoptado − base (media pareada por consulta, IC bootstrap 95 %)
+
+| Idioma | Métrica | Diferencia | IC 95 % | Consultas que suben / bajan |
+|---|---|---|---|---|
+| es | recall@1 | +0.092 | [-0.023, +0.208] | 11 / 5 |
+| es | recall@3 | +0.038 | [+0.008, +0.085] | 4 / 0 |
+| es | recall@5 | +0.000 | [+0.000, +0.000] | 0 / 0 |
+| es | recall@10 | +0.000 | [+0.000, +0.000] | 0 / 0 |
+| es | mrr | +0.058 | [-0.009, +0.128] | 11 / 6 |
+| es | ndcg@10 | +0.047 | [-0.001, +0.097] | 12 / 6 |
+| es | precision@5 | +0.009 | [+0.000, +0.018] | 3 / 0 |
+| es | ap@5 | +0.070 | [+0.008, +0.137] | 13 / 6 |
+| es | context_precision | +0.078 | [+0.025, +0.136] | 15 / 5 |
+| es | context_recall | +0.000 | [+0.000, +0.000] | 0 / 0 |
+| en | recall@1 | +0.123 | [+0.000, +0.238] | 13 / 5 |
+| en | recall@3 | +0.092 | [+0.031, +0.162] | 7 / 0 |
+| en | recall@5 | +0.000 | [+0.000, +0.000] | 0 / 0 |
+| en | recall@10 | +0.000 | [+0.000, +0.000] | 0 / 0 |
+| en | mrr | +0.085 | [+0.008, +0.162] | 13 / 6 |
+| en | ndcg@10 | +0.065 | [+0.009, +0.121] | 14 / 6 |
+| en | precision@5 | +0.015 | [+0.003, +0.031] | 5 / 0 |
+| en | ap@5 | +0.095 | [+0.018, +0.171] | 16 / 6 |
+| en | context_precision | +0.090 | [+0.031, +0.152] | 18 / 4 |
+| en | context_recall | +0.000 | [+0.000, +0.000] | 0 / 0 |
+
+## Propias contra RAGAS (mismas consultas, top 5)
+
+| Configuración | Par | Pearson | Acuerdo |
+|---|---|---|---|
+| base | recall@5 / context_recall | nan | 130/130 (recall@5 = 1 contra context_recall >= 0.5) |
+| base | precision@5 / context_precision | -0.021 | - |
+| base | mrr / context_precision | 0.826 | - |
+| base | ap@5 / context_precision | 0.841 | 113/130 con diferencia <= 0.1; RAGAS más alto en 12, más bajo en 5 |
+| adoptado | recall@5 / context_recall | nan | 129/129 (recall@5 = 1 contra context_recall >= 0.5) |
+| adoptado | precision@5 / context_precision | -0.126 | - |
+| adoptado | mrr / context_precision | 0.580 | - |
+| adoptado | ap@5 / context_precision | 0.574 | 117/129 con diferencia <= 0.1; RAGAS más alto en 9, más bajo en 3 |
+
+Desacuerdos (recall@5 contra context_recall, o |ap@5 - context_precision| > 0.3):
+- base rec-22 es: recall@5=1.00, context_recall=1.00, ap@5=0.50, context_precision=1.00 | ¿Quién aprueba una compra urgente?
+- base rec-25 es: recall@5=1.00, context_recall=1.00, ap@5=0.50, context_precision=1.00 | ¿Cuánto tarda el tránsito de Guadalajara a Monterrey?
+- base rec-28 es: recall@5=1.00, context_recall=1.00, ap@5=0.50, context_precision=1.00 | ¿El copiloto puede modificar precios?
+- base rec-50 es: recall@5=1.00, context_recall=1.00, ap@5=0.50, context_precision=1.00 | ¿Cuál es la meta de calidad de piezas rechazadas de un proveedor?
+- base rec-12 en: recall@5=1.00, context_recall=1.00, ap@5=0.50, context_precision=1.00 | How often is the Packaging category reviewed?
+- base rec-17 en: recall@5=1.00, context_recall=1.00, ap@5=1.00, context_precision=0.70 | What happens to a supplier that misses two targets?
+- base rec-25 en: recall@5=1.00, context_recall=1.00, ap@5=0.50, context_precision=1.00 | How long is transit time from Guadalajara to Monterrey?
+- base rec-28 en: recall@5=1.00, context_recall=1.00, ap@5=0.25, context_precision=0.75 | Can the copilot change prices?
+- base rec-50 en: recall@5=1.00, context_recall=1.00, ap@5=0.50, context_precision=1.00 | What is the quality target for rejected parts from a supplier?
+- adoptado rec-02 es: recall@5=1.00, context_recall=1.00, ap@5=0.50, context_precision=1.00 | ¿Se aceptan devoluciones de equipo de protección si el empaque ya fue abierto?
+- adoptado rec-05 es: recall@5=1.00, context_recall=1.00, ap@5=1.00, context_precision=0.70 | ¿Quién aprueba un ajuste de inventario de 15,000 pesos?
+- adoptado rec-08 es: recall@5=1.00, context_recall=1.00, ap@5=0.58, context_precision=1.00 | ¿Puede un asistente de IA aprobar una orden de compra?
+- adoptado rec-16 es: recall@5=1.00, context_recall=1.00, ap@5=0.58, context_precision=1.00 | ¿Cuánto tarda en entregar un proveedor de China?
+- adoptado rec-25 es: recall@5=1.00, context_recall=1.00, ap@5=0.33, context_precision=1.00 | ¿Cuánto tarda el tránsito de Guadalajara a Monterrey?
+- adoptado rec-28 es: recall@5=1.00, context_recall=1.00, ap@5=0.50, context_precision=1.00 | ¿El copiloto puede modificar precios?
+- adoptado rec-02 en: recall@5=1.00, context_recall=1.00, ap@5=0.50, context_precision=1.00 | Are protective equipment returns accepted if the package was already opened?
+- adoptado rec-13 en: recall@5=1.00, context_recall=1.00, ap@5=0.50, context_precision=1.00 | Which stock is the reorder point evaluated against?
+- adoptado rec-17 en: recall@5=1.00, context_recall=1.00, ap@5=0.50, context_precision=1.00 | What happens to a supplier that misses two targets?
+- adoptado rec-25 en: recall@5=1.00, context_recall=1.00, ap@5=0.50, context_precision=1.00 | How long is transit time from Guadalajara to Monterrey?
+
+RAGAS sin puntaje (error del juez): 1 de 260
+Costo: reranking $0.0642 ($0.00049 por consulta); juez de RAGAS en esta corrida $0.0000 (0 llamadas, 0 tokens de entrada y 0 de salida; las respuestas en caché no se cobran)
