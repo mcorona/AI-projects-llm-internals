@@ -11,7 +11,8 @@ Composición por idioma (75 preguntas):
 
 Respuesta de referencia (`referencia`): Haiku 5.5 low la redacta solo con el pasaje (o con el documento fuente y la
 respuesta exacta, en las no textuales), en el idioma de la pregunta, en una o dos oraciones. Validación automática:
-toda cifra de la referencia aparece en el pasaje o la fuente, y en las no textuales la respuesta exacta aparece en la
+toda cifra de la referencia aparece en el pasaje, la fuente o la pregunta; ninguna referencia de una pregunta
+respondible dice que no hay respuesta; y en las no textuales la respuesta exacta aparece en la
 referencia. Las respuestas del modelo se guardan en resultados/referencias_cache.json (se reutilizan al reconstruir).
 Muestra para revisión manual: 20 respondibles (10 por idioma, semilla 11) en resultados/revision_referencias.md.
 
@@ -37,8 +38,10 @@ CACHE = RES / "referencias_cache.json"
 PRECIOS = json.loads((REPO / "semana-07" / "prices.json").read_text(encoding="utf-8"))
 MODELO = "claude-haiku-5-5"
 
-SISTEMA = ("Redactas la respuesta de referencia de un conjunto de evaluación. Responde la pregunta usando SOLO la "
-           "información del texto dado: no agregues datos, condiciones ni ejemplos que no estén en él. Una o dos "
+SISTEMA = ("Redactas la respuesta de referencia de un conjunto de evaluación. Recibes el documento completo, solo para "
+           "entender el contexto (por ejemplo, los encabezados de una tabla), y el pasaje de referencia. Responde la "
+           "pregunta con la información del PASAJE: no agregues datos, condiciones ni ejemplos que no estén en él. "
+           "El pasaje siempre contiene la respuesta. Una o dos "
            "oraciones completas y directas, en el idioma de la pregunta. Conserva cifras, unidades y nombres exactamente "
            "como aparecen. Si el texto está en español y la pregunta en inglés, traduce la respuesta pero no las cifras. "
            "Escribe solo la respuesta, sin comillas ni preámbulo.")
@@ -66,6 +69,7 @@ SIN_RESPUESTA = [
     ("nr-10", "¿Qué pasa con los pedidos de clientes durante una huelga de transportistas?",
      "What happens to customer orders during a carriers' strike?", ["huelga"]),
 ]
+NEGATIVA = re.compile(r"no (hay|contiene|se (indica|menciona|especifica))|no est[aá] en|cannot be answered|does not (contain|say|specify|mention)|not (in|mentioned in) the", re.I)
 NO_ESTA = {"es": "La información no está en los documentos.", "en": "The information is not in the documents."}
 
 
@@ -116,9 +120,11 @@ def main():
         items = []
         for x in base:
             texto = "\n".join(g["passage"] for g in x["gold"])
+            docs = "\n\n".join((CORPUS / s).read_text(encoding="utf-8") for s in dict.fromkeys(g["source"] for g in x["gold"]))
             items.append({"id": x["id"], "lang": lang, "tipo": "base", "question": x["question"], "gold": x["gold"],
                           "respondible": True, "origen": "semana-08/datasets/recuperacion",
-                          "_contenido": f"Texto:\n{texto}\n\nPregunta: {x['question']}", "_fuente": texto})
+                          "_contenido": f"Documento:\n{docs}\n\nPasaje de referencia:\n{texto}\n\nPregunta: {x['question']}",
+                          "_fuente": texto})
         for x in integ:
             if x["tipo"] != "no_textual":
                 continue
@@ -126,7 +132,7 @@ def main():
             items.append({"id": x["id"], "lang": lang, "tipo": f"no_textual/{x['formato']}", "question": x["question"],
                           "gold": [{"source": x["fuente"], "passage": x["respuesta"]}], "respondible": True,
                           "origen": "semana-10/datasets/integrado",
-                          "_contenido": f"Texto:\n{doc}\n\nRespuesta exacta: {x['respuesta']}\n\nPregunta: {x['question']}",
+                          "_contenido": f"Documento:\n{doc}\n\nPasaje de referencia (respuesta exacta): {x['respuesta']}\n\nPregunta: {x['question']}",
                           "_fuente": doc, "_respuesta": x["respuesta"]})
         for i, es, en, terminos in SIN_RESPUESTA:
             hallados = [t for t in terminos if t.lower() in corpus.lower()]
@@ -137,17 +143,19 @@ def main():
         for x in items:
             if not x["respondible"]:
                 continue
-            k = f"{x['id']}::{lang}"
+            k = f"v2::{x['id']}::{lang}"  # v2: con el documento como contexto (v1 malinterpretó la fila de tabla de rec-07)
             if k not in cache:
                 cache[k] = llamar(x["_contenido"])
                 costo_nuevo += cache[k]["costo_usd"]
                 CACHE.write_text(json.dumps(cache, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
             x["referencia"] = cache[k]["texto"]
-            extra = cifras(x["referencia"]) - cifras(x["_fuente"])
+            extra = cifras(x["referencia"]) - cifras(x["_fuente"]) - cifras(x["question"])  # la pregunta puede traer cifras
             if extra:
                 errores.append(f"{x['id']} {lang}: cifras de la referencia que no están en el texto: {sorted(extra)}")
             if x.get("_respuesta") and not cifras(x["_respuesta"]) <= cifras(x["referencia"]) | {""}:
                 errores.append(f"{x['id']} {lang}: la referencia no trae la cifra de la respuesta exacta '{x['_respuesta']}'")
+            if NEGATIVA.search(x["referencia"]):
+                errores.append(f"{x['id']} {lang}: la referencia dice que no hay respuesta, pero la pregunta es respondible")
             if x.get("_respuesta") and not cifras(x["_respuesta"]) and lang == "es" and norm(x["_respuesta"]) not in norm(x["referencia"]):
                 errores.append(f"{x['id']} {lang}: la referencia no contiene la respuesta exacta '{x['_respuesta']}'")
         salida[lang] = [{k: v for k, v in x.items() if not k.startswith("_")} for x in items]
