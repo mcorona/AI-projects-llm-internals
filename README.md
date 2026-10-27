@@ -41,7 +41,7 @@ Lo que no cumple el criterio queda marcado como pendiente hasta que se resuelva.
 
 ## Criterio de salida de la Fase 3
 
-La Fase 3 cubre las semanas 8 a 12. Los criterios de las semanas 8 a 10 (recuperación, RAG avanzado y asistente integrado) están abajo; los de las semanas 11 y 12 se agregan al planearlas. Solo se marca lo verificado con evidencia en el repo.
+La Fase 3 cubre las semanas 8 a 12: recuperación, RAG avanzado, asistente integrado (8 a 10), evaluación de RAG (11) y RAG administrado en la nube (12). Solo se marca lo verificado con evidencia en el repo.
 
 - [x] La eval de recuperación corre en CI en cada PR que toca `semana-08/**` o `semana-09/**`, con umbral de recall@5 por idioma (0.90), calibrado con la primera corrida (ES 0.990, EN 0.950). Verificado en los PR #15 y #17 para semana 8 (`semana-08/resultados/ci_recuperacion.md`) y en el PR #29 para semana 9 (`semana-09/resultados/ci_semana09.md`).
 - [x] Hay una comparación documentada de chunking, embeddings y bases vectoriales con recall@k, latencia y costo, en ES y EN (`semana-08/README.md`, actividades 2 a 5; chunking en `semana-08/resultados/chunking.md`, registrado el 2026-10-26).
@@ -52,6 +52,8 @@ La Fase 3 cubre las semanas 8 a 12. Los criterios de las semanas 8 a 10 (recuper
 - [x] El text-to-SQL sobre un esquema legado (vistas con nombres crípticos) se mide por ejecución en tres variantes (sin diccionario, con diccionario completo y con diccionario recuperado) contra el esquema original con el mismo modelo, con costo y latencia. Verificado con Sonnet 5.5 y Haiku 5.5 sobre el set difícil de semana 7: con Haiku, sin diccionario ES 0.884 / EN 0.953, diccionario completo 0.977 / 1.000 ($0.00033 por pregunta), diccionario recuperado 0.767 / 0.721; esquema original 0.977 / 1.000 (`semana-10/resultados/sql_legado.md`; PR #35 y #37).
 - [x] Los documentos no textuales (PDFs con tablas, escaneos con OCR e imágenes) se extraen e indexan, y se mide su exactitud contra la referencia congelada (exactitud por celda, tasa de error por carácter y respuestas correctas) y el recall después de indexar. Verificado: filas íntegras pypdf 0/13, pdfplumber y Haiku 13/13 (PR #38); CER Tesseract 0.009, Haiku 0.001 (PR #39); hechos asociados en imágenes Tesseract 0/7, Haiku 7/7 (PR #40); recall@5 de lo extraído medido en las tres y en CI (1.000 por idioma, PR #44).
 - [x] El asistente integrado (NLQ + RAG documental) se mide por tipo de pregunta (SQL, documental, no textual y mixta): ruteo, exactitud con citas, costo y latencia. Su seguridad es no negociable: cero escrituras SQL, fuga 0 por rol y entre tenants a través del asistente, y ninguna instrucción inyectada en documentos ejecutada, con check en CI. Verificado: ruteo ES 0.882 / EN 0.863 (PR #41); exactitud con juez 0.961 / 0.980 frente a 0.294 solo SQL y 0.608 solo documentos, con precisión de citas, costo ($0.00083 por pregunta) y latencia (p50 5.3 s) por tipo (PR #42); con la NLQ endurecida, 0 escrituras, fuga 0 en 128 casos y 0/48 instrucciones obedecidas (PR #43); check `eval-semana-10` en cada PR de semana 10 (PR #44). Las pruebas de seguridad encontraron que la conexión SQL de la actividad 7 permitía escribir objetos grandes (`lo_create`); se corrigió y el asistente usa la NLQ endurecida desde el PR #44 (`semana-10/README.md`).
+- [ ] La recuperación y la generación se evalúan con suites separadas: recall@k para la recuperación, y faithfulness y answer relevance (RAGAS) para la generación, con costo por consulta. Semana 11.
+- [ ] La misma base documental se monta en un RAG administrado de AWS (Bedrock Knowledge Bases) y de una segunda nube (Azure AI Search o Vertex AI Search), y se compara su calidad, latencia y costo con el mismo golden set. Semana 12.
 
 Lo que no cumple el criterio queda marcado como pendiente hasta que se resuelva.
 
@@ -59,4 +61,4 @@ Lo que no cumple el criterio queda marcado como pendiente hasta que se resuelva.
 
 - Semana 1: completa. Mini-GPT de 2000 pasos con pérdida de validación de 1.72 (n=128, lr=1e-3). Ver `semana-01/README.md`.
 - Semana 10: completa (text-to-SQL sobre esquema legado, documentos no textuales y asistente integrado con seguridad y CI). Ver `semana-10/README.md`.
-- Fase 3: en curso. Los criterios de las semanas 8 a 10 (1 a 9) están verificados; faltan las semanas 11 y 12.
+- Fase 3: en curso. Criterios 1 a 9 (semanas 8 a 10) verificados; faltan los de las semanas 11 (evaluación de RAG) y 12 (RAG administrado).
