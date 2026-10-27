@@ -24,6 +24,8 @@ Criterios, fijados antes de correr:
   evasiva. El control debe tener faithfulness media >= 0.9.
 - Decisión: el juez más barato que cumpla las cuatro detecciones esperadas y el control. Si ninguno cumple todo, el
   que cumpla más, con lo que falta documentado.
+Juez de RAGAS: Haiku con llm_factory (modo TOOLS de Instructor); Sonnet con modo JSON de Instructor, porque Sonnet 5.5
+rechaza el tool_choice forzado. Cada juez tiene su propia caché en disco (la clave de RAGAS no incluye el modelo).
 Caché por juez, métrica, pregunta y variante en resultados/meta_evaluacion_cache.json (y caché en disco del juez).
 Requiere LM Studio con bge-m3 y ANTHROPIC_API_KEY.
 """
@@ -42,6 +44,7 @@ RES = RAIZ / "resultados"
 CACHE = RES / "meta_evaluacion_cache.json"
 PRECIOS = json.loads((REPO / "semana-07" / "prices.json").read_text(encoding="utf-8"))
 JUECES = {"haiku": "claude-haiku-5-5", "sonnet": "claude-sonnet-5-5"}
+MODOS = {"haiku": "Instructor TOOLS", "sonnet": "Instructor JSON"}
 VARIANTES = ("control", "cifra_cambiada", "inventada", "fuera_de_tema", "evasiva")
 ESPERADAS = {("faithfulness", "cifra_cambiada"), ("faithfulness", "inventada"),
              ("answer_relevancy", "fuera_de_tema"), ("answer_relevancy", "evasiva")}
@@ -148,9 +151,19 @@ async def evaluar(casos, cache, guardar):
             return r
         cliente.messages.create = crear_contando
         clientes[j] = cliente
-        llm = llm_factory(modelo, provider="anthropic", client=cliente, max_tokens=4000,
-                          extra_body={"output_config": {"effort": "low"}},
-                          cache=DiskCacheBackend(str(Path.home() / ".cache" / "ragas_semana11")))
+        # Corrida 2: la clave de la caché de RAGAS no incluye el modelo, así que en la corrida 1 Sonnet recibió las
+        # respuestas que Haiku dejó en caché. Ahora cada juez tiene su propia caché.
+        cache_j = DiskCacheBackend(str(Path.home() / ".cache" / ("ragas_semana11" if j == "haiku" else f"ragas_semana11_{j}")))
+        if j == "haiku":
+            llm = llm_factory(modelo, provider="anthropic", client=cliente, max_tokens=4000,
+                              extra_body={"output_config": {"effort": "low"}}, cache=cache_j)
+        else:
+            # Sonnet 5.5 rechaza el tool_choice forzado del modo TOOLS de Instructor (HTTP 400): modo JSON.
+            import instructor
+            from ragas.llms.base import InstructorLLM, InstructorModelArgs
+            llm = InstructorLLM(client=instructor.from_anthropic(cliente, mode=instructor.Mode.ANTHROPIC_JSON), model=modelo,
+                                provider="anthropic", model_args=InstructorModelArgs(), cache=cache_j, max_tokens=4000,
+                                extra_body={"output_config": {"effort": "low"}})
         llm.model_args.pop("temperature", None)
         llm.model_args.pop("top_p", None)
         metricas[j] = {"faithfulness": Faithfulness(llm=llm), "answer_relevancy": AnswerRelevancy(llm=llm, embeddings=emb)}
@@ -258,7 +271,7 @@ def main():
         p = PRECIOS[f"anthropic:{modelo}"]
         costo = (uso[j]["in"] * p["in"] + uso[j]["out"] * p["out"]) / 1e6
         errores = sum(1 for f in filas if f["juez"] == j and f["valor"] is None)
-        print(f"- {j}: detecciones esperadas {len(ok)}/4 {ok}; faithfulness del control {ctl:.3f} "
+        print(f"- {j} ({MODOS[j]}): detecciones esperadas {len(ok)}/4 {ok}; faithfulness del control {ctl:.3f} "
               f"({'cumple' if ctl >= 0.9 else 'NO cumple'} >= 0.9); sin puntaje {errores}; costo de esta corrida ${costo:.4f} "
               f"({uso[j]['llamadas']} llamadas, {uso[j]['in']} tokens de entrada y {uso[j]['out']} de salida)")
 
