@@ -74,16 +74,20 @@ def metricas(ranking, gold):
     pos = next((i for i, c in enumerate(ranking[:10], 1) if pasajes_en(c, gold)), None)
     m["mrr"] = 1 / pos if pos else 0.0
     m["precision@5"] = sum(1 for c in ranking[:5] if pasajes_en(c, gold)) / 5
+    # AP@5: la misma fórmula que context precision de RAGAS (media de precision@i en las posiciones relevantes),
+    # pero con la relevancia exacta en lugar del juez. Agregada después de la primera corrida para comparar 1 a 1.
+    r = [bool(pasajes_en(c, gold)) for c in ranking[:5]]
+    m["ap@5"] = (sum(sum(r[:i]) / i for i in range(1, 6) if r[i - 1]) / sum(r)) if any(r) else 0.0
     return m
 
 
 def recuperar(items, cache):
-    import psycopg
-    conn = psycopg.connect(os.environ["NLQ_DSN"], autocommit=True)
-    conn.execute("SET hnsw.ef_search = 100")
-    conn.execute("SET hnsw.iterative_scan = strict_order")
     faltan = [x for x in items if f"base::{x['id']}::{x['lang']}" not in cache]
     if faltan:
+        import psycopg
+        conn = psycopg.connect(os.environ["NLQ_DSN"], autocommit=True)
+        conn.execute("SET hnsw.ef_search = 100")
+        conn.execute("SET hnsw.iterative_scan = strict_order")
         t0 = time.perf_counter()
         vecs, _ = a.emb_bge([x["question"] for x in faltan], "query")
         lat_emb = (time.perf_counter() - t0) / len(faltan)
@@ -192,7 +196,7 @@ def main():
                             "context_precision": g.get("context_precision"), "context_recall": g.get("context_recall"),
                             "ragas_error": g.get("context_precision_error", "") or g.get("context_recall_error", ""),
                             "latencia_s": r["latencia_s"], "costo_rerank": r["costo"]})
-    campos = ["recall@1", "recall@3", "recall@5", "recall@10", "mrr", "ndcg@10", "precision@5", "context_precision", "context_recall"]
+    campos = ["recall@1", "recall@3", "recall@5", "recall@10", "mrr", "ndcg@10", "precision@5", "ap@5", "context_precision", "context_recall"]
 
     def media(f, c):
         v = [d[c] for d in f if d[c] is not None]
@@ -231,11 +235,16 @@ def main():
               f"{acuerdo}/{len(f)} (recall@5 = 1 contra context_recall >= 0.5) |")
         print(f"| {config} | precision@5 / context_precision | {pearson([d['precision@5'] for d in f], [d['context_precision'] for d in f]):.3f} | - |")
         print(f"| {config} | mrr / context_precision | {pearson([d['mrr'] for d in f], [d['context_precision'] for d in f]):.3f} | - |")
-        desacuerdos += [(config, d) for d in f if (d["recall@5"] == 1) != (d["context_recall"] >= 0.5)]
-    print("\nDesacuerdos recall@5 / context_recall:")
+        print(f"| {config} | ap@5 / context_precision | {pearson([d['ap@5'] for d in f], [d['context_precision'] for d in f]):.3f} | "
+              f"{sum(abs(d['ap@5'] - d['context_precision']) <= 0.1 for d in f)}/{len(f)} con diferencia <= 0.1; RAGAS más alto en "
+              f"{sum(d['context_precision'] > d['ap@5'] + 0.1 for d in f)}, más bajo en {sum(d['context_precision'] < d['ap@5'] - 0.1 for d in f)} |")
+        desacuerdos += [(config, d) for d in f if (d["recall@5"] == 1) != (d["context_recall"] >= 0.5)
+                        or abs(d["ap@5"] - d["context_precision"]) > 0.3]
+    preguntas = {(x["id"], x["lang"]): x["question"] for x in items}
+    print("\nDesacuerdos (recall@5 contra context_recall, o |ap@5 - context_precision| > 0.3):")
     for config, d in desacuerdos:
         print(f"- {config} {d['id']} {d['lang']}: recall@5={d['recall@5']:.2f}, context_recall={d['context_recall']:.2f}, "
-              f"context_precision={d['context_precision']:.2f}")
+              f"ap@5={d['ap@5']:.2f}, context_precision={d['context_precision']:.2f} | {preguntas[(d['id'], d['lang'])][:80]}")
     errores = sum(1 for d in detalle if d["ragas_error"])
     costo_rerank = sum(d["costo_rerank"] for d in detalle)
     print(f"\nRAGAS sin puntaje (error del juez): {errores} de {len(detalle)}")
