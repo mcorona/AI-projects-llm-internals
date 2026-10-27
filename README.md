@@ -41,7 +41,7 @@ Lo que no cumple el criterio queda marcado como pendiente hasta que se resuelva.
 
 ## Criterio de salida de la Fase 3
 
-La Fase 3 cubre las semanas 8, 9 y 10 (recuperación y RAG avanzado). Solo se marca lo verificado con evidencia en el repo.
+La Fase 3 cubre las semanas 8 a 12. Los criterios de las semanas 8 a 10 (recuperación, RAG avanzado y asistente integrado) están abajo; los de las semanas 11 y 12 se agregan al planearlas. Solo se marca lo verificado con evidencia en el repo.
 
 - [x] La eval de recuperación corre en CI en cada PR que toca `semana-08/**` o `semana-09/**`, con umbral de recall@5 por idioma (0.90), calibrado con la primera corrida (ES 0.990, EN 0.950). Verificado en los PR #15 y #17 para semana 8 (`semana-08/resultados/ci_recuperacion.md`) y en el PR #29 para semana 9 (`semana-09/resultados/ci_semana09.md`).
 - [x] Hay una comparación documentada de chunking, embeddings y bases vectoriales con recall@k, latencia y costo, en ES y EN (`semana-08/README.md`, actividades 2 a 5; chunking en `semana-08/resultados/chunking.md`, registrado el 2026-10-26).
@@ -58,4 +58,5 @@ Lo que no cumple el criterio queda marcado como pendiente hasta que se resuelva.
 ## Estado
 
 - Semana 1: completa. Mini-GPT de 2000 pasos con pérdida de validación de 1.72 (n=128, lr=1e-3). Ver `semana-01/README.md`.
-- Fase 3 (semanas 8 a 10, recuperación, RAG avanzado y asistente integrado): **cerrada el 2026-10-26**, con los 9 criterios de salida verificados. Semana 10: ver `semana-10/README.md`.
+- Semana 10: completa (text-to-SQL sobre esquema legado, documentos no textuales y asistente integrado con seguridad y CI). Ver `semana-10/README.md`.
+- Fase 3: en curso. Los criterios de las semanas 8 a 10 (1 a 9) están verificados; faltan las semanas 11 y 12.
