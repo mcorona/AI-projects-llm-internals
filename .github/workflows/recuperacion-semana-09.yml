@@ -8,7 +8,7 @@ on:
 
 jobs:
   recuperacion:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     services:
       postgres:
         image: pgvector/pgvector:pg16
@@ -23,8 +23,8 @@ jobs:
       PG_DSN: postgresql://postgres:ci@localhost:5432/postgres
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - run: pip install "psycopg[binary]"
