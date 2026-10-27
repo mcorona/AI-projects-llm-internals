@@ -1,0 +1,1562 @@
+{
+ "rec-01::es": {
+  "texto": "El plazo para devolver un producto es de 30 días naturales desde la entrega.",
+  "tokens_in": 250,
+  "tokens_out": 29,
+  "costo_usd": 3.95e-05
+ },
+ "rec-02::es": {
+  "texto": "No, no se aceptan devoluciones si el empaque fue abierto, por razones de higiene.",
+  "tokens_in": 266,
+  "tokens_out": 34,
+  "costo_usd": 4.36e-05
+ },
+ "rec-03::es": {
+  "texto": "Dentro de los 15 días siguientes a la recepción.",
+  "tokens_in": 267,
+  "tokens_out": 22,
+  "costo_usd": 3.77e-05
+ },
+ "rec-04::es": {
+  "texto": "La meta de exactitud de inventario por CEDIS es de 98%.",
+  "tokens_in": 253,
+  "tokens_out": 26,
+  "costo_usd": 3.8299999999999996e-05
+ },
+ "rec-05::es": {
+  "texto": "La contraloría aprueba un ajuste de inventario de 15,000 pesos, ya que los ajustes mayores a $10,000 MXN requieren aprobación de contraloría.",
+  "tokens_in": 269,
+  "tokens_out": 63,
+  "costo_usd": 5.84e-05
+ },
+ "rec-06::es": {
+  "texto": "Los SKUs de clase A se cuentan mensualmente.",
+  "tokens_in": 274,
+  "tokens_out": 23,
+  "costo_usd": 3.8900000000000004e-05
+ },
+ "rec-07::es": {
+  "texto": "No hay información en el texto que permita determinar quién aprueba una orden de compra de 120,000 pesos. El texto solo indica un rango salarial de $50,000 a $250,000 MXN para un puesto de gerente de compras.",
+  "tokens_in": 254,
+  "tokens_out": 79,
+  "costo_usd": 6.49e-05
+ },
+ "rec-08::es": {
+  "texto": "No es posible responder con certeza a partir de este texto, ya que el fragmento está incompleto: solo dice que \"Nunca puede aprobarlas\" y que \"la aprobación es siempre de una persona con el\", sin indicar explícitamente qué tipo de persona ni qué se aprueba en el caso de un asistente de IA. Lo que sí se desprende es que la aprobación corresponde a una persona, no a un asistente de IA, aunque la frase esté cortada.",
+  "tokens_in": 257,
+  "tokens_out": 160,
+  "costo_usd": 0.00010570000000000001
+ },
+ "rec-09::es": {
+  "texto": "Se necesitan tres cotizaciones comparables para una orden mayor a $100,000 MXN.",
+  "tokens_in": 277,
+  "tokens_out": 36,
+  "costo_usd": 4.57e-05
+ },
+ "rec-10::es": {
+  "texto": "El punto de reorden se calcula multiplicando la demanda diaria promedio por el tiempo de entrega del proveedor en días y por el factor de seguridad.",
+  "tokens_in": 265,
+  "tokens_out": 56,
+  "costo_usd": 5.45e-05
+ },
+ "rec-11::es": {
+  "texto": "Los SKUs críticos usan un factor de seguridad de 1.5.",
+  "tokens_in": 252,
+  "tokens_out": 27,
+  "costo_usd": 3.8700000000000006e-05
+ },
+ "rec-12::es": {
+  "texto": "Se revisa semanalmente, los lunes.",
+  "tokens_in": 253,
+  "tokens_out": 18,
+  "costo_usd": 3.43e-05
+ },
+ "rec-13::es": {
+  "texto": "Se evalúa sobre el stock total, es decir, la suma de las existencias de los tres CEDIS.",
+  "tokens_in": 266,
+  "tokens_out": 38,
+  "costo_usd": 4.5600000000000004e-05
+ },
+ "rec-14::es": {
+  "texto": "Un SKU crítico se pide para cubrir **45 días** de demanda, más el stock de seguridad.",
+  "tokens_in": 270,
+  "tokens_out": 38,
+  "costo_usd": 4.6e-05
+ },
+ "rec-15::es": {
+  "texto": "La meta de OTIF (a tiempo y completo) de un proveedor es mayor o igual a 95%.",
+  "tokens_in": 257,
+  "tokens_out": 38,
+  "costo_usd": 4.47e-05
+ },
+ "rec-16::es": {
+  "texto": "De 35 a 40 días.",
+  "tokens_in": 251,
+  "tokens_out": 12,
+  "costo_usd": 3.1100000000000004e-05
+ },
+ "rec-17::es": {
+  "texto": "Según el texto, un proveedor que incumple dos o más metas queda en el nivel B.\n\nHmm, revisemos: el texto dice \"incumple dos o más metas, o dos trimestres seguidos en B\", lo que indica una condición de incumplimiento, pero no especifica explícitamente la consecuencia de incumplir dos metas. Ajusto la respuesta para no agregar información no presente:\n\nSegún el texto, un proveedor que incumple dos o más metas se encuentra en una situación que el texto describe como incumplimiento, aunque no especifica la consecuencia exacta.",
+  "tokens_in": 253,
+  "tokens_out": 198,
+  "costo_usd": 0.00012429999999999999
+ },
+ "rec-18::es": {
+  "texto": "De lunes a viernes, de 8:00 a 16:00.",
+  "tokens_in": 267,
+  "tokens_out": 23,
+  "costo_usd": 3.82e-05
+ },
+ "rec-19::es": {
+  "texto": "En un plazo máximo de 4 horas.",
+  "tokens_in": 262,
+  "tokens_out": 17,
+  "costo_usd": 3.47e-05
+ },
+ "rec-20::es": {
+  "texto": "Se hace un rechazo parcial de la diferencia y se notifica al proveedor.",
+  "tokens_in": 273,
+  "tokens_out": 31,
+  "costo_usd": 4.28e-05
+ },
+ "rec-21::es": {
+  "texto": "El texto está incompleto: solo indica que un SKU crítico está en riesgo cuando sus días de cobertura son menores que el tiempo de, y la frase se corta ahí, por lo que no se puede determinar con qué se compara ese valor.",
+  "tokens_in": 264,
+  "tokens_out": 84,
+  "costo_usd": 6.840000000000001e-05
+ },
+ "rec-22::es": {
+  "texto": "El texto está incompleto: solo indica \"Requiere aprobación del gerente de compras sin\", por lo que no es posible determinar con certeza quién aprueba una compra urgente. Según la frase, la aprobación la da el gerente de compras, pero la oración termina antes de precisar el caso urgente.",
+  "tokens_in": 239,
+  "tokens_out": 103,
+  "costo_usd": 7.54e-05
+ },
+ "rec-23::es": {
+  "texto": "La cobertura crítica se da con menos de 7 días; el texto no indica explícitamente que el escalamiento al gerente de compras ocurra a partir de esa cifra, por lo que no puede confirmarse desde cuántos días se escala.",
+  "tokens_in": 253,
+  "tokens_out": 83,
+  "costo_usd": 6.68e-05
+ },
+ "rec-24::es": {
+  "texto": "La cantidad mínima por transferencia es de 20 unidades o una tarima completa, lo que sea menor.",
+  "tokens_in": 270,
+  "tokens_out": 39,
+  "costo_usd": 4.65e-05
+ },
+ "rec-25::es": {
+  "texto": "El tránsito de Guadalajara a Monterrey tarda 2 días.",
+  "tokens_in": 256,
+  "tokens_out": 28,
+  "costo_usd": 3.96e-05
+ },
+ "rec-26::es": {
+  "texto": "Se considera que un CEDIS tiene excedente cuando tiene más de **1.5 veces** su participación normal del stock total del SKU.",
+  "tokens_in": 256,
+  "tokens_out": 49,
+  "costo_usd": 5.01e-05
+ },
+ "rec-27::es": {
+  "texto": "Puede consultar existencias, ventas, proveedores y puntos de reorden, pero en modo solo lectura.",
+  "tokens_in": 263,
+  "tokens_out": 40,
+  "costo_usd": 4.6299999999999994e-05
+ },
+ "rec-28::es": {
+  "texto": "Sí, el copiloto puede modificar precios, junto con existencias, puntos de reorden o datos maestros.",
+  "tokens_in": 246,
+  "tokens_out": 40,
+  "costo_usd": 4.46e-05
+ },
+ "rec-29::es": {
+  "texto": "Debes reportarla al equipo de datos, indicando la pregunta exacta y la fecha.",
+  "tokens_in": 269,
+  "tokens_out": 34,
+  "costo_usd": 4.39e-05
+ },
+ "rec-30::es": {
+  "texto": "Un almacenista debe completar 40 horas de capacitación al año.",
+  "tokens_in": 256,
+  "tokens_out": 25,
+  "costo_usd": 3.8100000000000005e-05
+ },
+ "rec-31::es": {
+  "texto": "Un ejecutivo de cuenta puede aprobar descuentos de hasta 12%.",
+  "tokens_in": 270,
+  "tokens_out": 33,
+  "costo_usd": 4.35e-05
+ },
+ "rec-32::es": {
+  "texto": "El cierre mensual de inventario se realiza el último día hábil de cada mes.",
+  "tokens_in": 254,
+  "tokens_out": 29,
+  "costo_usd": 3.990000000000001e-05
+ },
+ "rec-33::es": {
+  "texto": "Los videos de vigilancia se conservan 45 días naturales.",
+  "tokens_in": 254,
+  "tokens_out": 24,
+  "costo_usd": 3.740000000000001e-05
+ },
+ "rec-34::es": {
+  "texto": "Los SKUs perecederos con vida útil menor a 60 días.",
+  "tokens_in": 260,
+  "tokens_out": 25,
+  "costo_usd": 3.85e-05
+ },
+ "rec-35::es": {
+  "texto": "La altura máxima de una tarima es de 1.20 metros.",
+  "tokens_in": 247,
+  "tokens_out": 23,
+  "costo_usd": 3.6200000000000006e-05
+ },
+ "rec-36::es": {
+  "texto": "El cliente tiene 5 días hábiles para presentar una reclamación de entrega.",
+  "tokens_in": 264,
+  "tokens_out": 31,
+  "costo_usd": 4.190000000000001e-05
+ },
+ "rec-37::es": {
+  "texto": "El texto no indica cuántas posiciones de tarima tiene el CEDIS de Monterrey; solo menciona una capacidad de 12,000 posiciones de tarima, sin especificar a qué centro corresponde.",
+  "tokens_in": 260,
+  "tokens_out": 76,
+  "costo_usd": 6.4e-05
+ },
+ "rec-38::es": {
+  "texto": "El nivel de servicio objetivo es de 97% de pedidos completos.",
+  "tokens_in": 252,
+  "tokens_out": 27,
+  "costo_usd": 3.8700000000000006e-05
+ },
+ "rec-39::es": {
+  "texto": "Los respaldos del sistema de almacén se hacen todos los días a las 02:00 horas.",
+  "tokens_in": 263,
+  "tokens_out": 34,
+  "costo_usd": 4.3299999999999995e-05
+ },
+ "rec-40::es": {
+  "texto": "El costo de referencia por kilómetro es de **14.50 MXN**.",
+  "tokens_in": 256,
+  "tokens_out": 27,
+  "costo_usd": 3.91e-05
+ },
+ "rec-41::es": {
+  "texto": "La vigencia de un contrato marco con proveedor es de 24 meses.",
+  "tokens_in": 259,
+  "tokens_out": 27,
+  "costo_usd": 3.940000000000001e-05
+ },
+ "rec-42::es": {
+  "texto": "La penalización es de **1.5%** del valor de la orden por cada semana de entrega tardía.",
+  "tokens_in": 261,
+  "tokens_out": 34,
+  "costo_usd": 4.3100000000000004e-05
+ },
+ "rec-43::es": {
+  "texto": "Un hallazgo mayor debe corregirse en un plazo de 15 días naturales.",
+  "tokens_in": 267,
+  "tokens_out": 32,
+  "costo_usd": 4.27e-05
+ },
+ "rec-44::es": {
+  "texto": "Durante su primer mes, un comprador nuevo no puede aprobar compras mayores a 50,000 MXN.",
+  "tokens_in": 275,
+  "tokens_out": 41,
+  "costo_usd": 4.8e-05
+ },
+ "rec-45::es": {
+  "texto": "El stock de seguridad es la existencia adicional que se mantiene para cubrir variaciones de demanda o de entrega.",
+  "tokens_in": 257,
+  "tokens_out": 43,
+  "costo_usd": 4.72e-05
+ },
+ "rec-46::es": {
+  "texto": "Una merma es la pérdida de producto por daño, caducidad o robo.",
+  "tokens_in": 241,
+  "tokens_out": 27,
+  "costo_usd": 3.76e-05
+ },
+ "rec-47::es": {
+  "texto": "Antes de una compra urgente se debe revisar si otro CEDIS tiene excedente del SKU, y el tránsito de Ciudad de México a Guadalajara tarda 1 día.",
+  "tokens_in": 310,
+  "tokens_out": 66,
+  "costo_usd": 6.4e-05
+ },
+ "rec-48::es": {
+  "texto": "Un SKU crítico con menos de 7 días de cobertura se considera en riesgo, y su factor de seguridad es 1.5.",
+  "tokens_in": 294,
+  "tokens_out": 47,
+  "costo_usd": 5.2900000000000005e-05
+ },
+ "rec-49::es": {
+  "texto": "Un ajuste mayor a $10,000 MXN requiere aprobación de contraloría, y una orden de compra de 300 mil pesos (más de $250,000 MXN) requiere aprobación del director de operaciones.",
+  "tokens_in": 304,
+  "tokens_out": 76,
+  "costo_usd": 6.840000000000001e-05
+ },
+ "rec-50::es": {
+  "texto": "La meta es que el porcentaje de piezas rechazadas en recepción sea menor a 2%.",
+  "tokens_in": 271,
+  "tokens_out": 35,
+  "costo_usd": 4.46e-05
+ },
+ "int-pdf-01::es": {
+  "texto": "El flete normal de Guadalajara a Monterrey cuesta $10,900 MXN.",
+  "tokens_in": 472,
+  "tokens_out": 33,
+  "costo_usd": 6.37e-05
+ },
+ "int-pdf-02::es": {
+  "texto": "El recargo por flete exprés es del 35% sobre la tarifa normal.",
+  "tokens_in": 469,
+  "tokens_out": 28,
+  "costo_usd": 6.09e-05
+ },
+ "int-pdf-03::es": {
+  "texto": "La tarifa de flete normal de Ciudad de México a Monterrey es de $12,300 MXN.",
+  "tokens_in": 474,
+  "tokens_out": 37,
+  "costo_usd": 6.59e-05
+ },
+ "int-pdf-04::es": {
+  "texto": "El tiempo de entrega pactado de Shenzhen Industrial Parts es de 38 días.",
+  "tokens_in": 493,
+  "tokens_out": 35,
+  "costo_usd": 6.680000000000001e-05
+ },
+ "int-pdf-05::es": {
+  "texto": "Seguridad Andina es el proveedor de la categoría Seguridad con clasificación C.",
+  "tokens_in": 492,
+  "tokens_out": 33,
+  "costo_usd": 6.57e-05
+ },
+ "int-ocr-06::es": {
+  "texto": "Se obtuvo una exactitud de 96.4%.",
+  "tokens_in": 430,
+  "tokens_out": 21,
+  "costo_usd": 5.35e-05
+ },
+ "int-ocr-07::es": {
+  "texto": "La diferencia total valorizada fue de $18,240 MXN.",
+  "tokens_in": 428,
+  "tokens_out": 24,
+  "costo_usd": 5.4800000000000004e-05
+ },
+ "int-ocr-08::es": {
+  "texto": "Laura Méndez, jefa de almacén, fue la responsable del inventario físico del CEDIS Norte.",
+  "tokens_in": 422,
+  "tokens_out": 40,
+  "costo_usd": 6.220000000000001e-05
+ },
+ "int-ocr-09::es": {
+  "texto": "3 piezas dañadas en el empaque (se rechazan en recepción).",
+  "tokens_in": 388,
+  "tokens_out": 27,
+  "costo_usd": 5.2300000000000004e-05
+ },
+ "int-ocr-10::es": {
+  "texto": "Se remitieron 120 piezas en la nota R-4471.",
+  "tokens_in": 384,
+  "tokens_out": 23,
+  "costo_usd": 4.990000000000001e-05
+ },
+ "int-imagen-11::es": {
+  "texto": "El nivel de servicio más bajo en septiembre de 2026 fue el del CEDIS Occidente, con 95.1%.",
+  "tokens_in": 416,
+  "tokens_out": 45,
+  "costo_usd": 6.41e-05
+ },
+ "int-imagen-12::es": {
+  "texto": "El CEDIS Norte tuvo un nivel de servicio de 98.6% en septiembre de 2026.",
+  "tokens_in": 413,
+  "tokens_out": 39,
+  "costo_usd": 6.080000000000001e-05
+ },
+ "int-imagen-13::es": {
+  "texto": "El CEDIS Centro tuvo un nivel de servicio de 97.8% en septiembre de 2026.",
+  "tokens_in": 413,
+  "tokens_out": 39,
+  "costo_usd": 6.080000000000001e-05
+ },
+ "int-imagen-14::es": {
+  "texto": "La zona de cuarentena del CEDIS Occidente está en el pasillo 12.",
+  "tokens_in": 431,
+  "tokens_out": 31,
+  "costo_usd": 5.86e-05
+ },
+ "int-imagen-15::es": {
+  "texto": "La zona de SKUs críticos está junto al andén 2.",
+  "tokens_in": 432,
+  "tokens_out": 22,
+  "costo_usd": 5.42e-05
+ },
+ "rec-01::en": {
+  "texto": "The deadline for a customer to return a product is 30 natural days from delivery.",
+  "tokens_in": 240,
+  "tokens_out": 26,
+  "costo_usd": 3.7e-05
+ },
+ "rec-02::en": {
+  "texto": "No, the returns are not accepted if the package was opened, for hygiene reasons.",
+  "tokens_in": 252,
+  "tokens_out": 28,
+  "costo_usd": 3.9200000000000004e-05
+ },
+ "rec-03::en": {
+  "texto": "You have 15 days from receipt of the product to return it to the supplier.",
+  "tokens_in": 257,
+  "tokens_out": 24,
+  "costo_usd": 3.77e-05
+ },
+ "rec-04::en": {
+  "texto": "Each distribution center (CEDIS) has an inventory accuracy target of 98%.",
+  "tokens_in": 242,
+  "tokens_out": 30,
+  "costo_usd": 3.9200000000000004e-05
+ },
+ "rec-05::en": {
+  "texto": "The text states that adjustments greater than $10,000 MXN require approval from contraloría. Since 15,000 pesos exceeds that threshold, an inventory adjustment of 15,000 pesos must be approved by contraloría.",
+  "tokens_in": 262,
+  "tokens_out": 76,
+  "costo_usd": 6.42e-05
+ },
+ "rec-06::en": {
+  "texto": "Monthly.",
+  "tokens_in": 259,
+  "tokens_out": 7,
+  "costo_usd": 2.9400000000000003e-05
+ },
+ "rec-07::en": {
+  "texto": "The text provided only gives a salary range (\"De $50,000 a $250,000 MXN\") and a job title (\"Gerente de compras\"). It does not contain any information about who approves a purchase order of 120,000 pesos, so the question cannot be answered from this text.",
+  "tokens_in": 247,
+  "tokens_out": 85,
+  "costo_usd": 6.720000000000001e-05
+ },
+ "rec-08::en": {
+  "texto": "No. The text states that it can never approve them, because approval always comes from a person (the passage is cut off before it finishes that sentence).",
+  "tokens_in": 249,
+  "tokens_out": 165,
+  "costo_usd": 0.00010740000000000001
+ },
+ "rec-09::en": {
+  "texto": "Three comparable quotes are required for orders over $100,000 MXN.",
+  "tokens_in": 262,
+  "tokens_out": 25,
+  "costo_usd": 3.8700000000000006e-05
+ },
+ "rec-10::en": {
+  "texto": "The reorder point is calculated as the average daily demand × the supplier's lead time (in days) × the safety factor.",
+  "tokens_in": 257,
+  "tokens_out": 38,
+  "costo_usd": 4.47e-05
+ },
+ "rec-11::en": {
+  "texto": "The safety factor for critical SKUs is 1.5.",
+  "tokens_in": 242,
+  "tokens_out": 20,
+  "costo_usd": 3.4200000000000005e-05
+ },
+ "rec-12::en": {
+  "texto": "Weekly (every Monday).",
+  "tokens_in": 244,
+  "tokens_out": 12,
+  "costo_usd": 3.0400000000000004e-05
+ },
+ "rec-13::en": {
+  "texto": "The reorder point is evaluated against the total stock, that is, the sum of the stock across the three distribution centers (CEDIS).",
+  "tokens_in": 258,
+  "tokens_out": 43,
+  "costo_usd": 4.73e-05
+ },
+ "rec-14::en": {
+  "texto": "The text is in Spanish and the question is in English, so I translate the answer but keep the figures unchanged.\n\nCritical SKUs are ordered to cover 45 days of demand plus safety stock.",
+  "tokens_in": 263,
+  "tokens_out": 64,
+  "costo_usd": 5.8299999999999994e-05
+ },
+ "rec-15::en": {
+  "texto": "The OTIF (on time in full) target is greater than or equal to 95%.",
+  "tokens_in": 248,
+  "tokens_out": 26,
+  "costo_usd": 3.78e-05
+ },
+ "rec-16::en": {
+  "texto": "The text is in Spanish and the question is in English, so I answer in English, translating the text but keeping the figures as they are: Suppliers from Asia (CN) take 35 to 40 days.",
+  "tokens_in": 243,
+  "tokens_out": 62,
+  "costo_usd": 5.5299999999999996e-05
+ },
+ "rec-17::en": {
+  "texto": "A supplier that misses two or more targets, or that falls into grade B for two consecutive quarters, is affected by this condition.\n\nNote: the text is fragmentary and does not state the specific consequence, so the answer can only say what triggers the condition.",
+  "tokens_in": 244,
+  "tokens_out": 79,
+  "costo_usd": 6.390000000000001e-05
+ },
+ "rec-18::en": {
+  "texto": "Monday through Friday, from 8:00 to 16:00.",
+  "tokens_in": 260,
+  "tokens_out": 22,
+  "costo_usd": 3.7e-05
+ },
+ "rec-19::en": {
+  "texto": "The receipt must be recorded in the system within a maximum of 4 hours.",
+  "tokens_in": 251,
+  "tokens_out": 26,
+  "costo_usd": 3.8100000000000005e-05
+ },
+ "rec-20::en": {
+  "texto": "A 3% receiving difference exceeds the 2% threshold, so a partial rejection of the difference is made and the supplier is notified.",
+  "tokens_in": 263,
+  "tokens_out": 45,
+  "costo_usd": 4.88e-05
+ },
+ "rec-21::en": {
+  "texto": "A critical SKU is at risk when its days of coverage are less than the time of... The text cuts off before it names what the coverage is compared against.",
+  "tokens_in": 256,
+  "tokens_out": 194,
+  "costo_usd": 0.0001226
+ },
+ "rec-22::en": {
+  "texto": "The purchasing manager (gerente de compras) must approve it, though the text cuts off right after \"sin,\" so the rest of the condition is missing.",
+  "tokens_in": 234,
+  "tokens_out": 349,
+  "costo_usd": 0.0001979
+ },
+ "rec-23::en": {
+  "texto": "The text only states that a critical SKU is one with less than **7 days** of coverage. It does not mention escalation to the purchasing manager, so the answer cannot be determined from the text.",
+  "tokens_in": 253,
+  "tokens_out": 59,
+  "costo_usd": 5.48e-05
+ },
+ "rec-24::en": {
+  "texto": "The minimum quantity per transfer is 20 units or one full pallet, whichever is smaller.",
+  "tokens_in": 263,
+  "tokens_out": 33,
+  "costo_usd": 4.28e-05
+ },
+ "rec-25::en": {
+  "texto": "The transit time from Guadalajara to Monterrey is 2 days.",
+  "tokens_in": 246,
+  "tokens_out": 25,
+  "costo_usd": 3.71e-05
+ },
+ "rec-26::en": {
+  "texto": "A distribution center is considered to have a surplus when it holds more than **1.5 times** its normal share of the SKU's total stock.",
+  "tokens_in": 247,
+  "tokens_out": 139,
+  "costo_usd": 9.42e-05
+ },
+ "rec-27::en": {
+  "texto": "The copilot can query stock levels, sales, suppliers, and reorder points, but only in read-only mode.",
+  "tokens_in": 251,
+  "tokens_out": 36,
+  "costo_usd": 4.3100000000000004e-05
+ },
+ "rec-28::en": {
+  "texto": "Yes, the copilot can change prices, as it can modify stock levels, prices, reorder points, or master data.",
+  "tokens_in": 240,
+  "tokens_out": 37,
+  "costo_usd": 4.25e-05
+ },
+ "rec-29::en": {
+  "texto": "You should report the incorrect answer to the data team, including the exact question and the date.",
+  "tokens_in": 258,
+  "tokens_out": 26,
+  "costo_usd": 3.8799999999999994e-05
+ },
+ "rec-30::en": {
+  "texto": "The text is in Spanish and the question in English, so the answer should be in English with the number kept as is: 40 hours per year.\n\nEach warehouse worker must complete **40 hours** of training per year.",
+  "tokens_in": 247,
+  "tokens_out": 63,
+  "costo_usd": 5.6200000000000004e-05
+ },
+ "rec-31::en": {
+  "texto": "Account executives can approve discounts of up to 12%.",
+  "tokens_in": 252,
+  "tokens_out": 19,
+  "costo_usd": 3.47e-05
+ },
+ "rec-32::en": {
+  "texto": "The monthly inventory close is done on the **last business day** of each month.",
+  "tokens_in": 243,
+  "tokens_out": 23,
+  "costo_usd": 3.5799999999999996e-05
+ },
+ "rec-33::en": {
+  "texto": "The surveillance video is kept for 45 natural days.",
+  "tokens_in": 239,
+  "tokens_out": 19,
+  "costo_usd": 3.3400000000000005e-05
+ },
+ "rec-34::en": {
+  "texto": "The perishable SKUs with a shelf life of less than **60 days** are reviewed every week.",
+  "tokens_in": 254,
+  "tokens_out": 32,
+  "costo_usd": 4.1400000000000003e-05
+ },
+ "rec-35::en": {
+  "texto": "The maximum height of a pallet is 1.20 meters.",
+  "tokens_in": 240,
+  "tokens_out": 21,
+  "costo_usd": 3.45e-05
+ },
+ "rec-36::en": {
+  "texto": "The customer has 5 business days (5 días hábiles) to file a delivery claim.",
+  "tokens_in": 251,
+  "tokens_out": 29,
+  "costo_usd": 3.96e-05
+ },
+ "rec-37::en": {
+  "texto": "The text states that the facility has capacity for 12,000 pallet positions, but it does not name Monterrey, so I can't confirm that this figure refers to the Monterrey distribution center.",
+  "tokens_in": 248,
+  "tokens_out": 266,
+  "costo_usd": 0.00015780000000000001
+ },
+ "rec-38::en": {
+  "texto": "The target service level is 97% of orders completed in full.",
+  "tokens_in": 238,
+  "tokens_out": 18,
+  "costo_usd": 3.28e-05
+ },
+ "rec-39::en": {
+  "texto": "Warehouse system backups are made every day at 02:00 hours.",
+  "tokens_in": 249,
+  "tokens_out": 23,
+  "costo_usd": 3.6400000000000004e-05
+ },
+ "rec-40::en": {
+  "texto": "The reference cost per kilometer is 14.50 MXN.",
+  "tokens_in": 248,
+  "tokens_out": 22,
+  "costo_usd": 3.5799999999999996e-05
+ },
+ "rec-41::en": {
+  "texto": "The validity of a framework contract with a supplier is **24 months**.",
+  "tokens_in": 246,
+  "tokens_out": 23,
+  "costo_usd": 3.61e-05
+ },
+ "rec-42::en": {
+  "texto": "The penalty for late delivery is 1.5% of the order value for each week of delay.",
+  "tokens_in": 253,
+  "tokens_out": 28,
+  "costo_usd": 3.93e-05
+ },
+ "rec-43::en": {
+  "texto": "A major audit finding must be corrected within **15 days** (natural days).",
+  "tokens_in": 252,
+  "tokens_out": 24,
+  "costo_usd": 3.72e-05
+ },
+ "rec-44::en": {
+  "texto": "During their first month, a new buyer cannot approve purchases greater than 50,000 MXN.",
+  "tokens_in": 263,
+  "tokens_out": 32,
+  "costo_usd": 4.23e-05
+ },
+ "rec-45::en": {
+  "texto": "Safety stock is additional inventory held to cover variations in demand or delivery.",
+  "tokens_in": 248,
+  "tokens_out": 27,
+  "costo_usd": 3.8299999999999996e-05
+ },
+ "rec-46::en": {
+  "texto": "The question is in English, so the answer should be in English. The text defines shrinkage as product loss due to damage, expiration, or theft.\n\nProduct loss due to damage, expiration (spoilage), or theft.",
+  "tokens_in": 238,
+  "tokens_out": 66,
+  "costo_usd": 5.68e-05
+ },
+ "rec-47::en": {
+  "texto": "Before an urgent purchase, you should check whether another CEDIS has a surplus of the SKU; transit from Mexico City to Guadalajara takes 1 day.",
+  "tokens_in": 298,
+  "tokens_out": 56,
+  "costo_usd": 5.7799999999999995e-05
+ },
+ "rec-48::en": {
+  "texto": "A critical SKU with less than 7 days of coverage is flagged as such, and its safety factor is 1.5.",
+  "tokens_in": 281,
+  "tokens_out": 38,
+  "costo_usd": 4.71e-05
+ },
+ "rec-49::en": {
+  "texto": "Inventory adjustments above $10,000 MXN require approval from contraloría, and a purchase order of $300,000 MXN falls under the more-than-$250,000 MXN tier, which requires approval from the director de operaciones.",
+  "tokens_in": 294,
+  "tokens_out": 76,
+  "costo_usd": 6.740000000000001e-05
+ },
+ "rec-50::en": {
+  "texto": "The quality target is less than 2% of parts rejected at receiving.",
+  "tokens_in": 258,
+  "tokens_out": 23,
+  "costo_usd": 3.73e-05
+ },
+ "int-pdf-01::en": {
+  "texto": "Standard freight from Guadalajara to Monterrey costs $10,900 MXN.",
+  "tokens_in": 464,
+  "tokens_out": 184,
+  "costo_usd": 0.0001384
+ },
+ "int-pdf-02::en": {
+  "texto": "The express freight surcharge is 35% over the standard rate.",
+  "tokens_in": 457,
+  "tokens_out": 21,
+  "costo_usd": 5.6200000000000004e-05
+ },
+ "int-pdf-03::en": {
+  "texto": "The standard freight rate from Mexico City to Monterrey is $12,300 MXN.",
+  "tokens_in": 463,
+  "tokens_out": 174,
+  "costo_usd": 0.00013330000000000001
+ },
+ "int-pdf-04::en": {
+  "texto": "The agreed lead time for Shenzhen Industrial Parts is 38 días.",
+  "tokens_in": 483,
+  "tokens_out": 29,
+  "costo_usd": 6.280000000000001e-05
+ },
+ "int-pdf-05::en": {
+  "texto": "Seguridad Andina is the supplier in the Safety category with a C rating.",
+  "tokens_in": 480,
+  "tokens_out": 184,
+  "costo_usd": 0.00014
+ },
+ "int-ocr-06::en": {
+  "texto": "The accuracy obtained in the September physical inventory at the North distribution center was 96.4%.",
+  "tokens_in": 417,
+  "tokens_out": 32,
+  "costo_usd": 5.77e-05
+ },
+ "int-ocr-07::en": {
+  "texto": "The total valued difference in the CEDIS Norte (Monterrey) inventory count was $18,240 MXN.",
+  "tokens_in": 411,
+  "tokens_out": 39,
+  "costo_usd": 6.06e-05
+ },
+ "int-ocr-08::en": {
+  "texto": "Laura Méndez, jefa de almacén.",
+  "tokens_in": 415,
+  "tokens_out": 18,
+  "costo_usd": 5.05e-05
+ },
+ "int-ocr-09::en": {
+  "texto": "Three pieces (3) arrived damaged in delivery note R-4471; they were rejected at reception.",
+  "tokens_in": 380,
+  "tokens_out": 164,
+  "costo_usd": 0.00012
+ },
+ "int-ocr-10::en": {
+  "texto": "According to delivery note R-4471, 120 pieces were shipped. Three of them were damaged and rejected at reception.",
+  "tokens_in": 378,
+  "tokens_out": 194,
+  "costo_usd": 0.00013480000000000002
+ },
+ "int-imagen-11::en": {
+  "texto": "The lowest service level in September 2026 was 95.1%, at CEDIS Occidente.",
+  "tokens_in": 398,
+  "tokens_out": 32,
+  "costo_usd": 5.58e-05
+ },
+ "int-imagen-12::en": {
+  "texto": "The North distribution center had a service level of 98.6% in September 2026.",
+  "tokens_in": 394,
+  "tokens_out": 24,
+  "costo_usd": 5.14e-05
+ },
+ "int-imagen-13::en": {
+  "texto": "The Central distribution center (CEDIS Centro) had a service level of 97.8% in September 2026.",
+  "tokens_in": 395,
+  "tokens_out": 35,
+  "costo_usd": 5.7e-05
+ },
+ "int-imagen-14::en": {
+  "texto": "The quarantine zone is in aisle 12.",
+  "tokens_in": 421,
+  "tokens_out": 154,
+  "costo_usd": 0.0001191
+ },
+ "int-imagen-15::en": {
+  "texto": "The critical SKU zone is next to dock 2.",
+  "tokens_in": 421,
+  "tokens_out": 92,
+  "costo_usd": 8.81e-05
+ },
+ "v2::rec-01::es": {
+  "texto": "El plazo para devolver un producto a un cliente es de **30 días naturales** desde la entrega.",
+  "tokens_in": 755,
+  "tokens_out": 35,
+  "costo_usd": 9.3e-05
+ },
+ "v2::rec-02::es": {
+  "texto": "No, no se aceptan devoluciones de productos de la categoría Seguridad si el empaque fue abierto, por razones de higiene.",
+  "tokens_in": 771,
+  "tokens_out": 47,
+  "costo_usd": 0.0001006
+ },
+ "v2::rec-03::es": {
+  "texto": "Dentro de los 15 días siguientes a la recepción del producto.",
+  "tokens_in": 772,
+  "tokens_out": 25,
+  "costo_usd": 8.97e-05
+ },
+ "v2::rec-04::es": {
+  "texto": "La meta de exactitud por CEDIS es de 98%.",
+  "tokens_in": 787,
+  "tokens_out": 22,
+  "costo_usd": 8.97e-05
+ },
+ "v2::rec-05::es": {
+  "texto": "Un ajuste de inventario de 15,000 pesos mexicanos requiere aprobación de contraloría, porque supera los $10,000 MXN.",
+  "tokens_in": 803,
+  "tokens_out": 53,
+  "costo_usd": 0.00010680000000000001
+ },
+ "v2::rec-06::es": {
+  "texto": "Los SKUs de clase A se cuentan mensualmente.",
+  "tokens_in": 808,
+  "tokens_out": 23,
+  "costo_usd": 9.230000000000001e-05
+ },
+ "v2::rec-07::es": {
+  "texto": "El gerente de compras aprueba una orden de compra de 120,000 pesos, porque su monto cae en el rango de De $50,000 a $250,000 MXN.",
+  "tokens_in": 935,
+  "tokens_out": 57,
+  "costo_usd": 0.000122
+ },
+ "v2::rec-08::es": {
+  "texto": "No. Un asistente de IA solo puede proponer órdenes de compra, que se crean en estado PENDING_APPROVAL, y nunca puede aprobarlas; la aprobación siempre corresponde a una persona con el nivel de autorización que corresponda al monto.",
+  "tokens_in": 938,
+  "tokens_out": 93,
+  "costo_usd": 0.00014030000000000002
+ },
+ "v2::rec-09::es": {
+  "texto": "Una orden mayor a $100,000 MXN requiere tres cotizaciones comparables.",
+  "tokens_in": 958,
+  "tokens_out": 33,
+  "costo_usd": 0.0001123
+ },
+ "v2::rec-10::es": {
+  "texto": "El punto de reorden se calcula como la demanda diaria promedio × el tiempo de entrega del proveedor (en días) × el factor de seguridad.",
+  "tokens_in": 1091,
+  "tokens_out": 53,
+  "costo_usd": 0.00013560000000000002
+ },
+ "v2::rec-11::es": {
+  "texto": "El factor de seguridad para los SKUs críticos es **1.5**.",
+  "tokens_in": 1078,
+  "tokens_out": 26,
+  "costo_usd": 0.00012080000000000001
+ },
+ "v2::rec-12::es": {
+  "texto": "La categoría Empaque se revisa semanalmente, los lunes.",
+  "tokens_in": 1079,
+  "tokens_out": 25,
+  "costo_usd": 0.0001204
+ },
+ "v2::rec-13::es": {
+  "texto": "El punto de reorden se evalúa sobre el stock total, es decir, la suma de las existencias de los tres CEDIS.",
+  "tokens_in": 1092,
+  "tokens_out": 44,
+  "costo_usd": 0.0001312
+ },
+ "v2::rec-14::es": {
+  "texto": "Un SKU crítico se pide para cubrir 45 días de demanda más el stock de seguridad.",
+  "tokens_in": 1096,
+  "tokens_out": 36,
+  "costo_usd": 0.0001276
+ },
+ "v2::rec-15::es": {
+  "texto": "La meta de OTIF (a tiempo y completo) de un proveedor es mayor o igual a 95%.",
+  "tokens_in": 907,
+  "tokens_out": 38,
+  "costo_usd": 0.0001097
+ },
+ "v2::rec-16::es": {
+  "texto": "De 35 a 40 días.",
+  "tokens_in": 901,
+  "tokens_out": 12,
+  "costo_usd": 9.61e-05
+ },
+ "v2::rec-17::es": {
+  "texto": "Un proveedor que incumple dos o más metas se clasifica como C: se busca reemplazo y no se le asignan nuevos SKUs críticos.",
+  "tokens_in": 903,
+  "tokens_out": 53,
+  "costo_usd": 0.0001168
+ },
+ "v2::rec-18::es": {
+  "texto": "El horario de recepción del CEDIS Occidente (Guadalajara) es de lunes a viernes de 8:00 a 16:00.",
+  "tokens_in": 875,
+  "tokens_out": 48,
+  "costo_usd": 0.0001115
+ },
+ "v2::rec-19::es": {
+  "texto": "Se debe registrar la entrada en el sistema en un plazo máximo de 4 horas.",
+  "tokens_in": 870,
+  "tokens_out": 33,
+  "costo_usd": 0.0001035
+ },
+ "v2::rec-20::es": {
+  "texto": "Si la diferencia en recepción es de 3%, se hace un rechazo parcial de la diferencia y se notifica al proveedor.",
+  "tokens_in": 881,
+  "tokens_out": 47,
+  "costo_usd": 0.0001116
+ },
+ "v2::rec-21::es": {
+  "texto": "Un SKU crítico está en riesgo cuando sus días de cobertura son menores que el tiempo de entrega de su proveedor, aunque todavía no haya cruzado su punto de reorden.",
+  "tokens_in": 1013,
+  "tokens_out": 68,
+  "costo_usd": 0.0001353
+ },
+ "v2::rec-22::es": {
+  "texto": "El gerente de compras aprueba una compra urgente, sin importar el monto.",
+  "tokens_in": 988,
+  "tokens_out": 28,
+  "costo_usd": 0.00011280000000000002
+ },
+ "v2::rec-23::es": {
+  "texto": "Se escala al gerente de compras (Nivel 2) cuando un SKU crítico tiene menos de 7 días de cobertura.",
+  "tokens_in": 1002,
+  "tokens_out": 47,
+  "costo_usd": 0.0001237
+ },
+ "v2::rec-24::es": {
+  "texto": "La cantidad mínima por transferencia es de **20 unidades** o una tarima completa, lo que sea menor.",
+  "tokens_in": 764,
+  "tokens_out": 40,
+  "costo_usd": 9.640000000000001e-05
+ },
+ "v2::rec-25::es": {
+  "texto": "El tránsito de Guadalajara a Monterrey tarda 2 días.",
+  "tokens_in": 750,
+  "tokens_out": 28,
+  "costo_usd": 8.9e-05
+ },
+ "v2::rec-26::es": {
+  "texto": "Se considera que un CEDIS tiene excedente cuando tiene más de **1.5 veces** su participación normal del stock total del SKU.",
+  "tokens_in": 750,
+  "tokens_out": 49,
+  "costo_usd": 9.95e-05
+ },
+ "v2::rec-27::es": {
+  "texto": "El copiloto puede consultar existencias, ventas, proveedores y puntos de reorden, en modo solo lectura.",
+  "tokens_in": 726,
+  "tokens_out": 42,
+  "costo_usd": 9.360000000000001e-05
+ },
+ "v2::rec-28::es": {
+  "texto": "No, el copiloto no puede modificar precios, ya que no puede modificar existencias, precios, puntos de reorden ni datos maestros.",
+  "tokens_in": 709,
+  "tokens_out": 49,
+  "costo_usd": 9.54e-05
+ },
+ "v2::rec-29::es": {
+  "texto": "Debes reportarla al equipo de datos, indicando la pregunta exacta y la fecha.",
+  "tokens_in": 732,
+  "tokens_out": 34,
+  "costo_usd": 9.02e-05
+ },
+ "v2::rec-30::es": {
+  "texto": "Cada almacenista debe completar 40 horas de capacitación al año.",
+  "tokens_in": 531,
+  "tokens_out": 26,
+  "costo_usd": 6.61e-05
+ },
+ "v2::rec-31::es": {
+  "texto": "Un ejecutivo de cuenta puede aprobar descuentos de hasta 12%.",
+  "tokens_in": 541,
+  "tokens_out": 33,
+  "costo_usd": 7.06e-05
+ },
+ "v2::rec-32::es": {
+  "texto": "El cierre mensual de inventario se realiza el último día hábil de cada mes.",
+  "tokens_in": 486,
+  "tokens_out": 29,
+  "costo_usd": 6.31e-05
+ },
+ "v2::rec-33::es": {
+  "texto": "Los videos de vigilancia se conservan **45 días** naturales.",
+  "tokens_in": 489,
+  "tokens_out": 25,
+  "costo_usd": 6.14e-05
+ },
+ "v2::rec-34::es": {
+  "texto": "Los SKUs perecederos con vida útil menor a 60 días.",
+  "tokens_in": 511,
+  "tokens_out": 25,
+  "costo_usd": 6.36e-05
+ },
+ "v2::rec-35::es": {
+  "texto": "La altura máxima de una tarima es de 1.20 metros.",
+  "tokens_in": 475,
+  "tokens_out": 23,
+  "costo_usd": 5.9e-05
+ },
+ "v2::rec-36::es": {
+  "texto": "El cliente tiene 5 días hábiles para presentar una reclamación de entrega.",
+  "tokens_in": 503,
+  "tokens_out": 31,
+  "costo_usd": 6.580000000000001e-05
+ },
+ "v2::rec-37::es": {
+  "texto": "El CEDIS Norte (Monterrey) tiene capacidad para 12,000 posiciones de tarima.",
+  "tokens_in": 502,
+  "tokens_out": 40,
+  "costo_usd": 7.02e-05
+ },
+ "v2::rec-38::es": {
+  "texto": "El nivel de servicio objetivo es de **97%** de pedidos completos.",
+  "tokens_in": 468,
+  "tokens_out": 28,
+  "costo_usd": 6.080000000000001e-05
+ },
+ "v2::rec-39::es": {
+  "texto": "Los respaldos del sistema de almacén se hacen todos los días a las 02:00 horas.",
+  "tokens_in": 493,
+  "tokens_out": 34,
+  "costo_usd": 6.630000000000001e-05
+ },
+ "v2::rec-40::es": {
+  "texto": "El costo de referencia por kilómetro es de 14.50 MXN.",
+  "tokens_in": 476,
+  "tokens_out": 26,
+  "costo_usd": 6.06e-05
+ },
+ "v2::rec-41::es": {
+  "texto": "La vigencia de un contrato marco con proveedor es de **24 meses**.",
+  "tokens_in": 497,
+  "tokens_out": 28,
+  "costo_usd": 6.37e-05
+ },
+ "v2::rec-42::es": {
+  "texto": "Por cada semana de entrega tardía se aplica una penalización de 1.5% del valor de la orden.",
+  "tokens_in": 499,
+  "tokens_out": 37,
+  "costo_usd": 6.840000000000001e-05
+ },
+ "v2::rec-43::es": {
+  "texto": "Un hallazgo mayor debe corregirse en un plazo de 15 días naturales.",
+  "tokens_in": 505,
+  "tokens_out": 32,
+  "costo_usd": 6.65e-05
+ },
+ "v2::rec-44::es": {
+  "texto": "Durante su primer mes, un comprador nuevo no puede aprobar compras mayores a 50,000 MXN.",
+  "tokens_in": 500,
+  "tokens_out": 41,
+  "costo_usd": 7.05e-05
+ },
+ "v2::rec-45::es": {
+  "texto": "El stock de seguridad es una existencia adicional para cubrir variaciones de demanda o de entrega.",
+  "tokens_in": 479,
+  "tokens_out": 37,
+  "costo_usd": 6.64e-05
+ },
+ "v2::rec-46::es": {
+  "texto": "Una merma es la pérdida de producto por daño, caducidad o robo.",
+  "tokens_in": 463,
+  "tokens_out": 27,
+  "costo_usd": 5.9800000000000003e-05
+ },
+ "v2::rec-47::es": {
+  "texto": "Antes de una compra urgente se debe revisar si otro CEDIS tiene excedente del SKU, y el tránsito de Ciudad de México a Guadalajara tarda 1 día.",
+  "tokens_in": 1480,
+  "tokens_out": 66,
+  "costo_usd": 0.000181
+ },
+ "v2::rec-48::es": {
+  "texto": "Un SKU crítico con menos de 7 días de cobertura pasa al Nivel 2 (gerente de compras), donde se evalúa compra urgente y transferencia entre CEDIS, y su factor de seguridad es 1.5.",
+  "tokens_in": 1796,
+  "tokens_out": 82,
+  "costo_usd": 0.00022060000000000002
+ },
+ "v2::rec-49::es": {
+  "texto": "Un ajuste de inventario mayor a $10,000 MXN lo aprueba contraloría, y una orden de compra de $300,000 MXN la aprueba el director de operaciones.",
+  "tokens_in": 1446,
+  "tokens_out": 64,
+  "costo_usd": 0.00017659999999999998
+ },
+ "v2::rec-50::es": {
+  "texto": "La meta de calidad es que el porcentaje de piezas rechazadas en recepción sea menor a 2%.",
+  "tokens_in": 921,
+  "tokens_out": 39,
+  "costo_usd": 0.0001116
+ },
+ "v2::int-pdf-01::es": {
+  "texto": "El flete normal de Guadalajara a Monterrey cuesta $10,900 MXN.",
+  "tokens_in": 543,
+  "tokens_out": 33,
+  "costo_usd": 7.080000000000001e-05
+ },
+ "v2::int-pdf-02::es": {
+  "texto": "El recargo por flete exprés es del 35% sobre la tarifa normal.",
+  "tokens_in": 540,
+  "tokens_out": 28,
+  "costo_usd": 6.8e-05
+ },
+ "v2::int-pdf-03::es": {
+  "texto": "La tarifa de flete normal de Ciudad de México a Monterrey es de $12,300 MXN.",
+  "tokens_in": 545,
+  "tokens_out": 37,
+  "costo_usd": 7.3e-05
+ },
+ "v2::int-pdf-04::es": {
+  "texto": "El tiempo de entrega pactado de Shenzhen Industrial Parts es de 38 días.",
+  "tokens_in": 564,
+  "tokens_out": 35,
+  "costo_usd": 7.390000000000001e-05
+ },
+ "v2::int-pdf-05::es": {
+  "texto": "Seguridad Andina es el proveedor de la categoría Seguridad con clasificación C.",
+  "tokens_in": 563,
+  "tokens_out": 33,
+  "costo_usd": 7.280000000000001e-05
+ },
+ "v2::int-ocr-06::es": {
+  "texto": "La exactitud obtenida en el inventario físico de septiembre del CEDIS Norte fue de 96.4%.",
+  "tokens_in": 501,
+  "tokens_out": 41,
+  "costo_usd": 7.06e-05
+ },
+ "v2::int-ocr-07::es": {
+  "texto": "La diferencia total valorizada en el acta de inventario del CEDIS Norte fue de $18,240 MXN.",
+  "tokens_in": 499,
+  "tokens_out": 41,
+  "costo_usd": 7.04e-05
+ },
+ "v2::int-ocr-08::es": {
+  "texto": "Laura Méndez, jefa de almacén, fue la responsable del inventario físico del CEDIS Norte.",
+  "tokens_in": 493,
+  "tokens_out": 40,
+  "costo_usd": 6.930000000000002e-05
+ },
+ "v2::int-ocr-09::es": {
+  "texto": "3 piezas",
+  "tokens_in": 459,
+  "tokens_out": 7,
+  "costo_usd": 4.940000000000001e-05
+ },
+ "v2::int-ocr-10::es": {
+  "texto": "120 piezas",
+  "tokens_in": 455,
+  "tokens_out": 7,
+  "costo_usd": 4.9e-05
+ },
+ "v2::int-imagen-11::es": {
+  "texto": "El nivel de servicio más bajo en septiembre de 2026 fue el de CEDIS Occidente, con 95.1%.",
+  "tokens_in": 487,
+  "tokens_out": 45,
+  "costo_usd": 7.120000000000001e-05
+ },
+ "v2::int-imagen-12::es": {
+  "texto": "El CEDIS Norte tuvo un nivel de servicio de 98.6% en septiembre de 2026.",
+  "tokens_in": 484,
+  "tokens_out": 39,
+  "costo_usd": 6.790000000000001e-05
+ },
+ "v2::int-imagen-13::es": {
+  "texto": "El CEDIS Centro tuvo un nivel de servicio de 97.8% en septiembre de 2026.",
+  "tokens_in": 484,
+  "tokens_out": 39,
+  "costo_usd": 6.790000000000001e-05
+ },
+ "v2::int-imagen-14::es": {
+  "texto": "La zona de cuarentena del CEDIS Occidente está en el pasillo 12.",
+  "tokens_in": 502,
+  "tokens_out": 31,
+  "costo_usd": 6.57e-05
+ },
+ "v2::int-imagen-15::es": {
+  "texto": "La zona de SKUs críticos está junto al andén 2.",
+  "tokens_in": 503,
+  "tokens_out": 22,
+  "costo_usd": 6.13e-05
+ },
+ "v2::rec-01::en": {
+  "texto": "The deadline for a customer to return a product is 30 días naturales from delivery.",
+  "tokens_in": 745,
+  "tokens_out": 27,
+  "costo_usd": 8.8e-05
+ },
+ "v2::rec-02::en": {
+  "texto": "No, the returns are not accepted if the package was opened, for hygiene reasons.",
+  "tokens_in": 757,
+  "tokens_out": 28,
+  "costo_usd": 8.97e-05
+ },
+ "v2::rec-03::en": {
+  "texto": "You have 15 days from receipt of the product to return it to the supplier for a quality defect.",
+  "tokens_in": 762,
+  "tokens_out": 30,
+  "costo_usd": 9.120000000000001e-05
+ },
+ "v2::rec-04::en": {
+  "texto": "The inventory accuracy target for each CEDIS (distribution center) is 98%.",
+  "tokens_in": 776,
+  "tokens_out": 29,
+  "costo_usd": 9.21e-05
+ },
+ "v2::rec-05::en": {
+  "texto": "Inventory adjustments greater than $10,000 MXN require approval from **contraloría**. Since 15,000 pesos exceeds that threshold, contraloría must approve it.",
+  "tokens_in": 796,
+  "tokens_out": 60,
+  "costo_usd": 0.00010960000000000001
+ },
+ "v2::rec-06::en": {
+  "texto": "Class A SKUs are counted monthly.",
+  "tokens_in": 793,
+  "tokens_out": 16,
+  "costo_usd": 8.730000000000001e-05
+ },
+ "v2::rec-07::en": {
+  "texto": "The purchase order of 120,000 MXN falls in the $50,000 to $250,000 MXN range, so it must be approved by the purchasing manager (Gerente de compras).",
+  "tokens_in": 928,
+  "tokens_out": 59,
+  "costo_usd": 0.00012230000000000002
+ },
+ "v2::rec-08::en": {
+  "texto": "No. An AI assistant can only propose purchase orders, which are always created in PENDING_APPROVAL status; approval is always done by a person with the authorization level corresponding to the order amount.",
+  "tokens_in": 930,
+  "tokens_out": 62,
+  "costo_usd": 0.000124
+ },
+ "v2::rec-09::en": {
+  "texto": "Orders over $100,000 MXN require three comparable quotes.",
+  "tokens_in": 943,
+  "tokens_out": 23,
+  "costo_usd": 0.00010580000000000001
+ },
+ "v2::rec-10::en": {
+  "texto": "The reorder point is calculated as: average daily demand × supplier lead time (days) × safety factor.",
+  "tokens_in": 1083,
+  "tokens_out": 34,
+  "costo_usd": 0.0001253
+ },
+ "v2::rec-11::en": {
+  "texto": "The safety factor for critical SKUs is 1.5.",
+  "tokens_in": 1068,
+  "tokens_out": 20,
+  "costo_usd": 0.0001168
+ },
+ "v2::rec-12::en": {
+  "texto": "Weekly, on Mondays.",
+  "tokens_in": 1070,
+  "tokens_out": 13,
+  "costo_usd": 0.0001135
+ },
+ "v2::rec-13::en": {
+  "texto": "The reorder point is evaluated against the **total stock**, meaning the sum of the inventory at all three distribution centers (CEDIS Centro, CEDIS Occidente, and CEDIS Norte).",
+  "tokens_in": 1084,
+  "tokens_out": 69,
+  "costo_usd": 0.0001429
+ },
+ "v2::rec-14::en": {
+  "texto": "A critical SKU is ordered to cover 45 days of demand, plus the safety stock.",
+  "tokens_in": 1089,
+  "tokens_out": 31,
+  "costo_usd": 0.00012440000000000002
+ },
+ "v2::rec-15::en": {
+  "texto": "The OTIF target for a supplier is greater than or equal to 95%.",
+  "tokens_in": 898,
+  "tokens_out": 25,
+  "costo_usd": 0.0001023
+ },
+ "v2::rec-16::en": {
+  "texto": "Suppliers from Asia (CN) have a reference delivery time of 35 to 40 days.",
+  "tokens_in": 893,
+  "tokens_out": 33,
+  "costo_usd": 0.00010580000000000001
+ },
+ "v2::rec-17::en": {
+  "texto": "A supplier that misses two or more targets is classified as C: a replacement is sought and it is not assigned new critical SKUs.",
+  "tokens_in": 894,
+  "tokens_out": 42,
+  "costo_usd": 0.0001104
+ },
+ "v2::rec-18::en": {
+  "texto": "The receiving hours at the CEDIS Occidente (Guadalajara) are Monday to Friday, from 8:00 to 16:00.",
+  "tokens_in": 868,
+  "tokens_out": 48,
+  "costo_usd": 0.00011080000000000001
+ },
+ "v2::rec-19::en": {
+  "texto": "Within a maximum of 4 hours.",
+  "tokens_in": 859,
+  "tokens_out": 15,
+  "costo_usd": 9.340000000000001e-05
+ },
+ "v2::rec-20::en": {
+  "texto": "If the receiving difference is greater than 2%, a partial rejection of the difference is made and the supplier is notified.",
+  "tokens_in": 871,
+  "tokens_out": 38,
+  "costo_usd": 0.0001061
+ },
+ "v2::rec-21::en": {
+  "texto": "A critical SKU is considered at risk when its days of coverage are less than its supplier's lead time, even if it has not yet crossed its reorder point.",
+  "tokens_in": 1005,
+  "tokens_out": 49,
+  "costo_usd": 0.000125
+ },
+ "v2::rec-22::en": {
+  "texto": "The purchase manager (gerente de compras) approves an urgent purchase, regardless of the amount.",
+  "tokens_in": 983,
+  "tokens_out": 34,
+  "costo_usd": 0.00011530000000000001
+ },
+ "v2::rec-23::en": {
+  "texto": "At fewer than 7 days of coverage (Level 2 escalation).",
+  "tokens_in": 1002,
+  "tokens_out": 25,
+  "costo_usd": 0.0001127
+ },
+ "v2::rec-24::en": {
+  "texto": "The minimum quantity per transfer is 20 units or one full pallet, whichever is smaller.",
+  "tokens_in": 757,
+  "tokens_out": 33,
+  "costo_usd": 9.22e-05
+ },
+ "v2::rec-25::en": {
+  "texto": "The transit time from Guadalajara to Monterrey is 2 days.",
+  "tokens_in": 740,
+  "tokens_out": 25,
+  "costo_usd": 8.65e-05
+ },
+ "v2::rec-26::en": {
+  "texto": "A CEDIS is considered to have a surplus when it holds more than **1.5 times** its normal share of the total stock of the SKU.",
+  "tokens_in": 741,
+  "tokens_out": 45,
+  "costo_usd": 9.66e-05
+ },
+ "v2::rec-27::en": {
+  "texto": "The copilot can query stock levels, sales, suppliers, and reorder points in read-only mode.",
+  "tokens_in": 714,
+  "tokens_out": 33,
+  "costo_usd": 8.790000000000001e-05
+ },
+ "v2::rec-28::en": {
+  "texto": "No, the copilot cannot change prices, since it only has read-only access and cannot modify stock, prices, reorder points, or master data.",
+  "tokens_in": 703,
+  "tokens_out": 44,
+  "costo_usd": 9.23e-05
+ },
+ "v2::rec-29::en": {
+  "texto": "You should report the incorrect answer to the data team, including the exact question and the date.",
+  "tokens_in": 721,
+  "tokens_out": 26,
+  "costo_usd": 8.510000000000001e-05
+ },
+ "v2::rec-30::en": {
+  "texto": "Each warehouse worker must complete 40 hours of training per year.",
+  "tokens_in": 522,
+  "tokens_out": 23,
+  "costo_usd": 6.37e-05
+ },
+ "v2::rec-31::en": {
+  "texto": "An account executive can approve discounts of up to 12% without escalation.",
+  "tokens_in": 523,
+  "tokens_out": 24,
+  "costo_usd": 6.430000000000002e-05
+ },
+ "v2::rec-32::en": {
+  "texto": "The monthly inventory close is done on the last business day of each month.",
+  "tokens_in": 475,
+  "tokens_out": 21,
+  "costo_usd": 5.8e-05
+ },
+ "v2::rec-33::en": {
+  "texto": "Surveillance video is kept for 45 natural days.",
+  "tokens_in": 474,
+  "tokens_out": 19,
+  "costo_usd": 5.690000000000001e-05
+ },
+ "v2::rec-34::en": {
+  "texto": "The perishable SKUs with a shelf life of less than **60 days** are reviewed every week.",
+  "tokens_in": 505,
+  "tokens_out": 32,
+  "costo_usd": 6.65e-05
+ },
+ "v2::rec-35::en": {
+  "texto": "The maximum height of a pallet is 1.20 metres.",
+  "tokens_in": 468,
+  "tokens_out": 21,
+  "costo_usd": 5.7300000000000004e-05
+ },
+ "v2::rec-36::en": {
+  "texto": "The customer has 5 business days to file a delivery claim.",
+  "tokens_in": 490,
+  "tokens_out": 20,
+  "costo_usd": 5.9e-05
+ },
+ "v2::rec-37::en": {
+  "texto": "The Monterrey distribution center (CEDIS Norte) has capacity for 12,000 pallet positions.",
+  "tokens_in": 490,
+  "tokens_out": 38,
+  "costo_usd": 6.8e-05
+ },
+ "v2::rec-38::en": {
+  "texto": "The target service level is 97% of complete orders.",
+  "tokens_in": 454,
+  "tokens_out": 16,
+  "costo_usd": 5.3400000000000004e-05
+ },
+ "v2::rec-39::en": {
+  "texto": "Warehouse system backups are made every day at 02:00 hours.",
+  "tokens_in": 479,
+  "tokens_out": 23,
+  "costo_usd": 5.940000000000001e-05
+ },
+ "v2::rec-40::en": {
+  "texto": "The reference cost per kilometer is 14.50 MXN.",
+  "tokens_in": 468,
+  "tokens_out": 22,
+  "costo_usd": 5.78e-05
+ },
+ "v2::rec-41::en": {
+  "texto": "A framework contract with a supplier lasts **24 months**.",
+  "tokens_in": 484,
+  "tokens_out": 21,
+  "costo_usd": 5.890000000000001e-05
+ },
+ "v2::rec-42::en": {
+  "texto": "The penalty for late delivery is 1.5% of the order value for each week of late delivery.",
+  "tokens_in": 491,
+  "tokens_out": 30,
+  "costo_usd": 6.41e-05
+ },
+ "v2::rec-43::en": {
+  "texto": "A major audit finding must be corrected within **15 days** (natural days).",
+  "tokens_in": 490,
+  "tokens_out": 24,
+  "costo_usd": 6.1e-05
+ },
+ "v2::rec-44::en": {
+  "texto": "During their first month, a new buyer cannot approve purchases greater than 50,000 MXN.",
+  "tokens_in": 488,
+  "tokens_out": 32,
+  "costo_usd": 6.480000000000002e-05
+ },
+ "v2::rec-45::en": {
+  "texto": "Safety stock is additional inventory held to cover variations in demand or delivery.",
+  "tokens_in": 470,
+  "tokens_out": 27,
+  "costo_usd": 6.05e-05
+ },
+ "v2::rec-46::en": {
+  "texto": "Shrinkage is the loss of product due to damage, expiration, or theft.",
+  "tokens_in": 460,
+  "tokens_out": 27,
+  "costo_usd": 5.95e-05
+ },
+ "v2::rec-47::en": {
+  "texto": "Before an urgent purchase, you must check whether another CEDIS has surplus stock of the SKU; transit from Mexico City to Guadalajara takes 1 day.",
+  "tokens_in": 1468,
+  "tokens_out": 57,
+  "costo_usd": 0.0001753
+ },
+ "v2::rec-48::en": {
+  "texto": "A critical SKU with less than 7 days of coverage is escalated to Level 2 (purchasing manager), who evaluates an urgent purchase and a transfer between distribution centers (CEDIS), and its safety factor is 1.5.",
+  "tokens_in": 1783,
+  "tokens_out": 79,
+  "costo_usd": 0.0002178
+ },
+ "v2::rec-49::en": {
+  "texto": "Contraloría approves an inventory adjustment greater than $10,000 MXN, and the Director de operaciones approves a purchase order of more than $250,000 MXN, so a 300,000 MXN order requires the Director de operaciones.",
+  "tokens_in": 1436,
+  "tokens_out": 79,
+  "costo_usd": 0.0001831
+ },
+ "v2::rec-50::en": {
+  "texto": "The quality target is less than 2% of parts rejected at receiving.",
+  "tokens_in": 908,
+  "tokens_out": 23,
+  "costo_usd": 0.0001023
+ },
+ "v2::int-pdf-01::en": {
+  "texto": "The standard freight rate from Guadalajara to Monterrey is MXN $10,900.",
+  "tokens_in": 535,
+  "tokens_out": 31,
+  "costo_usd": 6.9e-05
+ },
+ "v2::int-pdf-02::en": {
+  "texto": "The express freight surcharge is 35% over the standard rate.",
+  "tokens_in": 528,
+  "tokens_out": 21,
+  "costo_usd": 6.330000000000001e-05
+ },
+ "v2::int-pdf-03::en": {
+  "texto": "The standard freight rate from Mexico City to Monterrey is MXN $12,300.",
+  "tokens_in": 534,
+  "tokens_out": 30,
+  "costo_usd": 6.840000000000001e-05
+ },
+ "v2::int-pdf-04::en": {
+  "texto": "The agreed lead time for Shenzhen Industrial Parts is 38 días.",
+  "tokens_in": 554,
+  "tokens_out": 29,
+  "costo_usd": 6.99e-05
+ },
+ "v2::int-pdf-05::en": {
+  "texto": "Seguridad Andina has a C rating in the Safety category.",
+  "tokens_in": 551,
+  "tokens_out": 22,
+  "costo_usd": 6.61e-05
+ },
+ "v2::int-ocr-06::en": {
+  "texto": "The accuracy obtained in the September 2026 physical inventory at the CEDIS Norte was 96.4%.",
+  "tokens_in": 488,
+  "tokens_out": 39,
+  "costo_usd": 6.83e-05
+ },
+ "v2::int-ocr-07::en": {
+  "texto": "The total valued difference in the North distribution center inventory record was $18,240 MXN.",
+  "tokens_in": 482,
+  "tokens_out": 29,
+  "costo_usd": 6.27e-05
+ },
+ "v2::int-ocr-08::en": {
+  "texto": "Laura Méndez, jefa de almacén, fue la responsable del inventario físico.",
+  "tokens_in": 486,
+  "tokens_out": 31,
+  "costo_usd": 6.41e-05
+ },
+ "v2::int-ocr-09::en": {
+  "texto": "3 piezas",
+  "tokens_in": 451,
+  "tokens_out": 7,
+  "costo_usd": 4.86e-05
+ },
+ "v2::int-ocr-10::en": {
+  "texto": "120 piezas",
+  "tokens_in": 449,
+  "tokens_out": 7,
+  "costo_usd": 4.8400000000000004e-05
+ },
+ "v2::int-imagen-11::en": {
+  "texto": "The lowest service level in September 2026 was 95.1%, at CEDIS Occidente.",
+  "tokens_in": 469,
+  "tokens_out": 32,
+  "costo_usd": 6.290000000000001e-05
+ },
+ "v2::int-imagen-12::en": {
+  "texto": "The North distribution center had a service level of 98.6% in September 2026.",
+  "tokens_in": 465,
+  "tokens_out": 24,
+  "costo_usd": 5.85e-05
+ },
+ "v2::int-imagen-13::en": {
+  "texto": "The Central distribution center (CEDIS Centro) had a service level of 97.8% in September 2026.",
+  "tokens_in": 466,
+  "tokens_out": 35,
+  "costo_usd": 6.41e-05
+ },
+ "v2::int-imagen-14::en": {
+  "texto": "The quarantine zone of the West distribution center is in aisle 12.",
+  "tokens_in": 492,
+  "tokens_out": 24,
+  "costo_usd": 6.12e-05
+ },
+ "v2::int-imagen-15::en": {
+  "texto": "The critical SKU zone is located next to dock 2.",
+  "tokens_in": 492,
+  "tokens_out": 19,
+  "costo_usd": 5.8700000000000004e-05
+ }
+}
