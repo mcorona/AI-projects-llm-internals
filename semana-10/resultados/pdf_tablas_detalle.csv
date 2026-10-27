@@ -1,0 +1,53 @@
+acierto_r5,celdas,documento,en_su_fila,extractor,filas,filas_integras,idioma,pregunta,presentes
+,12,tarifas_flete,12,original (sin PDF),4,4,,,12
+,25,matriz_proveedores,25,original (sin PDF),5,5,,,25
+,8,ordenes_de_compra,8,original (sin PDF),4,4,,,8
+,12,tarifas_flete,4,pypdf,4,0,,,12
+,25,matriz_proveedores,6,pypdf,5,0,,,25
+,8,ordenes_de_compra,4,pypdf,4,0,,,8
+,12,tarifas_flete,12,pdfplumber,4,4,,,12
+,25,matriz_proveedores,25,pdfplumber,5,5,,,25
+,8,ordenes_de_compra,8,pdfplumber,4,4,,,8
+,12,tarifas_flete,12,Claude claude-haiku-5-5 (low),4,4,,,12
+,25,matriz_proveedores,25,Claude claude-haiku-5-5 (low),5,5,,,25
+,8,ordenes_de_compra,8,Claude claude-haiku-5-5 (low),4,4,,,8
+1,,tarifas_flete,,original (sin PDF),,,es,int-pdf-01,
+1,,tarifas_flete,,original (sin PDF),,,es,int-pdf-02,
+1,,tarifas_flete,,original (sin PDF),,,es,int-pdf-03,
+1,,matriz_proveedores,,original (sin PDF),,,es,int-pdf-04,
+0,,matriz_proveedores,,original (sin PDF),,,es,int-pdf-05,
+1,,tarifas_flete,,original (sin PDF),,,en,int-pdf-01,
+1,,tarifas_flete,,original (sin PDF),,,en,int-pdf-02,
+1,,tarifas_flete,,original (sin PDF),,,en,int-pdf-03,
+1,,matriz_proveedores,,original (sin PDF),,,en,int-pdf-04,
+0,,matriz_proveedores,,original (sin PDF),,,en,int-pdf-05,
+1,,tarifas_flete,,pypdf,,,es,int-pdf-01,
+1,,tarifas_flete,,pypdf,,,es,int-pdf-02,
+1,,tarifas_flete,,pypdf,,,es,int-pdf-03,
+1,,matriz_proveedores,,pypdf,,,es,int-pdf-04,
+1,,matriz_proveedores,,pypdf,,,es,int-pdf-05,
+1,,tarifas_flete,,pypdf,,,en,int-pdf-01,
+1,,tarifas_flete,,pypdf,,,en,int-pdf-02,
+1,,tarifas_flete,,pypdf,,,en,int-pdf-03,
+1,,matriz_proveedores,,pypdf,,,en,int-pdf-04,
+1,,matriz_proveedores,,pypdf,,,en,int-pdf-05,
+1,,tarifas_flete,,pdfplumber,,,es,int-pdf-01,
+1,,tarifas_flete,,pdfplumber,,,es,int-pdf-02,
+1,,tarifas_flete,,pdfplumber,,,es,int-pdf-03,
+1,,matriz_proveedores,,pdfplumber,,,es,int-pdf-04,
+1,,matriz_proveedores,,pdfplumber,,,es,int-pdf-05,
+1,,tarifas_flete,,pdfplumber,,,en,int-pdf-01,
+1,,tarifas_flete,,pdfplumber,,,en,int-pdf-02,
+1,,tarifas_flete,,pdfplumber,,,en,int-pdf-03,
+1,,matriz_proveedores,,pdfplumber,,,en,int-pdf-04,
+0,,matriz_proveedores,,pdfplumber,,,en,int-pdf-05,
+1,,tarifas_flete,,Claude claude-haiku-5-5 (low),,,es,int-pdf-01,
+1,,tarifas_flete,,Claude claude-haiku-5-5 (low),,,es,int-pdf-02,
+1,,tarifas_flete,,Claude claude-haiku-5-5 (low),,,es,int-pdf-03,
+1,,matriz_proveedores,,Claude claude-haiku-5-5 (low),,,es,int-pdf-04,
+0,,matriz_proveedores,,Claude claude-haiku-5-5 (low),,,es,int-pdf-05,
+1,,tarifas_flete,,Claude claude-haiku-5-5 (low),,,en,int-pdf-01,
+1,,tarifas_flete,,Claude claude-haiku-5-5 (low),,,en,int-pdf-02,
+1,,tarifas_flete,,Claude claude-haiku-5-5 (low),,,en,int-pdf-03,
+1,,matriz_proveedores,,Claude claude-haiku-5-5 (low),,,en,int-pdf-04,
+1,,matriz_proveedores,,Claude claude-haiku-5-5 (low),,,en,int-pdf-05,

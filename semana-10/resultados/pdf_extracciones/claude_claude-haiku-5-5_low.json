@@ -1,0 +1,30 @@
+{
+  "tarifas_flete": {
+    "texto": "# Tarifas de flete entre CEDIS\n\nDocumento sintético de una empresa ficticia (Distribuidora Industrial Ficticia, DIF). Versión 1.0. Formato de entrega: PDF con tabla.\n\n| Ruta | Tarifa de flete normal (MXN) | Tránsito |\n|---|---|---|\n| Ciudad de México → Guadalajara | $8,500 | 1 día |\n| Ciudad de México → Monterrey | $12,300 | 2 días |\n| Guadalajara → Monterrey | $10,900 | 2 días |\n\nRecargo por flete exprés: 35% sobre la tarifa normal.",
+    "tokens_in": 1851,
+    "tokens_out": 223,
+    "latencia_s": 1.63,
+    "costo_usd": 0.000297
+  },
+  "matriz_proveedores": {
+    "texto": "# Matriz de proveedores por categoría\n\nDocumento sintético de una empresa ficticia (Distribuidora Industrial Ficticia, DIF). Versión 1.0. Formato de entrega: PDF con tabla.\n\n| Proveedor | País | Categoría | Clasificación | Tiempo de entrega pactado |\n|---|---|---|---|---|\n| Aceros del Norte | MX | Herramienta | A | 7 días |\n| Shenzhen Industrial Parts | CN | Eléctrico | B | 38 días |\n| Bavaria Werkzeuge | DE | Herramienta | A | 27 días |\n| Seguridad Andina | CO | Seguridad | C | 15 días |",
+    "tokens_in": 1857,
+    "tokens_out": 241,
+    "latencia_s": 1.69,
+    "costo_usd": 0.000306
+  },
+  "ordenes_de_compra": {
+    "texto": "# Procedimiento de órdenes de compra\n\nDocumento sintético de una empresa ficticia (Distribuidora Industrial Ficticia, DIF). Versión 4.2.\n\n## Niveles de aprobación por monto\n\nEl monto de la orden es cantidad × costo unitario, en pesos mexicanos (MXN).\n\n| Monto de la orden | Aprueba |\n|---|---|\n| Menos de $50,000 MXN | Comprador de la categoría |\n| De $50,000 a $250,000 MXN | Gerente de compras |\n| Más de $250,000 MXN | Director de operaciones |\n\nLas compras urgentes de SKUs críticos siempre requieren al gerente de compras, aunque el monto sea menor.\n\n## Cotizaciones\n\n• Órdenes mayores a $100,000 MXN requieren tres cotizaciones comparables.\n\n• Se exceptúan los SKUs con proveedor único homologado; en ese caso se documenta la justificación.\n\n## Datos obligatorios de una orden\n\nSKU, cantidad, proveedor, costo unitario, CEDIS de entrega, fecha requerida y motivo (reorden automático, compra urgente o proyecto especial).\n\n## Estados de una orden\n\n• PENDING_APPROVAL: propuesta creada, en espera de aprobación.\n\n• APPROVED: aprobada por la persona con el nivel de autorización correcto.\n\n• REJECTED: rechazada; se registra el motivo.\n\n## Uso de asistentes de IA\n\nUn asistente de IA puede proponer órdenes de compra, que siempre se crean en estado PENDING_APPROVAL. Nunca puede aprobarlas: la aprobación es siempre de una persona con el nivel de autorización que corresponda al monto.",
+    "tokens_in": 2229,
+    "tokens_out": 593,
+    "latencia_s": 2.52,
+    "costo_usd": 0.000519
+  },
+  "proveedores": {
+    "texto": "# Evaluación y clasificación de proveedores\n\nDocumento sintético de una empresa ficticia (Distribuidora Industrial Ficticia, DIF). Versión 1.4.\n\n## Indicadores\n\nCada proveedor se evalúa trimestralmente con tres indicadores:\n\n- OTIF (a tiempo y completo): meta mayor o igual a 95%.\n- Calidad: porcentaje de piezas rechazadas en recepción; meta menor a 2%.\n- Cumplimiento del tiempo de entrega: desviación promedio contra el tiempo de entrega pactado; meta de ±2 días.\n\n## Clasificación\n\n- A: cumple las tres metas. Se prioriza en nuevas cotizaciones.\n- B: incumple una meta. Plan de mejora de 90 días.\n- C: incumple dos o más metas, o dos trimestres seguidos en B. Se busca reemplazo y no se le asignan nuevos SKUs críticos.\n\n## Tiempos de entrega de referencia\n\n- Proveedores nacionales (MX): de 5 a 10 días.\n- Proveedores de Norteamérica y Sudamérica (US, CA, CO): de 12 a 18 días.\n- Proveedores de Europa (DE, ES): de 25 a 30 días.\n- Proveedores de Asia (CN): de 35 a 40 días.\n\nEl tiempo de entrega registrado en el sistema es el pactado en contrato, no el observado.\n\n## Cambio de proveedor\n\nCambiar el proveedor de un SKU requiere recalcular su punto de reorden con el nuevo tiempo de entrega antes de la primera orden.",
+    "tokens_in": 2211,
+    "tokens_out": 558,
+    "latencia_s": 4.23,
+    "costo_usd": 0.0005
+  }
+}
