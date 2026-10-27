@@ -4,6 +4,7 @@ Configuraciones, sobre el golden set integrado (102 preguntas):
 - integrado: ruteo de la actividad 6 (Haiku low) con respaldo: si la ruta es sql y la consulta da error, 0 filas o la
   herramienta NLQ se abstiene (NO_SQL: el dato no está en el esquema), también se consultan los documentos. Ruta mixta:
   ambas herramientas.
+  La abstención aplica solo en la ruta sql (y en solo_sql); en la ruta mixta la NLQ siempre genera consulta.
 - integrado_sin_abstencion: igual, pero la herramienta NLQ no puede abstenerse (respaldo de la actividad 6 tal cual).
   Mide lo que aporta la abstención; se agregó tras el piloto, donde int-imagen-11 se ruteó a sql y la consulta
   inventó un "nivel de servicio" con filas, sin activar el respaldo.
@@ -207,7 +208,9 @@ def correr(h, x, config):
     else:
         ruta = {"solo_sql": "sql", "solo_docs": "documental"}[config]
     if ruta in ("sql", "mixta"):
-        res_sql = h.sql(x["question"], abstener=config != "integrado_sin_abstencion")
+        # La abstención solo aplica a la ruta sql del integrado (donde hay respaldo); en la ruta mixta la pregunta
+        # trae también la parte documental y la herramienta NLQ se abstenía de toda la pregunta (corrida 1: mixtas 0/6 ES).
+        res_sql = h.sql(x["question"], abstener=config == "solo_sql" or (config == "integrado" and ruta == "sql"))
         costo += res_sql["costo"]
         if config.startswith("integrado") and ruta == "sql" and (res_sql["error"] or not res_sql["filas"]):
             respaldo = True
