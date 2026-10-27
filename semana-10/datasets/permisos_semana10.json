@@ -1,0 +1,12 @@
+{
+  "nota": "Roles de los documentos nuevos de semana 10 (modelo sintético de prueba, igual que semana-09/datasets/permisos.json). Se suman a los roles por documento de semana 9.",
+  "tenant": "alfa",
+  "roles_por_documento": {
+    "tarifas_flete": ["operaciones", "finanzas"],
+    "matriz_proveedores": ["compras", "calidad"],
+    "acta_inventario_norte": ["almacen", "finanzas"],
+    "remision_r4471": ["almacen", "compras"],
+    "grafica_nivel_servicio": ["operaciones", "finanzas"],
+    "plano_cedis_occidente": ["operaciones", "almacen"]
+  }
+}
