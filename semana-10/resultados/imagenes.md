@@ -40,7 +40,7 @@ Detalle: `imagenes_detalle.csv`. Extracciones: `imagenes_extracciones/`.
 
 ## Decisión
 
-**Imágenes con datos (gráficas, planos, diagramas): Haiku 5.5 `low` describe y extrae los datos al indexar**, a unos $0.0005 por imagen. La descripción entra al mismo índice que el resto del corpus, así que el asistente puede recuperarla y citarla. Tesseract no sirve para imágenes cuyo significado depende de la posición. La respuesta directa sobre la imagen es igual de exacta, pero exige saber de antemano qué imagen mirar; en el asistente, la imagen se encuentra por su descripción indexada.
+**Imágenes con datos (gráficas, planos, diagramas): Haiku 5.5 `low` describe y extrae los datos al indexar**, a entre $0.0003 y $0.0006 por imagen (media de $0.00047 en esta corrida). La descripción entra al mismo índice que el resto del corpus, así que el asistente puede recuperarla y citarla. Tesseract no sirve para imágenes cuyo significado depende de la posición. La respuesta directa sobre la imagen es igual de exacta, pero exige saber de antemano qué imagen mirar; en el asistente, la imagen se encuentra por su descripción indexada.
 
 ## Limitaciones
 
