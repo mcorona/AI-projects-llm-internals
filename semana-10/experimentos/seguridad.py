@@ -247,6 +247,9 @@ class Herramientas(a.Herramientas):
     def __init__(self, modo, dsn_nlq):
         super().__init__()
         self.modo = modo
+        if modo == "base":  # la NLQ de la actividad 7, aunque NLQ_LEGADO_DSN esté definido
+            self.conn_leg.close()
+            self.conn_leg = conexion_base()
         if modo == "endurecida":
             self.conn_leg.close()
             self.conn_leg = conexion_endurecida(dsn_nlq)

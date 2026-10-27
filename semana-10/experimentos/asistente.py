@@ -139,10 +139,22 @@ ABSTENCION = ("\n\nIf the schema and dictionary do not contain the data the ques
               "other columns: output exactly NO_SQL instead of a query.")
 
 
+def ejecutar_lectura(conn, sql):
+    """Actividad 8: cada consulta de la NLQ va en una transacción READ ONLY que siempre se revierte. psycopg no aplica
+    read_only en autocommit, y sin esto `SELECT lo_create(0)` escribía en la base."""
+    filas = None
+    with conn.transaction():
+        conn.execute("SET TRANSACTION READ ONLY")
+        filas = conn.execute(sql).fetchall()
+        raise psycopg.Rollback()
+    return filas
+
+
 class Herramientas:
     def __init__(self):
         self.conn_ref = sl.re7.conectar(os.environ["NLQ_DSN"])
-        self.conn_leg = sl.re7.conectar(os.environ["NLQ_DSN"])
+        # NLQ_LEGADO_DSN: rol copilot_nlq (solo SELECT sobre las vistas legado; actividad 8). Sin él, copilot_ro.
+        self.conn_leg = sl.re7.conectar(os.environ.get("NLQ_LEGADO_DSN") or os.environ["NLQ_DSN"])
         self.conn_leg.execute("SET search_path = legado")
         self.conn_doc = sl.re7.conectar(os.environ["NLQ_DSN"])
         self.conn_doc.execute("SET hnsw.ef_search = 100")
@@ -153,30 +165,31 @@ class Herramientas:
     def sql(self, pregunta, abstener=True):
         texto, costo, lat = anthropic(HAIKU, "low", self.sis_sql if abstener else self.sis_sql_base, pregunta, max_tokens=8000)
         if abstener and texto.strip().upper().startswith("NO_SQL"):
-            return {"sql": None, "filas": None, "error": "abstencion", "costo": costo, "lat": lat}
+            return {"sql": None, "filas": None, "error": "abstencion", "costo": costo, "lat": lat, "texto": texto}
         consulta = sl.re7.extraer_sql(texto)
         filas, error = None, None
         if consulta is None:
             error = "no_es_select"
         else:
             try:
-                filas = sl.re7.ejecutar(self.conn_leg, consulta)
+                filas = ejecutar_lectura(self.conn_leg, consulta)
             except Exception as e:  # noqa: BLE001
                 error = type(e).__name__
-        return {"sql": consulta, "filas": filas, "error": error, "costo": costo, "lat": lat}
+        return {"sql": consulta, "filas": filas, "error": error, "costo": costo, "lat": lat, "texto": texto}
 
     def docs(self, pregunta, usuario=USUARIO):
         t0 = time.perf_counter()
         v, _ = emb_bge([pregunta], "query")
         cands = self.conn_doc.execute(
-            "SELECT source, content FROM semana10.chunks WHERE tenant_id = %s AND roles && %s::text[] "
+            "SELECT id, source, content FROM semana10.chunks WHERE tenant_id = %s AND roles && %s::text[] "
             "ORDER BY embedding <=> %s::vector LIMIT %s",
             (usuario["tenant"], usuario["roles"], "[" + ",".join(map(str, v[0])) + "]", TOP_CAND)).fetchall()
-        cands = [tuple(c) for c in cands]
+        ids = [c[0] for c in cands]
+        cands = [(c[1], c[2]) for c in cands]
         orden, tin, tout = llamar_haiku(pregunta, cands)
         p = PRECIOS[f"anthropic:{HAIKU}"]
         ordenados = list(dict.fromkeys(orden or [])) + [i for i in range(len(cands)) if i not in (orden or [])]
-        return {"chunks": [cands[i] for i in ordenados[:TOP_DOCS]], "costo": (tin * p["in"] + tout * p["out"]) / 1e6,
+        return {"chunks": [cands[i] for i in ordenados[:TOP_DOCS]], "ids": [ids[i] for i in ordenados[:TOP_DOCS]], "costo": (tin * p["in"] + tout * p["out"]) / 1e6,
                 "lat": time.perf_counter() - t0, "rerank_fallo": orden is None}
 
 
