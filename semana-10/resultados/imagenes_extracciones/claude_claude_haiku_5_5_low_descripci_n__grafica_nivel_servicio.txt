@@ -1,0 +1,12 @@
+**Descripción:** Es un gráfico de barras verticales que muestra el nivel de servicio de tres CEDIS en septiembre de 2026. El eje vertical va de 90% a 100%, y cada barra tiene su valor escrito encima. Las barras son azul, naranja y verde.
+
+**Título:**
+Nivel de servicio por CEDIS, septiembre 2026
+
+**Datos:**
+- CEDIS Centro: 97.8%
+- CEDIS Occidente: 95.1%
+- CEDIS Norte: 98.6%
+
+**Texto de pie de imagen:**
+Documento sintético de una empresa ficticia (DIF). Formato de entrega: imagen PNG.

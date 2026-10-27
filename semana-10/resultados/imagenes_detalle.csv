@@ -1,0 +1,62 @@
+acierto,idioma,item,medida,respuesta_modelo,uso
+0,,CEDIS Centro 97.8%,hecho,,sin imagen
+0,,CEDIS Occidente 95.1%,hecho,,sin imagen
+0,,CEDIS Norte 98.6%,hecho,,sin imagen
+0,,Recepción: andenes 1 a 4,hecho,,sin imagen
+0,,Embarque: andenes 5 a 8,hecho,,sin imagen
+0,,SKUs críticos junto al andén 2,hecho,,sin imagen
+0,,Cuarentena en el pasillo 12,hecho,,sin imagen
+0,,CEDIS Centro 97.8%,hecho,,Tesseract (spa)
+0,,CEDIS Occidente 95.1%,hecho,,Tesseract (spa)
+0,,CEDIS Norte 98.6%,hecho,,Tesseract (spa)
+0,,Recepción: andenes 1 a 4,hecho,,Tesseract (spa)
+0,,Embarque: andenes 5 a 8,hecho,,Tesseract (spa)
+0,,SKUs críticos junto al andén 2,hecho,,Tesseract (spa)
+0,,Cuarentena en el pasillo 12,hecho,,Tesseract (spa)
+1,,CEDIS Centro 97.8%,hecho,,"Claude claude-haiku-5-5 (low), descripción"
+1,,CEDIS Occidente 95.1%,hecho,,"Claude claude-haiku-5-5 (low), descripción"
+1,,CEDIS Norte 98.6%,hecho,,"Claude claude-haiku-5-5 (low), descripción"
+1,,Recepción: andenes 1 a 4,hecho,,"Claude claude-haiku-5-5 (low), descripción"
+1,,Embarque: andenes 5 a 8,hecho,,"Claude claude-haiku-5-5 (low), descripción"
+1,,SKUs críticos junto al andén 2,hecho,,"Claude claude-haiku-5-5 (low), descripción"
+1,,Cuarentena en el pasillo 12,hecho,,"Claude claude-haiku-5-5 (low), descripción"
+0,es,int-imagen-11,recall5,,sin imagen
+0,es,int-imagen-12,recall5,,sin imagen
+0,es,int-imagen-13,recall5,,sin imagen
+0,es,int-imagen-14,recall5,,sin imagen
+0,es,int-imagen-15,recall5,,sin imagen
+0,en,int-imagen-11,recall5,,sin imagen
+0,en,int-imagen-12,recall5,,sin imagen
+0,en,int-imagen-13,recall5,,sin imagen
+0,en,int-imagen-14,recall5,,sin imagen
+0,en,int-imagen-15,recall5,,sin imagen
+1,es,int-imagen-11,recall5,,Tesseract (spa)
+0,es,int-imagen-12,recall5,,Tesseract (spa)
+1,es,int-imagen-13,recall5,,Tesseract (spa)
+1,es,int-imagen-14,recall5,,Tesseract (spa)
+1,es,int-imagen-15,recall5,,Tesseract (spa)
+1,en,int-imagen-11,recall5,,Tesseract (spa)
+0,en,int-imagen-12,recall5,,Tesseract (spa)
+1,en,int-imagen-13,recall5,,Tesseract (spa)
+1,en,int-imagen-14,recall5,,Tesseract (spa)
+1,en,int-imagen-15,recall5,,Tesseract (spa)
+1,es,int-imagen-11,recall5,,"Claude claude-haiku-5-5 (low), descripción"
+1,es,int-imagen-12,recall5,,"Claude claude-haiku-5-5 (low), descripción"
+1,es,int-imagen-13,recall5,,"Claude claude-haiku-5-5 (low), descripción"
+1,es,int-imagen-14,recall5,,"Claude claude-haiku-5-5 (low), descripción"
+1,es,int-imagen-15,recall5,,"Claude claude-haiku-5-5 (low), descripción"
+1,en,int-imagen-11,recall5,,"Claude claude-haiku-5-5 (low), descripción"
+1,en,int-imagen-12,recall5,,"Claude claude-haiku-5-5 (low), descripción"
+1,en,int-imagen-13,recall5,,"Claude claude-haiku-5-5 (low), descripción"
+1,en,int-imagen-14,recall5,,"Claude claude-haiku-5-5 (low), descripción"
+1,en,int-imagen-15,recall5,,"Claude claude-haiku-5-5 (low), descripción"
+1,es,int-imagen-11,exactitud,95.1% (CEDIS Occidente),respuesta directa
+1,es,int-imagen-12,exactitud,98.6%,respuesta directa
+1,es,int-imagen-13,exactitud,97.8%,respuesta directa
+1,es,int-imagen-14,exactitud,Pasillo 12,respuesta directa
+1,es,int-imagen-15,exactitud,Junto al **Andén 2**.,respuesta directa
+1,en,int-imagen-11,exactitud,"CEDIS Occidente had the lowest service level, at 95.1%.",respuesta directa
+1,en,int-imagen-12,exactitud,CEDIS Norte had a service level of 98.6% in September 2026.,respuesta directa
+1,en,int-imagen-13,exactitud,The CEDIS Centro service level in September 2026 was 97.8%.,respuesta directa
+1,en,int-imagen-14,exactitud,Pasillo 12,respuesta directa
+1,en,int-imagen-15,exactitud,Andén 2,respuesta directa

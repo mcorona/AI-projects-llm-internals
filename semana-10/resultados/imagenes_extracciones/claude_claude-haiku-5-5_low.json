@@ -1,0 +1,86 @@
+{
+  "desc::grafica_nivel_servicio": {
+    "texto": "**Descripción:** Es un gráfico de barras verticales que muestra el nivel de servicio de tres CEDIS en septiembre de 2026. El eje vertical va de 90% a 100%, y cada barra tiene su valor escrito encima. Las barras son azul, naranja y verde.\n\n**Título:**\nNivel de servicio por CEDIS, septiembre 2026\n\n**Datos:**\n- CEDIS Centro: 97.8%\n- CEDIS Occidente: 95.1%\n- CEDIS Norte: 98.6%\n\n**Texto de pie de imagen:**\nDocumento sintético de una empresa ficticia (DIF). Formato de entrega: imagen PNG.",
+    "tokens_in": 1384,
+    "tokens_out": 308,
+    "latencia_s": 3.01,
+    "costo_usd": 0.000292
+  },
+  "desc::plano_cedis_occidente": {
+    "texto": "La imagen es un plano del centro de distribución (CEDIS) Occidente en Guadalajara. Muestra ocho andenes en la parte superior, divididos en dos grupos: recepción (andenes 1 a 4, en azul) y embarque (andenes 5 a 8, en café claro). Debajo hay una nave con cinco pasillos verticales numerados del 10 al 14. Se marcan dos zonas: una de SKUs críticos, cerca del andén 2, y una de cuarentena, dentro del pasillo 12.\n\n**Datos extraídos:**\n\nTítulo: Plano del CEDIS Occidente (Guadalajara)\n\nEtiqueta de sección: Recepción\nEtiqueta de sección: Embarque\n\nAndén 1 (recepción)\nAndén 2 (recepción)\nAndén 3 (recepción)\nAndén 4 (recepción)\nAndén 5 (embarque)\nAndén 6 (embarque)\nAndén 7 (embarque)\nAndén 8 (embarque)\n\nZona de SKUs críticos: ubicada en la parte superior izquierda de la nave, debajo del Andén 2\nZona de cuarentena: ubicada en la parte inferior del Pasillo 12\n\nPasillo 10\nPasillo 11\nPasillo 12\nPasillo 13\nPasillo 14\n\nNota al pie: Documento sintético de una empresa ficticia (DIF). Formato de entrega: imagen PNG.",
+    "tokens_in": 1844,
+    "tokens_out": 915,
+    "latencia_s": 4.42,
+    "costo_usd": 0.000642
+  },
+  "qa::int-imagen-11::es": {
+    "texto": "95.1% (CEDIS Occidente)",
+    "tokens_in": 1399,
+    "tokens_out": 17,
+    "latencia_s": 0.98,
+    "costo_usd": 0.000148
+  },
+  "qa::int-imagen-12::es": {
+    "texto": "98.6%",
+    "tokens_in": 1396,
+    "tokens_out": 6,
+    "latencia_s": 1.07,
+    "costo_usd": 0.000143
+  },
+  "qa::int-imagen-13::es": {
+    "texto": "97.8%",
+    "tokens_in": 1396,
+    "tokens_out": 6,
+    "latencia_s": 0.98,
+    "costo_usd": 0.000143
+  },
+  "qa::int-imagen-14::es": {
+    "texto": "Pasillo 12",
+    "tokens_in": 1851,
+    "tokens_out": 9,
+    "latencia_s": 0.98,
+    "costo_usd": 0.00019
+  },
+  "qa::int-imagen-15::es": {
+    "texto": "Junto al **Andén 2**.",
+    "tokens_in": 1854,
+    "tokens_out": 105,
+    "latencia_s": 1.44,
+    "costo_usd": 0.000238
+  },
+  "qa::int-imagen-11::en": {
+    "texto": "CEDIS Occidente had the lowest service level, at 95.1%.",
+    "tokens_in": 1381,
+    "tokens_out": 181,
+    "latencia_s": 1.87,
+    "costo_usd": 0.000229
+  },
+  "qa::int-imagen-12::en": {
+    "texto": "CEDIS Norte had a service level of 98.6% in September 2026.",
+    "tokens_in": 1377,
+    "tokens_out": 266,
+    "latencia_s": 2.36,
+    "costo_usd": 0.000271
+  },
+  "qa::int-imagen-13::en": {
+    "texto": "The CEDIS Centro service level in September 2026 was 97.8%.",
+    "tokens_in": 1378,
+    "tokens_out": 136,
+    "latencia_s": 1.66,
+    "costo_usd": 0.000206
+  },
+  "qa::int-imagen-14::en": {
+    "texto": "Pasillo 12",
+    "tokens_in": 1841,
+    "tokens_out": 68,
+    "latencia_s": 1.52,
+    "costo_usd": 0.000218
+  },
+  "qa::int-imagen-15::en": {
+    "texto": "Andén 2",
+    "tokens_in": 1843,
+    "tokens_out": 82,
+    "latencia_s": 1.5,
+    "costo_usd": 0.000225
+  }
+}
