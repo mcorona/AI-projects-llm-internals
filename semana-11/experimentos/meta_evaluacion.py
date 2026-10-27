@@ -48,7 +48,7 @@ MODOS = {"haiku": "Instructor TOOLS", "sonnet": "Instructor JSON"}
 VARIANTES = ("control", "cifra_cambiada", "inventada", "fuera_de_tema", "evasiva")
 ESPERADAS = {("faithfulness", "cifra_cambiada"), ("faithfulness", "inventada"),
              ("answer_relevancy", "fuera_de_tema"), ("answer_relevancy", "evasiva")}
-CONCURRENCIA = 8
+CONCURRENCIA = 2  # corrida 2: red inestable (timeouts con 8 en paralelo)
 INVENTADA = {"es": "Además, esta regla solo aplica a pedidos internacionales y requiere la firma del director general.",
              "en": "In addition, this rule applies only to international orders and requires the CEO's signature."}
 EVASIVA = {"es": "No tengo suficiente información para responder con precisión.",
@@ -140,7 +140,7 @@ async def evaluar(casos, cache, guardar):
     uso, metricas, clientes = {}, {}, {}
     for j, modelo in JUECES.items():
         uso[j] = {"in": 0, "out": 0, "llamadas": 0}
-        cliente = AsyncAnthropic()
+        cliente = AsyncAnthropic(max_retries=4, timeout=180)
         crear = cliente.messages.create
 
         async def crear_contando(*a, _crear=crear, _u=uso[j], **k):
@@ -164,6 +164,7 @@ async def evaluar(casos, cache, guardar):
             llm = InstructorLLM(client=instructor.from_anthropic(cliente, mode=instructor.Mode.ANTHROPIC_JSON), model=modelo,
                                 provider="anthropic", model_args=InstructorModelArgs(), cache=cache_j, max_tokens=4000,
                                 extra_body={"output_config": {"effort": "low"}})
+        llm.model_args["max_retries"] = 3
         llm.model_args.pop("temperature", None)
         llm.model_args.pop("top_p", None)
         metricas[j] = {"faithfulness": Faithfulness(llm=llm), "answer_relevancy": AnswerRelevancy(llm=llm, embeddings=emb)}
