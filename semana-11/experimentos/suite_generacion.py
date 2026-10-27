@@ -44,7 +44,7 @@ RES = RAIZ / "resultados"
 CONTEXTOS = RES / "contextos_generacion.json"
 CACHE = RES / "suite_generacion_cache.json"
 PRECIO = a.PRECIOS[f"anthropic:{a.HAIKU}"]
-HILOS, CONCURRENCIA = 4, 4
+HILOS, CONCURRENCIA = 8, 8
 SIS_CLASE = ("Recibes una pregunta y la respuesta de un asistente que solo puede usar documentos internos. Clasifica la "
              "respuesta: \"abstiene\" si dice que la información no está en los documentos o en el contexto y no da un dato "
              "como respuesta a la pregunta; \"responde\" si da una respuesta a la pregunta, aunque agregue advertencias. "
