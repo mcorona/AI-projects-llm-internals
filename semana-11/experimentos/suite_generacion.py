@@ -84,14 +84,15 @@ def construir_contextos(items):
     return ctx
 
 
-def generar(items, ctx, cache, guardar):
+def generar(items, ctx, cache, guardar, sistema=None):
+    """sistema: prompt del generador; por defecto el del asistente de semana 10 (a.SIS_RESP). Actividad 6 lo cambia."""
     def uno(x):
         k = f"gen::{x['id']}::{x['lang']}"
         if k in cache:
             return
         chunks = [tuple(c) for c in ctx[f"{x['id']}::{x['lang']}"]["chunks"]]
         t0 = time.perf_counter()
-        texto, costo, _ = a.anthropic(a.HAIKU, "medium", a.SIS_RESP,
+        texto, costo, _ = a.anthropic(a.HAIKU, "medium", sistema or a.SIS_RESP,
                                       f"Pregunta: {x['question']}\n\nContexto:\n{a.contexto(None, {'chunks': chunks})}")
         cache[k] = {"respuesta": texto, "costo": costo, "latencia_s": round(time.perf_counter() - t0, 3)}
         guardar()
