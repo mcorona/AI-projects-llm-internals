@@ -37,7 +37,7 @@ jobs:
       - name: Preparar base de CI (rol copilot_ro y datos sintéticos, semilla 42)
         run: python semana-07/ci/preparar_base.py
       - name: Suite de recuperación (índice, top 20, reranking; métricas exactas)
-        run: python semana-11/ci/eval_ci.py --suite recuperacion --calibrar
+        run: python semana-11/ci/eval_ci.py --suite recuperacion
 
   generacion:
     runs-on: ubuntu-24.04
@@ -55,4 +55,4 @@ jobs:
           pip install "psycopg[binary]==3.3.6" anthropic==1.15.0 openai==3.3.0 instructor==1.17.0
           ragas==0.4.3 langchain-community==0.4.1 langchain-core==1.7.0 langchain-openai==1.7.3
       - name: Suite de generación (contextos fijos; RAGAS, juez propio, citas y abstención)
-        run: python semana-11/ci/eval_ci.py --suite generacion --calibrar
+        run: python semana-11/ci/eval_ci.py --suite generacion

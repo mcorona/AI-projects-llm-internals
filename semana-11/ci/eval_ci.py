@@ -48,7 +48,13 @@ MODELO_EMB = "text-embedding-3-small"
 MET_REC = ("recall@3", "recall@5", "mrr", "ndcg@10", "ap@5")
 MET_GEN = ("faithfulness", "answer_relevancy", "exactitud", "precision_citas", "no_abstencion_falsa", "abstencion_correcta")
 # Umbrales por suite, métrica e idioma, calibrados con la primera corrida de CI (ver resultados/ci_calibracion.md).
-UMBRALES = None
+UMBRALES = {
+    "recuperacion": {"recall@3": {"es": 0.95, "en": 0.95}, "recall@5": {"es": 0.95, "en": 0.95}, "mrr": {"es": 0.90, "en": 0.90},
+                     "ndcg@10": {"es": 0.90, "en": 0.90}, "ap@5": {"es": 0.90, "en": 0.90}},
+    "generacion": {"faithfulness": {"es": 0.80, "en": 0.75}, "answer_relevancy": {"es": 0.80, "en": 0.75},
+                   "exactitud": {"es": 0.95, "en": 0.95}, "precision_citas": {"es": 0.65, "en": 0.70},
+                   "no_abstencion_falsa": {"es": 0.95, "en": 0.95}, "abstencion_correcta": {"es": 0.90, "en": 0.90}},
+}
 MAX_SIN_PUNTAJE = 0.01
 PRECIO = a.PRECIOS[f"anthropic:{a.HAIKU}"]
 
