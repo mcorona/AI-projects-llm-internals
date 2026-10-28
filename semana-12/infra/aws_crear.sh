@@ -53,6 +53,8 @@ cat > $TMP/permisos_kb.json <<J
  {"Sid":"VectorBucket","Effect":"Allow","Action":["s3vectors:PutVectors","s3vectors:GetVectors","s3vectors:DeleteVectors","s3vectors:QueryVectors","s3vectors:ListVectors","s3vectors:GetIndex"],
   "Resource":["arn:aws:s3vectors:$REGION:$CUENTA_AWS:bucket/$S3_VECTORES","arn:aws:s3vectors:$REGION:$CUENTA_AWS:bucket/$S3_VECTORES/index/*"]},
  {"Sid":"Embeddings","Effect":"Allow","Action":["bedrock:InvokeModel"],"Resource":[$(lista "arn:aws:bedrock:$REGION::foundation-model/" "${MODELOS_EMB[@]}")]},
+ {"Sid":"AlmacenamientoMultimodal","Effect":"Allow","Action":["s3:PutObject","s3:GetObject","s3:DeleteObject"],
+  "Resource":"arn:aws:s3:::$S3_DOCS/multimodal/*","Condition":{"StringEquals":{"aws:ResourceAccount":"$CUENTA_AWS"}}},
  {"Sid":"ParserBDA","Effect":"Allow","Action":["bedrock:InvokeDataAutomationAsync"],"Resource":[
    "arn:aws:bedrock:$REGION:aws:data-automation-project/public-rag-default","arn:aws:bedrock:us-*:$CUENTA_AWS:data-automation-profile/*"]},
  {"Sid":"ParserBDAEstado","Effect":"Allow","Action":["bedrock:GetDataAutomationStatus"],"Resource":"arn:aws:bedrock:us-*:$CUENTA_AWS:data-automation-invocation/*"}]}
