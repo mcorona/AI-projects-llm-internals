@@ -1,0 +1,70 @@
+documentos: 24 · pasajes de referencia únicos: 50
+estrategia              chunks  prom_chars    íntegros  partidos
+fijo_400_solape_80          57         348     50/50           0
+recursivo_300               84         203     48/50           2
+    partido: recepcion_almacen.md · Diferencia mayor a 2%: se hace un **rechazo parcial** de la diferencia
+    partido: skus_criticos.md · SKU crítico con menos de **7 días** de cobertura.
+actual_por_seccion          69         242     50/50           0
+## Métricas extremo a extremo (respondibles)
+
+| Configuración | Idioma | n | recall del contexto | exactitud | faithfulness | answer_relevancy | precisión de citas | cobertura de cita | abstención falsa |
+|---|---|---|---|---|---|---|---|---|---|
+| adoptado_top5 | es | 65 | 1.000 | 0.985 | 0.813 | 0.878 | 0.637 (124) | 1.000 | 0/65 |
+| adoptado_top5 | en | 65 | 1.000 | 1.000 | 0.814 | 0.871 | 0.650 (123) | 1.000 | 0/65 |
+| estres_base_top3 | es | 65 | 0.962 | 0.908 | 0.790 | 0.842 | 0.657 (108) | 0.969 | 1/65 |
+| estres_base_top3 | en | 65 | 0.908 | 0.892 | 0.796 | 0.830 | 0.657 (102) | 0.923 | 4/65 |
+
+## Sin respuesta
+
+| Configuración | Idioma | Abstención correcta | Respuesta inventada |
+|---|---|---|---|
+| adoptado_top5 | es | 10/10 | 0/10 |
+| adoptado_top5 | en | 10/10 | 0/10 |
+| estres_base_top3 | es | 10/10 | 0/10 |
+| estres_base_top3 | en | 10/10 | 0/10 |
+
+## Atribución de fallas (idioma × tipo)
+
+| Configuración | Idioma | Tipo | n | Fallas | Recuperación | Generación |
+|---|---|---|---|---|---|---|
+| adoptado_top5 | es | base | 50 | 1 | 0 | 1 |
+| adoptado_top5 | es | no_textual | 15 | 0 | 0 | 0 |
+| adoptado_top5 | es | sin_respuesta | 10 | 0 | 0 | 0 |
+| adoptado_top5 | es | todas | 75 | 1 | 0 | 1 |
+| adoptado_top5 | en | base | 50 | 0 | 0 | 0 |
+| adoptado_top5 | en | no_textual | 15 | 0 | 0 | 0 |
+| adoptado_top5 | en | sin_respuesta | 10 | 0 | 0 | 0 |
+| adoptado_top5 | en | todas | 75 | 0 | 0 | 0 |
+| estres_base_top3 | es | base | 50 | 6 | 4 | 2 |
+| estres_base_top3 | es | no_textual | 15 | 0 | 0 | 0 |
+| estres_base_top3 | es | sin_respuesta | 10 | 0 | 0 | 0 |
+| estres_base_top3 | es | todas | 75 | 6 | 4 | 2 |
+| estres_base_top3 | en | base | 50 | 6 | 5 | 1 |
+| estres_base_top3 | en | no_textual | 15 | 1 | 1 | 0 |
+| estres_base_top3 | en | sin_respuesta | 10 | 0 | 0 | 0 |
+| estres_base_top3 | en | todas | 75 | 7 | 6 | 1 |
+
+## Fallas, una por una
+
+- adoptado_top5 rec-22 es [generación; recall del contexto 1.00]: **Respuesta:** Una compra urgente de un SKU crítico la aprueba el **gerente de compras**, sin importar el monto [D1][D2]. Si el monto supera **$250,000 MXN**, la aprobación corresponde al **director d
+- estres_base_top3 rec-17 es [generación; recall del contexto 1.00]: Un proveedor que incumple **dos o más metas** se clasifica como **C** [D1]. Para esta categoría, el documento dice que **se busca reemplazo y no se…**, pero el texto está cortado, así que no puedo con
+- estres_base_top3 rec-22 es [generación; recall del contexto 1.00]: El **gerente de compras** aprueba una compra urgente, sin importar el monto [D2]. En el caso de SKUs críticos, la regla es la misma aunque el monto sea menor [D1].  Los fragmentos no dicen con clarida
+- estres_base_top3 rec-29 es [recuperación; recall del contexto 0.00]: El contexto no incluye un procedimiento para cuando el copiloto da una respuesta incorrecta, así que no puedo indicarte los pasos a seguir.  Lo que sí dice el documento sobre el copiloto es que puede 
+- estres_base_top3 rec-47 es [recuperación; recall del contexto 0.50]: **Tránsito CDMX → Guadalajara:** 1 día [D1][D2][D3].  **Qué revisar antes de una compra urgente** (el contexto no trae una lista completa para compras urgentes; solo estos puntos):  - **Stock del CEDI
+- estres_base_top3 rec-48 es [recuperación; recall del contexto 0.50]: **Qué pasa:** Según [D1], un SKU crítico está **en riesgo** cuando sus días de cobertura son menores que el tiempo de entrega de su proveedor, aunque todavía no haya cruzado su punto de reorden. El co
+- estres_base_top3 rec-49 es [recuperación; recall del contexto 0.50]: **Ajuste de inventario:** Los ajustes con valor absoluto de hasta $10,000 MXN los aprueba el **jefe de almacén**. Los ajustes mayores a $10,000 MXN requieren aprobación de **contraloría** [D1].  **Ord
+- estres_base_top3 rec-06 en [recuperación; recall del contexto 0.00]: The context doesn't say how often class A SKUs are counted. It doesn't mention ABC classes or a physical counting schedule.  The closest information is in [D1], which sets a **daily** review of all SK
+- estres_base_top3 rec-17 en [generación; recall del contexto 1.00]: A supplier that misses two or more targets is classified as **C** [D1]. For C, the document says the company looks for a replacement, but the sentence is cut off ("Se busca reemplazo y no se"), so I c
+- estres_base_top3 rec-22 en [recuperación; recall del contexto 0.00]: An urgent purchase is approved by a person, never by the AI assistant. The approver depends on the amount:  - **$50,000 to $250,000 MXN:** purchasing manager (Gerente de compras) [D2] - **Over $250,00
+- estres_base_top3 rec-29 en [recuperación; recall del contexto 0.00]: The provided context doesn't say what to do if the copilot gives a wrong answer. The excerpt from [D1] (uso_copiloto) cuts off after the list of what the copilot can do, and the other excerpts ([D2] r
+- estres_base_top3 rec-47 en [recuperación; recall del contexto 0.50]: **Before an urgent purchase:** The context does not say what to check before an urgent purchase. The document excerpts cover inter-CEDIS transfers, not purchasing procedures. The only related rules ar
+- estres_base_top3 rec-48 en [recuperación; recall del contexto 0.50]: **What happens:** The context does not say what happens at exactly fewer than 7 days of coverage. It only says that a critical SKU is **at risk** when its days of coverage are less than its supplier's
+- estres_base_top3 int-pdf-05 en [recuperación; recall del contexto 0.00]: The provided context doesn't answer this. There is no SQL result, and the supplier matrix [D1] lists only three suppliers, in the Herramienta and Eléctrico categories. None is in a Safety category, an
+
+## Pasaje fuera del contexto pero respuesta correcta (la atribución no aplica)
+
+- estres_base_top3 rec-28 en: recall del contexto 0.00; **No, based on the context, the copilot cannot change prices.**  According to [D1], the copilot works in **read-only mode** for inventory queries (stock, sales,
+
+Costo adoptado_top5: generación $0.0331; evaluación en esta corrida $0.1356 (677 llamadas); sin puntaje 0; latencia p50 de generación 2.4 s
+Costo estres_base_top3: generación $0.0286; evaluación en esta corrida $0.1317 (662 llamadas); sin puntaje 3; latencia p50 de generación 1.9 s
+Reranking de las preguntas sin respuesta: $0.0094
