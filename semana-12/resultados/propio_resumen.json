@@ -1,0 +1,72 @@
+{
+ "backend": "propio",
+ "fecha": "2026-10-28",
+ "preguntas": 150,
+ "generador": "claude-haiku-5-5 medium, prompt solo_documentos",
+ "juez": "claude-haiku-5-5 low",
+ "k_contexto": 5,
+ "recuperacion": {
+  "es": {
+   "recall@1": 0.8923,
+   "recall@3": 0.9923,
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 0.9487,
+   "ndcg@10": 0.9618,
+   "ap@5": 0.9487,
+   "doc_recall@5": 1.0,
+   "n": 65
+  },
+  "en": {
+   "recall@1": 0.8846,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 0.9538,
+   "ndcg@10": 0.9647,
+   "ap@5": 0.95,
+   "doc_recall@5": 1.0,
+   "n": 65
+  }
+ },
+ "generacion": {
+  "es": {
+   "n": 65,
+   "exactitud": 1.0,
+   "faithfulness": 0.849,
+   "answer_relevancy": 0.8786,
+   "precision_citas": 0.6,
+   "cobertura_cita": 0.9846,
+   "abstencion_falsa": "0/65",
+   "abstencion_correcta": "10/10"
+  },
+  "en": {
+   "n": 65,
+   "exactitud": 1.0,
+   "faithfulness": 0.8302,
+   "answer_relevancy": 0.8664,
+   "precision_citas": 0.625,
+   "cobertura_cita": 1.0,
+   "abstencion_falsa": "0/65",
+   "abstencion_correcta": "10/10"
+  }
+ },
+ "costo_usd_por_consulta": {
+  "recuperacion": 0.000488,
+  "generacion": 0.000213
+ },
+ "latencia_s": {
+  "recuperacion": {
+   "p50": 2.31,
+   "p95": 3.84
+  },
+  "generacion": {
+   "p50": 1.69,
+   "p95": 3.39
+  }
+ },
+ "fallas": [],
+ "metricas_sin_puntaje": 0,
+ "costo_evaluacion_corrida_usd": 0.1341,
+ "rerank_fallido": 0
+}
