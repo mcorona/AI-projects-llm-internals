@@ -1,0 +1,815 @@
+answer_relevancy,atribucion,citas,citas_con_pasaje,clase,config,costo_gen,exactitud,faithfulness,falla,id,lang,latencia_gen_s,recall_contexto,tipo,respuesta
+0.9769065478823805,,2,1,responde,adoptado_top5,0.0001988,1.0,1.0,False,rec-01,es,1.759,1.0,base,"El plazo para devolver un producto a un cliente es de **30 días naturales desde la entrega** [D1].
+
+Condiciones relacionadas:
+- El producto debe estar en su empaque original y sin uso [D1].
+- Los productos de la categoría Seguridad (guantes, cascos, lentes, arneses) no se aceptan si el empaque fue abierto, por razones de higiene [D1][D2].
+- Los productos de Empaque cortados a la medida no tienen devolución [D2].
+- La nota de crédito se emite en un máximo de 10 días hábiles después de recibir la devolución [D2]."
+0.8394090985213634,,2,1,responde,adoptado_top5,0.0001909,1.0,0.8333333333333334,False,rec-02,es,2.654,1.0,base,"No. Los productos de la categoría **Seguridad** (equipo de protección personal como guantes, cascos, lentes y arneses) **no se aceptan** si el empaque fue abierto, por razones de higiene [D1][D2]."
+0.9088497311160403,,2,1,responde,adoptado_top5,0.0001285,1.0,1.0,False,rec-03,es,1.776,1.0,base,"Debe devolver el producto a un proveedor dentro de los **15 días** siguientes a la recepción [D1][D2].
+
+No hay datos de consulta SQL en el contexto, así que no aplica la cita [SQL]."
+0.979432961141134,,2,1,responde,adoptado_top5,0.0002934,1.0,0.6,False,rec-04,es,2.813,1.0,base,"La meta de exactitud de inventario es de **98%** para **cada CEDIS**, medida como el porcentaje de ubicaciones contadas sin diferencia [D1][D2]. No hay resultados de consulta SQL en el contexto, así que no aplica la cita [SQL]."
+0.8503900039057787,,1,1,responde,adoptado_top5,0.0002175,1.0,0.6666666666666666,False,rec-05,es,2.527,1.0,base,"Un ajuste de inventario de $15,000 MXN requiere **aprobación de contraloría**, porque los ajustes mayores a $10,000 MXN necesitan esa aprobación [D1]. El jefe de almacén solo puede aprobar ajustes de hasta $10,000 MXN en valor absoluto [D1]."
+0.9351463262348437,,1,1,responde,adoptado_top5,0.0002415,1.0,1.0,False,rec-06,es,2.327,1.0,base,"Los SKUs de clase A se cuentan **mensualmente** [D1]. Según la clasificación ABC para conteos, la clase A incluye los SKUs críticos y el 20% de los SKUs con mayor valor de inventario.
+
+No se incluyó resultado de consulta [SQL] en el contexto, así que no puedo dar cifras sobre cuántos SKUs de clase A hay ni cuántos conteos se han realizado."
+0.8717486139382711,,2,2,responde,adoptado_top5,0.0002683,1.0,0.8333333333333334,False,rec-07,es,2.473,1.0,base,"Una orden de compra de 120,000 pesos la aprueba el **gerente de compras**, porque el monto está en el rango de $50,000 a $250,000 MXN [D1].
+
+Como la orden supera los $100,000 MXN, también necesita **tres cotizaciones** comparables, salvo que el SKU tenga proveedor único homologado [D2].
+
+No hay resultado de consulta SQL en el contexto, así que no cito [SQL]."
+0.9556416892676588,,5,2,responde,adoptado_top5,0.00022860000000000003,1.0,1.0,False,rec-08,es,2.288,1.0,base,"No. Un asistente de IA puede **proponer** órdenes de compra, pero éstas siempre se crean en estado PENDING_APPROVAL y nunca puede aprobarlas [D3][D4]. La aprobación es siempre de una persona con el nivel de autorización que corresponda al monto de la orden [D2][D3]. Según el procedimiento, ese nivel depende del monto (cantidad × costo unitario, en MXN); por ejemplo, las órdenes de menos de $50,000 MXN las aprueba el comprador de la categoría, y las de $50,000 a $250,000 MXN el gerente de compras [D5].
+
+Además, el copiloto no puede aprobar órdenes de compra ni ajustes de inventario [D1]."
+0.6404188648999959,,2,1,responde,adoptado_top5,0.0002309,1.0,1.0,False,rec-09,es,2.454,1.0,base,"Se necesitan **tres cotizaciones comparables** para una orden mayor a $100,000 MXN [D1].
+
+Hay una excepción: los SKUs con proveedor único homologado no requieren las tres cotizaciones, pero se debe documentar la justificación [D2]."
+0.7717478408426574,,3,1,responde,adoptado_top5,0.00032960000000000004,1.0,0.9,False,rec-10,es,3.183,1.0,base,"El punto de reorden de cada SKU se calcula así [D1]:
+
+**punto de reorden = demanda diaria promedio × tiempo de entrega del proveedor (días) × factor de seguridad**
+
+- **Demanda diaria promedio:** se toma de los últimos 90 días de ventas [D2].
+- **Tiempo de entrega:** los días que tarda el proveedor en entregar [D1].
+- **Factor de seguridad:** 1.2 para SKUs normales y 1.5 para SKUs críticos [D1][D2].
+
+El punto de reorden se compara con el **stock total**, que es la suma de las existencias de los tres CEDIS [D1][D3]. Se recalcula cada trimestre o cuando el proveedor cambia su tiempo de entrega [D2]."
+0.8250295288550656,,2,2,responde,adoptado_top5,0.0001917,1.0,1.0,False,rec-11,es,1.67,1.0,base,"Los SKUs críticos usan un factor de seguridad de **1.5** en el cálculo del punto de reorden [D1][D2], frente al 1.2 de los SKUs normales [D1][D2]. La fórmula aplicada es: punto de reorden = demanda diaria promedio × tiempo de entrega del proveedor (días) × factor de seguridad [D2].
+
+No hay resultados de consulta SQL en el contexto, así que no aplica la cita [SQL]."
+0.9274898846169181,,2,1,responde,adoptado_top5,0.0001899,1.0,1.0,False,rec-12,es,3.63,1.0,base,"La categoría Empaque se revisa **semanalmente, los lunes**, a diferencia del resto de SKUs, que se revisan a diario. La razón es que su costo unitario es bajo y su proveedor entrega en menos de una semana [D1][D2]."
+0.9999999999999994,,2,1,responde,adoptado_top5,0.0002035,1.0,1.0,False,rec-13,es,1.816,1.0,base,"El punto de reorden se evalúa sobre el **stock total**, es decir, la suma de las existencias de los tres CEDIS: CEDIS Centro (Ciudad de México), CEDIS Occidente (Guadalajara) y CEDIS Norte (Monterrey) [D1][D2]."
+0.8688190570839464,,2,1,responde,adoptado_top5,0.00022590000000000002,1.0,1.0,False,rec-14,es,4.61,1.0,base,"Para un SKU crítico se piden lo necesario para cubrir **45 días** de demanda, más el stock de seguridad [D1]. Para los SKUs normales la cantidad es de 30 días [D1][D2]."
+0.9620738373127512,,1,1,responde,adoptado_top5,0.0001782,1.0,0.5,False,rec-15,es,1.761,1.0,base,La meta de OTIF (a tiempo y completo) de un proveedor es **mayor o igual a 95%** [D1].
+0.8590306311502313,,3,2,responde,adoptado_top5,0.0002521,1.0,0.6666666666666666,False,rec-16,es,2.662,1.0,base,"Un proveedor de China tarda entre **35 y 40 días** en entregar, según la referencia para proveedores de Asia [D2][D3]. El caso concreto de Shenzhen Industrial Parts (CN) tiene un tiempo de entrega pactado de **38 días** [D1].
+
+Este tiempo es el pactado en contrato, no el observado [D2]. No tengo resultado de consulta [SQL] para confirmar el tiempo real de entrega."
+0.8942215280427231,,3,1,responde,adoptado_top5,0.00033130000000000003,1.0,1.0,False,rec-17,es,2.976,1.0,base,"Un proveedor que incumple dos o más metas se clasifica como **C**. Se busca su reemplazo y no se le asignan nuevos SKUs críticos [D2]. La misma regla aplica si un proveedor está dos trimestres seguidos en B [D1][D2].
+
+Las metas que se evalúan son OTIF mayor o igual a 95%, calidad con menos de 2% de piezas rechazadas y desviación de tiempo de entrega de ±2 días [D3]."
+0.7507282526644228,,1,1,responde,adoptado_top5,0.0001823,1.0,1.0,False,rec-18,es,1.72,1.0,base,"El horario de recepción del CEDIS Occidente (Guadalajara) es de **lunes a viernes, de 8:00 a 16:00** [D1].
+
+Las entregas fuera de ese horario requieren cita autorizada por el jefe de almacén [D1].
+
+No hay datos de consulta SQL en el contexto, así que no aplica citar [SQL]."
+0.8785377071385758,,1,1,responde,adoptado_top5,0.0001733,1.0,0.6,False,rec-19,es,1.852,1.0,base,"Según el procedimiento de recepción, la entrada debe registrarse en el sistema en un plazo máximo de **4 horas** [D1].
+
+Este dato corresponde al paso 5 del proceso de recepción, y no hay otros pasajes en el contexto que indiquen un plazo distinto para registrar la entrada. No se consultó la base de datos, así que no hay resultado [SQL] para esta pregunta."
+0.9270758127645348,,1,1,responde,adoptado_top5,0.0002317,1.0,0.6666666666666666,False,rec-20,es,2.314,1.0,base,"Si la diferencia en recepción es de 3%, supera el umbral de 2%, por lo que se hace un **rechazo parcial** de la diferencia y se notifica al proveedor [D1]."
+0.8563948065817212,,2,1,responde,adoptado_top5,0.0003418,1.0,0.7142857142857143,False,rec-21,es,3.022,1.0,base,"Un SKU crítico está **en riesgo** cuando sus días de cobertura son menores que el tiempo de entrega de su proveedor, aunque todavía no haya cruzado su punto de reorden [D1].
+
+Los días de cobertura se calculan como stock total ÷ venta diaria promedio de los últimos 30 días [D1].
+
+Si un SKU crítico está en riesgo, aplica el Nivel 1 de escalamiento: el comprador debe emitir la propuesta de orden de compra el mismo día [D2].
+
+No recibí resultados de consulta [SQL], así que no puedo indicar qué SKU específicos están hoy en riesgo."
+0.7487696421950423,generación,2,1,responde,adoptado_top5,0.0004432,0.0,0.4,True,rec-22,es,4.212,1.0,base,"**Respuesta:** Una compra urgente de un SKU crítico la aprueba el **gerente de compras**, sin importar el monto [D1][D2]. Si el monto supera **$250,000 MXN**, la aprobación corresponde al **director de operaciones** [D2].
+
+No tengo datos de consulta SQL para este caso, así que no puedo confirmar el monto ni el estado de una orden específica.
+
+Además, el contexto indica que un SKU crítico con existencia total en cero o con un cliente que reporta paro de línea se escala al **nivel 3 (director de operaciones)** [D1]. Los fragmentos no dicen explícitamente quién aprueba la compra urgente en ese caso, así que conviene confirmarlo con el procedimiento completo."
+0.7765636833026853,,4,1,responde,adoptado_top5,0.0002775,1.0,1.0,False,rec-23,es,2.438,1.0,base,"Se escala al gerente de compras cuando un SKU crítico tiene **menos de 7 días de cobertura** (Nivel 2) [D1][D4]. Los días de cobertura se calculan como stock total ÷ venta diaria promedio de los últimos 30 días [D2].
+
+Además, las compras urgentes de SKUs críticos requieren al gerente de compras aunque el monto sea menor [D3]."
+0.7737169171822815,,1,1,responde,adoptado_top5,0.0001644,1.0,1.0,False,rec-24,es,1.887,1.0,base,"La cantidad mínima por transferencia es **20 unidades o una tarima completa, lo que sea menor** [D2]."
+0.8994698627744423,,3,1,responde,adoptado_top5,0.0002182,1.0,1.0,False,rec-25,es,2.153,1.0,base,El tránsito de Guadalajara a Monterrey es de **2 días** [D1][D2][D3].
+0.7702075483617273,,3,1,responde,adoptado_top5,0.0002502,1.0,0.75,False,rec-26,es,3.795,1.0,base,"Un CEDIS se considera con excedente cuando tiene **más de 1.5 veces** su participación normal del stock total del SKU. Como la participación normal es un tercio del stock total, el umbral equivale a más de la mitad (50%) del stock total del SKU [D1].
+
+No hay datos de consulta SQL en el contexto, así que no puedo indicar qué CEDIS específicos tienen excedente hoy.
+
+Si un CEDIS tiene excedente, antes de comprar de urgencia debe transferirse el producto a otro CEDIS que lo necesite [D1][D3]. Algunas reglas de estas transferencias: cantidad mínima de 20 unidades o una tarima completa (lo que sea menor), y el CEDIS que envía nunca debe quedar por debajo de su participación normal del punto de reorden [D1][D4]."
+0.7551721886396874,,2,1,responde,adoptado_top5,0.0002893,1.0,0.875,False,rec-27,es,2.785,1.0,base,"El copiloto puede **consultar existencias**, junto con ventas, proveedores y puntos de reorden, en modo **solo lectura** [D1]. No hay resultados de consulta en el contexto, así que no puedo darte cifras de existencias concretas.
+
+No puede modificar existencias, precios, puntos de reorden ni datos maestros, ni aprobar órdenes de compra o ajustes de inventario [D2]. Sí puede proponer órdenes de compra, que quedan en estado PENDING_APPROVAL para aprobación humana [D1]."
+0.899724840408313,,2,1,responde,adoptado_top5,0.0001899,1.0,1.0,False,rec-28,es,2.08,1.0,base,"No, el copiloto no puede modificar precios. Según el documento de uso del copiloto, sus funciones son de solo lectura: puede consultar existencias, ventas, proveedores y puntos de reorden, y explicar políticas internas citando su fuente. Además, la lista de lo que no puede hacer incluye expresamente ""modificar existencias, precios, puntos de reorden o datos maestros"" [D1][D2].
+
+No hay consultas SQL en el contexto proporcionado, así que no aplica ningún dato de [SQL]."
+0.9999999999999994,,2,1,responde,adoptado_top5,0.00022860000000000003,1.0,0.8,False,rec-29,es,3.361,1.0,base,"Si el copiloto da una respuesta incorrecta:
+
+- **Verifica la cifra antes de decidir.** Comprueba los datos importantes antes de tomar decisiones de compra [D1].
+- **Repórtala al equipo de datos.** Envía la pregunta exacta y la fecha en que la hiciste [D1][D4].
+
+Al hacer el reporte, no incluyas información confidencial de clientes o proveedores en la pregunta [D1]."
+0.9761495270508859,,1,1,responde,adoptado_top5,0.00018680000000000001,1.0,0.3333333333333333,False,rec-30,es,1.963,1.0,base,"Cada almacenista debe completar **40 horas** de capacitación al año [D1].
+
+No se incluyó resultado de consulta [SQL], así que este dato proviene solo de los documentos."
+0.8265587301255098,,2,1,responde,adoptado_top5,0.00022490000000000002,1.0,1.0,False,rec-31,es,3.303,1.0,base,"El ejecutivo de cuenta puede aprobar descuentos de hasta **12%** sin escalar [D1]. Los descuentos de más de 12% y hasta 20% requieren al gerente comercial, y los mayores a 20% requieren al director comercial [D1].
+
+Además, los descuentos no aplican a productos de la categoría Seguridad [D2]."
+0.9984580194686737,,1,1,responde,adoptado_top5,0.0001692,1.0,1.0,False,rec-32,es,1.929,1.0,base,El cierre mensual de inventario se realiza el **último día hábil** de cada mes [D1].
+0.9418843902733269,,1,1,responde,adoptado_top5,0.0001101,1.0,1.0,False,rec-33,es,1.173,1.0,base,Los videos de vigilancia se conservan **45 días naturales** [D1].
+0.8730129347912562,,2,1,responde,adoptado_top5,0.0002706,1.0,0.8,False,rec-34,es,2.47,1.0,base,"Según la política, los SKUs perecederos con **vida útil menor a 60 días** se revisan cada semana [D1]. El contexto no incluye una consulta SQL, así que no puedo listar los SKUs específicos que cumplen esa condición.
+
+La revisión semanal de la categoría Empaque (los lunes) es una excepción distinta y no se refiere a perecederos [D3]."
+0.9999999999999997,,1,1,responde,adoptado_top5,0.00016219999999999999,1.0,0.5,False,rec-35,es,1.518,1.0,base,La altura máxima de una tarima es de **1.20 metros** [D1].
+0.9161458216732422,,1,1,responde,adoptado_top5,0.0002117,1.0,1.0,False,rec-36,es,2.21,1.0,base,El cliente tiene **5 días hábiles** para presentar una reclamación de entrega [D1]. Toda reclamación recibe respuesta inicial en un máximo de 48 horas [D1].
+0.807619707851246,,1,1,responde,adoptado_top5,0.0001595,1.0,0.3333333333333333,False,rec-37,es,1.27,1.0,base,"El CEDIS Norte (Monterrey) tiene capacidad para **12,000 posiciones** de tarima [D1].
+
+No hay datos SQL en el contexto para esta pregunta, así que la cifra proviene únicamente del documento de capacidad."
+1.0,,1,1,responde,adoptado_top5,0.0001727,1.0,1.0,False,rec-38,es,1.596,1.0,base,El nivel de servicio objetivo es de **97% de pedidos completos** [D1].
+0.9999999999999996,,1,1,responde,adoptado_top5,0.0001459,1.0,1.0,False,rec-39,es,1.489,1.0,base,"Los respaldos del sistema de almacén se hacen todos los días a las **02:00** horas [D1].
+
+No hay consulta SQL en el contexto, así que no se citó [SQL]."
+0.9999999999999997,,1,1,responde,adoptado_top5,0.0001605,1.0,0.5,False,rec-40,es,1.762,1.0,base,El costo de referencia por kilómetro de la flota es de **14.50 MXN** [D1].
+0.989953167818324,,1,1,responde,adoptado_top5,0.0001274,1.0,0.5,False,rec-41,es,1.276,1.0,base,La vigencia de un contrato marco con proveedor es de **24 meses** [D1].
+0.8708998961132858,,2,1,responde,adoptado_top5,0.0002056,1.0,1.0,False,rec-42,es,2.144,1.0,base,Por cada semana de entrega tardía se aplica una penalización del **1.5% del valor de la orden** [D1]. La penalización máxima acumulada es del **10% del valor del contrato** [D1][D2].
+0.9453418987885455,,1,1,responde,adoptado_top5,0.0001898,1.0,1.0,False,rec-43,es,2.214,1.0,base,Un hallazgo mayor de auditoría debe corregirse en un plazo de **15 días naturales** [D1].
+0.7724626091992935,,2,1,responde,adoptado_top5,0.0001627,1.0,0.8333333333333334,False,rec-44,es,1.649,1.0,base,"Un comprador nuevo, durante su primer mes, no puede aprobar compras mayores a **50,000 MXN** [D1].
+
+Esto aplica porque el monto de una orden se calcula como cantidad × costo unitario, en MXN, y las órdenes menores a $50,000 MXN son aprobadas por el comprador de la categoría [D2]."
+0.5104579650943296,,5,1,responde,adoptado_top5,0.0002382,1.0,0.6,False,rec-45,es,2.818,1.0,base,"El stock de seguridad es la existencia adicional que se mantiene para cubrir variaciones de la demanda o de las entregas [D1].
+
+En el cálculo de la política de reorden, el punto de reorden se obtiene multiplicando la demanda diaria promedio por el tiempo de entrega del proveedor y por un factor de seguridad (1.2 para SKUs normales y 1.5 para críticos) [D4][D5]. El stock de seguridad también forma parte de la cantidad a pedir, que cubre 30 días de demanda (45 en SKUs críticos) más el stock de seguridad [D2][D3].
+
+No se consultó la base de datos para esta pregunta, por lo que no hay datos [SQL] sobre niveles de stock de seguridad específicos."
+0.7189549876922826,,3,1,responde,adoptado_top5,0.00018710000000000002,1.0,1.0,False,rec-46,es,2.575,1.0,base,"Una merma es la pérdida de producto por daño, caducidad o robo [D1]. Las mermas por caducidad se registran con el motivo caducidad, no como ajuste genérico [D3]. Una merma mensual mayor al 2% del valor del inventario se reporta a contraloría [D2]."
+0.6460561864295256,,5,2,responde,adoptado_top5,0.0004227,1.0,0.8461538461538461,False,rec-47,es,3.928,1.0,base,"**Antes de una compra urgente, revisa si otro CEDIS tiene excedente del SKU.** Un CEDIS tiene excedente cuando su stock total del SKU supera **1.5 veces** su participación normal, que es un tercio del stock total [D2]. Si existe, debes transferir antes de comprar [D2][D3].
+
+Al evaluar la transferencia, considera estas reglas:
+- La cantidad mínima por transferencia es **20 unidades** o una tarima completa, lo que sea menor [D1].
+- El CEDIS que envía no puede quedar por debajo de su participación normal [D1].
+
+**Tránsito Ciudad de México → Guadalajara:** **1 día** [D1][D4].
+
+Si la compra urgente sigue siendo necesaria, requiere flete aéreo o exprés, aprobación del gerente de compras sin importar el monto, y documentar el sobrecosto frente al flete normal [D5]. El recargo por flete exprés es de **35%** sobre la tarifa normal, que para CDMX → Guadalajara es de **$8,500 MXN** [D4]."
+0.9390492642632697,,3,3,responde,adoptado_top5,0.0002455,1.0,0.8,False,rec-48,es,2.647,1.0,base,"Un SKU crítico con menos de 7 días de cobertura pasa al **Nivel 2 (gerente de compras)**, donde se evalúa una compra urgente y una transferencia entre CEDIS [D1].
+
+Su factor de seguridad es **1.5** [D2][D3]."
+0.8491473494109346,,2,2,responde,adoptado_top5,0.0003395,1.0,0.9,False,rec-49,es,3.236,1.0,base,"**Ajuste de inventario:** depende del valor absoluto del ajuste:
+- Hasta $10,000 MXN: lo aprueba el **jefe de almacén** [D3].
+- Mayor a $10,000 MXN: lo aprueba **contraloría** [D3].
+
+El contexto no indica el monto de un ajuste específico, así que no puedo saber cuál de los dos aplica.
+
+**Orden de compra de $300,000 MXN:** la aprueba el **director de operaciones**, porque el monto es mayor a $250,000 MXN [D2]. Además, al superar $100,000 MXN se requieren tres cotizaciones comparables, salvo en SKUs con proveedor único homologado [D2].
+
+No hubo resultado de consulta SQL en el contexto, así que no cito [SQL]."
+0.8710536151131186,,1,1,responde,adoptado_top5,0.0001743,1.0,0.75,False,rec-50,es,1.968,1.0,base,"La meta de calidad es que el porcentaje de piezas rechazadas en recepción sea **menor a 2%** [D1]. Este indicador se evalúa trimestralmente junto con el OTIF y el cumplimiento del tiempo de entrega [D1].
+
+No hay resultados de consulta [SQL] en el contexto, así que no puedo indicar el desempeño real de un proveedor específico."
+0.9653473643942109,,2,2,responde,adoptado_top5,0.00017219999999999998,1.0,1.0,False,int-pdf-01,es,1.863,1.0,no_textual,"El flete normal de Guadalajara a Monterrey cuesta **$10,900 MXN**, con un tránsito de 2 días [D1][D2]."
+0.8283970555197334,,1,1,responde,adoptado_top5,0.00013360000000000002,1.0,0.6666666666666666,False,int-pdf-02,es,2.572,1.0,no_textual,"El flete exprés tiene un recargo de **35% sobre la tarifa normal** [D1].
+
+No hay consultas SQL en el contexto, así que no hay datos [SQL] que citar."
+0.824925934927819,,2,2,responde,adoptado_top5,0.0001472,1.0,0.5,False,int-pdf-03,es,1.851,1.0,no_textual,"La tarifa de flete normal de Ciudad de México a Monterrey es de **$12,300 MXN**, con un tránsito de 2 días [D1][D2].
+
+No hay resultado de consulta SQL en el contexto, así que no aplica la cita [SQL]."
+0.9285301120343815,,2,1,responde,adoptado_top5,0.00023960000000000002,1.0,0.8,False,int-pdf-04,es,2.543,1.0,no_textual,"Shenzhen Industrial Parts tiene un tiempo de entrega pactado de **38 días** [D1].
+
+No se incluyó resultado de consulta SQL en el contexto, así que el dato proviene solo de la matriz de proveedores. El rango de referencia para proveedores de Asia (CN) es de 35 a 40 días [D3], y 38 días está dentro de ese rango."
+0.9239097576623442,,1,1,responde,adoptado_top5,0.0002144,1.0,0.5,False,int-pdf-05,es,2.139,1.0,no_textual,"**Seguridad Andina** (CO) es el proveedor de la categoría Seguridad con clasificación C, con un tiempo de entrega pactado de 15 días [D1].
+
+No se incluyó un resultado de consulta SQL, así que la respuesta se basa solo en los documentos."
+0.9256300354813991,,2,1,responde,adoptado_top5,0.00026260000000000004,1.0,0.8333333333333334,False,int-ocr-06,es,2.611,1.0,no_textual,"La exactitud obtenida en el inventario físico de septiembre del CEDIS Norte fue de **96.4%** [D1], con el conteo realizado el 30 de septiembre de 2026 en 1,240 ubicaciones [D1].
+
+La meta por CEDIS es de 98% [D3], por lo que el resultado quedó por debajo de ella. No hay resultados de consulta SQL en el contexto, así que no incluyo datos de [SQL]."
+0.9832884014736528,,1,1,responde,adoptado_top5,0.0001895,1.0,0.5,False,int-ocr-07,es,1.934,1.0,no_textual,"La diferencia total valorizada en el acta de inventario físico del CEDIS Norte fue de **$18,240 MXN** [D1].
+
+No hay resultado de consulta SQL en el contexto, así que el dato proviene solo del documento."
+0.9493550656617297,,1,1,responde,adoptado_top5,0.00014230000000000002,1.0,1.0,False,int-ocr-08,es,1.844,1.0,no_textual,"La responsable del inventario físico del CEDIS Norte fue **Laura Méndez, jefa de almacén** [D1]. El conteo se realizó el 30 de septiembre de 2026 [D1]."
+0.939755328528541,,1,1,responde,adoptado_top5,0.00020669999999999998,1.0,0.6666666666666666,False,int-ocr-09,es,2.141,1.0,no_textual,"En la remisión R-4471 llegaron **3 piezas dañadas** de las 120 remitidas (SKU-0042, proveedor Aceros del Norte). Estaban dañadas en el empaque y se rechazaron en recepción [D1].
+
+No se incluyó resultado de consulta [SQL], así que el dato proviene solo de la nota de remisión."
+0.7795237091900867,,1,1,responde,adoptado_top5,0.0002474,1.0,1.0,False,int-ocr-10,es,2.561,1.0,no_textual,"Se remitieron **120 piezas** del SKU-0042 en la nota R-4471 [D1]. La misma nota indica que 3 de ellas llegaron dañadas en el empaque y se rechazan en recepción [D1].
+
+No se incluyó resultado de consulta [SQL] para verificar esta cifra."
+0.9755979406548466,,2,1,responde,adoptado_top5,0.0002124,1.0,1.0,False,int-imagen-11,es,3.935,1.0,no_textual,"El nivel de servicio más bajo en septiembre de 2026 fue el de **CEDIS Occidente, con 95.1%** [D1].
+
+Para referencia, CEDIS Centro registró 97.8% y CEDIS Norte 98.6% [D1]. La meta de nivel de servicio es 97% [D3], por lo que Occidente quedó por debajo de ella."
+0.9586075149555467,,2,2,responde,adoptado_top5,0.0001554,1.0,0.75,False,int-imagen-12,es,3.196,1.0,no_textual,"Según el gráfico, el CEDIS Norte tuvo un nivel de servicio de **98.6%** en septiembre de 2026 [D1][D2].
+
+No hay resultado de consulta SQL en el contexto, así que no hay fuente [SQL] para este dato."
+0.994309495260592,,1,1,responde,adoptado_top5,0.0001902,1.0,0.5,False,int-imagen-13,es,2.024,1.0,no_textual,"El CEDIS Centro tuvo un nivel de servicio de **97.8%** en septiembre de 2026 [D1].
+
+No hay resultado de consulta SQL en el contexto, así que el dato proviene únicamente del gráfico."
+0.854193423685896,,3,2,responde,adoptado_top5,0.0002289,1.0,1.0,False,int-imagen-14,es,2.173,1.0,no_textual,"La zona de cuarentena del CEDIS Occidente está en el **Pasillo 12**, en su parte inferior [D1][D2][D3]."
+0.6905333553642533,,3,3,responde,adoptado_top5,0.0002939,1.0,0.625,False,int-imagen-15,es,4.421,1.0,no_textual,"La zona de SKUs críticos está junto al **Andén 2**, en la parte superior izquierda de la nave [D1]. Otros pasajes del mismo plano lo confirman: ""cerca del andén 2"" [D2][D3]. El Andén 2 pertenece al grupo de recepción [D2]."
+,,,,abstiene,adoptado_top5,0.0002598,,,False,nr-01,es,3.595,,sin_respuesta,"No puedo responder con el contexto disponible. Ninguno de los pasajes trata sobre vacaciones ni sobre días de descanso. [D1] habla de capacitación (40 horas anuales) y [D2] de la incorporación de compradores, que no aplica a almacenistas. Tampoco hay resultado de consulta [SQL].
+
+Para este dato hace falta la política de vacaciones de DIF o el área de recursos humanos."
+,,,,abstiene,adoptado_top5,0.0002685,,,False,nr-02,es,2.593,,sin_respuesta,"No encuentro en el contexto ninguna aseguradora que cubra la mercancía en tránsito entre CEDIS, así que no puedo responder con los datos disponibles.
+
+Lo que sí aparece en los documentos es información sobre transferencias y fletes, pero no sobre seguros:
+
+- Las transferencias se registran como salida en el origen y entrada en el destino, y la diferencia en tránsito se concilia a los 3 días [D3].
+- Las tarifas de flete entre CEDIS (por ejemplo, CDMX → Guadalajara: $8,500 MXN, 1 día) están en el documento de tarifas, con un recargo de 35% por flete exprés [D4].
+
+Tampoco hubo resultados de consulta SQL [SQL] relacionados con este tema. Para saber qué aseguradora cubre el tránsito, habría que consultar la póliza de seguro vigente o al área responsable de la empresa."
+,,,,abstiene,adoptado_top5,0.00016480000000000002,,,False,nr-03,es,1.74,,sin_respuesta,"No puedo responder con el contexto proporcionado. Ninguno de los pasajes (D1 a D5) menciona software contable ni al área de finanzas, y no hay resultado de consulta SQL en el contexto. Para saber qué software usa finanzas, habría que consultar la documentación de sistemas contables o al área de finanzas directamente."
+,,,,abstiene,adoptado_top5,0.0002832,,,False,nr-04,es,2.74,,sin_respuesta,"El contexto no incluye el interés moratorio que se cobra a un cliente que paga tarde. Ninguno de los pasajes trata sobre pagos atrasados de clientes.
+
+Lo que sí aparece es una penalización por **entrega tardía de proveedores**, que no aplica a este caso: 1.5% del valor de la orden por cada semana de retraso, con un máximo acumulado de 10% del valor del contrato [D1][D2]. Tampoco hay consulta SQL en el contexto que aporte datos al respecto.
+
+Para responder, hace falta el documento de condiciones de pago o cobranza a clientes, o la tabla de tasas moratorias."
+,,,,abstiene,adoptado_top5,0.00027069999999999997,,,False,nr-05,es,2.896,,sin_respuesta,"El contexto no permite responder. No hay ningún dato sobre un director general ni sobre el nombre de quien ocupa ese cargo, y tampoco hay resultado de consulta SQL.
+
+Los documentos sí mencionan otros cargos: el director comercial, que aprueba descuentos mayores a 20% [D1], y el director de operaciones, que aprueba compras de más de $250,000 MXN [D3] y escalamientos de nivel 3 [D5]. Pero ninguno de ellos es el director general, y no se da ningún nombre."
+,,,,abstiene,adoptado_top5,0.0002631,,,False,nr-06,es,2.579,,sin_respuesta,"El contexto proporcionado no incluye ninguna política de trabajo remoto para compradores. Los pasajes disponibles tratan sobre incorporación de compradores [D1], límites de aprobación de compras y cotizaciones [D2], escalamiento de SKUs críticos [D2][D3], reorden [D4] y uso del copiloto [D5], pero ninguno menciona trabajo remoto.
+
+Para conocer la política, conviene consultar a Recursos Humanos o al documento correspondiente."
+,,,,abstiene,adoptado_top5,0.000254,,,False,nr-07,es,2.424,,sin_respuesta,"No puedo responder con el contexto proporcionado. No hay resultado de consulta [SQL] ni ningún pasaje de documento sobre aguinaldo o prestaciones de los empleados. Los pasajes [D1] a [D5] tratan sobre capacitación de almacén, incorporación de compradores, órdenes de compra, auditoría de inventario e inventario cíclico, pero ninguno menciona el monto del aguinaldo.
+
+Si me compartes el documento o la consulta que contenga esa información (por ejemplo, una política de prestaciones o una tabla de nómina), con gusto te ayudo a responder."
+,,,,abstiene,adoptado_top5,0.00027939999999999996,,,False,nr-08,es,2.764,,sin_respuesta,"No puedo responder con el contexto disponible. Ninguno de los documentos habla de la entrega de uniformes al personal de almacén, y no hay resultado de consulta SQL [SQL] sobre el tema.
+
+Los pasajes que tengo tratan de capacitación [D1], devoluciones de clientes y a proveedores [D2][D3] y recepción de mercancía [D4][D5]. Para saber la periodicidad de entrega de uniformes, hace falta consultar la política correspondiente de recursos humanos o de dotación de personal, o proporcionar un documento o una consulta que la contenga."
+,,,,abstiene,adoptado_top5,0.00025269999999999996,,,False,nr-09,es,2.164,,sin_respuesta,"No puedo responder con los datos disponibles. El contexto proporcionado no incluye ninguna información sobre comisiones por factoraje a proveedores.
+
+Los pasajes disponibles tratan sobre:
+- Evaluación y clasificación de proveedores [D1], [D4]
+- Penalizaciones por entrega tardía en contratos marco (1.5% por semana, máximo 10%) y vigencia de 24 meses [D2]
+- La matriz de proveedores por categoría [D3]
+- Niveles de aprobación de órdenes de compra [D5]
+
+Ninguno de estos menciona factoraje ni comisiones. No hay resultado de consulta SQL [SQL] que aporte esta información. Para conocer la comisión, habría que consultar el contrato específico de factoraje o al área de finanzas de la empresa."
+,,,,abstiene,adoptado_top5,0.000363,,,False,nr-10,es,3.578,,sin_respuesta,"El contexto no alcanza para responder. No contiene información sobre huelgas de transportistas ni sobre cómo se manejan los pedidos de clientes en ese escenario. Tampoco hay resultados de consulta [SQL].
+
+Sí hay datos relacionados que no describen el caso de huelga:
+
+- La flota propia tiene 18 unidades de reparto, y las entregas se hacen en una ventana de 8:00 a 14:00 horas [D1].
+- Antes de una compra urgente, debe revisarse si otro CEDIS tiene excedente del SKU [D3]. Las transferencias de SKUs críticos se envían el mismo día si se solicitan antes de las 12:00 [D4].
+- Una compra urgente permite flete aéreo o exprés, con aprobación del gerente de compras sin importar el monto [D2].
+
+Para saber qué pasa con los pedidos durante una huelga, hace falta un documento de contingencia o un procedimiento de operación en paro de transporte."
+0.931586214666117,,2,1,responde,adoptado_top5,0.0002163,1.0,1.0,False,rec-01,en,2.808,1.0,base,"The deadline for a customer to return a product is **30 calendar days from delivery** [D1]. The product must be in its original packaging and unused [D1].
+
+Some exceptions apply [D1][D2]:
+- **Safety products** (PPE such as gloves, helmets, glasses, and harnesses) are not accepted if the packaging was opened, for hygiene reasons.
+- **Cut-to-measure packaging products** have no return option."
+0.824766900867744,,2,1,responde,adoptado_top5,0.00019140000000000002,1.0,0.5714285714285714,False,rec-02,en,2.289,1.0,base,"No. Under the returns policy, protective equipment in the **Seguridad** category (gloves, helmets, goggles, harnesses) is **not accepted** if the package has been opened, for hygiene reasons [D1][D2].
+
+I have no database query result for this question, so I can't cite [SQL]."
+0.9839035417311685,,2,1,responde,adoptado_top5,0.0001595,1.0,1.0,False,rec-03,en,1.636,1.0,base,You have **15 days** after receipt to return a product with a quality defect to a supplier [D1][D2].
+0.7198677894339474,,2,1,responde,adoptado_top5,0.0002993,1.0,0.6666666666666666,False,rec-04,en,3.076,1.0,base,"Each distribution center has the same target: **98%** accuracy, defined as the percentage of counted locations with no difference [D2]. The documents don't give a separate target for any individual center.
+
+For reference, the CEDIS Norte (Monterrey) count of September 30, 2026 obtained 96.4% accuracy [D3]. That is an actual result, not a target, and it is below the 98% goal."
+0.9313825241113735,,1,1,responde,adoptado_top5,0.00018810000000000002,1.0,0.6666666666666666,False,rec-05,en,4.85,1.0,base,"An inventory adjustment of 15,000 pesos must be approved by **Contraloría** (Comptroller's office), because adjustments above $10,000 MXN require its approval [D1]."
+0.9712221640118944,,1,1,responde,adoptado_top5,0.00017710000000000002,1.0,0.5,False,rec-06,en,2.82,1.0,base,Class A SKUs are counted **monthly** [D1]. This covers critical SKUs and the top 20% of SKUs by inventory value [D1].
+0.8760361788476051,,2,2,responde,adoptado_top5,0.0002625,1.0,0.8571428571428571,False,rec-07,en,2.747,1.0,base,"A purchase order of 120,000 MXN is approved by the **purchasing manager** (*gerente de compras*), since amounts from $50,000 to $250,000 MXN fall in that tier [D1][D2].
+
+The procedure also requires three comparable quotes for orders over $100,000 MXN, unless the SKU has a single approved supplier [D2]. No SQL data was provided, so I can't check this specific order's status."
+0.9560934107435793,,5,2,responde,adoptado_top5,0.00030930000000000004,1.0,0.8888888888888888,False,rec-08,en,3.192,1.0,base,"No. An AI assistant can only **propose** purchase orders, which are always created in PENDING_APPROVAL status [D1][D2][D4]. Approval must be given by a person whose authorization level matches the order amount [D1][D2]. The copilot's documentation explicitly lists approving purchase orders among the things it cannot do [D3].
+
+For reference, the approver depends on the order amount (quantity × unit cost, in MXN): under $50,000 is approved by the category buyer, and $50,000 to $250,000 by the purchasing manager [D5]."
+0.7028316673382231,,2,1,responde,adoptado_top5,0.00019280000000000002,1.0,0.6,False,rec-09,en,4.051,1.0,base,"Orders over **100,000 MXN** require **three comparable quotes** [D1][D2].
+
+The exception is SKUs with a single approved supplier. For those, the justification must be documented instead [D2]."
+0.9052403100205142,,4,1,responde,adoptado_top5,0.00036510000000000004,1.0,1.0,False,rec-10,en,3.156,1.0,base,"The reorder point is calculated as:
+
+**Reorder point = average daily demand × supplier lead time (days) × safety factor** [D1]
+
+- **Average daily demand** is based on the last 90 days of sales [D2].
+- **Supplier lead time** is in days. The system records the contractual lead time, not the observed one [D4].
+- **Safety factor** is 1.2 for normal SKUs and 1.5 for critical SKUs [D1][D2].
+
+The calculation is applied to **total stock**, the sum of stock across the three distribution centers (CEDIS Centro, Occidente, and Norte) [D1][D3]. It is recalculated every quarter or whenever the supplier changes its lead time [D2]. If a SKU changes supplier, its reorder point must be recalculated with the new lead time before the first order [D4]."
+0.8188711360061706,,2,2,responde,adoptado_top5,0.000215,1.0,1.0,False,rec-11,en,2.414,1.0,base,Critical SKUs use a **safety factor of 1.5** in the reorder point calculation [D1][D2]. The formula is: reorder point = average daily demand × supplier lead time (days) × safety factor. Normal SKUs use 1.2 [D1][D2].
+0.8331983230226488,,2,1,responde,adoptado_top5,0.00021810000000000002,1.0,0.7777777777777778,False,rec-12,en,2.266,1.0,base,"The Packaging category (called ""Empaque"" in the documents) is reviewed **weekly, on Mondays**, instead of the daily review used for all other SKUs. This exception applies because its unit cost is low and its supplier delivers in under a week [D1]. The general rule is a daily review of all SKUs against their reorder point [D2]."
+0.7017492242948369,,2,1,responde,adoptado_top5,0.0001965,1.0,1.0,False,rec-13,en,1.747,1.0,base,"The reorder point is evaluated against the **total stock**, meaning the sum of the inventory across all three distribution centers (CEDIS Centro, CEDIS Occidente, and CEDIS Norte) [D1][D2]."
+0.9247689450256846,,2,1,responde,adoptado_top5,0.0001612,1.0,1.0,False,rec-14,en,1.607,1.0,base,"A critical SKU is ordered to cover **45 days** of demand, plus safety stock [D1]. Normal SKUs are ordered for 30 days [D1][D2]."
+0.9219874256847512,,2,1,responde,adoptado_top5,0.0001495,1.0,1.0,False,rec-15,en,2.049,1.0,base,"The OTIF target for a supplier is **≥ 95%** [D1]. Suppliers are evaluated quarterly against this indicator.
+
+Note: the 97% figure in [D2] is the general service level target for orders, not the supplier-specific OTIF target, so it does not apply here."
+0.8311339020555873,,4,2,responde,adoptado_top5,0.0002923,1.0,1.0,False,rec-16,en,3.397,1.0,base,"A supplier from China typically takes **35 to 40 days** to deliver [D2]. For example, Shenzhen Industrial Parts (CN) has a contracted lead time of **38 days** [D3].
+
+These are contracted times, not observed ones [D1]. Critical SKUs whose supplier lead time exceeds **20 days** must have an approved alternate supplier [D5]."
+0.8706541534970255,,2,1,responde,adoptado_top5,0.0002812,1.0,1.0,False,rec-17,en,4.761,1.0,base,"A supplier that misses two or more targets is classified as **C**. The company looks for a replacement, and the supplier is not assigned new critical SKUs [D1][D2].
+
+A supplier also becomes C after two consecutive quarters in B [D1][D2]."
+0.814743427905527,,2,1,responde,adoptado_top5,0.00022660000000000003,1.0,1.0,False,rec-18,en,2.158,1.0,base,"The receiving hours at the Occidente distribution center (CEDIS Occidente, Guadalajara) are **Monday to Friday, 8:00 to 16:00** [D1].
+
+Deliveries outside these hours require an appointment authorized by the warehouse manager [D2]."
+0.8481114131366896,,1,1,responde,adoptado_top5,0.000164,1.0,1.0,False,rec-19,en,3.298,1.0,base,Un recibo debe registrarse en el sistema en un plazo máximo de **4 horas** [D1].
+0.8441771879098395,,2,1,responde,adoptado_top5,0.0003578,1.0,0.75,False,rec-20,en,3.358,1.0,base,"A receiving difference of 3% is above the 2% threshold, so it is handled as a **partial rejection** of the difference, and the **supplier is notified** [D1].
+
+If the difference is an **excess delivery**, you can either return the surplus or negotiate its acceptance with a debit note (*nota de cargo*) [D3].
+
+The context doesn't say whether the 3% is a shortage or an excess, so I can't confirm which of these paths applies. No query results were provided, so I have no [SQL] data for this case."
+0.836056698956488,,1,1,responde,adoptado_top5,0.0001795,1.0,0.6666666666666666,False,rec-21,en,3.738,1.0,base,"A critical SKU is considered **at risk** when its days of coverage are less than its supplier's lead time, even if it has not yet crossed its reorder point. [D3]
+
+Days of coverage is defined as total stock divided by the average daily sales of the last 30 days. [D3]
+
+Note: the context does not include the lead time of any specific supplier, so I cannot say whether a particular SKU is at risk. [SQL] No query result was provided."
+0.8095910112159723,,2,1,responde,adoptado_top5,0.0002607,1.0,1.0,False,rec-22,en,2.473,1.0,base,"An urgent purchase must be approved by the **purchasing manager (gerente de compras)**, regardless of the amount [D1]. For urgent purchases of critical SKUs, this applies even when the amount is below the usual threshold [D2]."
+0.8534298515108216,,1,1,responde,adoptado_top5,0.00020410000000000003,1.0,1.0,False,rec-23,en,2.059,1.0,base,"A critical SKU is escalated to the purchasing manager (Level 2) when it has **fewer than 7 days of coverage** [D1]. At that level, urgent purchase and inter-warehouse transfer are evaluated [D1]."
+0.9999999999999997,,2,1,responde,adoptado_top5,0.0001902,1.0,1.0,False,rec-24,en,2.027,1.0,base,"The minimum quantity for a transfer between distribution centers is **20 units or one full pallet, whichever is smaller** [D1][D2]. No SQL query result was provided, so I have no [SQL] data for this answer."
+0.9899883830065513,,4,1,responde,adoptado_top5,0.0001889,1.0,0.6666666666666666,False,rec-25,en,1.792,1.0,base,"Guadalajara to Monterrey takes **2 days** in transit [D1][D3]. The transfer procedures document gives the same figure [D2][D4].
+
+No SQL result was provided, so I did not cite [SQL]."
+0.8738644256728486,,1,1,responde,adoptado_top5,0.00020769999999999998,1.0,0.6666666666666666,False,rec-26,en,2.008,1.0,base,"A distribution center is considered to have a surplus when it holds **more than 1.5 times its normal share** of the total stock of a SKU. The normal share is one third of the total stock, so a CEDIS has a surplus when it holds more than half of the SKU's total stock [D1]."
+0.7878253554004241,,2,1,responde,adoptado_top5,0.00020730000000000002,1.0,0.6,False,rec-27,en,2.107,1.0,base,"The copilot can query **existencias** (stock), along with sales, suppliers, and reorder points, in **read-only** mode [D1]. It cannot modify stock, prices, reorder points, or master data [D2].
+
+[SQL] No query result was provided, so I can't report any actual stock figures."
+0.8651803350193189,,2,1,responde,adoptado_top5,0.0002219,1.0,1.0,False,rec-28,en,3.816,1.0,base,"No. The copilot cannot change prices or other master data. It cannot modify stock, prices, reorder points, or master data [D1]. It works in read-only mode for stock, sales, suppliers, and reorder points [D2]. Its only write-type action is proposing purchase orders, which stay in PENDING_APPROVAL until a person approves them [D1][D2]."
+0.8880916302697686,,4,1,responde,adoptado_top5,0.0002585,1.0,0.875,False,rec-29,en,3.563,1.0,base,"If the copilot gives a wrong answer, you should:
+
+1. **Verify the important figures before making any purchasing decision** [D1].
+2. **Report the incorrect answer to the data team**, including the exact question and the date [D1].
+
+The copilot is read-only for stock, prices, reorder points, and master data, so it cannot correct its own errors in the system [D2]. Any purchase order it proposes stays in PENDING_APPROVAL until a person with the right authorization level approves it [D4][D5]."
+0.9832002425853089,,1,1,responde,adoptado_top5,0.0001454,1.0,1.0,False,rec-30,en,1.594,1.0,base,A warehouse worker must complete **40 hours** of training per year [D1].
+0.7836830520243973,,2,1,responde,adoptado_top5,0.00019360000000000002,1.0,1.0,False,rec-31,en,2.192,1.0,base,"An account executive can approve discounts of up to **12%** without escalation [D1]. Discounts above 12% and up to 20% need the sales manager's approval, and discounts above 20% need the sales director's approval [D1].
+
+Discounts do not apply to products in the Security category [D2]."
+0.9513147810380577,,1,1,responde,adoptado_top5,0.00016010000000000002,1.0,1.0,False,rec-32,en,1.597,1.0,base,The monthly inventory close is done on the **last business day** of each month [D1].
+0.9926251047921801,,1,1,responde,adoptado_top5,0.00013810000000000002,1.0,0.5,False,rec-33,en,1.765,1.0,base,Surveillance videos are kept for **45 natural days** [D1].
+0.7526849274126736,,2,1,responde,adoptado_top5,0.0002808,1.0,0.6666666666666666,False,rec-34,en,2.551,1.0,base,"Según la política de mermas y caducidad, los SKUs perecederos con vida útil menor a **60 días** se revisan cada semana [D1].
+
+El contexto no incluye un resultado de consulta [SQL], así que no puedo indicar qué SKUs concretos cumplen esa condición.
+
+La categoría Empaque también se revisa semanalmente, pero no es perecedera, así que no aplica a esta pregunta [D2]."
+0.9999999999999996,,1,1,responde,adoptado_top5,0.00013580000000000002,1.0,0.5,False,rec-35,en,1.834,1.0,base,The maximum height of a pallet is **1.20 meters** [D1].
+0.9276279446686967,,1,1,responde,adoptado_top5,0.00017710000000000002,1.0,1.0,False,rec-36,en,1.929,1.0,base,A customer has **5 business days** to file a delivery claim [D1]. Every claim receives an initial response within a maximum of **48 hours** [D1].
+0.8647187005542266,,1,1,responde,adoptado_top5,0.000172,1.0,0.6666666666666666,False,rec-37,en,1.637,1.0,base,"The Monterrey distribution center (CEDIS Norte) has capacity for **12,000 pallet positions** [D1]."
+0.8282856024284865,,1,1,responde,adoptado_top5,0.0001537,1.0,1.0,False,rec-38,en,1.833,1.0,base,The target service level is **97%** of complete orders [D1].
+0.9756655712981686,,1,1,responde,adoptado_top5,0.0001475,1.0,1.0,False,rec-39,en,1.698,1.0,base,Warehouse system backups are made **every day at 02:00** [D1].
+1.0,,1,1,responde,adoptado_top5,0.00015319999999999998,1.0,0.5,False,rec-40,en,1.753,1.0,base,The reference cost per kilometer for the fleet is **14.50 MXN** [D1].
+0.992390576799377,,1,1,responde,adoptado_top5,0.0001239,1.0,1.0,False,rec-41,en,2.131,1.0,base,The framework contract with a supplier lasts **24 months** [D1].
+0.7961257520961325,,2,1,responde,adoptado_top5,0.0001963,1.0,0.75,False,rec-42,en,2.27,1.0,base,"Under the framework contract with suppliers, each week of late delivery incurs a penalty of **1.5% of the order value** [D1]. The cumulative penalty is capped at **10% of the contract value** [D1][D2]."
+0.9344400464969397,,1,1,responde,adoptado_top5,0.0001557,1.0,1.0,False,rec-43,en,1.754,1.0,base,A major audit finding must be corrected within **15 natural days** [D1].
+0.8401555391303447,,1,1,responde,adoptado_top5,0.0001782,1.0,1.0,False,rec-44,en,2.344,1.0,base,"A new buyer cannot approve purchases over **50,000 MXN** during their first month [D1]. Their first two weeks are an accompaniment period before they operate on their own [D1]."
+0.8293555108675609,,1,1,responde,adoptado_top5,0.000202,1.0,1.0,False,rec-45,en,2.058,1.0,base,"Safety stock is the additional inventory held to cover variations in demand or in delivery times [D1]. In Spanish, the glossary defines it as ""existencia adicional para cubrir variaciones de demanda o de entrega."""
+0.7018465077871149,,1,1,responde,adoptado_top5,0.00017930000000000002,1.0,0.8,False,rec-46,en,2.972,1.0,base,"**Shrinkage** (called *merma* in the company's documents) is the loss of product due to damage, expiration, or theft [D1]."
+0.8389059252181066,,4,2,responde,adoptado_top5,0.00039160000000000003,1.0,1.0,False,rec-47,en,3.863,1.0,base,"**Before an urgent purchase**, check whether another CEDIS has surplus stock of the SKU, and review the transfer policy between CEDIS [D1]. Transfers must move at least 20 units or one full pallet, whichever is smaller. The sending CEDIS must never drop below its normal share, which is one third of its total stock for that SKU [D2]. An urgent purchase also requires approval from the purchasing manager regardless of amount, and the extra cost over normal freight must be documented [D4].
+
+**Transit time from Mexico City to Guadalajara is 1 day** [D2][D3]. Express freight carries a 35% surcharge over the normal rate, which is MXN $8,500 for this route [D3]."
+0.9582584139981375,,3,3,responde,adoptado_top5,0.0003137,1.0,1.0,False,rec-48,en,3.114,1.0,base,"A critical SKU with less than 7 days of coverage is escalated to **Level 2 (purchasing manager)**, who evaluates an urgent purchase and a transfer between distribution centers (CEDIS) [D1].
+
+Its safety factor is **1.5**, the factor for critical SKUs. The reorder point is calculated as average daily demand × supplier lead time (days) × safety factor [D3][D4].
+
+The context has no [SQL] data, so it doesn't say which specific SKUs are affected."
+0.9175262996129984,,3,2,responde,adoptado_top5,0.0002895,1.0,0.8333333333333334,False,rec-49,en,2.976,1.0,base,"**Purchase order of 300,000 MXN:** the **Director de operaciones** (operations director) approves it, because orders over $250,000 MXN require that level [D1][D2].
+
+**Inventory adjustment:** the approver depends on its absolute value, which you didn't specify:
+- Up to $10,000 MXN: the **jefe de almacén** (warehouse manager) approves [D3].
+- Over $10,000 MXN: **contraloría** (comptroller's office) approves [D3]."
+0.9073303450364544,,1,1,responde,adoptado_top5,0.000206,1.0,1.0,False,rec-50,en,2.267,1.0,base,"The quality target is **less than 2%** of rejected parts at reception [D1]. The indicator is measured as the percentage of parts rejected at receiving, and each supplier is evaluated quarterly [D1]."
+0.9245893775119324,,2,2,responde,adoptado_top5,0.0001894,1.0,0.0,False,int-pdf-01,en,2.048,1.0,no_textual,"Según la tarifa normal de flete, Guadalajara → Monterrey cuesta **$10,900 MXN** y tarda **2 días** de tránsito [D1][D2]. No hay datos de consulta SQL para esta pregunta, así que no citó [SQL]."
+0.9830001267476044,,1,1,responde,adoptado_top5,0.00014610000000000003,1.0,1.0,False,int-pdf-02,en,1.66,1.0,no_textual,Express freight carries a **35% surcharge** over the standard rate [D1].
+0.9206534241233074,,2,2,responde,adoptado_top5,0.0002113,1.0,0.5,False,int-pdf-03,en,3.345,1.0,no_textual,"The standard freight rate from Mexico City to Monterrey is **MXN $12,300**, with a transit time of 2 days [D1][D2]. This is the normal rate. An express freight surcharge of 35% applies on top of it [D1]. No SQL result was provided, so this answer comes only from the freight rate document."
+0.9484453844199289,,4,2,responde,adoptado_top5,0.00020769999999999998,1.0,0.5555555555555556,False,int-pdf-04,en,2.435,1.0,no_textual,"The agreed lead time for Shenzhen Industrial Parts is **38 days** [D1][D2]. This is the contractual lead time recorded in the system, not the observed one [D3]. It falls within the 35 to 40 day reference range for Asian suppliers (CN) [D4]."
+0.8745764015593265,,1,1,responde,adoptado_top5,0.00021419999999999998,1.0,0.25,False,int-pdf-05,en,2.465,1.0,no_textual,"**Seguridad Andina** (CO) is the only supplier in the Safety category with a C rating. Its agreed delivery time is 15 days [D1].
+
+No SQL result was provided, so this answer comes only from the document [D1]."
+0.6892950690650098,,3,1,responde,adoptado_top5,0.0002529,1.0,0.625,False,int-ocr-06,en,2.594,1.0,no_textual,"The accuracy obtained in the September 2026 physical inventory at the North distribution center (CEDIS Norte, Monterrey) was **96.4%**, from the count held on September 30, 2026 [D1]. That is below the 98% accuracy target for each CEDIS [D4].
+
+[D2] shows 98.6% for CEDIS Norte, but that figure belongs to a service-level chart, not to inventory accuracy, so I did not use it."
+0.7258001782790601,,1,1,responde,adoptado_top5,0.0002243,1.0,0.6,False,int-ocr-07,en,2.217,1.0,no_textual,"The total valued difference in the North distribution center (CEDIS Norte, Monterrey) inventory record was **$18,240 MXN** [D1]. This is from the physical inventory count of September 30, 2026, which covered 1,240 locations with 96.4% accuracy [D1].
+
+No SQL result was included in the context, so I could not cross-check this figure against a database query [SQL]."
+0.7771706962991843,,1,1,responde,adoptado_top5,0.0002165,1.0,0.75,False,int-ocr-08,en,2.089,1.0,no_textual,"According to the physical inventory record for the North distribution center (CEDIS Norte, Monterrey), the person responsible was **Laura Méndez, warehouse manager (jefa de almacén)** [D1]. The count took place on September 30, 2026."
+0.8013586765245768,,1,1,responde,adoptado_top5,0.000203,1.0,0.875,False,int-ocr-09,en,2.052,1.0,no_textual,"**3 piezas** llegaron dañadas en la nota de remisión R-4471 (SKU-0042, Aceros del Norte, 120 piezas remitidas). Las observaciones indican que se dañaron en el empaque y se rechazan en recepción [D1].
+
+No se incluyó un resultado de consulta [SQL] para verificar este dato."
+0.8778383427808828,,1,1,responde,adoptado_top5,0.0002515,1.0,0.8571428571428571,False,int-ocr-10,en,2.483,1.0,no_textual,"According to delivery note R-4471, **120 pieces** were shipped (SKU-0042, supplier Aceros del Norte) [D1]. The note also says 3 pieces were damaged in the packaging and rejected at reception [D1].
+
+No database query result [SQL] was included in the context, so this answer comes only from the document."
+0.7941229957901261,,2,1,responde,adoptado_top5,0.0002494,1.0,1.0,False,int-imagen-11,en,2.48,1.0,no_textual,"The lowest service level in September 2026 was **CEDIS Occidente, at 95.1%** [D1]. The other two centers were CEDIS Centro at 97.8% and CEDIS Norte at 98.6% [D1]. This is below the 97% target for order fill service level [D3]."
+0.8305780888418294,,2,1,responde,adoptado_top5,0.0002054,1.0,1.0,False,int-imagen-12,en,3.218,1.0,no_textual,The North distribution center (CEDIS Norte) had a service level of **98.6%** in September 2026 [D1]. That is above the 97% target for complete orders [D3].
+0.8824800177837528,,2,2,responde,adoptado_top5,0.0002053,1.0,0.3333333333333333,False,int-imagen-13,en,3.21,1.0,no_textual,"The Central distribution center (CEDIS Centro) had a **97.8%** service level in September 2026 [D1]. The same value appears in the chart's data section [D2].
+
+No SQL result was provided, so this answer relies only on the document context."
+0.8087805121423163,,3,2,responde,adoptado_top5,0.00021860000000000003,1.0,1.0,False,int-imagen-14,en,1.868,1.0,no_textual,"The quarantine zone of the CEDIS Occidente (West) distribution center is in **Aisle 12**, in the lower part of that aisle [D1][D2][D3]."
+0.9004908499364773,,3,3,responde,adoptado_top5,0.000234,1.0,0.6,False,int-imagen-15,en,3.811,1.0,no_textual,"The critical SKU zone of the West distribution center (CEDIS Occidente) is next to **Dock 2 (Andén 2)**. It sits in the upper-left part of the building, below that dock [D3]. [D1] and [D2] also place it near dock 2 [D1][D2]."
+,,,,abstiene,adoptado_top5,0.0002234,,,False,nr-01,en,3.505,,sin_respuesta,"The provided context doesn't say how many vacation days a warehouse employee gets in their first year. No SQL result was included, and none of the documents covers vacation or leave policy.
+
+The closest material is training: [D1] says each warehouse employee must complete 40 hours of training per year. That is not vacation time. For vacation days, check the company's HR or labor policy document."
+,,,,abstiene,adoptado_top5,0.0002385,,,False,nr-02,en,2.522,,sin_respuesta,"The context doesn't say which insurer covers goods in transit between distribution centers. None of the passages mention an insurance company or policy.
+
+What the documents do cover:
+- [D2] and [D3]: transfer rules, such as the minimum quantity and the 3-day reconciliation of in-transit differences.
+- [D4]: freight rates and transit times between CEDIS.
+- [D5]: that damage-in-transit claims are handled with the transport area, but it names no insurer.
+
+To answer this, you would need the insurance policy or a contact in the transport or finance area."
+,,,,abstiene,adoptado_top5,0.0002101,,,False,nr-03,en,2.274,,sin_respuesta,"The provided context doesn't say which accounting software the finance department uses. No SQL result was included, and none of the documents [D1]–[D5] mention accounting software. They cover inventory closing, purchase orders, customer discounts, shrinkage and expiry, and internal audits. Please check with the finance department or provide a document that covers their systems."
+,,,,abstiene,adoptado_top5,0.0002457,,,False,nr-04,en,2.855,,sin_respuesta,"El contexto no indica qué interés por pago tardío se cobra a un cliente. No hay resultado SQL disponible y ninguno de los documentos trata sobre intereses de mora en pagos de clientes.
+
+Lo único relacionado es la penalización por entrega tardía a **proveedores**: 1.5% del valor de la orden por cada semana de retraso, con un máximo acumulado de 10% del valor del contrato [D1][D2]. Ese dato no aplica a pagos tardíos de clientes."
+,,,,abstiene,adoptado_top5,0.00024680000000000004,,,False,nr-05,en,2.52,,sin_respuesta,"The provided context doesn't say who the company's chief executive officer is. None of the documents (D1–D5) or the SQL result (no query was provided) mention the CEO.
+
+The only named person in the context is Laura Méndez, warehouse manager at CEDIS Norte, who is not identified as the CEO [D5]. You could check the company's corporate records or ask someone in management."
+,,,,abstiene,adoptado_top5,0.0002252,,,False,nr-06,en,2.998,,sin_respuesta,"The provided context does not include a remote work policy for buyers. None of the documents (onboarding, purchase orders, reorder policy, or critical SKUs) mention remote work, and no SQL result was provided. I can't answer this from the available information. Please check with HR or the internal policy documents for remote work rules."
+,,,,abstiene,adoptado_top5,0.0001965,,,False,nr-07,en,4.119,,sin_respuesta,"The provided context doesn't include information about the employees' year-end bonus. There is no SQL result and none of the documents (D1–D5) mention bonuses, so I can't give an amount. You could check with HR or payroll, or provide a document or query result that includes the bonus data."
+,,,,abstiene,adoptado_top5,0.00025760000000000003,,,False,nr-08,en,2.633,,sin_respuesta,"The provided context doesn't say how often uniforms are issued to warehouse staff. No SQL result was provided, and none of the documents covers uniform issuance. The closest material is the training policy, which requires **40 hours** of training per year for each warehouse staff member [D1], but that doesn't address uniforms. For this information, you'd need to check with the warehouse manager or the HR/administration area."
+,,,,abstiene,adoptado_top5,0.00021660000000000003,,,False,nr-09,en,4.475,,sin_respuesta,"The provided context doesn't say what fee the company charges suppliers for factoring. None of the documents (D1–D5) or the SQL result mention factoring or financing fees. The documents cover contract term (24 months), late-delivery penalties (1.5% per week, capped at 10%), supplier evaluation, and the supplier matrix, but nothing on factoring."
+,,,,abstiene,adoptado_top5,0.0003375,,,False,nr-10,en,3.642,,sin_respuesta,"The provided context doesn't say what happens to customer orders during a carriers' strike. None of the documents covers strikes, carrier outages, or order handling in that situation, and no query result was provided.
+
+Related information that is in the context:
+- The company's own fleet has 18 delivery units, and customer deliveries run within an 8:00 to 14:00 window [D2].
+- Transit damage claims are handled with the transport area [D1].
+- An urgent purchase can use air or express freight, and it requires purchasing manager approval regardless of amount [D3].
+
+To answer the strike question, you would need a contingency or carrier-disruption procedure, or order-status data from the system."
+0.9769065478823805,,3,1,responde,estres_base_top3,0.00019580000000000002,1.0,0.7142857142857143,False,rec-01,es,1.653,1.0,base,"**Plazo para devolver un producto a un cliente: 30 días naturales desde la entrega** [D1].
+
+Condiciones relevantes:
+- El producto debe estar en su empaque original y sin uso [D1].
+- Los productos de la categoría Seguridad (guantes, cascos, lentes, arneses) no se aceptan si el empaque fue abierto, por razones de higiene [D1][D2].
+- Los productos de Empaque cortados a la medida no tienen devolución [D2].
+- La nota de crédito se emite en un máximo de 10 días hábiles después de recibir la devolución [D2].
+
+El pasaje [D3] no alcanza para confirmar los detalles de reingreso a inventario, por lo que no los incluyo."
+0.7662045025603658,,2,1,responde,estres_base_top3,0.00016130000000000002,1.0,0.8333333333333334,False,rec-02,es,1.951,1.0,base,"No. Los productos de la categoría **Seguridad** (equipo de protección personal: guantes, cascos, lentes, arneses) **no se aceptan** si el empaque fue abierto, por razones de higiene [D1][D2]."
+0.9649881500036562,,2,1,responde,estres_base_top3,0.0001125,1.0,0.6666666666666666,False,rec-03,es,1.239,1.0,base,"Debe devolver el producto a un proveedor dentro de **15 días** siguientes a la recepción por defecto de calidad [D1][D2].
+
+No hay datos de consulta SQL en el contexto, así que no aplica citar [SQL]."
+0.979432961141134,,2,1,responde,estres_base_top3,0.00029560000000000003,1.0,0.875,False,rec-04,es,2.792,1.0,base,"Según [D1], la meta de exactitud de inventario es de **98% para cada CEDIS**, medida como el porcentaje de ubicaciones contadas sin diferencia. [D1]
+
+No hay resultados de consulta [SQL] para esta pregunta. El pasaje de [D1] aparece truncado, así que no puedo confirmar si existen excepciones por CEDIS. [D3] reporta la exactitud obtenida en CEDIS Norte (96.4% en el conteo del 30 de septiembre de 2026), pero no indica una meta distinta, así que no cambia la meta de 98%. [D3]"
+0.9515598459418405,,1,1,responde,estres_base_top3,0.0001417,1.0,1.0,False,rec-05,es,1.9,1.0,base,"Un ajuste de inventario de $15,000 MXN lo aprueba **contraloría**, porque los ajustes mayores a $10,000 MXN requieren su aprobación [D1]. Los ajustes de hasta $10,000 MXN los aprueba el jefe de almacén [D1].
+
+No hay consulta SQL en el contexto, así que no aplica la cita [SQL]."
+0.9762654480124621,,1,1,responde,estres_base_top3,0.0001625,1.0,1.0,False,rec-06,es,1.665,1.0,base,Los SKUs de clase A se cuentan **mensualmente** [D3]. Esta clase incluye los SKUs críticos y el 20% de SKUs con mayor valor de inventario.
+0.8364899966085897,,2,2,responde,estres_base_top3,0.00014780000000000001,1.0,0.6666666666666666,False,rec-07,es,2.197,1.0,base,"Una orden de compra de 120,000 pesos la aprueba el **Gerente de compras**, porque el monto cae en el rango de De $50,000 a $250,000 MXN [D1][D3].
+
+Además, como el monto supera los $100,000 MXN, requiere tres cotizaciones comparables, salvo que el SKU tenga proveedor único homologado [D3].
+
+No hay datos de [SQL] en el contexto, así que no aporto información de consulta a base de datos."
+0.7416984539170431,,2,1,responde,estres_base_top3,0.00016460000000000002,1.0,0.6,False,rec-08,es,2.527,1.0,base,"No. Según la política de la distribuidora, un asistente de IA puede **proponer** órdenes de compra, pero éstas siempre se crean en estado PENDING_APPROVAL. La aprobación es exclusiva de una persona con el nivel de autorización correspondiente [D1][D2].
+
+El asistente tampoco puede aprobar ajustes de inventario ni modificar existencias, precios o puntos de reorden [D2].
+
+No hay datos de consulta SQL para esta pregunta, así que no aporto cifras adicionales."
+0.8606830088552962,,1,1,responde,estres_base_top3,0.0001954,1.0,1.0,False,rec-09,es,1.706,1.0,base,"Para una orden mayor a **$100,000 MXN** se necesitan **tres cotizaciones comparables** [D1].
+
+Hay una excepción: los SKUs con proveedor único homologado no requieren cotizaciones múltiples. El pasaje de [D1] está cortado en ese punto, así que no puedo confirmar los detalles de esa excepción."
+0.7495936411593337,,3,1,responde,estres_base_top3,0.0003833,1.0,1.0,False,rec-10,es,3.044,1.0,base,"El punto de reorden de cada SKU se calcula así:
+
+**punto de reorden = demanda diaria promedio × tiempo de entrega del proveedor (días) × factor de seguridad** [D1]
+
+- **Demanda diaria promedio:** se toma de los últimos 90 días de ventas [D3].
+- **Factor de seguridad:** 1.2 para SKUs normales y 1.5 para SKUs críticos [D1][D3].
+- **Stock comparado:** se evalúa contra el stock total, que es la suma de las existencias de los tres CEDIS [D1].
+- **Recálculo:** se actualiza cada trimestre o cuando el proveedor cambia su tiempo de entrega [D3].
+
+Cuando el stock total cae por debajo del punto de reorden, se genera una propuesta de orden de compra [D2]. Para SKUs normales, la cantidad a pedir cubre 30 días de demanda más el stock de seguridad [D2].
+
+No hay resultado de consulta SQL en el contexto, así que no incluyo datos numéricos de SKUs específicos. Los fragmentos de los documentos están cortados, por lo que algunos detalles pueden faltar."
+0.9368009739059832,,1,1,responde,estres_base_top3,0.0001156,1.0,1.0,False,rec-11,es,1.3,1.0,base,"Los SKUs críticos usan un **factor de seguridad de 1.5** [D2]. Los SKUs normales usan 1.2 [D2].
+
+No hay resultado de consulta SQL en el contexto, así que no aporto datos [SQL]."
+0.8789034189110975,,2,1,responde,estres_base_top3,0.0001304,1.0,1.0,False,rec-12,es,1.394,1.0,base,"La categoría Empaque se revisa **semanalmente, los lunes** [D1]. Es una excepción a la regla general, que establece una revisión diaria de todos los SKUs contra su punto de reorden [D2]. La excepción se justifica porque su costo unitario es bajo y su proveedor entrega en menos de una semana [D1]."
+0.7734269042999439,,1,1,responde,estres_base_top3,0.0001038,1.0,0.75,False,rec-13,es,1.057,1.0,base,"El punto de reorden se evalúa sobre el **stock total**, es decir, la suma de las existencias de los tres CEDIS [D1].
+
+Fuentes: [D1]"
+0.8739672145048006,,1,1,responde,estres_base_top3,0.0002162,1.0,,False,rec-14,es,2.058,1.0,base,"Un SKU crítico se pide para cubrir **45 días** de demanda, más el stock de seguridad [D1]. La cantidad se redondea al múltiplo de empaque del proveedor [D1].
+
+No hay resultado de consulta SQL en el contexto, así que no incluyo datos [SQL]."
+0.94008665777682,,2,1,responde,estres_base_top3,0.0002154,1.0,0.6666666666666666,False,rec-15,es,1.934,1.0,base,"La meta de OTIF de un proveedor es **mayor o igual a 95%** [D1]. Cada proveedor se evalúa trimestralmente con este indicador.
+
+No confundir con el 97% de ""nivel de servicio objetivo"" del documento de indicadores de operación [D2], que se refiere a pedidos completos de la operación, no a la evaluación de proveedores."
+0.8599959954309382,,3,2,responde,estres_base_top3,0.0002309,1.0,,False,rec-16,es,2.235,1.0,base,"Un proveedor de China tarda de **35 a 40 días** en entregar [D2]. Como referencia concreta, Shenzhen Industrial Parts (CN) tiene pactados **38 días** [D3].
+
+El tiempo registrado en el sistema es el pactado en contrato, no el observado [D1]. No hay resultado de consulta SQL en el contexto, así que no incluyo datos de [SQL]."
+0.8639322766454544,generación,2,1,responde,estres_base_top3,0.00040310000000000004,0.0,1.0,True,rec-17,es,3.83,1.0,base,"Un proveedor que incumple **dos o más metas** se clasifica como **C** [D1]. Para esta categoría, el documento dice que **se busca reemplazo y no se…**, pero el texto está cortado, así que no puedo confirmar la acción completa.
+
+También es C un proveedor que queda en **B dos trimestres seguidos** [D1].
+
+Las metas trimestrales son OTIF ≥ 95%, calidad con menos de 2% de piezas rechazadas, y desviación de tiempo de entrega de ±2 días [D2][D1].
+
+No hay resultado de consulta [SQL] para este caso."
+0.8861574098334608,,1,1,responde,estres_base_top3,0.000117,1.0,1.0,False,rec-18,es,1.445,1.0,base,"El horario de recepción del CEDIS Occidente (Guadalajara) es de **lunes a viernes, de 8:00 a 16:00** [D1]. Las entregas fuera de ese horario requieren cita [D1]."
+0.8726451716154201,,2,1,responde,estres_base_top3,0.0001492,1.0,1.0,False,rec-19,es,1.529,1.0,base,"Según el procedimiento de recepción, la entrada debe registrarse en el sistema en un plazo máximo de **4 horas** [D1].
+
+Nota: el fragmento disponible de [D1] y [D3] se corta antes de aclarar a partir de qué momento se cuentan las 4 horas (por ejemplo, desde la llegada de la entrega o desde el conteo), así que ese detalle no puede confirmarse con el contexto dado."
+0.9021802706313525,,1,1,responde,estres_base_top3,0.0001927,1.0,1.0,False,rec-20,es,1.889,1.0,base,"Si la diferencia en recepción es de 3%, supera el umbral del 2%, así que se hace un **rechazo parcial** de la diferencia y se notifica al proveedor [D1]."
+0.8818672075863664,,2,0,responde,estres_base_top3,0.0002518,1.0,0.6666666666666666,False,rec-21,es,2.379,1.0,base,"Un SKU crítico está **en riesgo** cuando sus **días de cobertura son menores que el tiempo de entrega de su proveedor**, aunque todavía no haya cruzado su punto de reorden [D1].
+
+Los días de cobertura se calculan como stock total ÷ venta diaria promedio de los últimos 30 días [D1].
+
+Si un SKU crítico está en riesgo o por debajo del punto de reorden, el comprador debe emitir la propuesta de orden de compra el mismo día [D3].
+
+No se incluyeron datos de consulta SQL, así que esta respuesta se basa solo en los documentos."
+0.0,generación,2,1,responde,estres_base_top3,0.0004037,0.0,0.7142857142857143,True,rec-22,es,3.869,1.0,base,"El **gerente de compras** aprueba una compra urgente, sin importar el monto [D2]. En el caso de SKUs críticos, la regla es la misma aunque el monto sea menor [D1].
+
+Los fragmentos no dicen con claridad si una compra urgente de más de $250,000 MXN también requiere al director de operaciones. Según la tabla de montos, esa cantidad corresponde a ese puesto [D1]. Además, un SKU crítico con existencia total en cero o con un cliente que reporta paro de línea corresponde al nivel 3, que requiere al director de operaciones [D2]. Para confirmarlo, revisa el documento completo de órdenes de compra."
+0.7114001967988003,,3,1,responde,estres_base_top3,0.0001445,1.0,0.5,False,rec-23,es,1.162,1.0,base,"Se escala al gerente de compras (Nivel 2) cuando un SKU crítico tiene **menos de 7 días de cobertura** [D2]. Los días de cobertura se calculan como stock total ÷ venta diaria promedio de los últimos 30 días [D1].
+
+Además, las compras urgentes de SKUs críticos requieren al gerente de compras aunque el monto sea menor [D3]."
+0.7737169171822815,,1,1,responde,estres_base_top3,0.0001099,1.0,1.0,False,rec-24,es,1.157,1.0,base,"La cantidad mínima por transferencia es de **20 unidades o una tarima completa, lo que sea menor** [D1].
+
+No hay datos de consulta SQL en el contexto, así que no aplica la cita [SQL]."
+0.8994698627744423,,3,1,responde,estres_base_top3,0.0001819,1.0,1.0,False,rec-25,es,1.936,1.0,base,El tránsito de Guadalajara a Monterrey es de **2 días** [D1][D2][D3].
+0.7718791705305866,,2,1,responde,estres_base_top3,0.0001744,1.0,0.5555555555555556,False,rec-26,es,1.716,1.0,base,"Un CEDIS se considera con excedente cuando tiene **más de 1.5 veces su participación normal del stock total del SKU**. La participación normal es un tercio del stock total, así que el umbral equivale a más de 0.5 del stock total del SKU (1.5 × 1/3) [D1].
+
+Antes de comprar de urgencia, debe revisarse si otro CEDIS tiene ese excedente, para transferir en lugar de comprar [D1][D2].
+
+[SQL] No se consultó la base de datos, por lo que no hay datos de stock por CEDIS para aplicar el criterio a casos concretos."
+0.8349637885252436,,1,1,responde,estres_base_top3,0.000179,1.0,0.7142857142857143,False,rec-27,es,1.967,1.0,base,"El copiloto puede consultar **existencias**, junto con ventas, proveedores y puntos de reorden, en **modo solo lectura** [D1].
+
+No se incluyó resultado de consulta SQL, así que no puedo darte existencias concretas de SKUs."
+0.9423580235278196,,2,1,responde,estres_base_top3,0.00018810000000000002,1.0,0.6666666666666666,False,rec-28,es,1.761,1.0,base,"No, el copiloto no puede modificar precios. Según el documento de uso del copiloto, sus capacidades son de solo lectura: consultar existencias, ventas, proveedores y puntos de reorden, y explicar políticas internas [D1]. Entre las cosas que no puede hacer, el documento indica expresamente que no puede modificar existencias, precios, puntos de reorden ni datos maestros [D2].
+
+El único cambio que puede proponer son órdenes de compra, que quedan en estado PENDING_APPROVAL para aprobación humana [D1][D2].
+
+No se consultó la base de datos para esta respuesta, por lo que no hay datos [SQL] que citar."
+0.0,recuperación,1,0,abstiene,estres_base_top3,0.0003778,0.0,0.4444444444444444,True,rec-29,es,3.828,0.0,base,"El contexto no incluye un procedimiento para cuando el copiloto da una respuesta incorrecta, así que no puedo indicarte los pasos a seguir.
+
+Lo que sí dice el documento sobre el copiloto es que puede consultar existencias, ventas, proveedores y puntos de reorden en modo **solo lectura**, y que al explicar políticas internas cita el documento de origen [D1]. El pasaje de [D1] se corta antes de describir el resto de sus funciones y limitaciones, así que puede haber más información en la versión completa.
+
+Te recomiendo revisar el documento completo ""Uso del copiloto de inventario"" [D1] o consultar al responsable del sistema."
+0.8843442954784705,,1,1,responde,estres_base_top3,0.0001284,1.0,1.0,False,rec-30,es,1.431,1.0,base,Un almacenista debe completar **40 horas** de capacitación al año [D1].
+0.6973263219823992,,2,1,responde,estres_base_top3,0.00022040000000000002,1.0,1.0,False,rec-31,es,2.166,1.0,base,"Un ejecutivo de cuenta puede aprobar descuentos de **hasta 12%** [D2]. Los descuentos de más de 12% y hasta 20% requieren al gerente comercial, y los mayores a 20% requieren al director comercial [D2].
+
+Además, los descuentos no aplican a productos de la categoría Seguridad [D1]."
+0.9340620792203446,,1,1,responde,estres_base_top3,0.0001439,1.0,0.8333333333333334,False,rec-32,es,1.56,1.0,base,"El cierre mensual de inventario se realiza el **último día hábil** de cada mes [D1].
+
+Las transacciones posteriores al cierre se registran en el periodo siguiente [D1], aunque el pasaje recuperado está cortado y no detalla ese procedimiento.
+
+No encontré en el contexto más información sobre la hora exacta del cierre ni sobre el procedimiento completo de transacciones posteriores."
+0.9418843902733269,,1,1,responde,estres_base_top3,8.7e-05,1.0,1.0,False,rec-33,es,0.908,1.0,base,Los videos de vigilancia se conservan **45 días naturales** [D1].
+0.0,,1,1,responde,estres_base_top3,0.00021260000000000002,1.0,0.5,False,rec-34,es,2.289,1.0,base,"No puedo nombrar los SKUs concretos. El contexto no incluye un resultado de consulta [SQL] con el listado de productos.
+
+Lo que sí define el contexto es el criterio: los SKUs perecederos con vida útil menor a 60 días se revisan cada semana [D1]. Para obtener la lista, hace falta consultar el maestro de SKUs filtrando por perecederos y vida útil menor a 60 días."
+0.9999999999999997,,1,1,responde,estres_base_top3,7.259999999999999e-05,1.0,0.5,False,rec-35,es,0.945,1.0,base,La altura máxima de una tarima es de **1.20 metros** [D1].
+0.9161458216732422,,1,1,responde,estres_base_top3,0.0001615,1.0,1.0,False,rec-36,es,1.489,1.0,base,El cliente tiene **5 días hábiles** para presentar una reclamación de entrega [D1]. Toda reclamación recibe respuesta inicial en un máximo de 48 horas [D1].
+0.807619707851246,,1,1,responde,estres_base_top3,0.000128,1.0,0.6666666666666666,False,rec-37,es,1.277,1.0,base,"Según el documento [D1], el CEDIS Norte (Monterrey) tiene capacidad para **12,000 posiciones de tarima** [D1].
+
+No se incluyó resultado de consulta SQL [SQL] en el contexto, así que el dato proviene únicamente del documento."
+1.0,,1,1,responde,estres_base_top3,8.89e-05,1.0,1.0,False,rec-38,es,0.885,1.0,base,El nivel de servicio objetivo es de **97% de pedidos completos** [D1].
+0.9999999999999996,,1,1,responde,estres_base_top3,0.00010290000000000001,1.0,1.0,False,rec-39,es,1.13,1.0,base,"Los respaldos del sistema de almacén se hacen todos los días a las **02:00** horas [D1].
+
+No hay consulta SQL en el contexto, así que no aplico datos de [SQL]."
+0.9999999999999997,,1,1,responde,estres_base_top3,0.0001562,1.0,0.6666666666666666,False,rec-40,es,1.549,1.0,base,"El costo de referencia por kilómetro de la flota es de **14.50 MXN** [D1].
+
+No hay resultado de consulta SQL en el contexto, así que este dato proviene solo del documento de flota."
+0.989953167818324,,1,1,responde,estres_base_top3,8.760000000000002e-05,1.0,0.5,False,rec-41,es,0.984,1.0,base,La vigencia de un contrato marco con proveedor es de **24 meses** [D1].
+0.8958453282304376,,2,1,responde,estres_base_top3,0.00011520000000000001,1.0,1.0,False,rec-42,es,1.194,1.0,base,"La penalización por entrega tardía es de **1.5% del valor de la orden por cada semana de retraso** [D1]. La penalización máxima acumulada es de **10% del valor del contrato** [D1][D2].
+
+No se incluyó consulta SQL en el contexto, así que no hay datos [SQL] que citar."
+0.9453418987885455,,1,1,responde,estres_base_top3,0.0001443,1.0,0.5,False,rec-43,es,1.632,1.0,base,"Un hallazgo mayor de auditoría debe corregirse en un plazo de **15 días naturales** [D1].
+
+No hay resultados de consulta [SQL] para esta pregunta."
+0.9501562823360733,,1,1,responde,estres_base_top3,0.0001022,1.0,0.6666666666666666,False,rec-44,es,1.275,1.0,base,"Durante su primer mes, un comprador nuevo no puede aprobar compras mayores a **50,000 MXN** [D1].
+
+No hay resultado de consulta SQL en el contexto, así que no aplica la cita [SQL]."
+0.7847384867922657,,2,1,responde,estres_base_top3,0.00017410000000000003,1.0,0.375,False,rec-45,es,1.805,1.0,base,"El stock de seguridad es la existencia adicional que se mantiene para cubrir variaciones de la demanda o de las entregas [D1]. En otras palabras, es un colchón de inventario por encima de lo necesario para la venta normal, que protege contra picos de consumo o retrasos del proveedor.
+
+En la política de reorden, la cantidad a pedir se calcula como la demanda de 30 días (o 45 días para SKUs críticos) más el stock de seguridad [D3]. No se consultó la base de datos, así que no hay datos [SQL] sobre niveles actuales de stock de seguridad por producto."
+0.7182345437021233,,3,1,responde,estres_base_top3,0.0001745,1.0,1.0,False,rec-46,es,2.036,1.0,base,"Una **merma** es la pérdida de producto por daño, caducidad o robo [D3].
+
+En la empresa, una merma mensual mayor al **2 %** del valor del inventario se reporta a contraloría [D2]. Las mermas por caducidad se registran con el motivo ""caducidad"", no como ajuste genérico [D1]."
+0.8034232045918714,recuperación,3,1,responde,estres_base_top3,0.00041910000000000005,0.0,0.5384615384615384,True,rec-47,es,4.445,0.5,base,"**Tránsito CDMX → Guadalajara:** 1 día [D1][D2][D3].
+
+**Qué revisar antes de una compra urgente** (el contexto no trae una lista completa para compras urgentes; solo estos puntos):
+
+- **Stock del CEDIS que envía:** nunca debe quedar por debajo de su participación normal, que es un tercio del stock total del SKU [D1].
+- **Cantidad mínima por transferencia:** 20 unidades o una tarima completa, lo que sea menor [D1].
+- **Costo del flete exprés:** tiene un recargo de 35% sobre la tarifa normal [D2]. Para CDMX → Guadalajara, la tarifa normal es de $8,500 MXN [D2][D3], por lo que el exprés sería de aproximadamente $11,475 MXN (cálculo mío a partir de [D2])."
+0.7633181254238396,recuperación,3,1,responde,estres_base_top3,0.0004091,0.0,0.8181818181818182,True,rec-48,es,3.607,0.5,base,"**Qué pasa:** Según [D1], un SKU crítico está **en riesgo** cuando sus días de cobertura son menores que el tiempo de entrega de su proveedor, aunque todavía no haya cruzado su punto de reorden. El contexto no menciona el umbral de 7 días, así que no puedo confirmar si aplica por sí mismo. Tampoco está completa la sección de escalamiento de [D1], por lo que no sé qué nivel o responsable corresponde. Según [D2], para un SKU crítico la orden debe cubrir 45 días de demanda más el stock de seguridad, y no se genera una nueva propuesta si ya existe una orden abierta (pendiente o aprobada) para ese SKU.
+
+**Factor de seguridad:** 1.5 para SKUs críticos [D3] (frente a 1.2 para SKUs normales).
+
+No hay resultados de consulta [SQL] para verificar el SKU específico."
+0.799980507660173,recuperación,2,1,responde,estres_base_top3,0.0002892,0.0,0.75,True,rec-49,es,2.857,0.5,base,"**Ajuste de inventario:** Los ajustes con valor absoluto de hasta $10,000 MXN los aprueba el **jefe de almacén**. Los ajustes mayores a $10,000 MXN requieren aprobación de **contraloría** [D1].
+
+**Orden de compra de $300,000 MXN:** El contexto no indica quién la aprueba. Solo dice que las órdenes se aprueban según los montos definidos en el procedimiento de órdenes de compra [D2], y esos montos no aparecen en los pasajes disponibles. Para saber el aprobador, hay que consultar ese procedimiento.
+
+No se recibió resultado de consulta SQL, así que no hay datos [SQL] que citar."
+0.9078925916315231,,2,1,responde,estres_base_top3,0.00017240000000000002,1.0,0.3333333333333333,False,rec-50,es,1.826,1.0,base,La meta de calidad es que las **piezas rechazadas en recepción sean menores a 2%** [D2]. [D1] coincide con esta meta.
+0.9380898854315389,,2,2,responde,estres_base_top3,0.0001225,1.0,1.0,False,int-pdf-01,es,1.331,1.0,no_textual,"Según las tarifas de flete entre CEDIS, el flete normal de Guadalajara a Monterrey cuesta **$10,900 MXN** y tiene un tránsito de 2 días [D1][D2].
+
+No se incluye un resultado de consulta SQL en el contexto, así que no aplica la cita [SQL]."
+0.9924821087720628,,1,1,responde,estres_base_top3,0.0001259,1.0,0.6,False,int-pdf-02,es,1.766,1.0,no_textual,"El flete exprés tiene un recargo de **35% sobre la tarifa normal** [D1].
+
+No hay resultado de consulta SQL en el contexto, así que no aporto datos [SQL]. El contexto tampoco incluye el monto del flete exprés por ruta, solo el porcentaje."
+0.824925934927819,,2,2,responde,estres_base_top3,0.0001092,1.0,0.75,False,int-pdf-03,es,1.341,1.0,no_textual,"La tarifa de flete normal de Ciudad de México a Monterrey es de **$12,300 MXN**, con un tránsito de 2 días [D1][D2].
+
+No se incluye resultado de [SQL] en el contexto proporcionado."
+0.9124497482030868,,2,1,responde,estres_base_top3,0.000213,1.0,0.8,False,int-pdf-04,es,1.936,1.0,no_textual,"Shenzhen Industrial Parts tiene un tiempo de entrega pactado de **38 días** [D1].
+
+No hay resultado de consulta [SQL] en el contexto, así que el dato proviene solo de la matriz de proveedores. Según [D3], el tiempo registrado en el sistema es el pactado en contrato, no el observado."
+0.9225987517263944,,1,1,responde,estres_base_top3,0.00016160000000000002,1.0,0.5,False,int-pdf-05,es,1.627,1.0,no_textual,"**Seguridad Andina** (CO) es el proveedor de la categoría Seguridad con clasificación C, con un tiempo de entrega pactado de 15 días [D3].
+
+No se incluyó resultado de consulta [SQL], así que la respuesta se basa solo en los documentos."
+0.8948407758252538,,2,1,responde,estres_base_top3,0.0002084,1.0,1.0,False,int-ocr-06,es,2.179,1.0,no_textual,"En el inventario físico de septiembre del CEDIS Norte la exactitud obtenida fue de **96.4%**, con conteo al 30 de septiembre de 2026 y 1,240 ubicaciones contadas [D1].
+
+La meta de exactitud por CEDIS es de 98% [D2], por lo que el resultado quedó 1.6 puntos por debajo."
+0.8605897874434326,,1,1,responde,estres_base_top3,0.0001663,1.0,0.6666666666666666,False,int-ocr-07,es,1.51,1.0,no_textual,"La diferencia total valorizada en el acta de inventario físico del CEDIS Norte fue de **$18,240 MXN** [D1]. El conteo se realizó el 30 de septiembre de 2026 sobre 1,240 ubicaciones, con una exactitud de 96.4% [D1]."
+0.9504442954571054,,1,1,responde,estres_base_top3,0.00018419999999999998,1.0,1.0,False,int-ocr-08,es,1.713,1.0,no_textual,"La responsable del inventario físico del CEDIS Norte fue **Laura Méndez, jefa de almacén** [D1]. El acta corresponde al conteo del 30 de septiembre de 2026 [D1]."
+0.9015887397087038,,1,1,responde,estres_base_top3,0.00016769999999999998,1.0,1.0,False,int-ocr-09,es,1.714,1.0,no_textual,"En la remisión R-4471 llegaron **3 piezas dañadas** en el empaque, que se rechazaron en recepción [D1].
+
+No hay resultado de consulta SQL en el contexto, así que este dato proviene solo del documento."
+0.5493267395228658,,1,1,responde,estres_base_top3,0.00021219999999999998,1.0,1.0,False,int-ocr-10,es,2.249,1.0,no_textual,"Se remitieron **120 piezas** (SKU-0042, proveedor Aceros del Norte) [D1].
+
+La nota también indica que 3 piezas llegaron dañadas en el empaque y se rechazan en recepción [D1]."
+0.9411156018495485,,1,1,responde,estres_base_top3,0.00017310000000000003,1.0,1.0,False,int-imagen-11,es,1.597,1.0,no_textual,"El nivel de servicio más bajo en septiembre de 2026 fue el de **CEDIS Occidente, con 95.1%** [D1].
+
+Los otros dos CEDIS quedaron por encima: Norte con 98.6% y Centro con 97.8% [D1]."
+0.9940965467458875,,2,2,responde,estres_base_top3,0.0001122,1.0,0.6666666666666666,False,int-imagen-12,es,1.219,1.0,no_textual,"El nivel de servicio del CEDIS Norte en septiembre de 2026 fue de **98.6%** [D1][D2].
+
+No hay resultado de consulta SQL en el contexto, así que el dato proviene únicamente de los documentos."
+0.9662739755253268,,2,2,responde,estres_base_top3,0.00013519999999999998,1.0,0.3333333333333333,False,int-imagen-13,es,1.521,1.0,no_textual,"Según el documento [D1], el nivel de servicio del CEDIS Centro en septiembre de 2026 fue de **97.8%**.
+
+[D1] y [D2] corresponden a la misma gráfica (grafica_nivel_servicio) y coinciden en el dato. No hay datos de [SQL] en el contexto, así que la respuesta se basa solo en los documentos."
+0.9999999999999994,,3,2,responde,estres_base_top3,0.00016710000000000002,1.0,1.0,False,int-imagen-14,es,1.583,1.0,no_textual,"La zona de cuarentena del CEDIS Occidente está en el **pasillo 12**, en su parte inferior [D1][D2][D3]."
+0.9096624011827674,,2,2,responde,estres_base_top3,0.0001739,1.0,0.8,False,int-imagen-15,es,3.564,1.0,no_textual,"La zona de SKUs críticos del CEDIS Occidente está junto al **Andén 2**, que es un andén de recepción. Según el plano, se ubica en la parte superior izquierda de la nave, debajo de ese andén [D2][D3]."
+,,,,abstiene,estres_base_top3,0.0002244,,,False,nr-01,es,2.9,,sin_respuesta,"No puedo responder con el contexto disponible. Ninguno de los documentos trata sobre vacaciones, y no se incluyó un resultado de consulta [SQL] con esa información.
+
+Los pasajes entregados solo hablan de capacitación del personal de almacén [D1], del proceso de recepción [D2] y de los respaldos del sistema [D3]. Para esta pregunta necesito el documento de políticas de vacaciones o de prestaciones laborales de la empresa, o una consulta que devuelva los días de vacaciones por antigüedad."
+,,,,abstiene,estres_base_top3,0.0002584,,,False,nr-02,es,2.608,,sin_respuesta,"El contexto no indica qué aseguradora cubre la mercancía en tránsito entre CEDIS. Los pasajes de [D1] y [D3] describen tiempos de tránsito, cantidades mínimas y la conciliación de diferencias a los 3 días, pero no mencionan seguros ni aseguradoras. [D2] trata sobre niveles de servicio por CEDIS, y no aporta información de cobertura. Tampoco hay resultado de consulta [SQL] que responda la pregunta.
+
+Para obtener esta información, habría que consultar la póliza de seguro vigente o el área responsable de finanzas o compras de la distribuidora."
+,,,,abstiene,estres_base_top3,0.0001376,,,False,nr-03,es,1.473,,sin_respuesta,"No puedo responder con los datos disponibles. El contexto no incluye ninguna consulta SQL ni menciona el software contable del área de finanzas. Los pasajes recuperados tratan sobre nivel de servicio por CEDIS [D1], clasificación ABC para conteos de inventario [D2] y niveles de aprobación de descuentos a clientes [D3], sin información sobre sistemas contables."
+,,,,abstiene,estres_base_top3,0.0001345,,,False,nr-04,es,1.631,,sin_respuesta,"No puedo responder con el contexto proporcionado. Los pasajes disponibles tratan sobre la vigencia de los contratos marco con proveedores, las penalizaciones por entrega tardía de proveedores y la clasificación de proveedores (A, B, C). Ninguno menciona interés moratorio ni cobros a clientes por pago tardío. Tampoco hay resultados de consulta SQL que aporten esa información."
+,,,,abstiene,estres_base_top3,0.0002252,,,False,nr-05,es,3.089,,sin_respuesta,"No puedo responder con el contexto disponible. No hay resultado de consulta [SQL] y ninguno de los pasajes [D1], [D2] o [D3] menciona al director general de la empresa.
+
+Los pasajes sí mencionan otros cargos, como el director comercial, que aprueba descuentos mayores a 20% [D1][D3], y el director de operaciones, que aprueba compras de más de $250,000 MXN [D2]. Ninguno indica quién ocupa el puesto de director general.
+
+Para obtener este dato, habría que consultar un documento o una fuente que contenga el organigrama o la información directiva de la empresa."
+,,,,abstiene,estres_base_top3,0.00028389999999999996,,,False,nr-06,es,2.809,,sin_respuesta,"No encuentro una política de trabajo remoto para compradores en el contexto proporcionado. Los pasajes disponibles tratan de devoluciones [D1], de incorporación de compradores [D2] y de proveedores y tiempos de entrega [D3], pero ninguno menciona trabajo remoto.
+
+Lo que sí dice el contexto sobre compradores nuevos es que tienen **2 semanas** de acompañamiento antes de operar solos y que, durante su primer mes, no pueden aprobar compras mayores a **50,000 MXN** [D2]. Para conocer la política de trabajo remoto, habría que consultar un documento específico sobre ese tema, como el reglamento interno o de recursos humanos."
+,,,,abstiene,estres_base_top3,0.0001764,,,False,nr-07,es,2.66,,sin_respuesta,"No puedo responder con los datos disponibles. No hay ningún [SQL] con resultados de consulta, y ninguno de los pasajes de documentos trata sobre aguinaldos ni sobre prestaciones de los empleados:
+
+- [D1] habla de la penalización máxima de contratos con proveedores (10% del valor del contrato).
+- [D2] trata de las horas de capacitación del personal de almacén (40 horas al año) y de los niveles de certificación.
+- [D3] describe los niveles de aprobación de órdenes de compra por monto.
+
+Para responder, haría falta un documento o una consulta sobre nóminas o prestaciones del personal, que no están en el contexto."
+,,,,abstiene,estres_base_top3,0.00019380000000000002,,,False,nr-08,es,1.973,,sin_respuesta,"El contexto no incluye información sobre la entrega de uniformes al personal de almacén, así que no puedo indicar con qué frecuencia se entregan.
+
+No se proporcionó resultado de consulta [SQL], y los pasajes de documentos tratan de otros temas: horas de capacitación obligatorias [D1], el proceso de recepción de mercancía [D2] y los respaldos del sistema de almacén [D3]."
+,,,,abstiene,estres_base_top3,0.0001829,,,False,nr-09,es,2.223,,sin_respuesta,"El contexto no incluye información sobre comisiones por factoraje a proveedores, así que no puedo responder con los datos disponibles. No hay resultado de consulta SQL, y los documentos [D1], [D2] y [D3] tratan sobre vigencia de contratos marco, penalizaciones por entrega tardía, flota de reparto y costos por kilómetro.
+
+Para esa respuesta hace falta un documento o una consulta que incluya las condiciones de factoraje."
+,,,,abstiene,estres_base_top3,0.00031410000000000005,,,False,nr-10,es,2.955,,sin_respuesta,"El contexto no responde esta pregunta. No hay ningún pasaje sobre huelgas de transportistas ni sobre qué ocurre con los pedidos de clientes en ese caso, y no se incluyó resultado de consulta SQL [SQL].
+
+Lo que sí aparece, sin referirse a huelgas:
+
+- Un cliente tiene **5 días hábiles** para presentar una reclamación de entrega, y toda reclamación recibe respuesta inicial en **48 horas** [D1].
+- Las reclamaciones por daño en tránsito se atienden con el área de transporte [D1].
+
+Para saber cómo se gestionan los pedidos durante una huelga, hace falta un documento de contingencia o de operaciones de transporte, o una consulta sobre el estado de los pedidos afectados."
+0.9580525082885281,,1,1,responde,estres_base_top3,0.00013230000000000002,1.0,0.6,False,rec-01,en,1.459,1.0,base,The deadline for a customer to return a product is **30 calendar days from delivery** [D1]. The product must be in its original packaging and unused [D1].
+0.964943855817208,,2,1,responde,estres_base_top3,0.0001544,1.0,0.7777777777777778,False,rec-02,en,1.657,1.0,base,"**No.** Protective equipment returns are not accepted if the package was opened, for hygiene reasons. This applies to gloves, helmets, glasses, and harnesses in the Seguridad category [D1][D2]."
+0.9294598097054086,,2,1,responde,estres_base_top3,0.000144,1.0,1.0,False,rec-03,en,1.551,1.0,base,You have **15 days** after receipt to return a product with a quality defect to a supplier [D1][D2]. Each supplier return is also logged and counted toward the quality indicator [D1].
+0.7490521272923831,,2,1,responde,estres_base_top3,0.00027160000000000004,1.0,1.0,False,rec-04,en,4.261,1.0,base,"Each distribution center has an inventory accuracy target of **98%**, defined as the percentage of locations counted with no discrepancy [D1]. The policy applies to all three centers: CEDIS Centro (Mexico City), CEDIS Occidente (Guadalajara), and CEDIS Norte (Monterrey) [D2]. The document states the target generically ""por CEDIS,"" so it does not list a separate value for each one.
+
+If a CEDIS falls below 95% for two consecutive months, it moves to full counting [D1]."
+0.7447210031144182,,1,1,responde,estres_base_top3,0.0002075,1.0,0.8571428571428571,False,rec-05,en,2.109,1.0,base,"A **contraloría** must approve it. According to the adjustment rules, adjustments greater than **$10,000 MXN** require contraloría approval, and $15,000 MXN is above that threshold [D1]. Adjustments are measured by absolute value, so this applies whether the adjustment is a gain or a loss."
+0.0,recuperación,3,0,abstiene,estres_base_top3,0.0002782,0.0,0.1875,True,rec-06,en,2.881,0.0,base,"The context doesn't say how often class A SKUs are counted. It doesn't mention ABC classes or a physical counting schedule.
+
+The closest information is in [D1], which sets a **daily** review of all SKUs against their reorder point, with packaging reviewed weekly. That is a stock review, not a physical count, so it doesn't answer the question. [D2] and [D3] cover critical SKUs, which are a different category from class A, and only describe their coverage-days indicator and semiannual flagging."
+0.8339793503907975,,2,2,responde,estres_base_top3,0.00021260000000000002,1.0,1.0,False,rec-07,en,2.076,1.0,base,"A purchase order of 120,000 pesos (MXN) is approved by the **purchasing manager** (*Gerente de compras*), because it falls in the $50,000 to $250,000 MXN band [D1][D2].
+
+Orders above $100,000 MXN also need three comparable quotations, unless the SKU has a homologated single supplier [D1]."
+0.994488631637895,,2,1,responde,estres_base_top3,0.00018610000000000002,1.0,1.0,False,rec-08,en,1.876,1.0,base,"No. An AI assistant can **propose** purchase orders, but it cannot approve them. Proposed orders are always created in PENDING_APPROVAL status and must be approved by a person with the correct authorization level [D1]. The assistant's listed restrictions also explicitly exclude approving purchase orders and inventory adjustments [D2]."
+0.8695403030774941,,1,1,responde,estres_base_top3,0.00016690000000000002,1.0,1.0,False,rec-09,en,1.727,1.0,base,"**Three comparable quotes** are required for an order over 100,000 MXN [D1]. Exception: SKUs with a single approved supplier, though the source text is cut off at that point, so I can't confirm the exact conditions [D1]."
+0.7856649938634361,,2,1,responde,estres_base_top3,0.000273,1.0,1.0,False,rec-10,en,2.51,1.0,base,"The reorder point for each SKU is:
+
+**Reorder point = average daily demand × supplier lead time (days) × safety factor** [D1]
+
+- **Average daily demand** is taken from the last 90 days of sales [D3].
+- **Supplier lead time** is in days [D1].
+- **Safety factor** is 1.2 for normal SKUs and 1.5 for critical SKUs [D1][D3].
+
+The check is made against the **total stock**, the sum of the stock in all three distribution centers (CEDIS) [D1]. The reorder point is recalculated every quarter or when the supplier changes its lead time [D3]."
+0.9343706188756085,,1,1,responde,estres_base_top3,0.00017710000000000002,1.0,1.0,False,rec-11,en,2.495,1.0,base,Critical SKUs use a **safety factor of 1.5** [D2]. Normal SKUs use 1.2 [D2].
+0.9276778185589105,,1,1,responde,estres_base_top3,0.000166,1.0,1.0,False,rec-12,en,1.826,1.0,base,"The Packaging category is reviewed **weekly, on Mondays**, instead of the daily review used for other SKUs. This is because its unit cost is low and its supplier delivers in under a week [D2]."
+0.7540634754181778,,2,1,responde,estres_base_top3,0.0001617,1.0,1.0,False,rec-13,en,1.882,1.0,base,"The reorder point is evaluated against the **total stock**, meaning the sum of inventory across all three distribution centers (CEDIS Centro, CEDIS Occidente, and CEDIS Norte) [D2][D1]."
+0.9472952929429065,,1,1,responde,estres_base_top3,0.0001385,1.0,1.0,False,rec-14,en,1.315,1.0,base,"A critical SKU is ordered to cover **45 days** of demand, plus safety stock [D1]. The policy applies this to critical SKUs, while normal SKUs use 30 days [D1]."
+0.9219874256847512,,2,1,responde,estres_base_top3,0.000186,1.0,0.3333333333333333,False,rec-15,en,2.016,1.0,base,"The OTIF target for a supplier is **≥ 95%** (on time and in full) [D1]. Suppliers are evaluated quarterly against this indicator.
+
+The 97% figure in [D2] is the operation's target for complete orders, not a supplier target, so it doesn't apply here."
+0.8134419573081261,,3,2,responde,estres_base_top3,0.00018460000000000001,1.0,1.0,False,rec-16,en,1.927,1.0,base,"Suppliers from China (CN) take **35 to 40 days** to deliver, according to the reference delivery times [D1][D2]. The sample supplier Shenzhen Industrial Parts has a contracted delivery time of **38 days** [D3].
+
+The system records the contracted delivery time, not the observed one [D1]."
+0.0,generación,2,1,responde,estres_base_top3,0.0002905,0.0,1.0,True,rec-17,en,2.958,1.0,base,"A supplier that misses two or more targets is classified as **C** [D1]. For C, the document says the company looks for a replacement, but the sentence is cut off (""Se busca reemplazo y no se""), so I can't confirm the rest of the consequence [D1]. A fragment in [D3] (""...tifica al proveedor"") may refer to notifying the supplier, but the text is incomplete, so I can't confirm that either [D3]."
+0.814743427905527,,1,1,responde,estres_base_top3,0.0002849,1.0,1.0,False,rec-18,en,2.874,1.0,base,"The receiving hours at the Occidente distribution center (CEDIS Occidente, Guadalajara) are **Monday to Friday, 8:00 to 16:00** [D2]. Deliveries outside these hours require an appointment [D2]."
+0.9321904726349955,,1,1,responde,estres_base_top3,0.0001177,1.0,1.0,False,rec-19,en,1.678,1.0,base,A receipt must be recorded in the system within a **maximum of 4 hours** [D1].
+0.8955421546854406,,1,1,responde,estres_base_top3,0.0001972,1.0,1.0,False,rec-20,en,2.131,1.0,base,"A 3% receiving difference is above the 2% tolerance, so the difference is **partially rejected** and the **supplier is notified** [D1]. The difference is not accepted, and the buyer is not simply notified as it would be at 2% or less [D1].
+
+The excerpt is cut off, so I can't confirm any further steps, such as deadlines or documentation requirements, for this case."
+0.8034091432632889,,2,1,responde,estres_base_top3,0.00023,1.0,1.0,False,rec-21,en,2.293,1.0,base,"A critical SKU is **at risk** when its days of coverage are less than its supplier's lead time, even if it has not yet crossed its reorder point [D2].
+
+Days of coverage = total stock ÷ average daily sales over the last 30 days [D2].
+
+Under the escalation policy, a critical SKU that is at risk falls under Level 1, so the buyer must issue the purchase order proposal the same day [D3]."
+0.9152815330978684,recuperación,3,0,responde,estres_base_top3,0.0003384,0.0,0.8333333333333334,True,rec-22,en,2.891,0.0,base,"An urgent purchase is approved by a person, never by the AI assistant. The approver depends on the amount:
+
+- **$50,000 to $250,000 MXN:** purchasing manager (Gerente de compras) [D2]
+- **Over $250,000 MXN:** operations director (Director de operaciones) [D2]
+- **Urgent purchases of critical SKUs:** always the purchasing manager, even if the amount is lower [D2]
+
+The excerpt cuts off the lowest amount tier, which appears to be assigned to the category buyer (Comprador de la categoría), so I can't confirm its exact range. The assistant can only propose orders, which are created as PENDING_APPROVAL [D1][D3]. No SQL data was provided for this question."
+0.8546277207356409,,2,1,responde,estres_base_top3,0.0001709,1.0,1.0,False,rec-23,en,2.192,1.0,base,A critical SKU is escalated to the purchasing manager (Level 2) when it has **fewer than 7 days** of coverage [D2]. Coverage is calculated as total stock divided by the average daily sales over the last 30 days [D1].
+0.8381176831991071,,1,1,responde,estres_base_top3,0.00020569999999999999,1.0,0.25,False,rec-24,en,1.994,1.0,base,"The minimum quantity per transfer is **20 units or one full pallet, whichever is smaller** [D1]. No SQL result was provided, so this comes only from the transfer documentation."
+0.9466879937324292,,3,1,responde,estres_base_top3,0.0001764,1.0,1.0,False,rec-25,en,1.838,1.0,base,"The transit time from Guadalajara to Monterrey is **2 days** [D1][D2][D3]. The freight rate for this route is $10,900 MXN at the normal rate [D1][D3]."
+0.8481728199821732,,1,1,responde,estres_base_top3,0.0002525,1.0,0.5,False,rec-26,en,2.746,1.0,base,"A distribution center has a surplus when it holds **more than 1.5 times its normal share** of the SKU's total stock. The normal share is one third of total stock, so a center has a surplus when it holds more than half (50%) of that stock [D1]."
+0.8132704910655048,,1,1,responde,estres_base_top3,0.00019769999999999998,1.0,0.6363636363636364,False,rec-27,en,2.476,1.0,base,"The copilot can query **stock levels (existencias)**, along with sales, suppliers, and reorder points, in **read-only mode** [D1]. It cannot change inventory data. It can also propose purchase orders, but those stay in PENDING_APPROVAL until approved [D1].
+
+No SQL query was run for this question, so I can't report any actual stock figures. The excerpt of [D1] is also truncated, so it doesn't list every available query."
+0.9388746225799203,,1,0,responde,estres_base_top3,0.0003427,1.0,0.5,False,rec-28,en,3.292,0.0,base,"**No, based on the context, the copilot cannot change prices.**
+
+According to [D1], the copilot works in **read-only mode** for inventory queries (stock, sales, suppliers, reorder points). It can also propose purchase orders, but those stay in PENDING_APPROVAL status until someone approves them. Price changes are not listed among its capabilities.
+
+The excerpt of [D1] is cut off, and no other passage covers prices, so I can't confirm any explicit rule about them. Check the full document for details."
+0.0,recuperación,3,0,abstiene,estres_base_top3,0.0002512,0.0,0.6,True,rec-29,en,2.63,0.0,base,"The provided context doesn't say what to do if the copilot gives a wrong answer. The excerpt from [D1] (uso_copiloto) cuts off after the list of what the copilot can do, and the other excerpts ([D2] recepcion_almacen and [D3] reclamaciones_clientes) cover warehouse receiving and customer claims. I can't give you the procedure without inventing it.
+
+The visible part of [D1] says the copilot can query inventory in read-only mode, explain internal policies citing their source document, and propose purchase orders that stay in PENDING_APPROVAL status. The full document, probably in its later sections, would be the place to check for guidance on errors."
+0.983979121932555,,1,1,responde,estres_base_top3,0.0001228,1.0,1.0,False,rec-30,en,1.508,1.0,base,A warehouse worker must complete **40 training hours per year** [D1].
+0.679419327229739,,2,1,responde,estres_base_top3,0.00018109999999999998,1.0,1.0,False,rec-31,en,2.195,1.0,base,"An account executive can approve discounts of up to **12%** without escalation [D1]. Discounts above 12% and up to 20% need the sales manager's approval, and discounts above 20% need the sales director's approval [D1].
+
+Discounts don't apply to products in the Security category [D2]."
+0.9441021661370649,,1,1,responde,estres_base_top3,0.0001189,1.0,1.0,False,rec-32,en,1.351,1.0,base,The monthly inventory close is held on the **last business day** of each month [D1].
+0.9926251047921801,,1,1,responde,estres_base_top3,0.000101,1.0,0.5,False,rec-33,en,1.225,1.0,base,Surveillance videos are kept for **45 natural days** [D1].
+0.9258353267863578,,1,1,abstiene,estres_base_top3,0.0002027,1.0,0.6,False,rec-34,en,2.136,1.0,base,"The context defines which perishable SKUs are reviewed weekly, but it does not list them. The rule is that perishable SKUs with a shelf life under **60 days** are reviewed every week [D1]. No SQL result was provided, so I can't name the specific SKUs that meet this criterion."
+0.9999999999999996,,1,1,responde,estres_base_top3,0.000107,1.0,0.5,False,rec-35,en,2.262,1.0,base,The maximum height of a pallet is **1.20 meters** [D1].
+0.9261702244585849,,1,1,responde,estres_base_top3,0.0001402,1.0,1.0,False,rec-36,en,1.482,1.0,base,A customer has **5 business days** (5 días hábiles) to file a delivery claim [D1]. The initial response to the claim comes within a maximum of **48 hours** [D1].
+,,1,1,responde,estres_base_top3,0.0001394,1.0,0.6666666666666666,False,rec-37,en,1.45,1.0,base,"The Monterrey distribution center (CEDIS Norte) has capacity for **12,000 pallet positions** [D3]."
+0.8282856024284865,,1,1,responde,estres_base_top3,0.0001312,1.0,0.5,False,rec-38,en,1.464,1.0,base,The target service level is **97% of complete orders** [D1].
+0.9756655712981686,,1,1,responde,estres_base_top3,0.000136,1.0,1.0,False,rec-39,en,1.753,1.0,base,Warehouse system backups are made **every day at 02:00** (2:00 a.m.) [D1].
+1.0,,1,1,responde,estres_base_top3,0.0001284,1.0,0.5,False,rec-40,en,1.473,1.0,base,The reference cost per kilometer for the fleet is **14.50 MXN** [D1].
+0.9999999999999997,,1,1,responde,estres_base_top3,0.0001148,1.0,0.5,False,rec-41,en,1.677,1.0,base,A framework contract with a supplier lasts **24 months** [D1].
+0.9219605542195954,,2,1,responde,estres_base_top3,0.0001702,1.0,1.0,False,rec-42,en,3.127,1.0,base,"For each week of late delivery, the penalty is **1.5% of the order value**. The cumulative penalty is capped at **10% of the contract value** [D1][D3]."
+0.9344400464969397,,1,1,responde,estres_base_top3,0.00012429999999999999,1.0,1.0,False,rec-43,en,1.487,1.0,base,A major audit finding must be corrected within **15 natural days** [D1].
+0.9386736055991971,,1,1,responde,estres_base_top3,0.00011609999999999999,1.0,1.0,False,rec-44,en,1.96,1.0,base,"During their first month, a new buyer cannot approve purchases over **50,000 MXN** [D1]."
+0.9162845111926629,,1,1,responde,estres_base_top3,0.0001517,1.0,0.6666666666666666,False,rec-45,en,1.736,1.0,base,"Safety stock is an additional stock level held to cover variations in demand or delivery [D1]. In the glossary, it is defined as ""existencia adicional para cubrir variaciones de demanda o de entrega"" [D1]."
+0.6236553337215532,,2,1,responde,estres_base_top3,0.0002365,1.0,1.0,False,rec-46,en,3.097,1.0,base,"In the provided context, ""shrinkage"" is not defined directly. The closest term is **merma** (Spanish for product loss), defined as product lost to damage, expiration, or theft [D2]. If ""shrinkage"" is meant in this sense, it covers those three causes.
+
+The context also notes that merma from expiration is recorded with the reason ""caducidad,"" and that a monthly merma above 2% of inventory value must be reported to the comptroller's office [D3]."
+0.8841703242348901,recuperación,3,1,responde,estres_base_top3,0.0003919,0.0,0.6153846153846154,True,rec-47,en,3.969,0.5,base,"**Before an urgent purchase:** The context does not say what to check before an urgent purchase. The document excerpts cover inter-CEDIS transfers, not purchasing procedures. The only related rules are that each transfer must move at least **20 units or one full pallet, whichever is smaller**, and the sending CEDIS must not drop below its normal share of total stock, which is one third [D1].
+
+**Transit time, Mexico City to Guadalajara:** **1 day** [D1][D2][D3].
+
+If the urgent shipment goes by express freight, the express surcharge is **35% over the normal rate** [D2]. The normal freight rate for this route is **$8,500 MXN** [D2][D3], so the express rate would be about **$11,475 MXN** (my calculation from those figures)."
+0.0,recuperación,3,1,responde,estres_base_top3,0.0004553,0.0,0.8333333333333334,True,rec-48,en,4.414,0.5,base,"**What happens:** The context does not say what happens at exactly fewer than 7 days of coverage. It only says that a critical SKU is **at risk** when its days of coverage are less than its supplier's lead time, even if it hasn't crossed its reorder point [D1]. The escalation levels are cut off in the document, so I can't tell you which level applies. Whether 7 days is a risk threshold depends on that supplier's lead time, which isn't in the context.
+
+**Safety factor:** Critical SKUs have a safety factor of **1.5**, compared with **1.2** for normal SKUs [D3].
+
+**Related ordering rules:** If a replenishment order is generated, a critical SKU is ordered to cover **45 days** of demand plus safety stock, rounded to the supplier's pack multiple [D2]. No new proposal is created if an open order (pending or approved) already exists for that SKU [D2].
+
+[SQL]: no query results were provided, so I have no data on this specific SKU's coverage or safety factor."
+0.9564555162610017,,2,2,responde,estres_base_top3,0.0003582,1.0,0.8181818181818182,False,rec-49,en,3.748,1.0,base,"**Purchase order of 300,000 pesos:** The Director de operaciones approves it, because orders over $250,000 MXN require that approval [D1]. Since it is above $100,000 MXN, it also needs three comparable quotes, unless the SKU has an approved single supplier [D1]. I'm assuming the amount is in MXN, as in the source table.
+
+**Inventory adjustment:** The context does not say who approves it without the amount. The rules are:
+- Adjustments up to $10,000 MXN (absolute value) are approved by the jefe de almacén [D2].
+- Adjustments over $10,000 MXN require approval from contraloría [D2].
+
+Every adjustment must also record its reason: shrinkage, entry error, theft, damage, or count difference [D2]. If you give me the adjustment amount, I can say which approver applies."
+0.9174490483336283,,2,1,responde,estres_base_top3,0.00019760000000000003,1.0,0.7142857142857143,False,rec-50,en,2.471,1.0,base,"The quality target for rejected parts from a supplier is **less than 2%** of parts rejected at reception [D2]. This is one of three quarterly indicators, alongside OTIF (target ≥ 95%) and delivery-time deviation (target ±2 days) [D2][D1]."
+0.9151409650128487,,2,2,responde,estres_base_top3,0.0002127,1.0,1.0,False,int-pdf-01,en,3.673,1.0,no_textual,"Standard freight from Guadalajara to Monterrey costs **MXN $10,900**, with a transit time of 2 days [D1][D2].
+
+Express freight carries a 35% surcharge over the standard rate [D1]."
+0.9783712752977033,,1,1,responde,estres_base_top3,0.0001092,1.0,1.0,False,int-pdf-02,en,1.4,1.0,no_textual,Express freight carries a **35% surcharge** over the normal freight rate [D1].
+0.9319558971563783,,2,2,responde,estres_base_top3,0.00019360000000000002,1.0,0.6,False,int-pdf-03,en,2.995,1.0,no_textual,"The standard freight rate from Mexico City to Monterrey is **MXN 12,300**, with a transit time of 2 days [D1][D2].
+
+The express freight surcharge is 35% on top of the normal rate [D1]. No SQL query result was provided, so this answer comes only from the freight rate document."
+0.9276328553020406,,2,1,responde,estres_base_top3,0.000166,1.0,1.0,False,int-pdf-04,en,1.791,1.0,no_textual,"The agreed lead time for Shenzhen Industrial Parts is **38 days** [D1]. According to the supplier policy, the lead time recorded in the system is the contractual one, not the observed one [D3]."
+0.8622384046342703,recuperación,3,0,abstiene,estres_base_top3,0.00024380000000000002,0.0,0.46153846153846156,True,int-pdf-05,en,2.621,0.0,no_textual,"The provided context doesn't answer this. There is no SQL result, and the supplier matrix [D1] lists only three suppliers, in the Herramienta and Eléctrico categories. None is in a Safety category, and none has a C rating. The other documents don't contain supplier data: [D2] covers reorder policy and [D3] covers customer discounts. I can't identify a Safety supplier with a C rating from this information. A query against the supplier database, or a document that covers the Safety category, would be needed."
+0.7778963002691683,,1,1,responde,estres_base_top3,0.0001473,1.0,0.8571428571428571,False,int-ocr-06,en,1.646,1.0,no_textual,"The September 2026 physical inventory at the North distribution center (CEDIS Norte, Monterrey) obtained **96.4%** accuracy, counted on September 30, 2026 across 1,240 locations [D1]."
+0.8337664049555302,,1,1,responde,estres_base_top3,0.0002278,1.0,0.6666666666666666,False,int-ocr-07,en,2.304,1.0,no_textual,"The total valued difference in the North distribution center (CEDIS Norte, Monterrey) inventory record was **$18,240 MXN** [D1]. This comes from the physical inventory count of September 30, 2026, which covered 1,240 locations with 96.4% accuracy [D1].
+
+No SQL query result was provided, so this figure comes only from the document [D1]."
+0.8204839826610956,,1,1,responde,estres_base_top3,0.00015930000000000002,1.0,0.8,False,int-ocr-08,en,2.904,1.0,no_textual,"According to the physical inventory report for the North distribution center (CEDIS Norte, Monterrey), the person responsible was **Laura Méndez, warehouse manager** (jefa de almacén) [D1]."
+0.9379109890020226,,1,1,responde,estres_base_top3,0.0001418,1.0,0.6666666666666666,False,int-ocr-09,en,1.855,1.0,no_textual,"According to delivery note R-4471, **3 pieces** arrived damaged. The note says ""3 piezas dañadas en el empaque; se rechazan en recepción"" (damaged in packaging, rejected at reception) [D1]."
+0.9142876610433476,,1,1,responde,estres_base_top3,0.0002253,1.0,0.6666666666666666,False,int-ocr-10,en,2.829,1.0,no_textual,"Delivery note R-4471 lists **120 pieces** shipped (SKU-0042, from Aceros del Norte) [D1]. Three of those pieces were damaged in the packaging and rejected at reception [D1].
+
+No SQL result was provided, so this answer comes only from the document."
+0.8060077424187687,,1,1,responde,estres_base_top3,0.00020860000000000003,1.0,0.4,False,int-imagen-11,en,2.297,1.0,no_textual,"The lowest service level in September 2026 was **95.1%**, at **CEDIS Occidente** [D1]. The other two centers were CEDIS Centro at 97.8% and CEDIS Norte at 98.6% [D1].
+
+No SQL result was included in the context, so this answer relies only on the document."
+0.8848064383999724,,1,1,responde,estres_base_top3,0.00018790000000000001,1.0,0.6666666666666666,False,int-imagen-12,en,1.899,1.0,no_textual,"The North distribution center (CEDIS Norte) had a **service level of 98.6%** in September 2026 [D1].
+
+No SQL query result was included in the context, so this figure comes only from the chart document."
+0.8824800177837528,,1,1,responde,estres_base_top3,0.000141,1.0,1.0,False,int-imagen-13,en,1.583,1.0,no_textual,The Central distribution center (CEDIS Centro) had a service level of **97.8%** in September 2026 [D1].
+0.8305495586869399,,2,2,responde,estres_base_top3,0.00014010000000000002,1.0,0.8,False,int-imagen-14,en,1.564,1.0,no_textual,"The quarantine zone of the West distribution center (CEDIS Occidente) is in **aisle 12** (Pasillo 12), in its lower part [D2][D3]."
+0.7377066687285291,,2,2,responde,estres_base_top3,0.0001678,1.0,0.6666666666666666,False,int-imagen-15,en,2.085,1.0,no_textual,"The critical SKU zone is next to **Dock 2** (Andén 2), in the upper left of the building, just below that dock [D2][D3].
+
+No SQL result was provided, so this answer relies only on the floor plan documents."
+,,,,abstiene,estres_base_top3,0.00017140000000000002,,,False,nr-01,en,2.139,,sin_respuesta,"The provided context doesn't say how many vacation days a warehouse employee gets in their first year. [D1] covers warehouse training (40 hours per year and certification levels), [D2] is a supplier matrix, and [D3] covers framework supplier contracts. None of them mention vacation policy, and no SQL result was provided."
+,,,,abstiene,estres_base_top3,0.0002149,,,False,nr-02,en,2.719,,sin_respuesta,"The provided context doesn't say which insurer covers goods in transit between distribution centers. No [SQL] result was included, and none of the documents ([D1], [D2], [D3]) mention insurance or insurers. [D2] covers transfers between CEDIS (transit times and minimum quantities), but not coverage. You would need to consult the company's insurance policy or the responsible area."
+,,,,abstiene,estres_base_top3,0.000145,,,False,nr-03,en,1.931,,sin_respuesta,"The provided context doesn't say which accounting software the finance department uses. None of the documents ([D1], [D2], [D3]) mention accounting software or the finance department, and no SQL result was included."
+,,,,abstiene,estres_base_top3,0.0002164,,,False,nr-04,en,2.925,,sin_respuesta,"The provided context doesn't say what late-payment interest applies to a customer. None of the passages cover customer payments or interest, and no SQL result was included.
+
+The closest content is about supplier penalties, which is a different matter:
+- [D2][D3] Late supplier deliveries incur a penalty of **1.5%** of the order value per week, with a cumulative maximum of **10%** of the contract value.
+
+To answer your question, I would need a document on customer payment terms or accounts receivable, or a query result with the applicable interest rate."
+,,,,abstiene,estres_base_top3,0.00016109999999999999,,,False,nr-05,en,2.699,,sin_respuesta,"The provided context does not say who the company's chief executive officer is. The documents only mention operational roles, such as the purchasing manager, the operations director [D1], and the commercial director [D3], and none of them identifies a CEO. I can't answer this from the available information."
+,,,,abstiene,estres_base_top3,0.00020810000000000002,,,False,nr-06,en,2.682,,sin_respuesta,"El contexto proporcionado no incluye ninguna política de trabajo remoto para compradores, así que no puedo responder esta pregunta con base en él.
+
+Los pasajes disponibles tratan sobre acompañamiento e incorporación de compradores [D1], devoluciones de clientes [D2] y aprobaciones de órdenes de compra [D3]. Para conocer la política de trabajo remoto, consulta a Recursos Humanos o al documento de políticas de personal correspondiente."
+,,,,abstiene,estres_base_top3,0.0001699,,,False,nr-07,en,2.526,,sin_respuesta,"The provided context doesn't contain information about employees' year-end bonus. There is no SQL result, and the documents only cover supplier framework contracts (penalties and validity) and client discount approval levels [D1][D2][D3]. You would need to consult a source with payroll or compensation data, such as an HR document or a query against the payroll system."
+,,,,abstiene,estres_base_top3,0.00022769999999999998,,,False,nr-08,en,2.694,,sin_respuesta,"The provided context doesn't say how often uniforms are issued to warehouse staff. None of the documents cover uniforms:
+
+- [D1] covers the 40 annual training hours and the certification levels for warehouse staff.
+- [D2] covers the reception schedule and the receiving process.
+- [D3] covers the quarterly inventory audit and the handling of findings.
+
+No query results were provided [SQL]. To answer this, you would need the uniform policy or HR document, or a query against the relevant data."
+,,,,abstiene,estres_base_top3,0.00019319999999999998,,,False,nr-09,en,2.483,,sin_respuesta,"The provided context doesn't say what fee the company charges suppliers for factoring. None of the documents ([D1], [D2], [D3]) or the SQL result (none was provided) mention factoring or its fees.
+
+[D1] covers contract duration and late-delivery penalties, and [D3] covers the fleet and delivery costs, but neither addresses factoring. To get this answer, you'd need a document on factoring or supplier financing terms."
+,,,,abstiene,estres_base_top3,0.0003066,,,False,nr-10,en,3.607,,sin_respuesta,"The provided context doesn't say what happens to customer orders during a carriers' strike. None of the excerpts mention strikes, customer order handling, or disruptions to carriers. No SQL result was provided either.
+
+The excerpts do cover related topics:
+
+- **Receiving hours:** Monday to Saturday, 6:00 to 14:00. Deliveries outside these hours require an authorized appointment from the warehouse manager [D1].
+- **Urgent purchases:** These allow air or express freight and require approval from the purchasing manager regardless of amount. The extra cost compared with normal freight must be documented [D3].
+- **Critical SKUs:** Level 3 escalation to the director of operations applies to a critical SKU with zero total stock or a customer reporting a production line stoppage [D3].
+
+To answer the strike question, I would need documents on order management, carrier contingency plans, or delivery delays."
