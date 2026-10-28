@@ -67,7 +67,13 @@ ingesta() {  # config, prefijo, configuración de ingesta (JSON o vacío)
   done
   echo "ingesta $nombre: $st en $((SECONDS - t0)) s"
   aws bedrock-agent get-ingestion-job $R --knowledge-base-id $kb --data-source-id $ds --ingestion-job-id $job \
-    --query 'ingestionJob.[statistics, failureReasons]' --output json | python3 -c "import json,sys; s,f=json.load(sys.stdin); print('  ', {k:v for k,v in s.items() if v}); [print('   fallo:', x[:300]) for x in (f or [])[:8]]"
+    --query 'ingestionJob.[statistics, failureReasons]' --output json | python3 -c "
+import json,sys
+s,f=json.load(sys.stdin); print('  ', {k:v for k,v in s.items() if v})
+for x in (f or []):
+    try: partes=json.loads(x)
+    except Exception: partes=[x]
+    for y in (partes if isinstance(partes,list) else [partes]): print('   fallo:', str(y)[:400])"
   python3 - "$ESTADO" "$cfg" "$kb" "$ds" "$idx_arn" "$st" "$((SECONDS - t0))" <<'P'
 import json, sys
 ruta, cfg, kb, ds, idx, st, seg = sys.argv[1:]
@@ -81,7 +87,7 @@ for cfg in $CONFIGS; do
   case $cfg in
     adm-pred)     ingesta $cfg administrado/ "" ;;
     adm-fijo)     ingesta $cfg administrado/ "{$FIJO}" ;;
-    adm-fijo-bda) ingesta $cfg administrado/ "{$FIJO,\"parsingConfiguration\":{\"parsingStrategy\":\"BEDROCK_DATA_AUTOMATION\",\"bedrockDataAutomationConfiguration\":{}}}" ;;
+    adm-fijo-bda) ingesta $cfg administrado/ "{$FIJO,\"parsingConfiguration\":{\"parsingStrategy\":\"BEDROCK_DATA_AUTOMATION\",\"bedrockDataAutomationConfiguration\":{\"parsingModality\":\"MULTIMODAL\"}}}" ;;
     ctl-chunks)   ingesta $cfg controlado/chunks/ '{"chunkingConfiguration":{"chunkingStrategy":"NONE"}}' ;;
     *) echo "configuración desconocida: $cfg"; exit 1 ;;
   esac
