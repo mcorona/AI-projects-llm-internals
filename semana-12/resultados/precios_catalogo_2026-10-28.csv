@@ -1,0 +1,453 @@
+fuente,servicio,id,modelo,descripcion,unidad,usd
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorG1-ProvisionedThroughput-NoCommit-ModelUnits,,$0 per hour for TitanImageGeneratorG1-ProvisionedThroughput-NoCommit-ModelUnit in US East (N. Virginia),hour,0.0000000000
+AWS Price List API,AmazonBedrock,USE1-TitanEmbeddingV2-Text-input-tokens-batch,TitanEmbeddingsV2-Text-input,$0.00001 per 1K tokens for TitanEmbeddingV2-Text-input-tokens-batch in US East,1K tokens,0.0000100000
+AWS Price List API,AmazonBedrock,USE1-TitanEmbeddingV2-Text-input-tokens,TitanEmbeddingsV2-Text-input,$0.00002 per 1K tokens for TitanEmbeddingsV2-Text-input-tokens in US East,1K tokens,0.0000200000
+AWS Price List API,AmazonBedrock,USE1-NovaMultiModalEmbeddings-input-standard-image-batch,,$0.00003 per Images Processed for NovaMultiModalEmbeddings-input-standard-image-batch in US East (N. Virginia),Images Processed,0.0000300000
+AWS Price List API,AmazonBedrock,USE1-TitanEmbeddingsG1-Image-input-image-batch,Titan Embeddings G1 Image,$0.00003 per image for TitanEmbeddingsG1-Image-input-image-batch in US East (N. Virginia),Images Processed,0.0000300000
+AWS Price List API,AmazonBedrock,USE1-NovaMultiModalEmbeddings-input-standard-image,,$0.00006 per Images Processed for NovaMultiModalEmbeddings-input-standard-image in US East (N. Virginia),Images Processed,0.0000600000
+AWS Price List API,AmazonBedrock,USE1-TitanEmbeddingsG1-Image-input-image,Titan Embeddings G1 Image,$0.00006 per image for TitanEmbeddingsG1-Image-input-image in US East (N. Virginia),Images Processed,0.0000600000
+AWS Price List API,AmazonBedrock,USE1-NovaMultiModalEmbeddings-input-tokens-batch,Nova MME,$0.0000675 per 1K token for NovaMultiModalEmbeddings-input-tokens-batch in US East (N. Virginia),1K tokens,0.0000675000
+AWS Price List API,AmazonBedrock,USE1-TitanEmbeddingsG1-Text-input-tokens,Titan Embeddings G1 Text,$0.0001 per 1K tokens for TitanEmbeddingsG1-Text-input-tokens in US East (N. Virginia),1K tokens,0.0001000000
+AWS Price List API,AmazonBedrock,USE1-NovaMultiModalEmbeddings-input-audio-second-batch,,$0.000112 per second for NovaMultiModalEmbeddings-input-audio-second-batch in US East (N. Virginia),seconds,0.0001120000
+AWS Price List API,AmazonBedrock,USE1-NovaMultiModalEmbeddings-input-tokens,Nova MME,$0.000135 per 1K token for NovaMultiModalEmbeddings-input-tokens in US East (N. Virginia),1K tokens,0.0001350000
+AWS Price List API,AmazonBedrock,USE1-NovaMultiModalEmbeddings-input-audio-second,,$0.00014 per second for NovaMultiModalEmbeddings-input-audio-second in US East (N. Virginia),seconds,0.0001400000
+AWS Price List API,AmazonBedrock,USE1-TitanTextG1-Lite-input-tokens,Titan Text G1 Lite,$0.00015 per 1K tokens for TitanTextG1-Lite-input-tokens in US East (N. Virginia),1K tokens,0.0001500000
+AWS Price List API,AmazonBedrock,USE1-TitanTextG1-Express-input-tokens,Titan Text G1 Express,$0.0002 per 1K tokens for TitanTextG1-Express-input-tokens in US East (N. Virginia),1K tokens,0.0002000000
+AWS Price List API,AmazonBedrock,USE1-TitanTextG1-Lite-output-tokens,Titan Text G1 Lite,$0.0002 per 1K tokens for TitanTextG1-Lite-output-tokens in US East (N. Virginia),1K tokens,0.0002000000
+AWS Price List API,AmazonBedrock,USE1-TitanEmbeddingsG1-Image-Customization-Training,Titan Embeddings G1 Image,$0.0002 per Images Processed for TitanEmbeddingsG1-Image-Customization-Training in US East (N. Virginia),Images Processed,0.0002000000
+AWS Price List API,AmazonBedrock,USE1-Claude3Haiku-input-tokens,Claude 3 Haiku,$0.00025 per 1K tokens for Claude3Haiku-input-tokens inUS East (N. Virginia),1K tokens,0.0002500000
+AWS Price List API,AmazonBedrock,USE1-TitanEmbeddingsG1-Image-input-tokens-batch,Titan Embeddings G1 Image,$0.0004 per 1K tokens for TitanEmbeddingsG1-Image-input-tokens-batch in US East (N. Virginia),1K tokens,0.0004000000
+AWS Price List API,AmazonBedrock,USE1-TitanTextG1-Lite-Customization-Training,Titan Text G1 Lite,$0.0004 per 1K tokens for TitanTextG1-Lite-Customization-Training in US East (N. Virginia),1K tokens,0.0004000000
+AWS Price List API,AmazonBedrock,USE1-NovaMultiModalEmbeddings-input-document-image-batch,,$0.00048 per Images Processed for NovaMultiModalEmbeddings-input-document-image-batch in US East (N. Virginia),Images Processed,0.0004800000
+AWS Price List API,AmazonBedrock,USE1-TitanText-Premier-input-tokens,Titan Text G1 Premier,$0.0005 per 1K tokens for TitanTextG1-Premier-input-tokens in US East (N. Virginia),1K tokens,0.0005000000
+AWS Price List API,AmazonBedrock,USE1-DataAutomation-Custom-ImagesProcessed-AddOnFields,,$0.0005 per Fields per Image Processed for USE1-DataAutomation-Custom-ImagesProcessed-AddOnFields in US East (N. Virginia),Fields per Image Processed,0.0005000000
+AWS Price List API,AmazonBedrock,USE1-DataAutomation-Custom-VideoMinutesProcessed-AddOnFields,,$0.0005 per Fields per Minute Processed for USE1-DataAutomation-Custom-VideoMinutesProcessed-AddOnFields in US East (N. Virginia),Fields per Minute Processed,0.0005000000
+AWS Price List API,AmazonBedrock,USE1-DataAutomation-Custom-ImagesProcessed-AddOnFields,,"$0.0005 per additional field above 30 fields, charged per image",Fields per Image Processed,0.0005000000
+AWS Price List API,AmazonBedrock,USE1-DataAutomation-Custom-AudioMinutesProcessed-AddOnFields,,"$0.0005 per additional field above 30 fields, charged per minute",Fields per Minute Processed,0.0005000000
+AWS Price List API,AmazonBedrock,USE1-DataAutomation-Custom-PagesProcessed-AddOnFields,,"$0.0005 per additional field above 30 fields, charged per page for custom output",Fields per Page Processed,0.0005000000
+AWS Price List API,AmazonBedrock,USE1-NovaMultiModalEmbeddings-input-video-second-batch,,$0.00056 per second for NovaMultiModalEmbeddings-input-video-second-batch in US East (N. Virginia),seconds,0.0005600000
+AWS Price List API,AmazonBedrock,USE1-TitanTextG1-Express-output-tokens,Titan Text G1 Express,$0.0006 per 1K tokens for TitanTextG1-Express-output-tokens in US East (N. Virginia),1K tokens,0.0006000000
+AWS Price List API,AmazonBedrock,USE1-NovaMultiModalEmbeddings-input-document-image,,$0.0006 per Images Processed for NovaMultiModalEmbeddings-input-document-image in US East (N. Virginia),Images Processed,0.0006000000
+AWS Price List API,AmazonBedrock,USE1-NovaMultiModalEmbeddings-input-video-second,,$0.0007 per second for NovaMultiModalEmbeddings-input-video-second in US East (N. Virginia),seconds,0.0007000000
+AWS Price List API,AmazonBedrock,USE1-TitanEmbeddingsG1-Image-input-tokens,Titan Embeddings G1 Image,$0.0008 per 1K tokens for TitanEmbeddingsG1-Image-input-tokens in US East (N. Virginia),1K tokens,0.0008000000
+AWS Price List API,AmazonBedrock,USE1-TitanText-Premier-output-tokens,Titan Text G1 Premier,$0.0015 per 1K tokens for TitanTextG1-Premier-output-tokens in US East (N. Virginia),1K tokens,0.0015000000
+AWS Price List API,AmazonBedrock,USE1-DataAutomation-Standard-ImagesProcessed,,$0.003 charged per image for standard output,Images Processed,0.0030000000
+AWS Price List API,AmazonBedrock,USE1-DataAutomation-Standard-ImagesProcessed,,$0.003 per Images Processed for USE1-DataAutomation-Standard-ImagesProcessed in US East (N. Virginia),Images Processed,0.0030000000
+AWS Price List API,AmazonBedrock,USE1-DataAutomation-Custom-ImagesProcessed,,$0.005 charged per image for custom output,Images Processed,0.0050000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorG1-Customization-Training,Titan Image Generator G1,$0.005 per Images Processed for TitanImageGeneratorG1-Customization-Training in US East (N. Virginia),Images Processed,0.0050000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorV2-Customization-Training,Titan Image Generator V2,$0.005 per Images Processed for TitanImageGeneratorV2-Customization-Training in US East (N. Virginia),Images Processed,0.0050000000
+AWS Price List API,AmazonBedrock,USE1-DataAutomation-Custom-ImagesProcessed,,$0.005 per Images Processed for USE1-DataAutomation-Custom-ImagesProcessed in US East (N. Virginia),Images Processed,0.0050000000
+AWS Price List API,AmazonBedrock,USE1-DataAutomation-Standard-AudioMinutesProcessed,,$0.006 charged per audio minute for standard output,Minutes Processed,0.0060000000
+AWS Price List API,AmazonBedrock,USE1-TitanTextG1-Express-Customization-Training,Titan Text G1 Express,$0.008 per 1K tokens for TitanTextG1-Express-Customization-Training in US East (N. Virginia),1K tokens,0.0080000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorG1-I2I-512-Standard,Titan Image Generator G1,$0.008 per image for TitanImageGeneratorG1-I2I-512-Standard in US East (N. Virginia),image,0.0080000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorG1-T2I-512-Standard,Titan Image Generator G1,$0.008 per image for TitanImageGeneratorG1-T2I-512-Standard in US East (N. Virginia),image,0.0080000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorV2-I2I-512-Standard,Titan Image Generator V2,$0.008 per image for TitanImageGeneratorV2-I2I-512-Standard in US East (N. Virginia),image,0.0080000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorV2-T2I-512-Standard,Titan Image Generator V2,$0.008 per image for TitanImageGeneratorV2-T2I-512-Standard in US East (N. Virginia),image,0.0080000000
+AWS Price List API,AmazonBedrock,USE1-DataAutomation-Custom-AudioMinutesProcessed,,$0.009 charged per audio minute for custom output,Minutes Processed,0.0090000000
+AWS Price List API,AmazonBedrock,USE1-DataAutomation-Standard-PagesProcessed,,$0.01 charged per page for standard output,Pages Processed,0.0100000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorG1-I2I-1024-Standard,Titan Image Generator G1,$0.01 per image for TitanImageGeneratorG1-I2I-1024-Standard in US East (N. Virginia),image,0.0100000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorG1-I2I-512-Premium,Titan Image Generator G1,$0.01 per image for TitanImageGeneratorG1-I2I-512-Premium in US East (N. Virginia),image,0.0100000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorG1-T2I-1024-Standard,Titan Image Generator G1,$0.01 per image for TitanImageGeneratorG1-T2I-1024-Standard in US East (N. Virginia),image,0.0100000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorG1-T2I-512-Premium,Titan Image Generator G1,$0.01 per image for TitanImageGeneratorG1-T2I-512-Premium in US East (N. Virginia),image,0.0100000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorV2-I2I-1024-Standard,Titan Image Generator V2,$0.01 per image for TitanImageGeneratorV2-I2I-1024-Standard in US East (N. Virginia),image,0.0100000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorV2-I2I-512-Premium,Titan Image Generator V2,$0.01 per image for TitanImageGeneratorV2-I2I-512-Premium in US East (N. Virginia),image,0.0100000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorV2-T2I-1024-Standard,Titan Image Generator V2,$0.01 per image for TitanImageGeneratorV2-T2I-1024-Standard in US East (N. Virginia),image,0.0100000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorV2-T2I-512-Premium,Titan Image Generator V2,$0.01 per image for TitanImageGeneratorV2-T2I-512-Premium in US East (N. Virginia),image,0.0100000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorG1-I2I-1024-Premium,Titan Image Generator G1,$0.012 per image for TitanImageGeneratorG1-I2I-1024-Premium in US East (N. Virginia),image,0.0120000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorG1-T2I-1024-Premium,Titan Image Generator G1,$0.012 per image for TitanImageGeneratorG1-T2I-1024-Premium in US East (N. Virginia),image,0.0120000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorV2-I2I-1024-Premium,Titan Image Generator V2,$0.012 per image for TitanImageGeneratorV2-I2I-1024-Premium in US East (N. Virginia),image,0.0120000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorV2-T2I-1024-Premium,Titan Image Generator V2,$0.012 per image for TitanImageGeneratorV2-T2I-1024-Premium in US East (N. Virginia),image,0.0120000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorG1-Custom-I2I-512-Standard,Titan Image Generator G1,$0.018 per image for TitanImageGeneratorG1-Custom-I2I-512-Standard in US East (N. Virginia),image,0.0180000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorG1-Custom-T2I-512-Standard,Titan Image Generator G1,$0.018 per image for TitanImageGeneratorG1-Custom-T2I-512-Standard in US East (N. Virginia),image,0.0180000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorG1-Custom-I2I-1024-Standard,Titan Image Generator G1,$0.02 per image for TitanImageGeneratorG1-Custom-I2I-1024-Standard in US East (N. Virginia),image,0.0200000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorG1-Custom-I2I-512-Premium,Titan Image Generator G1,$0.02 per image for TitanImageGeneratorG1-Custom-I2I-512-Premium in US East (N. Virginia),image,0.0200000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorG1-Custom-T2I-1024-Standard,Titan Image Generator G1,$0.02 per image for TitanImageGeneratorG1-Custom-T2I-1024-Standard in US East (N. Virginia),image,0.0200000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorG1-Custom-T2I-512-Premium,Titan Image Generator G1,$0.02 per image for TitanImageGeneratorG1-Custom-T2I-512-Premium in US East (N. Virginia),image,0.0200000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorG1-Custom-I2I-1024-Premium,Titan Image Generator G1,$0.022 per image for TitanImageGeneratorG1-Custom-I2I-1024-Premium in US East (N. Virginia),image,0.0220000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorG1-Custom-T2I-1024-Premium,Titan Image Generator G1,$0.022 per image for TitanImageGeneratorG1-Custom-T2I-1024-Premium in US East (N. Virginia),image,0.0220000000
+AWS Price List API,AmazonBedrock,USE1-TitanText-Premier-Customization-Training,Titan Text G1 Premier,$0.028 per 1K tokens for TitanTextG1-Premier-Customization-Training in US East (N. Virginia),1K tokens,0.0280000000
+AWS Price List API,AmazonBedrock,USE1-DataAutomation-Custom-PagesProcessed,,$0.04 charged per page for custom output,Pages Processed,0.0400000000
+AWS Price List API,AmazonBedrock,USE1-DataAutomation-Standard-VideoMinutesProcessed,,$0.05 charged per video minute for standard output,Minutes Processed,0.0500000000
+AWS Price List API,AmazonBedrock,USE1-DataAutomation-Custom-VideoMinutesProcessed,,$0.084 per Minutes Processed for USE1-DataAutomation-Custom-VideoMinutesProcessed in US East (N. Virginia),Minutes Processed,0.0840000000
+AWS Price List API,AmazonBedrock,USE1-TitanEmbeddingsG1-Image-Customization-Storage,Titan Embeddings G1 Image,$1.95 per Model/month for TitanEmbeddingsG1-Image-Customization-Storage in US East (N. Virginia),Model/month,1.9500000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorG1-Customization-Storage,Titan Image Generator G1,$1.95 per Model/month for TitanImageGeneratorG1-Customization-Storage in US East (N. Virginia),Model/month,1.9500000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorV2-Customization-Storage,Titan Image Generator V2,$1.95 per Model/month for TitanImageGeneratorV2-Customization-Storage in US East (N. Virginia),Model/month,1.9500000000
+AWS Price List API,AmazonBedrock,USE1-TitanTextG1-Express-Customization-Storage,Titan Text G1 Express,$1.95 per Model/month for TitanTextG1-Express-Customization-Storage in US East (N. Virginia),Model/month,1.9500000000
+AWS Price List API,AmazonBedrock,USE1-TitanTextG1-Lite-Customization-Storage,Titan Text G1 Lite,$1.95 per Model/month for TitanTextG1-Lite-Customization-Storage in US East (N. Virginia),Model/month,1.9500000000
+AWS Price List API,AmazonBedrock,USE1-TitanText-Premier-Customization-Storage,Titan Text G1 Premier,$1.95 per Model/month for TitanTextG1-Premier-Customization-Storage in US East (N. Virginia),Model/month,1.9500000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorG1-ProvisionedThroughput-6months-ModelUnits,,$13 per hour for TitanImageGeneratorG1-ProvisionedThroughput-6months-ModelUnit in US East (N. Virginia),hour,13.0000000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorV2-ProvisionedThroughput-6months-ModelUnits,,$13 per hour for TitanImageGeneratorV2-ProvisionedThroughput-6months-ModelUnit in US East (N. Virginia),hour,13.0000000000
+AWS Price List API,AmazonBedrock,USE1-TitanTextG1-Express-ProvisionedThroughput-6months-ModelUnits,,$14.8 per hour for TitanTextG1-Express-ProvisionedThroughput-6months-ModelUnit in US East (N. Virginia),hour,14.8000000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorG1-ProvisionedThroughput-1month-ModelUnits,,$16.2 per hour for TitanImageGeneratorG1-ProvisionedThroughput-1month-ModelUnit in US East (N. Virginia),hour,16.2000000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorV2-ProvisionedThroughput-1month-ModelUnits,,$16.2 per hour for TitanImageGeneratorV2-ProvisionedThroughput-1month-ModelUnit in US East (N. Virginia),hour,16.2000000000
+AWS Price List API,AmazonBedrock,USE1-TitanText-Premier-ProvisionedThroughput-Custom-6months-ModelUnits,,$16.38 per hour for TitanTextG1-Premier-ProvisionedThroughput-custom-6months-ModelUnits in US East (N. Virginia),hour,16.3800000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorG1-ProvisionedThroughput-Custom-6months-ModelUnits,,$16.85 per hour for TitanImageGeneratorG1-ProvisionedThroughput-Custom-6months-ModelUnit in US East (N. Virginia),hour,16.8500000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorV2-ProvisionedThroughput-Custom-6months-ModelUnits,,$16.85 per hour for TitanImageGeneratorV2-ProvisionedThroughput-Custom-6months-ModelUnit in US East (N. Virginia),hour,16.8500000000
+AWS Price List API,AmazonBedrock,USE1-TitanTextG1-Express-ProvisionedThroughput-1month-ModelUnits,,$18.4 per hour for TitanTextG1-Express-ProvisionedThroughput-1month-ModelUnit in US East (N. Virginia),hour,18.4000000000
+AWS Price List API,AmazonBedrock,USE1-TitanTextG1-Express-ProvisionedThroughput-NoCommit-ModelUnits,,$20.5 per hour for TitanTextG1-Express-ProvisionedThroughput-NoCommit-ModelUnit in US East (N. Virginia),hour,20.5000000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorG1-ProvisionedThroughput-Custom-1month-ModelUnits,,$21 per hour for TitanImageGeneratorG1-ProvisionedThroughput-Custom-1month-ModelUnit in US East (N. Virginia),hour,21.0000000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorV2-ProvisionedThroughput-Custom-1month-ModelUnits,,$21 per hour for TitanImageGeneratorV2-ProvisionedThroughput-Custom-1month-ModelUnit in US East (N. Virginia),hour,21.0000000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorG1-ProvisionedThroughput-Custom-NoCommit-ModelUnits,,$23.4 per hour for TitanImageGeneratorG1-ProvisionedThroughput-Custom-NoCommit-ModelUnit in US East (N. Virginia),hour,23.4000000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorV2-ProvisionedThroughput-Custom-NoCommit-ModelUnits,,$23.4 per hour for TitanImageGeneratorV2-ProvisionedThroughput-Custom-NoCommit-ModelUnit in US East (N. Virginia),hour,23.4000000000
+AWS Price List API,AmazonBedrock,USE1-TitanImageGeneratorV2-ProvisionedThroughput-NoCommit-ModelUnits,,$23.4 per hour for TitanImageGeneratorV2-ProvisionedThroughput-NoCommit-ModelUnit in US East (N. Virginia),hour,23.4000000000
+AWS Price List API,AmazonBedrock,USE1-TitanText-Premier-ProvisionedThroughput-Custom-1month-ModelUnits,,$27.95 per hour for TitanTextG1-Premier-ProvisionedThroughput-custom-1month-ModelUnits in US East (N. Virginia),hour,27.9500000000
+AWS Price List API,AmazonBedrock,USE1-TitanText-Premier-ProvisionedThroughput-Custom-NoCommit-ModelUnits,,$32.25 per hour for TitanTextG1-Premier-ProvisionedThroughput-custom-NoCommit-ModelUnits in US East (N. Virginia),hour,32.2500000000
+AWS Price List API,AmazonBedrock,USE1-TitanEmbeddingsG1-Text-ProvisionedThroughput-6months-ModelUnits,,$5.1 per hour for TitanEmbeddingsG1-Text-ProvisionedThroughput-6months-ModelUnit in US East (N. Virginia),hour,5.1000000000
+AWS Price List API,AmazonBedrock,USE1-TitanTextG1-Lite-ProvisionedThroughput-6months-ModelUnits,,$5.1 per hour for TitanTextG1-Lite-ProvisionedThroughput-6months-ModelUnit in US East (N. Virginia),hour,5.1000000000
+AWS Price List API,AmazonBedrock,USE1-TitanEmbeddingsG1-Text-ProvisionedThroughput-1month-ModelUnits,,$6.4 per hour for TitanEmbeddingsG1-Text-ProvisionedThroughput-1month-ModelUnit in US East (N. Virginia),hour,6.4000000000
+AWS Price List API,AmazonBedrock,USE1-TitanTextG1-Lite-ProvisionedThroughput-1month-ModelUnits,,$6.4 per hour for TitanTextG1-Lite-ProvisionedThroughput-1month-ModelUnit in US East (N. Virginia),hour,6.4000000000
+AWS Price List API,AmazonBedrock,USE1-TitanEmbeddingsG1-Image-ProvisionedThroughput-6months-ModelUnits,,$6.75 per hour for TitanEmbeddingsG1-Image-ProvisionedThroughput-6months-ModelUnit in US East (N. Virginia),hour,6.7500000000
+AWS Price List API,AmazonBedrock,USE1-TitanTextG1-Lite-ProvisionedThroughput-NoCommit-ModelUnits,,$7.1 per hour for TitanTextG1-Lite-ProvisionedThroughput-NoCommit-ModelUnit in US East (N. Virginia),hour,7.1000000000
+AWS Price List API,AmazonBedrock,USE1-TitanEmbeddingsG1-Image-ProvisionedThroughput-1month-ModelUnits,,$8.45 per hour for TitanEmbeddingsG1-Image-ProvisionedThroughput-1month-ModelUnit in US East (N. Virginia),hour,8.4500000000
+AWS Price List API,AmazonBedrock,USE1-TitanEmbeddingsG1-Image-ProvisionedThroughput-NoCommit-ModelUnits,,$9.38 per hour for TitanEmbeddingsG1-Image-ProvisionedThroughput-NoCommit-ModelUnit in US East (N. Virginia),hour,9.3800000000
+AWS Price List API,AmazonBedrockAgentCore,USE1-Knowledge-Base:Consumption-based:Retrieval,,$0.001 per Query for Knowledge-Base:Consumption-based:Retrieval in US East (N. Virginia),Queries,0.0010000000
+AWS Price List API,AmazonBedrockAgentCore,USE1-Knowledge-Base:Consumption-based:AgenticRetrieval,,$0.004 per Query for Knowledge-Base:Consumption-based:AgenticRetrieval in US East (N. Virginia),Queries,0.0040000000
+AWS Price List API,AmazonBedrockAgentCore,USE1-Knowledge-Base:Consumption-based:Storage,,$5.00 per GB-Month for Knowledge-Base:Consumption-based:Storage in US East (N. Virginia),GB-Month,5.0000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_cache_read_tokens_standard-Units,Claude Haiku 5.5,AWS Marketplace software usage|us-east-1|Cache Read Tokens - Standard,1M tokens,0.0110000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_cache_read_tokens_global_standard-Units,Claude Haiku 5.5,"AWS Marketplace software usage|us-east-1|Cache Read Tokens - Standard, Global",1M tokens,0.0100000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_cache_read_tokens_long_ctx_standard-Units,Claude Haiku 5.5,"AWS Marketplace software usage|us-east-1|Cache Read Tokens - Standard, Long Context",1M tokens,0.0550000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_cache_read_tokens_long_ctx_global_standard-Units,Claude Haiku 5.5,"AWS Marketplace software usage|us-east-1|Cache Read Tokens - Standard, Long Context, Global",1M tokens,0.0500000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_cache_write_tokens_1h_standard-Units,Claude Haiku 5.5,AWS Marketplace software usage|us-east-1|Cache Write Tokens (1h TTL) - Standard,1M tokens,0.2200000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_cache_write_tokens_1h_global_standard-Units,Claude Haiku 5.5,"AWS Marketplace software usage|us-east-1|Cache Write Tokens (1h TTL) - Standard, Global",1M tokens,0.2000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_cache_write_tokens_1h_long_ctx_standard-Units,Claude Haiku 5.5,"AWS Marketplace software usage|us-east-1|Cache Write Tokens (1h TTL) - Standard, Long Context",1M tokens,1.1000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_cache_write_tokens_1h_long_ctx_global_standard-Units,Claude Haiku 5.5,"AWS Marketplace software usage|us-east-1|Cache Write Tokens (1h TTL) - Standard, Long Context, Global",1M tokens,1.0000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_cache_write_tokens_standard-Units,Claude Haiku 5.5,AWS Marketplace software usage|us-east-1|Cache Write Tokens - Standard,1M tokens,0.1375000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_cache_write_tokens_global_standard-Units,Claude Haiku 5.5,"AWS Marketplace software usage|us-east-1|Cache Write Tokens - Standard, Global",1M tokens,0.1250000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_cache_write_tokens_long_ctx_standard-Units,Claude Haiku 5.5,"AWS Marketplace software usage|us-east-1|Cache Write Tokens - Standard, Long Context",1M tokens,0.6875000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_cache_write_tokens_long_ctx_global_standard-Units,Claude Haiku 5.5,"AWS Marketplace software usage|us-east-1|Cache Write Tokens - Standard, Long Context, Global",1M tokens,0.6250000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_CustomModel_ProvisionedThroughput_1MonthCommit-Units,Claude 3 Haiku,AWS Marketplace software usage|us-east-1|Custom Model Provisioned Throughput Hourly Price (1 Month Commit),hour,120.0000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_CustomModel_ProvisionedThroughput_6MonthCommit-Units,Claude 3 Haiku,AWS Marketplace software usage|us-east-1|Custom Model Provisioned Throughput Hourly Price (6 Months Commit),hour,66.0000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_CustomModel_ProvisionedThroughput_NoCommit-Units,Claude 3 Haiku,AWS Marketplace software usage|us-east-1|Custom Model Provisioned Throughput Hourly Price (No Commit),hour,132.0000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_CustomModel_ProvisionedThroughput_NoCommit_ModelUnits-Units,Claude 3 Haiku,AWS Marketplace software usage|us-east-1|Custom Model Provisioned Throughput Hourly Price (No Commit),hour,132.0000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_CustomModel_ProvisionedThroughput_1MonthCommit-Units,Claude 3.5 Haiku,AWS Marketplace software usage|us-east-1|Custom Model Provisioned Throughput Hourly Price 1 Month Commit,hour,240.3000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_CustomModel_ProvisionedThroughput_6MonthCommit-Units,Claude 3.5 Haiku,AWS Marketplace software usage|us-east-1|Custom Model Provisioned Throughput Hourly Price 6 Months Commit,hour,133.5000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_CustomModel_ProvisionedThroughput_NoCommit-Units,Claude 3.5 Haiku,AWS Marketplace software usage|us-east-1|Custom Model Provisioned Throughput Hourly Price No Commit,hour,267.0000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_Customization_Storage-Units,Claude 3 Haiku,AWS Marketplace software usage|us-east-1|Customized Model Storage 1 Month,Model/month,20.0000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_ModelStorage1Month-Units,Claude 3 Haiku,AWS Marketplace software usage|us-east-1|Customized Model Storage 1 Month,Model/month,20.0000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_inputAudioSecond-Units,Marengo Embed 2.7,AWS Marketplace software usage|us-east-1|Input Audio Seconds,seconds,0.0001400000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_inputAudioSecond-Units,Marengo Embed 3.0,AWS Marketplace software usage|us-east-1|Input Audio Seconds,seconds,0.0001400000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_InputImageCount-Units,Marengo Embed 2.7,AWS Marketplace software usage|us-east-1|Input Image Count,Input Images,0.0001000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_InputImageCount-Units,Marengo Embed 3.0,AWS Marketplace software usage|us-east-1|Input Image Count,Input Images,0.0001000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_inputTextRequestCount-Units,Marengo Embed 2.7,AWS Marketplace software usage|us-east-1|Input Text Request Count,Text Requests,0.0000700000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_inputTextRequestCount-Units,Marengo Embed 3.0,AWS Marketplace software usage|us-east-1|Input Text Request Count,Text Requests,0.0000700000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_input_tokens_global_standard-Units,Claude Haiku 5.5,"AWS Marketplace software usage|us-east-1|Input Tokens - Standard, Global",1M tokens,0.1000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_input_tokens_long_ctx_standard-Units,Claude Haiku 5.5,"AWS Marketplace software usage|us-east-1|Input Tokens - Standard, Long Context",1M tokens,0.5500000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_input_tokens_long_ctx_global_standard-Units,Claude Haiku 5.5,"AWS Marketplace software usage|us-east-1|Input Tokens - Standard, Long Context, Global",1M tokens,0.5000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_inputVideoSecond-Units,Marengo Embed 2.7,AWS Marketplace software usage|us-east-1|Input Video Seconds,seconds,0.0007000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_inputVideoSecond-Units,Marengo Embed 3.0,AWS Marketplace software usage|us-east-1|Input Video Seconds,seconds,0.0007000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_Cohere_Embed_V4-Units,Embed v4,AWS Marketplace software usage|us-east-1|InputTokenCount,Embeddings,0.0000000200
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_CacheWrite1hInputTokenCount_Global-Units,Claude Haiku 4.5,AWS Marketplace software usage|us-east-1|Million 1 hour Cache Write Input Tokens Global,1M tokens,2.0000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_CacheWrite1hInputTokenCount-Units,Claude Haiku 4.5,AWS Marketplace software usage|us-east-1|Million 1 hour Cache Write Input Tokens Regional,1M tokens,2.2000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_InputTokenCount_Batch-Units,Claude 3.5 Haiku,AWS Marketplace software usage|us-east-1|Million Batch Input Tokens,1M tokens,0.4000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_InputTokenCount_Global_Batch-Units,Claude Haiku 4.5,AWS Marketplace software usage|us-east-1|Million Batch Input Tokens Global,1M tokens,0.5000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_InputTokenCount_Batch-Units,Claude Haiku 4.5,AWS Marketplace software usage|us-east-1|Million Batch Input Tokens Regional,1M tokens,0.5500000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_OutputTokenCount_Batch-Units,Claude 3.5 Haiku,AWS Marketplace software usage|us-east-1|Million Batch Response Tokens,1M tokens,2.0000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_OutputTokenCount_Global_Batch-Units,Claude Haiku 4.5,AWS Marketplace software usage|us-east-1|Million Batch Response Tokens Global,1M tokens,2.5000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_OutputTokenCount_Batch-Units,Claude Haiku 4.5,AWS Marketplace software usage|us-east-1|Million Batch Response Tokens Regional,1M tokens,2.7500000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_CacheReadInputTokenCount-Units,Claude 3.5 Haiku,AWS Marketplace software usage|us-east-1|Million Cache Read Input Tokens,1M tokens,0.0800000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_CacheReadInputTokenCount_LatencyOptimized-Units,Claude 3.5 Haiku,AWS Marketplace software usage|us-east-1|Million Cache Read Input Tokens (Latency Optimized Inference),1M tokens,0.1000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_CacheReadInputTokenCount_Global-Units,Claude Haiku 4.5,AWS Marketplace software usage|us-east-1|Million Cache Read Input Tokens Global,1M tokens,0.1000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_CacheReadInputTokenCount-Units,Claude Haiku 4.5,AWS Marketplace software usage|us-east-1|Million Cache Read Input Tokens Regional,1M tokens,0.1100000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_CacheWriteInputTokenCount-Units,Claude 3.5 Haiku,AWS Marketplace software usage|us-east-1|Million Cache Write Input Tokens,1M tokens,1.0000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_CacheWriteInputTokenCount_LatencyOptimized-Units,Claude 3.5 Haiku,AWS Marketplace software usage|us-east-1|Million Cache Write Input Tokens (Latency Optimized Inference),1M tokens,1.2500000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_CacheWriteInputTokenCount_Global-Units,Claude Haiku 4.5,AWS Marketplace software usage|us-east-1|Million Cache Write Input Tokens Global,1M tokens,1.2500000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_CacheWriteInputTokenCount-Units,Claude Haiku 4.5,AWS Marketplace software usage|us-east-1|Million Cache Write Input Tokens Regional,1M tokens,1.3750000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_InputTokenCount-Units,Claude 3 Haiku,AWS Marketplace software usage|us-east-1|Million Input Tokens,1M tokens,0.2500000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_InputTokenCount-Units,Claude 3.5 Haiku,AWS Marketplace software usage|us-east-1|Million Input Tokens,1M tokens,0.8000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_InputTokenCount_LatencyOptimized-Units,Claude 3.5 Haiku,AWS Marketplace software usage|us-east-1|Million Input Tokens (Latency Optimized Inference),1M tokens,1.0000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_InputTokenCount_Global-Units,Claude Haiku 4.5,AWS Marketplace software usage|us-east-1|Million Input Tokens Global,1M tokens,1.0000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_InputTokenCount-Units,Claude Haiku 4.5,AWS Marketplace software usage|us-east-1|Million Input Tokens Regional,1M tokens,1.1000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_input_tokens_standard-Units,Claude Haiku 5.5,AWS Marketplace software usage|us-east-1|Million Input Tokens Standard,1M tokens,0.1100000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_OutputTokenCount_LatencyOptimized-Units,Claude 3.5 Haiku,AWS Marketplace software usage|us-east-1|Million Output Tokens (Latency Optimized Inference),1M tokens,5.0000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_OutputTokenCount-Units,Claude 3 Haiku,AWS Marketplace software usage|us-east-1|Million Response Tokens,1M tokens,1.2500000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_OutputTokenCount-Units,Claude 3.5 Haiku,AWS Marketplace software usage|us-east-1|Million Response Tokens,1M tokens,4.0000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_OutputTokenCount_Global-Units,Claude Haiku 4.5,AWS Marketplace software usage|us-east-1|Million Response Tokens Global,1M tokens,5.0000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_OutputTokenCount-Units,Claude Haiku 4.5,AWS Marketplace software usage|us-east-1|Million Response Tokens Regional,1M tokens,5.5000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_output_tokens_standard-Units,Claude Haiku 5.5,AWS Marketplace software usage|us-east-1|Million Response Tokens Standard,1M tokens,0.5500000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_InputTokenCount_Batch-Units,Claude 3 Haiku,AWS Marketplace software usage|us-east-1|Million batch input tokens,1M tokens,0.1250000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_MillionBatchInputTokens-Units,Claude 3 Haiku,AWS Marketplace software usage|us-east-1|Million batch input tokens,1M tokens,0.1250000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_MillionBatchOutputTokens-Units,Claude 3 Haiku,AWS Marketplace software usage|us-east-1|Million batch output tokens,1M tokens,0.6250000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_OutputTokenCount_Batch-Units,Claude 3 Haiku,AWS Marketplace software usage|us-east-1|Million batch output tokens,1M tokens,0.6250000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_Customization_Training-Units,Claude 3 Haiku,AWS Marketplace software usage|us-east-1|Million model customization tokens,Images Processed,12.0000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_CustomizationTokenCount-Units,Claude 3 Haiku,AWS Marketplace software usage|us-east-1|Million model customization tokens,Training Tokens,12.0000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_output_tokens_global_standard-Units,Claude Haiku 5.5,"AWS Marketplace software usage|us-east-1|Output Tokens - Standard, Global",1M tokens,0.5000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_output_tokens_long_ctx_standard-Units,Claude Haiku 5.5,"AWS Marketplace software usage|us-east-1|Output Tokens - Standard, Long Context",1M tokens,2.7500000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_output_tokens_long_ctx_global_standard-Units,Claude Haiku 5.5,"AWS Marketplace software usage|us-east-1|Output Tokens - Standard, Long Context, Global",1M tokens,2.5000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_Reserved_1Month_InputTPM_Global-Units,Claude Haiku 4.5,AWS Marketplace software usage|us-east-1|Per Hour per 1K Input TPM Reserved 1 Month Global,1M TPM Hour,0.0600000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_Reserved_1Month_InputTPM_Geo-Units,Claude Haiku 4.5,AWS Marketplace software usage|us-east-1|Per Hour per 1K Input TPM Reserved 1 Month Regional,1M TPM Hour,0.0660000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_Reserved_3Month_InputTPM_Global-Units,Claude Haiku 4.5,AWS Marketplace software usage|us-east-1|Per Hour per 1K Input TPM Reserved 3 Month Global,1M TPM Hour,0.0540000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_Reserved_3Month_InputTPM_Geo-Units,Claude Haiku 4.5,AWS Marketplace software usage|us-east-1|Per Hour per 1K Input TPM Reserved 3 Month Regional,1M TPM Hour,0.0594000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_Reserved_1Month_OutputTPM_Global-Units,Claude Haiku 4.5,AWS Marketplace software usage|us-east-1|Per Hour per 1K Output TPM Reserved 1 Month Global,1M TPM Hour,0.3000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_Reserved_1Month_OutputTPM_Geo-Units,Claude Haiku 4.5,AWS Marketplace software usage|us-east-1|Per Hour per 1K Output TPM Reserved 1 Month Regional,1M TPM Hour,0.3300000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_Reserved_3Month_OutputTPM_Global-Units,Claude Haiku 4.5,AWS Marketplace software usage|us-east-1|Per Hour per 1K Output TPM Reserved 3 Month Global,1M TPM Hour,0.2700000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_Reserved_3Month_OutputTPM_Geo-Units,Claude Haiku 4.5,AWS Marketplace software usage|us-east-1|Per Hour per 1K Output TPM Reserved 3 Month Regional,1M TPM Hour,0.2970000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_InputImageCount-Units,Embed Multilingual,AWS Marketplace software usage|us-east-1|Price per 1 image,Input Images,0.0001000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_InputImageCount-Units,Embed English,AWS Marketplace software usage|us-east-1|Price per 1 image,Input Images,0.0001000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_InputTokenCount-Units,Embed English,AWS Marketplace software usage|us-east-1|Price per 1 million input tokens,1M tokens,0.1000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_InputTokenCount-Units,Embed v4,AWS Marketplace software usage|us-east-1|Price per 1 million input tokens,1M tokens,0.1200000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_InputTokenCount-Units,Embed Multilingual,AWS Marketplace software usage|us-east-1|Price per 1 million input tokens,1M tokens,0.1000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_search_units-Units,Rerank 3.5,AWS Marketplace software usage|us-east-1|Price per 1 search unit,Search Units,0.0020000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_ProvisionedThroughput_1MonthCommit_ModelUnits_Usage-Units,Embed English,AWS Marketplace software usage|us-east-1|Provisioned Throughput Hourly Price (1 Month Commit),hour,6.7600000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_ProvisionedThroughput_1MonthCommit_ModelUnits_Usage-Units,Claude 3 Haiku,AWS Marketplace software usage|us-east-1|Provisioned Throughput Hourly Price (1 Month Commit),hour,80.0000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_ProvisionedThroughput_1MonthCommit_ModelUnits_Usage-Units,Embed Multilingual,AWS Marketplace software usage|us-east-1|Provisioned Throughput Hourly Price (1 Month Commit),hour,6.7600000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_ProvisionedThroughput_6MonthsCommit_ModelUnits_Usage-Units,Embed Multilingual,AWS Marketplace software usage|us-east-1|Provisioned Throughput Hourly Price (6 Months Commit),hour,6.4100000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_ProvisionedThroughput_6MonthsCommit_ModelUnits_Usage-Units,Embed English,AWS Marketplace software usage|us-east-1|Provisioned Throughput Hourly Price (6 Months Commit),hour,6.4100000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_ProvisionedThroughput_6MonthsCommit_ModelUnits_Usage-Units,Claude 3 Haiku,AWS Marketplace software usage|us-east-1|Provisioned Throughput Hourly Price (6 Months Commit),hour,44.0000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_ProvisionedThroughput_NoCommit_ModelUnits_Usage-Units,Embed Multilingual,AWS Marketplace software usage|us-east-1|Provisioned Throughput Hourly Price (No Commit),hour,7.1200000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_ProvisionedThroughput_NoCommit_ModelUnits_Usage-Units,Claude 3 Haiku,AWS Marketplace software usage|us-east-1|Provisioned Throughput Hourly Price (No Commit),hour,88.0000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_ProvisionedThroughput_NoCommit_ModelUnits_Usage-Units,Embed English,AWS Marketplace software usage|us-east-1|Provisioned Throughput Hourly Price (No Commit),hour,7.1200000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_ProvisionedThroughput_1MonthCommit_ModelUnits_Usage-Units,Claude 3.5 Haiku,AWS Marketplace software usage|us-east-1|Provisioned Throughput Hourly Price 1 Month Commit,hour,160.2000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_ProvisionedThroughput_6MonthsCommit_ModelUnits_Usage-Units,Claude 3.5 Haiku,AWS Marketplace software usage|us-east-1|Provisioned Throughput Hourly Price 6 Months Commit,hour,89.0000000000
+AWS Price List API,AmazonBedrockFoundationModels,USE1-MP:USE1_ProvisionedThroughput_NoCommit_ModelUnits_Usage-Units,Claude 3.5 Haiku,AWS Marketplace software usage|us-east-1|Provisioned Throughput Hourly Price No Commit,hour,178.0000000000
+AWS Price List API,AmazonBedrockService,USE1-anthropic.claude-haiku-4-5-mantle-cache-read-tokens-standard,Claude Haiku 4.5,$0.00011 per 1K token for anthropic.claude-haiku-4-5-mantle-cache-read-tokens-standard in US East (N. Virginia),1K tokens,0.0001100000
+AWS Price List API,AmazonBedrockService,USE1-anthropic.claude-haiku-4-5-mantle-input-tokens-standard,Claude Haiku 4.5,$0.0011 per 1K token for anthropic.claude-haiku-4-5-mantle-input-tokens-standard in US East (N. Virginia),1K tokens,0.0011000000
+AWS Price List API,AmazonBedrockService,USE1-anthropic.claude-haiku-4-5-mantle-cache-write-tokens-standard,Claude Haiku 4.5,$0.001375 per 1K token for anthropic.claude-haiku-4-5-mantle-cache-write-tokens-standard in US East (N. Virginia),1K tokens,0.0013750000
+AWS Price List API,AmazonBedrockService,USE1-anthropic.claude-haiku-4-5-mantle-cache-write-tokens-1h-standard,Claude Haiku 4.5,$0.0022 per 1K token for anthropic.claude-haiku-4-5-mantle-cache-write-tokens-1h-standard in US East (N. Virginia),1K tokens,0.0022000000
+AWS Price List API,AmazonBedrockService,USE1-anthropic.claude-haiku-4-5-mantle-output-tokens-standard,Claude Haiku 4.5,$0.0055 per 1K token for anthropic.claude-haiku-4-5-mantle-output-tokens-standard in US East (N. Virginia),1K tokens,0.0055000000
+AWS Price List API,AmazonS3,Vectors-Query-ProcessedBytes-Tier3,,$0.000000391 per GB fee for bytes processed by S3 Vectors Query Tier 3,GB,0.0000003910
+AWS Price List API,AmazonS3,Vectors-Query-ProcessedBytes-Tier2,,$0.000001953 per GB fee for bytes processed by S3 Vectors Query Tier 2,GB,0.0000019530
+AWS Price List API,AmazonS3,Vectors-Request-Tier3,,$0.0000025 per Request Query Vectors API Requests,Requests,0.0000025000
+AWS Price List API,AmazonS3,Vectors-Query-ProcessedBytes-Tier1,,$0.000003906 per GB fee for bytes processed by S3 Vectors Query,GB,0.0000039060
+AWS Price List API,AmazonS3,Tables-Requests-Tier2,,"$0.0004 per 1,000 GET and All Other Requests to S3 Table Buckets in US East (N. Virginia)",Requests,0.0000004000
+AWS Price List API,AmazonS3,Requests-Tier2,,"$0.004 per 10,000 GET and all other requests",Requests,0.0000004000
+AWS Price List API,AmazonS3,Tables-Requests-Tier1,,"$0.005 per 1,000 PUT Requests/COPY/POST or LIST Requests to S3 Table Buckets in US East (N. Virginia)",Requests,0.0000050000
+AWS Price List API,AmazonS3,Requests-Tier1,,"$0.005 per 1,000 PUT, COPY, POST, or LIST requests",Requests,0.0000050000
+AWS Price List API,AmazonS3,Vectors-Query-Returned-Bytes,,$0.01 per GB fee for bytes returned by S3 Vectors Query,GB,0.0100000000
+AWS Price List API,AmazonS3,TimedStorage-ByteHrs,,$0.021 per GB - storage used / month over 500 TB,GB-Mo,0.0210000000
+AWS Price List API,AmazonS3,TimedStorage-ByteHrs,,$0.022 per GB - next 450 TB / month of storage used,GB-Mo,0.0220000000
+AWS Price List API,AmazonS3,TimedStorage-ByteHrs,,$0.023 per GB - first 50 TB / month of storage used,GB-Mo,0.0230000000
+AWS Price List API,AmazonS3,Annotation-TimedStorage-ByteHrs,,$0.023 per GB-Mo of Storage in Annotations ,GB-Mo,0.0230000000
+AWS Price List API,AmazonS3,Tables-TimedStorage-ByteHrs,,$0.0242 per GB-Mo for Over 500 TB of Storage in S3 Table Buckets in US East (N. Virginia),GB-Mo,0.0242000000
+AWS Price List API,AmazonS3,Tables-TimedStorage-ByteHrs,,$0.0253 per GB-Mo for Next 450 TB of Storage in S3 Table Buckets in US East (N. Virginia),GB-Mo,0.0253000000
+AWS Price List API,AmazonS3,Tables-TimedStorage-ByteHrs,,$0.0265 per GB-Mo for First 50 TB of Storage in S3 Table Buckets in US East (N. Virginia),GB-Mo,0.0265000000
+AWS Price List API,AmazonS3,Vectors-Request-Tier1,,"$0.055 per 1,000 Tier1 Vectors API Requests",Requests,0.0000550000
+AWS Price List API,AmazonS3,Vectors-Request-Tier2,,"$0.055 per 1,000 Tier2 Vectors API Requests",Requests,0.0000550000
+AWS Price List API,AmazonS3,Vectors-TimedStorage-ByteHrs,,$0.06 per GB-Mo of Storage in Vectors ,GB-Mo,0.0600000000
+AWS Price List API,AmazonS3,Vectors-Put-Bytes,,$0.20 per GB fee for bytes put to S3 Vectors,GB,0.2000000000
+AWS Price List API,AmazonS3,USE1-Files-TimedStorage-ByteHrs,,$0.30 per GB-Mo of Storage in Files ,GB-Mo,0.3000000000
+Cloud Billing Catalog API,Cloud Storage,EAC9-6CC3-07E0,asia,Autoclass Archive Storage Asia Multi-region (desde 0 GiBy.mo),gibibyte month,0.003
+Cloud Billing Catalog API,Cloud Storage,0E21-A08B-3DBA,asia-southeast3,Autoclass Archive Storage Bangkok (desde 0 GiBy.mo),gibibyte month,0.0025
+Cloud Billing Catalog API,Cloud Storage,2458-B5E1-5F4C,europe-west1,Autoclass Archive Storage Belgium (desde 0 GiBy.mo),gibibyte month,0.0012
+Cloud Billing Catalog API,Cloud Storage,854B-DE5B-7507,europe-west1,Autoclass Archive Storage Belgium Dual-region (desde 0 GiBy.mo),gibibyte month,0.0014
+Cloud Billing Catalog API,Cloud Storage,6B0D-FC47-5596,eur5,Autoclass Archive Storage Belgium/London Dual-region (desde 0 GiBy.mo),gibibyte month,0.0041
+Cloud Billing Catalog API,Cloud Storage,EA16-97BB-483F,europe-west10,Autoclass Archive Storage Berlin (desde 0 GiBy.mo),gibibyte month,0.002499996
+Cloud Billing Catalog API,Cloud Storage,D7B3-DE62-B330,europe-west10,Autoclass Archive Storage Berlin Dual-region (desde 0 GiBy.mo),gibibyte month,0.0028
+Cloud Billing Catalog API,Cloud Storage,2A3D-86E4-5A51,us-east5,Autoclass Archive Storage Columbus (desde 0 GiBy.mo),gibibyte month,0.0012
+Cloud Billing Catalog API,Cloud Storage,910C-134C-D018,us-east5,Autoclass Archive Storage Columbus Dual-region (desde 0 GiBy.mo),gibibyte month,0.0014
+Cloud Billing Catalog API,Cloud Storage,C3BA-C4D7-FB86,us-south1,Autoclass Archive Storage Dallas (desde 0 GiBy.mo),gibibyte month,0.0012
+Cloud Billing Catalog API,Cloud Storage,46EF-00C4-5441,us-south1,Autoclass Archive Storage Dallas Dual-region (desde 0 GiBy.mo),gibibyte month,0.0014
+Cloud Billing Catalog API,Cloud Storage,1B1A-6A84-DF52,me-central2,Autoclass Archive Storage Dammam (desde 0 GiBy.mo),gibibyte month,0.0027
+Cloud Billing Catalog API,Cloud Storage,C16B-028C-525C,us-east7,Autoclass Archive Storage Day0 (Alabama) (desde 0 GiBy.mo),gibibyte month,0.0012
+Cloud Billing Catalog API,Cloud Storage,0F1E-C31C-52A4,asia-south2,Autoclass Archive Storage Delhi (desde 0 GiBy.mo),gibibyte month,0.0025
+Cloud Billing Catalog API,Cloud Storage,ADBF-677B-E6CB,asia-south2,Autoclass Archive Storage Delhi Dual-region (desde 0 GiBy.mo),gibibyte month,0.0028
+Cloud Billing Catalog API,Cloud Storage,8BEA-E94F-A405,me-central1,Autoclass Archive Storage Doha (desde 0 GiBy.mo),gibibyte month,0.0025
+Cloud Billing Catalog API,Cloud Storage,D49A-AD34-D4FD,eu,Autoclass Archive Storage EU Multi-region (desde 0 GiBy.mo),gibibyte month,0.0024
+Cloud Billing Catalog API,Cloud Storage,98BB-6C5E-E7E6,europe-north1,Autoclass Archive Storage Finland (desde 0 GiBy.mo),gibibyte month,0.0012
+Cloud Billing Catalog API,Cloud Storage,2691-3E06-B941,europe-north1,Autoclass Archive Storage Finland Dual-region (desde 0 GiBy.mo),gibibyte month,0.0014
+Cloud Billing Catalog API,Cloud Storage,B868-4394-3501,eur4,Autoclass Archive Storage Finland/Netherlands Dual-region (desde 0 GiBy.mo),gibibyte month,0.0028
+Cloud Billing Catalog API,Cloud Storage,5120-4B40-C610,europe-west3,Autoclass Archive Storage Frankfurt (desde 0 GiBy.mo),gibibyte month,0.0025
+Cloud Billing Catalog API,Cloud Storage,FE6B-A761-8CCC,europe-west3,Autoclass Archive Storage Frankfurt Dual-region (desde 0 GiBy.mo),gibibyte month,0.0028
+Cloud Billing Catalog API,Cloud Storage,66E3-BF12-1D74,eur7,Autoclass Archive Storage Frankfurt/London Dual-region (desde 0 GiBy.mo),gibibyte month,0.0055
+Cloud Billing Catalog API,Cloud Storage,2AFE-A899-C48A,eur8,Autoclass Archive Storage Frankfurt/Zurich Dual-region (desde 0 GiBy.mo),gibibyte month,0.0055
+Cloud Billing Catalog API,Cloud Storage,DAD0-557E-A35F,asia-east2,Autoclass Archive Storage Hong Kong (desde 0 GiBy.mo),gibibyte month,0.0025
+Cloud Billing Catalog API,Cloud Storage,8EBD-1734-FF50,us-central1,Autoclass Archive Storage Iowa (desde 0 GiBy.mo),gibibyte month,0.0012
+Cloud Billing Catalog API,Cloud Storage,06B2-1F8A-92E3,us-central1,Autoclass Archive Storage Iowa Dual-region (desde 0 GiBy.mo),gibibyte month,0.0014
+Cloud Billing Catalog API,Cloud Storage,26EC-3B20-6CDB,nam4,Autoclass Archive Storage Iowa/South Carolina Dual-region (desde 0 GiBy.mo),gibibyte month,0.0028
+Cloud Billing Catalog API,Cloud Storage,1542-51AF-B259,asia-southeast2,Autoclass Archive Storage Jakarta (desde 0 GiBy.mo),gibibyte month,0.0025
+Cloud Billing Catalog API,Cloud Storage,CF16-78C4-2B5A,africa-south1,Autoclass Archive Storage Johannesburg (desde 0 GiBy.mo),gibibyte month,0.0012
+Cloud Billing Catalog API,Cloud Storage,2A0C-5E15-410A,asia-southeast4,Autoclass Archive Storage Kuala Lumpur (desde 0 GiBy.mo),gibibyte month,0.0015
+Cloud Billing Catalog API,Cloud Storage,C806-9AEB-0345,us-west4,Autoclass Archive Storage Las Vegas (desde 0 GiBy.mo),gibibyte month,0.0025
+Cloud Billing Catalog API,Cloud Storage,FC15-DE31-B5E9,us-west4,Autoclass Archive Storage Las Vegas Dual-region (desde 0 GiBy.mo),gibibyte month,0.0028
+Cloud Billing Catalog API,Cloud Storage,ABC7-11E5-7D00,europe-west2,Autoclass Archive Storage London (desde 0 GiBy.mo),gibibyte month,0.0025
+Cloud Billing Catalog API,Cloud Storage,D33F-0EBC-2416,us-west2,Autoclass Archive Storage Los Angeles (desde 0 GiBy.mo),gibibyte month,0.0025
+Cloud Billing Catalog API,Cloud Storage,D428-EE67-E34D,us-west2,Autoclass Archive Storage Los Angeles Dual-region (desde 0 GiBy.mo),gibibyte month,0.0028
+Cloud Billing Catalog API,Cloud Storage,27D4-C620-2A60,europe-southwest1,Autoclass Archive Storage Madrid (desde 0 GiBy.mo),gibibyte month,0.0021
+Cloud Billing Catalog API,Cloud Storage,450E-2C48-2CE0,europe-southwest1,Autoclass Archive Storage Madrid Dual-region (desde 0 GiBy.mo),gibibyte month,0.0028
+Cloud Billing Catalog API,Cloud Storage,1CF3-8BC8-D1F9,australia-southeast2,Autoclass Archive Storage Melbourne (desde 0 GiBy.mo),gibibyte month,0.0025
+Cloud Billing Catalog API,Cloud Storage,2F9D-F10F-BD07,australia-southeast2,Autoclass Archive Storage Melbourne Dual-region (desde 0 GiBy.mo),gibibyte month,0.0028
+Cloud Billing Catalog API,Cloud Storage,D7B5-8602-A74D,northamerica-south1,Autoclass Archive Storage Mexico (desde 0 GiBy.mo),gibibyte month,0.0027
+Cloud Billing Catalog API,Cloud Storage,66DD-1D0E-CF94,europe-west8,Autoclass Archive Storage Milan (desde 0 GiBy.mo),gibibyte month,0.0025
+Cloud Billing Catalog API,Cloud Storage,ED0C-C037-FDC1,europe-west8,Autoclass Archive Storage Milan Dual-region (desde 0 GiBy.mo),gibibyte month,0.0028
+Cloud Billing Catalog API,Cloud Storage,7CC2-10CD-AC7F,northamerica-northeast1,Autoclass Archive Storage Montreal (desde 0 GiBy.mo),gibibyte month,0.0025
+Cloud Billing Catalog API,Cloud Storage,959C-88F7-7D9E,northamerica-northeast1,Autoclass Archive Storage Montreal Dual-region (desde 0 GiBy.mo),gibibyte month,0.0028
+Cloud Billing Catalog API,Cloud Storage,A702-FAC1-1037,asia-south1,Autoclass Archive Storage Mumbai (desde 0 GiBy.mo),gibibyte month,0.0025
+Cloud Billing Catalog API,Cloud Storage,981F-1343-7FD3,asia-south1,Autoclass Archive Storage Mumbai Dual-region (desde 0 GiBy.mo),gibibyte month,0.0028
+Cloud Billing Catalog API,Cloud Storage,DBD4-B886-BF8B,europe-west4,Autoclass Archive Storage Netherlands (desde 0 GiBy.mo),gibibyte month,0.0012
+Cloud Billing Catalog API,Cloud Storage,E84B-7220-B2AC,europe-west4,Autoclass Archive Storage Netherlands Dual-region (desde 0 GiBy.mo),gibibyte month,0.0014
+Cloud Billing Catalog API,Cloud Storage,761B-F6D5-C15B,us-east4,Autoclass Archive Storage Northern Virginia (desde 0 GiBy.mo),gibibyte month,0.0025
+Cloud Billing Catalog API,Cloud Storage,14C6-A9AA-82ED,us-east4,Autoclass Archive Storage Northern Virginia Dual-region (desde 0 GiBy.mo),gibibyte month,0.0028
+Cloud Billing Catalog API,Cloud Storage,562B-8E8D-6440,us-west1,Autoclass Archive Storage Oregon (desde 0 GiBy.mo),gibibyte month,0.0012
+Cloud Billing Catalog API,Cloud Storage,08CC-9156-2AA0,us-west1,Autoclass Archive Storage Oregon Dual-region (desde 0 GiBy.mo),gibibyte month,0.0014
+Cloud Billing Catalog API,Cloud Storage,1020-23D4-5AD5,asia-northeast2,Autoclass Archive Storage Osaka (desde 0 GiBy.mo),gibibyte month,0.0025
+Cloud Billing Catalog API,Cloud Storage,ADCD-4CF6-4F44,asia1,Autoclass Archive Storage Osaka/Tokyo Dual-region (desde 0 GiBy.mo),gibibyte month,0.0056
+Cloud Billing Catalog API,Cloud Storage,2EDB-7F8D-91F8,europe-west9,Autoclass Archive Storage Paris (desde 0 GiBy.mo),gibibyte month,0.0025
+Cloud Billing Catalog API,Cloud Storage,8AA4-2CFC-36E8,europe-west9,Autoclass Archive Storage Paris Dual-region (desde 0 GiBy.mo),gibibyte month,0.0028
+Cloud Billing Catalog API,Cloud Storage,5BF4-65A2-3D47,us-west8,Autoclass Archive Storage Phoenix (desde 0 GiBy.mo),gibibyte month,0.0012
+Cloud Billing Catalog API,Cloud Storage,7811-D96F-098C,us-west3,Autoclass Archive Storage Salt Lake City (desde 0 GiBy.mo),gibibyte month,0.0025
+Cloud Billing Catalog API,Cloud Storage,2F4E-BAFB-E28A,us-west3,Autoclass Archive Storage Salt Lake City Dual-region (desde 0 GiBy.mo),gibibyte month,0.0028
+Cloud Billing Catalog API,Cloud Storage,2FFA-2E1C-520F,southamerica-west1,Autoclass Archive Storage Santiago (desde 0 GiBy.mo),gibibyte month,0.0027
+Cloud Billing Catalog API,Cloud Storage,AD8C-6F1B-DE1C,southamerica-east1,Autoclass Archive Storage Sao Paulo (desde 0 GiBy.mo),gibibyte month,0.003
+Cloud Billing Catalog API,Cloud Storage,D20B-32C5-0704,asia-northeast3,Autoclass Archive Storage Seoul (desde 0 GiBy.mo),gibibyte month,0.0025
+Cloud Billing Catalog API,Cloud Storage,1D28-B5B0-7318,asia-southeast1,Autoclass Archive Storage Singapore (desde 0 GiBy.mo),gibibyte month,0.0015
+Cloud Billing Catalog API,Cloud Storage,66EC-A5AE-2EAC,asia-southeast1,Autoclass Archive Storage Singapore Dual-region (desde 0 GiBy.mo),gibibyte month,0.0017
+Cloud Billing Catalog API,Cloud Storage,66C1-8AD4-55BA,us-east1,Autoclass Archive Storage South Carolina (desde 0 GiBy.mo),gibibyte month,0.0012
+Cloud Billing Catalog API,Cloud Storage,0D74-58A8-239C,us-east1,Autoclass Archive Storage South Carolina Dual-region (desde 0 GiBy.mo),gibibyte month,0.0014
+Cloud Billing Catalog API,Cloud Storage,AFA4-1633-54D2,europe-north2,Autoclass Archive Storage Stockholm (desde 0 GiBy.mo),gibibyte month,0.0025
+Cloud Billing Catalog API,Cloud Storage,22C3-470A-4DCF,australia-southeast1,Autoclass Archive Storage Sydney (desde 0 GiBy.mo),gibibyte month,0.0025
+Cloud Billing Catalog API,Cloud Storage,CF49-9D9E-0733,australia-southeast1,Autoclass Archive Storage Sydney Dual-region (desde 0 GiBy.mo),gibibyte month,0.0028
+Cloud Billing Catalog API,Cloud Storage,7124-02D2-0995,asia-east1,Autoclass Archive Storage Taiwan (desde 0 GiBy.mo),gibibyte month,0.0015
+Cloud Billing Catalog API,Cloud Storage,E7A9-508A-0C4F,asia-east1,Autoclass Archive Storage Taiwan Dual-region (desde 0 GiBy.mo),gibibyte month,0.0017
+Cloud Billing Catalog API,Cloud Storage,4251-98EE-D524,me-west1,Autoclass Archive Storage Tel Aviv (desde 0 GiBy.mo),gibibyte month,0.0012
+Cloud Billing Catalog API,Cloud Storage,147F-CE3E-9D9B,asia-northeast1,Autoclass Archive Storage Tokyo (desde 0 GiBy.mo),gibibyte month,0.0025
+Cloud Billing Catalog API,Cloud Storage,9F8E-C534-70D8,northamerica-northeast2,Autoclass Archive Storage Toronto (desde 0 GiBy.mo),gibibyte month,0.0025
+Cloud Billing Catalog API,Cloud Storage,EE04-C23D-459A,northamerica-northeast2,Autoclass Archive Storage Toronto Dual-region (desde 0 GiBy.mo),gibibyte month,0.0028
+Cloud Billing Catalog API,Cloud Storage,417D-03B7-E09B,europe-west12,Autoclass Archive Storage Turin (desde 0 GiBy.mo),gibibyte month,0.0025
+Cloud Billing Catalog API,Cloud Storage,03B3-090C-C8F7,europe-west12,Autoclass Archive Storage Turin Dual-region (desde 0 GiBy.mo),gibibyte month,0.0028
+Cloud Billing Catalog API,Cloud Storage,1606-A750-B774,us,Autoclass Archive Storage US Multi-region (desde 0 GiBy.mo),gibibyte month,0.0024
+Cloud Billing Catalog API,Cloud Storage,7B63-597A-0A49,europe-central2,Autoclass Archive Storage Warsaw (desde 0 GiBy.mo),gibibyte month,0.0025
+Cloud Billing Catalog API,Cloud Storage,D6E0-A306-6C0C,europe-central2,Autoclass Archive Storage Warsaw Dual-region (desde 0 GiBy.mo),gibibyte month,0.0028
+Cloud Billing Catalog API,Cloud Storage,EFEF-E236-E29F,europe-west6,Autoclass Archive Storage Zurich (desde 0 GiBy.mo),gibibyte month,0.0025
+Cloud Billing Catalog API,Cloud Storage,FD67-6779-FB1E,europe-west5,Autoclass Archive Storage europe-west5 (desde 0 GiBy.mo),gibibyte month,0.0025
+Cloud Billing Catalog API,Cloud Storage,68BB-8B98-611E,us-east4,Autoclass Standard Storage Northern Virginia (desde 0 GiBy.mo),gibibyte month,0.023
+Cloud Billing Catalog API,Cloud Storage,DD64-0A7B-7023,us-east4,Autoclass Standard Storage Northern Virginia Dual-region (desde 0 GiBy.mo),gibibyte month,0.0253
+Cloud Billing Catalog API,Cloud Storage,C019-C3D4-B615,us,Autoclass Standard Storage US Multi-region (desde 0 GiBy.mo),gibibyte month,0.026
+Cloud Billing Catalog API,Cloud Storage,C9E9-E842-56EA,global,Dual-Region Archive Class A Operations (desde 0 count),count,0.0001
+Cloud Billing Catalog API,Cloud Storage,38E1-E4E2-C74A,global,Dual-Region Archive Class B Operations (desde 0 count),count,5e-05
+Cloud Billing Catalog API,Cloud Storage,3D30-20D1-EB50,global,Dual-Region Archive Tagging Class A Operations (desde 0 count),count,0.0001
+Cloud Billing Catalog API,Cloud Storage,5392-88CC-7114,global,Dual-Region Archive Tagging Class B Operations (desde 0 count),count,5e-05
+Cloud Billing Catalog API,Cloud Storage,9FA7-4ACA-4F14,global,Dual-Region Autoclass HNS Standard Class A Operations (desde 0 count),count,1.3e-05
+Cloud Billing Catalog API,Cloud Storage,04FB-2000-8C77,global,Dual-Region Autoclass HNS Standard Class B Operations (desde 0 count),count,5e-07
+Cloud Billing Catalog API,Cloud Storage,4003-C96F-0B54,global,Dual-Region Autoclass Standard Class A Operations (desde 0 count),count,1e-05
+Cloud Billing Catalog API,Cloud Storage,0373-EC21-DC06,global,Dual-Region Autoclass Standard Class B Operations (desde 0 count),count,4e-07
+Cloud Billing Catalog API,Cloud Storage,4F37-07E0-B25A,global,Dual-Region Coldline Class A Operations (desde 0 count),count,4e-05
+Cloud Billing Catalog API,Cloud Storage,93C5-F587-0543,global,Dual-Region Coldline Class B Operations (desde 0 count),count,1e-05
+Cloud Billing Catalog API,Cloud Storage,DD84-2ACE-DF65,global,Dual-Region Coldline Tagging Class A Operations (desde 0 count),count,4e-05
+Cloud Billing Catalog API,Cloud Storage,174D-250E-78ED,global,Dual-Region Coldline Tagging Class B Operations (desde 0 count),count,1e-05
+Cloud Billing Catalog API,Cloud Storage,2ED9-24D3-FC34,global,Dual-Region Durable Reduced Availability Class A Operations (desde 0 count),count,2e-05
+Cloud Billing Catalog API,Cloud Storage,8CEE-59F4-E074,global,Dual-Region Durable Reduced Availability Class B Operations (desde 0 count),count,1e-06
+Cloud Billing Catalog API,Cloud Storage,A36B-D299-7EEF,global,Dual-Region Durable Reduced Availability Tagging Class A Operations (desde 0 count),count,2e-05
+Cloud Billing Catalog API,Cloud Storage,A92B-E894-2981,global,Dual-Region Durable Reduced Availability Tagging Class B Operations (desde 0 count),count,1e-06
+Cloud Billing Catalog API,Cloud Storage,7E49-AE8C-00E0,global,Dual-Region HNS Archive Class A Operations (desde 0 count),count,0.00013
+Cloud Billing Catalog API,Cloud Storage,BA7B-26DD-B7F0,global,Dual-Region HNS Archive Class B Operations (desde 0 count),count,6.5e-05
+Cloud Billing Catalog API,Cloud Storage,640E-A476-12FC,global,Dual-Region HNS Coldline Class A Operations (desde 0 count),count,5.2e-05
+Cloud Billing Catalog API,Cloud Storage,DDC9-B2B6-FCAE,global,Dual-Region HNS Coldline Class B Operations (desde 0 count),count,1.3e-05
+Cloud Billing Catalog API,Cloud Storage,F97E-995B-1DA0,global,Dual-Region HNS Durable Reduced Availability Class A Operations (desde 0 count),count,2.6e-05
+Cloud Billing Catalog API,Cloud Storage,BEA0-7192-FF48,global,Dual-Region HNS Durable Reduced Availability Class B Operations (desde 0 count),count,1.3e-06
+Cloud Billing Catalog API,Cloud Storage,2466-0069-E4E1,global,Dual-Region HNS Nearline Class A Operations (desde 0 count),count,2.6e-05
+Cloud Billing Catalog API,Cloud Storage,83B8-AF8F-C323,global,Dual-Region HNS Nearline Class B Operations (desde 0 count),count,1.3e-06
+Cloud Billing Catalog API,Cloud Storage,B842-39EB-0F9D,global,Dual-Region HNS Standard Class A Operations (desde 0 count),count,1.3e-05
+Cloud Billing Catalog API,Cloud Storage,D584-6AF7-1A3A,global,Dual-Region HNS Standard Class B Operations (desde 0 count),count,5e-07
+Cloud Billing Catalog API,Cloud Storage,E03D-A650-232E,global,Dual-Region Nearline Class A Operations (desde 0 count),count,2e-05
+Cloud Billing Catalog API,Cloud Storage,8DFA-C1B4-82A5,global,Dual-Region Nearline Class B Operations (desde 0 count),count,1e-06
+Cloud Billing Catalog API,Cloud Storage,5DB6-215B-9C4C,global,Dual-Region Nearline Tagging Class A Operations (desde 0 count),count,2e-05
+Cloud Billing Catalog API,Cloud Storage,8425-1995-D6ED,global,Dual-Region Nearline Tagging Class B Operations (desde 0 count),count,1e-06
+Cloud Billing Catalog API,Cloud Storage,52BA-29B5-BE3B,global,Dual-Region Standard Class A Operations (desde 0 count),count,1e-05
+Cloud Billing Catalog API,Cloud Storage,25CC-1111-816F,global,Dual-Region Standard Class B Operations (desde 0 count),count,4e-07
+Cloud Billing Catalog API,Cloud Storage,65BD-111D-804F,global,Dual-Region Standard Tagging Class A Operations (desde 0 count),count,1e-05
+Cloud Billing Catalog API,Cloud Storage,26E6-BB4A-0374,global,Dual-Region Standard Tagging Class B Operations (desde 0 count),count,4e-07
+Cloud Billing Catalog API,Cloud Storage,7C99-2945-9180,global,Multi-Region Archive Class A Operations (desde 0 count),count,0.0001
+Cloud Billing Catalog API,Cloud Storage,DA71-0203-B933,global,Multi-Region Archive Class B Operations (desde 0 count),count,5e-05
+Cloud Billing Catalog API,Cloud Storage,CDA7-FEC6-8094,global,Multi-Region Archive Tagging Class A Operations (desde 0 count),count,0.0001
+Cloud Billing Catalog API,Cloud Storage,730B-8399-1132,global,Multi-Region Archive Tagging Class B Operations (desde 0 count),count,5e-05
+Cloud Billing Catalog API,Cloud Storage,1D2A-4BAF-8939,global,Multi-Region Autoclass HNS Standard Class A Operations (desde 0 count),count,1.3e-05
+Cloud Billing Catalog API,Cloud Storage,BEE8-B9E2-FABB,global,Multi-Region Autoclass HNS Standard Class B Operations (desde 0 count),count,5e-07
+Cloud Billing Catalog API,Cloud Storage,8A62-CD3F-214D,global,Multi-Region Autoclass Standard Class A Operations (desde 0 count),count,1e-05
+Cloud Billing Catalog API,Cloud Storage,EE2A-F4B6-2D07,global,Multi-Region Autoclass Standard Class B Operations (desde 0 count),count,4e-07
+Cloud Billing Catalog API,Cloud Storage,DA98-061E-D589,global,Multi-Region Coldline Class A Operations (desde 0 count),count,4e-05
+Cloud Billing Catalog API,Cloud Storage,EF72-F0CA-9530,global,Multi-Region Coldline Class B Operations (desde 0 count),count,1e-05
+Cloud Billing Catalog API,Cloud Storage,4058-495A-6582,global,Multi-Region Coldline Tagging Class A Operations (desde 0 count),count,4e-05
+Cloud Billing Catalog API,Cloud Storage,3326-3CFD-745D,global,Multi-Region Coldline Tagging Class B Operations (desde 0 count),count,1e-05
+Cloud Billing Catalog API,Cloud Storage,007A-40B7-63BC,global,Multi-Region Durable Reduced Availability Class A Operations (desde 0 count),count,2e-05
+Cloud Billing Catalog API,Cloud Storage,CBDB-5E1B-7CB1,global,Multi-Region Durable Reduced Availability Class B Operations (desde 0 count),count,1e-06
+Cloud Billing Catalog API,Cloud Storage,388A-B7E2-96C3,global,Multi-Region Durable Reduced Availability Tagging Class A Operations (desde 0 count),count,2e-05
+Cloud Billing Catalog API,Cloud Storage,9076-985D-EEBE,global,Multi-Region Durable Reduced Availability Tagging Class B Operations (desde 0 count),count,1e-06
+Cloud Billing Catalog API,Cloud Storage,6220-B5AA-E991,global,Multi-Region HNS Archive Class A Operations (desde 0 count),count,0.00013
+Cloud Billing Catalog API,Cloud Storage,0A0A-C64F-D71E,global,Multi-Region HNS Archive Class B Operations (desde 0 count),count,6.5e-05
+Cloud Billing Catalog API,Cloud Storage,7D64-7ECD-E113,global,Multi-Region HNS Coldline Class A Operations (desde 0 count),count,5.2e-05
+Cloud Billing Catalog API,Cloud Storage,A2D2-C78C-C147,global,Multi-Region HNS Coldline Class B Operations (desde 0 count),count,1.3e-05
+Cloud Billing Catalog API,Cloud Storage,7CB1-B1B3-A03C,global,Multi-Region HNS Durable Reduced Availability Class A Operations (desde 0 count),count,2.6e-05
+Cloud Billing Catalog API,Cloud Storage,1428-F4A6-76A6,global,Multi-Region HNS Durable Reduced Availability Class B Operations (desde 0 count),count,1.3e-06
+Cloud Billing Catalog API,Cloud Storage,EE2C-E844-D760,global,Multi-Region HNS Nearline Class A Operations (desde 0 count),count,2.6e-05
+Cloud Billing Catalog API,Cloud Storage,4A65-85A5-04F1,global,Multi-Region HNS Nearline Class B Operations (desde 0 count),count,1.3e-06
+Cloud Billing Catalog API,Cloud Storage,D6EC-7B60-7257,global,Multi-Region HNS Standard Class A Operations (desde 0 count),count,1.3e-05
+Cloud Billing Catalog API,Cloud Storage,6425-0271-216B,global,Multi-Region HNS Standard Class B Operations (desde 0 count),count,5e-07
+Cloud Billing Catalog API,Cloud Storage,C31D-D5AC-885F,global,Multi-Region Nearline Class A Operations (desde 0 count),count,2e-05
+Cloud Billing Catalog API,Cloud Storage,5693-D6A3-C16C,global,Multi-Region Nearline Class B Operations (desde 0 count),count,1e-06
+Cloud Billing Catalog API,Cloud Storage,30FC-E1C2-D74E,global,Multi-Region Nearline Tagging Class A Operations (desde 0 count),count,2e-05
+Cloud Billing Catalog API,Cloud Storage,60E8-9195-09DA,global,Multi-Region Nearline Tagging Class B Operations (desde 0 count),count,1e-06
+Cloud Billing Catalog API,Cloud Storage,9ADA-9AED-1B24,global,Multi-Region Standard Class A Operations (desde 0 count),count,1e-05
+Cloud Billing Catalog API,Cloud Storage,8AE7-5BBD-8F38,global,Multi-Region Standard Class B Operations (desde 0 count),count,4e-07
+Cloud Billing Catalog API,Cloud Storage,B596-759D-52C0,global,Multi-Region Standard Tagging Class A Operations (desde 0 count),count,1e-05
+Cloud Billing Catalog API,Cloud Storage,A5B2-DAB7-2D60,global,Multi-Region Standard Tagging Class B Operations (desde 0 count),count,4e-07
+Cloud Billing Catalog API,Cloud Storage,4066-5028-7352,global,Rapid Bucket Class A Operations (desde 0 count),count,1.13e-06
+Cloud Billing Catalog API,Cloud Storage,8CC2-51B4-C185,global,Rapid Bucket Class B Operations (desde 0 count),count,2e-07
+Cloud Billing Catalog API,Cloud Storage,F514-0B08-2549,global,Region Archive Tagging Class A Operations (desde 0 count),count,5e-05
+Cloud Billing Catalog API,Cloud Storage,2BE2-78F3-74EC,global,Region Archive Tagging Class B Operations (desde 0 count),count,5e-05
+Cloud Billing Catalog API,Cloud Storage,BAD8-E4BE-0FD0,global,Region Coldline Tagging Class A Operations (desde 0 count),count,2e-05
+Cloud Billing Catalog API,Cloud Storage,B3BE-CCBC-6E83,global,Region Coldline Tagging Class B Operations (desde 0 count),count,1e-05
+Cloud Billing Catalog API,Cloud Storage,DADB-7508-3A72,global,Region Durable Reduced Availability Tagging Class A Operations (desde 0 count),count,1e-05
+Cloud Billing Catalog API,Cloud Storage,A7AB-09E1-FC68,global,Region Durable Reduced Availability Tagging Class B Operations (desde 0 count),count,1e-06
+Cloud Billing Catalog API,Cloud Storage,C618-1C77-A976,global,Region Nearline Tagging Class A Operations (desde 0 count),count,1e-05
+Cloud Billing Catalog API,Cloud Storage,ED28-456B-DEE5,global,Region Nearline Tagging Class B Operations (desde 0 count),count,1e-06
+Cloud Billing Catalog API,Cloud Storage,3B8A-1E0C-8D5B,global,Region Standard Tagging Class A Operations (desde 0 count),count,5e-06
+Cloud Billing Catalog API,Cloud Storage,DBAB-9C80-7C8F,global,Region Standard Tagging Class B Operations (desde 0 count),count,4e-07
+Cloud Billing Catalog API,Cloud Storage,F3A8-B939-4A19,global,Regional Archive Class A Operations (desde 0 count),count,5e-05
+Cloud Billing Catalog API,Cloud Storage,1DBA-E3C9-B2A8,global,Regional Archive Class B Operations (desde 0 count),count,5e-05
+Cloud Billing Catalog API,Cloud Storage,0AED-11DB-1ABF,global,Regional Autoclass HNS Standard Class A Operations (desde 0 count),count,6.5e-06
+Cloud Billing Catalog API,Cloud Storage,D0A8-E235-EF3C,global,Regional Autoclass HNS Standard Class B Operations (desde 0 count),count,5e-07
+Cloud Billing Catalog API,Cloud Storage,B7C3-7672-190E,global,Regional Autoclass Standard Class A Operations (desde 0 count),count,0
+Cloud Billing Catalog API,Cloud Storage,B7C3-7672-190E,global,Regional Autoclass Standard Class A Operations (desde 5000 count),count,5e-06
+Cloud Billing Catalog API,Cloud Storage,5BE8-FE77-1C76,global,Regional Autoclass Standard Class B Operations (desde 0 count),count,0
+Cloud Billing Catalog API,Cloud Storage,5BE8-FE77-1C76,global,Regional Autoclass Standard Class B Operations (desde 50000 count),count,4e-07
+Cloud Billing Catalog API,Cloud Storage,8C3E-BC32-E512,global,Regional Coldline Class A Operations (desde 0 count),count,2e-05
+Cloud Billing Catalog API,Cloud Storage,B2C2-1D02-E27F,global,Regional Coldline Class B Operations (desde 0 count),count,1e-05
+Cloud Billing Catalog API,Cloud Storage,2730-C084-7FA3,global,Regional Durable Reduced Availability Class A Operations (desde 0 count),count,1e-05
+Cloud Billing Catalog API,Cloud Storage,57F2-87C6-B6A1,global,Regional Durable Reduced Availability Class B Operations (desde 0 count),count,1e-06
+Cloud Billing Catalog API,Cloud Storage,39DE-1055-78A7,global,Regional HNS Archive Class A Operations (desde 0 count),count,6.5e-05
+Cloud Billing Catalog API,Cloud Storage,5724-7182-CBEE,global,Regional HNS Archive Class B Operations (desde 0 count),count,6.5e-05
+Cloud Billing Catalog API,Cloud Storage,B7E4-3FBF-53BF,global,Regional HNS Coldline Class A Operations (desde 0 count),count,2.6e-05
+Cloud Billing Catalog API,Cloud Storage,0390-FD2A-D136,global,Regional HNS Coldline Class B Operations (desde 0 count),count,1.3e-05
+Cloud Billing Catalog API,Cloud Storage,C48F-B77E-4A02,global,Regional HNS Durable Reduced Availability Class A Operations (desde 0 count),count,1.3e-05
+Cloud Billing Catalog API,Cloud Storage,9BFD-1D00-9191,global,Regional HNS Durable Reduced Availability Class B Operations (desde 0 count),count,1.3e-06
+Cloud Billing Catalog API,Cloud Storage,C9E1-357F-F5EB,global,Regional HNS Nearline Class A Operations (desde 0 count),count,1.3e-05
+Cloud Billing Catalog API,Cloud Storage,7ACE-D45C-A8EF,global,Regional HNS Nearline Class B Operations (desde 0 count),count,1.3e-06
+Cloud Billing Catalog API,Cloud Storage,3DE2-BC9A-2A94,global,Regional HNS Standard Class A Operations (desde 0 count),count,0
+Cloud Billing Catalog API,Cloud Storage,3DE2-BC9A-2A94,global,Regional HNS Standard Class A Operations (desde 5000 count),count,6.5e-06
+Cloud Billing Catalog API,Cloud Storage,D3BA-FEF6-61C3,global,Regional HNS Standard Class B Operations (desde 0 count),count,0
+Cloud Billing Catalog API,Cloud Storage,D3BA-FEF6-61C3,global,Regional HNS Standard Class B Operations (desde 5000 count),count,5e-07
+Cloud Billing Catalog API,Cloud Storage,9559-D2EC-1D33,global,Regional Nearline Class A Operations (desde 0 count),count,1e-05
+Cloud Billing Catalog API,Cloud Storage,36B5-7D3A-C3EE,global,Regional Nearline Class B Operations (desde 0 count),count,1e-06
+Cloud Billing Catalog API,Cloud Storage,4DBF-185F-A415,global,Regional Standard Class A Operations (desde 0 count),count,0
+Cloud Billing Catalog API,Cloud Storage,4DBF-185F-A415,global,Regional Standard Class A Operations (desde 5000 count),count,5e-06
+Cloud Billing Catalog API,Cloud Storage,7870-010B-2763,global,Regional Standard Class B Operations (desde 0 count),count,0
+Cloud Billing Catalog API,Cloud Storage,7870-010B-2763,global,Regional Standard Class B Operations (desde 50000 count),count,4e-07
+Cloud Billing Catalog API,Cloud Storage,5F7A-5173-CF5B,us-east4,Standard Storage Northern Virginia (desde 0 GiBy.mo),gibibyte month,0.023
+Cloud Billing Catalog API,Cloud Storage,5213-5CDB-A0DB,us-east4,Standard Storage Northern Virginia Dual-region (desde 0 GiBy.mo),gibibyte month,0.0253
+Cloud Billing Catalog API,Cloud Storage,0D5D-6E23-4250,us,Standard Storage US Multi-region (desde 0 GiBy.mo),gibibyte month,0.026
+Cloud Billing Catalog API,Vertex AI Search,D4A5-60DC-B6F6,global,Gemini Enterprise: Data Index (desde 0 GiBy.mo),gibibyte month,5
+Cloud Billing Catalog API,Vertex AI Search,2459-B370-AC19,global,VAIS Configurable Pricing: Embedding Storage add-on (desde 0 GiBy.mo),gibibyte month,1.5
+Cloud Billing Catalog API,Vertex AI Search,AD21-6FE4-C919,global,VAIS Configurable Pricing: indexing core overage charged with PAYG (desde 0 GiBy.mo),gibibyte month,5
+Cloud Billing Catalog API,Vertex AI Search,713D-043A-F4CA,global,VAIS Configurable Pricing: indexing core subscription (desde 0 mo),month,1
+Cloud Billing Catalog API,Vertex AI Search,9018-FABD-B5DB,global,VAIS Configurable Pricing: query overage charged with PAYG (desde 0 count),count,0.0015
+Cloud Billing Catalog API,Vertex AI Search,7FD8-6D78-0DD5,global,VAIS Configurable Pricing: query units subscription (desde 0 mo),month,6
+Cloud Billing Catalog API,Vertex AI Search,BC7D-6A97-90F8,global,Vertex AI Search and Conversation: Data Index (desde 0 GiBy.mo),gibibyte month,0
+Cloud Billing Catalog API,Vertex AI Search,BC7D-6A97-90F8,global,Vertex AI Search and Conversation: Data Index (desde 10 GiBy.mo),gibibyte month,5
+Cloud Billing Catalog API,Vertex AI Search,C232-DC00-D993,global,Vertex AI Search: Advance Generative Answers Request Count (desde 0 count),count,0.01
+Cloud Billing Catalog API,Vertex AI Search,BFE9-7E43-9B31,global,Vertex AI Search: Check Grounding Character Count (desde 0 count),count,7.5e-07
+Cloud Billing Catalog API,Vertex AI Search,C42C-2852-B25D,global,Vertex AI Search: Grounded Generation (desde 0 count),count,0.0025
+Cloud Billing Catalog API,Vertex AI Search,3814-8405-680E,global,Vertex AI Search: Healthcare Generative Answers Request Count (desde 0 count),count,0.012
+Cloud Billing Catalog API,Vertex AI Search,C825-F378-5B72,global,Vertex AI Search: Healthcare Search API Partner Tier Request Count (desde 0 count),count,0.04
+Cloud Billing Catalog API,Vertex AI Search,0F12-1795-9564,global,Vertex AI Search: Healthcare Search API Request Count (desde 0 count),count,0.02
+Cloud Billing Catalog API,Vertex AI Search,5F3F-A230-7FDA,global,Vertex AI Search: Layout Parsing for Document Understanding (desde 0 count),count,0.01
+Cloud Billing Catalog API,Vertex AI Search,9EBF-E265-166D,global,Vertex AI Search: Media Search API Request Count (desde 0 count),count,0.002
+Cloud Billing Catalog API,Vertex AI Search,8E95-B0FA-9047,global,Vertex AI Search: Optical Character Recognition for Document Understanding (desde 0 count),count,0.0015
+Cloud Billing Catalog API,Vertex AI Search,8E95-B0FA-9047,global,Vertex AI Search: Optical Character Recognition for Document Understanding (desde 5000000 count),count,0.0006
+Cloud Billing Catalog API,Vertex AI Search,EE89-3EE8-2541,global,Vertex AI Search: Ranking (desde 0 count),count,0.001
+Cloud Billing Catalog API,Vertex AI Search,6240-C0B6-FE19,global,Vertex AI Search: Recommendations AI for Media - API Request Count (desde 0 count),count,0.0002
+Cloud Billing Catalog API,Vertex AI Search,2B79-798B-3DA6,global,Vertex AI Search: Recommendations AI for Media - Model Training (desde 0 h),hour,2.5
+Cloud Billing Catalog API,Vertex AI Search,93D6-7280-CF05,global,Vertex AI Search: Search API Request Count - Enterprise (desde 0 count),count,0
+Cloud Billing Catalog API,Vertex AI Search,93D6-7280-CF05,global,Vertex AI Search: Search API Request Count - Enterprise (desde 10000 count),count,0.004
+Cloud Billing Catalog API,Vertex AI Search,151B-D7A2-B5B5,global,Vertex AI Search: Search API Request Count - LLM Add-on (desde 0 count),count,0.004
+Cloud Billing Catalog API,Vertex AI Search,BADA-EE26-7BDA,global,Vertex AI Search: Search API Request Count - Standard (desde 0 count),count,0
+Cloud Billing Catalog API,Vertex AI Search,BADA-EE26-7BDA,global,Vertex AI Search: Search API Request Count - Standard (desde 10000 count),count,0.0015
+Cloud Billing Catalog API,Vertex AI Search,FBDD-D195-DEB5,global,Vertex AI Search: Web Grounded Generation (desde 0 count),count,0.035
