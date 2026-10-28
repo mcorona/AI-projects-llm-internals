@@ -23,3 +23,10 @@ semana-03/adapters/
 semana-03/resultados/prueba_*
 .DS_Store
 semana-04/entrenamiento/adapters/
+
+# Semana 12: credenciales de nube nunca en el repo (se usan sesiones de CLI, perfiles e impersonación)
+*.pem
+*credentials*.json
+*-key.json
+*service-account*.json
+.aws/

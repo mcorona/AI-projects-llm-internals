@@ -1,0 +1,24 @@
+name: infra-semana-12
+
+# Sin credenciales de nube: valida la sintaxis de los scripts de infra y que no haya llaves en el repo.
+on:
+  pull_request:
+    paths:
+      - "semana-12/**"
+      - ".github/workflows/infra-semana-12.yml"
+
+jobs:
+  revisar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v5
+      - name: Sintaxis de los scripts de infra
+        run: |
+          for f in semana-12/infra/*.sh; do bash -n "$f" && echo "ok $f"; done
+      - name: Python de infra compila
+        run: python3 -m py_compile semana-12/infra/*.py
+      - name: Sin credenciales en el repo
+        run: bash semana-12/infra/revisar_secretos.sh
