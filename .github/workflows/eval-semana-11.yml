@@ -1,0 +1,58 @@
+name: eval-semana-11
+
+on:
+  pull_request:
+    paths:
+      - "semana-11/**"
+      - ".github/workflows/eval-semana-11.yml"
+
+jobs:
+  recuperacion:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_USER: admin
+          POSTGRES_PASSWORD: ci-admin
+          POSTGRES_DB: inventory
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U admin -d inventory"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      PG_ADMIN_DSN: postgresql://admin:ci-admin@localhost:5432/inventory
+      NLQ_DSN: postgresql://copilot_ro:ci-ro@localhost:5432/inventory
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - name: Instalar dependencias
+        run: pip install "psycopg[binary]==3.3.6"
+      - name: Preparar base de CI (rol copilot_ro y datos sintéticos, semilla 42)
+        run: python semana-07/ci/preparar_base.py
+      - name: Suite de recuperación (índice, top 20, reranking; métricas exactas)
+        run: python semana-11/ci/eval_ci.py --suite recuperacion
+
+  generacion:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - name: Instalar dependencias (versiones de la semana 11)
+        run: >-
+          pip install "psycopg[binary]==3.3.6" anthropic==1.15.0 openai==3.3.0 instructor==1.17.0
+          ragas==0.4.3 langchain-community==0.4.1 langchain-core==1.7.0 langchain-openai==1.7.3
+      - name: Suite de generación (contextos fijos; RAGAS, juez propio, citas y abstención)
+        run: python semana-11/ci/eval_ci.py --suite generacion
