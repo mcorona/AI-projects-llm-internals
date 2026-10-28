@@ -1,13 +1,31 @@
 name: eval-semana-11
 
+# Corre en todos los PR para que sus dos checks puedan ser requeridos en el ruleset: si el PR no toca semana-11/**
+# ni este workflow, los dos jobs se omiten (skipped cuenta como aprobado) y no se gasta nada.
 on:
   pull_request:
-    paths:
-      - "semana-11/**"
-      - ".github/workflows/eval-semana-11.yml"
 
 jobs:
+  cambios:
+    runs-on: ubuntu-24.04
+    outputs:
+      semana11: ${{ steps.filtro.outputs.semana11 }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - id: filtro
+        run: |
+          if git diff --name-only "origin/${{ github.base_ref }}...HEAD" | grep -qE '^(semana-11/|\.github/workflows/eval-semana-11\.yml$)'; then
+            echo "semana11=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "semana11=false" >> "$GITHUB_OUTPUT"
+          fi
+
   recuperacion:
+    name: semana11-recuperacion
+    needs: cambios
+    if: needs.cambios.outputs.semana11 == 'true'
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     services:
@@ -40,6 +58,9 @@ jobs:
         run: python semana-11/ci/eval_ci.py --suite recuperacion
 
   generacion:
+    name: semana11-generacion
+    needs: cambios
+    if: needs.cambios.outputs.semana11 == 'true'
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     env:

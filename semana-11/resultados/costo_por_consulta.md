@@ -1,76 +1,73 @@
-# Semana 11 · Actividad 7: costo y latencia por consulta
+# Activity 7: cost and latency per query
 
-Pipeline decidido en las actividades 2 a 6:
-- **Recuperación:** bge-m3 local, pgvector con filtro de tenant y roles (top 20) y reranking con Haiku 5.5.
-- **Generación:** Haiku 5.5 medium sobre el top 5, con el prompt `solo_documentos`.
-- **Evaluación:** la suite de generación, con Haiku 5.5 low como juez.
+Script: `experimentos/costo_por_consulta.py` (run on 2026-10-27). Output: `costo_por_consulta_salida.txt`; per-query cache: `costo_por_consulta_cache.json`.
 
-Se corrió sobre las 150 preguntas del golden set: 65 respondibles y 10 sin respuesta por idioma.
+The pipeline is the one decided in activities 2 to 6:
+- **Retrieval:** bge-m3 (local), pgvector with the tenant and role filter (top 20) and Haiku 5.5 reranking.
+- **Generation:** Haiku 5.5 `medium` on the top 5, with the `solo_documentos` prompt.
+- **Evaluation:** the generation suite, with Haiku 5.5 `low` as judge.
 
-- **Tokens:** los que reporta la API en cada llamada.
-- **Precios:** `semana-07/prices.json`; Haiku 5.5 cuesta $0.10 por millón de tokens de entrada y $0.50 por millón de salida.
-- **Script:** `experimentos/costo_por_consulta.py`.
-- **Salida completa:** `costo_por_consulta_salida.txt`.
+It ran on the 150 questions of the gold set (65 answerable and 10 unanswerable per language). Tokens are the ones the API reports on each call. Prices come from `semana-07/prices.json`: Haiku 5.5 costs $0.10 per million input tokens and $0.50 per million output tokens.
 
-## Costo y latencia por etapa (medias por consulta)
+## Cost and latency per stage (means per query)
 
-| Etapa | Tokens de entrada | Tokens de salida | USD por consulta | p50 (s) | p95 (s) | Nota |
+| Stage | Input tokens | Output tokens | USD per query | p50 (s) | p95 (s) | Note |
 |---|---|---|---|---|---|---|
-| Recuperación: embedding (bge-m3) | 0 | 0 | $0.00000 | 0.05 | 0.05 | local, sin costo de API |
-| Recuperación: búsqueda pgvector | 0 | 0 | $0.00000 | 0.00 | 0.00 | top 20 con filtro |
-| Recuperación: reranking (Haiku) | 3,350 | 316 | $0.00049 | 2.41 | 4.05 | 20 candidatos |
-| **Recuperación total** | 3,350 | 316 | **$0.00049** | **2.46** | **4.11** | |
-| **Generación** (Haiku medium) | 1,023 | 210 | **$0.00021** | **1.58** | **2.78** | top 5, prompt solo_documentos |
-| **Respuesta al usuario** (recuperación + generación) | 4,373 | 526 | **$0.00070** | **4.18** | **6.23** | lo que paga producción |
-| **Evaluación**, respondible (4 métricas) | 9,056 | 1,007 | **$0.00141** | **17.17** | **26.73** | 7.1 llamadas al juez |
-| **Evaluación**, sin respuesta (abstención) | 363 | 19 | **$0.00005** | **0.75** | **1.21** | 1 llamada |
+| Retrieval: embedding (bge-m3) | 0 | 0 | $0.00000 | 0.05 | 0.05 | local, no API cost |
+| Retrieval: pgvector search | 0 | 0 | $0.00000 | 0.00 | 0.00 | top 20 with filter |
+| Retrieval: reranking (Haiku) | 3,350 | 316 | $0.00049 | 2.41 | 4.05 | 20 candidates |
+| **Retrieval total** | 3,350 | 316 | **$0.00049** | **2.46** | **4.11** | |
+| **Generation** (Haiku `medium`) | 1,023 | 210 | **$0.00021** | **1.58** | **2.78** | top 5, `solo_documentos` prompt |
+| **Answer to the user** (retrieval + generation) | 4,373 | 526 | **$0.00070** | **4.18** | **6.23** | what production pays |
+| **Evaluation**, answerable (4 metrics) | 9,056 | 1,007 | **$0.00141** | **17.17** | **26.73** | 7.1 judge calls |
+| **Evaluation**, unanswerable (abstention) | 363 | 19 | **$0.00005** | **0.75** | **1.21** | 1 call |
 
-### Evaluación por métrica (respondibles)
+### Evaluation latency per metric (answerable)
 
-| Métrica | p50 (s) | p95 (s) |
+| Metric | p50 (s) | p95 (s) |
 |---|---|---|
 | faithfulness (RAGAS) | 5.61 | 8.88 |
-| answer_relevancy (RAGAS) | 8.70 | 16.45 |
-| exactitud (juez propio) | 0.97 | 3.47 |
-| clase (abstención) | 0.81 | 2.03 |
+| answer relevancy (RAGAS) | 8.70 | 16.45 |
+| correctness (own judge) | 0.97 | 3.47 |
+| abstention class | 0.81 | 2.03 |
 
-## Costo de evaluar cada suite completa una vez (una corrida de CI)
+## Cost of evaluating each full suite once (one CI run)
 
-| Suite | Qué incluye | Costo |
+| Suite | What it includes | Cost |
 |---|---|---|
-| Recuperación, métricas exactas | 130 consultas respondibles: embedding, búsqueda y reranking | $0.064 |
-| Recuperación con RAGAS (context precision y recall) | lo anterior más el juez ($0.00157 por consulta, actividad 2) | $0.268 |
-| Generación | 150 respuestas sobre contextos fijos, más su evaluación | $0.215 |
-| **Las dos suites, con métricas exactas en recuperación** | | **$0.279** |
-| Las dos suites, con RAGAS también en recuperación | | $0.483 |
+| Retrieval, exact metrics | 130 answerable queries: embedding, search and reranking | $0.064 |
+| Retrieval with RAGAS (context precision and recall) | the above plus the judge ($0.00157 per query, activity 2) | $0.268 |
+| Generation | 150 answers on fixed contexts, plus their evaluation | $0.215 |
+| **Both suites, exact metrics in retrieval** | | **$0.279** |
+| Both suites, RAGAS also in retrieval | | $0.483 |
 
-## Lectura
+## Reading
 
-- **Producción:**
-  - Una respuesta cuesta $0.0007, es decir, unas 1,400 consultas por dólar.
-  - El reranking es el 70 % del costo y el 58 % de la latencia mediana.
-  - El embedding y la búsqueda no cuestan nada y tardan menos de 0.1 s.
-- **Evaluar cuesta más que responder:**
-  - Evaluar una consulta respondible cuesta el doble de lo que cuesta responderla ($0.00141 contra $0.00070).
-  - Necesita 7 llamadas al juez: RAGAS parte la respuesta en afirmaciones y las verifica una por una, y answer relevancy genera preguntas.
-  - Las dos métricas de RAGAS concentran la latencia de la evaluación.
+- **Production cost:**
+  - An answer costs $0.0007, about 1,400 queries per dollar.
+  - Reranking is 70% of the cost and 58% of the median latency.
+  - Embedding and search cost nothing and take under 0.1 s.
+- **Evaluating costs more than answering:**
+  - Evaluating an answerable query costs twice as much as answering it ($0.00141 vs $0.00070).
+  - It takes about 7 judge calls. RAGAS splits the answer into claims and verifies each one, and answer relevancy generates questions.
+  - The two RAGAS metrics account for most of the evaluation latency.
 - **CI:**
-  - Las dos suites cuestan $0.28 por corrida. Con RAGAS también en recuperación, el costo casi se duplica ($0.48).
-  - Como el reranking ya se distingue con métricas exactas (recall@3 y AP@5, actividad 2), la actividad 8 puede usar métricas exactas en recuperación y las 150 preguntas completas en generación, sin subconjunto.
-  - Si el costo llega a importar, el recorte con más efecto está en la evaluación de generación, no en la recuperación.
-- **Cómo se midieron las latencias:**
-  - La recuperación corrió en serie, una consulta a la vez, así que su latencia es la de una consulta sola.
-  - La generación corrió con 4 hilos y la evaluación con 8 consultas en paralelo, y dentro de cada consulta las métricas van en serie. Sus latencias incluyen la espera de la API bajo esa concurrencia.
+  - Both suites cost $0.28 per run. Adding RAGAS to retrieval almost doubles that ($0.48).
+  - Reranking is already detected by exact metrics (recall@3 and AP@5, activity 2). So activity 8 can use exact metrics in retrieval and the full 150 questions in generation, with no subset.
+  - If cost ever matters, the cut with the most effect is in the generation evaluation, not in retrieval.
+- **How latencies were measured:**
+  - Retrieval ran sequentially, so its latency is that of a single query.
+  - Generation ran 4 queries in parallel, and evaluation 8 queries in parallel, with metrics in series within each query. Their latencies include API queuing at that concurrency.
 
-## Corridas
+## Runs
 
-- **Corrida 1** (`costo_por_consulta_salida_corrida1.txt`): falló la red local.
-  - 33 métricas fallaron en 18 consultas (errores de conexión, timeouts y reintentos agotados de Instructor).
-  - Hubo bloqueos de hasta 15 minutos, que inflaron la p95 de la evaluación a 579 s.
-  - Se descartaron 20 evaluaciones: las 18 con error y 2 que tardaron más de 60 s en alguna métrica.
-- **Corrida final:**
-  - Solo se volvieron a evaluar esas 20.
-  - Recuperación, generación y las 130 evaluaciones limpias salieron de la caché (`costo_por_consulta_cache.json`).
-  - Errores del juez: 0.
-  - Las cifras de las tablas suman las 150 consultas medidas, en las corridas 1 y final.
-- **Gasto real de la actividad:** ≈ $0.31 ($0.28 de la corrida 1 y ≈ $0.03 de la reevaluación).
+- **Run 1** (`costo_por_consulta_salida_corrida1.txt`): the local network failed.
+  - 33 metrics failed on 18 queries (connection errors, timeouts and exhausted Instructor retries).
+  - Stalls of up to 15 minutes inflated the evaluation p95 to 579 s.
+  - 20 evaluations were dropped: the 18 with errors and 2 that took more than 60 s on a metric.
+- **Final run:**
+  - Only those 20 evaluations were measured again.
+  - Retrieval, generation and the 130 clean evaluations came from the cache.
+  - Judge errors: 0.
+  - The tables combine the 150 measured queries from run 1 and the final run.
+- **Actual spend for the activity:** ≈ $0.31 ($0.28 for run 1 and ≈ $0.03 for the re-evaluation).
