@@ -1,0 +1,112 @@
+documentos: 24 · pasajes de referencia únicos: 50
+estrategia              chunks  prom_chars    íntegros  partidos
+fijo_400_solape_80          57         348     50/50           0
+recursivo_300               84         203     48/50           2
+    partido: recepcion_almacen.md · Diferencia mayor a 2%: se hace un **rechazo parcial** de la diferencia
+    partido: skus_criticos.md · SKU crítico con menos de **7 días** de cobertura.
+actual_por_seccion          69         242     50/50           0
+## Huellas de entrada (una suite no ve el componente del otro lado)
+
+- Contextos de la suite de generación en sin_rerank, sin_solo_contexto y solo_documentos: 1760e690916f (los mismos de la actividad 4); en rec300: 430e1241ee66
+- Rankings de la suite de recuperación en sin_solo_contexto y solo_documentos: 026fd458c7c6 (los de la actividad 2)
+
+## Control de ruido
+
+
+### Recuperación: otro reranking sin cambios (rerank_repeticion − adoptado)
+
+| Métrica | Diferencia | IC 95 % | Ruido (repetición) | Se mueve |
+|---|---|---|---|---|
+| recall@3 | +0.000 | [+0.000, +0.000] | +0.000 | no |
+| recall@5 | +0.000 | [+0.000, +0.000] | +0.000 | no |
+| mrr | +0.021 | [-0.004, +0.047] | +0.000 | no |
+| ndcg@10 | +0.013 | [-0.005, +0.033] | +0.000 | no |
+| ap@5 | +0.015 | [-0.009, +0.040] | +0.000 | no |
+
+### Generación: otra generación sin cambios (gen_repeticion − adoptado)
+
+| Métrica | Diferencia | IC 95 % | Ruido (repetición) | Se mueve |
+|---|---|---|---|---|
+| exactitud | +0.000 | [+0.000, +0.000] | +0.000 | no |
+| faithfulness | +0.031 | [-0.020, +0.081] | +0.000 | no |
+| answer_relevancy | -0.008 | [-0.026, +0.009] | +0.000 | no |
+| precision_citas | +0.007 | [-0.024, +0.035] | +0.000 | no |
+
+## Cambio: sin_rerank
+
+### Suite de recuperación
+
+| Métrica | Diferencia | IC 95 % | Ruido (repetición) | Se mueve |
+|---|---|---|---|---|
+| recall@3 | -0.065 | [-0.108, -0.031] | +0.000 | sí |
+| recall@5 | +0.000 | [+0.000, +0.000] | +0.000 | no |
+| mrr | -0.072 | [-0.121, -0.022] | +0.021 | sí |
+| ndcg@10 | -0.056 | [-0.092, -0.019] | +0.013 | sí |
+| ap@5 | -0.083 | [-0.129, -0.032] | +0.015 | sí |
+
+Suite de generación: no se mueve por construcción (contextos fijos; ningún componente de recuperación).
+
+## Cambio: sin_solo_contexto
+
+Suite de recuperación: no se mueve por construcción (no ejecuta el generador; ranking idéntico).
+
+### Suite de generación
+
+| Métrica | Diferencia | IC 95 % | Ruido (repetición) | Se mueve |
+|---|---|---|---|---|
+| exactitud | +0.000 | [+0.000, +0.000] | +0.000 | no |
+| faithfulness | +0.111 | [+0.059, +0.163] | +0.031 | sí |
+| answer_relevancy | -0.002 | [-0.017, +0.013] | -0.008 | no |
+| precision_citas | -0.013 | [-0.041, +0.015] | +0.007 | no |
+
+Abstención correcta en las sin respuesta: 19/20 (línea base 20/20); abstención falsa en respondibles: 0 (línea base 0)
+
+## Cambio: rec300
+
+### Suite de recuperación
+
+| Métrica | Diferencia | IC 95 % | Ruido (repetición) | Se mueve |
+|---|---|---|---|---|
+| recall@3 | -0.038 | [-0.073, -0.012] | +0.000 | sí |
+| recall@5 | -0.038 | [-0.073, -0.012] | +0.000 | sí |
+| mrr | +0.022 | [-0.027, +0.065] | +0.021 | no |
+| ndcg@10 | +0.003 | [-0.040, +0.041] | +0.013 | no |
+| ap@5 | +0.018 | [-0.029, +0.060] | +0.015 | no |
+
+### Suite de generación
+
+| Métrica | Diferencia | IC 95 % | Ruido (repetición) | Se mueve |
+|---|---|---|---|---|
+| exactitud | -0.038 | [-0.077, -0.008] | +0.000 | sí |
+| faithfulness | -0.018 | [-0.070, +0.034] | +0.031 | no |
+| answer_relevancy | -0.011 | [-0.040, +0.014] | -0.008 | no |
+| precision_citas | -0.029 | [-0.084, +0.024] | +0.007 | no |
+
+Abstención correcta en las sin respuesta: 20/20 (línea base 20/20); abstención falsa en respondibles: 1 (línea base 0)
+
+## Cambio: solo_documentos
+
+Suite de recuperación: no se mueve por construcción (no ejecuta el generador; ranking idéntico).
+
+### Suite de generación
+
+| Métrica | Diferencia | IC 95 % | Ruido (repetición) | Se mueve |
+|---|---|---|---|---|
+| exactitud | +0.000 | [+0.000, +0.000] | +0.000 | no |
+| faithfulness | +0.116 | [+0.075, +0.159] | +0.031 | sí |
+| answer_relevancy | +0.006 | [-0.008, +0.020] | -0.008 | no |
+| precision_citas | +0.021 | [-0.008, +0.051] | +0.007 | no |
+
+Abstención correcta en las sin respuesta: 20/20 (línea base 20/20); abstención falsa en respondibles: 1 (línea base 0)
+
+## Veredicto
+
+| Cambio | Suite de recuperación | Suite de generación |
+|---|---|---|
+| sin_rerank | se mueve | no se mueve |
+| sin_solo_contexto | no se mueve | se mueve |
+| rec300 | se mueve | se mueve |
+| solo_documentos | no se mueve | se mueve |
+
+Chunks del índice rec300: 98 (fijo 400/80: 68)
+Costo: reranking $0.1181; gen_repeticion: generación $0.0304 + evaluación $0.0000; sin_solo_contexto: generación $0.0285 + evaluación $0.0010; solo_documentos: generación $0.0286 + evaluación $0.0000; rec300: generación $0.0255 + evaluación $0.0000
