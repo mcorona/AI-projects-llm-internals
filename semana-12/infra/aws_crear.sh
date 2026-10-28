@@ -52,7 +52,10 @@ cat > $TMP/permisos_kb.json <<J
   "Condition":{"StringEquals":{"aws:ResourceAccount":"$CUENTA_AWS"}}},
  {"Sid":"VectorBucket","Effect":"Allow","Action":["s3vectors:PutVectors","s3vectors:GetVectors","s3vectors:DeleteVectors","s3vectors:QueryVectors","s3vectors:ListVectors","s3vectors:GetIndex"],
   "Resource":["arn:aws:s3vectors:$REGION:$CUENTA_AWS:bucket/$S3_VECTORES","arn:aws:s3vectors:$REGION:$CUENTA_AWS:bucket/$S3_VECTORES/index/*"]},
- {"Sid":"Embeddings","Effect":"Allow","Action":["bedrock:InvokeModel"],"Resource":[$(lista "arn:aws:bedrock:$REGION::foundation-model/" "${MODELOS_EMB[@]}")]}]}
+ {"Sid":"Embeddings","Effect":"Allow","Action":["bedrock:InvokeModel"],"Resource":[$(lista "arn:aws:bedrock:$REGION::foundation-model/" "${MODELOS_EMB[@]}")]},
+ {"Sid":"ParserBDA","Effect":"Allow","Action":["bedrock:InvokeDataAutomationAsync"],"Resource":[
+   "arn:aws:bedrock:$REGION:aws:data-automation-project/public-rag-default","arn:aws:bedrock:us-*:$CUENTA_AWS:data-automation-profile/*"]},
+ {"Sid":"ParserBDAEstado","Effect":"Allow","Action":["bedrock:GetDataAutomationStatus"],"Resource":"arn:aws:bedrock:us-*:$CUENTA_AWS:data-automation-invocation/*"}]}
 J
 crear_rol "$ROL_KB" $TMP/confianza_kb.json
 aws iam put-role-policy --role-name "$ROL_KB" --policy-name "${PREFIJO}-kb" --policy-document file://$TMP/permisos_kb.json
@@ -65,7 +68,9 @@ cat > $TMP/permisos_op.json <<J
 {"Version":"2012-10-17","Statement":[
  {"Sid":"Lectura","Effect":"Allow","Action":["bedrock:ListFoundationModels","bedrock:GetFoundationModel","bedrock:ListInferenceProfiles","bedrock:GetInferenceProfile",
    "bedrock:ListKnowledgeBases","s3:ListAllMyBuckets","s3vectors:ListVectorBuckets","budgets:ViewBudget"],"Resource":"*"},
- {"Sid":"KnowledgeBases","Effect":"Allow","Action":["bedrock:CreateKnowledgeBase","bedrock:GetKnowledgeBase","bedrock:UpdateKnowledgeBase","bedrock:DeleteKnowledgeBase",
+ {"Sid":"CrearKnowledgeBase","Effect":"Allow","Action":["bedrock:CreateKnowledgeBase"],"Resource":"*",
+  "Condition":{"StringEquals":{"aws:RequestTag/$ETIQUETA_CLAVE":"$ETIQUETA_VALOR"}}},
+ {"Sid":"KnowledgeBases","Effect":"Allow","Action":["bedrock:GetKnowledgeBase","bedrock:UpdateKnowledgeBase","bedrock:DeleteKnowledgeBase",
    "bedrock:CreateDataSource","bedrock:GetDataSource","bedrock:UpdateDataSource","bedrock:DeleteDataSource","bedrock:ListDataSources",
    "bedrock:StartIngestionJob","bedrock:GetIngestionJob","bedrock:ListIngestionJobs","bedrock:Retrieve","bedrock:TagResource","bedrock:ListTagsForResource"],
   "Resource":"arn:aws:bedrock:$REGION:$CUENTA_AWS:knowledge-base/*"},
