@@ -1,0 +1,53 @@
+documentos: 24 · pasajes de referencia únicos: 50
+estrategia              chunks  prom_chars    íntegros  partidos
+fijo_400_solape_80          57         348     50/50           0
+recursivo_300               84         203     48/50           2
+    partido: recepcion_almacen.md · Diferencia mayor a 2%: se hace un **rechazo parcial** de la diferencia
+    partido: skus_criticos.md · SKU crítico con menos de **7 días** de cobertura.
+actual_por_seccion          69         242     50/50           0
+## Respondibles
+
+| Idioma | Tipo | n | faithfulness | answer_relevancy | exactitud (juez propio) | precisión de citas | cobertura de cita | abstención falsa |
+|---|---|---|---|---|---|---|---|---|
+| es | base | 50 | 0.667 | 0.884 | 1.000 | 0.639 (83) | 1.000 | 0/50 |
+| es | no_textual | 15 | 0.717 | 0.909 | 1.000 | 0.882 (17) | 1.000 | 0/15 |
+| es | todas | 65 | 0.679 | 0.890 | 1.000 | 0.680 (100) | 1.000 | 0/65 |
+| en | base | 50 | 0.840 | 0.879 | 1.000 | 0.743 (70) | 1.000 | 0/50 |
+| en | no_textual | 15 | 0.688 | 0.798 | 1.000 | 0.938 (16) | 1.000 | 0/15 |
+| en | todas | 65 | 0.805 | 0.860 | 1.000 | 0.779 (86) | 1.000 | 0/65 |
+
+## Sin respuesta
+
+| Idioma | n | Abstención correcta | Respuesta inventada | Sin clasificar |
+|---|---|---|---|---|
+| es | 10 | 10/10 | 0/10 | 0 |
+| en | 10 | 10/10 | 0/10 | 0 |
+
+## Por número de chunks en el contexto (respondibles, ambos idiomas)
+
+| Chunks | n | faithfulness | exactitud | precisión de citas |
+|---|---|---|---|---|
+| 3 | 34 | 0.703 | 1.000 | 0.791 |
+| 4 | 53 | 0.721 | 1.000 | 0.761 |
+| 5 | 40 | 0.788 | 1.000 | 0.689 |
+| 6 | 3 | 0.930 | 1.000 | 0.455 |
+
+## Casos para revisar
+
+- rec-01 es (faithfulness 0.00): El plazo para devolver un producto a un cliente es de **30 días naturales desde la entrega** [D3].  Para que se acepte, el producto debe estar en su empaque ori
+- rec-02 es (faithfulness 0.00): No se aceptan. Según la política de devoluciones, el equipo de protección personal (guantes, cascos, lentes, arneses) **no se acepta** en devolución si el empaq
+- rec-04 es (faithfulness 0.43): Cada CEDIS tiene una meta de exactitud de inventario de **98%**, que es el porcentaje de ubicaciones contadas sin diferencia [D1][D2]. Si un CEDIS queda por deb
+- rec-19 es (faithfulness 0.00): Según el contexto, la entrada debe registrarse en el sistema en un plazo máximo de **4 horas** [D2]. Este plazo aparece en el paso 5 del procedimiento de recepc
+- rec-24 es (faithfulness 0.33): La cantidad mínima por transferencia entre CEDIS es de **20 unidades o una tarima completa, lo que sea menor** [D3].  No hay datos de SQL en el contexto para es
+- rec-25 es (faithfulness 0.20): El tránsito de Guadalajara a Monterrey es de **2 días** [D1][D4]. Ambos documentos coinciden en este dato. No hay resultado de consulta SQL en el contexto para 
+- rec-26 es (faithfulness 0.40): Un CEDIS tiene excedente cuando su stock de un SKU supera **1.5 veces su participación normal** del stock total de ese SKU. La participación normal es un tercio
+- rec-37 es (faithfulness 0.33): El CEDIS de Monterrey tiene capacidad para **12,000 posiciones de tarima** [D2].  No se incluyó resultado de consulta SQL, así que este dato proviene solo del d
+- rec-42 es (faithfulness 0.43): La penalización por entrega tardía es de **1.5% del valor de la orden por cada semana de entrega tardía**, con un tope acumulado de **10% del valor del contrato
+- rec-46 es (faithfulness 0.25): **Merma** es la pérdida de producto por daño, caducidad o robo [D3].  No encontré más información sobre merma en los pasajes de recepción y devoluciones [D1][D2
+- int-imagen-12 es (faithfulness 0.25): El nivel de servicio del CEDIS Norte en septiembre de 2026 fue de **98.6%** [D1].  No se incluyó resultado de consulta SQL, así que este dato proviene solo del 
+- rec-07 en (faithfulness 0.29): A purchase order of 120,000 pesos (MXN) must be approved by the **purchasing manager** (*Gerente de compras*), since it falls in the $50,000 to $250,000 MXN ran
+- rec-35 en (faithfulness 0.38): The question is in English, so I answer in English.  The maximum height of a pallet is **1.20 meters** [D3], under the "Dimensiones" section of the packaging an
+- int-pdf-01 en (faithfulness 0.40): The standard freight rate from Guadalajara to Monterrey is **MXN $10,900** with a transit time of 2 days [D2].  No SQL result was provided, so this answer comes
+
+Sin puntaje del juez: 0
+Costo: generación $0.0305 ($0.00020 por consulta; latencia p50 2.1 s); evaluación en esta corrida $0.1369 (691 llamadas; lo que ya estaba en caché no se cobra)
