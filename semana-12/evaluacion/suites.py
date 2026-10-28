@@ -74,7 +74,9 @@ PRECIO_COHERE, PRECIO_S3V_CONSULTA = 0.10, 0.055 / 1000
 def _aws(servicio):
     import boto3
     from botocore.config import Config
-    return boto3.Session(profile_name=os.getenv("PERFIL_AWS", "semana12"), region_name="us-east-1").client(
+    # Con credenciales en el entorno (aws configure export-credentials --profile semana12) no hace falta botocore[crt]
+    perfil = None if os.getenv("AWS_ACCESS_KEY_ID") else os.getenv("PERFIL_AWS", "semana12")
+    return boto3.Session(profile_name=perfil, region_name="us-east-1").client(
         servicio, config=Config(retries={"max_attempts": 6, "mode": "adaptive"}))
 
 
