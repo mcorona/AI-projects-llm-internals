@@ -1,0 +1,12 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "alfa",
+  "roles": [
+   "compras",
+   "finanzas"
+  ],
+  "source": "contratos_marco_proveedores",
+  "doc_id": "alfa__contratos_marco_proveedores",
+  "tipo": "texto"
+ }
+}

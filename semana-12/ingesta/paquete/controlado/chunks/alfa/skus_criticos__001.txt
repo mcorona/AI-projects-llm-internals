@@ -1,0 +1,11 @@
+ de compras y se
+revisa cada semestre junto con el área comercial.
+
+## Indicador principal: días de cobertura
+Días de cobertura = stock total ÷ venta diaria promedio de los últimos 30 días.
+
+Un SKU crítico está **en riesgo** cuando sus días de cobertura son menores que el tiempo de
+entrega de su proveedor, aunque todavía no haya cruzado su punto de reorden.
+
+## Escalamiento
+- **Nivel 1 (comprador)

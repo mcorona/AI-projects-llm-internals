@@ -1,0 +1,10 @@
+# Evaluación y clasificación de proveedores
+
+> Documento sintético de una empresa ficticia (Distribuidora Industrial Ficticia, DIF). Versión 1.4.
+
+## Indicadores
+Cada proveedor se evalúa **trimestralmente** con tres indicadores:
+
+- **OTIF (a tiempo y completo):** meta mayor o igual a 90%.
+- **Calidad:** porcentaje de piezas rechazadas en recepción; meta menor a 2%.
+- **Cumplimiento del tiempo de e

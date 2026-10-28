@@ -1,0 +1,12 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "alfa",
+  "roles": [
+   "finanzas"
+  ],
+  "source": "cierre_mensual_inventario",
+  "doc_id": "alfa__cierre_mensual_inventario__000",
+  "tipo": "texto",
+  "chunk": 0
+ }
+}

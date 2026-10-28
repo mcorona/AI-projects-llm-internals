@@ -1,0 +1,5 @@
+tifica al proveedor.
+- Producto dañado o fuera de especificación: se rechaza y se registra para la evaluación del proveedor.
+
+## SKUs críticos
+La recepción de SKUs críticos tiene prioridad en el andén y se registra antes que cualquier otra entrada.

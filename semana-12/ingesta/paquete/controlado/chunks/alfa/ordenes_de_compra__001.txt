@@ -1,0 +1,9 @@
+Comprador de la categoría |
+| De $50,000 a $250,000 MXN | Gerente de compras |
+| Más de $250,000 MXN | Director de operaciones |
+
+Las compras urgentes de SKUs críticos siempre requieren al gerente de compras, aunque el monto sea menor.
+
+## Cotizaciones
+- Órdenes mayores a **$100,000 MXN** requieren **tres cotizaciones** comparables.
+- Se exceptúan los SKUs con proveedor único homologado; en ese ca

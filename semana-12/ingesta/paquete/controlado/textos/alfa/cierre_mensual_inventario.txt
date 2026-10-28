@@ -1,0 +1,10 @@
+# Cierre mensual de inventario
+
+> Documento sintético de una empresa ficticia (Distribuidora Industrial Ficticia, DIF). Versión 1.0.
+
+## Calendario
+El cierre de inventario se realiza el **último día hábil** de cada mes.
+El cierre anual incluye conteo físico completo durante la primera semana de enero.
+
+## Transacciones posteriores
+Las transacciones posteriores al cierre se registran en el periodo siguiente.

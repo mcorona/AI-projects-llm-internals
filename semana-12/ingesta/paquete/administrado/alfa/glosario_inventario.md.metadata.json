@@ -1,0 +1,16 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "alfa",
+  "roles": [
+   "almacen",
+   "calidad",
+   "compras",
+   "finanzas",
+   "operaciones",
+   "ventas"
+  ],
+  "source": "glosario_inventario",
+  "doc_id": "alfa__glosario_inventario",
+  "tipo": "texto"
+ }
+}

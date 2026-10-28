@@ -1,0 +1,986 @@
+{
+ "descripcion": "Paquete de ingesta de semana 12 (actividad 2). Ver construir_paquete.py.",
+ "gcs": "gs://semana12-docs-ejemplo1-9xub",
+ "s3": "s3://semana12-docs-<cuenta de AWS>",
+ "campos_metadatos": {
+  "tenant_id": "texto",
+  "roles": "lista de texto",
+  "source": "texto",
+  "doc_id": "texto",
+  "tipo": "texto",
+  "chunk": "número (solo chunks)"
+ },
+ "documentos": [
+  {
+   "tenant_id": "alfa",
+   "roles": [
+    "almacen",
+    "finanzas"
+   ],
+   "source": "acta_inventario_norte",
+   "doc_id": "alfa__acta_inventario_norte",
+   "tipo": "jpg",
+   "original": "semana-10/escaneos/acta_inventario_norte_p1.jpg",
+   "chunks": 1,
+   "chars_texto": 350
+  },
+  {
+   "tenant_id": "alfa",
+   "roles": [
+    "calidad",
+    "finanzas"
+   ],
+   "source": "auditoria_interna",
+   "doc_id": "alfa__auditoria_interna",
+   "tipo": "texto",
+   "original": "semana-08/corpus/auditoria_interna.md",
+   "chunks": 1,
+   "chars_texto": 383
+  },
+  {
+   "tenant_id": "alfa",
+   "roles": [
+    "almacen",
+    "operaciones"
+   ],
+   "source": "capacitacion_almacen",
+   "doc_id": "alfa__capacitacion_almacen",
+   "tipo": "texto",
+   "original": "semana-08/corpus/capacitacion_almacen.md",
+   "chunks": 2,
+   "chars_texto": 518
+  },
+  {
+   "tenant_id": "alfa",
+   "roles": [
+    "operaciones"
+   ],
+   "source": "cedis_monterrey",
+   "doc_id": "alfa__cedis_monterrey",
+   "tipo": "texto",
+   "original": "semana-08/corpus/cedis_monterrey.md",
+   "chunks": 1,
+   "chars_texto": 357
+  },
+  {
+   "tenant_id": "alfa",
+   "roles": [
+    "finanzas"
+   ],
+   "source": "cierre_mensual_inventario",
+   "doc_id": "alfa__cierre_mensual_inventario",
+   "tipo": "texto",
+   "original": "semana-08/corpus/cierre_mensual_inventario.md",
+   "chunks": 2,
+   "chars_texto": 411
+  },
+  {
+   "tenant_id": "alfa",
+   "roles": [
+    "compras",
+    "finanzas"
+   ],
+   "source": "contratos_marco_proveedores",
+   "doc_id": "alfa__contratos_marco_proveedores",
+   "tipo": "texto",
+   "original": "semana-08/corpus/contratos_marco_proveedores.md",
+   "chunks": 2,
+   "chars_texto": 402
+  },
+  {
+   "tenant_id": "alfa",
+   "roles": [
+    "finanzas",
+    "ventas"
+   ],
+   "source": "descuentos_clientes",
+   "doc_id": "alfa__descuentos_clientes",
+   "tipo": "texto",
+   "original": "semana-08/corpus/descuentos_clientes.md",
+   "chunks": 2,
+   "chars_texto": 468
+  },
+  {
+   "tenant_id": "alfa",
+   "roles": [
+    "almacen",
+    "ventas"
+   ],
+   "source": "devoluciones",
+   "doc_id": "alfa__devoluciones",
+   "tipo": "texto",
+   "original": "semana-08/corpus/devoluciones.md",
+   "chunks": 4,
+   "chars_texto": 1090
+  },
+  {
+   "tenant_id": "alfa",
+   "roles": [
+    "almacen",
+    "operaciones"
+   ],
+   "source": "embalaje_etiquetado",
+   "doc_id": "alfa__embalaje_etiquetado",
+   "tipo": "texto",
+   "original": "semana-08/corpus/embalaje_etiquetado.md",
+   "chunks": 1,
+   "chars_texto": 329
+  },
+  {
+   "tenant_id": "alfa",
+   "roles": [
+    "finanzas",
+    "operaciones"
+   ],
+   "source": "flota_reparto",
+   "doc_id": "alfa__flota_reparto",
+   "tipo": "texto",
+   "original": "semana-08/corpus/flota_reparto.md",
+   "chunks": 1,
+   "chars_texto": 327
+  },
+  {
+   "tenant_id": "alfa",
+   "roles": [
+    "almacen",
+    "calidad",
+    "compras",
+    "finanzas",
+    "operaciones",
+    "ventas"
+   ],
+   "source": "glosario_inventario",
+   "doc_id": "alfa__glosario_inventario",
+   "tipo": "texto",
+   "original": "semana-08/corpus/glosario_inventario.md",
+   "chunks": 1,
+   "chars_texto": 359
+  },
+  {
+   "tenant_id": "alfa",
+   "roles": [
+    "finanzas",
+    "operaciones"
+   ],
+   "source": "grafica_nivel_servicio",
+   "doc_id": "alfa__grafica_nivel_servicio",
+   "tipo": "png",
+   "original": "semana-10/imagenes/grafica_nivel_servicio.png",
+   "chunks": 2,
+   "chars_texto": 487
+  },
+  {
+   "tenant_id": "alfa",
+   "roles": [
+    "finanzas",
+    "operaciones"
+   ],
+   "source": "indicadores_operacion",
+   "doc_id": "alfa__indicadores_operacion",
+   "tipo": "texto",
+   "original": "semana-08/corpus/indicadores_operacion.md",
+   "chunks": 1,
+   "chars_texto": 342
+  },
+  {
+   "tenant_id": "alfa",
+   "roles": [
+    "almacen",
+    "finanzas"
+   ],
+   "source": "inventario_ciclico",
+   "doc_id": "alfa__inventario_ciclico",
+   "tipo": "texto",
+   "original": "semana-08/corpus/inventario_ciclico.md",
+   "chunks": 3,
+   "chars_texto": 1037
+  },
+  {
+   "tenant_id": "alfa",
+   "roles": [
+    "calidad",
+    "compras"
+   ],
+   "source": "matriz_proveedores",
+   "doc_id": "alfa__matriz_proveedores",
+   "tipo": "pdf",
+   "original": "semana-10/pdf/matriz_proveedores.pdf",
+   "chunks": 2,
+   "chars_texto": 447
+  },
+  {
+   "tenant_id": "alfa",
+   "roles": [
+    "almacen",
+    "calidad"
+   ],
+   "source": "mermas_caducidad",
+   "doc_id": "alfa__mermas_caducidad",
+   "tipo": "texto",
+   "original": "semana-08/corpus/mermas_caducidad.md",
+   "chunks": 2,
+   "chars_texto": 424
+  },
+  {
+   "tenant_id": "alfa",
+   "roles": [
+    "compras"
+   ],
+   "source": "onboarding_compradores",
+   "doc_id": "alfa__onboarding_compradores",
+   "tipo": "texto",
+   "original": "semana-08/corpus/onboarding_compradores.md",
+   "chunks": 1,
+   "chars_texto": 357
+  },
+  {
+   "tenant_id": "alfa",
+   "roles": [
+    "compras",
+    "finanzas"
+   ],
+   "source": "ordenes_de_compra",
+   "doc_id": "alfa__ordenes_de_compra",
+   "tipo": "texto",
+   "original": "semana-08/corpus/ordenes_de_compra.md",
+   "chunks": 5,
+   "chars_texto": 1407
+  },
+  {
+   "tenant_id": "alfa",
+   "roles": [
+    "almacen",
+    "operaciones"
+   ],
+   "source": "plano_cedis_occidente",
+   "doc_id": "alfa__plano_cedis_occidente",
+   "tipo": "png",
+   "original": "semana-10/imagenes/plano_cedis_occidente.png",
+   "chunks": 3,
+   "chars_texto": 1009
+  },
+  {
+   "tenant_id": "alfa",
+   "roles": [
+    "almacen",
+    "compras"
+   ],
+   "source": "politica_reorden",
+   "doc_id": "alfa__politica_reorden",
+   "tipo": "texto",
+   "original": "semana-08/corpus/politica_reorden.md",
+   "chunks": 6,
+   "chars_texto": 1793
+  },
+  {
+   "tenant_id": "alfa",
+   "roles": [
+    "calidad",
+    "compras"
+   ],
+   "source": "proveedores",
+   "doc_id": "alfa__proveedores",
+   "tipo": "texto",
+   "original": "semana-08/corpus/proveedores.md",
+   "chunks": 4,
+   "chars_texto": 1254
+  },
+  {
+   "tenant_id": "alfa",
+   "roles": [
+    "almacen"
+   ],
+   "source": "recepcion_almacen",
+   "doc_id": "alfa__recepcion_almacen",
+   "tipo": "texto",
+   "original": "semana-08/corpus/recepcion_almacen.md",
+   "chunks": 4,
+   "chars_texto": 1209
+  },
+  {
+   "tenant_id": "alfa",
+   "roles": [
+    "calidad",
+    "ventas"
+   ],
+   "source": "reclamaciones_clientes",
+   "doc_id": "alfa__reclamaciones_clientes",
+   "tipo": "texto",
+   "original": "semana-08/corpus/reclamaciones_clientes.md",
+   "chunks": 1,
+   "chars_texto": 392
+  },
+  {
+   "tenant_id": "alfa",
+   "roles": [
+    "almacen",
+    "compras"
+   ],
+   "source": "remision_r4471",
+   "doc_id": "alfa__remision_r4471",
+   "tipo": "jpg",
+   "original": "semana-10/escaneos/remision_r4471_p1.jpg",
+   "chunks": 1,
+   "chars_texto": 287
+  },
+  {
+   "tenant_id": "alfa",
+   "roles": [
+    "operaciones"
+   ],
+   "source": "seguridad_instalaciones",
+   "doc_id": "alfa__seguridad_instalaciones",
+   "tipo": "texto",
+   "original": "semana-08/corpus/seguridad_instalaciones.md",
+   "chunks": 1,
+   "chars_texto": 376
+  },
+  {
+   "tenant_id": "alfa",
+   "roles": [
+    "almacen",
+    "compras"
+   ],
+   "source": "skus_criticos",
+   "doc_id": "alfa__skus_criticos",
+   "tipo": "texto",
+   "original": "semana-08/corpus/skus_criticos.md",
+   "chunks": 5,
+   "chars_texto": 1623
+  },
+  {
+   "tenant_id": "alfa",
+   "roles": [
+    "finanzas",
+    "operaciones"
+   ],
+   "source": "tarifas_flete",
+   "doc_id": "alfa__tarifas_flete",
+   "tipo": "pdf",
+   "original": "semana-10/pdf/tarifas_flete.pdf",
+   "chunks": 2,
+   "chars_texto": 402
+  },
+  {
+   "tenant_id": "alfa",
+   "roles": [
+    "almacen",
+    "operaciones"
+   ],
+   "source": "transferencias_cedis",
+   "doc_id": "alfa__transferencias_cedis",
+   "tipo": "texto",
+   "original": "semana-08/corpus/transferencias_cedis.md",
+   "chunks": 3,
+   "chars_texto": 985
+  },
+  {
+   "tenant_id": "alfa",
+   "roles": [
+    "almacen",
+    "calidad",
+    "compras",
+    "finanzas",
+    "operaciones",
+    "ventas"
+   ],
+   "source": "uso_copiloto",
+   "doc_id": "alfa__uso_copiloto",
+   "tipo": "texto",
+   "original": "semana-08/corpus/uso_copiloto.md",
+   "chunks": 3,
+   "chars_texto": 968
+  },
+  {
+   "tenant_id": "alfa",
+   "roles": [
+    "operaciones"
+   ],
+   "source": "wms_respaldos",
+   "doc_id": "alfa__wms_respaldos",
+   "tipo": "texto",
+   "original": "semana-08/corpus/wms_respaldos.md",
+   "chunks": 1,
+   "chars_texto": 361
+  },
+  {
+   "tenant_id": "beta",
+   "roles": [
+    "almacen",
+    "operaciones"
+   ],
+   "source": "capacitacion_almacen",
+   "doc_id": "beta__capacitacion_almacen",
+   "tipo": "texto",
+   "original": "semana-09/corpus_beta/capacitacion_almacen.md",
+   "chunks": 2,
+   "chars_texto": 518
+  },
+  {
+   "tenant_id": "beta",
+   "roles": [
+    "almacen",
+    "ventas"
+   ],
+   "source": "devoluciones",
+   "doc_id": "beta__devoluciones",
+   "tipo": "texto",
+   "original": "semana-09/corpus_beta/devoluciones.md",
+   "chunks": 4,
+   "chars_texto": 1090
+  },
+  {
+   "tenant_id": "beta",
+   "roles": [
+    "finanzas",
+    "operaciones"
+   ],
+   "source": "flota_reparto",
+   "doc_id": "beta__flota_reparto",
+   "tipo": "texto",
+   "original": "semana-09/corpus_beta/flota_reparto.md",
+   "chunks": 1,
+   "chars_texto": 327
+  },
+  {
+   "tenant_id": "beta",
+   "roles": [
+    "almacen",
+    "finanzas"
+   ],
+   "source": "inventario_ciclico",
+   "doc_id": "beta__inventario_ciclico",
+   "tipo": "texto",
+   "original": "semana-09/corpus_beta/inventario_ciclico.md",
+   "chunks": 3,
+   "chars_texto": 1037
+  },
+  {
+   "tenant_id": "beta",
+   "roles": [
+    "compras",
+    "finanzas"
+   ],
+   "source": "ordenes_de_compra",
+   "doc_id": "beta__ordenes_de_compra",
+   "tipo": "texto",
+   "original": "semana-09/corpus_beta/ordenes_de_compra.md",
+   "chunks": 5,
+   "chars_texto": 1408
+  },
+  {
+   "tenant_id": "beta",
+   "roles": [
+    "almacen",
+    "compras"
+   ],
+   "source": "politica_reorden",
+   "doc_id": "beta__politica_reorden",
+   "tipo": "texto",
+   "original": "semana-09/corpus_beta/politica_reorden.md",
+   "chunks": 6,
+   "chars_texto": 1793
+  },
+  {
+   "tenant_id": "beta",
+   "roles": [
+    "calidad",
+    "compras"
+   ],
+   "source": "proveedores",
+   "doc_id": "beta__proveedores",
+   "tipo": "texto",
+   "original": "semana-09/corpus_beta/proveedores.md",
+   "chunks": 4,
+   "chars_texto": 1254
+  },
+  {
+   "tenant_id": "beta",
+   "roles": [
+    "almacen"
+   ],
+   "source": "recepcion_almacen",
+   "doc_id": "beta__recepcion_almacen",
+   "tipo": "texto",
+   "original": "semana-09/corpus_beta/recepcion_almacen.md",
+   "chunks": 4,
+   "chars_texto": 1209
+  },
+  {
+   "tenant_id": "beta",
+   "roles": [
+    "operaciones"
+   ],
+   "source": "seguridad_instalaciones",
+   "doc_id": "beta__seguridad_instalaciones",
+   "tipo": "texto",
+   "original": "semana-09/corpus_beta/seguridad_instalaciones.md",
+   "chunks": 1,
+   "chars_texto": 376
+  },
+  {
+   "tenant_id": "beta",
+   "roles": [
+    "almacen",
+    "operaciones"
+   ],
+   "source": "transferencias_cedis",
+   "doc_id": "beta__transferencias_cedis",
+   "tipo": "texto",
+   "original": "semana-09/corpus_beta/transferencias_cedis.md",
+   "chunks": 3,
+   "chars_texto": 985
+  }
+ ],
+ "golden": {
+  "semana-11/datasets/eval_rag_es.jsonl": {
+   "sha256": "4fe2db3ca0d0a0a7cd40f31d89d321e073eded3f3d8c94aa589b82923269cb4e",
+   "lineas": 75,
+   "sin_cambios_vs_main": true
+  },
+  "semana-11/datasets/eval_rag_en.jsonl": {
+   "sha256": "179d5331e88e8caf4f52253d0ea36f32b61609449bf9f5ebcb1c09ebc6b86405",
+   "lineas": 75,
+   "sin_cambios_vs_main": true
+  },
+  "semana-09/datasets/multitenant_es.jsonl": {
+   "sha256": "773c351b664b1d4cabe57642b53d5b0f59343f302007f9d629cda302f212f42a",
+   "lineas": 10,
+   "sin_cambios_vs_main": true
+  },
+  "semana-09/datasets/multitenant_en.jsonl": {
+   "sha256": "da6f8a1a39cf4d6e5b3b0231a71f4f35646a48ecc3f20d874d9197c10072390c",
+   "lineas": 10,
+   "sin_cambios_vs_main": true
+  }
+ },
+ "validaciones": {
+  "documentos": {
+   "alfa": 30,
+   "beta": 10,
+   "esperado": "30 y 10",
+   "ok": true
+  },
+  "chunks": {
+   "alfa": 68,
+   "beta": 33,
+   "esperado_alfa": "68 (índice semana10.chunks)",
+   "ok": true
+  },
+  "permisos": {
+   "documentos_sin_roles": [],
+   "roles_distintos": [
+    "almacen",
+    "calidad",
+    "compras",
+    "finanzas",
+    "operaciones",
+    "ventas"
+   ],
+   "ok": true
+  },
+  "no_textuales_en_formato_original": {
+   "acta_inventario_norte": "jpg",
+   "grafica_nivel_servicio": "png",
+   "matriz_proveedores": "pdf",
+   "plano_cedis_occidente": "png",
+   "remision_r4471": "jpg",
+   "tarifas_flete": "pdf"
+  },
+  "originales_identicos": {
+   "ok": true,
+   "n": 40
+  },
+  "pasajes_golden_integros": {
+   "total": 136,
+   "faltan": [],
+   "ok": true
+  },
+  "pasajes_multitenant_integros": {
+   "total": 40,
+   "faltan": [],
+   "ok": true
+  },
+  "golden_sin_cambios": {
+   "ok": true
+  },
+  "ids_vertex": {
+   "unicos_por_modo": true,
+   "max_longitud": 38,
+   "ok": true
+  }
+ },
+ "conteos": {
+  "administrado": 40,
+  "controlado_textos": 40,
+  "controlado_chunks": 101,
+  "archivos": 366
+ },
+ "sha256_archivos": {
+  "administrado/alfa/acta_inventario_norte_p1.jpg": "68d3eca00ee93e17cee6d0487827b3d6de89f5331cd5235f743dddc313113cda",
+  "administrado/alfa/acta_inventario_norte_p1.jpg.metadata.json": "f6bd34f35615f284fd95996f24cab814786a01e43a9ee2834b8e870082d82659",
+  "administrado/alfa/auditoria_interna.md": "0ec111bdfa646d2323cd31a3ece039481a22b57e2ec3aba6722942356ce9206e",
+  "administrado/alfa/auditoria_interna.md.metadata.json": "92164a22273144605ddbe877b9228a3084d3e151857e0506c0be8bc171666b1e",
+  "administrado/alfa/capacitacion_almacen.md": "77c1c9a4415101fef07445737306fe4dbf25525964a34044507e655e83f5a664",
+  "administrado/alfa/capacitacion_almacen.md.metadata.json": "649b39ad7f53bbd8909abc03db19887f0a8ce04f1864ddea9bfb7f95263e4769",
+  "administrado/alfa/cedis_monterrey.md": "a732f3d690dab4634251735bbb5871bab5e8afa33d141704f38b41c859a153a0",
+  "administrado/alfa/cedis_monterrey.md.metadata.json": "7469b9c14d444f3b5ecdf7294d4cb8ceea9fe5e66f5a307c8271157682c57dc0",
+  "administrado/alfa/cierre_mensual_inventario.md": "ca42c56d7bdd76d6c3bad48116708693b34e1e4dcba431994ae9ba088f9bc9e5",
+  "administrado/alfa/cierre_mensual_inventario.md.metadata.json": "70bfd7eebdfedeef8748a6f7ab091b7e3ae15e0ca8d62bfe55a38a6a2c8e64bb",
+  "administrado/alfa/contratos_marco_proveedores.md": "99fe35fa57026aa759d0033e958ad640f02d6e7999c822e2e4890e50f228aa4c",
+  "administrado/alfa/contratos_marco_proveedores.md.metadata.json": "c1b98da691aa8a57be7bbbfd0caf55f9d1b155926b388e93491f4f7b64b13986",
+  "administrado/alfa/descuentos_clientes.md": "11888d1d8bd62fb93c9a594547b964a87a8970bedf5bdf1c2bec3299e4adcb75",
+  "administrado/alfa/descuentos_clientes.md.metadata.json": "c209060ef65e19ccea2e311cc5656e51aa2822fa4fe729ecc6da2febab2a3f83",
+  "administrado/alfa/devoluciones.md": "14ab1e29c771a7803ab8fb109b4f828aa91468f3650daeed27476500531f53cc",
+  "administrado/alfa/devoluciones.md.metadata.json": "5d64f706d91729e0eae3c0ed9ee38a8c61df22e595ecd2d18c49f54085e8ae13",
+  "administrado/alfa/embalaje_etiquetado.md": "3ee78eb5d9d4b635aec5cdc27030768dac2b873a6da93f79cc9ad4add79d17dd",
+  "administrado/alfa/embalaje_etiquetado.md.metadata.json": "c34f23e065d70f6c16fe1ed5c51e760d5497a9d98f07e51d08468abe619531b4",
+  "administrado/alfa/flota_reparto.md": "40e6226ab4a929aab85e0b4f6ce206eb7d368feadab83c2bbfd9f2fbaae6796b",
+  "administrado/alfa/flota_reparto.md.metadata.json": "24cc4ccaa173e77e6df29b700db7d3e83bbaef48517730fd9e8ac6b1d1701aaa",
+  "administrado/alfa/glosario_inventario.md": "485b486b4391fd409851b1190f8a04dcc3edf0aba3c6276bfcbcb82b6d2d4d1a",
+  "administrado/alfa/glosario_inventario.md.metadata.json": "f5dbafffb5ebdcf107969cce5af82b3afd8c6d3699d3bee13a36f0dc0d3c24a6",
+  "administrado/alfa/grafica_nivel_servicio.png": "276480710fc18a9a2d11ef14b36d2b39a99a2c6f3df40afa0627d4f353e29023",
+  "administrado/alfa/grafica_nivel_servicio.png.metadata.json": "4be66c685683a820f80548345038bf12e0a55dec1963faac8ef673a1cae06f65",
+  "administrado/alfa/indicadores_operacion.md": "2019350277e55481c6e9b3d2732846dad80cf94c97b3b52fc31cf820ff93d7d8",
+  "administrado/alfa/indicadores_operacion.md.metadata.json": "55b83d591b16acf0b0375710bcfcb063d2dd8f934e19d87234f4b1b50df7af53",
+  "administrado/alfa/inventario_ciclico.md": "e8e5e173b1104d1ae863486ca2d2ae949a85894eb86f8258390a377f33a64c95",
+  "administrado/alfa/inventario_ciclico.md.metadata.json": "54ae0662e6d99d115df538ac5315c0bfa16b7d1c3750f97b95dc87c9a86d1bb8",
+  "administrado/alfa/matriz_proveedores.pdf": "2fb90b18947cf1b0792495273a412e4cc76319a6ca94092a3c1252aba2e4ebc4",
+  "administrado/alfa/matriz_proveedores.pdf.metadata.json": "3603822d8b5e485b3a95a0ea4606ea1bb0eae5b9d6f56ea4b0496952f4c97404",
+  "administrado/alfa/mermas_caducidad.md": "302fdb356e750bcd63a86f010a1f4a3b97aa15aecbb58cf61764fc470cb582aa",
+  "administrado/alfa/mermas_caducidad.md.metadata.json": "26840a78bd509bf5cfaaa39cd36b2580b4d0fabe517c428c98cb02162b8c2a27",
+  "administrado/alfa/onboarding_compradores.md": "2763c6cfd247ba266c1ec1e0ee76a254d60a74389078e53e2f8538270717b1ca",
+  "administrado/alfa/onboarding_compradores.md.metadata.json": "6501ce240db9e703b9ea97ec7ef103314a5852d361f50b721ba02c65cc9c50e7",
+  "administrado/alfa/ordenes_de_compra.md": "0e12d3ce44db8834b0371bd4362f1860df0e8f418b85aed17f664cf298bee26c",
+  "administrado/alfa/ordenes_de_compra.md.metadata.json": "2edd436945d5531dfd56e4b80ade396b6d13853e082cddd9b1176b667b1b9fc2",
+  "administrado/alfa/plano_cedis_occidente.png": "b1adc6b90bf3ce39471917dc9e9b0c0949b874947cd12e634fcea71488f46ffc",
+  "administrado/alfa/plano_cedis_occidente.png.metadata.json": "2d56a4a4d804a2253c047724fd06b2cab8b9468067b1eedd93940eb92f20b76c",
+  "administrado/alfa/politica_reorden.md": "2b39fb864d60243bace4756deadb7df647d07a6e8e3d46365350f132f46e6c28",
+  "administrado/alfa/politica_reorden.md.metadata.json": "c51c6e49fe16fe1937d0f14595d2122c2999023f79e3c9a7a4cf1d14bb875200",
+  "administrado/alfa/proveedores.md": "31c6f2ebd3242c50e5b3cd629c27951b9dd4601aadddb5e62c874a78a7b928ea",
+  "administrado/alfa/proveedores.md.metadata.json": "2e7770b68196d73368a3c9713aab71890a3c4fb62f88c33134ecdaae756de715",
+  "administrado/alfa/recepcion_almacen.md": "78640cd5eec537835602b3b7671bcd0a93969c9df5ab3d6ac383e89e898e5c5e",
+  "administrado/alfa/recepcion_almacen.md.metadata.json": "2742d2d3e57edb011ebb9b89115dd86bdd0ee10c78883f7cea058512df32fbc6",
+  "administrado/alfa/reclamaciones_clientes.md": "e484d87759f7700e303976a5100fee9c2a5d0c7b16307d6ce9c46ee0f2fca925",
+  "administrado/alfa/reclamaciones_clientes.md.metadata.json": "e4d0b380e0f539a17ff3d7a39e314613e61f8e6851afb8a903b8b2feb359708b",
+  "administrado/alfa/remision_r4471_p1.jpg": "7fcac3b53af9620a8fad4c030fa3b24bf664a45d7cdf58d3204c402c83a00c28",
+  "administrado/alfa/remision_r4471_p1.jpg.metadata.json": "b8bbe1d587c510b5013dbbfb331448b0f62ff8b0111a57efc6fb1853826860d7",
+  "administrado/alfa/seguridad_instalaciones.md": "6dc2bb9c32128f699f0671fd6bb5e6c9dc2d3194cd80af1884aa942590b18e54",
+  "administrado/alfa/seguridad_instalaciones.md.metadata.json": "c375a613448db2174588ec70448f4ab9c5134667b5cb55a111af7b47922279db",
+  "administrado/alfa/skus_criticos.md": "6fab9e8478e87423690e3f1590d544c6d9f2f690950a67542708e5cfe6d39c97",
+  "administrado/alfa/skus_criticos.md.metadata.json": "54890573601024e36fb264547f6c65fb95441d3da5eb4b0211ba577d61d3e710",
+  "administrado/alfa/tarifas_flete.pdf": "1288bc0f95e817741886d3289192a3ddfb70d9172272e09ff32376f0fa109652",
+  "administrado/alfa/tarifas_flete.pdf.metadata.json": "b413707c6b172de90c345e40459ca0d22033e2b1ad7b7561b0f41ebdb2311dd5",
+  "administrado/alfa/transferencias_cedis.md": "35cad4c85f7b44ae14ef544186952433faf3b2ba73e7960ba6ff841b4881a514",
+  "administrado/alfa/transferencias_cedis.md.metadata.json": "9ff22dbbd35bb80d14114ec9234e02681140d3baa359746eafd6deda29b88ce2",
+  "administrado/alfa/uso_copiloto.md": "8d66fe6ec03874f48df48502a1609249c48e62f59243717332eaec148bee39bf",
+  "administrado/alfa/uso_copiloto.md.metadata.json": "1f9d3f3f5e285332ae70096b4125e13e64b8d0c2b31e52550d7641c428c0f5fe",
+  "administrado/alfa/wms_respaldos.md": "4b6259de062068916f846cfd70c98948bfbdf3e29bb960ac27af70f22f4b9112",
+  "administrado/alfa/wms_respaldos.md.metadata.json": "ebebfcb625965c9824d9eb0e96d4ac90e19b08f5a80d3496c3c84ea7b9b2b594",
+  "administrado/beta/capacitacion_almacen.md": "48be07eda714634a2d41ebe89294e581311d31655ac0b39fa251dbc60bee9a69",
+  "administrado/beta/capacitacion_almacen.md.metadata.json": "508e2a6b2f0b1b0c0364824e7b2dab9bcb47ade0b8daffc271bc850915344e74",
+  "administrado/beta/devoluciones.md": "3098a5e5bedbae1e8b8cb6ec40cc0a6d763d2311701564694356ebf356476d3e",
+  "administrado/beta/devoluciones.md.metadata.json": "513487bdd8f2001c14aaa6f3f09072436732db4408d0d2ec1a9aedde5120e674",
+  "administrado/beta/flota_reparto.md": "052737b4121d4f58b1163938e90090895ad9c06ba48233a2a3f43ace31afb108",
+  "administrado/beta/flota_reparto.md.metadata.json": "c19aba28001970672ecfd3ae9903561e81552ac13b581262ed7362008a3ba365",
+  "administrado/beta/inventario_ciclico.md": "7d19c58bb0a3bf318ebfb0eee5dd70acde4675d9f88728851acf5321dccaf824",
+  "administrado/beta/inventario_ciclico.md.metadata.json": "683fd09489210173a6c40e4ad67c0895e2daa553ad26f16861a6fb5f78f4dd39",
+  "administrado/beta/ordenes_de_compra.md": "82d4a68aaabf9751d09b9a9dcf90ddd01dd8d204b93de78795c775623afa78b7",
+  "administrado/beta/ordenes_de_compra.md.metadata.json": "979e26ee59ef4822ef143044a51f51a3a71f61a43d6fb2eddcc68f913ac6aec1",
+  "administrado/beta/politica_reorden.md": "0230d190af52f34a0f6eebc461e8f9467135ec926b9c603c879f751c075291a8",
+  "administrado/beta/politica_reorden.md.metadata.json": "bd4e3b3a2a9123699e06cc10fdd8a218b8654bd8cdb1be80df3dd04758011620",
+  "administrado/beta/proveedores.md": "fcc17c23225d08dee485f21118327ce6e023f21429b402877b831152afc4792d",
+  "administrado/beta/proveedores.md.metadata.json": "aec50edda1bebb9758cce4bfc54970bad3fa176758d3edd8c94e6dbc8da228c7",
+  "administrado/beta/recepcion_almacen.md": "388354835c1db889f8c653836e814d4817a83c53c4a963a016affb65380f7aa5",
+  "administrado/beta/recepcion_almacen.md.metadata.json": "8ef9380e87d055c146ca502672ed1dba29920b4c693c65c44d974a0a6b1df8a6",
+  "administrado/beta/seguridad_instalaciones.md": "7e43ea4817eb1d981e56fb2881441800968492bd7ecd76b5a6aa1fbd90d28686",
+  "administrado/beta/seguridad_instalaciones.md.metadata.json": "29aa9b59526e46cce50af287d783648dc17c82e498eea91c444e7ff50ae827db",
+  "administrado/beta/transferencias_cedis.md": "f522d94deda94a38a96c3d627327e2da8f8aecc2997a5708bf1d01889aec55a7",
+  "administrado/beta/transferencias_cedis.md.metadata.json": "f2b11fd6fd35d17c1327bbc7ebc01eb8a057e8669181dbaf7184ef42e6831278",
+  "controlado/chunks/alfa/acta_inventario_norte__000.txt": "2ec6e7945dd683264e12bfd0b048cb3a89502d081c8bfbefb37f2b06400d61df",
+  "controlado/chunks/alfa/acta_inventario_norte__000.txt.metadata.json": "7213f48b31b119ac8a1172af96f5a80efa3fa0bec44212d5f13c83cf010a2eec",
+  "controlado/chunks/alfa/auditoria_interna__000.txt": "0ec111bdfa646d2323cd31a3ece039481a22b57e2ec3aba6722942356ce9206e",
+  "controlado/chunks/alfa/auditoria_interna__000.txt.metadata.json": "8e6940711749ae620c93d3b7895397d482d0c44da7d0beb057658fff81e0302e",
+  "controlado/chunks/alfa/capacitacion_almacen__000.txt": "d470123671f3a23a237e4193545536f6442097677f6708d545c6bffab8abc0f9",
+  "controlado/chunks/alfa/capacitacion_almacen__000.txt.metadata.json": "906d34d93649a4da0392ffc54bee5c0bfce4622d7f66c4351ebba9bea95a6721",
+  "controlado/chunks/alfa/capacitacion_almacen__001.txt": "416ce3ae9ffa3d3e5147dd9c0d68b8d69272ceab4a0496f917783994b38c122f",
+  "controlado/chunks/alfa/capacitacion_almacen__001.txt.metadata.json": "75874a65a7b1c4f5b13511ff5922611a3302997bfada0746a86dd9af77a5e29b",
+  "controlado/chunks/alfa/cedis_monterrey__000.txt": "a732f3d690dab4634251735bbb5871bab5e8afa33d141704f38b41c859a153a0",
+  "controlado/chunks/alfa/cedis_monterrey__000.txt.metadata.json": "ecda1da514752f4b9acba67a6f0501ce84f5b1c07145a871d55cf5f422e7e561",
+  "controlado/chunks/alfa/cierre_mensual_inventario__000.txt": "0e25cebeafb43bc9849158d2f1478c57b59d26f445ac2cfd97554d5513f14350",
+  "controlado/chunks/alfa/cierre_mensual_inventario__000.txt.metadata.json": "bc674c29377e7f56604d8e72c963a6a3a9cd288191492af465e5f4f7e589b237",
+  "controlado/chunks/alfa/cierre_mensual_inventario__001.txt": "9cb398dd70213e3056939b8658677ae85ad8b4420f5399ae5f82d0034c689c9b",
+  "controlado/chunks/alfa/cierre_mensual_inventario__001.txt.metadata.json": "de09b6d6662f6cee8faf741f1c11a37b844109e90b3fe2217fe5259b9350f439",
+  "controlado/chunks/alfa/contratos_marco_proveedores__000.txt": "9422f333445f501225b0ea93ebf20a71a45a6771d9288e0b71f410139e05b24f",
+  "controlado/chunks/alfa/contratos_marco_proveedores__000.txt.metadata.json": "6ee4564de55db49aacd79c6198331f06555f007bad8a8457f632ac1ae735c844",
+  "controlado/chunks/alfa/contratos_marco_proveedores__001.txt": "b221632f8ec43581d02ac4eb22c7d88a6092e259e2fa917665bb503836231057",
+  "controlado/chunks/alfa/contratos_marco_proveedores__001.txt.metadata.json": "7a8a5d79096a908bef22f2f0622e2f20116e20b071918ef5f9357961a8be7634",
+  "controlado/chunks/alfa/descuentos_clientes__000.txt": "8ce5ad40cec6cdd289ee86530d16a22eeab6a1cabe399db472b95795724cf636",
+  "controlado/chunks/alfa/descuentos_clientes__000.txt.metadata.json": "733564b12f7e6e227bfa0c4b3ee6872d79abd703c88c3f48220f452cee114519",
+  "controlado/chunks/alfa/descuentos_clientes__001.txt": "9739a5c360fe77f9f8a9c84a42c4834eba522dd1ac8d4b1b0f0fc9ca87bbaaa1",
+  "controlado/chunks/alfa/descuentos_clientes__001.txt.metadata.json": "1f2d5183d6ab63e771732bebdd631be8ec25390fbd38687e18f2ab22e5d7f751",
+  "controlado/chunks/alfa/devoluciones__000.txt": "cabf924631a468204020137f0c77e7fdd7aa7b892e031fd4b19575e0383d3b76",
+  "controlado/chunks/alfa/devoluciones__000.txt.metadata.json": "cb9bb16bcdfd1d2cc5b6f66a091bff0eef94fd4be415ad13e117787765d1fba7",
+  "controlado/chunks/alfa/devoluciones__001.txt": "408236fd107635c0bd0dd15b01a2798780c99fc4fe0d202ad1cedffe9e7e27ac",
+  "controlado/chunks/alfa/devoluciones__001.txt.metadata.json": "1ca1454229ae119cb950315b76080ae414d9bf85c6d4d684236e957dac7e1a85",
+  "controlado/chunks/alfa/devoluciones__002.txt": "39dc950a279c595f3aaea87377c9e974e666241eb597fb930be6699ecd5d2de1",
+  "controlado/chunks/alfa/devoluciones__002.txt.metadata.json": "0aa5312edc1e9141f65d91504f9c37e62fcd206708a31f4e10c97f39b659c442",
+  "controlado/chunks/alfa/devoluciones__003.txt": "158a5cd1930d07478a907264fbb76d91deaeabb5eb535685844800420af9413e",
+  "controlado/chunks/alfa/devoluciones__003.txt.metadata.json": "dec2b79cbe06c3653b66efa52d97a6e4216060e9ba5bafe665eb702d9fb18c54",
+  "controlado/chunks/alfa/embalaje_etiquetado__000.txt": "3ee78eb5d9d4b635aec5cdc27030768dac2b873a6da93f79cc9ad4add79d17dd",
+  "controlado/chunks/alfa/embalaje_etiquetado__000.txt.metadata.json": "65f8009ef5ded98149f7923479ff0b60fe837f2126a460243f82d7d43f821255",
+  "controlado/chunks/alfa/flota_reparto__000.txt": "40e6226ab4a929aab85e0b4f6ce206eb7d368feadab83c2bbfd9f2fbaae6796b",
+  "controlado/chunks/alfa/flota_reparto__000.txt.metadata.json": "6c0ba1b618e2680dcf98d588b931d45c6f98eaa3d7521851ce4d2e692f6628af",
+  "controlado/chunks/alfa/glosario_inventario__000.txt": "485b486b4391fd409851b1190f8a04dcc3edf0aba3c6276bfcbcb82b6d2d4d1a",
+  "controlado/chunks/alfa/glosario_inventario__000.txt.metadata.json": "1634b2835c2e5a47b0fe990df941f357c48308d97ceb1b5d47416482c5eceb1f",
+  "controlado/chunks/alfa/grafica_nivel_servicio__000.txt": "1736fe6adc0e3fe410d6b2673d23bf497f54e091fb191568be2aa78b062ebdf4",
+  "controlado/chunks/alfa/grafica_nivel_servicio__000.txt.metadata.json": "db92302b49e34d97015f43dedbd2188018297c6bc485b4e22f9be015cdcaa51c",
+  "controlado/chunks/alfa/grafica_nivel_servicio__001.txt": "175cef5791c57659d7ad4dd1a73d094c273bb55a549641041174d14f145b6d57",
+  "controlado/chunks/alfa/grafica_nivel_servicio__001.txt.metadata.json": "c2302df890197a507c93682994f4268a04e71c9048b1829b032112e562be2c12",
+  "controlado/chunks/alfa/indicadores_operacion__000.txt": "2019350277e55481c6e9b3d2732846dad80cf94c97b3b52fc31cf820ff93d7d8",
+  "controlado/chunks/alfa/indicadores_operacion__000.txt.metadata.json": "4acea7d91b7bb4a77e4d3560814d9dd626c8ed1892cf2fabb101584e083f0062",
+  "controlado/chunks/alfa/inventario_ciclico__000.txt": "a0c95c673c330e493d14bcf17f5023736e9df222da4729e4e8530ad4d1d6570c",
+  "controlado/chunks/alfa/inventario_ciclico__000.txt.metadata.json": "b3418fd77e4bfb8478927322e0fc65d0b16517f748a49c44fa087316e7971eb6",
+  "controlado/chunks/alfa/inventario_ciclico__001.txt": "98cfdc692e30a32d467d2c565a3f4234b8c2e46c8bf7bf0bf4d6b727b0d50016",
+  "controlado/chunks/alfa/inventario_ciclico__001.txt.metadata.json": "370bb898e9f675935a64241e65c701658cbda352a054f79c456faafe37ae89d3",
+  "controlado/chunks/alfa/inventario_ciclico__002.txt": "ee226bc82bf20087bc5f39c59677b1355feaa45bbee830f93915186d81eee1bb",
+  "controlado/chunks/alfa/inventario_ciclico__002.txt.metadata.json": "1cb3021b8d013dfe029c9cf532c7b71b8f84ea7eb1e958f0657fe08f7d558fd2",
+  "controlado/chunks/alfa/matriz_proveedores__000.txt": "c9f6dbbdf29ab9d4afc3cea9c4f72d6e5a8e626db3b1056b03b96fb1df87221c",
+  "controlado/chunks/alfa/matriz_proveedores__000.txt.metadata.json": "1de86e00732a235930841a9129f039cf8fea8347118f9c48ff6dff9250927d5e",
+  "controlado/chunks/alfa/matriz_proveedores__001.txt": "ae1f48df841a581a75b77554ee1789518861eb1871f4049bacffb7b7849e72fa",
+  "controlado/chunks/alfa/matriz_proveedores__001.txt.metadata.json": "f51aeaad6199d69ede1a4187ddfb2e06de025b36c7eaa50e11b41fe0eb1c8af7",
+  "controlado/chunks/alfa/mermas_caducidad__000.txt": "83297d42df25d35d7cdf8a2d04f076263cbbdeab1b109b2fb470e28dfcd14bba",
+  "controlado/chunks/alfa/mermas_caducidad__000.txt.metadata.json": "519d07a6c11c16a109ae4afe12f9a40416d8feb72e8f8148c7a71464c6489d02",
+  "controlado/chunks/alfa/mermas_caducidad__001.txt": "b6e7de18e57e3b51e911180fe6518deb8fbde63d7533cb8f9bacb4e82ff3f4fe",
+  "controlado/chunks/alfa/mermas_caducidad__001.txt.metadata.json": "f61813117bf262fbd44312c31e978dad0f8d38c769c6b5ab267af555955e29fe",
+  "controlado/chunks/alfa/onboarding_compradores__000.txt": "2763c6cfd247ba266c1ec1e0ee76a254d60a74389078e53e2f8538270717b1ca",
+  "controlado/chunks/alfa/onboarding_compradores__000.txt.metadata.json": "4d861d42f0377416baaea7a87abad1588696ac482a8965ce08934252212f5116",
+  "controlado/chunks/alfa/ordenes_de_compra__000.txt": "f6099629b3c0d4ca57a593190f2aa10f81a73a1105111f35bb6f73a3703cb987",
+  "controlado/chunks/alfa/ordenes_de_compra__000.txt.metadata.json": "7432444784d10b300de880cacec93bde5997fa40047940a6e409b9b56e5b6e98",
+  "controlado/chunks/alfa/ordenes_de_compra__001.txt": "d37a114507d6a03e064b4a263e3bd207a76aff41b78bb560f236affdd9653231",
+  "controlado/chunks/alfa/ordenes_de_compra__001.txt.metadata.json": "cd55e5608983cf001d941d8ef2b2a1653a52b4e7bb5387d53795e0f97845eed5",
+  "controlado/chunks/alfa/ordenes_de_compra__002.txt": "075168f351eacd30660fbeba48c9e7a5567d24197c9acaf7e08257895045b94f",
+  "controlado/chunks/alfa/ordenes_de_compra__002.txt.metadata.json": "8279abeecf0b114f34f0c0441244862c35d3f0e750b622b8041bbc22939e4ea0",
+  "controlado/chunks/alfa/ordenes_de_compra__003.txt": "bedd89e1025bceeabb9c37c7069d2b5e671e9af3530de7ce090de1672954bae0",
+  "controlado/chunks/alfa/ordenes_de_compra__003.txt.metadata.json": "92988b463346c0d96c872105b43e661ea631741d3547a03e5a8779a6dcd35e79",
+  "controlado/chunks/alfa/ordenes_de_compra__004.txt": "30d0afd967f71d8c7a7b5fb46105decb0a10d43c0f4476a13d26ee0690d330ec",
+  "controlado/chunks/alfa/ordenes_de_compra__004.txt.metadata.json": "32f3e6dd8184c93ec49db30a2f0e2caa6fe381554eb5431450482c789a8b4996",
+  "controlado/chunks/alfa/plano_cedis_occidente__000.txt": "52fcbda2d653b755c73d2e1fc62aaf58bcce3fdc943bb367953ecefe38ce73e9",
+  "controlado/chunks/alfa/plano_cedis_occidente__000.txt.metadata.json": "d200c98e50beead4f48b65f8b9e88264856dc4a4f849b8d78caf6bed316d4ac4",
+  "controlado/chunks/alfa/plano_cedis_occidente__001.txt": "1a283c7c0f3baa94318a448dab43b8a7e42e986ce5b6e90c1856120b03e6f61a",
+  "controlado/chunks/alfa/plano_cedis_occidente__001.txt.metadata.json": "ba215417885127f5d305f7db6bcd813c7fb0e125c108f7af7e41daba79792df0",
+  "controlado/chunks/alfa/plano_cedis_occidente__002.txt": "d9888617d4b2b5470027f8d303e0120b3ad0007b4810c9b59bbae05739699448",
+  "controlado/chunks/alfa/plano_cedis_occidente__002.txt.metadata.json": "62de54fc8ed0277402fb2b19e0ac899023cce3ae36d66b003bf5c5e050f2a12b",
+  "controlado/chunks/alfa/politica_reorden__000.txt": "ff5aec8eaa544061c973a6674cc2456693b131d53a74331498d604dcc7797c20",
+  "controlado/chunks/alfa/politica_reorden__000.txt.metadata.json": "a806a36413820c61847aad4f8cc931c1f47f244466ad92a8649330e03233f00c",
+  "controlado/chunks/alfa/politica_reorden__001.txt": "7bdd5782a9634a50cbb40ae12270bf9e52c49bc0f281e0e0556abb5835e2d6d2",
+  "controlado/chunks/alfa/politica_reorden__001.txt.metadata.json": "270e5f91a2e7a081f53eb6ed8a98464f8b03b662cf3c70dbb496c92c9c35693f",
+  "controlado/chunks/alfa/politica_reorden__002.txt": "08103141a0d7c2f543dd5aa9e7aa875c64e5839e32f14b28f486af352ca84cdb",
+  "controlado/chunks/alfa/politica_reorden__002.txt.metadata.json": "85a7d95915e44c8f924359e8ae6004ea2a1d9e972bbb2b67fafd16ab9b4bdd08",
+  "controlado/chunks/alfa/politica_reorden__003.txt": "3609dc2bfdad650ab775c935e882ce973c69d42f135db8f74d1c641e0a9e5f01",
+  "controlado/chunks/alfa/politica_reorden__003.txt.metadata.json": "9fed8155648a6eddcf59ce0e451c34a7cb757c653ce0c342b4381c06b942f6de",
+  "controlado/chunks/alfa/politica_reorden__004.txt": "b023da9d028ceac7798f42753874841daef6c687b75a426457ac38562a39b989",
+  "controlado/chunks/alfa/politica_reorden__004.txt.metadata.json": "15bbd5956d8d071b56743f2b844402e32eb2dfb5bbbef59572429ae1838e369c",
+  "controlado/chunks/alfa/politica_reorden__005.txt": "3d8377253df15705206ce2b497feb8c5da9d44fe09825768f6b74e53b6df1974",
+  "controlado/chunks/alfa/politica_reorden__005.txt.metadata.json": "093a95563bdc411cef21cd9d77e912be729f672313172c4a5a349f34482da669",
+  "controlado/chunks/alfa/proveedores__000.txt": "d9b2c5a0bcdb68977872a54a73999a4f098e2304bf6fec954b5f999cd9d2db96",
+  "controlado/chunks/alfa/proveedores__000.txt.metadata.json": "51154dbf020935e000c389877f14c10a5aabed01b61a6d2f8b5c09c1d0a408c8",
+  "controlado/chunks/alfa/proveedores__001.txt": "b0317a01d0d862abfdd0fdf01ae7e0c01429ed58fe1a1c6341a2f9d6cac9dc83",
+  "controlado/chunks/alfa/proveedores__001.txt.metadata.json": "f5b143cc924c6a0b9b010dea642bf3e83347ff195afd20e153050d0658b777e5",
+  "controlado/chunks/alfa/proveedores__002.txt": "a413f0a4b628c7b1267a50261b65ee1ad2c6371bd2dd789dce4b0167406d42ff",
+  "controlado/chunks/alfa/proveedores__002.txt.metadata.json": "5776219aaeb25443da1735387afaf55d8ac9d208b300a4a30f2b2adca7d85862",
+  "controlado/chunks/alfa/proveedores__003.txt": "a700dcb8bc969c86c4687d1e4d737ca58102ec4545f697f6a6d99f6dae5871f8",
+  "controlado/chunks/alfa/proveedores__003.txt.metadata.json": "a99dcf63d42f31262d881c8516d0c478337f687f30b798b66bf7e31e57273b10",
+  "controlado/chunks/alfa/recepcion_almacen__000.txt": "c73c8217685d28b6b62aca008936b5662b05c9b2e80d66baf6758075c8b4c85c",
+  "controlado/chunks/alfa/recepcion_almacen__000.txt.metadata.json": "29014a2fbad8000866264264b4b605de6d5a98a873c65faa17fe227b03d411ce",
+  "controlado/chunks/alfa/recepcion_almacen__001.txt": "3e6a275f2d1b731f87d326006dcd1312819de945a95f60e1bfa128901db51820",
+  "controlado/chunks/alfa/recepcion_almacen__001.txt.metadata.json": "bf9de9d805837d2025cf8951e5c60da8fadcfa9a7d57bb677816be56b26df820",
+  "controlado/chunks/alfa/recepcion_almacen__002.txt": "9e7ef239c2e66295c38f19982cbc98c6d5b99a21d5590ad6cfaaaec97f23dd1c",
+  "controlado/chunks/alfa/recepcion_almacen__002.txt.metadata.json": "17220351f06414c5b266f2bd51d677d093b3b44af870a6f6f2da2f901641933d",
+  "controlado/chunks/alfa/recepcion_almacen__003.txt": "907484d355547e633eb845e67f3461a1e56842127245951c4f17408a7636d1a0",
+  "controlado/chunks/alfa/recepcion_almacen__003.txt.metadata.json": "ced8d31701c96323ae733f9ef75d7071d6f605850066941484be3284b1cfe31f",
+  "controlado/chunks/alfa/reclamaciones_clientes__000.txt": "e484d87759f7700e303976a5100fee9c2a5d0c7b16307d6ce9c46ee0f2fca925",
+  "controlado/chunks/alfa/reclamaciones_clientes__000.txt.metadata.json": "7ce4d8f8c1434a1232733c7f3d82225d726bd206ccb0ad4333241a516ce2460e",
+  "controlado/chunks/alfa/remision_r4471__000.txt": "3ae60241eb430e15cdadb39cbdff7aecc6aa5cc8b1591142b3b33aff631052bb",
+  "controlado/chunks/alfa/remision_r4471__000.txt.metadata.json": "c0cf017d7ef12b3708c500aab6c73adbb279e35ba04c4bf0b2fea9e68ee2cf6a",
+  "controlado/chunks/alfa/seguridad_instalaciones__000.txt": "6dc2bb9c32128f699f0671fd6bb5e6c9dc2d3194cd80af1884aa942590b18e54",
+  "controlado/chunks/alfa/seguridad_instalaciones__000.txt.metadata.json": "2f38f49ec1261298a7753ad8d7e0538a1fb7d420f9e29c85ad8b3f67c54eef44",
+  "controlado/chunks/alfa/skus_criticos__000.txt": "6e2aff3a5770898298c629dd6f1ccb81613227213e561f5ddaf78e21482671e3",
+  "controlado/chunks/alfa/skus_criticos__000.txt.metadata.json": "02803583e3f5ea4ca94e16f63d7cf30cc558b802a345db0569f369943bf550e9",
+  "controlado/chunks/alfa/skus_criticos__001.txt": "dbdd568dfbe30e4441d4d4f26a310aef8abe7e7f638dccd47430a4a1b5be0552",
+  "controlado/chunks/alfa/skus_criticos__001.txt.metadata.json": "4008c5bc84d74ab97e41adf5a096937430cc3c1acc8ef99d21ef75bf2ca79958",
+  "controlado/chunks/alfa/skus_criticos__002.txt": "15b4cbd83f91d8b638af55b5756d06a36c90ee03d40ad7c62da21e9168681196",
+  "controlado/chunks/alfa/skus_criticos__002.txt.metadata.json": "ae1ff1d6710df846f52d06d16995077c1a699d2a74b7735fb5e735b98f42b29e",
+  "controlado/chunks/alfa/skus_criticos__003.txt": "0731e97b154c48b8f591d0790afb859d015fedc432c08c852b71893e670c4120",
+  "controlado/chunks/alfa/skus_criticos__003.txt.metadata.json": "435a6f0cdc9e5c288232b15b5b7212a21f47e3bb5578ede84b4dd1e97e60f973",
+  "controlado/chunks/alfa/skus_criticos__004.txt": "c4ab41dbdf6a4ef0e9d3a601982c1f55fc16f0c35a7b756b67f5422259dfabd0",
+  "controlado/chunks/alfa/skus_criticos__004.txt.metadata.json": "3d1e033ce63eb4e11220fb34c27c44f7e59ad620dbecccfa71af13b322248b70",
+  "controlado/chunks/alfa/tarifas_flete__000.txt": "6004942c5da774b220d4ec9394996a2532eae5c86382ec8cf3abc78ca9263d74",
+  "controlado/chunks/alfa/tarifas_flete__000.txt.metadata.json": "a91e470c7dbf796709fdb4f0cab68e94e12459f27edd7f988ff4d005cc858282",
+  "controlado/chunks/alfa/tarifas_flete__001.txt": "0b602f7832e95716e239ae158ae967a0877884cd96dca92c4b621f2a14ae2b52",
+  "controlado/chunks/alfa/tarifas_flete__001.txt.metadata.json": "14178efa9acfbd6c400c948e43815be83b8e05d0da9fac7cce5fc9b9d97259c4",
+  "controlado/chunks/alfa/transferencias_cedis__000.txt": "a0401607015e2f195cd274a1b683c67f0cad28709c0bcb64197b4fa84a2f1b1d",
+  "controlado/chunks/alfa/transferencias_cedis__000.txt.metadata.json": "f3b9bf1059a31f4aa857ba8f6441f223b7d485ec9cbe4485dd9589e30e9298cc",
+  "controlado/chunks/alfa/transferencias_cedis__001.txt": "38fe2831ce01269d85273020ac592aa85ed21c7ef00df395bf63c6515a961673",
+  "controlado/chunks/alfa/transferencias_cedis__001.txt.metadata.json": "52673e367e80d33b58c2747b1d5ec75aa3b48650327662a359f35db3cd9fd43a",
+  "controlado/chunks/alfa/transferencias_cedis__002.txt": "6816433ca5c82c9b006f1c58cddf9d2bddacc1b6a48c330c558ae430e294fc4e",
+  "controlado/chunks/alfa/transferencias_cedis__002.txt.metadata.json": "9788708222f7d8e0e5346a406776d1bcd8e8a9013445df2fd602db85f13196f0",
+  "controlado/chunks/alfa/uso_copiloto__000.txt": "4a5ee10ed590b7a768abb6ba31d67ee0c47f9e925d4dd8a6732ea5bb533b9cb2",
+  "controlado/chunks/alfa/uso_copiloto__000.txt.metadata.json": "6ea6f2e2df026d9ea4ef152cf24cb51892e07c70d15d644cfab2497c52f2c643",
+  "controlado/chunks/alfa/uso_copiloto__001.txt": "b836228340ff9d5569d3543ea02ed385a3c4ab34f4b6f85ecb970263d65a22be",
+  "controlado/chunks/alfa/uso_copiloto__001.txt.metadata.json": "ab63329b613a19c97b718bf5a07d8a3bcb8b02abf98248c2d4bb4d1d76ff089c",
+  "controlado/chunks/alfa/uso_copiloto__002.txt": "2a86eb302ff010c60e3c8d2d74f9302746bf776080f490dff814639e8ff3d3d7",
+  "controlado/chunks/alfa/uso_copiloto__002.txt.metadata.json": "06f09fdbefb141743801138423739c653b508bafda5f14b349ee8e1a5d590721",
+  "controlado/chunks/alfa/wms_respaldos__000.txt": "4b6259de062068916f846cfd70c98948bfbdf3e29bb960ac27af70f22f4b9112",
+  "controlado/chunks/alfa/wms_respaldos__000.txt.metadata.json": "97e0a4004d29cbd8e97649d772caf92fd643aabc8dcc53da968e313d3da8de03",
+  "controlado/chunks/beta/capacitacion_almacen__000.txt": "2e0895f097c6ff15a6203245ac15cf28ff8553429d64bc9c6fba7b432ea7d83a",
+  "controlado/chunks/beta/capacitacion_almacen__000.txt.metadata.json": "f3e7995d80b05175b463c946d512fe5c4e4d02f2ba04a20e8598f7790ae0b0e1",
+  "controlado/chunks/beta/capacitacion_almacen__001.txt": "416ce3ae9ffa3d3e5147dd9c0d68b8d69272ceab4a0496f917783994b38c122f",
+  "controlado/chunks/beta/capacitacion_almacen__001.txt.metadata.json": "546a4f9d45377573b1dfd64e2d020a7fd026eee9e0bf981dda7172b7a56fdfd0",
+  "controlado/chunks/beta/devoluciones__000.txt": "66a05f9360f4a38ebf22e205e5958e0906d7317ea7d91d989ea0a40f6db8370b",
+  "controlado/chunks/beta/devoluciones__000.txt.metadata.json": "620d2c0d23d71dbc5910db9a10e05ee2fc8a2189b1d253878d711cc6829500db",
+  "controlado/chunks/beta/devoluciones__001.txt": "408236fd107635c0bd0dd15b01a2798780c99fc4fe0d202ad1cedffe9e7e27ac",
+  "controlado/chunks/beta/devoluciones__001.txt.metadata.json": "7c2cf265e03954970b898481b374430f4e112016313cb16a64572906b706b024",
+  "controlado/chunks/beta/devoluciones__002.txt": "39dc950a279c595f3aaea87377c9e974e666241eb597fb930be6699ecd5d2de1",
+  "controlado/chunks/beta/devoluciones__002.txt.metadata.json": "75542371bfa01e8a0dae700832b4d6c99217ccad32dfcc2e965943c8d25018db",
+  "controlado/chunks/beta/devoluciones__003.txt": "158a5cd1930d07478a907264fbb76d91deaeabb5eb535685844800420af9413e",
+  "controlado/chunks/beta/devoluciones__003.txt.metadata.json": "1c2384b2e2568688c437df5c938516341fbaf70d9ff4bf4ab8d83212eab02857",
+  "controlado/chunks/beta/flota_reparto__000.txt": "052737b4121d4f58b1163938e90090895ad9c06ba48233a2a3f43ace31afb108",
+  "controlado/chunks/beta/flota_reparto__000.txt.metadata.json": "342717e38ca9007c9026da74b68c6dfe8d9d7f036836f269f8c63f95deabffc4",
+  "controlado/chunks/beta/inventario_ciclico__000.txt": "a0c95c673c330e493d14bcf17f5023736e9df222da4729e4e8530ad4d1d6570c",
+  "controlado/chunks/beta/inventario_ciclico__000.txt.metadata.json": "6c638b3cc0664209ae1fa4808a5fbe1bef4ba7b78758c06ac0096fc86ef39877",
+  "controlado/chunks/beta/inventario_ciclico__001.txt": "031bca8cc069cf95670ab62e4c42f9e2b1c53e99b2120cc816e7a393775e1b76",
+  "controlado/chunks/beta/inventario_ciclico__001.txt.metadata.json": "b0047d184107c5ff1fc8af35ced5a85b2f3d27ede92657e7e2dec6898f804302",
+  "controlado/chunks/beta/inventario_ciclico__002.txt": "ee226bc82bf20087bc5f39c59677b1355feaa45bbee830f93915186d81eee1bb",
+  "controlado/chunks/beta/inventario_ciclico__002.txt.metadata.json": "394e43968c7bc0f6b0b09627a9b8dee2850021ebfce744fd6ea346735bfdc633",
+  "controlado/chunks/beta/ordenes_de_compra__000.txt": "3c7690bd7725204a1c2dafc42d36a15f56b31daf27aac2b31538370b909e5405",
+  "controlado/chunks/beta/ordenes_de_compra__000.txt.metadata.json": "85bc10725a56c605b987504eb44ba2f4b8e21fadd66805ca70514e3e70ca9f3f",
+  "controlado/chunks/beta/ordenes_de_compra__001.txt": "981beb4d878c70c9a36ca003e6611aff49a97e21c729f1215568c4a325d8a314",
+  "controlado/chunks/beta/ordenes_de_compra__001.txt.metadata.json": "389e03e01a82d2c06628e6418fa9585960269bae87dc5c6c419cd7385ae3a500",
+  "controlado/chunks/beta/ordenes_de_compra__002.txt": "8e38fbb365477f6e952342678cbde26a376d602a11b7a73d55361ac6a6a53d99",
+  "controlado/chunks/beta/ordenes_de_compra__002.txt.metadata.json": "731cc0e8465d18d7818c46a95f4961361af3c676a7024844598a518e9bdedb3a",
+  "controlado/chunks/beta/ordenes_de_compra__003.txt": "41d8304dd03381f4f6165d652a0fb375f33aa46c7a59197427687a623da49cba",
+  "controlado/chunks/beta/ordenes_de_compra__003.txt.metadata.json": "4a075ee82c155194410abea44cf438921601a634815150379deaadfd6a7d9fcf",
+  "controlado/chunks/beta/ordenes_de_compra__004.txt": "b66e6c9c675b8683f6d13d650cca5ecfe7e46854b05babc8dd8462bc7452f79c",
+  "controlado/chunks/beta/ordenes_de_compra__004.txt.metadata.json": "fd10a722cdd6fc6784b16298c81e643eb684693b0e18456b3bbe54f516474b61",
+  "controlado/chunks/beta/politica_reorden__000.txt": "ff5aec8eaa544061c973a6674cc2456693b131d53a74331498d604dcc7797c20",
+  "controlado/chunks/beta/politica_reorden__000.txt.metadata.json": "0b6586ba80e684cb7def604122783abda349196ea32b0abf77708ca6882e77d3",
+  "controlado/chunks/beta/politica_reorden__001.txt": "c2761bf2b4c0d7216c843ef3aefc7a5bfa208c2a864031389fe6ec0fa21bfe70",
+  "controlado/chunks/beta/politica_reorden__001.txt.metadata.json": "ca4bb874b2cd8d91df5836c5db2b605946acc2050d57e431068bfe30dbf88a46",
+  "controlado/chunks/beta/politica_reorden__002.txt": "aa1985531e9e5882408306e6c5c9e9e26a881047a8110730f325ff2275749763",
+  "controlado/chunks/beta/politica_reorden__002.txt.metadata.json": "f170c25d0ad4a6d2b1cdfce0e64bb6a2ac0541f67c91fac21907355b7ca8715c",
+  "controlado/chunks/beta/politica_reorden__003.txt": "3609dc2bfdad650ab775c935e882ce973c69d42f135db8f74d1c641e0a9e5f01",
+  "controlado/chunks/beta/politica_reorden__003.txt.metadata.json": "30421b3c08acbed3848e009302b8f8d24f1fd5a1a271407a1635d6f2b47268b3",
+  "controlado/chunks/beta/politica_reorden__004.txt": "b023da9d028ceac7798f42753874841daef6c687b75a426457ac38562a39b989",
+  "controlado/chunks/beta/politica_reorden__004.txt.metadata.json": "eb9ff3ff03707d71ac478530c1b3a2b49a21427fa2976238695dea4c1bc5f5df",
+  "controlado/chunks/beta/politica_reorden__005.txt": "3d8377253df15705206ce2b497feb8c5da9d44fe09825768f6b74e53b6df1974",
+  "controlado/chunks/beta/politica_reorden__005.txt.metadata.json": "476ff7b81cbf2084e79b5febaca402de051088e155416eea98210d94086f3f3a",
+  "controlado/chunks/beta/proveedores__000.txt": "fd15aa33c496ebfeb2ff4e32015cc09f2948f3a5c197a57b497ad924f8f24600",
+  "controlado/chunks/beta/proveedores__000.txt.metadata.json": "159f46ac6395cccb260214bceb2bb90432df33b873e8e8baa186ccb7853e130b",
+  "controlado/chunks/beta/proveedores__001.txt": "b0317a01d0d862abfdd0fdf01ae7e0c01429ed58fe1a1c6341a2f9d6cac9dc83",
+  "controlado/chunks/beta/proveedores__001.txt.metadata.json": "752d0462af74feace364ce4a2d17df7c83f422928ab933bc431d412c3eb8f203",
+  "controlado/chunks/beta/proveedores__002.txt": "a413f0a4b628c7b1267a50261b65ee1ad2c6371bd2dd789dce4b0167406d42ff",
+  "controlado/chunks/beta/proveedores__002.txt.metadata.json": "7983465a3b5de1fe68a394962c3bf23f4c2c76fe7235b42e7cccb3445815b072",
+  "controlado/chunks/beta/proveedores__003.txt": "a700dcb8bc969c86c4687d1e4d737ca58102ec4545f697f6a6d99f6dae5871f8",
+  "controlado/chunks/beta/proveedores__003.txt.metadata.json": "f12dec146d49fe0e65ef837b5a054b0a03da77151bcbf68d80e3e85217085582",
+  "controlado/chunks/beta/recepcion_almacen__000.txt": "c73c8217685d28b6b62aca008936b5662b05c9b2e80d66baf6758075c8b4c85c",
+  "controlado/chunks/beta/recepcion_almacen__000.txt.metadata.json": "f162c9d522ed6f2cb246c3b12260207bf4fec6c6de20c95d4670f9775e12dc45",
+  "controlado/chunks/beta/recepcion_almacen__001.txt": "3e6a275f2d1b731f87d326006dcd1312819de945a95f60e1bfa128901db51820",
+  "controlado/chunks/beta/recepcion_almacen__001.txt.metadata.json": "16ee7f650776a8ca3d77fb3032d087b78a9cd1df1d9f99ce1f1616b56d20fc56",
+  "controlado/chunks/beta/recepcion_almacen__002.txt": "ace0660452357cee28e819ec67f5926e376b28c3aa939c5d0b88fee5d5a49544",
+  "controlado/chunks/beta/recepcion_almacen__002.txt.metadata.json": "fc71e45ba5cf60c8cfd0516bd5dfec31c173ecd183762ca0d327174812f70c3c",
+  "controlado/chunks/beta/recepcion_almacen__003.txt": "907484d355547e633eb845e67f3461a1e56842127245951c4f17408a7636d1a0",
+  "controlado/chunks/beta/recepcion_almacen__003.txt.metadata.json": "5e848297da78c3db365c7311693f152a457586a0b4be0eac709081c583e4a7a5",
+  "controlado/chunks/beta/seguridad_instalaciones__000.txt": "7e43ea4817eb1d981e56fb2881441800968492bd7ecd76b5a6aa1fbd90d28686",
+  "controlado/chunks/beta/seguridad_instalaciones__000.txt.metadata.json": "e91f1a3af3124a648ede2674c09d189b2e51d11f0fa63391f98631b4adb9c5f0",
+  "controlado/chunks/beta/transferencias_cedis__000.txt": "a0401607015e2f195cd274a1b683c67f0cad28709c0bcb64197b4fa84a2f1b1d",
+  "controlado/chunks/beta/transferencias_cedis__000.txt.metadata.json": "7ec81c9034ea6d9ab4bab659c7a2b302bd4822216e2e9907cfaf5a48d4a926c2",
+  "controlado/chunks/beta/transferencias_cedis__001.txt": "f69e4755ae32759181ba387c2f90c4635be932d3f5d5c35e135834cdb22633bc",
+  "controlado/chunks/beta/transferencias_cedis__001.txt.metadata.json": "55996df6bf1872877343f04e12c5ae27200e37fa9f28732bb3c1fec69e30c53a",
+  "controlado/chunks/beta/transferencias_cedis__002.txt": "6816433ca5c82c9b006f1c58cddf9d2bddacc1b6a48c330c558ae430e294fc4e",
+  "controlado/chunks/beta/transferencias_cedis__002.txt.metadata.json": "001959b67b5ba8da19cfb8d6a5e4fee113c60c88b574d5e7ebcf84fd94d70ade",
+  "controlado/textos/alfa/acta_inventario_norte.txt": "2ec6e7945dd683264e12bfd0b048cb3a89502d081c8bfbefb37f2b06400d61df",
+  "controlado/textos/alfa/acta_inventario_norte.txt.metadata.json": "f6bd34f35615f284fd95996f24cab814786a01e43a9ee2834b8e870082d82659",
+  "controlado/textos/alfa/auditoria_interna.txt": "0ec111bdfa646d2323cd31a3ece039481a22b57e2ec3aba6722942356ce9206e",
+  "controlado/textos/alfa/auditoria_interna.txt.metadata.json": "92164a22273144605ddbe877b9228a3084d3e151857e0506c0be8bc171666b1e",
+  "controlado/textos/alfa/capacitacion_almacen.txt": "77c1c9a4415101fef07445737306fe4dbf25525964a34044507e655e83f5a664",
+  "controlado/textos/alfa/capacitacion_almacen.txt.metadata.json": "649b39ad7f53bbd8909abc03db19887f0a8ce04f1864ddea9bfb7f95263e4769",
+  "controlado/textos/alfa/cedis_monterrey.txt": "a732f3d690dab4634251735bbb5871bab5e8afa33d141704f38b41c859a153a0",
+  "controlado/textos/alfa/cedis_monterrey.txt.metadata.json": "7469b9c14d444f3b5ecdf7294d4cb8ceea9fe5e66f5a307c8271157682c57dc0",
+  "controlado/textos/alfa/cierre_mensual_inventario.txt": "ca42c56d7bdd76d6c3bad48116708693b34e1e4dcba431994ae9ba088f9bc9e5",
+  "controlado/textos/alfa/cierre_mensual_inventario.txt.metadata.json": "70bfd7eebdfedeef8748a6f7ab091b7e3ae15e0ca8d62bfe55a38a6a2c8e64bb",
+  "controlado/textos/alfa/contratos_marco_proveedores.txt": "99fe35fa57026aa759d0033e958ad640f02d6e7999c822e2e4890e50f228aa4c",
+  "controlado/textos/alfa/contratos_marco_proveedores.txt.metadata.json": "c1b98da691aa8a57be7bbbfd0caf55f9d1b155926b388e93491f4f7b64b13986",
+  "controlado/textos/alfa/descuentos_clientes.txt": "11888d1d8bd62fb93c9a594547b964a87a8970bedf5bdf1c2bec3299e4adcb75",
+  "controlado/textos/alfa/descuentos_clientes.txt.metadata.json": "c209060ef65e19ccea2e311cc5656e51aa2822fa4fe729ecc6da2febab2a3f83",
+  "controlado/textos/alfa/devoluciones.txt": "14ab1e29c771a7803ab8fb109b4f828aa91468f3650daeed27476500531f53cc",
+  "controlado/textos/alfa/devoluciones.txt.metadata.json": "5d64f706d91729e0eae3c0ed9ee38a8c61df22e595ecd2d18c49f54085e8ae13",
+  "controlado/textos/alfa/embalaje_etiquetado.txt": "3ee78eb5d9d4b635aec5cdc27030768dac2b873a6da93f79cc9ad4add79d17dd",
+  "controlado/textos/alfa/embalaje_etiquetado.txt.metadata.json": "c34f23e065d70f6c16fe1ed5c51e760d5497a9d98f07e51d08468abe619531b4",
+  "controlado/textos/alfa/flota_reparto.txt": "40e6226ab4a929aab85e0b4f6ce206eb7d368feadab83c2bbfd9f2fbaae6796b",
+  "controlado/textos/alfa/flota_reparto.txt.metadata.json": "24cc4ccaa173e77e6df29b700db7d3e83bbaef48517730fd9e8ac6b1d1701aaa",
+  "controlado/textos/alfa/glosario_inventario.txt": "485b486b4391fd409851b1190f8a04dcc3edf0aba3c6276bfcbcb82b6d2d4d1a",
+  "controlado/textos/alfa/glosario_inventario.txt.metadata.json": "f5dbafffb5ebdcf107969cce5af82b3afd8c6d3699d3bee13a36f0dc0d3c24a6",
+  "controlado/textos/alfa/grafica_nivel_servicio.txt": "0d8da651146be02f3b4eeec889095eb7d5a2c32075977b0a6ce2058229bf5160",
+  "controlado/textos/alfa/grafica_nivel_servicio.txt.metadata.json": "4be66c685683a820f80548345038bf12e0a55dec1963faac8ef673a1cae06f65",
+  "controlado/textos/alfa/indicadores_operacion.txt": "2019350277e55481c6e9b3d2732846dad80cf94c97b3b52fc31cf820ff93d7d8",
+  "controlado/textos/alfa/indicadores_operacion.txt.metadata.json": "55b83d591b16acf0b0375710bcfcb063d2dd8f934e19d87234f4b1b50df7af53",
+  "controlado/textos/alfa/inventario_ciclico.txt": "e8e5e173b1104d1ae863486ca2d2ae949a85894eb86f8258390a377f33a64c95",
+  "controlado/textos/alfa/inventario_ciclico.txt.metadata.json": "54ae0662e6d99d115df538ac5315c0bfa16b7d1c3750f97b95dc87c9a86d1bb8",
+  "controlado/textos/alfa/matriz_proveedores.txt": "37e318c3f2d5964184473b7819b860f1bcde76cb8128ce79e640254c7c7a50f3",
+  "controlado/textos/alfa/matriz_proveedores.txt.metadata.json": "3603822d8b5e485b3a95a0ea4606ea1bb0eae5b9d6f56ea4b0496952f4c97404",
+  "controlado/textos/alfa/mermas_caducidad.txt": "302fdb356e750bcd63a86f010a1f4a3b97aa15aecbb58cf61764fc470cb582aa",
+  "controlado/textos/alfa/mermas_caducidad.txt.metadata.json": "26840a78bd509bf5cfaaa39cd36b2580b4d0fabe517c428c98cb02162b8c2a27",
+  "controlado/textos/alfa/onboarding_compradores.txt": "2763c6cfd247ba266c1ec1e0ee76a254d60a74389078e53e2f8538270717b1ca",
+  "controlado/textos/alfa/onboarding_compradores.txt.metadata.json": "6501ce240db9e703b9ea97ec7ef103314a5852d361f50b721ba02c65cc9c50e7",
+  "controlado/textos/alfa/ordenes_de_compra.txt": "0e12d3ce44db8834b0371bd4362f1860df0e8f418b85aed17f664cf298bee26c",
+  "controlado/textos/alfa/ordenes_de_compra.txt.metadata.json": "2edd436945d5531dfd56e4b80ade396b6d13853e082cddd9b1176b667b1b9fc2",
+  "controlado/textos/alfa/plano_cedis_occidente.txt": "5ec34e124deaa46f181dd6efdeaa99eada4fcc8930fbffcff4a4bdcc930bb742",
+  "controlado/textos/alfa/plano_cedis_occidente.txt.metadata.json": "2d56a4a4d804a2253c047724fd06b2cab8b9468067b1eedd93940eb92f20b76c",
+  "controlado/textos/alfa/politica_reorden.txt": "2b39fb864d60243bace4756deadb7df647d07a6e8e3d46365350f132f46e6c28",
+  "controlado/textos/alfa/politica_reorden.txt.metadata.json": "c51c6e49fe16fe1937d0f14595d2122c2999023f79e3c9a7a4cf1d14bb875200",
+  "controlado/textos/alfa/proveedores.txt": "31c6f2ebd3242c50e5b3cd629c27951b9dd4601aadddb5e62c874a78a7b928ea",
+  "controlado/textos/alfa/proveedores.txt.metadata.json": "2e7770b68196d73368a3c9713aab71890a3c4fb62f88c33134ecdaae756de715",
+  "controlado/textos/alfa/recepcion_almacen.txt": "78640cd5eec537835602b3b7671bcd0a93969c9df5ab3d6ac383e89e898e5c5e",
+  "controlado/textos/alfa/recepcion_almacen.txt.metadata.json": "2742d2d3e57edb011ebb9b89115dd86bdd0ee10c78883f7cea058512df32fbc6",
+  "controlado/textos/alfa/reclamaciones_clientes.txt": "e484d87759f7700e303976a5100fee9c2a5d0c7b16307d6ce9c46ee0f2fca925",
+  "controlado/textos/alfa/reclamaciones_clientes.txt.metadata.json": "e4d0b380e0f539a17ff3d7a39e314613e61f8e6851afb8a903b8b2feb359708b",
+  "controlado/textos/alfa/remision_r4471.txt": "3ae60241eb430e15cdadb39cbdff7aecc6aa5cc8b1591142b3b33aff631052bb",
+  "controlado/textos/alfa/remision_r4471.txt.metadata.json": "b8bbe1d587c510b5013dbbfb331448b0f62ff8b0111a57efc6fb1853826860d7",
+  "controlado/textos/alfa/seguridad_instalaciones.txt": "6dc2bb9c32128f699f0671fd6bb5e6c9dc2d3194cd80af1884aa942590b18e54",
+  "controlado/textos/alfa/seguridad_instalaciones.txt.metadata.json": "c375a613448db2174588ec70448f4ab9c5134667b5cb55a111af7b47922279db",
+  "controlado/textos/alfa/skus_criticos.txt": "6fab9e8478e87423690e3f1590d544c6d9f2f690950a67542708e5cfe6d39c97",
+  "controlado/textos/alfa/skus_criticos.txt.metadata.json": "54890573601024e36fb264547f6c65fb95441d3da5eb4b0211ba577d61d3e710",
+  "controlado/textos/alfa/tarifas_flete.txt": "5b4288202dfab598be132d7f307e135f81768025f80a7979d48a780531b501c1",
+  "controlado/textos/alfa/tarifas_flete.txt.metadata.json": "b413707c6b172de90c345e40459ca0d22033e2b1ad7b7561b0f41ebdb2311dd5",
+  "controlado/textos/alfa/transferencias_cedis.txt": "35cad4c85f7b44ae14ef544186952433faf3b2ba73e7960ba6ff841b4881a514",
+  "controlado/textos/alfa/transferencias_cedis.txt.metadata.json": "9ff22dbbd35bb80d14114ec9234e02681140d3baa359746eafd6deda29b88ce2",
+  "controlado/textos/alfa/uso_copiloto.txt": "8d66fe6ec03874f48df48502a1609249c48e62f59243717332eaec148bee39bf",
+  "controlado/textos/alfa/uso_copiloto.txt.metadata.json": "1f9d3f3f5e285332ae70096b4125e13e64b8d0c2b31e52550d7641c428c0f5fe",
+  "controlado/textos/alfa/wms_respaldos.txt": "4b6259de062068916f846cfd70c98948bfbdf3e29bb960ac27af70f22f4b9112",
+  "controlado/textos/alfa/wms_respaldos.txt.metadata.json": "ebebfcb625965c9824d9eb0e96d4ac90e19b08f5a80d3496c3c84ea7b9b2b594",
+  "controlado/textos/beta/capacitacion_almacen.txt": "48be07eda714634a2d41ebe89294e581311d31655ac0b39fa251dbc60bee9a69",
+  "controlado/textos/beta/capacitacion_almacen.txt.metadata.json": "508e2a6b2f0b1b0c0364824e7b2dab9bcb47ade0b8daffc271bc850915344e74",
+  "controlado/textos/beta/devoluciones.txt": "3098a5e5bedbae1e8b8cb6ec40cc0a6d763d2311701564694356ebf356476d3e",
+  "controlado/textos/beta/devoluciones.txt.metadata.json": "513487bdd8f2001c14aaa6f3f09072436732db4408d0d2ec1a9aedde5120e674",
+  "controlado/textos/beta/flota_reparto.txt": "052737b4121d4f58b1163938e90090895ad9c06ba48233a2a3f43ace31afb108",
+  "controlado/textos/beta/flota_reparto.txt.metadata.json": "c19aba28001970672ecfd3ae9903561e81552ac13b581262ed7362008a3ba365",
+  "controlado/textos/beta/inventario_ciclico.txt": "7d19c58bb0a3bf318ebfb0eee5dd70acde4675d9f88728851acf5321dccaf824",
+  "controlado/textos/beta/inventario_ciclico.txt.metadata.json": "683fd09489210173a6c40e4ad67c0895e2daa553ad26f16861a6fb5f78f4dd39",
+  "controlado/textos/beta/ordenes_de_compra.txt": "82d4a68aaabf9751d09b9a9dcf90ddd01dd8d204b93de78795c775623afa78b7",
+  "controlado/textos/beta/ordenes_de_compra.txt.metadata.json": "979e26ee59ef4822ef143044a51f51a3a71f61a43d6fb2eddcc68f913ac6aec1",
+  "controlado/textos/beta/politica_reorden.txt": "0230d190af52f34a0f6eebc461e8f9467135ec926b9c603c879f751c075291a8",
+  "controlado/textos/beta/politica_reorden.txt.metadata.json": "bd4e3b3a2a9123699e06cc10fdd8a218b8654bd8cdb1be80df3dd04758011620",
+  "controlado/textos/beta/proveedores.txt": "fcc17c23225d08dee485f21118327ce6e023f21429b402877b831152afc4792d",
+  "controlado/textos/beta/proveedores.txt.metadata.json": "aec50edda1bebb9758cce4bfc54970bad3fa176758d3edd8c94e6dbc8da228c7",
+  "controlado/textos/beta/recepcion_almacen.txt": "388354835c1db889f8c653836e814d4817a83c53c4a963a016affb65380f7aa5",
+  "controlado/textos/beta/recepcion_almacen.txt.metadata.json": "8ef9380e87d055c146ca502672ed1dba29920b4c693c65c44d974a0a6b1df8a6",
+  "controlado/textos/beta/seguridad_instalaciones.txt": "7e43ea4817eb1d981e56fb2881441800968492bd7ecd76b5a6aa1fbd90d28686",
+  "controlado/textos/beta/seguridad_instalaciones.txt.metadata.json": "29aa9b59526e46cce50af287d783648dc17c82e498eea91c444e7ff50ae827db",
+  "controlado/textos/beta/transferencias_cedis.txt": "f522d94deda94a38a96c3d627327e2da8f8aecc2997a5708bf1d01889aec55a7",
+  "controlado/textos/beta/transferencias_cedis.txt.metadata.json": "f2b11fd6fd35d17c1327bbc7ebc01eb8a057e8669181dbaf7184ef42e6831278",
+  "vertex_administrado.jsonl": "39c88735452e48d37f0210c7fea75fcd136dd8deed06ae9e1609eb754cbc1f5f",
+  "vertex_controlado_chunks.jsonl": "cdad939be1227b69ffd291501d631892f3a804be935c03851dc02bfb1609dd24",
+  "vertex_controlado_textos.jsonl": "6e672e54a45f2285086196ad4d8ba9b1ae53a2175360b77440dbbf00905456f9"
+ }
+}

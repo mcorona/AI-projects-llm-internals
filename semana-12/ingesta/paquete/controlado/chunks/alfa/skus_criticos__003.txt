@@ -1,0 +1,10 @@
+rgente y transferencia entre CEDIS.
+- **Nivel 3 (director de operaciones):** SKU crítico con existencia total en cero o con un cliente
+  que reporta paro de línea.
+
+## Compra urgente
+Una compra urgente permite flete aéreo o exprés. Requiere aprobación del gerente de compras sin
+importar el monto, y se documenta el sobrecosto frente al flete normal.
+
+## Antes de comprar: transferencias
+Antes de una

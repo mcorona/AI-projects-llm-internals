@@ -1,0 +1,11 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "alfa",
+  "roles": [
+   "compras"
+  ],
+  "source": "onboarding_compradores",
+  "doc_id": "alfa__onboarding_compradores",
+  "tipo": "texto"
+ }
+}

@@ -1,0 +1,8 @@
+# Política de reorden de inventario
+
+> Documento sintético de una empresa ficticia (Distribuidora Industrial Ficticia, DIF). Versión 3.1.
+
+## Alcance
+Aplica a los 200 SKUs del catálogo en los tres centros de distribución: CEDIS Centro
+(Ciudad de México), CEDIS Occidente (Guadalajara) y CEDIS Norte (Monterrey). El punto de
+reorden se evalúa sobre el **stock total**, es decir, la suma de las existen

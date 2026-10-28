@@ -1,0 +1,13 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "alfa",
+  "roles": [
+   "almacen",
+   "finanzas"
+  ],
+  "source": "acta_inventario_norte",
+  "doc_id": "alfa__acta_inventario_norte__000",
+  "tipo": "jpg",
+  "chunk": 0
+ }
+}

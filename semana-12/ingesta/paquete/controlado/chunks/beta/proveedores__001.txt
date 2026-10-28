@@ -1,0 +1,8 @@
+iezas rechazadas en recepción; meta menor a 2%.
+- **Cumplimiento del tiempo de entrega:** desviación promedio contra el tiempo de entrega pactado;
+  meta de ±2 días.
+
+## Clasificación
+- **A:** cumple las tres metas. Se prioriza en nuevas cotizaciones.
+- **B:** incumple una meta. Plan de mejora de 90 días.
+- **C:** incumple dos o más metas, o dos trimestres seguidos en B. Se busca reemplazo y no se

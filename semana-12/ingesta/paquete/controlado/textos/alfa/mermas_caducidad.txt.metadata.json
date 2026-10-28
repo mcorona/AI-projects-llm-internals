@@ -1,0 +1,12 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "alfa",
+  "roles": [
+   "almacen",
+   "calidad"
+  ],
+  "source": "mermas_caducidad",
+  "doc_id": "alfa__mermas_caducidad",
+  "tipo": "texto"
+ }
+}

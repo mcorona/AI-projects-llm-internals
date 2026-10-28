@@ -1,0 +1,13 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "alfa",
+  "roles": [
+   "finanzas",
+   "operaciones"
+  ],
+  "source": "tarifas_flete",
+  "doc_id": "alfa__tarifas_flete__000",
+  "tipo": "pdf",
+  "chunk": 0
+ }
+}

@@ -1,0 +1,8 @@
+ de la orden.
+4. Comparar el conteo contra la orden y la factura.
+5. Registrar la entrada en el sistema en un plazo máximo de **4 horas**.
+
+## Discrepancias
+- Diferencia de cantidad menor o igual a 2%: se acepta y se notifica al comprador.
+- Diferencia mayor a 2%: se hace un **rechazo parcial** de la diferencia y se notifica al proveedor.
+- Producto dañado o fuera de especificación: se rechaza y s

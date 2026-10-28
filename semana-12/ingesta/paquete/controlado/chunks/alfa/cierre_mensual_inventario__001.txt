@@ -1,0 +1,2 @@
+ posteriores
+Las transacciones posteriores al cierre se registran en el periodo siguiente.

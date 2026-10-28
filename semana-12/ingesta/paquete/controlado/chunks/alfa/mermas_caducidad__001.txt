@@ -1,0 +1,2 @@
+ a contraloría.
+Las mermas por caducidad se registran con el motivo caducidad, no como ajuste genérico.

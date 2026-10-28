@@ -1,0 +1,2 @@
+PROVAL. Nunca puede aprobarlas: la aprobación es siempre de una persona con el
+nivel de autorización que corresponda al monto.

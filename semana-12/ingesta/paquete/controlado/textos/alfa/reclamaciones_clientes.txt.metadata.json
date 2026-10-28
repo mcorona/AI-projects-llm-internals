@@ -1,0 +1,12 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "alfa",
+  "roles": [
+   "calidad",
+   "ventas"
+  ],
+  "source": "reclamaciones_clientes",
+  "doc_id": "alfa__reclamaciones_clientes",
+  "tipo": "texto"
+ }
+}

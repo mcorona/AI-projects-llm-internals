@@ -1,0 +1,8 @@
+# Uso del copiloto de inventario (asistente de IA)
+
+> Documento sintético de una empresa ficticia (Distribuidora Industrial Ficticia, DIF). Versión 1.0.
+
+## Qué puede hacer
+- Consultar existencias, ventas, proveedores y puntos de reorden en modo **solo lectura**.
+- Explicar políticas internas citando el documento de origen.
+- Proponer órdenes de compra, que quedan en estado PENDING_APPROVAL para a

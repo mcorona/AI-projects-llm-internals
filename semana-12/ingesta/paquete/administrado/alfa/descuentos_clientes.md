@@ -1,0 +1,11 @@
+# Descuentos a clientes
+
+> Documento sintético de una empresa ficticia (Distribuidora Industrial Ficticia, DIF). Versión 1.0.
+
+## Niveles de aprobación
+- Los descuentos de hasta **12%** los aprueba el ejecutivo de cuenta.
+- Los descuentos de más de 12% y hasta 20% requieren aprobación del gerente comercial.
+- Los descuentos mayores a 20% requieren aprobación del director comercial.
+
+## Restricciones
+Los descuentos no aplican a productos de la categoría Seguridad.

@@ -1,0 +1,10 @@
+# Recepción de mercancía en CEDIS
+
+> Documento sintético de una empresa ficticia (Distribuidora Industrial Ficticia, DIF). Versión 2.3.
+
+## Horarios de recepción
+- CEDIS Centro (Ciudad de México): lunes a viernes de 7:00 a 15:00.
+- CEDIS Occidente (Guadalajara): lunes a viernes de 8:00 a 16:00.
+- CEDIS Norte (Monterrey): lunes a sábado de 6:00 a 14:00.
+
+Las entregas fuera de horario requieren cita

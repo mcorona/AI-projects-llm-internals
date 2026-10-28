@@ -1,0 +1,10 @@
+** comparables.
+- Se exceptúan los SKUs con proveedor único homologado; en ese caso se documenta la justificación.
+
+## Datos obligatorios de una orden
+SKU, cantidad, proveedor, costo unitario, CEDIS de entrega, fecha requerida y motivo
+(reorden automático, compra urgente o proyecto especial).
+
+## Estados de una orden
+- **PENDING_APPROVAL:** propuesta creada, en espera de aprobación.
+- **APPROVED:*

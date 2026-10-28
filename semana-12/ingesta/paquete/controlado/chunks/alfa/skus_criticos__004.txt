@@ -1,0 +1,9 @@
+ecosto frente al flete normal.
+
+## Antes de comprar: transferencias
+Antes de una compra urgente se debe revisar si otro CEDIS tiene excedente del SKU; ver la
+política de transferencias entre CEDIS.
+
+## Proveedor alterno
+Todo SKU crítico cuyo proveedor tenga un tiempo de entrega mayor a **20 días** debe tener un
+proveedor alterno homologado.

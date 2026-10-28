@@ -1,0 +1,13 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "beta",
+  "roles": [
+   "almacen",
+   "operaciones"
+  ],
+  "source": "capacitacion_almacen",
+  "doc_id": "beta__capacitacion_almacen__001",
+  "tipo": "texto",
+  "chunk": 1
+ }
+}

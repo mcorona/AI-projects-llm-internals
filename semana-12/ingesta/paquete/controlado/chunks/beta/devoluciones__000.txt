@@ -1,0 +1,9 @@
+# Política de devoluciones
+
+> Documento sintético de una empresa ficticia (Distribuidora Industrial Ficticia, DIF). Versión 1.8.
+
+## Devoluciones de clientes
+- Plazo: **20 días naturales** desde la entrega.
+- El producto debe estar en su empaque original y sin uso.
+- Los productos de la categoría **Seguridad** (equipo de protección personal: guantes, cascos,
+  lentes, arneses) **no se aceptan** si

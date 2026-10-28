@@ -1,0 +1,12 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "alfa",
+  "roles": [
+   "almacen",
+   "operaciones"
+  ],
+  "source": "plano_cedis_occidente",
+  "doc_id": "alfa__plano_cedis_occidente",
+  "tipo": "png"
+ }
+}

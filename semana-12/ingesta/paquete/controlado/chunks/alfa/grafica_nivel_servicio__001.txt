@@ -1,0 +1,6 @@
+ro: 97.8%
+- CEDIS Occidente: 95.1%
+- CEDIS Norte: 98.6%
+
+**Texto de pie de imagen:**
+Documento sintético de una empresa ficticia (DIF). Formato de entrega: imagen PNG.

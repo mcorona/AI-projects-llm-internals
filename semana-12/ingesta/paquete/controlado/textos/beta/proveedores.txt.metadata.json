@@ -1,0 +1,12 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "beta",
+  "roles": [
+   "calidad",
+   "compras"
+  ],
+  "source": "proveedores",
+  "doc_id": "beta__proveedores",
+  "tipo": "texto"
+ }
+}

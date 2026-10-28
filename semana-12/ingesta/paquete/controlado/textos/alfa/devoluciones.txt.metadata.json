@@ -1,0 +1,12 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "alfa",
+  "roles": [
+   "almacen",
+   "ventas"
+  ],
+  "source": "devoluciones",
+  "doc_id": "alfa__devoluciones",
+  "tipo": "texto"
+ }
+}

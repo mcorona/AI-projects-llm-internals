@@ -1,0 +1,8 @@
+ SKUs normales: **1.2**.
+- Factor de seguridad para SKUs críticos: **1.5**.
+- La demanda diaria promedio se toma de los últimos 90 días de ventas.
+- El punto de reorden se recalcula cada trimestre o cuando el proveedor cambia su tiempo de entrega.
+
+## Frecuencia de revisión
+- Revisión **diaria** de todos los SKUs contra su punto de reorden.
+- Excepción: la categoría Empaque se revisa **semanalment

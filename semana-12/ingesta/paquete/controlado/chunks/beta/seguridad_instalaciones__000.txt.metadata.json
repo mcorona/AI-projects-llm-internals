@@ -1,0 +1,12 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "beta",
+  "roles": [
+   "operaciones"
+  ],
+  "source": "seguridad_instalaciones",
+  "doc_id": "beta__seguridad_instalaciones__000",
+  "tipo": "texto",
+  "chunk": 0
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "beta",
+  "roles": [
+   "almacen",
+   "ventas"
+  ],
+  "source": "devoluciones",
+  "doc_id": "beta__devoluciones__003",
+  "tipo": "texto",
+  "chunk": 3
+ }
+}

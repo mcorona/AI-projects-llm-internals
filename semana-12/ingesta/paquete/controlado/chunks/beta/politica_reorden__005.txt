@@ -1,0 +1,5 @@
+da) para el mismo SKU.
+
+## Responsables
+El comprador de la categoría revisa las propuestas diarias. Las órdenes se aprueban según los
+montos definidos en el procedimiento de órdenes de compra.

@@ -1,0 +1,11 @@
+l del stock total del SKU
+(la participación normal es un tercio del stock total).
+
+## Tiempos de tránsito
+- Ciudad de México ↔ Guadalajara: 1 día.
+- Ciudad de México ↔ Monterrey: 2 días.
+- Guadalajara ↔ Monterrey: 2 días.
+
+## Reglas
+- Cantidad mínima por transferencia: **20 unidades** o una tarima completa, lo que sea menor.
+- El CEDIS que envía nunca debe quedar por debajo de su participación nor

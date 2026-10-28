@@ -1,0 +1,10 @@
+estral**.
+- **C:** resto del catálogo. Conteo **semestral**.
+
+## Exactitud de inventario
+La meta de exactitud por CEDIS es de **98%** (porcentaje de ubicaciones contadas sin diferencia).
+Un CEDIS por debajo de 95% durante dos meses seguidos pasa a conteo completo.
+
+## Durante el conteo
+- La ubicación contada se bloquea para surtido y recepción.
+- Se cuenta dos veces por personas distintas si la pr

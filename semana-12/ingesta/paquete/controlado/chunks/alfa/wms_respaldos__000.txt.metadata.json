@@ -1,0 +1,12 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "alfa",
+  "roles": [
+   "operaciones"
+  ],
+  "source": "wms_respaldos",
+  "doc_id": "alfa__wms_respaldos__000",
+  "tipo": "texto",
+  "chunk": 0
+ }
+}

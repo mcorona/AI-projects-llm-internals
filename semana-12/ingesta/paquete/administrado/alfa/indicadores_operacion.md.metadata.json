@@ -1,0 +1,12 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "alfa",
+  "roles": [
+   "finanzas",
+   "operaciones"
+  ],
+  "source": "indicadores_operacion",
+  "doc_id": "alfa__indicadores_operacion",
+  "tipo": "texto"
+ }
+}

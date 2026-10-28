@@ -1,0 +1,13 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "alfa",
+  "roles": [
+   "almacen",
+   "compras"
+  ],
+  "source": "politica_reorden",
+  "doc_id": "alfa__politica_reorden__003",
+  "tipo": "texto",
+  "chunk": 3
+ }
+}

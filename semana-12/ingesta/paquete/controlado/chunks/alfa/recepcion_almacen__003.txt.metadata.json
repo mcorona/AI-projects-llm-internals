@@ -1,0 +1,12 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "alfa",
+  "roles": [
+   "almacen"
+  ],
+  "source": "recepcion_almacen",
+  "doc_id": "alfa__recepcion_almacen__003",
+  "tipo": "texto",
+  "chunk": 3
+ }
+}

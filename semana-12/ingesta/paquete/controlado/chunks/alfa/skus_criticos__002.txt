@@ -1,0 +1,8 @@
+ía no haya cruzado su punto de reorden.
+
+## Escalamiento
+- **Nivel 1 (comprador):** SKU crítico por debajo del punto de reorden o en riesgo. El comprador
+  debe emitir la propuesta de orden de compra el mismo día.
+- **Nivel 2 (gerente de compras):** SKU crítico con menos de **7 días** de cobertura. Se evalúa
+  compra urgente y transferencia entre CEDIS.
+- **Nivel 3 (director de operaciones):** SKU
