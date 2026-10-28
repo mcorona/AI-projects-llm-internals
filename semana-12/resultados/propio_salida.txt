@@ -1,0 +1,33 @@
+documentos: 24 · pasajes de referencia únicos: 50
+estrategia              chunks  prom_chars    íntegros  partidos
+fijo_400_solape_80          57         348     50/50           0
+recursivo_300               84         203     48/50           2
+    partido: recepcion_almacen.md · Diferencia mayor a 2%: se hace un **rechazo parcial** de la diferencia
+    partido: skus_criticos.md · SKU crítico con menos de **7 días** de cobertura.
+actual_por_seccion          69         242     50/50           0
+## Backend: propio (150 preguntas)
+
+### Suite de recuperación (respondibles)
+
+| Idioma | n | recall@1 | recall@3 | recall@5 | recall@10 | mrr | ndcg@10 | ap@5 | doc_recall@5 |
+|---|---|---|---|---|---|---|---|---|---|
+| es | 65 | 0.892 | 0.992 | 1.000 | 1.000 | 0.949 | 0.962 | 0.949 | 1.000 |
+| en | 65 | 0.885 | 1.000 | 1.000 | 1.000 | 0.954 | 0.965 | 0.950 | 1.000 |
+
+### Suite de generación sobre lo recuperado (top 5, generador común)
+
+| Idioma | n | exactitud | faithfulness | answer_relevancy | precisión de citas | cobertura de cita | abstención falsa | abstención correcta |
+|---|---|---|---|---|---|---|---|---|
+| es | 65 | 1.000 | 0.849 | 0.879 | 0.600 | 0.985 | 0/65 | 10/10 |
+| en | 65 | 1.000 | 0.830 | 0.866 | 0.625 | 1.000 | 0/65 | 10/10 |
+
+### Costo y latencia por consulta
+
+| Etapa | USD por consulta | p50 (s) | p95 (s) |
+|---|---|---|---|
+| recuperacion | $0.00049 | 2.31 | 3.84 |
+| generacion | $0.00021 | 1.69 | 3.39 |
+
+Fallas (0):
+
+Métricas sin puntaje: 0. Reranking fallido: 0. Duración 380 s. Costo (recuperación + generación de lo guardado y evaluación de esta corrida): $0.2392

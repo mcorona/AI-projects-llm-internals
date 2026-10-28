@@ -132,3 +132,16 @@ How each service receives them:
 The `infra-semana-12` CI check rebuilds the package on every PR that touches `semana-12/**`. It fails if the package changes or if a gold set differs from `main`.
 
 **To check in activities 4 and 5:** which original formats each service ingests in managed mode. The default Bedrock parser does not read images (that needs Bedrock Data Automation or a model parser), and Vertex AI Search may not accept JPG or PNG as unstructured documents. The controlled mode covers those documents with their extracted text either way.
+
+## 3. Baseline: own pipeline with the week 11 suites
+
+[`evaluacion/suites.py`](evaluacion/suites.py) is the evaluator for the whole week. Each option is a retrieval backend; the gold set, the common generator (Haiku 5.5 `medium`, `solo_documentos`), the judge (Haiku 5.5 `low`) and the metrics stay the same. Results: [`resultados/linea_base.md`](resultados/linea_base.md); the reference for every comparison is `resultados/propio_resumen.json`.
+
+| Lang | recall@1 | recall@5 | MRR | nDCG@10 | AP@5 | doc_recall@5 | Correctness | faithfulness | answer relevancy | Correct abstention |
+|---|---|---|---|---|---|---|---|---|---|---|
+| ES | 0.892 | 1.000 | 0.949 | 0.962 | 0.949 | 1.000 | 1.000 | 0.849 | 0.879 | 10/10 |
+| EN | 0.885 | 1.000 | 0.954 | 0.965 | 0.950 | 1.000 | 1.000 | 0.830 | 0.866 | 10/10 |
+
+- 0 failures out of 150.
+- Per query: $0.00049 to retrieve (p50 2.3 s) and $0.00021 to generate (p50 1.7 s).
+- Cost of the activity: ≈ $0.25.
