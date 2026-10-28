@@ -262,7 +262,7 @@ def main():
     print("|---|---|" + "---|" * len(MET_REC))
     for lang, m in resumen["recuperacion"].items():
         print(f"| {lang} | {m['n']} | " + " | ".join(f"{m[k]:.3f}" for k in MET_REC) + " |")
-    print("\n### Suite de generación sobre lo recuperado (top 5, generador común)\n")
+    print(f"\n### Suite de generación sobre lo recuperado (top 5; {'RetrieveAndGenerate' if args.modo == 'rag' else 'generador común'})\n")
     print("| Idioma | n | exactitud | faithfulness | answer_relevancy | precisión de citas | cobertura de cita | abstención falsa | abstención correcta |")
     print("|---|---|---|---|---|---|---|---|---|")
     for lang, g in resumen["generacion"].items():
