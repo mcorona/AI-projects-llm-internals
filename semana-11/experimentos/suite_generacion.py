@@ -126,7 +126,7 @@ async def evaluar(items, ctx, cache, guardar):
     juez.model_args.pop("temperature", None)
     juez.model_args.pop("top_p", None)
     emb = embedding_factory("openai", model=os.getenv("LMSTUDIO_EMBED_MODEL", "text-embedding-bge-m3"),
-                            client=AsyncOpenAI(base_url=os.getenv("LMSTUDIO_BASE_URL", "http://localhost:1234/v1"), api_key="lm-studio"))
+                            client=AsyncOpenAI(base_url=os.getenv("LMSTUDIO_BASE_URL", "http://localhost:1234/v1"), api_key=os.getenv("EMB_API_KEY", "lm-studio")))  # EMB_API_KEY: CI con OpenAI
     faith, relev = Faithfulness(llm=juez), AnswerRelevancy(llm=juez, embeddings=emb)
     sem = asyncio.Semaphore(CONCURRENCIA)
 
