@@ -16,7 +16,8 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - name: Sintaxis de los scripts de infra
-        run: for f in semana-12/infra/*.sh; do bash -n "$f" && echo "ok: $f"; done
+        run: |
+          for f in semana-12/infra/*.sh; do bash -n "$f" && echo "ok $f"; done
       - name: Python de infra compila
         run: python3 -m py_compile semana-12/infra/*.py
       - name: Sin credenciales en el repo

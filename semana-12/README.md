@@ -70,6 +70,8 @@ Verified prices and the estimate for the week are in [`resultados/costos_fijos.m
 |---|---|
 | `aws_crear.sh` | Budget, both roles and the profile created. `aws sts get-caller-identity --profile semana12` returns `assumed-role/semana12-operador` |
 | `gcp_crear.sh` | Budget (200 MXN) and service account created; 0 user-managed keys |
+| Impersonation | `gcloud auth print-access-token --impersonate-service-account=semana12-operador@...` returns a token |
+| Required checks from week 11 | Skipped on this PR (it does not touch `semana-11/**`), and the PR is not blocked |
 | `inventario.sh` | Only roles, a service account and budgets, none of which bills. No knowledge base, vector bucket, S3 or GCS bucket, data store or app |
 | `aws_borrar.sh` / `gcp_borrar.sh` (simulation) | Each lists exactly the resources created |
 | `revisar_secretos.sh` | No credentials in the repo |
