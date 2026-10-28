@@ -1,0 +1,8 @@
+**PENDING_APPROVAL:** propuesta creada, en espera de aprobación.
+- **APPROVED:** aprobada por la persona con el nivel de autorización correcto.
+- **REJECTED:** rechazada; se registra el motivo.
+
+## Uso de asistentes de IA
+Un asistente de IA puede **proponer** órdenes de compra, que siempre se crean en estado
+PENDING_APPROVAL. Nunca puede aprobarlas: la aprobación es siempre de una persona con el
+n

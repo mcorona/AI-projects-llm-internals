@@ -1,0 +1,12 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "alfa",
+  "roles": [
+   "almacen",
+   "compras"
+  ],
+  "source": "skus_criticos",
+  "doc_id": "alfa__skus_criticos",
+  "tipo": "texto"
+ }
+}

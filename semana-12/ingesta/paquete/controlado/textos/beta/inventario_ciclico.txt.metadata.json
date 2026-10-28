@@ -1,0 +1,12 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "beta",
+  "roles": [
+   "almacen",
+   "finanzas"
+  ],
+  "source": "inventario_ciclico",
+  "doc_id": "beta__inventario_ciclico",
+  "tipo": "texto"
+ }
+}

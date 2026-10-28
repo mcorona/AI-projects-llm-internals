@@ -1,0 +1,3 @@
+CN | Eléctrico | B | 38 días
+Bavaria Werkzeuge | DE | Herramienta | A | 27 días
+Seguridad Andina | CO | Seguridad | C | 15 días

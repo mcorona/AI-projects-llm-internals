@@ -1,0 +1,12 @@
+# Procedimiento de órdenes de compra
+
+> Documento sintético de una empresa ficticia (Distribuidora Industrial Ficticia, DIF). Versión 4.2.
+
+## Niveles de aprobación por monto
+El monto de la orden es cantidad × costo unitario, en pesos mexicanos (MXN).
+
+| Monto de la orden | Aprueba |
+|---|---|
+| Menos de $50,000 MXN | Comprador de la categoría |
+| De $50,000 a $250,000 MXN | Gerente de compras |
+|

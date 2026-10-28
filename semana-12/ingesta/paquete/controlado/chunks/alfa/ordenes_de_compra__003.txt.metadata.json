@@ -1,0 +1,13 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "alfa",
+  "roles": [
+   "compras",
+   "finanzas"
+  ],
+  "source": "ordenes_de_compra",
+  "doc_id": "alfa__ordenes_de_compra__003",
+  "tipo": "texto",
+  "chunk": 3
+ }
+}

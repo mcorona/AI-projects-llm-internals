@@ -1,0 +1,13 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "alfa",
+  "roles": [
+   "finanzas",
+   "operaciones"
+  ],
+  "source": "grafica_nivel_servicio",
+  "doc_id": "alfa__grafica_nivel_servicio__001",
+  "tipo": "png",
+  "chunk": 1
+ }
+}

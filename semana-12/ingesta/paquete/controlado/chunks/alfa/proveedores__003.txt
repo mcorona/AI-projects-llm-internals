@@ -1,0 +1,8 @@
+ías.
+- Proveedores de Asia (CN): de 35 a 40 días.
+
+El tiempo de entrega registrado en el sistema es el pactado en contrato, no el observado.
+
+## Cambio de proveedor
+Cambiar el proveedor de un SKU requiere recalcular su punto de reorden con el nuevo tiempo de
+entrega antes de la primera orden.

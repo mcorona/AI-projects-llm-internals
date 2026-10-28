@@ -1,0 +1,13 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "alfa",
+  "roles": [
+   "finanzas",
+   "ventas"
+  ],
+  "source": "descuentos_clientes",
+  "doc_id": "alfa__descuentos_clientes__001",
+  "tipo": "texto",
+  "chunk": 1
+ }
+}

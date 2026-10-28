@@ -1,0 +1,7 @@
+Matriz de proveedores por categoría
+Documento sintético de una empresa ficticia (Distribuidora Industrial Ficticia, DIF). Versión 1.0. Formato de entrega: PDF con
+tabla.
+Proveedor | País | Categoría | Clasificación | Tiempo de entrega pactado
+Aceros del Norte | MX | Herramienta | A | 7 días
+Shenzhen Industrial Parts | CN | Eléctrico | B | 38 días
+Bavaria Werkzeuge | DE | Herramienta | A | 27 días

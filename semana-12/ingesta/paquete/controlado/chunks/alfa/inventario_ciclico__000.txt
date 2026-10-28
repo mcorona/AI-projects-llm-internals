@@ -1,0 +1,10 @@
+# Inventario cíclico y ajustes
+
+> Documento sintético de una empresa ficticia (Distribuidora Industrial Ficticia, DIF). Versión 2.1.
+
+## Clasificación ABC para conteos
+- **A:** SKUs críticos y el 20% de SKUs con mayor valor de inventario. Conteo **mensual**.
+- **B:** siguiente 30% del valor de inventario. Conteo **trimestral**.
+- **C:** resto del catálogo. Conteo **semestral**.
+
+## Exactitud de in

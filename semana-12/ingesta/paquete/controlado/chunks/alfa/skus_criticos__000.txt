@@ -1,0 +1,10 @@
+# Manejo de SKUs críticos
+
+> Documento sintético de una empresa ficticia (Distribuidora Industrial Ficticia, DIF). Versión 2.0.
+
+## Definición
+Un SKU es **crítico** cuando su falta puede detener la línea de producción de un cliente. Alrededor
+del 15% del catálogo está marcado como crítico. La marca la asigna el gerente de compras y se
+revisa cada semestre junto con el área comercial.
+
+## Indicador

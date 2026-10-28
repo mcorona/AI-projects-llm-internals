@@ -1,0 +1,13 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "alfa",
+  "roles": [
+   "calidad",
+   "compras"
+  ],
+  "source": "proveedores",
+  "doc_id": "alfa__proveedores__002",
+  "tipo": "texto",
+  "chunk": 2
+ }
+}

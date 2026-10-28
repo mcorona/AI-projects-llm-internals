@@ -1,0 +1,16 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "alfa",
+  "roles": [
+   "almacen",
+   "calidad",
+   "compras",
+   "finanzas",
+   "operaciones",
+   "ventas"
+  ],
+  "source": "uso_copiloto",
+  "doc_id": "alfa__uso_copiloto",
+  "tipo": "texto"
+ }
+}

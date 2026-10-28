@@ -1,0 +1,12 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "alfa",
+  "roles": [
+   "calidad",
+   "finanzas"
+  ],
+  "source": "auditoria_interna",
+  "doc_id": "alfa__auditoria_interna",
+  "tipo": "texto"
+ }
+}

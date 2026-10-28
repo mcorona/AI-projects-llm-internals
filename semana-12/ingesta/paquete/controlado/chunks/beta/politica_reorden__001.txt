@@ -1,0 +1,11 @@
+ de
+reorden se evalúa sobre el **stock total**, es decir, la suma de las existencias de los tres CEDIS.
+
+## Cálculo del punto de reorden
+El punto de reorden de cada SKU se calcula como:
+
+punto de reorden = demanda diaria promedio × tiempo de entrega del proveedor (días) × factor de seguridad
+
+- Factor de seguridad para SKUs normales: **1.2**.
+- Factor de seguridad para SKUs críticos: **2.0**.
+- La

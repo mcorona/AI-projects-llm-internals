@@ -1,0 +1,13 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "alfa",
+  "roles": [
+   "almacen",
+   "operaciones"
+  ],
+  "source": "transferencias_cedis",
+  "doc_id": "alfa__transferencias_cedis__001",
+  "tipo": "texto",
+  "chunk": 1
+ }
+}

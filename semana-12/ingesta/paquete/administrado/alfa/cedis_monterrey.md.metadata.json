@@ -1,0 +1,11 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "alfa",
+  "roles": [
+   "operaciones"
+  ],
+  "source": "cedis_monterrey",
+  "doc_id": "alfa__cedis_monterrey",
+  "tipo": "texto"
+ }
+}

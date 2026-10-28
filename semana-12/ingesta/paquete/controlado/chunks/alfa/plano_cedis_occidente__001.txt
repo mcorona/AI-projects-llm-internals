@@ -1,0 +1,19 @@
+as: una de SKUs críticos, cerca del andén 2, y una de cuarentena, dentro del pasillo 12.
+
+**Datos extraídos:**
+
+Título: Plano del CEDIS Occidente (Guadalajara)
+
+Etiqueta de sección: Recepción
+Etiqueta de sección: Embarque
+
+Andén 1 (recepción)
+Andén 2 (recepción)
+Andén 3 (recepción)
+Andén 4 (recepción)
+Andén 5 (embarque)
+Andén 6 (embarque)
+Andén 7 (embarque)
+Andén 8 (embarque)
+
+Zona de SKUs crítico

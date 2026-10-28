@@ -1,0 +1,12 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "alfa",
+  "roles": [
+   "almacen",
+   "operaciones"
+  ],
+  "source": "embalaje_etiquetado",
+  "doc_id": "alfa__embalaje_etiquetado",
+  "tipo": "texto"
+ }
+}

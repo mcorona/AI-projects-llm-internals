@@ -1,0 +1,4 @@
+entos mayores a 20% requieren aprobación del director comercial.
+
+## Restricciones
+Los descuentos no aplican a productos de la categoría Seguridad.

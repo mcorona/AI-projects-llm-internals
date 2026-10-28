@@ -1,0 +1,8 @@
+# Transferencias entre CEDIS
+
+> Documento sintético de una empresa ficticia (Distribuidora Industrial Ficticia, DIF). Versión 1.2.
+
+## Cuándo transferir
+Antes de comprar de urgencia se debe transferir si otro CEDIS tiene excedente. Se considera
+excedente cuando un CEDIS tiene más de **1.5 veces** su participación normal del stock total del SKU
+(la participación normal es un tercio del stock total)

@@ -77,3 +77,58 @@ Verified prices and the estimate for the week are in [`resultados/costos_fijos.m
 | `revisar_secretos.sh` | No credentials in the repo |
 
 Cost of activity 1: $0. Budgets, IAM roles, service accounts and price catalog queries are free.
+
+## 2. Document base and permissions, frozen
+
+[`ingesta/construir_paquete.py`](ingesta/construir_paquete.py) builds [`ingesta/paquete/`](ingesta/paquete/), which is uploaded as is to S3 and to GCS. The build is deterministic: two runs give the same manifest. It makes no API calls and costs nothing.
+
+### Contents
+
+The base is the own pipeline's index (week 10, activity 7) plus the week 9 `beta` tenant, which activity 6 needs for cross-tenant leak tests.
+
+| Tenant | Documents | Original formats | Chunks (fixed 400/80) |
+|---|---|---|---|
+| `alfa` | 30 | 24 Markdown, 2 PDF with tables, 2 JPG scans, 2 PNG images | 68, the same as `semana10.chunks` |
+| `beta` | 10 | Markdown (same names as in `alfa`, with a different figure in the gold passage) | 33 |
+
+The package has one folder per ingestion mode:
+
+| Folder | Mode | What it holds |
+|---|---|---|
+| `administrado/<tenant>/` | Managed | The original files. Each service parses, chunks and embeds them with its native options |
+| `controlado/textos/<tenant>/` | Controlled | The text the own pipeline indexes: pdfplumber for PDF, Haiku transcription for scans, Haiku description for images, Markdown as is |
+| `controlado/chunks/<tenant>/` | Controlled | The own pipeline's 101 chunks, one per file, to ingest without re-chunking (Bedrock chunking strategy `NONE`). This isolates index and ranking quality |
+
+### Permissions in each service's format
+
+Every document and chunk carries the same fields:
+
+| Field | Type | Content |
+|---|---|---|
+| `tenant_id` | text | `alfa` or `beta` |
+| `roles` | list of text | The roles of weeks 9 and 10 (`permisos.json`, `permisos_semana10.json`): almacen, calidad, compras, finanzas, operaciones, ventas |
+| `source` | text | Document name without extension, the key the week 11 metrics use |
+| `doc_id` | text | `<tenant>__<source>`, plus `__NNN` for chunks |
+| `tipo` | text | `texto`, `pdf`, `jpg` or `png` |
+| `chunk` | number | Chunk index (chunks only) |
+
+How each service receives them:
+- **Bedrock Knowledge Bases:** a `<file>.metadata.json` next to each file in S3, with `{"metadataAttributes": {...}}`. Filters: `equals` on `tenant_id`, `listContains` / `in` on `roles`.
+- **Vertex AI Search:** one JSONL per mode (`vertex_administrado.jsonl`, `vertex_controlado_textos.jsonl`, `vertex_controlado_chunks.jsonl`). Each line has `id`, `structData` (the same fields) and `content.uri` in `gs://semana12-docs-ejemplo1-9xub/...`. `tenant_id` and `roles` are made filterable in the data store schema (activity 5). Filter: `tenant_id: ANY("alfa") AND roles: ANY("ventas")`.
+
+### Validations (all pass; recorded in `paquete/manifiesto.json`)
+
+| Check | Result |
+|---|---|
+| Documents per tenant | 30 `alfa`, 10 `beta` |
+| `alfa` chunks equal to the own index | 68 |
+| Documents without roles | 0 |
+| Original files identical to their sources (sha256) | 40/40 |
+| Week 11 gold passages intact in a chunk of their document | 136/136 |
+| Multitenant passages (`alfa` and `beta`) intact | 40/40 |
+| Gold sets unchanged against `main` (week 11 `eval_rag_{es,en}`, week 9 `multitenant_{es,en}`) | yes; sha256 recorded |
+| Vertex document ids unique and ≤ 63 characters | yes (max 38) |
+
+The `infra-semana-12` CI check rebuilds the package on every PR that touches `semana-12/**`. It fails if the package changes or if a gold set differs from `main`.
+
+**To check in activities 4 and 5:** which original formats each service ingests in managed mode. The default Bedrock parser does not read images (that needs Bedrock Data Automation or a model parser), and Vertex AI Search may not accept JPG or PNG as unstructured documents. The controlled mode covers those documents with their extracted text either way.

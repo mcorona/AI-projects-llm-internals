@@ -1,0 +1,10 @@
+igen.
+- Proponer órdenes de compra, que quedan en estado PENDING_APPROVAL para aprobación humana.
+
+## Qué no puede hacer
+- Modificar existencias, precios, puntos de reorden o datos maestros.
+- Aprobar órdenes de compra ni ajustes de inventario.
+- Consultar información personal de empleados o clientes.
+
+## Buenas prácticas para usuarios
+- Verificar cifras importantes antes de tomar decisiones de co

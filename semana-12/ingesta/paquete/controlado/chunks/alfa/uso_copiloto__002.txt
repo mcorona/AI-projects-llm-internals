@@ -1,0 +1,7 @@
+cas para usuarios
+- Verificar cifras importantes antes de tomar decisiones de compra.
+- Reportar respuestas incorrectas al equipo de datos con la pregunta exacta y la fecha.
+- No pegar información confidencial de clientes o proveedores en las preguntas.
+
+## Datos
+Todos los datos del entorno de demostración son **sintéticos**.

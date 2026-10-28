@@ -1,0 +1,10 @@
+): lunes a sábado de 6:00 a 14:00.
+
+Las entregas fuera de horario requieren cita autorizada por el jefe de almacén.
+
+## Proceso de recepción
+1. Validar que exista una orden de compra aprobada para la entrega.
+2. Inspección visual del empaque y del transporte.
+3. **Conteo ciego:** quien cuenta no ve la cantidad esperada de la orden.
+4. Comparar el conteo contra la orden y la factura.
+5. Registrar l

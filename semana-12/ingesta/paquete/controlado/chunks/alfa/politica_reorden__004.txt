@@ -1,0 +1,7 @@
+pedir lo necesario para cubrir **30 días** de demanda más el stock de seguridad.
+- SKUs críticos: pedir lo necesario para cubrir **45 días** de demanda más el stock de seguridad.
+- Redondear siempre al múltiplo de empaque del proveedor.
+- No generar una nueva propuesta si ya existe una orden abierta (pendiente o aprobada) para el mismo SKU.
+
+## Responsables
+El comprador de la categoría revisa las 

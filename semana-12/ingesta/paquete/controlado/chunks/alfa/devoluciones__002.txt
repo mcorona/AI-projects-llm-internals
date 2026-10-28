@@ -1,0 +1,8 @@
+dores
+- Por defecto de calidad: dentro de los **15 días** siguientes a la recepción.
+- Por exceso de entrega: se devuelve la diferencia o se negocia su aceptación con nota de cargo.
+- Toda devolución a proveedor se registra y cuenta para su indicador de calidad.
+
+## Reingreso a inventario
+El producto devuelto en buen estado se reingresa al CEDIS que lo recibió después de inspección.
+El producto da

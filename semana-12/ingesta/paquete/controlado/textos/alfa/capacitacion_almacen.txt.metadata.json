@@ -1,0 +1,12 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "alfa",
+  "roles": [
+   "almacen",
+   "operaciones"
+  ],
+  "source": "capacitacion_almacen",
+  "doc_id": "alfa__capacitacion_almacen",
+  "tipo": "texto"
+ }
+}

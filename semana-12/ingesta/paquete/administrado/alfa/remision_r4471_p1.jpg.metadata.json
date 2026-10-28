@@ -1,0 +1,12 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "alfa",
+  "roles": [
+   "almacen",
+   "compras"
+  ],
+  "source": "remision_r4471",
+  "doc_id": "alfa__remision_r4471",
+  "tipo": "jpg"
+ }
+}

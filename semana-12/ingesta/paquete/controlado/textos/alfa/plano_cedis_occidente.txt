@@ -1,0 +1,28 @@
+La imagen es un plano del centro de distribución (CEDIS) Occidente en Guadalajara. Muestra ocho andenes en la parte superior, divididos en dos grupos: recepción (andenes 1 a 4, en azul) y embarque (andenes 5 a 8, en café claro). Debajo hay una nave con cinco pasillos verticales numerados del 10 al 14. Se marcan dos zonas: una de SKUs críticos, cerca del andén 2, y una de cuarentena, dentro del pasillo 12.
+
+**Datos extraídos:**
+
+Título: Plano del CEDIS Occidente (Guadalajara)
+
+Etiqueta de sección: Recepción
+Etiqueta de sección: Embarque
+
+Andén 1 (recepción)
+Andén 2 (recepción)
+Andén 3 (recepción)
+Andén 4 (recepción)
+Andén 5 (embarque)
+Andén 6 (embarque)
+Andén 7 (embarque)
+Andén 8 (embarque)
+
+Zona de SKUs críticos: ubicada en la parte superior izquierda de la nave, debajo del Andén 2
+Zona de cuarentena: ubicada en la parte inferior del Pasillo 12
+
+Pasillo 10
+Pasillo 11
+Pasillo 12
+Pasillo 13
+Pasillo 14
+
+Nota al pie: Documento sintético de una empresa ficticia (DIF). Formato de entrega: imagen PNG.

@@ -1,0 +1,12 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "alfa",
+  "roles": [
+   "finanzas",
+   "operaciones"
+  ],
+  "source": "flota_reparto",
+  "doc_id": "alfa__flota_reparto",
+  "tipo": "texto"
+ }
+}

@@ -1,0 +1,11 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "alfa",
+  "roles": [
+   "operaciones"
+  ],
+  "source": "seguridad_instalaciones",
+  "doc_id": "alfa__seguridad_instalaciones",
+  "tipo": "texto"
+ }
+}

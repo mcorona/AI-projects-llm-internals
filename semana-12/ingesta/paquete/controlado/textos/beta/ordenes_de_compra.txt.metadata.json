@@ -1,0 +1,12 @@
+{
+ "metadataAttributes": {
+  "tenant_id": "beta",
+  "roles": [
+   "compras",
+   "finanzas"
+  ],
+  "source": "ordenes_de_compra",
+  "doc_id": "beta__ordenes_de_compra",
+  "tipo": "texto"
+ }
+}

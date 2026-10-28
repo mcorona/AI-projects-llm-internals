@@ -1,0 +1,8 @@
+a su punto de reorden.
+- Excepción: la categoría Empaque se revisa **semanalmente** (los lunes), porque su costo
+  unitario es bajo y su proveedor entrega en menos de una semana.
+
+## Cantidad a pedir
+Cuando el stock total cae por debajo del punto de reorden se genera una propuesta de orden de compra:
+
+- SKUs normales: pedir lo necesario para cubrir **30 días** de demanda más el stock de seguridad.
