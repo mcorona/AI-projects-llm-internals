@@ -87,7 +87,7 @@ for cfg in $CONFIGS; do
   case $cfg in
     adm-pred)     ingesta $cfg administrado/ "" ;;
     adm-fijo)     ingesta $cfg administrado/ "{$FIJO}" ;;
-    adm-fijo-bda) ingesta $cfg administrado/ "{$FIJO,\"parsingConfiguration\":{\"parsingStrategy\":\"BEDROCK_DATA_AUTOMATION\",\"bedrockDataAutomationConfiguration\":{\"parsingModality\":\"MULTIMODAL\"}}}" ;;
+    adm-fijo-bda) ingesta $cfg administrado/ "{$FIJO,\"parsingConfiguration\":{\"parsingStrategy\":\"BEDROCK_DATA_AUTOMATION\"}}" ;;
     ctl-chunks)   ingesta $cfg controlado/chunks/ '{"chunkingConfiguration":{"chunkingStrategy":"NONE"}}' ;;
     *) echo "configuración desconocida: $cfg"; exit 1 ;;
   esac
