@@ -29,8 +29,17 @@ if ! aws s3api head-bucket --bucket $S3_DOCS 2>/dev/null; then
   aws s3api put-bucket-tagging --bucket $S3_DOCS --tagging "TagSet=[{Key=$ETIQUETA_CLAVE,Value=$ETIQUETA_VALOR}]"
   echo "bucket $S3_DOCS: creado (privado)"
 fi
-aws s3 sync $PAQUETE s3://$S3_DOCS/ --exclude "vertex_*" --exclude "manifiesto.json" --exclude "multimodal/*" --delete --only-show-errors
+aws s3 sync $PAQUETE s3://$S3_DOCS/ --exclude "vertex_*" --exclude "manifiesto.json" --delete --only-show-errors
 echo "paquete subido: $(aws s3 ls s3://$S3_DOCS/ --recursive | wc -l | tr -d ' ') objetos"
+
+# Bucket del almacenamiento suplementario de BDA multimodal (debe ser la raíz de un bucket)
+if [[ " $CONFIGS " == *" adm-fijo-bda "* ]] && ! aws s3api head-bucket --bucket $S3_MULTIMODAL 2>/dev/null; then
+  aws s3api create-bucket --bucket $S3_MULTIMODAL $R >/dev/null
+  aws s3api put-public-access-block --bucket $S3_MULTIMODAL --public-access-block-configuration \
+    BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true
+  aws s3api put-bucket-tagging --bucket $S3_MULTIMODAL --tagging "TagSet=[{Key=$ETIQUETA_CLAVE,Value=$ETIQUETA_VALOR}]"
+  echo "bucket $S3_MULTIMODAL: creado (privado)"
+fi
 
 # 2. Vector bucket
 aws s3vectors get-vector-bucket --vector-bucket-name $S3_VECTORES $R >/dev/null 2>&1 || \
@@ -51,7 +60,7 @@ ingesta() {  # config, prefijo, configuración de ingesta (JSON o vacío)
     echo "KB $nombre: borrada para recrearla"; kb=""
   fi
   local extra=""  # BDA multimodal guarda las imágenes extraídas en S3 (almacenamiento suplementario de la KB)
-  [ "$cfg" = adm-fijo-bda ] && extra=",\"supplementalDataStorageConfiguration\":{\"storageLocations\":[{\"type\":\"S3\",\"s3Location\":{\"uri\":\"s3://$S3_DOCS/multimodal/\"}}]}"
+  [ "$cfg" = adm-fijo-bda ] && extra=",\"supplementalDataStorageConfiguration\":{\"storageLocations\":[{\"type\":\"S3\",\"s3Location\":{\"uri\":\"s3://$S3_MULTIMODAL\"}}]}"
   if [ -z "$kb" ]; then
     kb=$(aws bedrock-agent create-knowledge-base $R --name $nombre --role-arn $ROL_KB_ARN \
       --knowledge-base-configuration "{\"type\":\"VECTOR\",\"vectorKnowledgeBaseConfiguration\":{\"embeddingModelArn\":\"$EMB\"$extra}}" \
