@@ -12,6 +12,7 @@ if [ "$QUE" != gcp ]; then
   linea "S3 vector buckets semana12" "$(aws s3vectors list-vector-buckets --region $REGION --query "vectorBuckets[?starts_with(vectorBucketName,'$PREFIJO')].vectorBucketName" --output text 2>/dev/null)"
   linea "Buckets S3 semana12" "$(aws s3api list-buckets --query "Buckets[?starts_with(Name,'$PREFIJO')].Name" --output text 2>/dev/null)"
   linea "Roles IAM semana12 (sin costo)" "$(aws iam list-roles --query "Roles[?starts_with(RoleName,'$PREFIJO')].RoleName" --output text 2>/dev/null)"
+  linea "CI: proveedor OIDC (sin costo)" "$(aws iam list-open-id-connect-providers --query "OpenIDConnectProviderList[?contains(Arn,'token.actions.githubusercontent.com')].Arn" --output text 2>/dev/null | sed 's|.*/||')"
   linea "Presupuesto semana12 (sin costo)" "$(aws budgets describe-budgets --account-id "$CUENTA_AWS" --query "Budgets[?BudgetName=='$PREFIJO'].BudgetName" --output text 2>/dev/null)"
 fi
 if [ "$QUE" != aws ]; then
@@ -28,4 +29,6 @@ if [ "$QUE" != aws ]; then
   linea "CI: pool de identidad (sin costo)" "$(gcloud iam workload-identity-pools list --location=global --project=$P --filter="name~$GCP_POOL" --format='value(name.basename())' 2>/dev/null)"
   linea "Cuenta de servicio (sin costo)" "$(gcloud iam service-accounts list --project=$P --filter="email:$GCP_SA_EMAIL" --format='value(email)' 2>/dev/null)"
 fi
+echo "GitHub ($GH_REPO)"
+linea "Entorno $GH_ENTORNO (secretos)" "$(gh api repos/$GH_REPO/environments --jq ".environments[]|select(.name==\"$GH_ENTORNO\")|.name" 2>/dev/null)"
 echo "Recursos de la semana presentes: $N (los marcados 'sin costo' no facturan)"

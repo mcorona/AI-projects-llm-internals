@@ -2,8 +2,14 @@
 # Semana 12, actividad 9: entorno de GitHub nube-semana12, solo desplegable desde main, con las variables (no secretas)
 # que usa el workflow manual para federarse con AWS y Google Cloud. Las llaves de Anthropic y OpenAI se guardan como
 # secretos DEL ENTORNO: solo los ve un job que declara environment: nube-semana12, es decir, el workflow manual.
+#   ./github_entorno.sh            crea o actualiza el entorno
+#   ./github_entorno.sh --borrar   lo borra con sus secretos (actividad 10)
 set -euo pipefail
 cd "$(dirname "$0")"; source config.sh
+if [ "${1:-}" = "--borrar" ]; then   # actividad 10: borra el entorno con sus variables y secretos (llaves de Anthropic y OpenAI)
+  gh api -X DELETE repos/$GH_REPO/environments/$GH_ENTORNO && echo "entorno $GH_ENTORNO: borrado (con sus secretos y variables)"
+  exit 0
+fi
 NUM=$(gcloud projects describe $GCP_PROYECTO --format='value(projectNumber)')
 gh api -X PUT repos/$GH_REPO/environments/$GH_ENTORNO --input - >/dev/null <<J
 {"deployment_branch_policy":{"protected_branches":false,"custom_branch_policies":true}}
