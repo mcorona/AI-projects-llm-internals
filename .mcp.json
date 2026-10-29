@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "legado-semana13": {
+      "type": "stdio",
+      "command": "uv",
+      "args": ["run", "python", "semana-13/servidor_mcp/servidor.py"],
+      "env": {
+        "MCP_USUARIO": "analista",
+        "MCP_IDIOMA": "es",
+        "PG_DSN": "${PG_DSN}"
+      }
+    }
+  }
+}

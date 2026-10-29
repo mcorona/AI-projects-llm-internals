@@ -139,7 +139,8 @@ class Agente:
         self.h, self.modelo, self.esfuerzo = herramientas, modelo, esfuerzo
         self.lim = limites or Limites()
         self.api, self.trazas = api, trazas
-        self.tools = definiciones() + [herramienta_responder()]
+        # El catálogo viene de la fuente de herramientas: nativo (definiciones()) o el que anuncia el servidor MCP.
+        self.tools = (herramientas.definiciones() if hasattr(herramientas, "definiciones") else definiciones()) + [herramienta_responder()]
 
     def _traza(self, evento: dict):
         if self.trazas:
