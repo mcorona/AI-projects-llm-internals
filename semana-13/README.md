@@ -44,3 +44,51 @@ The evaluation reruns that SQL with the read-only role and compares it with the 
 - No expected result is empty or zero.
 
 **What the first validation found.** The purchase orders table holds a single order. Tasks about approval levels and quotes on existing orders, and escalation level 3 (no critical SKU at zero), all returned zero, so they did not discriminate. They were replaced with the same rules applied to the **purchase proposals** that the reorder policy generates on the cutoff date. Those are 24 proposals for $1,436,118.17: 19 for the buyer, 4 for the purchasing manager and 1 for the operations director.
+
+## 2. Shared tools with a contract
+
+[`herramientas/herramientas.py`](herramientas/herramientas.py) defines the five tools that every pattern uses, so the patterns differ only in orchestration:
+
+| Tool | What it does |
+|---|---|
+| `describir_esquema` | Tables and columns the user can read, with the data dictionary. The original names are not revealed |
+| `buscar_regla_negocio` | Business rules by keywords (Spanish or English) or by id, with the exact definition to compute |
+| `muestrear_valores` | Most frequent distinct values of a column, to check how data is stored before filtering |
+| `validar_sql` | The guard plus `EXPLAIN`, without running the query |
+| `ejecutar_sql` | Guard, then a read-only transaction that is always rolled back, with time and row limits |
+
+**Contract**
+- **Inputs:** Pydantic models with `extra="forbid"`. The JSON Schema of every tool has `additionalProperties: false`, required fields, an enum of tables and bounds (`max_filas` ≤ 200). A model that sends `roles`, or any other field the system did not give it, gets `argumentos_invalidos`.
+- **Outputs:** always JSON, never an exception: `{"ok": true, ...}` or `{"ok": false, "error": {"tipo", "mensaje", "sugerencia"}}`. Database errors carry a hint per SQLSTATE: missing column, GROUP BY, division by zero, invalid value format.
+- **Summarized outputs:**
+  - Rows up to `max_filas`, with the real total and a `truncado` flag.
+  - Long texts are cut, and each response is capped at 6,000 characters.
+  - An empty result carries a note that points to `muestrear_valores` and `buscar_regla_negocio`.
+- **Trace:** every call is logged in the context with its tool, arguments, result and milliseconds.
+
+**Permissions are injected by the system.** [`herramientas/permisos.json`](herramientas/permisos.json) defines four synthetic roles (`almacen`, `ventas`, `compras`, `finanzas`), the tables each one can read, and one restricted column (`art_cst`, unit cost, for `compras` and `finanzas`). The `Contexto` that holds the user and roles is created by the system; no tool parameter carries them.
+- `describir_esquema` hides what the user cannot read.
+- The guard rejects tables, columns and `SELECT *` that would expose them.
+
+The gold set runs as `analista`, who can read everything.
+
+**Guard (sqlglot, PostgreSQL dialect)**
+- Exactly one statement, and the root must be SELECT or a set operation.
+- No writes, including `SELECT INTO`, `FOR UPDATE`, `SET` and DDL.
+- No dangerous functions (`lo_*`, `pg_*`, `set_config`, `current_setting`, `nextval`, `dblink`…).
+- Only the `legado` schema, and only tables and columns allowed to the user. CTE names are recognized.
+
+**Defense in depth.** Underneath the guard, the session uses the `copilot_nlq` role from week 10: `SELECT` only on the `legado` views and read-only by default. It is recreated with a random per-session password that is not stored ([`herramientas/conexion.py`](herramientas/conexion.py)). Each query runs in a `READ ONLY` transaction that is always rolled back, with `statement_timeout`.
+
+**Tests:** [`tests/test_herramientas.py`](tests/test_herramientas.py) has 62 tests, and all pass against the local database.
+- **Contract:** strict schemas, invalid arguments (including a model trying to pass `roles`) and unknown tools.
+- **Rules:** search in both languages and lookup by id.
+- **Guard:** 22 cases and 6 permission cases by user.
+- **Database:**
+  - Execution, truncation and the empty-result hint.
+  - Sampling, `EXPLAIN` with a missing column, and database errors with hints.
+  - A timeout at 200 ms.
+  - The role has no write privilege, and `lo_create`, `DELETE` and `CREATE TEMP` still fail when the guard is bypassed.
+  - The tool reproduces gold task `s03`.
+
+Dependencies added: `sqlglot` and `pytest` (dev).

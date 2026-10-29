@@ -13,8 +13,14 @@ dependencies = [
     "pandas>=3.0.6",
     "psycopg[binary]>=3.3.6",
     "pyyaml>=6.0.3",
+    "sqlglot>=30.26.0",
     "tiktoken>=0.14.0",
     "torch>=2.14.1",
     "torchvision>=0.29.1",
     "transformers>=5.20.2",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
 ]
