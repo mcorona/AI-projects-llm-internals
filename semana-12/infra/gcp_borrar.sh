@@ -25,6 +25,13 @@ gcloud iam service-accounts describe $GCP_SA_EMAIL --project=$P >/dev/null 2>&1 
   { run gcloud projects remove-iam-policy-binding $P --member=serviceAccount:$GCP_SA_EMAIL --role=roles/discoveryengine.editor --condition=None
     run gcloud projects remove-iam-policy-binding $P --member=serviceAccount:$GCP_SA_EMAIL --role=roles/serviceusage.serviceUsageConsumer --condition=None
     run gcloud iam service-accounts delete $GCP_SA_EMAIL --project=$P --quiet; }
+# CI (actividad 9): pool de Workload Identity (queda 30 días en borrado lógico) y cuenta de servicio semana12-ci.
+gcloud iam workload-identity-pools describe $GCP_POOL --location=global --project=$P >/dev/null 2>&1 && \
+  run gcloud iam workload-identity-pools delete $GCP_POOL --location=global --project=$P --quiet
+gcloud iam service-accounts describe $GCP_SA_CI_EMAIL --project=$P >/dev/null 2>&1 && \
+  { for r in roles/discoveryengine.viewer roles/serviceusage.serviceUsageConsumer; do
+      run gcloud projects remove-iam-policy-binding $P --member=serviceAccount:$GCP_SA_CI_EMAIL --role=$r --condition=None; done
+    run gcloud iam service-accounts delete $GCP_SA_CI_EMAIL --project=$P --quiet; }
 if [ $PRES -eq 1 ]; then
   CTA=$(gcloud billing projects describe $P --format='value(billingAccountName.basename())')
   for b in $(gcloud billing budgets list --billing-account=$CTA --filter="displayName=$PREFIJO" --format='value(name)'); do

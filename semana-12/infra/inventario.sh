@@ -25,6 +25,7 @@ if [ "$QUE" != aws ]; then
   linea "Buckets GCS semana12" "$(gcloud storage buckets list --project=$P --format='value(name)' 2>/dev/null | grep "^$PREFIJO" | tr '\n' ' ')"
   CTA=$(gcloud billing projects describe $P --format='value(billingAccountName.basename())' 2>/dev/null)
   linea "Presupuesto semana12 (sin costo)" "$(gcloud billing budgets list --billing-account=$CTA --filter="displayName=$PREFIJO" --format='value(displayName)' 2>/dev/null)"
+  linea "CI: pool de identidad (sin costo)" "$(gcloud iam workload-identity-pools list --location=global --project=$P --filter="name~$GCP_POOL" --format='value(name.basename())' 2>/dev/null)"
   linea "Cuenta de servicio (sin costo)" "$(gcloud iam service-accounts list --project=$P --filter="email:$GCP_SA_EMAIL" --format='value(email)' 2>/dev/null)"
 fi
 echo "Recursos de la semana presentes: $N (los marcados 'sin costo' no facturan)"

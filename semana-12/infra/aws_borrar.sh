@@ -43,6 +43,13 @@ for rol in $(aws iam list-roles --query "Roles[?starts_with(RoleName,'$PREFIJO')
 done
 [ $HAZ -eq 1 ] && { aws configure set profile.$PERFIL_AWS.role_arn ""; echo "perfil $PERFIL_AWS: role_arn vaciado"; }
 
-# 5. Presupuesto, solo si se pide.
+# 5. Proveedor OIDC de GitHub (actividad 9), solo si lo creó la semana 12 (etiqueta proyecto=semana12).
+for prov in $(aws iam list-open-id-connect-providers --query "OpenIDConnectProviderList[?contains(Arn,'token.actions.githubusercontent.com')].Arn" --output text); do
+  if aws iam list-open-id-connect-provider-tags --open-id-connect-provider-arn $prov --query "Tags[?Key=='$ETIQUETA_CLAVE' && Value=='$ETIQUETA_VALOR']" --output text | grep -q .; then
+    run aws iam delete-open-id-connect-provider --open-id-connect-provider-arn $prov
+  fi
+done
+
+# 6. Presupuesto, solo si se pide.
 if [ $PRES -eq 1 ]; then run aws budgets delete-budget --account-id "$CUENTA_AWS" --budget-name "$PREFIJO"; fi
 echo; ./inventario.sh aws
