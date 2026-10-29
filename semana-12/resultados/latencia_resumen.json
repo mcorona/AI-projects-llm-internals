@@ -1,0 +1,53 @@
+{
+ "preguntas": 100,
+ "concurrencia": 1,
+ "orden": "aleatorio por pregunta (semilla 12)",
+ "propio": {
+  "recuperacion_p50": 2.27,
+  "recuperacion_p95": 3.07,
+  "total_p50": 3.89,
+  "total_p95": 6.07,
+  "costo_rec_media": 0.000494,
+  "costo_gen_media": 0.000212
+ },
+ "propio_sin_rerank": {
+  "recuperacion_p50": 0.06,
+  "recuperacion_p95": 0.06,
+  "total_p50": 1.74,
+  "total_p95": 3.33,
+  "costo_rec_media": 0.0,
+  "costo_gen_media": 0.000215
+ },
+ "bedrock_ctl": {
+  "recuperacion_p50": 0.92,
+  "recuperacion_p95": 1.06,
+  "total_p50": 2.58,
+  "total_p95": 4.09,
+  "costo_rec_media": 5.6e-05,
+  "costo_gen_media": 0.000211
+ },
+ "vertex_adm_sem": {
+  "recuperacion_p50": 0.88,
+  "recuperacion_p95": 1.34,
+  "total_p50": 2.48,
+  "total_p95": 3.84,
+  "costo_rec_media": 0.001,
+  "costo_gen_media": 0.000301
+ },
+ "bedrock_bda_rag": {
+  "recuperacion_p50": null,
+  "recuperacion_p95": null,
+  "total_p50": 1.5,
+  "total_p95": 2.21,
+  "costo_rec_media": 0.0,
+  "costo_gen_media": 0.001179
+ },
+ "vertex_ctl_sem": {
+  "recuperacion_p50": 0.76,
+  "recuperacion_p95": 1.06,
+  "total_p50": 2.4,
+  "total_p95": 3.94,
+  "costo_rec_media": 0.001,
+  "costo_gen_media": 0.000212
+ }
+}

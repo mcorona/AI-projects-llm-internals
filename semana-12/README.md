@@ -209,3 +209,18 @@ Two data stores in project `ejemplo1-9xub`, created by [`infra/vertex_crear.py`]
 - Tenant and roles are checked against the real file path and the frozen manifest, not the service's metadata.
 - **The filter is applied inside the query:** single-role users get exactly the number of chunks they are allowed to see, up to 20.
 - **Neither service is ruled out.** Cost: ≈ $0.20.
+
+## 7. Latency and cost
+
+Same client and location (one Mac in Guadalajara), concurrency 1, 100 questions with the options in random order per question. Results: [`resultados/latencia_costo.md`](resultados/latencia_costo.md).
+
+| Option | Full answer p50 / p95 (s) | Fixed USD per month | USD per query | Monthly USD at 10k / 100k queries | More expensive than own pipeline from |
+|---|---|---|---|---|---|
+| Own pipeline (hosted on RDS db.t4g.micro) | 3.89 / 6.07 | 13.98 | 0.000703 | 21.01 / 84.28 | — |
+| Bedrock `Retrieve` + common generator | 2.58 / 4.09 | ≈ 0 | **0.000269** | **2.69 / 26.90** | never |
+| Bedrock RetrieveAndGenerate (Haiku 4.5) | **1.50 / 2.21** | ≈ 0 | 0.001083 (est.) | 10.83 / 108.30 | ≈ 37,000 per month |
+| Vertex + semantic ranker | 2.40 / 3.94 | ≈ 0 | 0.001213 + $0.004 past 10k per month | 12.13 / 481.30 | ≈ 12,000 per month |
+
+- **One-time ingestion:** under $0.05 on Bedrock, and $0.40 on Vertex (layout parser on 40 pages).
+- **Retrieval:** the own reranking adds 2.2 s. RetrieveAndGenerate is the fastest full answer, because it makes a single call inside AWS.
+- **Cost of the activity:** ≈ $0.50.

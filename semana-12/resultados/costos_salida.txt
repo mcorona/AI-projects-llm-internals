@@ -1,0 +1,96 @@
+{
+ "rds": {
+  "usd_hora": 0.016,
+  "descripcion": "$ 0.016 per RDS db.t4g.micro Single-AZ instance hour (or partial hour) running PostgreSQL",
+  "gp3_gb_mes": 0.115,
+  "descripcion_gp3": "$0.115 per GB-month of provisioned GP3 storage running PostgreSQL",
+  "usd_mes": 13.98
+ },
+ "paquete": {
+  "chars_textos": 30151,
+  "chars_chunks": 35031,
+  "pdf_paginas": 2,
+  "imagenes": 4,
+  "html_paginas": 34,
+  "gb_documentos": 0.0017
+ },
+ "ingesta_usd": {
+  "propio": {
+   "usd": 0.003,
+   "detalle": "bge-m3 local; extracción de imágenes con Haiku (semana 10, $0.003)"
+  },
+  "bedrock_ctl-chunks": {
+   "usd": 0.001,
+   "detalle": "embeddings Cohere de 35,031 caracteres y carga en S3 Vectors"
+  },
+  "bedrock_adm-fijo-bda": {
+   "usd": 0.0328,
+   "detalle": "embeddings de 30,151 caracteres; BDA 2 páginas PDF y 4 imágenes (si BDA cobrara también los 34 Markdown, +$0.34 como máximo)"
+  },
+  "vertex_vx-ctl": {
+   "usd": 0.0,
+   "detalle": "parser digital sin costo; embeddings incluidos"
+  },
+  "vertex_vx-adm": {
+   "usd": 0.4,
+   "detalle": "layout parser: 34 páginas HTML (3,000 caracteres por página), 2 PDF, 4 imágenes en PDF"
+  }
+ },
+ "fijo_mensual_usd": {
+  "propio": 13.98,
+  "bedrock_ctl-chunks": 0.0001,
+  "bedrock_adm-fijo-bda": 0.0001,
+  "vertex_vx-ctl": 0.0,
+  "vertex_vx-adm": 0.0
+ },
+ "variable_por_consulta_usd": {
+  "propio": 0.000703,
+  "bedrock_ctl-chunks": 0.000269,
+  "bedrock_adm-fijo-bda": 0.001083,
+  "vertex_vx-ctl": 0.001213,
+  "vertex_vx-adm": 0.001316
+ },
+ "costo_mensual_usd": {
+  "propio": {
+   "1000": 14.68,
+   "10000": 21.01,
+   "50000": 49.13,
+   "100000": 84.28,
+   "1000000": 716.98
+  },
+  "bedrock_ctl-chunks": {
+   "1000": 0.27,
+   "10000": 2.69,
+   "50000": 13.45,
+   "100000": 26.9,
+   "1000000": 269.0
+  },
+  "bedrock_adm-fijo-bda": {
+   "1000": 1.08,
+   "10000": 10.83,
+   "50000": 54.15,
+   "100000": 108.3,
+   "1000000": 1083.0
+  },
+  "vertex_vx-ctl": {
+   "1000": 1.21,
+   "10000": 12.13,
+   "50000": 220.65,
+   "100000": 481.3,
+   "1000000": 5173.0
+  },
+  "vertex_vx-adm": {
+   "1000": 1.32,
+   "10000": 13.16,
+   "50000": 225.8,
+   "100000": 491.6,
+   "1000000": 5276.0
+  }
+ },
+ "equilibrio_contra_propio_consultas_mes": {
+  "bedrock_ctl-chunks": null,
+  "bedrock_adm-fijo-bda": 37000,
+  "vertex_vx-ctl": 12000,
+  "vertex_vx-adm": 12000
+ }
+}
