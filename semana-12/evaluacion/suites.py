@@ -83,10 +83,18 @@ def _aws(servicio):
 
 
 def _kb(config):
-    estado = json.loads((RAIZ / "infra" / "estado_aws.json").read_text(encoding="utf-8"))
-    if estado.get(config, {}).get("ingesta") != "COMPLETE":
-        raise SystemExit(f"La KB {config} no tiene una ingesta completa en infra/estado_aws.json")
-    return estado[config]["kb_id"]
+    """Id de la KB: de infra/estado_aws.json (local) o, sin ese archivo (CI), buscándola por nombre semana12-<config>."""
+    ruta = RAIZ / "infra" / "estado_aws.json"
+    if ruta.exists():
+        estado = json.loads(ruta.read_text(encoding="utf-8"))
+        if estado.get(config, {}).get("ingesta") != "COMPLETE":
+            raise SystemExit(f"La KB {config} no tiene una ingesta completa en infra/estado_aws.json")
+        return estado[config]["kb_id"]
+    kbs = _aws("bedrock-agent").list_knowledge_bases(maxResults=100)["knowledgeBaseSummaries"]
+    kb = [k for k in kbs if k["name"] == f"semana12-{config}" and k["status"] == "ACTIVE"]
+    if not kb:
+        raise SystemExit(f"No hay una KB activa semana12-{config}")
+    return kb[0]["knowledgeBaseId"]
 
 
 def recuperar_bedrock(items, guardar_uno, config):
@@ -160,7 +168,9 @@ def _vx(url, cuerpo):
     import urllib.request
     proy, sa = _vx_conf()
     if time.time() > VX_TOKEN["hasta"]:
-        VX_TOKEN["t"] = subprocess.run(["gcloud", "auth", "print-access-token", f"--impersonate-service-account={sa}"],
+        # En CI (VX_SIN_IMPERSONAR=1) gcloud ya actúa como la cuenta de servicio del workflow (Workload Identity Federation).
+        imp = [] if os.getenv("VX_SIN_IMPERSONAR") else [f"--impersonate-service-account={sa}"]
+        VX_TOKEN["t"] = subprocess.run(["gcloud", "auth", "print-access-token", *imp],
                                        capture_output=True, text=True, check=True).stdout.strip()
         VX_TOKEN["hasta"] = time.time() + 2700
     for intento in range(5):
@@ -185,7 +195,9 @@ def recuperar_vertex(items, guardar_uno, config):
     vx-adm devuelve chunks del servicio (layout parser); vx-ctl devuelve documentos = chunks propios (texto del paquete)."""
     import urllib.error  # noqa: F401
     store, busqueda = config.split(":")
-    estado = json.loads((RAIZ / "infra" / "estado_gcp.json").read_text(encoding="utf-8"))[store]
+    ruta = RAIZ / "infra" / "estado_gcp.json"
+    estado = (json.loads(ruta.read_text(encoding="utf-8"))[store] if ruta.exists()
+              else {"engine": f"semana12-{store}-app"})  # en CI, el nombre fijo que crea vertex_crear.py
     proy, _ = _vx_conf()
     base = f"https://discoveryengine.googleapis.com/v1/projects/{proy}/locations/global"
     url = f"{base}/collections/default_collection/engines/{estado['engine']}/servingConfigs/default_search:search"

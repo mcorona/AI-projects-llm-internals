@@ -1,6 +1,8 @@
 name: infra-semana-12
 
-# Sin credenciales de nube: valida la sintaxis de los scripts de infra y que no haya llaves en el repo.
+# Sin credenciales de nube: valida la sintaxis de los scripts de infra, que no haya llaves en el repo, que el paquete
+# de ingesta siga congelado y que los resultados versionados de las corridas contra las nubes estén completos y sean
+# consistentes (las corridas mismas solo se repiten a mano con eval-nube-semana-12).
 on:
   pull_request:
     paths:
@@ -30,3 +32,9 @@ jobs:
           git status --porcelain semana-12/ingesta/paquete
           git diff --exit-code --stat -- semana-12/ingesta/paquete
           test -z "$(git status --porcelain semana-12/ingesta/paquete)"
+      - name: Resultados versionados completos y consistentes
+        run: python3 semana-12/evaluacion/validar_resultados.py
+      - name: Tabla de comparación al día con los resúmenes
+        run: |
+          python3 semana-12/evaluacion/comparar.py > /dev/null
+          git diff --exit-code --stat -- semana-12/resultados/comparacion.json semana-12/resultados/comparacion_tabla.md

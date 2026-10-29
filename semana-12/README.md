@@ -238,3 +238,27 @@ Same client and location (one Mac in Guadalajara), concurrency 1, 100 questions 
 | High volume | Own pipeline or Bedrock `Retrieve`; Vertex costs about 6 times more at 100,000 queries a month |
 
 Both services keep leakage at 0, so security does not decide between them. Lock-in, model choice (RetrieveAndGenerate depends on the account's Bedrock models) and data residency favor the own pipeline.
+
+## 9. Reproducible evaluation and CI
+
+Cloud runs cost money and need cloud credentials, so they **do not run on every PR**.
+
+**On every PR** that touches `semana-12/**`, `infra-semana-12` runs with no cloud credentials. Besides the infra and package checks, it adds two:
+- **[`evaluacion/validar_resultados.py`](evaluacion/validar_resultados.py)**, which checks that the versioned results are complete and consistent:
+  - **Suite runs (14):** each has its summary, detail and cache. Each covers 150 questions, 65 answerable and 10 unanswerable per language, with the week 11 gold ids.
+  - **Metrics:** every value is in [0, 1], and each summary mean is recomputed from the detail.
+  - **Judge and leakage per run:** at most 1% of judge metrics are missing, and no run returns a chunk from another tenant.
+  - **Security:** 56 + 40 cases per system, leakage 0, and a sensitive control.
+  - **Latency and cost:** complete for every option.
+- **`comparar.py` regenerated:** the comparison table must not change, so it always matches the summaries.
+
+**Manual runs** (`workflow_dispatch`) use `.github/workflows/eval-nube-semana-12.yml` to rerun the suites against Bedrock or Vertex, and optionally the leakage tests, when someone decides to:
+- **Inputs:** service, configuration, mode (common generator or RetrieveAndGenerate), and a question limit (2 per language and type by default; 0 for all 150).
+- **No cloud keys:**
+  - AWS through OIDC, to the role `semana12-ci` ([`infra/aws_ci_oidc.sh`](infra/aws_ci_oidc.sh)).
+  - Google Cloud through Workload Identity Federation, to the service account `semana12-ci` ([`infra/gcp_ci_wif.sh`](infra/gcp_ci_wif.sh)).
+  - Both trust only the subject `repo:mcorona/AI-projects-llm-internals:environment:nube-semana12`.
+  - The CI identities can only query: Retrieve, RetrieveAndGenerate and model invocation on AWS, Discovery Engine viewer on Google Cloud. They cannot create or delete resources.
+- **Secrets limited to that workflow:** the GitHub environment `nube-semana12` ([`infra/github_entorno.sh`](infra/github_entorno.sh)) deploys from `main` only. It holds the federation variables and the Anthropic and OpenAI keys as **environment secrets**, which only a job declaring that environment can read.
+- **Embeddings:** answer relevancy uses `text-embedding-3-small` in Actions, as in week 11 CI.
+- **Output:** results are uploaded as a run artifact (30 days), not committed.

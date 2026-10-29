@@ -26,3 +26,11 @@ GCP_UBICACION=global
 GCS_DOCS=${PREFIJO}-docs-${GCP_PROYECTO}
 GCP_SA=${PREFIJO}-operador
 GCP_SA_EMAIL=${GCP_SA}@${GCP_PROYECTO}.iam.gserviceaccount.com
+
+# CI (actividad 9): el workflow manual se autentica con OIDC; solo jobs del entorno de GitHub nube-semana12 en este repo.
+GH_REPO=mcorona/AI-projects-llm-internals
+GH_ENTORNO=nube-semana12
+ROL_CI=${PREFIJO}-ci
+GCP_SA_CI=${PREFIJO}-ci
+GCP_SA_CI_EMAIL=${GCP_SA_CI}@${GCP_PROYECTO}.iam.gserviceaccount.com
+GCP_POOL=${PREFIJO}-github

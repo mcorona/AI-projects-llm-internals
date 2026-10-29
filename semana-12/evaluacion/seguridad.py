@@ -96,7 +96,8 @@ def bedrock_rag(config, c, cli, modelo):
 
 def vertex(store, c, con_filtro=True):
     proy, _ = s._vx_conf()
-    estado = json.loads((RAIZ / "infra" / "estado_gcp.json").read_text(encoding="utf-8"))[store]
+    ruta = RAIZ / "infra" / "estado_gcp.json"
+    estado = json.loads(ruta.read_text(encoding="utf-8"))[store] if ruta.exists() else {"engine": f"semana12-{store}-app"}
     url = (f"https://discoveryengine.googleapis.com/v1/projects/{proy}/locations/global/collections/default_collection/"
            f"engines/{estado['engine']}/servingConfigs/default_search:search")
     cuerpo = {"query": c["question"], "pageSize": 20, "relevanceThreshold": "LOWEST", "queryExpansionSpec": {"condition": "AUTO"},

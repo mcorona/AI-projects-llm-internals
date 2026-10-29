@@ -1,0 +1,99 @@
+name: eval-nube-semana-12
+
+# Corrida MANUAL de las suites contra Bedrock y Vertex AI Search (no corre en los PR: cuesta dinero y requiere nube).
+# Sin llaves de nube: OIDC hacia el rol semana12-ci (AWS) y Workload Identity Federation hacia la cuenta de servicio
+# semana12-ci (Google Cloud), que solo aceptan este repo en el entorno nube-semana12 (solo desde main). Las llaves de
+# Anthropic y OpenAI son secretos de ese entorno: ningún otro workflow las ve.
+on:
+  workflow_dispatch:
+    inputs:
+      backend:
+        description: "Servicio"
+        type: choice
+        options: [bedrock, vertex]
+        default: bedrock
+      config:
+        description: "bedrock: adm-pred | adm-fijo | adm-fijo-bda | ctl-chunks; vertex: <vx-adm|vx-ctl>:<hibrida|vectorial|semantico>"
+        type: string
+        default: ctl-chunks
+      modo:
+        description: "comun (generador común) o rag (RetrieveAndGenerate, solo bedrock)"
+        type: choice
+        options: [comun, rag]
+        default: comun
+      limite:
+        description: "Preguntas por idioma y tipo (0 = las 150 completas)"
+        type: string
+        default: "2"
+      seguridad:
+        description: "Correr también las pruebas de fuga (≈ $0.20)"
+        type: boolean
+        default: false
+
+permissions: {}
+
+jobs:
+  evaluar:
+    runs-on: ubuntu-24.04
+    environment: nube-semana12
+    timeout-minutes: 45
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      EMB_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      LMSTUDIO_BASE_URL: https://api.openai.com/v1      # answer relevancy con text-embedding-3-small (bge-m3 no corre en Actions)
+      LMSTUDIO_EMBED_MODEL: text-embedding-3-small
+      VX_SIN_IMPERSONAR: "1"
+      IN_BACKEND: ${{ inputs.backend }}
+      IN_CONFIG: ${{ inputs.config }}
+      IN_MODO: ${{ inputs.modo }}
+      IN_LIMITE: ${{ inputs.limite }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - name: Instalar dependencias (versiones de las semanas 11 y 12)
+        run: >-
+          pip install "psycopg[binary]==3.3.6" anthropic==1.15.0 openai==3.3.0 instructor==1.17.0 ragas==0.4.3
+          langchain-community==0.4.1 langchain-core==1.7.0 langchain-openai==1.7.3 boto3
+      - name: Validar entradas
+        run: |
+          [[ "$IN_LIMITE" =~ ^[0-9]+$ ]] || { echo "limite debe ser un número"; exit 1; }
+          [[ "$IN_CONFIG" =~ ^[a-z0-9:-]+$ ]] || { echo "config inválida"; exit 1; }
+      - name: AWS por OIDC (rol semana12-ci)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: us-east-1
+          role-session-name: eval-nube-semana-12
+      - name: Google Cloud por Workload Identity Federation (semana12-ci)
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ vars.GCP_WIF_PROVIDER }}
+          service_account: ${{ vars.GCP_SA }}
+      - uses: google-github-actions/setup-gcloud@v2
+      - name: Suites de recuperación y generación
+        run: |
+          args=(--backend "$IN_BACKEND" --config "$IN_CONFIG" --modo "$IN_MODO")
+          [ "$IN_LIMITE" != "0" ] && args+=(--limite "$IN_LIMITE")
+          python -u semana-12/evaluacion/suites.py "${args[@]}" | tee semana-12/resultados/ci_salida.txt
+          {
+            echo "## eval-nube-semana-12: $IN_BACKEND $IN_CONFIG ($IN_MODO, límite $IN_LIMITE)"
+            sed -n '/^## /,$p' semana-12/resultados/ci_salida.txt
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Pruebas de fuga (opcional)
+        if: inputs.seguridad
+        run: python -u semana-12/evaluacion/seguridad.py | tee semana-12/resultados/ci_seguridad.txt
+      - name: Guardar resultados de la corrida
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-nube-semana-12-${{ github.run_id }}
+          path: |
+            semana-12/resultados/ci_*.txt
+            semana-12/resultados/*_humo*
+            semana-12/resultados/*_resumen.json
+          retention-days: 30
