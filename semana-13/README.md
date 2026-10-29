@@ -92,3 +92,54 @@ The gold set runs as `analista`, who can read everything.
   - The tool reproduces gold task `s03`.
 
 Dependencies added: `sqlglot` and `pytest` (dev).
+
+## 3. Own agentic loop
+
+[`agente/loop.py`](agente/loop.py) implements tool use directly on the Anthropic Messages API, with no framework. The model asks for tools, the system runs them (the activity 2 tools) and returns `tool_result` blocks, until the model calls `responder` or a limit is reached.
+
+| Requirement | Implementation |
+|---|---|
+| Tool use loop | `Agente.resolver(tarea)` sends the system prompt, the six tools (five plus `responder`) and the conversation; it runs every `tool_use` block and appends the results |
+| Parallel calls | When the model requests several tools in one turn, all of them run and their results go back together in one user message, each with its `tool_use_id`. They run in order because they share the database connection |
+| Bounded retry | A tool error goes back to the model with `is_error` and the tool's suggestion. After 3 consecutive errors the loop stops. Transient API errors (429, 5xx, 529) are retried with exponential backoff |
+| Stop with a state | The model chooses `respondida`, `requiere_aclaracion` or `abstenida`. The system sets `limite_alcanzado` (12 model calls, 30 tool calls, 200k tokens, 180 s, consecutive errors, or no `responder` after one reminder) or `error` (API) |
+| Structured final answer | [`agente/respuesta.py`](agente/respuesta.py): `RespuestaFinal` (Pydantic, `extra="forbid"`) with state, answer, `resultados` (key, SQL, value), evidence (rows or rule cited), assumptions and a clarification question. It is the JSON Schema of `responder`. `revisar_final` adds checks that depend on the task: one entry per output key, no parameters serialized inside a text field, a question when clarification is required. A failed check goes back to the model as `respuesta_invalida` |
+| JSONL traces per step | One event per model call (tokens, cost, ms, stop reason, tools requested), per tool (arguments, ok or error type, parallel flag, ms, output size), per final answer and per stop (state, reason, totals) |
+
+**Verification** ([`agente/verificar.py`](agente/verificar.py)).
+- **Execution accuracy per key:** the SQL the agent reports for each key goes through the guard and is re-executed in full, then compared with the expected result using the week 7 comparator.
+- **Consistency per key:** the value the agent reports must match what its own SQL returns.
+- **Task success:** the right state and, when an answer is expected, every key exact.
+
+**Tests.** [`tests/test_loop.py`](tests/test_loop.py) has 15 tests with a scripted fake API. They cover:
+- Parallel calls returned together.
+- The request body.
+- A tool error returned and corrected.
+- The bounded retry.
+- Each limit (steps, tools, tokens).
+- The reminder when the model does not call `responder`.
+- Invalid or incomplete final answers sent back.
+- `responder` mixed with other tools.
+- Clarification and abstention.
+- API errors.
+- The `responder` schema.
+
+The week has 77 tests in total.
+
+**Pilot** (Haiku 5.5, effort `low`, one task of each type in ES and EN, 12 runs):
+
+| Run | Success | Key consistency | Model calls (min. steps 32) | Tool calls (in parallel turns) | Tool errors | p50 per task | Cost |
+|---|---|---|---|---|---|---|---|
+| `piloto` | 10/12 | 0.875 | 45 | 66 (42) | 0 | 8.3 s | $0.0361 |
+| `piloto2`, after the two fixes | **12/12** | **1.000** | 43 | 65 (43) | 0 | 6.0 s | $0.0334 |
+
+The first pilot found two real problems:
+- **`c02-es`: an ambiguous rule.** `R-PROPUESTA` said "its reorder point", and the agent used the policy-recalculated point instead of the recorded one. It got 16/3/1 proposals instead of 19/4/1. The rule now names `artmst.art_ptr` explicitly. The expected values do not change; the rules hash in the manifest is updated.
+- **`r02-en`: a malformed final answer.** The 11 SKUs were correct, but Haiku serialized `resultados` inside the `respuesta` text (`</respuesta><parameter name="resultados">…`) and left the list empty. The JSON Schema cannot catch this because it does not know each task's keys. `revisar_final` now rejects it and sends it back to the model.
+
+Files:
+- Detail per task: `resultados/piloto_detalle.jsonl` and `resultados/piloto2_detalle.jsonl`.
+- Traces: `resultados/trazas/piloto.jsonl` (135 events) and `resultados/trazas/piloto2.jsonl` (132 events).
+- Runner: [`agente/correr.py`](agente/correr.py). It prints the worst-case cost and stops at a cost cap.
+
+The full evaluation (all 84 tasks, k = 3) is activity 6.
