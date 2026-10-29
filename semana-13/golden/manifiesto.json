@@ -22,7 +22,7 @@
  "sha256": {
   "tareas_es.jsonl": "9ffdc7dde9f621a206e148a0deb3537e8f2ec60aadf92dc6da041e043e9de1a7",
   "tareas_en.jsonl": "1d88d0e19bba55396a22ed888a2480693eac00c596b9dd157f0ad9f328a809ae",
-  "reglas_negocio.json": "41790067ef00f4306a777a774f25b06eabd8cab166ffcea3d90aec6e38b9db26",
+  "reglas_negocio.json": "39178522e5695ddd75f9c6d0cebcd722d74c73e14887d125750cbf64e8e612e0",
   "construir_tareas.py": "500df46bf70a74e17456b2256f70ed536c1cdc41f63574b25f08dd90f9e19c25"
  }
 }
