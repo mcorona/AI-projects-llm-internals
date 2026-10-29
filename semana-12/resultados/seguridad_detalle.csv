@@ -1,0 +1,865 @@
+sistema,tipo,id,lang,usuario,resultados,no_autorizados,documento_prohibido,ejemplo,lat
+bedrock adm-pred,rol,int-doc-02,es,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",8,0,0,,0.912
+bedrock adm-pred,rol,int-doc-03,es,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",8,0,0,,0.521
+bedrock adm-pred,rol,int-doc-06,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.478
+bedrock adm-pred,rol,int-doc-09,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.511
+bedrock adm-pred,rol,int-doc-12,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.489
+bedrock adm-pred,rol,int-doc-17,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.526
+bedrock adm-pred,rol,int-doc-19,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.6
+bedrock adm-pred,rol,int-doc-20,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.492
+bedrock adm-pred,rol,int-doc-24,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.511
+bedrock adm-pred,rol,int-doc-31,es,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",8,0,0,,0.498
+bedrock adm-pred,rol,int-doc-35,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.535
+bedrock adm-pred,rol,int-doc-39,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.499
+bedrock adm-pred,rol,int-doc-43,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.463
+bedrock adm-pred,rol,int-pdf-01,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.507
+bedrock adm-pred,rol,int-pdf-02,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.507
+bedrock adm-pred,rol,int-pdf-03,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.5
+bedrock adm-pred,rol,int-pdf-04,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.449
+bedrock adm-pred,rol,int-pdf-05,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.467
+bedrock adm-pred,rol,int-ocr-06,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.474
+bedrock adm-pred,rol,int-ocr-07,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.479
+bedrock adm-pred,rol,int-ocr-08,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.475
+bedrock adm-pred,rol,int-ocr-09,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.522
+bedrock adm-pred,rol,int-ocr-10,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.489
+bedrock adm-pred,rol,int-imagen-11,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.527
+bedrock adm-pred,rol,int-imagen-12,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.465
+bedrock adm-pred,rol,int-imagen-13,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.513
+bedrock adm-pred,rol,int-imagen-14,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.426
+bedrock adm-pred,rol,int-imagen-15,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.461
+bedrock adm-pred,tenant,mt-rec-01,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.526
+bedrock adm-pred,tenant,mt-rec-01,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",13,0,0,,0.501
+bedrock adm-pred,tenant,mt-rec-04,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.505
+bedrock adm-pred,tenant,mt-rec-04,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",13,0,0,,0.496
+bedrock adm-pred,tenant,mt-rec-07,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",18,0,0,,0.461
+bedrock adm-pred,tenant,mt-rec-07,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",13,0,0,,0.496
+bedrock adm-pred,tenant,mt-rec-11,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.514
+bedrock adm-pred,tenant,mt-rec-11,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",13,0,0,,0.469
+bedrock adm-pred,tenant,mt-rec-15,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.497
+bedrock adm-pred,tenant,mt-rec-15,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",13,0,0,,0.465
+bedrock adm-pred,tenant,mt-rec-19,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.469
+bedrock adm-pred,tenant,mt-rec-19,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",13,0,0,,0.605
+bedrock adm-pred,tenant,mt-rec-24,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",18,0,0,,0.55
+bedrock adm-pred,tenant,mt-rec-24,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",13,0,0,,0.493
+bedrock adm-pred,tenant,mt-rec-30,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.509
+bedrock adm-pred,tenant,mt-rec-30,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",13,0,0,,0.497
+bedrock adm-pred,tenant,mt-rec-33,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.483
+bedrock adm-pred,tenant,mt-rec-33,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",13,0,0,,0.454
+bedrock adm-pred,tenant,mt-rec-40,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",18,0,0,,0.494
+bedrock adm-pred,tenant,mt-rec-40,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",13,0,0,,0.508
+bedrock adm-pred,rol,int-doc-02,en,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",8,0,0,,0.471
+bedrock adm-pred,rol,int-doc-03,en,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",8,0,0,,0.47
+bedrock adm-pred,rol,int-doc-06,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.465
+bedrock adm-pred,rol,int-doc-09,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.437
+bedrock adm-pred,rol,int-doc-12,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.774
+bedrock adm-pred,rol,int-doc-17,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.469
+bedrock adm-pred,rol,int-doc-19,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.468
+bedrock adm-pred,rol,int-doc-20,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.51
+bedrock adm-pred,rol,int-doc-24,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.552
+bedrock adm-pred,rol,int-doc-31,en,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",8,0,0,,0.471
+bedrock adm-pred,rol,int-doc-35,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.463
+bedrock adm-pred,rol,int-doc-39,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.443
+bedrock adm-pred,rol,int-doc-43,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.465
+bedrock adm-pred,rol,int-pdf-01,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.481
+bedrock adm-pred,rol,int-pdf-02,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.449
+bedrock adm-pred,rol,int-pdf-03,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.528
+bedrock adm-pred,rol,int-pdf-04,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.492
+bedrock adm-pred,rol,int-pdf-05,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.451
+bedrock adm-pred,rol,int-ocr-06,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.506
+bedrock adm-pred,rol,int-ocr-07,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.483
+bedrock adm-pred,rol,int-ocr-08,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.486
+bedrock adm-pred,rol,int-ocr-09,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.539
+bedrock adm-pred,rol,int-ocr-10,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.511
+bedrock adm-pred,rol,int-imagen-11,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.467
+bedrock adm-pred,rol,int-imagen-12,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.513
+bedrock adm-pred,rol,int-imagen-13,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.473
+bedrock adm-pred,rol,int-imagen-14,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.437
+bedrock adm-pred,rol,int-imagen-15,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.464
+bedrock adm-pred,tenant,mt-rec-01,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.451
+bedrock adm-pred,tenant,mt-rec-01,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",13,0,0,,0.446
+bedrock adm-pred,tenant,mt-rec-04,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.524
+bedrock adm-pred,tenant,mt-rec-04,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",13,0,0,,0.518
+bedrock adm-pred,tenant,mt-rec-07,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",18,0,0,,0.516
+bedrock adm-pred,tenant,mt-rec-07,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",13,0,0,,0.495
+bedrock adm-pred,tenant,mt-rec-11,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.488
+bedrock adm-pred,tenant,mt-rec-11,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",13,0,0,,0.556
+bedrock adm-pred,tenant,mt-rec-15,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.467
+bedrock adm-pred,tenant,mt-rec-15,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",13,0,0,,0.477
+bedrock adm-pred,tenant,mt-rec-19,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",19,0,0,,0.497
+bedrock adm-pred,tenant,mt-rec-19,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",13,0,0,,0.432
+bedrock adm-pred,tenant,mt-rec-24,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.471
+bedrock adm-pred,tenant,mt-rec-24,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",13,0,0,,0.473
+bedrock adm-pred,tenant,mt-rec-30,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.477
+bedrock adm-pred,tenant,mt-rec-30,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",13,0,0,,0.485
+bedrock adm-pred,tenant,mt-rec-33,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.526
+bedrock adm-pred,tenant,mt-rec-33,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",13,0,0,,0.431
+bedrock adm-pred,tenant,mt-rec-40,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",18,0,0,,0.49
+bedrock adm-pred,tenant,mt-rec-40,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",13,0,0,,0.469
+bedrock adm-fijo,rol,int-doc-02,es,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",16,0,0,,0.527
+bedrock adm-fijo,rol,int-doc-03,es,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",16,0,0,,0.547
+bedrock adm-fijo,rol,int-doc-06,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.472
+bedrock adm-fijo,rol,int-doc-09,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.457
+bedrock adm-fijo,rol,int-doc-12,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.608
+bedrock adm-fijo,rol,int-doc-17,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.482
+bedrock adm-fijo,rol,int-doc-19,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.473
+bedrock adm-fijo,rol,int-doc-20,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.488
+bedrock adm-fijo,rol,int-doc-24,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.545
+bedrock adm-fijo,rol,int-doc-31,es,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",16,0,0,,0.492
+bedrock adm-fijo,rol,int-doc-35,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.568
+bedrock adm-fijo,rol,int-doc-39,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.457
+bedrock adm-fijo,rol,int-doc-43,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.468
+bedrock adm-fijo,rol,int-pdf-01,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.449
+bedrock adm-fijo,rol,int-pdf-02,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.495
+bedrock adm-fijo,rol,int-pdf-03,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.478
+bedrock adm-fijo,rol,int-pdf-04,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.508
+bedrock adm-fijo,rol,int-pdf-05,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.49
+bedrock adm-fijo,rol,int-ocr-06,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.457
+bedrock adm-fijo,rol,int-ocr-07,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.444
+bedrock adm-fijo,rol,int-ocr-08,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.644
+bedrock adm-fijo,rol,int-ocr-09,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.488
+bedrock adm-fijo,rol,int-ocr-10,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.429
+bedrock adm-fijo,rol,int-imagen-11,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.463
+bedrock adm-fijo,rol,int-imagen-12,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.488
+bedrock adm-fijo,rol,int-imagen-13,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.44
+bedrock adm-fijo,rol,int-imagen-14,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.464
+bedrock adm-fijo,rol,int-imagen-15,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.443
+bedrock adm-fijo,tenant,mt-rec-01,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.584
+bedrock adm-fijo,tenant,mt-rec-01,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.464
+bedrock adm-fijo,tenant,mt-rec-04,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.51
+bedrock adm-fijo,tenant,mt-rec-04,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.464
+bedrock adm-fijo,tenant,mt-rec-07,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",16,0,0,,0.515
+bedrock adm-fijo,tenant,mt-rec-07,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",16,0,0,,0.452
+bedrock adm-fijo,tenant,mt-rec-11,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",19,0,0,,0.44
+bedrock adm-fijo,tenant,mt-rec-11,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",19,0,0,,0.433
+bedrock adm-fijo,tenant,mt-rec-15,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.464
+bedrock adm-fijo,tenant,mt-rec-15,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",19,0,0,,0.456
+bedrock adm-fijo,tenant,mt-rec-19,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.476
+bedrock adm-fijo,tenant,mt-rec-19,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.462
+bedrock adm-fijo,tenant,mt-rec-24,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",19,0,0,,0.443
+bedrock adm-fijo,tenant,mt-rec-24,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",17,0,0,,0.425
+bedrock adm-fijo,tenant,mt-rec-30,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.475
+bedrock adm-fijo,tenant,mt-rec-30,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.463
+bedrock adm-fijo,tenant,mt-rec-33,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.464
+bedrock adm-fijo,tenant,mt-rec-33,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.473
+bedrock adm-fijo,tenant,mt-rec-40,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",18,0,0,,0.473
+bedrock adm-fijo,tenant,mt-rec-40,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",17,0,0,,0.484
+bedrock adm-fijo,rol,int-doc-02,en,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",16,0,0,,0.577
+bedrock adm-fijo,rol,int-doc-03,en,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",16,0,0,,0.51
+bedrock adm-fijo,rol,int-doc-06,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.497
+bedrock adm-fijo,rol,int-doc-09,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.56
+bedrock adm-fijo,rol,int-doc-12,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.455
+bedrock adm-fijo,rol,int-doc-17,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.449
+bedrock adm-fijo,rol,int-doc-19,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.443
+bedrock adm-fijo,rol,int-doc-20,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.418
+bedrock adm-fijo,rol,int-doc-24,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.557
+bedrock adm-fijo,rol,int-doc-31,en,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",16,0,0,,0.467
+bedrock adm-fijo,rol,int-doc-35,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.494
+bedrock adm-fijo,rol,int-doc-39,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.465
+bedrock adm-fijo,rol,int-doc-43,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.509
+bedrock adm-fijo,rol,int-pdf-01,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.464
+bedrock adm-fijo,rol,int-pdf-02,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.485
+bedrock adm-fijo,rol,int-pdf-03,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.465
+bedrock adm-fijo,rol,int-pdf-04,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.446
+bedrock adm-fijo,rol,int-pdf-05,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.491
+bedrock adm-fijo,rol,int-ocr-06,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.503
+bedrock adm-fijo,rol,int-ocr-07,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.505
+bedrock adm-fijo,rol,int-ocr-08,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.469
+bedrock adm-fijo,rol,int-ocr-09,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.511
+bedrock adm-fijo,rol,int-ocr-10,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.431
+bedrock adm-fijo,rol,int-imagen-11,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.463
+bedrock adm-fijo,rol,int-imagen-12,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.463
+bedrock adm-fijo,rol,int-imagen-13,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.495
+bedrock adm-fijo,rol,int-imagen-14,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.459
+bedrock adm-fijo,rol,int-imagen-15,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.433
+bedrock adm-fijo,tenant,mt-rec-01,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.451
+bedrock adm-fijo,tenant,mt-rec-01,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.455
+bedrock adm-fijo,tenant,mt-rec-04,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.43
+bedrock adm-fijo,tenant,mt-rec-04,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.499
+bedrock adm-fijo,tenant,mt-rec-07,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",16,0,0,,0.456
+bedrock adm-fijo,tenant,mt-rec-07,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",16,0,0,,0.45
+bedrock adm-fijo,tenant,mt-rec-11,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",19,0,0,,0.462
+bedrock adm-fijo,tenant,mt-rec-11,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",19,0,0,,0.438
+bedrock adm-fijo,tenant,mt-rec-15,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.481
+bedrock adm-fijo,tenant,mt-rec-15,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",19,0,0,,0.601
+bedrock adm-fijo,tenant,mt-rec-19,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.489
+bedrock adm-fijo,tenant,mt-rec-19,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",18,0,0,,0.419
+bedrock adm-fijo,tenant,mt-rec-24,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.428
+bedrock adm-fijo,tenant,mt-rec-24,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.473
+bedrock adm-fijo,tenant,mt-rec-30,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.469
+bedrock adm-fijo,tenant,mt-rec-30,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.45
+bedrock adm-fijo,tenant,mt-rec-33,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.478
+bedrock adm-fijo,tenant,mt-rec-33,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.402
+bedrock adm-fijo,tenant,mt-rec-40,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",18,0,0,,0.462
+bedrock adm-fijo,tenant,mt-rec-40,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",17,0,0,,0.497
+bedrock adm-fijo-bda,rol,int-doc-02,es,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",15,0,0,,0.792
+bedrock adm-fijo-bda,rol,int-doc-03,es,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",15,0,0,,0.527
+bedrock adm-fijo-bda,rol,int-doc-06,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.453
+bedrock adm-fijo-bda,rol,int-doc-09,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.542
+bedrock adm-fijo-bda,rol,int-doc-12,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.41
+bedrock adm-fijo-bda,rol,int-doc-17,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.456
+bedrock adm-fijo-bda,rol,int-doc-19,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.437
+bedrock adm-fijo-bda,rol,int-doc-20,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.486
+bedrock adm-fijo-bda,rol,int-doc-24,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.444
+bedrock adm-fijo-bda,rol,int-doc-31,es,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",15,0,0,,0.548
+bedrock adm-fijo-bda,rol,int-doc-35,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.435
+bedrock adm-fijo-bda,rol,int-doc-39,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.445
+bedrock adm-fijo-bda,rol,int-doc-43,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.488
+bedrock adm-fijo-bda,rol,int-pdf-01,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.448
+bedrock adm-fijo-bda,rol,int-pdf-02,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.468
+bedrock adm-fijo-bda,rol,int-pdf-03,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.435
+bedrock adm-fijo-bda,rol,int-pdf-04,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.542
+bedrock adm-fijo-bda,rol,int-pdf-05,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.432
+bedrock adm-fijo-bda,rol,int-ocr-06,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.52
+bedrock adm-fijo-bda,rol,int-ocr-07,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.465
+bedrock adm-fijo-bda,rol,int-ocr-08,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.493
+bedrock adm-fijo-bda,rol,int-ocr-09,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.494
+bedrock adm-fijo-bda,rol,int-ocr-10,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.464
+bedrock adm-fijo-bda,rol,int-imagen-11,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.461
+bedrock adm-fijo-bda,rol,int-imagen-12,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.52
+bedrock adm-fijo-bda,rol,int-imagen-13,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.501
+bedrock adm-fijo-bda,rol,int-imagen-14,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.483
+bedrock adm-fijo-bda,rol,int-imagen-15,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.609
+bedrock adm-fijo-bda,tenant,mt-rec-01,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.432
+bedrock adm-fijo-bda,tenant,mt-rec-01,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.493
+bedrock adm-fijo-bda,tenant,mt-rec-04,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,1.187
+bedrock adm-fijo-bda,tenant,mt-rec-04,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.453
+bedrock adm-fijo-bda,tenant,mt-rec-07,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",16,0,0,,0.661
+bedrock adm-fijo-bda,tenant,mt-rec-07,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",16,0,0,,0.627
+bedrock adm-fijo-bda,tenant,mt-rec-11,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",19,0,0,,0.599
+bedrock adm-fijo-bda,tenant,mt-rec-11,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",19,0,0,,0.485
+bedrock adm-fijo-bda,tenant,mt-rec-15,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",19,0,0,,1.045
+bedrock adm-fijo-bda,tenant,mt-rec-15,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",19,0,0,,0.614
+bedrock adm-fijo-bda,tenant,mt-rec-19,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.466
+bedrock adm-fijo-bda,tenant,mt-rec-19,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.431
+bedrock adm-fijo-bda,tenant,mt-rec-24,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",19,0,0,,0.887
+bedrock adm-fijo-bda,tenant,mt-rec-24,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",17,0,0,,0.534
+bedrock adm-fijo-bda,tenant,mt-rec-30,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.722
+bedrock adm-fijo-bda,tenant,mt-rec-30,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.463
+bedrock adm-fijo-bda,tenant,mt-rec-33,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.795
+bedrock adm-fijo-bda,tenant,mt-rec-33,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.441
+bedrock adm-fijo-bda,tenant,mt-rec-40,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",16,0,0,,0.96
+bedrock adm-fijo-bda,tenant,mt-rec-40,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",17,0,0,,0.419
+bedrock adm-fijo-bda,rol,int-doc-02,en,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",15,0,0,,0.533
+bedrock adm-fijo-bda,rol,int-doc-03,en,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",15,0,0,,0.629
+bedrock adm-fijo-bda,rol,int-doc-06,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.841
+bedrock adm-fijo-bda,rol,int-doc-09,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,1.497
+bedrock adm-fijo-bda,rol,int-doc-12,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.633
+bedrock adm-fijo-bda,rol,int-doc-17,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.579
+bedrock adm-fijo-bda,rol,int-doc-19,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.575
+bedrock adm-fijo-bda,rol,int-doc-20,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.516
+bedrock adm-fijo-bda,rol,int-doc-24,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.524
+bedrock adm-fijo-bda,rol,int-doc-31,en,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",15,0,0,,1.24
+bedrock adm-fijo-bda,rol,int-doc-35,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.522
+bedrock adm-fijo-bda,rol,int-doc-39,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.512
+bedrock adm-fijo-bda,rol,int-doc-43,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.529
+bedrock adm-fijo-bda,rol,int-pdf-01,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.551
+bedrock adm-fijo-bda,rol,int-pdf-02,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.57
+bedrock adm-fijo-bda,rol,int-pdf-03,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.478
+bedrock adm-fijo-bda,rol,int-pdf-04,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.576
+bedrock adm-fijo-bda,rol,int-pdf-05,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.527
+bedrock adm-fijo-bda,rol,int-ocr-06,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.573
+bedrock adm-fijo-bda,rol,int-ocr-07,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.593
+bedrock adm-fijo-bda,rol,int-ocr-08,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.517
+bedrock adm-fijo-bda,rol,int-ocr-09,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.621
+bedrock adm-fijo-bda,rol,int-ocr-10,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.54
+bedrock adm-fijo-bda,rol,int-imagen-11,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.524
+bedrock adm-fijo-bda,rol,int-imagen-12,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.526
+bedrock adm-fijo-bda,rol,int-imagen-13,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.529
+bedrock adm-fijo-bda,rol,int-imagen-14,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.545
+bedrock adm-fijo-bda,rol,int-imagen-15,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.566
+bedrock adm-fijo-bda,tenant,mt-rec-01,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.587
+bedrock adm-fijo-bda,tenant,mt-rec-01,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.59
+bedrock adm-fijo-bda,tenant,mt-rec-04,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,15.558
+bedrock adm-fijo-bda,tenant,mt-rec-04,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.579
+bedrock adm-fijo-bda,tenant,mt-rec-07,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",16,0,0,,9.962
+bedrock adm-fijo-bda,tenant,mt-rec-07,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",16,0,0,,0.645
+bedrock adm-fijo-bda,tenant,mt-rec-11,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",19,0,0,,4.683
+bedrock adm-fijo-bda,tenant,mt-rec-11,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",19,0,0,,0.468
+bedrock adm-fijo-bda,tenant,mt-rec-15,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",18,0,0,,4.118
+bedrock adm-fijo-bda,tenant,mt-rec-15,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",19,0,0,,0.485
+bedrock adm-fijo-bda,tenant,mt-rec-19,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.518
+bedrock adm-fijo-bda,tenant,mt-rec-19,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",18,0,0,,0.586
+bedrock adm-fijo-bda,tenant,mt-rec-24,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,3.103
+bedrock adm-fijo-bda,tenant,mt-rec-24,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.564
+bedrock adm-fijo-bda,tenant,mt-rec-30,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,3.239
+bedrock adm-fijo-bda,tenant,mt-rec-30,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.487
+bedrock adm-fijo-bda,tenant,mt-rec-33,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,3.078
+bedrock adm-fijo-bda,tenant,mt-rec-33,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.597
+bedrock adm-fijo-bda,tenant,mt-rec-40,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",16,0,0,,3.246
+bedrock adm-fijo-bda,tenant,mt-rec-40,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",17,0,0,,0.475
+bedrock ctl-chunks,rol,int-doc-02,es,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",14,0,0,,0.492
+bedrock ctl-chunks,rol,int-doc-03,es,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",14,0,0,,0.515
+bedrock ctl-chunks,rol,int-doc-06,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.482
+bedrock ctl-chunks,rol,int-doc-09,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.48
+bedrock ctl-chunks,rol,int-doc-12,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.611
+bedrock ctl-chunks,rol,int-doc-17,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.508
+bedrock ctl-chunks,rol,int-doc-19,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.48
+bedrock ctl-chunks,rol,int-doc-20,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.47
+bedrock ctl-chunks,rol,int-doc-24,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.461
+bedrock ctl-chunks,rol,int-doc-31,es,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",14,0,0,,0.509
+bedrock ctl-chunks,rol,int-doc-35,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.481
+bedrock ctl-chunks,rol,int-doc-39,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.471
+bedrock ctl-chunks,rol,int-doc-43,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.489
+bedrock ctl-chunks,rol,int-pdf-01,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.465
+bedrock ctl-chunks,rol,int-pdf-02,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.485
+bedrock ctl-chunks,rol,int-pdf-03,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.522
+bedrock ctl-chunks,rol,int-pdf-04,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.453
+bedrock ctl-chunks,rol,int-pdf-05,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.499
+bedrock ctl-chunks,rol,int-ocr-06,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.469
+bedrock ctl-chunks,rol,int-ocr-07,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.489
+bedrock ctl-chunks,rol,int-ocr-08,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.503
+bedrock ctl-chunks,rol,int-ocr-09,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.457
+bedrock ctl-chunks,rol,int-ocr-10,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.474
+bedrock ctl-chunks,rol,int-imagen-11,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.482
+bedrock ctl-chunks,rol,int-imagen-12,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.454
+bedrock ctl-chunks,rol,int-imagen-13,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.482
+bedrock ctl-chunks,rol,int-imagen-14,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.593
+bedrock ctl-chunks,rol,int-imagen-15,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.51
+bedrock ctl-chunks,tenant,mt-rec-01,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.558
+bedrock ctl-chunks,tenant,mt-rec-01,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.5
+bedrock ctl-chunks,tenant,mt-rec-04,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.512
+bedrock ctl-chunks,tenant,mt-rec-04,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.457
+bedrock ctl-chunks,tenant,mt-rec-07,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.488
+bedrock ctl-chunks,tenant,mt-rec-07,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.57
+bedrock ctl-chunks,tenant,mt-rec-11,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.492
+bedrock ctl-chunks,tenant,mt-rec-11,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.615
+bedrock ctl-chunks,tenant,mt-rec-15,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.45
+bedrock ctl-chunks,tenant,mt-rec-15,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.523
+bedrock ctl-chunks,tenant,mt-rec-19,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.458
+bedrock ctl-chunks,tenant,mt-rec-19,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.432
+bedrock ctl-chunks,tenant,mt-rec-24,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.545
+bedrock ctl-chunks,tenant,mt-rec-24,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.471
+bedrock ctl-chunks,tenant,mt-rec-30,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.494
+bedrock ctl-chunks,tenant,mt-rec-30,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.515
+bedrock ctl-chunks,tenant,mt-rec-33,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.464
+bedrock ctl-chunks,tenant,mt-rec-33,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.48
+bedrock ctl-chunks,tenant,mt-rec-40,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.515
+bedrock ctl-chunks,tenant,mt-rec-40,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.476
+bedrock ctl-chunks,rol,int-doc-02,en,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",14,0,0,,0.465
+bedrock ctl-chunks,rol,int-doc-03,en,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",14,0,0,,0.477
+bedrock ctl-chunks,rol,int-doc-06,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.448
+bedrock ctl-chunks,rol,int-doc-09,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.516
+bedrock ctl-chunks,rol,int-doc-12,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.502
+bedrock ctl-chunks,rol,int-doc-17,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.426
+bedrock ctl-chunks,rol,int-doc-19,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.535
+bedrock ctl-chunks,rol,int-doc-20,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.489
+bedrock ctl-chunks,rol,int-doc-24,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.444
+bedrock ctl-chunks,rol,int-doc-31,en,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",14,0,0,,0.499
+bedrock ctl-chunks,rol,int-doc-35,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.554
+bedrock ctl-chunks,rol,int-doc-39,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.419
+bedrock ctl-chunks,rol,int-doc-43,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.459
+bedrock ctl-chunks,rol,int-pdf-01,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.464
+bedrock ctl-chunks,rol,int-pdf-02,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.477
+bedrock ctl-chunks,rol,int-pdf-03,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.461
+bedrock ctl-chunks,rol,int-pdf-04,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.472
+bedrock ctl-chunks,rol,int-pdf-05,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.509
+bedrock ctl-chunks,rol,int-ocr-06,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.464
+bedrock ctl-chunks,rol,int-ocr-07,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.424
+bedrock ctl-chunks,rol,int-ocr-08,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.462
+bedrock ctl-chunks,rol,int-ocr-09,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.472
+bedrock ctl-chunks,rol,int-ocr-10,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.436
+bedrock ctl-chunks,rol,int-imagen-11,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.453
+bedrock ctl-chunks,rol,int-imagen-12,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.482
+bedrock ctl-chunks,rol,int-imagen-13,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.528
+bedrock ctl-chunks,rol,int-imagen-14,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.456
+bedrock ctl-chunks,rol,int-imagen-15,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.501
+bedrock ctl-chunks,tenant,mt-rec-01,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.5
+bedrock ctl-chunks,tenant,mt-rec-01,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.604
+bedrock ctl-chunks,tenant,mt-rec-04,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.493
+bedrock ctl-chunks,tenant,mt-rec-04,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.427
+bedrock ctl-chunks,tenant,mt-rec-07,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.492
+bedrock ctl-chunks,tenant,mt-rec-07,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.523
+bedrock ctl-chunks,tenant,mt-rec-11,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.482
+bedrock ctl-chunks,tenant,mt-rec-11,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.52
+bedrock ctl-chunks,tenant,mt-rec-15,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.467
+bedrock ctl-chunks,tenant,mt-rec-15,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.568
+bedrock ctl-chunks,tenant,mt-rec-19,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.498
+bedrock ctl-chunks,tenant,mt-rec-19,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.521
+bedrock ctl-chunks,tenant,mt-rec-24,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.501
+bedrock ctl-chunks,tenant,mt-rec-24,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.504
+bedrock ctl-chunks,tenant,mt-rec-30,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.489
+bedrock ctl-chunks,tenant,mt-rec-30,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.535
+bedrock ctl-chunks,tenant,mt-rec-33,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.471
+bedrock ctl-chunks,tenant,mt-rec-33,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.479
+bedrock ctl-chunks,tenant,mt-rec-40,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.496
+bedrock ctl-chunks,tenant,mt-rec-40,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.525
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-doc-02,es,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",0,0,0,,2.238
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-doc-03,es,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",0,0,0,,1.829
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-doc-06,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.843
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-doc-09,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,2.046
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-doc-12,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.796
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-doc-17,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.805
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-doc-19,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.511
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-doc-20,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",1,0,0,,1.606
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-doc-24,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.592
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-doc-31,es,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",0,0,0,,1.624
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-doc-35,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.724
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-doc-39,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.614
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-doc-43,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.795
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-pdf-01,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.622
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-pdf-02,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.742
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-pdf-03,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.545
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-pdf-04,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.504
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-pdf-05,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.629
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-ocr-06,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,2.087
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-ocr-07,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.411
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-ocr-08,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.789
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-ocr-09,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.68
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-ocr-10,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.572
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-imagen-11,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.742
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-imagen-12,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.526
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-imagen-13,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.614
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-imagen-14,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.555
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-imagen-15,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.801
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-01,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,1.251
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-01,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,1.362
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-04,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,1.311
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-04,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,1.474
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-07,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",2,0,0,,2.009
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-07,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,1.421
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-11,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,1.284
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-11,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,1.196
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-15,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,1.189
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-15,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,1.276
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-19,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,1.309
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-19,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,1.211
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-24,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,1.432
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-24,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,1.488
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-30,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,1.168
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-30,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,1.171
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-33,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,1.19
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-33,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,1.141
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-40,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,1.658
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-40,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,1.188
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-doc-02,en,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",0,0,0,,1.838
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-doc-03,en,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",0,0,0,,1.643
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-doc-06,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.546
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-doc-09,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.508
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-doc-12,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.234
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-doc-17,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.36
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-doc-19,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.37
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-doc-20,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.467
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-doc-24,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.348
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-doc-31,en,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",0,0,0,,1.264
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-doc-35,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.483
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-doc-39,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.387
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-doc-43,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.323
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-pdf-01,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.54
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-pdf-02,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.303
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-pdf-03,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.501
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-pdf-04,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.565
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-pdf-05,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.487
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-ocr-06,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.471
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-ocr-07,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.506
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-ocr-08,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.631
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-ocr-09,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.601
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-ocr-10,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.452
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-imagen-11,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,2.125
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-imagen-12,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,4.604
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-imagen-13,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,22.586
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-imagen-14,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,1.991
+bedrock adm-fijo-bda RetrieveAndGenerate,rol,int-imagen-15,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",0,0,0,,2.049
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-01,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,9.457
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-01,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,2.585
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-04,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,4.226
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-04,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,1.373
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-07,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,2.549
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-07,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,1.699
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-11,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,2.897
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-11,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,6.197
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-15,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,9.279
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-15,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,1.138
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-19,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,1.161
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-19,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,2.458
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-24,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,2.177
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-24,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,2.341
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-30,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,4.59
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-30,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,4.797
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-33,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,6.564
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-33,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,5.751
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-40,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,7.336
+bedrock adm-fijo-bda RetrieveAndGenerate,tenant,mt-rec-40,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",1,0,0,,1.088
+vertex vx-adm,rol,int-doc-02,es,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",7,0,0,,2.01
+vertex vx-adm,rol,int-doc-03,es,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",7,0,0,,0.35
+vertex vx-adm,rol,int-doc-06,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.332
+vertex vx-adm,rol,int-doc-09,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.341
+vertex vx-adm,rol,int-doc-12,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.405
+vertex vx-adm,rol,int-doc-17,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.387
+vertex vx-adm,rol,int-doc-19,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.418
+vertex vx-adm,rol,int-doc-20,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.911
+vertex vx-adm,rol,int-doc-24,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.359
+vertex vx-adm,rol,int-doc-31,es,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",7,0,0,,0.306
+vertex vx-adm,rol,int-doc-35,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.623
+vertex vx-adm,rol,int-doc-39,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.362
+vertex vx-adm,rol,int-doc-43,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.38
+vertex vx-adm,rol,int-pdf-01,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.354
+vertex vx-adm,rol,int-pdf-02,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.358
+vertex vx-adm,rol,int-pdf-03,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.407
+vertex vx-adm,rol,int-pdf-04,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.31
+vertex vx-adm,rol,int-pdf-05,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.338
+vertex vx-adm,rol,int-ocr-06,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.337
+vertex vx-adm,rol,int-ocr-07,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.315
+vertex vx-adm,rol,int-ocr-08,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.307
+vertex vx-adm,rol,int-ocr-09,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.337
+vertex vx-adm,rol,int-ocr-10,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.503
+vertex vx-adm,rol,int-imagen-11,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.316
+vertex vx-adm,rol,int-imagen-12,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.303
+vertex vx-adm,rol,int-imagen-13,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.391
+vertex vx-adm,rol,int-imagen-14,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.394
+vertex vx-adm,rol,int-imagen-15,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.939
+vertex vx-adm,tenant,mt-rec-01,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.428
+vertex vx-adm,tenant,mt-rec-01,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",10,0,0,,0.353
+vertex vx-adm,tenant,mt-rec-04,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.474
+vertex vx-adm,tenant,mt-rec-04,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",10,0,0,,0.416
+vertex vx-adm,tenant,mt-rec-07,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.402
+vertex vx-adm,tenant,mt-rec-07,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",10,0,0,,0.352
+vertex vx-adm,tenant,mt-rec-11,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.383
+vertex vx-adm,tenant,mt-rec-11,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",10,0,0,,0.369
+vertex vx-adm,tenant,mt-rec-15,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.99
+vertex vx-adm,tenant,mt-rec-15,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",10,0,0,,1.054
+vertex vx-adm,tenant,mt-rec-19,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.398
+vertex vx-adm,tenant,mt-rec-19,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",10,0,0,,0.49
+vertex vx-adm,tenant,mt-rec-24,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.435
+vertex vx-adm,tenant,mt-rec-24,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",10,0,0,,0.353
+vertex vx-adm,tenant,mt-rec-30,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,1.084
+vertex vx-adm,tenant,mt-rec-30,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",10,0,0,,0.468
+vertex vx-adm,tenant,mt-rec-33,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.416
+vertex vx-adm,tenant,mt-rec-33,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",10,0,0,,0.356
+vertex vx-adm,tenant,mt-rec-40,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.408
+vertex vx-adm,tenant,mt-rec-40,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",10,0,0,,0.379
+vertex vx-adm,rol,int-doc-02,en,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",7,0,0,,0.427
+vertex vx-adm,rol,int-doc-03,en,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",7,0,0,,0.315
+vertex vx-adm,rol,int-doc-06,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.903
+vertex vx-adm,rol,int-doc-09,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.313
+vertex vx-adm,rol,int-doc-12,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.375
+vertex vx-adm,rol,int-doc-17,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.344
+vertex vx-adm,rol,int-doc-19,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.303
+vertex vx-adm,rol,int-doc-20,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.888
+vertex vx-adm,rol,int-doc-24,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.346
+vertex vx-adm,rol,int-doc-31,en,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",7,0,0,,1.033
+vertex vx-adm,rol,int-doc-35,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.294
+vertex vx-adm,rol,int-doc-39,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.296
+vertex vx-adm,rol,int-doc-43,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.869
+vertex vx-adm,rol,int-pdf-01,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.302
+vertex vx-adm,rol,int-pdf-02,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.401
+vertex vx-adm,rol,int-pdf-03,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.889
+vertex vx-adm,rol,int-pdf-04,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.355
+vertex vx-adm,rol,int-pdf-05,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.383
+vertex vx-adm,rol,int-ocr-06,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,1.012
+vertex vx-adm,rol,int-ocr-07,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.426
+vertex vx-adm,rol,int-ocr-08,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.309
+vertex vx-adm,rol,int-ocr-09,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.349
+vertex vx-adm,rol,int-ocr-10,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.331
+vertex vx-adm,rol,int-imagen-11,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.319
+vertex vx-adm,rol,int-imagen-12,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.304
+vertex vx-adm,rol,int-imagen-13,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.313
+vertex vx-adm,rol,int-imagen-14,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.32
+vertex vx-adm,rol,int-imagen-15,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",5,0,0,,0.883
+vertex vx-adm,tenant,mt-rec-01,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.456
+vertex vx-adm,tenant,mt-rec-01,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",10,0,0,,0.357
+vertex vx-adm,tenant,mt-rec-04,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.394
+vertex vx-adm,tenant,mt-rec-04,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",10,0,0,,0.409
+vertex vx-adm,tenant,mt-rec-07,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.49
+vertex vx-adm,tenant,mt-rec-07,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",10,0,0,,0.353
+vertex vx-adm,tenant,mt-rec-11,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.412
+vertex vx-adm,tenant,mt-rec-11,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",10,0,0,,0.366
+vertex vx-adm,tenant,mt-rec-15,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.379
+vertex vx-adm,tenant,mt-rec-15,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",10,0,0,,0.346
+vertex vx-adm,tenant,mt-rec-19,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.412
+vertex vx-adm,tenant,mt-rec-19,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",10,0,0,,0.382
+vertex vx-adm,tenant,mt-rec-24,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,1.102
+vertex vx-adm,tenant,mt-rec-24,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",10,0,0,,0.373
+vertex vx-adm,tenant,mt-rec-30,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.394
+vertex vx-adm,tenant,mt-rec-30,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",10,0,0,,0.354
+vertex vx-adm,tenant,mt-rec-33,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.428
+vertex vx-adm,tenant,mt-rec-33,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",10,0,0,,1.001
+vertex vx-adm,tenant,mt-rec-40,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.435
+vertex vx-adm,tenant,mt-rec-40,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",10,0,0,,0.352
+vertex vx-ctl,rol,int-doc-02,es,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",14,0,0,,0.471
+vertex vx-ctl,rol,int-doc-03,es,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",14,0,0,,0.333
+vertex vx-ctl,rol,int-doc-06,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.342
+vertex vx-ctl,rol,int-doc-09,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.338
+vertex vx-ctl,rol,int-doc-12,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.416
+vertex vx-ctl,rol,int-doc-17,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.289
+vertex vx-ctl,rol,int-doc-19,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.287
+vertex vx-ctl,rol,int-doc-20,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.384
+vertex vx-ctl,rol,int-doc-24,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.282
+vertex vx-ctl,rol,int-doc-31,es,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",14,0,0,,0.387
+vertex vx-ctl,rol,int-doc-35,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.395
+vertex vx-ctl,rol,int-doc-39,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.323
+vertex vx-ctl,rol,int-doc-43,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.288
+vertex vx-ctl,rol,int-pdf-01,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.292
+vertex vx-ctl,rol,int-pdf-02,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.318
+vertex vx-ctl,rol,int-pdf-03,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.32
+vertex vx-ctl,rol,int-pdf-04,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.293
+vertex vx-ctl,rol,int-pdf-05,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.297
+vertex vx-ctl,rol,int-ocr-06,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.312
+vertex vx-ctl,rol,int-ocr-07,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.291
+vertex vx-ctl,rol,int-ocr-08,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.455
+vertex vx-ctl,rol,int-ocr-09,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.283
+vertex vx-ctl,rol,int-ocr-10,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.307
+vertex vx-ctl,rol,int-imagen-11,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.301
+vertex vx-ctl,rol,int-imagen-12,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.285
+vertex vx-ctl,rol,int-imagen-13,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.318
+vertex vx-ctl,rol,int-imagen-14,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.316
+vertex vx-ctl,rol,int-imagen-15,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.286
+vertex vx-ctl,tenant,mt-rec-01,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.473
+vertex vx-ctl,tenant,mt-rec-01,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.336
+vertex vx-ctl,tenant,mt-rec-04,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.393
+vertex vx-ctl,tenant,mt-rec-04,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.536
+vertex vx-ctl,tenant,mt-rec-07,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.434
+vertex vx-ctl,tenant,mt-rec-07,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.418
+vertex vx-ctl,tenant,mt-rec-11,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.335
+vertex vx-ctl,tenant,mt-rec-11,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.337
+vertex vx-ctl,tenant,mt-rec-15,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.364
+vertex vx-ctl,tenant,mt-rec-15,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.445
+vertex vx-ctl,tenant,mt-rec-19,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.37
+vertex vx-ctl,tenant,mt-rec-19,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.359
+vertex vx-ctl,tenant,mt-rec-24,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.34
+vertex vx-ctl,tenant,mt-rec-24,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.439
+vertex vx-ctl,tenant,mt-rec-30,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.34
+vertex vx-ctl,tenant,mt-rec-30,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.459
+vertex vx-ctl,tenant,mt-rec-33,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.347
+vertex vx-ctl,tenant,mt-rec-33,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.432
+vertex vx-ctl,tenant,mt-rec-40,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.34
+vertex vx-ctl,tenant,mt-rec-40,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.339
+vertex vx-ctl,rol,int-doc-02,en,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",14,0,0,,0.415
+vertex vx-ctl,rol,int-doc-03,en,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",14,0,0,,0.405
+vertex vx-ctl,rol,int-doc-06,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.28
+vertex vx-ctl,rol,int-doc-09,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.332
+vertex vx-ctl,rol,int-doc-12,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.316
+vertex vx-ctl,rol,int-doc-17,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.31
+vertex vx-ctl,rol,int-doc-19,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.294
+vertex vx-ctl,rol,int-doc-20,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.283
+vertex vx-ctl,rol,int-doc-24,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.287
+vertex vx-ctl,rol,int-doc-31,en,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",14,0,0,,0.339
+vertex vx-ctl,rol,int-doc-35,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.281
+vertex vx-ctl,rol,int-doc-39,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.3
+vertex vx-ctl,rol,int-doc-43,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.294
+vertex vx-ctl,rol,int-pdf-01,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.346
+vertex vx-ctl,rol,int-pdf-02,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.282
+vertex vx-ctl,rol,int-pdf-03,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.349
+vertex vx-ctl,rol,int-pdf-04,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.312
+vertex vx-ctl,rol,int-pdf-05,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.409
+vertex vx-ctl,rol,int-ocr-06,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.294
+vertex vx-ctl,rol,int-ocr-07,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.403
+vertex vx-ctl,rol,int-ocr-08,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.374
+vertex vx-ctl,rol,int-ocr-09,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.28
+vertex vx-ctl,rol,int-ocr-10,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.281
+vertex vx-ctl,rol,int-imagen-11,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.293
+vertex vx-ctl,rol,int-imagen-12,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.504
+vertex vx-ctl,rol,int-imagen-13,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.308
+vertex vx-ctl,rol,int-imagen-14,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.302
+vertex vx-ctl,rol,int-imagen-15,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",11,0,0,,0.349
+vertex vx-ctl,tenant,mt-rec-01,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.578
+vertex vx-ctl,tenant,mt-rec-01,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.408
+vertex vx-ctl,tenant,mt-rec-04,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.336
+vertex vx-ctl,tenant,mt-rec-04,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.332
+vertex vx-ctl,tenant,mt-rec-07,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.352
+vertex vx-ctl,tenant,mt-rec-07,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.338
+vertex vx-ctl,tenant,mt-rec-11,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.339
+vertex vx-ctl,tenant,mt-rec-11,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.441
+vertex vx-ctl,tenant,mt-rec-15,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.34
+vertex vx-ctl,tenant,mt-rec-15,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.422
+vertex vx-ctl,tenant,mt-rec-19,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.469
+vertex vx-ctl,tenant,mt-rec-19,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.33
+vertex vx-ctl,tenant,mt-rec-24,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.423
+vertex vx-ctl,tenant,mt-rec-24,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.381
+vertex vx-ctl,tenant,mt-rec-30,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.426
+vertex vx-ctl,tenant,mt-rec-30,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.346
+vertex vx-ctl,tenant,mt-rec-33,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.368
+vertex vx-ctl,tenant,mt-rec-33,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.331
+vertex vx-ctl,tenant,mt-rec-40,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.418
+vertex vx-ctl,tenant,mt-rec-40,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,0,0,,0.379
+CONTROL bedrock ctl-chunks sin filtro,rol,int-doc-02,es,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",20,18,1,alfa/devoluciones; beta/devoluciones; alfa/devoluciones,0.892
+CONTROL bedrock ctl-chunks sin filtro,rol,int-doc-03,es,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",20,15,1,beta/devoluciones; alfa/devoluciones; alfa/devoluciones,0.509
+CONTROL bedrock ctl-chunks sin filtro,rol,int-doc-06,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,alfa/politica_reorden; beta/politica_reorden; beta/inventario_ciclico,0.723
+CONTROL bedrock ctl-chunks sin filtro,rol,int-doc-09,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,19,1,beta/ordenes_de_compra; alfa/contratos_marco_proveedores; alfa/ordenes_de_compra,0.478
+CONTROL bedrock ctl-chunks sin filtro,rol,int-doc-12,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,18,1,alfa/politica_reorden; beta/politica_reorden; beta/politica_reorden,0.504
+CONTROL bedrock ctl-chunks sin filtro,rol,int-doc-17,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,17,1,beta/proveedores; alfa/proveedores; alfa/contratos_marco_proveedores,0.474
+CONTROL bedrock ctl-chunks sin filtro,rol,int-doc-19,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,18,1,alfa/recepcion_almacen; beta/recepcion_almacen; beta/proveedores,0.481
+CONTROL bedrock ctl-chunks sin filtro,rol,int-doc-20,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,17,1,beta/recepcion_almacen; alfa/recepcion_almacen; beta/proveedores,0.468
+CONTROL bedrock ctl-chunks sin filtro,rol,int-doc-24,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,beta/transferencias_cedis; alfa/transferencias_cedis; alfa/transferencias_cedis,0.467
+CONTROL bedrock ctl-chunks sin filtro,rol,int-doc-31,es,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",20,19,1,alfa/descuentos_clientes; alfa/descuentos_clientes; beta/ordenes_de_compra,0.445
+CONTROL bedrock ctl-chunks sin filtro,rol,int-doc-35,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,18,1,alfa/embalaje_etiquetado; alfa/cedis_monterrey; alfa/contratos_marco_proveedores,0.459
+CONTROL bedrock ctl-chunks sin filtro,rol,int-doc-39,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,alfa/wms_respaldos; beta/capacitacion_almacen; alfa/capacitacion_almacen,0.462
+CONTROL bedrock ctl-chunks sin filtro,rol,int-doc-43,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,17,1,alfa/auditoria_interna; beta/recepcion_almacen; alfa/recepcion_almacen,0.452
+CONTROL bedrock ctl-chunks sin filtro,rol,int-pdf-01,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,alfa/tarifas_flete; alfa/tarifas_flete; beta/transferencias_cedis,0.517
+CONTROL bedrock ctl-chunks sin filtro,rol,int-pdf-02,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,19,1,alfa/tarifas_flete; alfa/flota_reparto; beta/flota_reparto,0.437
+CONTROL bedrock ctl-chunks sin filtro,rol,int-pdf-03,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,alfa/tarifas_flete; alfa/tarifas_flete; beta/transferencias_cedis,0.434
+CONTROL bedrock ctl-chunks sin filtro,rol,int-pdf-04,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,17,1,beta/proveedores; alfa/proveedores; alfa/matriz_proveedores,0.48
+CONTROL bedrock ctl-chunks sin filtro,rol,int-pdf-05,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,18,1,alfa/matriz_proveedores; alfa/matriz_proveedores; alfa/proveedores,0.511
+CONTROL bedrock ctl-chunks sin filtro,rol,int-ocr-06,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,18,1,alfa/acta_inventario_norte; alfa/inventario_ciclico; beta/inventario_ciclico,0.472
+CONTROL bedrock ctl-chunks sin filtro,rol,int-ocr-07,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,18,1,alfa/acta_inventario_norte; alfa/cedis_monterrey; beta/inventario_ciclico,0.455
+CONTROL bedrock ctl-chunks sin filtro,rol,int-ocr-08,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,18,1,alfa/acta_inventario_norte; alfa/cedis_monterrey; alfa/politica_reorden,0.479
+CONTROL bedrock ctl-chunks sin filtro,rol,int-ocr-09,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,16,1,alfa/remision_r4471; beta/devoluciones; beta/devoluciones,0.448
+CONTROL bedrock ctl-chunks sin filtro,rol,int-ocr-10,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,16,1,alfa/remision_r4471; beta/devoluciones; beta/politica_reorden,0.462
+CONTROL bedrock ctl-chunks sin filtro,rol,int-imagen-11,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,18,1,alfa/grafica_nivel_servicio; alfa/grafica_nivel_servicio; alfa/skus_criticos,0.416
+CONTROL bedrock ctl-chunks sin filtro,rol,int-imagen-12,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,18,1,alfa/grafica_nivel_servicio; alfa/cedis_monterrey; alfa/acta_inventario_norte,0.446
+CONTROL bedrock ctl-chunks sin filtro,rol,int-imagen-13,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,18,1,alfa/grafica_nivel_servicio; alfa/plano_cedis_occidente; alfa/cedis_monterrey,0.429
+CONTROL bedrock ctl-chunks sin filtro,rol,int-imagen-14,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,19,1,alfa/plano_cedis_occidente; alfa/plano_cedis_occidente; alfa/plano_cedis_occidente,0.458
+CONTROL bedrock ctl-chunks sin filtro,rol,int-imagen-15,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,19,1,alfa/plano_cedis_occidente; alfa/plano_cedis_occidente; alfa/plano_cedis_occidente,0.431
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-01,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,8,1,beta/devoluciones; beta/devoluciones; beta/devoluciones,0.438
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-01,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,12,1,alfa/devoluciones; alfa/devoluciones; alfa/devoluciones,0.448
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-04,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,8,1,beta/inventario_ciclico; beta/politica_reorden; beta/politica_reorden,0.431
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-04,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,13,1,alfa/inventario_ciclico; alfa/politica_reorden; alfa/indicadores_operacion,0.484
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-07,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,8,1,beta/ordenes_de_compra; beta/ordenes_de_compra; beta/politica_reorden,0.488
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-07,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,12,1,alfa/ordenes_de_compra; alfa/ordenes_de_compra; alfa/politica_reorden,0.443
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-11,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,7,1,beta/politica_reorden; beta/politica_reorden; beta/recepcion_almacen,0.454
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-11,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,13,1,alfa/skus_criticos; alfa/politica_reorden; alfa/skus_criticos,0.478
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-15,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,8,1,beta/proveedores; beta/proveedores; beta/proveedores,0.509
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-15,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,12,1,alfa/proveedores; alfa/indicadores_operacion; alfa/proveedores,0.454
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-19,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,9,1,beta/recepcion_almacen; beta/proveedores; beta/transferencias_cedis,0.424
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-19,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,11,1,alfa/recepcion_almacen; alfa/proveedores; alfa/transferencias_cedis,0.443
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-24,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,6,1,beta/transferencias_cedis; beta/transferencias_cedis; beta/transferencias_cedis,0.589
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-24,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,14,1,alfa/transferencias_cedis; alfa/transferencias_cedis; alfa/transferencias_cedis,0.456
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-30,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,8,1,beta/capacitacion_almacen; beta/capacitacion_almacen; beta/politica_reorden,0.448
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-30,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,12,1,alfa/capacitacion_almacen; alfa/capacitacion_almacen; alfa/wms_respaldos,0.492
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-33,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,7,1,beta/seguridad_instalaciones; beta/devoluciones; beta/devoluciones,0.495
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-33,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,13,1,alfa/seguridad_instalaciones; alfa/contratos_marco_proveedores; alfa/mermas_caducidad,0.489
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-40,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,8,1,beta/flota_reparto; beta/transferencias_cedis; beta/ordenes_de_compra,0.46
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-40,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,12,1,alfa/flota_reparto; alfa/tarifas_flete; alfa/tarifas_flete,0.588
+CONTROL bedrock ctl-chunks sin filtro,rol,int-doc-02,en,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",20,20,1,alfa/devoluciones; beta/devoluciones; alfa/devoluciones,0.427
+CONTROL bedrock ctl-chunks sin filtro,rol,int-doc-03,en,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",20,16,1,beta/devoluciones; alfa/devoluciones; alfa/devoluciones,0.414
+CONTROL bedrock ctl-chunks sin filtro,rol,int-doc-06,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,beta/politica_reorden; alfa/politica_reorden; alfa/inventario_ciclico,0.459
+CONTROL bedrock ctl-chunks sin filtro,rol,int-doc-09,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,18,1,beta/ordenes_de_compra; alfa/ordenes_de_compra; beta/ordenes_de_compra,0.502
+CONTROL bedrock ctl-chunks sin filtro,rol,int-doc-12,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,17,1,alfa/politica_reorden; beta/politica_reorden; beta/politica_reorden,0.474
+CONTROL bedrock ctl-chunks sin filtro,rol,int-doc-17,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,18,1,beta/proveedores; alfa/proveedores; alfa/contratos_marco_proveedores,0.451
+CONTROL bedrock ctl-chunks sin filtro,rol,int-doc-19,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,18,1,beta/recepcion_almacen; alfa/recepcion_almacen; alfa/recepcion_almacen,0.474
+CONTROL bedrock ctl-chunks sin filtro,rol,int-doc-20,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,17,1,beta/recepcion_almacen; alfa/recepcion_almacen; beta/proveedores,0.429
+CONTROL bedrock ctl-chunks sin filtro,rol,int-doc-24,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,beta/transferencias_cedis; alfa/transferencias_cedis; beta/transferencias_cedis,0.442
+CONTROL bedrock ctl-chunks sin filtro,rol,int-doc-31,en,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",20,19,1,alfa/descuentos_clientes; alfa/descuentos_clientes; beta/ordenes_de_compra,0.443
+CONTROL bedrock ctl-chunks sin filtro,rol,int-doc-35,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,18,1,alfa/embalaje_etiquetado; alfa/capacitacion_almacen; beta/capacitacion_almacen,0.451
+CONTROL bedrock ctl-chunks sin filtro,rol,int-doc-39,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,alfa/wms_respaldos; beta/politica_reorden; alfa/politica_reorden,0.539
+CONTROL bedrock ctl-chunks sin filtro,rol,int-doc-43,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,18,1,alfa/auditoria_interna; beta/recepcion_almacen; alfa/recepcion_almacen,0.446
+CONTROL bedrock ctl-chunks sin filtro,rol,int-pdf-01,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,alfa/tarifas_flete; alfa/tarifas_flete; beta/transferencias_cedis,0.419
+CONTROL bedrock ctl-chunks sin filtro,rol,int-pdf-02,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,19,1,alfa/tarifas_flete; alfa/skus_criticos; alfa/skus_criticos,0.428
+CONTROL bedrock ctl-chunks sin filtro,rol,int-pdf-03,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,alfa/tarifas_flete; alfa/tarifas_flete; beta/transferencias_cedis,0.447
+CONTROL bedrock ctl-chunks sin filtro,rol,int-pdf-04,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,17,1,alfa/matriz_proveedores; beta/proveedores; alfa/proveedores,0.435
+CONTROL bedrock ctl-chunks sin filtro,rol,int-pdf-05,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,16,1,alfa/matriz_proveedores; beta/proveedores; alfa/proveedores,0.475
+CONTROL bedrock ctl-chunks sin filtro,rol,int-ocr-06,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,19,1,alfa/acta_inventario_norte; alfa/inventario_ciclico; beta/inventario_ciclico,0.453
+CONTROL bedrock ctl-chunks sin filtro,rol,int-ocr-07,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,19,1,alfa/acta_inventario_norte; alfa/remision_r4471; alfa/politica_reorden,0.414
+CONTROL bedrock ctl-chunks sin filtro,rol,int-ocr-08,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,18,1,alfa/acta_inventario_norte; alfa/remision_r4471; alfa/plano_cedis_occidente,0.453
+CONTROL bedrock ctl-chunks sin filtro,rol,int-ocr-09,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,16,1,alfa/remision_r4471; beta/devoluciones; beta/devoluciones,0.433
+CONTROL bedrock ctl-chunks sin filtro,rol,int-ocr-10,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,18,1,alfa/remision_r4471; beta/devoluciones; alfa/flota_reparto,0.483
+CONTROL bedrock ctl-chunks sin filtro,rol,int-imagen-11,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,19,1,alfa/grafica_nivel_servicio; alfa/indicadores_operacion; alfa/proveedores,0.463
+CONTROL bedrock ctl-chunks sin filtro,rol,int-imagen-12,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,alfa/grafica_nivel_servicio; alfa/cedis_monterrey; alfa/acta_inventario_norte,0.484
+CONTROL bedrock ctl-chunks sin filtro,rol,int-imagen-13,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,alfa/grafica_nivel_servicio; alfa/plano_cedis_occidente; alfa/indicadores_operacion,0.432
+CONTROL bedrock ctl-chunks sin filtro,rol,int-imagen-14,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,18,1,alfa/plano_cedis_occidente; alfa/plano_cedis_occidente; alfa/plano_cedis_occidente,0.501
+CONTROL bedrock ctl-chunks sin filtro,rol,int-imagen-15,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,19,1,alfa/plano_cedis_occidente; alfa/plano_cedis_occidente; alfa/plano_cedis_occidente,0.434
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-01,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,8,1,beta/devoluciones; beta/devoluciones; beta/devoluciones,0.582
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-01,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,12,1,alfa/devoluciones; alfa/devoluciones; alfa/devoluciones,0.457
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-04,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,8,1,beta/inventario_ciclico; beta/politica_reorden; beta/proveedores,0.514
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-04,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,12,1,alfa/inventario_ciclico; alfa/indicadores_operacion; alfa/politica_reorden,0.456
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-07,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,7,1,beta/ordenes_de_compra; beta/ordenes_de_compra; beta/politica_reorden,0.428
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-07,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,13,1,alfa/ordenes_de_compra; alfa/ordenes_de_compra; alfa/politica_reorden,0.452
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-11,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,7,1,beta/politica_reorden; beta/politica_reorden; beta/recepcion_almacen,0.462
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-11,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,13,1,alfa/skus_criticos; alfa/politica_reorden; alfa/skus_criticos,0.438
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-15,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,6,1,beta/proveedores; beta/proveedores; beta/proveedores,0.497
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-15,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,14,1,alfa/proveedores; alfa/indicadores_operacion; alfa/proveedores,0.456
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-19,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,7,1,beta/recepcion_almacen; beta/recepcion_almacen; beta/transferencias_cedis,0.429
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-19,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,13,1,alfa/recepcion_almacen; alfa/recepcion_almacen; alfa/transferencias_cedis,0.471
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-24,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,6,1,beta/transferencias_cedis; beta/transferencias_cedis; beta/politica_reorden,0.459
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-24,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,14,1,alfa/transferencias_cedis; alfa/transferencias_cedis; alfa/politica_reorden,0.502
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-30,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,6,1,beta/capacitacion_almacen; beta/capacitacion_almacen; beta/politica_reorden,0.421
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-30,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,14,1,alfa/capacitacion_almacen; alfa/capacitacion_almacen; alfa/matriz_proveedores,0.44
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-33,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,7,1,beta/seguridad_instalaciones; beta/recepcion_almacen; beta/devoluciones,0.482
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-33,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,13,1,alfa/seguridad_instalaciones; alfa/mermas_caducidad; alfa/matriz_proveedores,0.432
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-40,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,6,1,beta/flota_reparto; beta/transferencias_cedis; beta/ordenes_de_compra,0.454
+CONTROL bedrock ctl-chunks sin filtro,tenant,mt-rec-40,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,14,1,alfa/flota_reparto; alfa/tarifas_flete; alfa/tarifas_flete,0.47
+CONTROL vertex vx-ctl sin filtro,rol,int-doc-02,es,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",20,20,1,beta/devoluciones; alfa/devoluciones; beta/devoluciones,0.42
+CONTROL vertex vx-ctl sin filtro,rol,int-doc-03,es,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",20,15,1,alfa/devoluciones; beta/devoluciones; beta/devoluciones,0.353
+CONTROL vertex vx-ctl sin filtro,rol,int-doc-06,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,beta/politica_reorden; alfa/politica_reorden; beta/inventario_ciclico,0.338
+CONTROL vertex vx-ctl sin filtro,rol,int-doc-09,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,19,1,beta/ordenes_de_compra; alfa/ordenes_de_compra; beta/ordenes_de_compra,0.445
+CONTROL vertex vx-ctl sin filtro,rol,int-doc-12,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,18,1,beta/politica_reorden; alfa/politica_reorden; beta/politica_reorden,0.397
+CONTROL vertex vx-ctl sin filtro,rol,int-doc-17,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,19,1,alfa/proveedores; beta/proveedores; alfa/proveedores,0.435
+CONTROL vertex vx-ctl sin filtro,rol,int-doc-19,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,19,1,beta/recepcion_almacen; alfa/recepcion_almacen; alfa/transferencias_cedis,0.633
+CONTROL vertex vx-ctl sin filtro,rol,int-doc-20,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,19,1,beta/inventario_ciclico; alfa/inventario_ciclico; alfa/recepcion_almacen,0.438
+CONTROL vertex vx-ctl sin filtro,rol,int-doc-24,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,beta/transferencias_cedis; alfa/transferencias_cedis; alfa/transferencias_cedis,0.363
+CONTROL vertex vx-ctl sin filtro,rol,int-doc-31,es,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",20,19,1,alfa/descuentos_clientes; alfa/descuentos_clientes; alfa/skus_criticos,0.359
+CONTROL vertex vx-ctl sin filtro,rol,int-doc-35,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,alfa/embalaje_etiquetado; beta/transferencias_cedis; alfa/transferencias_cedis,0.372
+CONTROL vertex vx-ctl sin filtro,rol,int-doc-39,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,alfa/wms_respaldos; beta/recepcion_almacen; alfa/recepcion_almacen,0.34
+CONTROL vertex vx-ctl sin filtro,rol,int-doc-43,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,19,1,alfa/auditoria_interna; alfa/proveedores; beta/proveedores,0.346
+CONTROL vertex vx-ctl sin filtro,rol,int-pdf-01,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,alfa/tarifas_flete; alfa/tarifas_flete; beta/transferencias_cedis,0.406
+CONTROL vertex vx-ctl sin filtro,rol,int-pdf-02,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,19,1,alfa/tarifas_flete; alfa/tarifas_flete; alfa/skus_criticos,0.382
+CONTROL vertex vx-ctl sin filtro,rol,int-pdf-03,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,alfa/tarifas_flete; alfa/tarifas_flete; beta/transferencias_cedis,0.507
+CONTROL vertex vx-ctl sin filtro,rol,int-pdf-04,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,18,1,alfa/matriz_proveedores; beta/proveedores; alfa/proveedores,0.422
+CONTROL vertex vx-ctl sin filtro,rol,int-pdf-05,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,18,1,alfa/matriz_proveedores; alfa/matriz_proveedores; alfa/proveedores,0.386
+CONTROL vertex vx-ctl sin filtro,rol,int-ocr-06,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,19,1,alfa/acta_inventario_norte; beta/inventario_ciclico; alfa/inventario_ciclico,0.33
+CONTROL vertex vx-ctl sin filtro,rol,int-ocr-07,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,19,1,alfa/acta_inventario_norte; alfa/cedis_monterrey; alfa/politica_reorden,0.422
+CONTROL vertex vx-ctl sin filtro,rol,int-ocr-08,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,19,1,alfa/acta_inventario_norte; alfa/cedis_monterrey; beta/inventario_ciclico,0.437
+CONTROL vertex vx-ctl sin filtro,rol,int-ocr-09,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,17,1,alfa/remision_r4471; beta/devoluciones; alfa/recepcion_almacen,0.34
+CONTROL vertex vx-ctl sin filtro,rol,int-ocr-10,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,alfa/remision_r4471; alfa/politica_reorden; beta/politica_reorden,0.469
+CONTROL vertex vx-ctl sin filtro,rol,int-imagen-11,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,alfa/grafica_nivel_servicio; alfa/grafica_nivel_servicio; alfa/acta_inventario_norte,0.557
+CONTROL vertex vx-ctl sin filtro,rol,int-imagen-12,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,alfa/grafica_nivel_servicio; alfa/grafica_nivel_servicio; alfa/cedis_monterrey,0.504
+CONTROL vertex vx-ctl sin filtro,rol,int-imagen-13,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,alfa/grafica_nivel_servicio; alfa/grafica_nivel_servicio; alfa/plano_cedis_occidente,0.352
+CONTROL vertex vx-ctl sin filtro,rol,int-imagen-14,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,19,1,alfa/plano_cedis_occidente; alfa/plano_cedis_occidente; alfa/plano_cedis_occidente,0.35
+CONTROL vertex vx-ctl sin filtro,rol,int-imagen-15,es,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,alfa/plano_cedis_occidente; alfa/plano_cedis_occidente; alfa/plano_cedis_occidente,0.365
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-01,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,9,1,beta/devoluciones; beta/devoluciones; beta/devoluciones,0.333
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-01,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,11,1,alfa/devoluciones; alfa/devoluciones; alfa/devoluciones,0.4
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-04,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,9,1,beta/inventario_ciclico; beta/transferencias_cedis; beta/politica_reorden,0.426
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-04,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,11,1,alfa/inventario_ciclico; alfa/acta_inventario_norte; alfa/indicadores_operacion,0.385
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-07,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,9,1,beta/ordenes_de_compra; beta/ordenes_de_compra; beta/ordenes_de_compra,0.366
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-07,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,11,1,alfa/ordenes_de_compra; alfa/ordenes_de_compra; alfa/ordenes_de_compra,0.466
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-11,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,7,1,beta/politica_reorden; beta/politica_reorden; beta/politica_reorden,0.348
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-11,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,13,1,alfa/politica_reorden; alfa/politica_reorden; alfa/skus_criticos,0.467
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-15,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,7,1,beta/proveedores; beta/proveedores; beta/proveedores,0.352
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-15,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,13,1,alfa/proveedores; alfa/proveedores; alfa/proveedores,0.345
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-19,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,9,1,beta/recepcion_almacen; beta/transferencias_cedis; beta/proveedores,0.264
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-19,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,11,1,alfa/recepcion_almacen; alfa/transferencias_cedis; alfa/proveedores,0.37
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-24,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,6,1,beta/transferencias_cedis; beta/transferencias_cedis; beta/transferencias_cedis,0.35
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-24,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,14,1,alfa/transferencias_cedis; alfa/transferencias_cedis; alfa/transferencias_cedis,0.275
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-30,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,9,1,beta/capacitacion_almacen; beta/capacitacion_almacen; beta/recepcion_almacen,0.366
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-30,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,11,1,alfa/capacitacion_almacen; alfa/capacitacion_almacen; alfa/recepcion_almacen,0.551
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-33,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,9,1,beta/seguridad_instalaciones; beta/politica_reorden; beta/politica_reorden,0.463
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-33,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,11,1,alfa/seguridad_instalaciones; alfa/politica_reorden; alfa/politica_reorden,0.347
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-40,es,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,7,1,beta/flota_reparto; beta/transferencias_cedis; beta/politica_reorden,0.367
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-40,es,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,13,1,alfa/flota_reparto; alfa/tarifas_flete; alfa/tarifas_flete,0.348
+CONTROL vertex vx-ctl sin filtro,rol,int-doc-02,en,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",20,19,1,beta/devoluciones; alfa/devoluciones; alfa/devoluciones,0.345
+CONTROL vertex vx-ctl sin filtro,rol,int-doc-03,en,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",20,16,1,alfa/devoluciones; beta/devoluciones; beta/devoluciones,0.35
+CONTROL vertex vx-ctl sin filtro,rol,int-doc-06,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,beta/inventario_ciclico; alfa/inventario_ciclico; beta/politica_reorden,0.386
+CONTROL vertex vx-ctl sin filtro,rol,int-doc-09,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,18,1,beta/ordenes_de_compra; alfa/ordenes_de_compra; beta/ordenes_de_compra,0.343
+CONTROL vertex vx-ctl sin filtro,rol,int-doc-12,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,19,1,beta/politica_reorden; alfa/politica_reorden; alfa/skus_criticos,0.475
+CONTROL vertex vx-ctl sin filtro,rol,int-doc-17,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,19,1,alfa/proveedores; beta/proveedores; alfa/proveedores,0.461
+CONTROL vertex vx-ctl sin filtro,rol,int-doc-19,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,19,1,beta/recepcion_almacen; alfa/recepcion_almacen; beta/recepcion_almacen,0.361
+CONTROL vertex vx-ctl sin filtro,rol,int-doc-20,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,18,1,beta/recepcion_almacen; alfa/recepcion_almacen; alfa/transferencias_cedis,0.439
+CONTROL vertex vx-ctl sin filtro,rol,int-doc-24,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,beta/transferencias_cedis; alfa/transferencias_cedis; alfa/transferencias_cedis,0.434
+CONTROL vertex vx-ctl sin filtro,rol,int-doc-31,en,"{""tenant"": ""alfa"", ""roles"": [""calidad""]}",20,18,1,alfa/descuentos_clientes; alfa/descuentos_clientes; alfa/skus_criticos,0.429
+CONTROL vertex vx-ctl sin filtro,rol,int-doc-35,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,19,1,alfa/embalaje_etiquetado; alfa/capacitacion_almacen; beta/capacitacion_almacen,0.448
+CONTROL vertex vx-ctl sin filtro,rol,int-doc-39,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,alfa/wms_respaldos; alfa/recepcion_almacen; beta/recepcion_almacen,0.538
+CONTROL vertex vx-ctl sin filtro,rol,int-doc-43,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,19,1,alfa/auditoria_interna; alfa/skus_criticos; alfa/mermas_caducidad,0.372
+CONTROL vertex vx-ctl sin filtro,rol,int-pdf-01,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,19,1,alfa/tarifas_flete; alfa/tarifas_flete; beta/transferencias_cedis,0.412
+CONTROL vertex vx-ctl sin filtro,rol,int-pdf-02,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,18,1,alfa/tarifas_flete; alfa/tarifas_flete; alfa/skus_criticos,0.347
+CONTROL vertex vx-ctl sin filtro,rol,int-pdf-03,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,19,1,alfa/tarifas_flete; alfa/tarifas_flete; beta/transferencias_cedis,0.408
+CONTROL vertex vx-ctl sin filtro,rol,int-pdf-04,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,19,1,alfa/matriz_proveedores; alfa/proveedores; beta/proveedores,0.346
+CONTROL vertex vx-ctl sin filtro,rol,int-pdf-05,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,19,1,alfa/matriz_proveedores; alfa/proveedores; beta/proveedores,0.337
+CONTROL vertex vx-ctl sin filtro,rol,int-ocr-06,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,alfa/acta_inventario_norte; beta/inventario_ciclico; alfa/inventario_ciclico,0.439
+CONTROL vertex vx-ctl sin filtro,rol,int-ocr-07,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,alfa/acta_inventario_norte; alfa/politica_reorden; beta/politica_reorden,0.355
+CONTROL vertex vx-ctl sin filtro,rol,int-ocr-08,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,alfa/acta_inventario_norte; alfa/politica_reorden; beta/politica_reorden,0.45
+CONTROL vertex vx-ctl sin filtro,rol,int-ocr-09,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,18,1,alfa/remision_r4471; beta/devoluciones; alfa/recepcion_almacen,0.561
+CONTROL vertex vx-ctl sin filtro,rol,int-ocr-10,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,19,1,alfa/remision_r4471; alfa/politica_reorden; beta/politica_reorden,0.335
+CONTROL vertex vx-ctl sin filtro,rol,int-imagen-11,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,alfa/grafica_nivel_servicio; alfa/grafica_nivel_servicio; alfa/acta_inventario_norte,0.337
+CONTROL vertex vx-ctl sin filtro,rol,int-imagen-12,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,alfa/grafica_nivel_servicio; alfa/acta_inventario_norte; alfa/grafica_nivel_servicio,0.459
+CONTROL vertex vx-ctl sin filtro,rol,int-imagen-13,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,alfa/grafica_nivel_servicio; alfa/grafica_nivel_servicio; alfa/acta_inventario_norte,0.585
+CONTROL vertex vx-ctl sin filtro,rol,int-imagen-14,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,alfa/plano_cedis_occidente; alfa/plano_cedis_occidente; alfa/plano_cedis_occidente,0.47
+CONTROL vertex vx-ctl sin filtro,rol,int-imagen-15,en,"{""tenant"": ""alfa"", ""roles"": [""ventas""]}",20,20,1,alfa/plano_cedis_occidente; alfa/plano_cedis_occidente; alfa/plano_cedis_occidente,0.359
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-01,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,9,1,beta/devoluciones; beta/devoluciones; beta/devoluciones,0.341
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-01,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,11,1,alfa/devoluciones; alfa/devoluciones; alfa/devoluciones,0.394
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-04,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,9,1,beta/inventario_ciclico; beta/transferencias_cedis; beta/politica_reorden,0.348
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-04,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,11,1,alfa/inventario_ciclico; alfa/skus_criticos; alfa/transferencias_cedis,0.583
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-07,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,8,1,beta/ordenes_de_compra; beta/ordenes_de_compra; beta/ordenes_de_compra,0.446
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-07,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,12,1,alfa/ordenes_de_compra; alfa/ordenes_de_compra; alfa/ordenes_de_compra,0.388
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-11,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,7,1,beta/politica_reorden; beta/politica_reorden; beta/politica_reorden,0.512
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-11,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,13,1,alfa/skus_criticos; alfa/politica_reorden; alfa/skus_criticos,0.417
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-15,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,8,1,beta/proveedores; beta/proveedores; beta/proveedores,0.57
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-15,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,12,1,alfa/proveedores; alfa/proveedores; alfa/proveedores,0.347
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-19,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,10,1,beta/recepcion_almacen; beta/recepcion_almacen; beta/recepcion_almacen,0.331
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-19,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,10,1,alfa/recepcion_almacen; alfa/recepcion_almacen; alfa/recepcion_almacen,0.475
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-24,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,9,1,beta/transferencias_cedis; beta/transferencias_cedis; beta/transferencias_cedis,0.533
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-24,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,11,1,alfa/transferencias_cedis; alfa/transferencias_cedis; alfa/transferencias_cedis,0.335
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-30,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,9,1,beta/capacitacion_almacen; beta/capacitacion_almacen; beta/politica_reorden,0.432
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-30,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,11,1,alfa/capacitacion_almacen; alfa/capacitacion_almacen; alfa/politica_reorden,0.466
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-33,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,8,1,beta/seguridad_instalaciones; beta/proveedores; beta/politica_reorden,0.388
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-33,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,12,1,alfa/seguridad_instalaciones; alfa/mermas_caducidad; alfa/proveedores,0.402
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-40,en,"{""tenant"": ""alfa"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,8,1,beta/flota_reparto; beta/politica_reorden; beta/transferencias_cedis,0.333
+CONTROL vertex vx-ctl sin filtro,tenant,mt-rec-40,en,"{""tenant"": ""beta"", ""roles"": [""almacen"", ""calidad"", ""compras"", ""finanzas"", ""operaciones"", ""ventas""]}",20,12,1,alfa/tarifas_flete; alfa/tarifas_flete; alfa/flota_reparto,0.36
