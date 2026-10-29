@@ -1,0 +1,37 @@
+documentos: 24 · pasajes de referencia únicos: 50
+estrategia              chunks  prom_chars    íntegros  partidos
+fijo_400_solape_80          57         348     50/50           0
+recursivo_300               84         203     48/50           2
+    partido: recepcion_almacen.md · Diferencia mayor a 2%: se hace un **rechazo parcial** de la diferencia
+    partido: skus_criticos.md · SKU crítico con menos de **7 días** de cobertura.
+actual_por_seccion          69         242     50/50           0
+## bedrock_adm-fijo-bda_rag (150 preguntas; generador: Bedrock RetrieveAndGenerate, us.anthropic.claude-haiku-4-5-20251001-v1:0, plantilla predeterminada)
+
+### Suite de recuperación (respondibles)
+
+| Idioma | n | recall@1 | recall@3 | recall@5 | recall@10 | mrr | ndcg@10 | ap@5 | doc_recall@5 |
+|---|---|---|---|---|---|---|---|---|---|
+| es | 65 | 0.569 | 0.723 | 0.739 | 0.754 | 0.659 | 0.681 | 0.652 | 0.985 |
+| en | 65 | 0.600 | 0.700 | 0.739 | 0.754 | 0.663 | 0.685 | 0.658 | 1.000 |
+
+### Suite de generación sobre lo recuperado (top 5; RetrieveAndGenerate)
+
+| Idioma | n | exactitud | faithfulness | answer_relevancy | precisión de citas | cobertura de cita | abstención falsa | abstención correcta |
+|---|---|---|---|---|---|---|---|---|
+| es | 65 | 0.969 | 0.739 | 0.899 | 0.681 | 0.723 | 1/65 | 10/10 |
+| en | 65 | 0.969 | 0.735 | 0.900 | 0.686 | 0.708 | 1/65 | 10/10 |
+
+### Costo y latencia por consulta
+
+| Etapa | USD por consulta | p50 (s) | p95 (s) |
+|---|---|---|---|
+| recuperacion | $0.00006 | 0.98 | 2.44 |
+| generacion | $0.00108 | 1.94 | 9.9 |
+
+Fallas (4):
+- rec-42 es (recuperación): Según los documentos disponibles, la penalización máxima acumulada por incumplimientos es del 10% del valor del contrato. Sin embargo, los d
+- int-imagen-15 es (recuperación): Sorry, I am unable to assist you with this request.
+- rec-42 en (generación): The search results do not contain specific information about penalties for late delivery. The results mention that one of the supplier evalu
+- rec-48 en (generación): When a critical SKU has less than 7 days of coverage, it triggers a Level 2 escalation, which requires the manager of purchases to take acti
+
+Consultas con chunks de otro tenant: 0. Métricas sin puntaje: 1. Reranking fallido: 0. Duración 369 s. Costo (recuperación + generación de lo guardado y evaluación de esta corrida): $0.2765

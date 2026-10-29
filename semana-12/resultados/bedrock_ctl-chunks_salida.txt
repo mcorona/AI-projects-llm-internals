@@ -1,0 +1,35 @@
+documentos: 24 · pasajes de referencia únicos: 50
+estrategia              chunks  prom_chars    íntegros  partidos
+fijo_400_solape_80          57         348     50/50           0
+recursivo_300               84         203     48/50           2
+    partido: recepcion_almacen.md · Diferencia mayor a 2%: se hace un **rechazo parcial** de la diferencia
+    partido: skus_criticos.md · SKU crítico con menos de **7 días** de cobertura.
+actual_por_seccion          69         242     50/50           0
+## bedrock_ctl-chunks (150 preguntas; generador: claude-haiku-5-5 medium, prompt solo_documentos)
+
+### Suite de recuperación (respondibles)
+
+| Idioma | n | recall@1 | recall@3 | recall@5 | recall@10 | mrr | ndcg@10 | ap@5 | doc_recall@5 |
+|---|---|---|---|---|---|---|---|---|---|
+| es | 65 | 0.746 | 0.962 | 1.000 | 1.000 | 0.863 | 0.898 | 0.851 | 1.000 |
+| en | 65 | 0.746 | 0.962 | 1.000 | 1.000 | 0.868 | 0.901 | 0.864 | 1.000 |
+
+### Suite de generación sobre lo recuperado (top 5; generador común)
+
+| Idioma | n | exactitud | faithfulness | answer_relevancy | precisión de citas | cobertura de cita | abstención falsa | abstención correcta |
+|---|---|---|---|---|---|---|---|---|
+| es | 65 | 0.985 | 0.881 | 0.870 | 0.682 | 0.985 | 0/65 | 10/10 |
+| en | 65 | 0.985 | 0.847 | 0.874 | 0.703 | 0.969 | 0/65 | 10/10 |
+
+### Costo y latencia por consulta
+
+| Etapa | USD por consulta | p50 (s) | p95 (s) |
+|---|---|---|---|
+| recuperacion | $0.00006 | 0.5 | 0.71 |
+| generacion | $0.00021 | 1.78 | 3.24 |
+
+Fallas (2):
+- rec-17 es (generación): Un proveedor que incumple dos o más metas queda en la **clase C**. Según [D1], para esta clase **se busca reemplazo**, y el documento contin
+- rec-17 en (generación): A supplier that misses two or more targets is classified as **C** [D1]. For C suppliers, the company looks for a replacement, and the text i
+
+Consultas con chunks de otro tenant: 0. Métricas sin puntaje: 2. Reranking fallido: 0. Duración 367 s. Costo (recuperación + generación de lo guardado y evaluación de esta corrida): $0.1715

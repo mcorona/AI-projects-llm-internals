@@ -1,0 +1,220 @@
+{
+ "backend": "bedrock",
+ "config": "adm-pred",
+ "modo": "comun",
+ "fecha": "2026-10-28",
+ "preguntas": 150,
+ "generador": "claude-haiku-5-5 medium, prompt solo_documentos",
+ "juez": "claude-haiku-5-5 low",
+ "k_contexto": 5,
+ "chunks_fuera_del_tenant": 0,
+ "recuperacion": {
+  "es": {
+   "recall@1": 0.6769,
+   "recall@3": 0.7923,
+   "recall@5": 0.8231,
+   "recall@10": 0.8462,
+   "mrr": 0.7553,
+   "ndcg@10": 0.7747,
+   "ap@5": 0.7492,
+   "doc_recall@5": 0.8308,
+   "n": 65
+  },
+  "en": {
+   "recall@1": 0.6615,
+   "recall@3": 0.8231,
+   "recall@5": 0.8231,
+   "recall@10": 0.8462,
+   "mrr": 0.7484,
+   "ndcg@10": 0.7696,
+   "ap@5": 0.7423,
+   "doc_recall@5": 0.8308,
+   "n": 65
+  }
+ },
+ "generacion": {
+  "es": {
+   "n": 65,
+   "exactitud": 0.8154,
+   "faithfulness": 0.8152,
+   "answer_relevancy": 0.7495,
+   "precision_citas": 0.6042,
+   "cobertura_cita": 0.8308,
+   "abstencion_falsa": "11/65",
+   "abstencion_correcta": "10/10"
+  },
+  "en": {
+   "n": 65,
+   "exactitud": 0.8154,
+   "faithfulness": 0.8811,
+   "answer_relevancy": 0.7662,
+   "precision_citas": 0.5743,
+   "cobertura_cita": 0.8308,
+   "abstencion_falsa": "11/65",
+   "abstencion_correcta": "10/10"
+  }
+ },
+ "costo_usd_por_consulta": {
+  "recuperacion": 5.6e-05,
+  "generacion": 0.000291
+ },
+ "latencia_s": {
+  "recuperacion": {
+   "p50": 0.5,
+   "p95": 0.64
+  },
+  "generacion": {
+   "p50": 1.79,
+   "p95": 3.11
+  }
+ },
+ "fallas": [
+  {
+   "id": "rec-11",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "El contexto no indica qué factor de seguridad usan los SKUs críticos. No define ningún factor ni fórmula de cálculo.\n\nSí aparecen algunos elementos relacionados:\n- El stock de seguridad se define como"
+  },
+  {
+   "id": "rec-48",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "**Qué pasa:** Un SKU crítico con menos de 7 días de cobertura escala al **Nivel 2 (gerente de compras)**, que evalúa una compra urgente y una transferencia entre CEDIS [D1]. Una compra urgente permite"
+  },
+  {
+   "id": "int-ocr-06",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "No puedo responder con el contexto proporcionado. Ningún documento incluye resultados del inventario físico de septiembre ni la exactitud obtenida por el CEDIS Norte.\n\nLo que sí aparece es la meta y e"
+  },
+  {
+   "id": "int-ocr-07",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "No encuentro en el contexto el acta de inventario del CEDIS Norte ni la diferencia total valorizada, así que no puedo darte esa cifra.\n\nLos documentos sí describen cómo se hacen los ajustes: los de ha"
+  },
+  {
+   "id": "int-ocr-08",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "El contexto no indica quién fue la responsable del inventario físico del CEDIS Norte, y no menciona a ninguna persona con ese nombre ni ese cargo.\n\nLo que sí aparece relacionado:\n- La operación del CE"
+  },
+  {
+   "id": "int-ocr-09",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "El contexto no permite responder. No contiene ningún dato sobre la remisión R-4471 ni sobre el número de piezas dañadas.\n\nLo único relacionado es que las reclamaciones por daño en tránsito se atienden"
+  },
+  {
+   "id": "int-ocr-10",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "El contexto proporcionado no contiene información sobre la nota **R-4471**, así que no puedo indicar cuántas piezas se remitieron.\n\nLos documentos disponibles tratan la política de reorden [D1][D2], u"
+  },
+  {
+   "id": "int-imagen-11",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "No puedo responder con el contexto proporcionado. Ninguno de los documentos incluye datos de nivel de servicio por CEDIS ni información de septiembre de 2026.\n\nEl único indicador por CEDIS que aparece"
+  },
+  {
+   "id": "int-imagen-12",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "El contexto no incluye el nivel de servicio del CEDIS Norte ni datos de septiembre de 2026, así que no puedo responder con certeza.\n\nLo que sí aparece sobre el CEDIS Norte (Monterrey) es su capacidad "
+  },
+  {
+   "id": "int-imagen-13",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "No encuentro en el contexto el nivel de servicio del CEDIS Centro para septiembre de 2026, ni ningún indicador de desempeño mensual.\n\nLo único que el contexto dice sobre el CEDIS Centro (Ciudad de Méx"
+  },
+  {
+   "id": "int-imagen-14",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "No puedo responder con el contexto proporcionado. Ninguno de los documentos menciona la zona de cuarentena ni la distribución de pasillos del CEDIS Occidente.\n\nLo que sí aparece es el horario de recep"
+  },
+  {
+   "id": "int-imagen-15",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "El contexto no indica junto a qué andén está la zona de SKUs críticos del CEDIS Occidente. No hay ninguna referencia a la ubicación física de la zona ni a numeración de andenes.\n\nLo único relacionado "
+  },
+  {
+   "id": "rec-11",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "The provided context does not specify a safety factor for critical SKUs. It defines **safety stock** as the additional inventory held to cover variations in demand or delivery [D4], but it gives no fo"
+  },
+  {
+   "id": "rec-48",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "A critical SKU with less than 7 days of coverage is escalated to **Level 2 (purchasing manager)**. The manager evaluates an urgent purchase and a transfer between distribution centers (CEDIS) [D1]. Be"
+  },
+  {
+   "id": "int-ocr-06",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "The context doesn't include the accuracy obtained in the September physical inventory at the North distribution center (CEDIS Norte, Monterrey). No document reports September results.\n\nWhat the contex"
+  },
+  {
+   "id": "int-ocr-07",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "The provided context does not include the total valued difference for the North distribution center (CEDIS Norte) inventory record. No document reports inventory values, counts, or discrepancies for t"
+  },
+  {
+   "id": "int-ocr-08",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "The context doesn't say who is responsible for the physical inventory at the North distribution center (CEDIS Norte, Monterrey).\n\nThe closest information is that the center's operation depends on the "
+  },
+  {
+   "id": "int-ocr-09",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "The context doesn't contain the information needed to answer. Nothing in it refers to delivery note R-4471 or gives a count of damaged pieces.\n\nThe context does say that customers have **5 business da"
+  },
+  {
+   "id": "int-ocr-10",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "The provided context doesn't include delivery note R-4471 or any shipment quantities, so I can't determine how many pieces were shipped. The documents cover the fleet and delivery windows [D1], reorde"
+  },
+  {
+   "id": "int-imagen-11",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "The context doesn't include service levels by distribution center for September 2026, so I can't identify the lowest one.\n\nIt does give the target: the service level goal is 97% of complete orders [D2"
+  },
+  {
+   "id": "int-imagen-12",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "The context doesn't say what service level the North distribution center (CEDIS Norte, Monterrey) had in September 2026. It only gives the company-wide target: a **97%** service level, meaning complet"
+  },
+  {
+   "id": "int-imagen-13",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "The context does not contain the service level that the Central distribution center achieved in September 2026.\n\nThe only service-level figure is a **target** of 97% complete orders, which applies to "
+  },
+  {
+   "id": "int-imagen-14",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "The provided context doesn't say which aisle holds the quarantine zone at the West distribution center. It doesn't mention aisles or quarantine zones at all.\n\nThe only related reference is that CEDIS "
+  },
+  {
+   "id": "int-imagen-15",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "The context doesn't say which dock is next to the critical SKU zone of the West distribution center. It doesn't describe dock layouts or zones at any site.\n\nThe context does say that receiving of crit"
+  }
+ ],
+ "metricas_sin_puntaje": 1,
+ "costo_evaluacion_corrida_usd": 0.1557,
+ "rerank_fallido": 0
+}

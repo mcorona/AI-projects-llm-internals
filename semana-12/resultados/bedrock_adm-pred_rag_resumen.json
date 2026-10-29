@@ -1,0 +1,220 @@
+{
+ "backend": "bedrock",
+ "config": "adm-pred",
+ "modo": "rag",
+ "fecha": "2026-10-28",
+ "preguntas": 150,
+ "generador": "Bedrock RetrieveAndGenerate, us.anthropic.claude-haiku-4-5-20251001-v1:0, plantilla predeterminada",
+ "juez": "claude-haiku-5-5 low",
+ "k_contexto": 5,
+ "chunks_fuera_del_tenant": 0,
+ "recuperacion": {
+  "es": {
+   "recall@1": 0.6769,
+   "recall@3": 0.7923,
+   "recall@5": 0.8231,
+   "recall@10": 0.8462,
+   "mrr": 0.7553,
+   "ndcg@10": 0.7747,
+   "ap@5": 0.7492,
+   "doc_recall@5": 0.8308,
+   "n": 65
+  },
+  "en": {
+   "recall@1": 0.6615,
+   "recall@3": 0.8231,
+   "recall@5": 0.8231,
+   "recall@10": 0.8462,
+   "mrr": 0.7484,
+   "ndcg@10": 0.7696,
+   "ap@5": 0.7423,
+   "doc_recall@5": 0.8308,
+   "n": 65
+  }
+ },
+ "generacion": {
+  "es": {
+   "n": 65,
+   "exactitud": 0.8154,
+   "faithfulness": 0.9376,
+   "answer_relevancy": 0.7489,
+   "precision_citas": 0.8636,
+   "cobertura_cita": 0.8308,
+   "abstencion_falsa": "11/65",
+   "abstencion_correcta": "10/10"
+  },
+  "en": {
+   "n": 65,
+   "exactitud": 0.8154,
+   "faithfulness": 0.8009,
+   "answer_relevancy": 0.742,
+   "precision_citas": 0.95,
+   "cobertura_cita": 0.8308,
+   "abstencion_falsa": "11/65",
+   "abstencion_correcta": "10/10"
+  }
+ },
+ "costo_usd_por_consulta": {
+  "recuperacion": 5.6e-05,
+  "generacion": 0.001666
+ },
+ "latencia_s": {
+  "recuperacion": {
+   "p50": 0.5,
+   "p95": 0.64
+  },
+  "generacion": {
+   "p50": 1.9,
+   "p95": 8.72
+  }
+ },
+ "fallas": [
+  {
+   "id": "rec-11",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "Los search results no contienen información específica sobre un \"factor de seguridad\" que se use para los SKUs críticos. \n\nLos documentos sí mencionan que existe un concepto de \"stock de seguridad\" de"
+  },
+  {
+   "id": "rec-48",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "Cuando un SKU crítico tiene menos de 7 días de cobertura, se activa el Nivel 2 de escalamiento. En este nivel, el gerente de compras debe evaluar la posibilidad de realizar una compra urgente y/o una "
+  },
+  {
+   "id": "int-ocr-06",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "No se encontró información sobre la exactitud de inventario obtenida en el inventario físico de septiembre del CEDIS Norte en los documentos disponibles."
+  },
+  {
+   "id": "int-ocr-07",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "No puedo encontrar información sobre la diferencia total valorizada en el acta de inventario del CEDIS Norte en los resultados de búsqueda proporcionados. Los documentos disponibles contienen política"
+  },
+  {
+   "id": "int-ocr-08",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "No puedo encontrar en los documentos proporcionados información sobre quién fue responsable del inventario físico del CEDIS Norte. Los documentos contienen políticas generales sobre inventario cíclico"
+  },
+  {
+   "id": "int-ocr-09",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "No puedo encontrar información sobre la remisión R-4471 en los documentos disponibles. Los resultados de búsqueda contienen políticas generales de la empresa sobre devoluciones, reclamaciones y gestió"
+  },
+  {
+   "id": "int-ocr-10",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "No puedo encontrar información sobre la nota R-4471 o la cantidad de piezas que se remitieron en ella en los documentos disponibles. Los resultados de búsqueda contienen políticas y procedimientos gen"
+  },
+  {
+   "id": "int-imagen-11",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "No puedo encontrar información sobre el nivel de servicio de los CEDIS en septiembre de 2026 en los documentos proporcionados. Los documentos contienen políticas y procedimientos operativos de la empr"
+  },
+  {
+   "id": "int-imagen-12",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "No encontré información en los resultados de búsqueda sobre el nivel de servicio que tuvo el CEDIS Norte en septiembre de 2026. Los documentos proporcionados contienen información general sobre políti"
+  },
+  {
+   "id": "int-imagen-13",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "No se encontró información en los resultados de búsqueda sobre el nivel de servicio que tuvo el CEDIS Centro en septiembre de 2026. Los documentos proporcionados contienen políticas y procedimientos o"
+  },
+  {
+   "id": "int-imagen-14",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "No puedo encontrar información en los documentos proporcionados sobre la ubicación de una zona de cuarentena en el CEDIS Occidente ni en qué pasillo se encuentre."
+  },
+  {
+   "id": "int-imagen-15",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "Sorry, I am unable to assist you with this request."
+  },
+  {
+   "id": "rec-11",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "Sorry, I am unable to assist you with this request."
+  },
+  {
+   "id": "rec-48",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "When a critical SKU has less than 7 days of coverage, it escalates to Level 2, which means the matter is reviewed by the manager of purchases. At this level, an urgent purchase is evaluated along with"
+  },
+  {
+   "id": "int-ocr-06",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "Sorry, I am unable to assist you with this request."
+  },
+  {
+   "id": "int-ocr-07",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "Sorry, I am unable to assist you with this request."
+  },
+  {
+   "id": "int-ocr-08",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "Based on the search results provided, the North distribution center (CEDIS Norte in Monterrey) operates under the Gerencia de Operación Norte (Northern Operations Management). However, the search resu"
+  },
+  {
+   "id": "int-ocr-09",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "Sorry, I am unable to assist you with this request."
+  },
+  {
+   "id": "int-ocr-10",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "I could not find information about delivery note R-4471 or the number of pieces shipped in it in the provided search results. The search results contain information about policies and procedures for a"
+  },
+  {
+   "id": "int-imagen-11",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "Sorry, I am unable to assist you with this request."
+  },
+  {
+   "id": "int-imagen-12",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "Sorry, I am unable to assist you with this request."
+  },
+  {
+   "id": "int-imagen-13",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "I could not find information in the search results about the service level that the Central distribution center had in September 2026. The search results contain general operational policies and targe"
+  },
+  {
+   "id": "int-imagen-14",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "Sorry, I am unable to assist you with this request."
+  },
+  {
+   "id": "int-imagen-15",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "Sorry, I am unable to assist you with this request."
+  }
+ ],
+ "metricas_sin_puntaje": 2,
+ "costo_evaluacion_corrida_usd": 0.1311,
+ "rerank_fallido": 0
+}

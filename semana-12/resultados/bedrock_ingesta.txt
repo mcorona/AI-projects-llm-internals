@@ -1,0 +1,140 @@
+como arn:aws:sts::412575373510:assumed-role/semana12-operador/botocore-session-1793223806
+{
+    "BucketArn": "arn:aws:s3:::semana12-docs-412575373510",
+    "BucketRegion": "us-east-1",
+    "AccessPointAlias": false
+}
+paquete subido: 362 objetos
+ingesta semana12-adm-pred: COMPLETE en 23 s
+   {'numberOfDocumentsScanned': 40, 'numberOfMetadataDocumentsScanned': 40, 'numberOfNewDocumentsIndexed': 36, 'numberOfDocumentsFailed': 4}
+   fallo: ["Encountered error: Ignored 1 files as their file format was not supported. [Files: s3://semana12-docs-412575373510/administrado/alfa/remision_r4471_p1.jpg]. Call to Customer Source did not succeed.","Encountered error: Ignored 1 files as their file format was not supported. [Files: s3://semana12-d
+{
+    "indexArn": "arn:aws:s3vectors:us-east-1:412575373510:bucket/semana12-vectores-412575373510/index/adm-fijo"
+}
+KB semana12-adm-fijo: creada (TWGGBWMMN2)
+data source semana12-adm-fijo-ds: creado (AEVIRKEGKU)
+ingesta semana12-adm-fijo: COMPLETE en 46 s
+   {'numberOfDocumentsScanned': 40, 'numberOfMetadataDocumentsScanned': 40, 'numberOfNewDocumentsIndexed': 35, 'numberOfDocumentsFailed': 5}
+   fallo: ["Encountered error: Ignored 2 files as their file format was not supported. [Files: s3://semana12-docs-412575373510/administrado/alfa/grafica_nivel_servicio.png, s3://semana12-docs-412575373510/administrado/alfa/acta_inventario_norte_p1.jpg]. Call to Customer Source did not succeed.","The server en
+{
+    "indexArn": "arn:aws:s3vectors:us-east-1:412575373510:bucket/semana12-vectores-412575373510/index/adm-fijo-bda"
+}
+KB semana12-adm-fijo-bda: creada (IKAKDQWEW1)
+
+aws: [ERROR]: An error occurred (ValidationException) when calling the CreateDataSource operation: BedrockDataAutomationConfiguration must not be empty if specified.
+como arn:aws:sts::412575373510:assumed-role/semana12-operador/botocore-session-1793223806
+{
+    "BucketArn": "arn:aws:s3:::semana12-docs-412575373510",
+    "BucketRegion": "us-east-1",
+    "AccessPointAlias": false
+}
+paquete subido: 362 objetos
+ingesta semana12-adm-fijo: COMPLETE en 12 s
+   {'numberOfDocumentsScanned': 40, 'numberOfMetadataDocumentsScanned': 40, 'numberOfModifiedDocumentsIndexed': 1, 'numberOfDocumentsFailed': 4}
+   fallo: Encountered error: Ignored 4 files as their file format was not supported. [Files: s3://semana12-docs-412575373510/administrado/alfa/acta_inventario_norte_p1.jpg, s3://semana12-docs-412575373510/administrado/alfa/plano_cedis_occidente.png, s3://semana12-docs-412575373510/administrado/alfa/grafica_nivel_servicio.png, s3://semana12-docs-412575373510/administrado/alfa/remision_r4471_p1.jpg]. Call to 
+
+aws: [ERROR]: An error occurred (ValidationException) when calling the CreateDataSource operation: Knowledge base must have supplementalDataStorageConfiguration to use specified parsing configuration.
+zsh: permission denied: ./aws_kb_crear.sh
+como arn:aws:sts::412575373510:assumed-role/semana12-operador/botocore-session-1793223806
+{
+    "BucketArn": "arn:aws:s3:::semana12-docs-412575373510",
+    "BucketRegion": "us-east-1",
+    "AccessPointAlias": false
+}
+paquete subido: 362 objetos
+data source semana12-adm-fijo-bda-ds: creado (E6UVFXCEAC)
+ingesta semana12-adm-fijo-bda: COMPLETE en 45 s
+   {'numberOfDocumentsScanned': 40, 'numberOfMetadataDocumentsScanned': 40, 'numberOfNewDocumentsIndexed': 36, 'numberOfDocumentsFailed': 4}
+   fallo: Encountered error: Ignored 2 files as their file format was not supported. [Files: s3://semana12-docs-412575373510/administrado/alfa/grafica_nivel_servicio.png, s3://semana12-docs-412575373510/administrado/alfa/acta_inventario_norte_p1.jpg]. Call to Customer Source did not succeed.
+   fallo: Encountered error: Ignored 1 files as their file format was not supported. [Files: s3://semana12-docs-412575373510/administrado/alfa/remision_r4471_p1.jpg]. Call to Customer Source did not succeed.
+   fallo: Encountered error: Ignored 1 files as their file format was not supported. [Files: s3://semana12-docs-412575373510/administrado/alfa/plano_cedis_occidente.png]. Call to Customer Source did not succeed.
+{
+    "indexArn": "arn:aws:s3vectors:us-east-1:412575373510:bucket/semana12-vectores-412575373510/index/ctl-chunks"
+}
+KB semana12-ctl-chunks: creada (ONLLO9QLPS)
+data source semana12-ctl-chunks-ds: creado (VHXLIXTEJY)
+ingesta semana12-ctl-chunks: COMPLETE en 67 s
+   {'numberOfDocumentsScanned': 101, 'numberOfMetadataDocumentsScanned': 101, 'numberOfNewDocumentsIndexed': 101}
+
+{
+ "adm-pred": {
+  "kb_id": "LIOYUNX7RC",
+  "ds_id": "OTAURJ4HIN",
+  "index_arn": "arn:aws:s3vectors:us-east-1:412575373510:bucket/semana12-vectores-412575373510/index/adm-pred",
+  "ingesta": "COMPLETE",
+  "ingesta_s": 23
+ },
+ "adm-fijo": {
+  "kb_id": "TWGGBWMMN2",
+  "ds_id": "AEVIRKEGKU",
+  "index_arn": "arn:aws:s3vectors:us-east-1:412575373510:bucket/semana12-vectores-412575373510/index/adm-fijo",
+  "ingesta": "COMPLETE",
+  "ingesta_s": 13
+ },
+ "adm-fijo-bda": {
+  "kb_id": "IKAKDQWEW1",
+  "ds_id": "E6UVFXCEAC",
+  "index_arn": "arn:aws:s3vectors:us-east-1:412575373510:bucket/semana12-vectores-412575373510/index/adm-fijo-bda",
+  "ingesta": "COMPLETE",
+  "ingesta_s": 46
+ },
+ "ctl-chunks": {
+  "kb_id": "ONLLO9QLPS",
+  "ds_id": "VHXLIXTEJY",
+  "index_arn": "arn:aws:s3vectors:us-east-1:412575373510:bucket/semana12-vectores-412575373510/index/ctl-chunks",
+  "ingesta": "COMPLETE",
+  "ingesta_s": 68
+ }
+}como arn:aws:sts::412575373510:assumed-role/semana12-operador/botocore-session-1793223806
+{
+    "BucketArn": "arn:aws:s3:::semana12-docs-412575373510",
+    "BucketRegion": "us-east-1",
+    "AccessPointAlias": false
+}
+paquete subido: 362 objetos
+KB semana12-adm-fijo-bda: borrada para recrearla
+
+aws: [ERROR]: An error occurred (ValidationException) when calling the CreateKnowledgeBase operation: The S3 URI for the provided supplemental data storage bucket contains a sub-folder which is not supported. Please, remove the sub-folder from the URI provided and try again.
+como arn:aws:sts::412575373510:assumed-role/semana12-operador/botocore-session-1793223806
+{
+    "BucketArn": "arn:aws:s3:::semana12-docs-412575373510",
+    "BucketRegion": "us-east-1",
+    "AccessPointAlias": false
+}
+paquete subido: 362 objetos
+bucket semana12-multimodal-412575373510: creado (privado)
+KB semana12-adm-fijo-bda: creada (FJJLUURKGS)
+data source semana12-adm-fijo-bda-ds: creado (QPFB7CWHC0)
+ingesta semana12-adm-fijo-bda: COMPLETE en 78 s
+   {'numberOfDocumentsScanned': 40, 'numberOfMetadataDocumentsScanned': 40, 'numberOfNewDocumentsIndexed': 40}
+
+{
+ "adm-pred": {
+  "kb_id": "LIOYUNX7RC",
+  "ds_id": "OTAURJ4HIN",
+  "index_arn": "arn:aws:s3vectors:us-east-1:412575373510:bucket/semana12-vectores-412575373510/index/adm-pred",
+  "ingesta": "COMPLETE",
+  "ingesta_s": 23
+ },
+ "adm-fijo": {
+  "kb_id": "TWGGBWMMN2",
+  "ds_id": "AEVIRKEGKU",
+  "index_arn": "arn:aws:s3vectors:us-east-1:412575373510:bucket/semana12-vectores-412575373510/index/adm-fijo",
+  "ingesta": "COMPLETE",
+  "ingesta_s": 13
+ },
+ "adm-fijo-bda": {
+  "kb_id": "FJJLUURKGS",
+  "ds_id": "QPFB7CWHC0",
+  "index_arn": "arn:aws:s3vectors:us-east-1:412575373510:bucket/semana12-vectores-412575373510/index/adm-fijo-bda",
+  "ingesta": "COMPLETE",
+  "ingesta_s": 79
+ },
+ "ctl-chunks": {
+  "kb_id": "ONLLO9QLPS",
+  "ds_id": "VHXLIXTEJY",
+  "index_arn": "arn:aws:s3vectors:us-east-1:412575373510:bucket/semana12-vectores-412575373510/index/ctl-chunks",
+  "ingesta": "COMPLETE",
+  "ingesta_s": 68
+ }
+}
