@@ -1,0 +1,387 @@
+{
+ "rol_nativo": "copilot_nlq",
+ "A_catalogo_igual": true,
+ "B_trazas": {
+  "llamadas": 107,
+  "iguales": 107,
+  "diferentes": []
+ },
+ "C_golden": {
+  "claves": 12,
+  "iguales": 12,
+  "exactas": 12,
+  "tareas_exito": 12,
+  "tareas": 12
+ },
+ "D_permisos": [
+  {
+   "usuario": "analista",
+   "herramienta": "describir_esquema",
+   "args": {},
+   "igual": true,
+   "resultado": "ok"
+  },
+  {
+   "usuario": "analista",
+   "herramienta": "describir_esquema",
+   "args": {
+    "tablas": [
+     "vtadia",
+     "ocpcab"
+    ]
+   },
+   "igual": true,
+   "resultado": "ok"
+  },
+  {
+   "usuario": "analista",
+   "herramienta": "muestrear_valores",
+   "args": {
+    "tabla": "artmst",
+    "columna": "art_cst"
+   },
+   "igual": true,
+   "resultado": "ok"
+  },
+  {
+   "usuario": "analista",
+   "herramienta": "muestrear_valores",
+   "args": {
+    "tabla": "prvmst",
+    "columna": "prv_pais"
+   },
+   "igual": true,
+   "resultado": "ok"
+  },
+  {
+   "usuario": "analista",
+   "herramienta": "ejecutar_sql",
+   "args": {
+    "sql": "SELECT vta_art, SUM(vta_und) FROM vtadia GROUP BY 1 ORDER BY 2 DESC LIMIT 5"
+   },
+   "igual": true,
+   "resultado": "ok"
+  },
+  {
+   "usuario": "analista",
+   "herramienta": "ejecutar_sql",
+   "args": {
+    "sql": "SELECT * FROM artmst LIMIT 3"
+   },
+   "igual": true,
+   "resultado": "ok"
+  },
+  {
+   "usuario": "analista",
+   "herramienta": "ejecutar_sql",
+   "args": {
+    "sql": "SELECT art_cd, art_cst FROM artmst LIMIT 3"
+   },
+   "igual": true,
+   "resultado": "ok"
+  },
+  {
+   "usuario": "analista",
+   "herramienta": "ejecutar_sql",
+   "args": {
+    "sql": "SELECT ocp_id, ocp_sts FROM ocpcab"
+   },
+   "igual": true,
+   "resultado": "ok"
+  },
+  {
+   "usuario": "analista",
+   "herramienta": "ejecutar_sql",
+   "args": {
+    "sql": "DELETE FROM exidet"
+   },
+   "igual": true,
+   "resultado": "escritura_bloqueada"
+  },
+  {
+   "usuario": "analista",
+   "herramienta": "ejecutar_sql",
+   "args": {
+    "sql": "SELECT set_config('default_transaction_read_only', 'off', false)"
+   },
+   "igual": true,
+   "resultado": "funcion_prohibida"
+  },
+  {
+   "usuario": "analista",
+   "herramienta": "ejecutar_sql",
+   "args": {
+    "sql": "SELECT content FROM semana10.chunks"
+   },
+   "igual": true,
+   "resultado": "permiso_denegado"
+  },
+  {
+   "usuario": "analista",
+   "herramienta": "ejecutar_sql",
+   "args": {
+    "sql": "SELECT 1",
+    "roles": [
+     "finanzas"
+    ]
+   },
+   "igual": true,
+   "resultado": "argumentos_invalidos"
+  },
+  {
+   "usuario": "analista",
+   "herramienta": "validar_sql",
+   "args": {
+    "sql": "SELECT art_precio FROM artmst"
+   },
+   "igual": true,
+   "resultado": "error_sql"
+  },
+  {
+   "usuario": "almacenista",
+   "herramienta": "describir_esquema",
+   "args": {},
+   "igual": true,
+   "resultado": "ok"
+  },
+  {
+   "usuario": "almacenista",
+   "herramienta": "describir_esquema",
+   "args": {
+    "tablas": [
+     "vtadia",
+     "ocpcab"
+    ]
+   },
+   "igual": true,
+   "resultado": "tabla_no_disponible"
+  },
+  {
+   "usuario": "almacenista",
+   "herramienta": "muestrear_valores",
+   "args": {
+    "tabla": "artmst",
+    "columna": "art_cst"
+   },
+   "igual": true,
+   "resultado": "permiso_denegado"
+  },
+  {
+   "usuario": "almacenista",
+   "herramienta": "muestrear_valores",
+   "args": {
+    "tabla": "prvmst",
+    "columna": "prv_pais"
+   },
+   "igual": true,
+   "resultado": "permiso_denegado"
+  },
+  {
+   "usuario": "almacenista",
+   "herramienta": "ejecutar_sql",
+   "args": {
+    "sql": "SELECT vta_art, SUM(vta_und) FROM vtadia GROUP BY 1 ORDER BY 2 DESC LIMIT 5"
+   },
+   "igual": true,
+   "resultado": "permiso_denegado"
+  },
+  {
+   "usuario": "almacenista",
+   "herramienta": "ejecutar_sql",
+   "args": {
+    "sql": "SELECT * FROM artmst LIMIT 3"
+   },
+   "igual": true,
+   "resultado": "permiso_denegado"
+  },
+  {
+   "usuario": "almacenista",
+   "herramienta": "ejecutar_sql",
+   "args": {
+    "sql": "SELECT art_cd, art_cst FROM artmst LIMIT 3"
+   },
+   "igual": true,
+   "resultado": "permiso_denegado"
+  },
+  {
+   "usuario": "almacenista",
+   "herramienta": "ejecutar_sql",
+   "args": {
+    "sql": "SELECT ocp_id, ocp_sts FROM ocpcab"
+   },
+   "igual": true,
+   "resultado": "permiso_denegado"
+  },
+  {
+   "usuario": "almacenista",
+   "herramienta": "ejecutar_sql",
+   "args": {
+    "sql": "DELETE FROM exidet"
+   },
+   "igual": true,
+   "resultado": "escritura_bloqueada"
+  },
+  {
+   "usuario": "almacenista",
+   "herramienta": "ejecutar_sql",
+   "args": {
+    "sql": "SELECT set_config('default_transaction_read_only', 'off', false)"
+   },
+   "igual": true,
+   "resultado": "funcion_prohibida"
+  },
+  {
+   "usuario": "almacenista",
+   "herramienta": "ejecutar_sql",
+   "args": {
+    "sql": "SELECT content FROM semana10.chunks"
+   },
+   "igual": true,
+   "resultado": "permiso_denegado"
+  },
+  {
+   "usuario": "almacenista",
+   "herramienta": "ejecutar_sql",
+   "args": {
+    "sql": "SELECT 1",
+    "roles": [
+     "finanzas"
+    ]
+   },
+   "igual": true,
+   "resultado": "argumentos_invalidos"
+  },
+  {
+   "usuario": "almacenista",
+   "herramienta": "validar_sql",
+   "args": {
+    "sql": "SELECT art_precio FROM artmst"
+   },
+   "igual": true,
+   "resultado": "error_sql"
+  },
+  {
+   "usuario": "vendedor",
+   "herramienta": "describir_esquema",
+   "args": {},
+   "igual": true,
+   "resultado": "ok"
+  },
+  {
+   "usuario": "vendedor",
+   "herramienta": "describir_esquema",
+   "args": {
+    "tablas": [
+     "vtadia",
+     "ocpcab"
+    ]
+   },
+   "igual": true,
+   "resultado": "tabla_no_disponible"
+  },
+  {
+   "usuario": "vendedor",
+   "herramienta": "muestrear_valores",
+   "args": {
+    "tabla": "artmst",
+    "columna": "art_cst"
+   },
+   "igual": true,
+   "resultado": "permiso_denegado"
+  },
+  {
+   "usuario": "vendedor",
+   "herramienta": "muestrear_valores",
+   "args": {
+    "tabla": "prvmst",
+    "columna": "prv_pais"
+   },
+   "igual": true,
+   "resultado": "permiso_denegado"
+  },
+  {
+   "usuario": "vendedor",
+   "herramienta": "ejecutar_sql",
+   "args": {
+    "sql": "SELECT vta_art, SUM(vta_und) FROM vtadia GROUP BY 1 ORDER BY 2 DESC LIMIT 5"
+   },
+   "igual": true,
+   "resultado": "ok"
+  },
+  {
+   "usuario": "vendedor",
+   "herramienta": "ejecutar_sql",
+   "args": {
+    "sql": "SELECT * FROM artmst LIMIT 3"
+   },
+   "igual": true,
+   "resultado": "permiso_denegado"
+  },
+  {
+   "usuario": "vendedor",
+   "herramienta": "ejecutar_sql",
+   "args": {
+    "sql": "SELECT art_cd, art_cst FROM artmst LIMIT 3"
+   },
+   "igual": true,
+   "resultado": "permiso_denegado"
+  },
+  {
+   "usuario": "vendedor",
+   "herramienta": "ejecutar_sql",
+   "args": {
+    "sql": "SELECT ocp_id, ocp_sts FROM ocpcab"
+   },
+   "igual": true,
+   "resultado": "permiso_denegado"
+  },
+  {
+   "usuario": "vendedor",
+   "herramienta": "ejecutar_sql",
+   "args": {
+    "sql": "DELETE FROM exidet"
+   },
+   "igual": true,
+   "resultado": "escritura_bloqueada"
+  },
+  {
+   "usuario": "vendedor",
+   "herramienta": "ejecutar_sql",
+   "args": {
+    "sql": "SELECT set_config('default_transaction_read_only', 'off', false)"
+   },
+   "igual": true,
+   "resultado": "funcion_prohibida"
+  },
+  {
+   "usuario": "vendedor",
+   "herramienta": "ejecutar_sql",
+   "args": {
+    "sql": "SELECT content FROM semana10.chunks"
+   },
+   "igual": true,
+   "resultado": "permiso_denegado"
+  },
+  {
+   "usuario": "vendedor",
+   "herramienta": "ejecutar_sql",
+   "args": {
+    "sql": "SELECT 1",
+    "roles": [
+     "finanzas"
+    ]
+   },
+   "igual": true,
+   "resultado": "argumentos_invalidos"
+  },
+  {
+   "usuario": "vendedor",
+   "herramienta": "validar_sql",
+   "args": {
+    "sql": "SELECT art_precio FROM artmst"
+   },
+   "igual": true,
+   "resultado": "error_sql"
+  }
+ ]
+}

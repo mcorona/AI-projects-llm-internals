@@ -143,3 +143,41 @@ Files:
 - Runner: [`agente/correr.py`](agente/correr.py). It prints the worst-case cost and stops at a cost cap.
 
 The full evaluation (all 84 tasks, k = 3) is activity 6.
+
+## 4. MCP server with the same tools
+
+[`servidor_mcp/servidor.py`](servidor_mcp/servidor.py) is an MCP server over stdio, built on the official Python SDK, pinned to `mcp==2.3.0`. That version has a new API: `on_list_tools` and `on_call_tool` handlers in the constructor, and types in `mcp_types`.
+- **Same catalog:** it announces `definiciones()` unchanged (names, descriptions and JSON Schema).
+- **Same implementation:** every call runs through `Herramientas.llamar`, so the guard, permissions, limits and structured errors are shared code, not a copy.
+- **Response format:** each response carries the JSON as text, `structured_content`, and `is_error` when the tool failed.
+- **Permissions:** the host that registers the server sets the user with `MCP_USUARIO` (default `analista`). The model never does: a `usuario` or `roles` argument gets `argumentos_invalidos`.
+
+[`servidor_mcp/cliente.py`](servidor_mcp/cliente.py) (`HerramientasMCP`) is an MCP client with the same interface as the native tools (`llamar`, `definiciones`). The agent takes its catalog from whichever source it gets, so the loop does not change. `agente/correr.py --via mcp` runs the agent through the server. The SDK is async (anyio) and the loop is sync: the client runs its own event loop in a thread, and a single task opens the session, serves requests from a queue and closes it.
+
+**Equivalence on the gold set** ([`resultados/mcp_equivalencia.md`](resultados/mcp_equivalencia.md); deterministic, no model calls):
+
+| Check | Result |
+|---|---|
+| A. `tools/list` equals `definiciones()` | yes |
+| B. Every tool call from the pilot traces, replayed through both paths in its task's language | 107/107 identical |
+| C. The SQL of every gold key from pilot 2, run through both paths | 12/12 identical, 12/12 exact against the gold set |
+| D. Permissions and errors: 3 users (`analista`, `almacenista`, `vendedor`) × 13 cases (schema by role, restricted column, `SELECT *`, other schema, writes, `set_config`, `roles` argument, database error) | 39/39 identical |
+
+**The agent through MCP** (same 12 pilot tasks, Haiku 5.5 `low`):
+
+| Tools | Success | Key consistency | Tool calls | p50 per task | Cost |
+|---|---|---|---|---|---|
+| Native (`piloto2`) | 12/12 | 1.000 | 65 | 6.0 s | $0.0334 |
+| MCP (`piloto_mcp`) | **12/12** | **1.000** | 60 | 7.2 s | $0.0318 |
+
+The MCP path adds about one second per task: process spawn and JSON-RPC over stdio. The tool results are identical (check B), so any difference between the two runs comes from sampling, not from the path.
+
+**MCP Inspector** (CLI mode, `npx @modelcontextprotocol/inspector --cli … uv run python semana-13/servidor_mcp/servidor.py`):
+- `tools/list` returns the five tools.
+- `buscar_regla_negocio consulta=cobertura` returns `R-COB`.
+- `ejecutar_sql` with a `GROUP BY` returns 7 rows by country.
+- `ejecutar_sql "DELETE FROM exidet"` returns `escritura_bloqueada`, and the Inspector reports `tool_is_error` (`isError: true`).
+
+**Claude Code:** the server is registered in [`/.mcp.json`](../.mcp.json) as `legado-semana13` (stdio, `uv run python semana-13/servidor_mcp/servidor.py`). It takes `PG_DSN` from the environment, so there are no credentials in Git, and it was approved for the project. The local approval file (`.claude/settings.local.json`) is git-ignored.
+
+**Tests:** [`tests/test_mcp.py`](tests/test_mcp.py) spawns the server over stdio and checks four things: the catalog is identical, 11 cases give the same response for 2 users, permissions are set by the host, and the protocol's `is_error` is set. Against the database, the same execution in 4 cases. The week has 95 tests.
