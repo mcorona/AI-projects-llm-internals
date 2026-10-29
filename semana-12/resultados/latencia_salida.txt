@@ -1,0 +1,123 @@
+documentos: 24 · pasajes de referencia únicos: 50
+estrategia              chunks  prom_chars    íntegros  partidos
+fijo_400_solape_80          57         348     50/50           0
+recursivo_300               84         203     48/50           2
+    partido: recepcion_almacen.md · Diferencia mayor a 2%: se hace un **rechazo parcial** de la diferencia
+    partido: skus_criticos.md · SKU crítico con menos de **7 días** de cobertura.
+actual_por_seccion          69         242     50/50           0
+1/100 rec-01::es: propio 4.8s, propio_sin_rerank 1.2s, bedrock_ctl 3.7s, vertex_adm_sem 3.7s, bedrock_bda_rag 1.8s, vertex_ctl_sem 2.7s
+2/100 rec-02::es: bedrock_bda_rag 1.5s, vertex_adm_sem 2.0s, propio 3.8s, propio_sin_rerank 1.8s, vertex_ctl_sem 2.3s, bedrock_ctl 2.1s
+3/100 rec-03::es: propio 3.9s, propio_sin_rerank 1.4s, bedrock_ctl 1.7s, vertex_adm_sem 2.3s, bedrock_bda_rag 1.2s, vertex_ctl_sem 3.6s
+4/100 rec-04::es: vertex_ctl_sem 4.4s, propio 5.1s, propio_sin_rerank 1.8s, bedrock_bda_rag 1.3s, bedrock_ctl 3.5s, vertex_adm_sem 3.6s
+5/100 rec-05::es: propio 4.2s, propio_sin_rerank 1.8s, bedrock_bda_rag 1.3s, vertex_ctl_sem 3.6s, bedrock_ctl 2.4s, vertex_adm_sem 2.6s
+6/100 rec-06::es: vertex_adm_sem 1.9s, vertex_ctl_sem 2.5s, propio 3.2s, propio_sin_rerank 1.5s, bedrock_bda_rag 1.4s, bedrock_ctl 2.6s
+7/100 rec-07::es: bedrock_bda_rag 1.6s, vertex_ctl_sem 3.0s, propio 5.3s, propio_sin_rerank 1.7s, bedrock_ctl 2.9s, vertex_adm_sem 3.2s
+8/100 rec-08::es: bedrock_ctl 3.4s, bedrock_bda_rag 1.4s, vertex_adm_sem 2.8s, propio 3.6s, propio_sin_rerank 1.6s, vertex_ctl_sem 2.3s
+9/100 rec-09::es: bedrock_bda_rag 1.6s, vertex_ctl_sem 2.4s, propio 4.8s, propio_sin_rerank 1.7s, bedrock_ctl 3.8s, vertex_adm_sem 1.9s
+10/100 rec-10::es: vertex_adm_sem 2.6s, bedrock_ctl 3.0s, bedrock_bda_rag 1.9s, propio 5.8s, propio_sin_rerank 2.7s, vertex_ctl_sem 2.4s
+11/100 rec-11::es: vertex_adm_sem 2.7s, propio 4.2s, propio_sin_rerank 1.4s, vertex_ctl_sem 1.7s, bedrock_bda_rag 1.4s, bedrock_ctl 2.8s
+12/100 rec-12::es: vertex_ctl_sem 2.1s, vertex_adm_sem 2.1s, bedrock_bda_rag 1.6s, bedrock_ctl 2.5s, propio 4.3s, propio_sin_rerank 0.9s
+13/100 rec-13::es: propio 6.1s, propio_sin_rerank 1.0s, bedrock_ctl 1.8s, bedrock_bda_rag 1.5s, vertex_adm_sem 1.8s, vertex_ctl_sem 3.9s
+14/100 rec-14::es: bedrock_ctl 2.1s, propio 5.6s, propio_sin_rerank 2.5s, bedrock_bda_rag 1.3s, vertex_adm_sem 2.3s, vertex_ctl_sem 3.6s
+15/100 rec-15::es: vertex_adm_sem 2.0s, vertex_ctl_sem 2.1s, bedrock_bda_rag 1.5s, bedrock_ctl 1.8s, propio 1.7s, propio_sin_rerank 1.8s
+16/100 rec-16::es: propio 4.0s, propio_sin_rerank 1.3s, bedrock_ctl 3.4s, vertex_ctl_sem 2.3s, vertex_adm_sem 2.6s, bedrock_bda_rag 2.3s
+17/100 rec-17::es: vertex_adm_sem 3.8s, vertex_ctl_sem 3.1s, bedrock_ctl 3.6s, propio 5.4s, propio_sin_rerank 2.7s, bedrock_bda_rag 1.5s
+18/100 rec-18::es: vertex_ctl_sem 2.1s, propio 2.9s, propio_sin_rerank 1.1s, bedrock_ctl 2.0s, vertex_adm_sem 2.1s, bedrock_bda_rag 2.1s
+19/100 rec-19::es: bedrock_bda_rag 1.4s, vertex_adm_sem 1.9s, bedrock_ctl 2.3s, vertex_ctl_sem 1.6s, propio 2.6s, propio_sin_rerank 1.5s
+20/100 rec-20::es: bedrock_bda_rag 1.4s, bedrock_ctl 2.9s, vertex_ctl_sem 2.2s, propio 3.9s, propio_sin_rerank 2.3s, vertex_adm_sem 2.6s
+21/100 rec-21::es: bedrock_ctl 4.0s, bedrock_bda_rag 1.3s, vertex_adm_sem 2.4s, vertex_ctl_sem 2.1s, propio 4.2s, propio_sin_rerank 2.0s
+22/100 rec-22::es: vertex_ctl_sem 4.4s, bedrock_bda_rag 4.7s, propio 5.3s, propio_sin_rerank 3.4s, bedrock_ctl 4.5s, vertex_adm_sem 5.1s
+23/100 rec-23::es: vertex_ctl_sem 1.8s, vertex_adm_sem 2.1s, bedrock_ctl 4.9s, propio 3.8s, propio_sin_rerank 3.0s, bedrock_bda_rag 1.3s
+24/100 rec-24::es: bedrock_ctl 1.8s, propio 3.9s, propio_sin_rerank 1.6s, vertex_adm_sem 1.6s, bedrock_bda_rag 1.4s, vertex_ctl_sem 1.9s
+25/100 rec-25::es: bedrock_bda_rag 1.7s, propio 3.7s, propio_sin_rerank 1.9s, bedrock_ctl 1.8s, vertex_ctl_sem 2.0s, vertex_adm_sem 1.9s
+26/100 rec-26::es: propio 3.7s, propio_sin_rerank 1.1s, vertex_ctl_sem 3.0s, bedrock_ctl 2.2s, vertex_adm_sem 3.4s, bedrock_bda_rag 1.3s
+27/100 rec-27::es: bedrock_bda_rag 1.4s, vertex_adm_sem 3.3s, propio 4.7s, propio_sin_rerank 2.7s, bedrock_ctl 3.6s, vertex_ctl_sem 2.2s
+28/100 rec-28::es: bedrock_ctl 2.4s, vertex_ctl_sem 2.0s, propio 3.7s, propio_sin_rerank 2.3s, bedrock_bda_rag 3.9s, vertex_adm_sem 2.2s
+29/100 rec-29::es: vertex_ctl_sem 5.5s, bedrock_bda_rag 1.6s, vertex_adm_sem 2.8s, propio 3.3s, propio_sin_rerank 1.8s, bedrock_ctl 2.6s
+30/100 rec-30::es: vertex_ctl_sem 1.9s, bedrock_bda_rag 1.2s, propio 3.6s, propio_sin_rerank 1.2s, vertex_adm_sem 1.7s, bedrock_ctl 2.3s
+31/100 rec-31::es: bedrock_bda_rag 1.3s, vertex_ctl_sem 2.4s, vertex_adm_sem 3.1s, propio 2.9s, propio_sin_rerank 1.8s, bedrock_ctl 2.9s
+32/100 rec-32::es: vertex_adm_sem 1.9s, bedrock_ctl 1.8s, vertex_ctl_sem 1.8s, bedrock_bda_rag 1.2s, propio 2.9s, propio_sin_rerank 0.9s
+33/100 rec-33::es: vertex_adm_sem 1.8s, vertex_ctl_sem 2.4s, bedrock_bda_rag 1.3s, bedrock_ctl 1.7s, propio 2.9s, propio_sin_rerank 1.0s
+34/100 rec-34::es: propio 5.4s, propio_sin_rerank 2.3s, vertex_adm_sem 2.8s, bedrock_ctl 3.6s, bedrock_bda_rag 1.2s, vertex_ctl_sem 2.7s
+35/100 rec-35::es: bedrock_bda_rag 1.2s, propio 2.8s, propio_sin_rerank 0.8s, vertex_adm_sem 1.7s, vertex_ctl_sem 1.5s, bedrock_ctl 1.8s
+36/100 rec-36::es: propio 5.4s, propio_sin_rerank 1.0s, bedrock_ctl 2.0s, vertex_ctl_sem 2.2s, vertex_adm_sem 1.5s, bedrock_bda_rag 1.4s
+37/100 rec-37::es: propio 3.2s, propio_sin_rerank 0.9s, vertex_adm_sem 1.6s, vertex_ctl_sem 1.8s, bedrock_bda_rag 1.3s, bedrock_ctl 1.9s
+38/100 rec-38::es: bedrock_ctl 2.3s, vertex_ctl_sem 1.4s, bedrock_bda_rag 1.7s, vertex_adm_sem 2.4s, propio 3.4s, propio_sin_rerank 1.3s
+39/100 rec-39::es: vertex_ctl_sem 1.6s, propio 4.3s, propio_sin_rerank 0.9s, vertex_adm_sem 3.1s, bedrock_bda_rag 1.2s, bedrock_ctl 1.8s
+40/100 rec-40::es: propio 2.5s, propio_sin_rerank 1.0s, bedrock_bda_rag 1.5s, vertex_ctl_sem 1.8s, vertex_adm_sem 1.8s, bedrock_ctl 2.0s
+41/100 nr-01::es: vertex_ctl_sem 2.6s, bedrock_ctl 2.4s, vertex_adm_sem 2.6s, bedrock_bda_rag 2.3s, propio 4.4s, propio_sin_rerank 1.7s
+42/100 nr-02::es: bedrock_bda_rag 1.6s, vertex_adm_sem 2.8s, bedrock_ctl 3.2s, propio 4.5s, propio_sin_rerank 3.2s, vertex_ctl_sem 3.0s
+43/100 nr-03::es: propio 6.5s, propio_sin_rerank 2.5s, vertex_ctl_sem 2.6s, bedrock_ctl 2.3s, bedrock_bda_rag 2.0s, vertex_adm_sem 1.9s
+44/100 nr-04::es: vertex_ctl_sem 3.0s, bedrock_bda_rag 2.2s, propio 5.0s, propio_sin_rerank 1.5s, bedrock_ctl 4.1s, vertex_adm_sem 5.2s
+45/100 nr-05::es: bedrock_bda_rag 1.6s, bedrock_ctl 2.9s, vertex_ctl_sem 2.0s, vertex_adm_sem 2.2s, propio 5.2s, propio_sin_rerank 1.8s
+46/100 nr-06::es: bedrock_bda_rag 1.7s, propio 3.4s, propio_sin_rerank 2.3s, vertex_ctl_sem 2.2s, bedrock_ctl 2.8s, vertex_adm_sem 2.7s
+47/100 nr-07::es: propio 3.6s, propio_sin_rerank 1.9s, vertex_adm_sem 2.8s, vertex_ctl_sem 3.6s, bedrock_ctl 2.2s, bedrock_bda_rag 2.0s
+48/100 nr-08::es: bedrock_ctl 2.7s, propio 3.1s, propio_sin_rerank 2.0s, bedrock_bda_rag 1.7s, vertex_ctl_sem 3.1s, vertex_adm_sem 2.5s
+49/100 nr-09::es: vertex_adm_sem 2.2s, propio 4.7s, propio_sin_rerank 3.1s, bedrock_bda_rag 1.7s, vertex_ctl_sem 2.2s, bedrock_ctl 2.5s
+50/100 nr-10::es: vertex_adm_sem 4.2s, bedrock_bda_rag 1.8s, bedrock_ctl 4.5s, vertex_ctl_sem 3.7s, propio 8.1s, propio_sin_rerank 4.4s
+51/100 rec-01::en: bedrock_ctl 2.8s, vertex_ctl_sem 2.2s, vertex_adm_sem 2.5s, bedrock_bda_rag 1.4s, propio 4.3s, propio_sin_rerank 2.4s
+52/100 rec-02::en: bedrock_ctl 2.5s, propio 3.8s, propio_sin_rerank 1.6s, vertex_ctl_sem 2.2s, vertex_adm_sem 2.6s, bedrock_bda_rag 1.4s
+53/100 rec-03::en: bedrock_ctl 2.1s, vertex_adm_sem 2.6s, propio 3.0s, propio_sin_rerank 1.4s, bedrock_bda_rag 1.2s, vertex_ctl_sem 2.8s
+54/100 rec-04::en: propio 6.7s, propio_sin_rerank 3.5s, vertex_adm_sem 2.5s, bedrock_bda_rag 1.5s, vertex_ctl_sem 3.5s, bedrock_ctl 3.1s
+55/100 rec-05::en: bedrock_bda_rag 1.6s, vertex_adm_sem 3.0s, propio 3.3s, propio_sin_rerank 1.8s, bedrock_ctl 2.4s, vertex_ctl_sem 2.6s
+56/100 rec-06::en: bedrock_bda_rag 1.2s, propio 4.7s, propio_sin_rerank 1.4s, vertex_adm_sem 2.1s, bedrock_ctl 2.1s, vertex_ctl_sem 2.3s
+57/100 rec-07::en: vertex_ctl_sem 3.5s, bedrock_bda_rag 1.4s, vertex_adm_sem 2.7s, propio 5.6s, propio_sin_rerank 2.3s, bedrock_ctl 2.6s
+58/100 rec-08::en: propio 4.3s, propio_sin_rerank 1.5s, vertex_ctl_sem 2.6s, vertex_adm_sem 2.6s, bedrock_ctl 3.0s, bedrock_bda_rag 1.5s
+59/100 rec-09::en: vertex_ctl_sem 4.2s, propio 3.5s, propio_sin_rerank 1.4s, vertex_adm_sem 1.9s, bedrock_ctl 2.4s, bedrock_bda_rag 4.0s
+60/100 rec-10::en: vertex_ctl_sem 2.7s, bedrock_ctl 3.5s, propio 4.9s, propio_sin_rerank 1.8s, bedrock_bda_rag 1.9s, vertex_adm_sem 3.2s
+61/100 rec-11::en: propio 3.4s, propio_sin_rerank 1.2s, bedrock_bda_rag 1.2s, vertex_adm_sem 2.1s, bedrock_ctl 2.2s, vertex_ctl_sem 2.0s
+62/100 rec-12::en: vertex_adm_sem 2.2s, bedrock_bda_rag 1.5s, vertex_ctl_sem 1.9s, bedrock_ctl 2.0s, propio 3.4s, propio_sin_rerank 1.4s
+63/100 rec-13::en: bedrock_ctl 2.6s, propio 3.3s, propio_sin_rerank 1.5s, bedrock_bda_rag 1.4s, vertex_ctl_sem 2.2s, vertex_adm_sem 1.9s
+64/100 rec-14::en: vertex_ctl_sem 1.9s, vertex_adm_sem 2.1s, bedrock_ctl 2.6s, bedrock_bda_rag 1.3s, propio 3.8s, propio_sin_rerank 1.4s
+65/100 rec-15::en: propio 4.0s, propio_sin_rerank 1.3s, vertex_adm_sem 2.4s, bedrock_ctl 2.7s, vertex_ctl_sem 2.4s, bedrock_bda_rag 1.5s
+66/100 rec-16::en: bedrock_bda_rag 2.2s, propio 4.3s, propio_sin_rerank 2.7s, vertex_ctl_sem 2.7s, vertex_adm_sem 3.0s, bedrock_ctl 3.3s
+67/100 rec-17::en: propio 5.1s, propio_sin_rerank 2.4s, bedrock_bda_rag 1.6s, vertex_ctl_sem 3.1s, bedrock_ctl 5.3s, vertex_adm_sem 3.0s
+68/100 rec-18::en: vertex_adm_sem 3.3s, bedrock_bda_rag 2.0s, bedrock_ctl 2.7s, vertex_ctl_sem 2.2s, propio 4.0s, propio_sin_rerank 2.7s
+69/100 rec-19::en: propio 2.9s, propio_sin_rerank 2.2s, vertex_adm_sem 2.1s, bedrock_ctl 2.1s, bedrock_bda_rag 1.3s, vertex_ctl_sem 2.1s
+70/100 rec-20::en: bedrock_bda_rag 2.1s, propio 5.1s, propio_sin_rerank 4.5s, vertex_ctl_sem 3.9s, vertex_adm_sem 2.9s, bedrock_ctl 2.5s
+71/100 rec-21::en: propio 4.4s, propio_sin_rerank 1.7s, bedrock_bda_rag 1.3s, bedrock_ctl 3.3s, vertex_ctl_sem 2.2s, vertex_adm_sem 2.4s
+72/100 rec-22::en: propio 5.9s, propio_sin_rerank 3.6s, vertex_ctl_sem 3.8s, bedrock_ctl 4.1s, bedrock_bda_rag 1.7s, vertex_adm_sem 4.2s
+73/100 rec-23::en: propio 3.5s, propio_sin_rerank 1.3s, bedrock_bda_rag 1.2s, bedrock_ctl 2.3s, vertex_adm_sem 2.4s, vertex_ctl_sem 1.8s
+74/100 rec-24::en: bedrock_bda_rag 1.3s, vertex_ctl_sem 2.1s, propio 4.2s, propio_sin_rerank 1.5s, vertex_adm_sem 2.7s, bedrock_ctl 3.0s
+75/100 rec-25::en: bedrock_ctl 2.3s, vertex_adm_sem 2.9s, vertex_ctl_sem 2.0s, bedrock_bda_rag 1.6s, propio 4.6s, propio_sin_rerank 3.2s
+76/100 rec-26::en: vertex_ctl_sem 3.3s, bedrock_ctl 2.7s, propio 4.8s, propio_sin_rerank 1.9s, vertex_adm_sem 3.6s, bedrock_bda_rag 1.6s
+77/100 rec-27::en: vertex_ctl_sem 3.0s, vertex_adm_sem 2.3s, bedrock_bda_rag 1.4s, propio 3.9s, propio_sin_rerank 1.9s, bedrock_ctl 2.4s
+78/100 rec-28::en: bedrock_ctl 2.3s, bedrock_bda_rag 2.2s, vertex_ctl_sem 2.6s, vertex_adm_sem 2.0s, propio 3.7s, propio_sin_rerank 1.4s
+79/100 rec-29::en: propio 4.2s, propio_sin_rerank 2.4s, vertex_ctl_sem 2.9s, bedrock_bda_rag 1.4s, vertex_adm_sem 2.9s, bedrock_ctl 2.6s
+documentos: 24 · pasajes de referencia únicos: 50
+estrategia              chunks  prom_chars    íntegros  partidos
+fijo_400_solape_80          57         348     50/50           0
+recursivo_300               84         203     48/50           2
+    partido: recepcion_almacen.md · Diferencia mayor a 2%: se hace un **rechazo parcial** de la diferencia
+    partido: skus_criticos.md · SKU crítico con menos de **7 días** de cobertura.
+actual_por_seccion          69         242     50/50           0
+80/100 rec-30::en: propio 3.5s, propio_sin_rerank 1.5s, bedrock_ctl 3.7s, vertex_adm_sem 4.2s, bedrock_bda_rag 1.7s, vertex_ctl_sem 2.0s
+81/100 rec-31::en: bedrock_bda_rag 1.5s, vertex_adm_sem 2.3s, propio 3.8s, propio_sin_rerank 1.7s, vertex_ctl_sem 2.6s, bedrock_ctl 3.8s
+82/100 rec-32::en: propio 3.7s, propio_sin_rerank 1.4s, bedrock_ctl 2.5s, vertex_adm_sem 2.4s, bedrock_bda_rag 1.3s, vertex_ctl_sem 2.3s
+83/100 rec-33::en: vertex_ctl_sem 2.0s, propio 3.0s, propio_sin_rerank 1.2s, bedrock_bda_rag 1.3s, bedrock_ctl 1.9s, vertex_adm_sem 2.5s
+84/100 rec-34::en: propio 3.9s, propio_sin_rerank 1.9s, bedrock_bda_rag 1.5s, vertex_ctl_sem 3.1s, bedrock_ctl 2.7s, vertex_adm_sem 2.5s
+85/100 rec-35::en: vertex_adm_sem 2.2s, vertex_ctl_sem 2.0s, propio 3.5s, propio_sin_rerank 1.0s, bedrock_bda_rag 1.3s, bedrock_ctl 3.1s
+86/100 rec-36::en: bedrock_bda_rag 1.3s, vertex_ctl_sem 2.7s, propio 3.5s, propio_sin_rerank 1.7s, bedrock_ctl 2.2s, vertex_adm_sem 2.2s
+87/100 rec-37::en: bedrock_ctl 1.9s, bedrock_bda_rag 2.1s, vertex_adm_sem 2.4s, propio 3.3s, propio_sin_rerank 1.3s, vertex_ctl_sem 3.5s
+88/100 rec-38::en: bedrock_bda_rag 1.8s, vertex_ctl_sem 1.9s, propio 3.3s, propio_sin_rerank 1.2s, bedrock_ctl 2.3s, vertex_adm_sem 2.0s
+89/100 rec-39::en: vertex_adm_sem 2.3s, bedrock_ctl 2.2s, bedrock_bda_rag 1.3s, propio 3.6s, propio_sin_rerank 1.3s, vertex_ctl_sem 1.8s
+90/100 rec-40::en: vertex_adm_sem 2.1s, propio 3.0s, propio_sin_rerank 1.0s, vertex_ctl_sem 2.2s, bedrock_bda_rag 2.1s, bedrock_ctl 1.9s
+91/100 nr-01::en: vertex_ctl_sem 3.2s, vertex_adm_sem 2.5s, bedrock_bda_rag 1.9s, bedrock_ctl 3.0s, propio 4.9s, propio_sin_rerank 2.2s
+92/100 nr-02::en: propio 4.5s, propio_sin_rerank 2.2s, bedrock_ctl 2.9s, bedrock_bda_rag 1.7s, vertex_adm_sem 3.1s, vertex_ctl_sem 2.6s
+93/100 nr-03::en: bedrock_ctl 3.1s, propio 3.6s, propio_sin_rerank 1.7s, bedrock_bda_rag 1.6s, vertex_adm_sem 2.6s, vertex_ctl_sem 2.8s
+94/100 nr-04::en: vertex_adm_sem 2.8s, vertex_ctl_sem 3.0s, bedrock_bda_rag 1.7s, bedrock_ctl 3.3s, propio 4.1s, propio_sin_rerank 2.6s
+95/100 nr-05::en: propio 6.4s, propio_sin_rerank 2.2s, bedrock_ctl 2.5s, vertex_ctl_sem 2.7s, vertex_adm_sem 2.8s, bedrock_bda_rag 2.1s
+96/100 nr-06::en: vertex_adm_sem 2.8s, vertex_ctl_sem 3.0s, bedrock_ctl 2.6s, propio 3.9s, propio_sin_rerank 1.9s, bedrock_bda_rag 1.4s
+97/100 nr-07::en: vertex_ctl_sem 4.3s, propio 3.9s, propio_sin_rerank 1.8s, bedrock_ctl 3.1s, vertex_adm_sem 2.6s, bedrock_bda_rag 1.9s
+98/100 nr-08::en: bedrock_bda_rag 1.3s, vertex_adm_sem 2.7s, bedrock_ctl 2.9s, vertex_ctl_sem 2.5s, propio 3.7s, propio_sin_rerank 2.5s
+99/100 nr-09::en: bedrock_bda_rag 1.7s, bedrock_ctl 3.2s, vertex_ctl_sem 3.5s, propio 4.4s, propio_sin_rerank 1.9s, vertex_adm_sem 2.7s
+100/100 nr-10::en: bedrock_ctl 4.2s, bedrock_bda_rag 1.5s, vertex_adm_sem 3.5s, vertex_ctl_sem 3.7s, propio 6.1s, propio_sin_rerank 3.3s
+
+| Opción | Recuperación p50 | Recuperación p95 | Respuesta completa p50 | Respuesta completa p95 |
+|---|---|---|---|---|
+| propio | 2.27 | 3.07 | 3.89 | 6.07 |
+| propio_sin_rerank | 0.06 | 0.06 | 1.74 | 3.33 |
+| bedrock_ctl | 0.92 | 1.06 | 2.58 | 4.09 |
+| vertex_adm_sem | 0.88 | 1.34 | 2.48 | 3.84 |
+| bedrock_bda_rag | - | - | 1.5 | 2.21 |
+| vertex_ctl_sem | 0.76 | 1.06 | 2.4 | 3.94 |
