@@ -257,7 +257,8 @@ Cloud runs cost money and need cloud credentials, so they **do not run on every 
 - **No cloud keys:**
   - AWS through OIDC, to the role `semana12-ci` ([`infra/aws_ci_oidc.sh`](infra/aws_ci_oidc.sh)).
   - Google Cloud through Workload Identity Federation, to the service account `semana12-ci` ([`infra/gcp_ci_wif.sh`](infra/gcp_ci_wif.sh)).
-  - Both trust only the subject `repo:mcorona/AI-projects-llm-internals:environment:nube-semana12`.
+  - Both trust only the OIDC subject of the `nube-semana12` environment of this repo. The repo uses GitHub's immutable subject format, so the subject is `repo:mcorona@3619169/AI-projects-llm-internals@1426424349:environment:nube-semana12` (owner and repo numeric ids). The scripts read the prefix from the GitHub API (`actions/oidc/customization/sub`) instead of hard-coding it; the first dispatch failed with `AssumeRoleWithWebIdentity` denied because the trust policy used the name-only format.
+  - Each run authenticates only to the cloud it uses (AWS for `bedrock`, Google Cloud for `vertex`; both when the leakage tests are enabled).
   - The CI identities can only query: Retrieve, RetrieveAndGenerate and model invocation on AWS, Discovery Engine viewer on Google Cloud. They cannot create or delete resources.
 - **Secrets limited to that workflow:** the GitHub environment `nube-semana12` ([`infra/github_entorno.sh`](infra/github_entorno.sh)) deploys from `main` only. It holds the federation variables and the Anthropic and OpenAI keys as **environment secrets**, which only a job declaring that environment can read.
 - **Embeddings:** answer relevancy uses `text-embedding-3-small` in Actions, as in week 11 CI.

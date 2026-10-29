@@ -34,3 +34,9 @@ ROL_CI=${PREFIJO}-ci
 GCP_SA_CI=${PREFIJO}-ci
 GCP_SA_CI_EMAIL=${GCP_SA_CI}@${GCP_PROYECTO}.iam.gserviceaccount.com
 GCP_POOL=${PREFIJO}-github
+# Sujeto (sub) del token OIDC que GitHub emite para el entorno. Si el repo usa sujeto inmutable (use_immutable_subject),
+# el prefijo lleva los ids numéricos del dueño y del repo (repo:dueño@id/repo@id); se lee de la API para no fijarlo a mano.
+gh_sujeto() {
+  local p; p=$(gh api repos/$GH_REPO/actions/oidc/customization/sub --jq 'if .use_immutable_subject then .sub_claim_prefix else "" end')
+  echo "${p:-repo:$GH_REPO}:environment:$GH_ENTORNO"
+}

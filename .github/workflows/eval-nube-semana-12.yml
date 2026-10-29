@@ -64,17 +64,20 @@ jobs:
           [[ "$IN_LIMITE" =~ ^[0-9]+$ ]] || { echo "limite debe ser un número"; exit 1; }
           [[ "$IN_CONFIG" =~ ^[a-z0-9:-]+$ ]] || { echo "config inválida"; exit 1; }
       - name: AWS por OIDC (rol semana12-ci)
+        if: inputs.backend == 'bedrock' || inputs.seguridad
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ vars.AWS_ROLE_ARN }}
           aws-region: us-east-1
           role-session-name: eval-nube-semana-12
       - name: Google Cloud por Workload Identity Federation (semana12-ci)
+        if: inputs.backend == 'vertex' || inputs.seguridad
         uses: google-github-actions/auth@v2
         with:
           workload_identity_provider: ${{ vars.GCP_WIF_PROVIDER }}
           service_account: ${{ vars.GCP_SA }}
       - uses: google-github-actions/setup-gcloud@v2
+        if: inputs.backend == 'vertex' || inputs.seguridad
       - name: Suites de recuperación y generación
         run: |
           args=(--backend "$IN_BACKEND" --config "$IN_CONFIG" --modo "$IN_MODO")

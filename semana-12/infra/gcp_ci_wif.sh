@@ -4,7 +4,7 @@
 # viewer: buscar y rankear, sin crear ni borrar) que solo puede usar el sujeto repo:<repo>:environment:nube-semana12.
 set -euo pipefail
 cd "$(dirname "$0")"; source config.sh
-P=$GCP_PROYECTO; NUM=$(gcloud projects describe $P --format='value(projectNumber)')
+SUJETO=$(gh_sujeto); P=$GCP_PROYECTO; NUM=$(gcloud projects describe $P --format='value(projectNumber)')
 gcloud services enable iamcredentials.googleapis.com sts.googleapis.com --project=$P
 gcloud iam service-accounts describe $GCP_SA_CI_EMAIL --project=$P >/dev/null 2>&1 || \
   gcloud iam service-accounts create $GCP_SA_CI --project=$P --display-name="Semana 12: CI manual (solo consulta)"
@@ -18,7 +18,12 @@ gcloud iam workload-identity-pools providers describe github --workload-identity
     --issuer-uri=https://token.actions.githubusercontent.com \
     --attribute-mapping="google.subject=assertion.sub,attribute.repository=assertion.repository" \
     --attribute-condition="assertion.repository == '$GH_REPO'"
+BASE=principal://iam.googleapis.com/projects/$NUM/locations/global/workloadIdentityPools/$GCP_POOL/subject
 gcloud iam service-accounts add-iam-policy-binding $GCP_SA_CI_EMAIL --project=$P --role=roles/iam.workloadIdentityUser \
-  --member="principal://iam.googleapis.com/projects/$NUM/locations/global/workloadIdentityPools/$GCP_POOL/subject/repo:$GH_REPO:environment:$GH_ENTORNO" >/dev/null
+  --member="$BASE/$SUJETO" >/dev/null
+# Quita el enlace con el formato de sujeto por nombre si quedó de una corrida anterior y ya no aplica
+[ "$SUJETO" != "repo:$GH_REPO:environment:$GH_ENTORNO" ] && gcloud iam service-accounts remove-iam-policy-binding $GCP_SA_CI_EMAIL \
+  --project=$P --role=roles/iam.workloadIdentityUser --member="$BASE/repo:$GH_REPO:environment:$GH_ENTORNO" >/dev/null 2>&1 || true
+echo "sujeto aceptado: $SUJETO"
 echo "proveedor: projects/$NUM/locations/global/workloadIdentityPools/$GCP_POOL/providers/github"
 echo "cuenta de servicio: $GCP_SA_CI_EMAIL (llaves de usuario: $(gcloud iam service-accounts keys list --iam-account=$GCP_SA_CI_EMAIL --managed-by=user --format='value(name)' | wc -l | tr -d ' '))"
