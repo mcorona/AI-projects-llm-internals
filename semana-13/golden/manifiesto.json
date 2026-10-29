@@ -1,0 +1,28 @@
+{
+ "descripcion": "Golden set de tareas del agente, semana 13. Congelado: cualquier cambio exige regenerar y revisar en PR.",
+ "tareas_por_idioma": 42,
+ "por_tipo": {
+  "simple": 10,
+  "regla": 12,
+  "compuesta": 8,
+  "valores": 4,
+  "ambigua": 4,
+  "sin_respuesta": 4
+ },
+ "claves_de_salida": 44,
+ "datos": {
+  "fecha_corte": "2026-09-26",
+  "products": 200,
+  "stock": 600,
+  "sales_daily": 36000,
+  "purchase_orders": 1,
+  "suppliers": 12
+ },
+ "resultados_vacios_o_cero": [],
+ "sha256": {
+  "tareas_es.jsonl": "9ffdc7dde9f621a206e148a0deb3537e8f2ec60aadf92dc6da041e043e9de1a7",
+  "tareas_en.jsonl": "1d88d0e19bba55396a22ed888a2480693eac00c596b9dd157f0ad9f328a809ae",
+  "reglas_negocio.json": "4194bd7424399b1ea0af48981517c0db7e0c5e73044649725260ef70bfaa41ea",
+  "construir_tareas.py": "500df46bf70a74e17456b2256f70ed536c1cdc41f63574b25f08dd90f9e19c25"
+ }
+}
