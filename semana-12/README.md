@@ -145,3 +145,27 @@ The `infra-semana-12` CI check rebuilds the package on every PR that touches `se
 - 0 failures out of 150.
 - Per query: $0.00049 to retrieve (p50 2.3 s) and $0.00021 to generate (p50 1.7 s).
 - Cost of the activity: ≈ $0.25.
+
+## 4. Bedrock Knowledge Bases
+
+Four knowledge bases on S3 Vectors with Cohere Embed Multilingual v3, created and loaded by [`infra/aws_kb_crear.sh`](infra/aws_kb_crear.sh) and measured with the common evaluator. Results: [`resultados/bedrock.md`](resultados/bedrock.md).
+
+| Option (ES) | recall@5 | MRR | doc_recall@5 | Correctness | faithfulness |
+|---|---|---|---|---|---|
+| Own pipeline (baseline) | 1.000 | 0.949 | 1.000 | 1.000 | 0.849 |
+| `adm-pred`: originals, default chunking and parser | 0.823 | 0.755 | 0.831 | 0.815 | 0.815 |
+| `adm-fijo`: fixed 100 tokens / 20% | 0.815 | 0.728 | 0.846 | 0.831 | 0.888 |
+| `adm-fijo-bda`: BDA multimodal parser | 0.739 | 0.659 | 0.985 | 0.708 | 0.761 |
+| `ctl-chunks`: own chunks, no re-chunking | 1.000 | 0.863 | 1.000 | 0.985 | 0.881 |
+| `adm-fijo-bda` + RetrieveAndGenerate (Haiku 4.5) | 0.739 | 0.659 | 0.985 | **0.969** | 0.739 |
+| `ctl-chunks` + RetrieveAndGenerate (Haiku 4.5) | 1.000 | 0.863 | 1.000 | 0.985 | **0.947** |
+
+- **Ingestion:**
+  - With the own chunks, Bedrock matches the own pipeline on coverage. The remaining gap is reranking.
+  - The default parser loses every scan and image.
+  - BDA multimodal returns PDFs and images as images: only RetrieveAndGenerate, which passes them to Claude, uses them.
+- **Leakage:** 0 chunks from another tenant in every run.
+- **Cost and latency:**
+  - Bedrock retrieval: ≈ $0.00006 per query, p50 0.5 s.
+  - RetrieveAndGenerate: ≈ $0.001 to $0.0017 per answer (Haiku 4.5, estimated), p95 9 to 10 s.
+- Cost of the activity: ≈ $2.2.

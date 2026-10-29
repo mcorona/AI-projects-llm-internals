@@ -30,3 +30,6 @@ semana-04/entrenamiento/adapters/
 *-key.json
 *service-account*.json
 .aws/
+
+# Semana 12: ids de recursos de nube (locales)
+semana-12/infra/estado_*.json

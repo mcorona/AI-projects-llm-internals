@@ -1,0 +1,35 @@
+documentos: 24 · pasajes de referencia únicos: 50
+estrategia              chunks  prom_chars    íntegros  partidos
+fijo_400_solape_80          57         348     50/50           0
+recursivo_300               84         203     48/50           2
+    partido: recepcion_almacen.md · Diferencia mayor a 2%: se hace un **rechazo parcial** de la diferencia
+    partido: skus_criticos.md · SKU crítico con menos de **7 días** de cobertura.
+actual_por_seccion          69         242     50/50           0
+## bedrock_ctl-chunks_rag (150 preguntas; generador: Bedrock RetrieveAndGenerate, us.anthropic.claude-haiku-4-5-20251001-v1:0, plantilla predeterminada)
+
+### Suite de recuperación (respondibles)
+
+| Idioma | n | recall@1 | recall@3 | recall@5 | recall@10 | mrr | ndcg@10 | ap@5 | doc_recall@5 |
+|---|---|---|---|---|---|---|---|---|---|
+| es | 65 | 0.746 | 0.962 | 1.000 | 1.000 | 0.863 | 0.898 | 0.851 | 1.000 |
+| en | 65 | 0.746 | 0.962 | 1.000 | 1.000 | 0.868 | 0.901 | 0.864 | 1.000 |
+
+### Suite de generación sobre lo recuperado (top 5; RetrieveAndGenerate)
+
+| Idioma | n | exactitud | faithfulness | answer_relevancy | precisión de citas | cobertura de cita | abstención falsa | abstención correcta |
+|---|---|---|---|---|---|---|---|---|
+| es | 65 | 0.985 | 0.947 | 0.918 | 0.895 | 1.000 | 0/65 | 10/10 |
+| en | 65 | 0.985 | 0.942 | 0.907 | 0.882 | 0.969 | 0/65 | 10/10 |
+
+### Costo y latencia por consulta
+
+| Etapa | USD por consulta | p50 (s) | p95 (s) |
+|---|---|---|---|
+| recuperacion | $0.00006 | 0.5 | 0.71 |
+| generacion | $0.00111 | 1.64 | 10.21 |
+
+Fallas (2):
+- rec-17 es (generación): Un proveedor que incumple dos o más metas es clasificado en la categoría C. En esta situación, la empresa busca reemplazarlo y no se le otor
+- rec-17 en (generación): A supplier that misses two or more targets is classified as Category C. For suppliers in this category, the company seeks a replacement and 
+
+Consultas con chunks de otro tenant: 0. Métricas sin puntaje: 0. Reranking fallido: 0. Duración 353 s. Costo (recuperación + generación de lo guardado y evaluación de esta corrida): $0.2760

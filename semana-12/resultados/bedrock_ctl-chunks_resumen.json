@@ -1,0 +1,88 @@
+{
+ "backend": "bedrock",
+ "config": "ctl-chunks",
+ "modo": "comun",
+ "fecha": "2026-10-28",
+ "preguntas": 150,
+ "generador": "claude-haiku-5-5 medium, prompt solo_documentos",
+ "juez": "claude-haiku-5-5 low",
+ "k_contexto": 5,
+ "chunks_fuera_del_tenant": 0,
+ "recuperacion": {
+  "es": {
+   "recall@1": 0.7462,
+   "recall@3": 0.9615,
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 0.8633,
+   "ndcg@10": 0.898,
+   "ap@5": 0.8514,
+   "doc_recall@5": 1.0,
+   "n": 65
+  },
+  "en": {
+   "recall@1": 0.7462,
+   "recall@3": 0.9615,
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 0.8679,
+   "ndcg@10": 0.9015,
+   "ap@5": 0.8641,
+   "doc_recall@5": 1.0,
+   "n": 65
+  }
+ },
+ "generacion": {
+  "es": {
+   "n": 65,
+   "exactitud": 0.9846,
+   "faithfulness": 0.8808,
+   "answer_relevancy": 0.8698,
+   "precision_citas": 0.6822,
+   "cobertura_cita": 0.9846,
+   "abstencion_falsa": "0/65",
+   "abstencion_correcta": "10/10"
+  },
+  "en": {
+   "n": 65,
+   "exactitud": 0.9846,
+   "faithfulness": 0.8474,
+   "answer_relevancy": 0.8735,
+   "precision_citas": 0.703,
+   "cobertura_cita": 0.9692,
+   "abstencion_falsa": "0/65",
+   "abstencion_correcta": "10/10"
+  }
+ },
+ "costo_usd_por_consulta": {
+  "recuperacion": 5.6e-05,
+  "generacion": 0.000211
+ },
+ "latencia_s": {
+  "recuperacion": {
+   "p50": 0.5,
+   "p95": 0.71
+  },
+  "generacion": {
+   "p50": 1.78,
+   "p95": 3.24
+  }
+ },
+ "fallas": [
+  {
+   "id": "rec-17",
+   "lang": "es",
+   "atribucion": "generación",
+   "respuesta": "Un proveedor que incumple dos o más metas queda en la **clase C**. Según [D1], para esta clase **se busca reemplazo**, y el documento continúa con una frase que el fragmento no alcanza a mostrar: \"se "
+  },
+  {
+   "id": "rec-17",
+   "lang": "en",
+   "atribucion": "generación",
+   "respuesta": "A supplier that misses two or more targets is classified as **C** [D1]. For C suppliers, the company looks for a replacement, and the text is cut off at that point (\"y no se...\"), so the rest of the r"
+  }
+ ],
+ "metricas_sin_puntaje": 2,
+ "costo_evaluacion_corrida_usd": 0.1315,
+ "rerank_fallido": 0
+}

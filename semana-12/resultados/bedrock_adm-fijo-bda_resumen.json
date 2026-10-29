@@ -1,0 +1,292 @@
+{
+ "backend": "bedrock",
+ "config": "adm-fijo-bda",
+ "modo": "comun",
+ "fecha": "2026-10-28",
+ "preguntas": 150,
+ "generador": "claude-haiku-5-5 medium, prompt solo_documentos",
+ "juez": "claude-haiku-5-5 low",
+ "k_contexto": 5,
+ "chunks_fuera_del_tenant": 0,
+ "recuperacion": {
+  "es": {
+   "recall@1": 0.5692,
+   "recall@3": 0.7231,
+   "recall@5": 0.7385,
+   "recall@10": 0.7538,
+   "mrr": 0.659,
+   "ndcg@10": 0.6811,
+   "ap@5": 0.6518,
+   "doc_recall@5": 0.9846,
+   "n": 65
+  },
+  "en": {
+   "recall@1": 0.6,
+   "recall@3": 0.7,
+   "recall@5": 0.7385,
+   "recall@10": 0.7538,
+   "mrr": 0.6633,
+   "ndcg@10": 0.6847,
+   "ap@5": 0.6582,
+   "doc_recall@5": 1.0,
+   "n": 65
+  }
+ },
+ "generacion": {
+  "es": {
+   "n": 65,
+   "exactitud": 0.7077,
+   "faithfulness": 0.7615,
+   "answer_relevancy": 0.6937,
+   "precision_citas": 0.3906,
+   "cobertura_cita": 0.7231,
+   "abstencion_falsa": "15/65",
+   "abstencion_correcta": "10/10"
+  },
+  "en": {
+   "n": 65,
+   "exactitud": 0.7385,
+   "faithfulness": 0.7312,
+   "answer_relevancy": 0.6789,
+   "precision_citas": 0.4474,
+   "cobertura_cita": 0.7385,
+   "abstencion_falsa": "16/65",
+   "abstencion_correcta": "10/10"
+  }
+ },
+ "costo_usd_por_consulta": {
+  "recuperacion": 5.6e-05,
+  "generacion": 0.000216
+ },
+ "latencia_s": {
+  "recuperacion": {
+   "p50": 0.98,
+   "p95": 2.44
+  },
+  "generacion": {
+   "p50": 1.97,
+   "p95": 3.95
+  }
+ },
+ "fallas": [
+  {
+   "id": "rec-01",
+   "lang": "es",
+   "atribucion": "generación",
+   "respuesta": "El plazo para devoluciones de clientes es de **30 días naturales desde la entrega** [D2]. El producto debe estar en su empaque original y sin uso [D2].\n\nHay excepciones: los productos de la categoría "
+  },
+  {
+   "id": "rec-22",
+   "lang": "es",
+   "atribucion": "generación",
+   "respuesta": "Una compra urgente de un SKU crítico la aprueba el **gerente de compras**, sin importar el monto [D2][D1]. Si el monto supera $250,000 MXN, la aprobación corresponde al director de operaciones, según "
+  },
+  {
+   "id": "rec-42",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "El contexto solo indica que la **penalización máxima acumulada es del 10% del valor del contrato** [D2]. No especifica el monto por cada día de retraso ni confirma que esta penalización aplique exclus"
+  },
+  {
+   "id": "rec-48",
+   "lang": "es",
+   "atribucion": "generación",
+   "respuesta": "Un SKU crítico con menos de 7 días de cobertura se escala al **Nivel 2: gerente de compras** [D2]. El comprador, por su parte, debe emitir la propuesta de orden de compra el mismo día [D2].\n\nSu **fact"
+  },
+  {
+   "id": "int-pdf-01",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "El contexto no incluye el costo del flete normal de Guadalajara a Monterrey. El documento [D1] (tarifas_flete) aparece sin contenido, así que no puedo dar una cifra.\n\nLo que sí aparece en el contexto "
+  },
+  {
+   "id": "int-pdf-02",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "El contexto no indica el recargo del flete exprés sobre la tarifa normal, así que no puedo dar una cifra.\n\nEl documento [D1] (tarifas_flete) aparece sin contenido, por lo que no tiene datos de tarifas"
+  },
+  {
+   "id": "int-pdf-03",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "No puedo responder con el contexto proporcionado. El documento [D1] (tarifas_flete) aparece sin contenido, así que no hay tarifa de flete registrada para la ruta Ciudad de México–Monterrey.\n\nLo que sí"
+  },
+  {
+   "id": "int-pdf-04",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "El contexto no indica el tiempo de entrega pactado de Shenzhen Industrial Parts. El documento de la matriz de proveedores [D2] aparece vacío, así que no puedo confirmar ese dato.\n\nLo único disponible "
+  },
+  {
+   "id": "int-pdf-05",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "El contexto no alcanza para responder. El documento que probablemente contiene la lista de proveedores por categoría es la matriz_proveedores [D1], pero en el contexto aparece sin contenido.\n\nLo que s"
+  },
+  {
+   "id": "int-ocr-06",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "El contexto no incluye la exactitud obtenida en el inventario físico de septiembre del CEDIS Norte. El documento que contendría ese dato, *acta_inventario_norte* ([D2] y [D4]), aparece vacío.\n\nLo únic"
+  },
+  {
+   "id": "int-ocr-07",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "El contexto no permite responder la pregunta. Los documentos [D1] y [D5] corresponden al acta de inventario del CEDIS Norte, pero no traen contenido, así que no aparece ninguna diferencia valorizada.\n"
+  },
+  {
+   "id": "int-ocr-08",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "El contexto no identifica a la persona responsable del inventario físico del CEDIS Norte.\n\n- [D1] (acta_inventario_norte) aparece sin contenido, así que no puedo usarlo.\n- [D2] indica solo que la oper"
+  },
+  {
+   "id": "int-ocr-09",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "No puedo responder con el contexto proporcionado. El documento [D1] (remision_r4471) aparece sin contenido, así que no tengo el número de piezas dañadas de la remisión R-4471.\n\nLos demás fragmentos (["
+  },
+  {
+   "id": "int-ocr-10",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "No puedo responder con el contexto proporcionado. El documento [D1] (remision_r4471) aparece sin contenido, y los fragmentos [D2] a [D5] tratan sobre indicadores de proveedores, política de reorden y "
+  },
+  {
+   "id": "int-imagen-11",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "No puedo responder con el contexto proporcionado. Los documentos que podrían contener los niveles de servicio por CEDIS de septiembre de 2026, [D1] y [D2] (ambos \"grafica_nivel_servicio\"), no incluyen"
+  },
+  {
+   "id": "int-imagen-12",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "El contexto no permite responder. Los fragmentos [D1] y [D2] corresponden al documento *grafica_nivel_servicio*, pero no incluyen datos visibles, así que no puedo confirmar el nivel de servicio del CE"
+  },
+  {
+   "id": "int-imagen-13",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "No puedo responder con el contexto proporcionado.\n\n- **[D1] y [D2]** (grafica_nivel_servicio) aparecen sin contenido, así que no muestran ningún dato de nivel de servicio.\n- **[D3]** (acta_inventario_"
+  },
+  {
+   "id": "int-imagen-14",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "No puedo responder con el contexto proporcionado. El plano del CEDIS Occidente [D1][D5] aparece sin contenido, y los demás documentos tratan horarios de recepción [D2] o la capacidad y operación del C"
+  },
+  {
+   "id": "int-imagen-15",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "El contexto no indica qué andén corresponde a la zona de SKUs críticos del CEDIS Occidente. Los documentos solo dicen que la recepción de SKUs críticos tiene prioridad en el andén y se registra antes "
+  },
+  {
+   "id": "rec-28",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "El contexto no responde directamente si el copiloto puede cambiar precios.\n\nLo que sí indica es que el copiloto puede consultar existencias, ventas, proveedores y puntos de reorden en **modo solo lect"
+  },
+  {
+   "id": "rec-48",
+   "lang": "en",
+   "atribucion": "generación",
+   "respuesta": "A critical SKU with less than 7 days of coverage is escalated to **Level 2**, the purchasing manager [D2]. It is also considered **at risk** when its coverage is less than its supplier's lead time, ev"
+  },
+  {
+   "id": "int-pdf-01",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "The provided context doesn't include the standard freight rate from Guadalajara to Monterrey. Document [D1] (tarifas_flete) is listed but has no content, so I can't give a cost.\n\nThe only related info"
+  },
+  {
+   "id": "int-pdf-02",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "The context does not give the surcharge for express freight over the standard rate. Document [D1] (tarifas_flete) is empty, so it has no rate table.\n\n[D2] only says that an urgent purchase allows air "
+  },
+  {
+   "id": "int-pdf-03",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "The provided context doesn't include the standard freight rate from Mexico City to Monterrey. Document [D1] (tarifas_flete) is listed, but its content is empty, so I can't give a rate.\n\nRelated inform"
+  },
+  {
+   "id": "int-pdf-04",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "El contexto no indica el tiempo de entrega pactado para Shenzhen Industrial Parts. El documento [D1] aparece sin contenido.\n\nLo único relacionado es una referencia general para proveedores de Asia (CN"
+  },
+  {
+   "id": "int-pdf-05",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "The provided context doesn't include this information. [D1] (matriz_proveedores), the document most likely to contain supplier ratings, has no content in the context. [D4] (remision_r4471) is also emp"
+  },
+  {
+   "id": "int-ocr-06",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "The context doesn't include the accuracy result for the September physical inventory at the North distribution center. The document that would likely contain it, [D1] (acta_inventario_norte), appears "
+  },
+  {
+   "id": "int-ocr-07",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "I can't determine the total valued difference from the provided context. The document that would likely contain it, [D1] (acta_inventario_norte), appears without any content, and [D2] (remision_r4471)"
+  },
+  {
+   "id": "int-ocr-08",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "The provided context doesn't say who was responsible for the physical inventory at the North distribution center.\n\nThe only related fact is that the CEDIS Norte operation depends on the Gerencia de Op"
+  },
+  {
+   "id": "int-ocr-09",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "The context doesn't say how many pieces arrived damaged in delivery note R-4471. [D1] is only labeled \"remision_r4471\" and has no content. The other documents ([D2]–[D5]) cover returns to suppliers, s"
+  },
+  {
+   "id": "int-ocr-10",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "The context doesn't include the answer. Document [D1] (remision_r4471) is listed, but it contains no text, so I can't find the number of pieces shipped in delivery note R-4471.\n\nThe other documents (["
+  },
+  {
+   "id": "int-imagen-11",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "The context doesn't contain the information needed to answer. The service-level chart documents (D1 and D3) and the northern inventory report (D2) have no readable content, so there are no service lev"
+  },
+  {
+   "id": "int-imagen-12",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "The provided context does not include the service level for the North distribution center in September 2026. Documents D1 and D2 (grafica_nivel_servicio) and D5 (remision_r4471) have no content, and D"
+  },
+  {
+   "id": "int-imagen-13",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "The context doesn't include the September 2026 service level for the Central distribution center.\n\n- [D1] and [D2] are from the chart \"grafica_nivel_servicio\", but their text is empty in the context p"
+  },
+  {
+   "id": "int-imagen-14",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "The provided context doesn't say which aisle holds the quarantine zone of the West distribution center (CEDIS Occidente). The floor plan (plano_cedis_occidente) is listed as [D1] and [D3], but neither"
+  },
+  {
+   "id": "int-imagen-15",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "The context doesn't say which dock is next to the critical SKU zone of the West distribution center. The only document about the West facility, [D5] (plano_cedis_occidente), is empty.\n\nThe context doe"
+  }
+ ],
+ "metricas_sin_puntaje": 1,
+ "costo_evaluacion_corrida_usd": 0.1302,
+ "rerank_fallido": 0
+}

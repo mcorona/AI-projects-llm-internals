@@ -14,7 +14,8 @@ Todo lo demás es común y no cambia entre opciones:
   (semana 11, actividad 5);
 - costo y latencia por consulta de recuperación y de generación.
 Caché por backend en resultados/<backend>_cache.json (reanuda); resumen en resultados/<backend>_resumen.json y detalle en
-resultados/<backend>_detalle.csv. Backends: propio (este archivo); los administrados se agregan en las actividades 4 y 5.
+resultados/<backend>_detalle.csv. Backends: propio; bedrock (--config, una Knowledge Base de la actividad 4, con --modo comun
+(generador común) o --modo rag (RetrieveAndGenerate de Bedrock con Claude Haiku 4.5)). Vertex se agrega en la actividad 5.
 """
 import argparse
 import asyncio
@@ -63,7 +64,81 @@ def recuperar_propio(items, guardar_uno):
                         "rerank_fallo": r.get("rerank_fallo", False)})
 
 
-BACKENDS = {"propio": recuperar_propio}
+FILTRO_ALFA = {"andAll": [{"equals": {"key": "tenant_id", "value": "alfa"}},
+                          {"orAll": [{"listContains": {"key": "roles", "value": r}} for r in sorted(a.USUARIO["roles"])]}]}
+PERFIL_RAG = "us.anthropic.claude-haiku-4-5-20251001-v1:0"
+PRECIO_HAIKU45 = {"in": 1.10, "out": 5.50}   # Bedrock us-east-1, perfil regional (resultados/costos_fijos.md)
+PRECIO_COHERE, PRECIO_S3V_CONSULTA = 0.10, 0.055 / 1000
+
+
+def _aws(servicio):
+    import boto3
+    from botocore.config import Config
+    # Con credenciales en el entorno (aws configure export-credentials --profile semana12) no hace falta botocore[crt]
+    perfil = None if os.getenv("AWS_ACCESS_KEY_ID") else os.getenv("PERFIL_AWS", "semana12")
+    return boto3.Session(profile_name=perfil, region_name="us-east-1").client(
+        servicio, config=Config(retries={"max_attempts": 6, "mode": "adaptive"}))
+
+
+def _kb(config):
+    estado = json.loads((RAIZ / "infra" / "estado_aws.json").read_text(encoding="utf-8"))
+    if estado.get(config, {}).get("ingesta") != "COMPLETE":
+        raise SystemExit(f"La KB {config} no tiene una ingesta completa en infra/estado_aws.json")
+    return estado[config]["kb_id"]
+
+
+def recuperar_bedrock(items, guardar_uno, config):
+    """Bedrock Knowledge Bases, API Retrieve: búsqueda vectorial en S3 Vectors (la única que admite) con el filtro de tenant
+    y roles dentro de la consulta, top 20, sin reranking. Una consulta a la vez (latencia de una consulta sola). Costo
+    estimado: embedding de la pregunta (Cohere multilingual) más la consulta a S3 Vectors."""
+    kb, cli = _kb(config), _aws("bedrock-agent-runtime")
+    for x in items:
+        t0 = time.perf_counter()
+        r = cli.retrieve(knowledgeBaseId=kb, retrievalQuery={"text": x["question"]},
+                         retrievalConfiguration={"vectorSearchConfiguration": {"numberOfResults": 20, "filter": FILTRO_ALFA}})
+        lat = time.perf_counter() - t0
+        res = r["retrievalResults"]
+        guardar_uno(x, {"ranking": [[z.get("metadata", {}).get("source", ""), z.get("content", {}).get("text", "")] for z in res],
+                        "latencia_s": round(lat, 4), "costo": len(x["question"]) / 4 * PRECIO_COHERE / 1e6 + PRECIO_S3V_CONSULTA,
+                        "tenants": sorted({str(z.get("metadata", {}).get("tenant_id")) for z in res}),
+                        "uris": [z.get("location", {}).get("s3Location", {}).get("uri", "") for z in res[:5]]})
+
+
+def generar_rag(items, cache, guardar, config):
+    """RetrieveAndGenerate de Bedrock: recupera top 5 con el mismo filtro y responde con Claude Haiku 4.5 y la plantilla
+    predeterminada de Bedrock, como lo usaría un cliente. La API no devuelve tokens: el costo se estima con 4 caracteres
+    por token sobre la plantilla (≈ 1,500 caracteres), la pregunta, los 5 pasajes y la respuesta."""
+    from concurrent.futures import ThreadPoolExecutor
+    kb, cli = _kb(config), _aws("bedrock-agent-runtime")
+    cuenta = _aws("sts").get_caller_identity()["Account"]
+    modelo = f"arn:aws:bedrock:us-east-1:{cuenta}:inference-profile/{PERFIL_RAG}"
+
+    def uno(x):
+        k = f"gen::{x['id']}::{x['lang']}"
+        if k in cache:
+            return
+        t0 = time.perf_counter()
+        r = cli.retrieve_and_generate(input={"text": x["question"]}, retrieveAndGenerateConfiguration={
+            "type": "KNOWLEDGE_BASE", "knowledgeBaseConfiguration": {"knowledgeBaseId": kb, "modelArn": modelo,
+                "retrievalConfiguration": {"vectorSearchConfiguration": {"numberOfResults": K_GEN, "filter": FILTRO_ALFA}}}})
+        lat = time.perf_counter() - t0
+        citadas = []
+        for c in r.get("citations", []):
+            for ref in c.get("retrievedReferences", []):
+                par = [ref.get("metadata", {}).get("source", ""), ref.get("content", {}).get("text", "")]
+                if par not in citadas:
+                    citadas.append(par)
+        texto = r["output"]["text"]
+        ctx_chars = sum(len(c) for _, c in cache[f"rec::{x['id']}::{x['lang']}"]["ranking"][:K_GEN])
+        tin, tout = (1500 + len(x["question"]) + ctx_chars) / 4, len(texto) / 4
+        cache[k] = {"respuesta": texto, "latencia_s": round(lat, 3), "citadas": citadas, "costo_estimado": True,
+                    "costo": (tin * PRECIO_HAIKU45["in"] + tout * PRECIO_HAIKU45["out"]) / 1e6}
+        guardar()
+    with ThreadPoolExecutor(4) as ex:
+        list(ex.map(uno, items))
+
+
+BACKENDS = {"propio": recuperar_propio, "bedrock": recuperar_bedrock}
 
 
 # ---------- métricas ----------
@@ -78,15 +153,25 @@ def metricas_recuperacion(x, ranking):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--backend", choices=sorted(BACKENDS), default="propio")
+    ap.add_argument("--config", default="", help="bedrock: configuración de KB (adm-pred, adm-fijo, adm-fijo-bda, ctl-chunks)")
+    ap.add_argument("--modo", choices=("comun", "rag"), default="comun", help="comun: generador común; rag: RetrieveAndGenerate")
     ap.add_argument("--limite", type=int, default=0, help="N preguntas por idioma y tipo (prueba de humo)")
     args = ap.parse_args()
     items = sg.items_todos()
     if args.limite:
         items = [x for lang in ("es", "en") for resp in (True, False)
                  for x in [y for y in items if y["lang"] == lang and y["respondible"] == resp][:args.limite]]
-    nombre = args.backend + (f"_humo{args.limite}" if args.limite else "")
+    if args.backend != "propio" and not args.config:
+        raise SystemExit("--config es obligatorio para los backends administrados")
+    base = args.backend + (f"_{args.config}" if args.config else "")
+    nombre = base + ("_rag" if args.modo == "rag" else "") + (f"_humo{args.limite}" if args.limite else "")
     ruta = RES / f"{nombre}_cache.json"
     cache = json.loads(ruta.read_text(encoding="utf-8")) if ruta.exists() else {}
+    if args.modo == "rag":  # misma recuperación que el modo común, si ya está medida
+        previa = RES / f"{base}{f'_humo{args.limite}' if args.limite else ''}_cache.json"
+        if previa.exists():
+            cache.update({kk: v for kk, v in json.loads(previa.read_text(encoding="utf-8")).items()
+                          if kk.startswith("rec::") and kk not in cache})
 
     def guardar():
         ruta.write_text(json.dumps(cache, ensure_ascii=False) + "\n", encoding="utf-8")
@@ -96,10 +181,16 @@ def main():
     t0 = time.time()
     faltan = [x for x in items if f"rec::{x['id']}::{x['lang']}" not in cache]
     if faltan:
-        BACKENDS[args.backend](faltan, guardar_uno)
+        if args.backend == "propio":
+            BACKENDS[args.backend](faltan, guardar_uno)
+        else:
+            BACKENDS[args.backend](faltan, guardar_uno, args.config)
         guardar()
     ctx = {f"{x['id']}::{x['lang']}": {"chunks": cache[f"rec::{x['id']}::{x['lang']}"]["ranking"][:K_GEN]} for x in items}
-    sg.generar(items, ctx, cache, guardar, sistema=sens.SIS_SOLO_DOCUMENTOS)
+    if args.modo == "rag":
+        generar_rag(items, cache, guardar, args.config)
+    else:
+        sg.generar(items, ctx, cache, guardar, sistema=sens.SIS_SOLO_DOCUMENTOS)
     uso = asyncio.run(sg.evaluar(items, ctx, cache, guardar))
     guardar()
 
@@ -114,7 +205,10 @@ def main():
         if x["respondible"]:
             f.update(metricas_recuperacion(x, rec["ranking"]))
             f.update({m: cache[f"{m}::{k}"]["valor"] for m in ("exactitud", "faithfulness", "answer_relevancy")})
-            nc, nb = sg.citas(gen["respuesta"], ctx[k]["chunks"], x["gold"])
+            if "citadas" in gen:  # RetrieveAndGenerate: referencias citadas por el servicio
+                nc, nb = len(gen["citadas"]), sum(1 for c in gen["citadas"] if sr.pasajes_en(tuple(c), x["gold"]))
+            else:
+                nc, nb = sg.citas(gen["respuesta"], ctx[k]["chunks"], x["gold"])
             f.update({"citas": nc, "citas_con_pasaje": nb,
                       "pasajes_en_contexto": metricas_recuperacion(x, rec["ranking"][:K_GEN])["recall@5"]})
             f["falla"] = "" if f["exactitud"] == 1 else ("recuperación" if f["pasajes_en_contexto"] < 1 else "generación")
@@ -125,8 +219,12 @@ def main():
     def media(fs, c):
         v = [r[c] for r in fs if r.get(c) is not None]
         return round(statistics.mean(v), 4) if v else None
-    resumen = {"backend": args.backend, "fecha": dt.date.today().isoformat(), "preguntas": len(items),
-               "generador": f"{a.HAIKU} medium, prompt solo_documentos", "juez": f"{a.HAIKU} low", "k_contexto": K_GEN,
+    generador = (f"Bedrock RetrieveAndGenerate, {PERFIL_RAG}, plantilla predeterminada" if args.modo == "rag"
+                 else f"{a.HAIKU} medium, prompt solo_documentos")
+    resumen = {"backend": args.backend, "config": args.config, "modo": args.modo, "fecha": dt.date.today().isoformat(),
+               "preguntas": len(items), "generador": generador, "juez": f"{a.HAIKU} low", "k_contexto": K_GEN,
+               "chunks_fuera_del_tenant": sum(1 for kk, v in cache.items() if kk.startswith("rec::")
+                                              and any(tn not in ("alfa", "None") for tn in v.get("tenants", []))),
                "recuperacion": {}, "generacion": {}, "costo_usd_por_consulta": {}, "latencia_s": {}, "fallas": []}
     for lang in ("es", "en"):
         r = [f for f in filas if f["lang"] == lang and f["respondible"]]
@@ -158,13 +256,13 @@ def main():
         w.writeheader()
         w.writerows(filas)
 
-    print(f"## Backend: {args.backend} ({len(items)} preguntas)\n")
+    print(f"## {nombre} ({len(items)} preguntas; generador: {generador})\n")
     print("### Suite de recuperación (respondibles)\n")
     print("| Idioma | n | " + " | ".join(MET_REC) + " |")
     print("|---|---|" + "---|" * len(MET_REC))
     for lang, m in resumen["recuperacion"].items():
         print(f"| {lang} | {m['n']} | " + " | ".join(f"{m[k]:.3f}" for k in MET_REC) + " |")
-    print("\n### Suite de generación sobre lo recuperado (top 5, generador común)\n")
+    print(f"\n### Suite de generación sobre lo recuperado (top 5; {'RetrieveAndGenerate' if args.modo == 'rag' else 'generador común'})\n")
     print("| Idioma | n | exactitud | faithfulness | answer_relevancy | precisión de citas | cobertura de cita | abstención falsa | abstención correcta |")
     print("|---|---|---|---|---|---|---|---|---|")
     for lang, g in resumen["generacion"].items():
@@ -178,7 +276,7 @@ def main():
     for f in resumen["fallas"]:
         print(f"- {f['id']} {f['lang']} ({f['atribucion']}): {f['respuesta'][:140]}")
     total = sum(f["costo_rec"] for f in filas) + sum(f["costo_gen"] for f in filas) + resumen["costo_evaluacion_corrida_usd"]
-    print(f"\nMétricas sin puntaje: {sin}. Reranking fallido: {resumen['rerank_fallido']}. Duración {time.time() - t0:.0f} s. "
+    print(f"\nConsultas con chunks de otro tenant: {resumen['chunks_fuera_del_tenant']}. Métricas sin puntaje: {sin}. Reranking fallido: {resumen['rerank_fallido']}. Duración {time.time() - t0:.0f} s. "
           f"Costo (recuperación + generación de lo guardado y evaluación de esta corrida): ${total:.4f}")
 
 

@@ -1,0 +1,83 @@
+documentos: 24 · pasajes de referencia únicos: 50
+estrategia              chunks  prom_chars    íntegros  partidos
+fijo_400_solape_80          57         348     50/50           0
+recursivo_300               84         203     48/50           2
+    partido: recepcion_almacen.md · Diferencia mayor a 2%: se hace un **rechazo parcial** de la diferencia
+    partido: skus_criticos.md · SKU crítico con menos de **7 días** de cobertura.
+actual_por_seccion          69         242     50/50           0
+## bedrock_adm-fijo-bda (150 preguntas; generador: claude-haiku-5-5 medium, prompt solo_documentos)
+
+### Suite de recuperación (respondibles)
+
+| Idioma | n | recall@1 | recall@3 | recall@5 | recall@10 | mrr | ndcg@10 | ap@5 | doc_recall@5 |
+|---|---|---|---|---|---|---|---|---|---|
+| es | 65 | 0.569 | 0.723 | 0.739 | 0.754 | 0.659 | 0.681 | 0.652 | 0.985 |
+| en | 65 | 0.600 | 0.700 | 0.739 | 0.754 | 0.663 | 0.685 | 0.658 | 1.000 |
+
+### Suite de generación sobre lo recuperado (top 5; generador común)
+
+| Idioma | n | exactitud | faithfulness | answer_relevancy | precisión de citas | cobertura de cita | abstención falsa | abstención correcta |
+|---|---|---|---|---|---|---|---|---|
+| es | 65 | 0.708 | 0.761 | 0.694 | 0.391 | 0.723 | 15/65 | 10/10 |
+| en | 65 | 0.739 | 0.731 | 0.679 | 0.447 | 0.739 | 16/65 | 10/10 |
+
+### Costo y latencia por consulta
+
+| Etapa | USD por consulta | p50 (s) | p95 (s) |
+|---|---|---|---|
+| recuperacion | $0.00006 | 0.98 | 2.44 |
+| generacion | $0.00022 | 1.97 | 3.95 |
+
+Fallas (36):
+- rec-01 es (generación): El plazo para devoluciones de clientes es de **30 días naturales desde la entrega** [D2]. El producto debe estar en su empaque original y si
+- rec-22 es (generación): Una compra urgente de un SKU crítico la aprueba el **gerente de compras**, sin importar el monto [D2][D1]. Si el monto supera $250,000 MXN, 
+- rec-42 es (recuperación): El contexto solo indica que la **penalización máxima acumulada es del 10% del valor del contrato** [D2]. No especifica el monto por cada día
+- rec-48 es (generación): Un SKU crítico con menos de 7 días de cobertura se escala al **Nivel 2: gerente de compras** [D2]. El comprador, por su parte, debe emitir l
+- int-pdf-01 es (recuperación): El contexto no incluye el costo del flete normal de Guadalajara a Monterrey. El documento [D1] (tarifas_flete) aparece sin contenido, así qu
+- int-pdf-02 es (recuperación): El contexto no indica el recargo del flete exprés sobre la tarifa normal, así que no puedo dar una cifra.
+
+El documento [D1] (tarifas_flete)
+- int-pdf-03 es (recuperación): No puedo responder con el contexto proporcionado. El documento [D1] (tarifas_flete) aparece sin contenido, así que no hay tarifa de flete re
+- int-pdf-04 es (recuperación): El contexto no indica el tiempo de entrega pactado de Shenzhen Industrial Parts. El documento de la matriz de proveedores [D2] aparece vacío
+- int-pdf-05 es (recuperación): El contexto no alcanza para responder. El documento que probablemente contiene la lista de proveedores por categoría es la matriz_proveedore
+- int-ocr-06 es (recuperación): El contexto no incluye la exactitud obtenida en el inventario físico de septiembre del CEDIS Norte. El documento que contendría ese dato, *a
+- int-ocr-07 es (recuperación): El contexto no permite responder la pregunta. Los documentos [D1] y [D5] corresponden al acta de inventario del CEDIS Norte, pero no traen c
+- int-ocr-08 es (recuperación): El contexto no identifica a la persona responsable del inventario físico del CEDIS Norte.
+
+- [D1] (acta_inventario_norte) aparece sin conten
+- int-ocr-09 es (recuperación): No puedo responder con el contexto proporcionado. El documento [D1] (remision_r4471) aparece sin contenido, así que no tengo el número de pi
+- int-ocr-10 es (recuperación): No puedo responder con el contexto proporcionado. El documento [D1] (remision_r4471) aparece sin contenido, y los fragmentos [D2] a [D5] tra
+- int-imagen-11 es (recuperación): No puedo responder con el contexto proporcionado. Los documentos que podrían contener los niveles de servicio por CEDIS de septiembre de 202
+- int-imagen-12 es (recuperación): El contexto no permite responder. Los fragmentos [D1] y [D2] corresponden al documento *grafica_nivel_servicio*, pero no incluyen datos visi
+- int-imagen-13 es (recuperación): No puedo responder con el contexto proporcionado.
+
+- **[D1] y [D2]** (grafica_nivel_servicio) aparecen sin contenido, así que no muestran ni
+- int-imagen-14 es (recuperación): No puedo responder con el contexto proporcionado. El plano del CEDIS Occidente [D1][D5] aparece sin contenido, y los demás documentos tratan
+- int-imagen-15 es (recuperación): El contexto no indica qué andén corresponde a la zona de SKUs críticos del CEDIS Occidente. Los documentos solo dicen que la recepción de SK
+- rec-28 en (recuperación): El contexto no responde directamente si el copiloto puede cambiar precios.
+
+Lo que sí indica es que el copiloto puede consultar existencias,
+- rec-48 en (generación): A critical SKU with less than 7 days of coverage is escalated to **Level 2**, the purchasing manager [D2]. It is also considered **at risk**
+- int-pdf-01 en (recuperación): The provided context doesn't include the standard freight rate from Guadalajara to Monterrey. Document [D1] (tarifas_flete) is listed but ha
+- int-pdf-02 en (recuperación): The context does not give the surcharge for express freight over the standard rate. Document [D1] (tarifas_flete) is empty, so it has no rat
+- int-pdf-03 en (recuperación): The provided context doesn't include the standard freight rate from Mexico City to Monterrey. Document [D1] (tarifas_flete) is listed, but i
+- int-pdf-04 en (recuperación): El contexto no indica el tiempo de entrega pactado para Shenzhen Industrial Parts. El documento [D1] aparece sin contenido.
+
+Lo único relaci
+- int-pdf-05 en (recuperación): The provided context doesn't include this information. [D1] (matriz_proveedores), the document most likely to contain supplier ratings, has 
+- int-ocr-06 en (recuperación): The context doesn't include the accuracy result for the September physical inventory at the North distribution center. The document that wou
+- int-ocr-07 en (recuperación): I can't determine the total valued difference from the provided context. The document that would likely contain it, [D1] (acta_inventario_no
+- int-ocr-08 en (recuperación): The provided context doesn't say who was responsible for the physical inventory at the North distribution center.
+
+The only related fact is 
+- int-ocr-09 en (recuperación): The context doesn't say how many pieces arrived damaged in delivery note R-4471. [D1] is only labeled "remision_r4471" and has no content. T
+- int-ocr-10 en (recuperación): The context doesn't include the answer. Document [D1] (remision_r4471) is listed, but it contains no text, so I can't find the number of pie
+- int-imagen-11 en (recuperación): The context doesn't contain the information needed to answer. The service-level chart documents (D1 and D3) and the northern inventory repor
+- int-imagen-12 en (recuperación): The provided context does not include the service level for the North distribution center in September 2026. Documents D1 and D2 (grafica_ni
+- int-imagen-13 en (recuperación): The context doesn't include the September 2026 service level for the Central distribution center.
+
+- [D1] and [D2] are from the chart "grafi
+- int-imagen-14 en (recuperación): The provided context doesn't say which aisle holds the quarantine zone of the West distribution center (CEDIS Occidente). The floor plan (pl
+- int-imagen-15 en (recuperación): The context doesn't say which dock is next to the critical SKU zone of the West distribution center. The only document about the West facili
+
+Consultas con chunks de otro tenant: 0. Métricas sin puntaje: 1. Reranking fallido: 0. Duración 469 s. Costo (recuperación + generación de lo guardado y evaluación de esta corrida): $0.1711

@@ -12,6 +12,7 @@ ALERTA_CORREO=${ALERTA_CORREO:-$(git config user.email 2>/dev/null)}
 CUENTA_AWS=${CUENTA_AWS:-$(aws sts get-caller-identity --query Account --output text 2>/dev/null)}
 S3_DOCS=${PREFIJO}-docs-${CUENTA_AWS}
 S3_VECTORES=${PREFIJO}-vectores-${CUENTA_AWS}
+S3_MULTIMODAL=${PREFIJO}-multimodal-${CUENTA_AWS}   # almacenamiento suplementario de BDA multimodal (raíz de bucket)
 ROL_KB=${PREFIJO}-bedrock-kb
 ROL_OPERADOR=${PREFIJO}-operador
 PERFIL_AWS=${PREFIJO}

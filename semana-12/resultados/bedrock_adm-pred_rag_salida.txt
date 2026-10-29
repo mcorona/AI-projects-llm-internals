@@ -1,0 +1,59 @@
+documentos: 24 · pasajes de referencia únicos: 50
+estrategia              chunks  prom_chars    íntegros  partidos
+fijo_400_solape_80          57         348     50/50           0
+recursivo_300               84         203     48/50           2
+    partido: recepcion_almacen.md · Diferencia mayor a 2%: se hace un **rechazo parcial** de la diferencia
+    partido: skus_criticos.md · SKU crítico con menos de **7 días** de cobertura.
+actual_por_seccion          69         242     50/50           0
+## bedrock_adm-pred_rag (150 preguntas; generador: Bedrock RetrieveAndGenerate, us.anthropic.claude-haiku-4-5-20251001-v1:0, plantilla predeterminada)
+
+### Suite de recuperación (respondibles)
+
+| Idioma | n | recall@1 | recall@3 | recall@5 | recall@10 | mrr | ndcg@10 | ap@5 | doc_recall@5 |
+|---|---|---|---|---|---|---|---|---|---|
+| es | 65 | 0.677 | 0.792 | 0.823 | 0.846 | 0.755 | 0.775 | 0.749 | 0.831 |
+| en | 65 | 0.661 | 0.823 | 0.823 | 0.846 | 0.748 | 0.770 | 0.742 | 0.831 |
+
+### Suite de generación sobre lo recuperado (top 5; RetrieveAndGenerate)
+
+| Idioma | n | exactitud | faithfulness | answer_relevancy | precisión de citas | cobertura de cita | abstención falsa | abstención correcta |
+|---|---|---|---|---|---|---|---|---|
+| es | 65 | 0.815 | 0.938 | 0.749 | 0.864 | 0.831 | 11/65 | 10/10 |
+| en | 65 | 0.815 | 0.801 | 0.742 | 0.950 | 0.831 | 11/65 | 10/10 |
+
+### Costo y latencia por consulta
+
+| Etapa | USD por consulta | p50 (s) | p95 (s) |
+|---|---|---|---|
+| recuperacion | $0.00006 | 0.5 | 0.64 |
+| generacion | $0.00167 | 1.9 | 8.72 |
+
+Fallas (24):
+- rec-11 es (recuperación): Los search results no contienen información específica sobre un "factor de seguridad" que se use para los SKUs críticos. 
+
+Los documentos sí
+- rec-48 es (recuperación): Cuando un SKU crítico tiene menos de 7 días de cobertura, se activa el Nivel 2 de escalamiento. En este nivel, el gerente de compras debe ev
+- int-ocr-06 es (recuperación): No se encontró información sobre la exactitud de inventario obtenida en el inventario físico de septiembre del CEDIS Norte en los documentos
+- int-ocr-07 es (recuperación): No puedo encontrar información sobre la diferencia total valorizada en el acta de inventario del CEDIS Norte en los resultados de búsqueda p
+- int-ocr-08 es (recuperación): No puedo encontrar en los documentos proporcionados información sobre quién fue responsable del inventario físico del CEDIS Norte. Los docum
+- int-ocr-09 es (recuperación): No puedo encontrar información sobre la remisión R-4471 en los documentos disponibles. Los resultados de búsqueda contienen políticas genera
+- int-ocr-10 es (recuperación): No puedo encontrar información sobre la nota R-4471 o la cantidad de piezas que se remitieron en ella en los documentos disponibles. Los res
+- int-imagen-11 es (recuperación): No puedo encontrar información sobre el nivel de servicio de los CEDIS en septiembre de 2026 en los documentos proporcionados. Los documento
+- int-imagen-12 es (recuperación): No encontré información en los resultados de búsqueda sobre el nivel de servicio que tuvo el CEDIS Norte en septiembre de 2026. Los document
+- int-imagen-13 es (recuperación): No se encontró información en los resultados de búsqueda sobre el nivel de servicio que tuvo el CEDIS Centro en septiembre de 2026. Los docu
+- int-imagen-14 es (recuperación): No puedo encontrar información en los documentos proporcionados sobre la ubicación de una zona de cuarentena en el CEDIS Occidente ni en qué
+- int-imagen-15 es (recuperación): Sorry, I am unable to assist you with this request.
+- rec-11 en (recuperación): Sorry, I am unable to assist you with this request.
+- rec-48 en (recuperación): When a critical SKU has less than 7 days of coverage, it escalates to Level 2, which means the matter is reviewed by the manager of purchase
+- int-ocr-06 en (recuperación): Sorry, I am unable to assist you with this request.
+- int-ocr-07 en (recuperación): Sorry, I am unable to assist you with this request.
+- int-ocr-08 en (recuperación): Based on the search results provided, the North distribution center (CEDIS Norte in Monterrey) operates under the Gerencia de Operación Nort
+- int-ocr-09 en (recuperación): Sorry, I am unable to assist you with this request.
+- int-ocr-10 en (recuperación): I could not find information about delivery note R-4471 or the number of pieces shipped in it in the provided search results. The search res
+- int-imagen-11 en (recuperación): Sorry, I am unable to assist you with this request.
+- int-imagen-12 en (recuperación): Sorry, I am unable to assist you with this request.
+- int-imagen-13 en (recuperación): I could not find information in the search results about the service level that the Central distribution center had in September 2026. The s
+- int-imagen-14 en (recuperación): Sorry, I am unable to assist you with this request.
+- int-imagen-15 en (recuperación): Sorry, I am unable to assist you with this request.
+
+Consultas con chunks de otro tenant: 0. Métricas sin puntaje: 2. Reranking fallido: 0. Duración 413 s. Costo (recuperación + generación de lo guardado y evaluación de esta corrida): $0.3894

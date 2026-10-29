@@ -1,0 +1,100 @@
+{
+ "backend": "bedrock",
+ "config": "adm-fijo-bda",
+ "modo": "rag",
+ "fecha": "2026-10-28",
+ "preguntas": 150,
+ "generador": "Bedrock RetrieveAndGenerate, us.anthropic.claude-haiku-4-5-20251001-v1:0, plantilla predeterminada",
+ "juez": "claude-haiku-5-5 low",
+ "k_contexto": 5,
+ "chunks_fuera_del_tenant": 0,
+ "recuperacion": {
+  "es": {
+   "recall@1": 0.5692,
+   "recall@3": 0.7231,
+   "recall@5": 0.7385,
+   "recall@10": 0.7538,
+   "mrr": 0.659,
+   "ndcg@10": 0.6811,
+   "ap@5": 0.6518,
+   "doc_recall@5": 0.9846,
+   "n": 65
+  },
+  "en": {
+   "recall@1": 0.6,
+   "recall@3": 0.7,
+   "recall@5": 0.7385,
+   "recall@10": 0.7538,
+   "mrr": 0.6633,
+   "ndcg@10": 0.6847,
+   "ap@5": 0.6582,
+   "doc_recall@5": 1.0,
+   "n": 65
+  }
+ },
+ "generacion": {
+  "es": {
+   "n": 65,
+   "exactitud": 0.9692,
+   "faithfulness": 0.7389,
+   "answer_relevancy": 0.8995,
+   "precision_citas": 0.6806,
+   "cobertura_cita": 0.7231,
+   "abstencion_falsa": "1/65",
+   "abstencion_correcta": "10/10"
+  },
+  "en": {
+   "n": 65,
+   "exactitud": 0.9692,
+   "faithfulness": 0.7352,
+   "answer_relevancy": 0.9001,
+   "precision_citas": 0.6857,
+   "cobertura_cita": 0.7077,
+   "abstencion_falsa": "1/65",
+   "abstencion_correcta": "10/10"
+  }
+ },
+ "costo_usd_por_consulta": {
+  "recuperacion": 5.6e-05,
+  "generacion": 0.001083
+ },
+ "latencia_s": {
+  "recuperacion": {
+   "p50": 0.98,
+   "p95": 2.44
+  },
+  "generacion": {
+   "p50": 1.94,
+   "p95": 9.9
+  }
+ },
+ "fallas": [
+  {
+   "id": "rec-42",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "Según los documentos disponibles, la penalización máxima acumulada por incumplimientos es del 10% del valor del contrato. Sin embargo, los documentos no especifican explícitamente cuál es la penalizac"
+  },
+  {
+   "id": "int-imagen-15",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "Sorry, I am unable to assist you with this request."
+  },
+  {
+   "id": "rec-42",
+   "lang": "en",
+   "atribucion": "generación",
+   "respuesta": "The search results do not contain specific information about penalties for late delivery. The results mention that one of the supplier evaluation criteria is \"Cumplimiento del tiempo de entrega\" (Deli"
+  },
+  {
+   "id": "rec-48",
+   "lang": "en",
+   "atribucion": "generación",
+   "respuesta": "When a critical SKU has less than 7 days of coverage, it triggers a Level 2 escalation, which requires the manager of purchases to take action. This is a more urgent intervention than Level 1 escalati"
+  }
+ ],
+ "metricas_sin_puntaje": 1,
+ "costo_evaluacion_corrida_usd": 0.1056,
+ "rerank_fallido": 0
+}

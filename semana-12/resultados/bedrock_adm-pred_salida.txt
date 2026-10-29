@@ -1,0 +1,75 @@
+documentos: 24 · pasajes de referencia únicos: 50
+estrategia              chunks  prom_chars    íntegros  partidos
+fijo_400_solape_80          57         348     50/50           0
+recursivo_300               84         203     48/50           2
+    partido: recepcion_almacen.md · Diferencia mayor a 2%: se hace un **rechazo parcial** de la diferencia
+    partido: skus_criticos.md · SKU crítico con menos de **7 días** de cobertura.
+actual_por_seccion          69         242     50/50           0
+## bedrock_adm-pred (150 preguntas; generador: claude-haiku-5-5 medium, prompt solo_documentos)
+
+### Suite de recuperación (respondibles)
+
+| Idioma | n | recall@1 | recall@3 | recall@5 | recall@10 | mrr | ndcg@10 | ap@5 | doc_recall@5 |
+|---|---|---|---|---|---|---|---|---|---|
+| es | 65 | 0.677 | 0.792 | 0.823 | 0.846 | 0.755 | 0.775 | 0.749 | 0.831 |
+| en | 65 | 0.661 | 0.823 | 0.823 | 0.846 | 0.748 | 0.770 | 0.742 | 0.831 |
+
+### Suite de generación sobre lo recuperado (top 5; generador común)
+
+| Idioma | n | exactitud | faithfulness | answer_relevancy | precisión de citas | cobertura de cita | abstención falsa | abstención correcta |
+|---|---|---|---|---|---|---|---|---|
+| es | 65 | 0.815 | 0.815 | 0.750 | 0.604 | 0.831 | 11/65 | 10/10 |
+| en | 65 | 0.815 | 0.881 | 0.766 | 0.574 | 0.831 | 11/65 | 10/10 |
+
+### Costo y latencia por consulta
+
+| Etapa | USD por consulta | p50 (s) | p95 (s) |
+|---|---|---|---|
+| recuperacion | $0.00006 | 0.5 | 0.64 |
+| generacion | $0.00029 | 1.79 | 3.11 |
+
+Fallas (24):
+- rec-11 es (recuperación): El contexto no indica qué factor de seguridad usan los SKUs críticos. No define ningún factor ni fórmula de cálculo.
+
+Sí aparecen algunos el
+- rec-48 es (recuperación): **Qué pasa:** Un SKU crítico con menos de 7 días de cobertura escala al **Nivel 2 (gerente de compras)**, que evalúa una compra urgente y un
+- int-ocr-06 es (recuperación): No puedo responder con el contexto proporcionado. Ningún documento incluye resultados del inventario físico de septiembre ni la exactitud ob
+- int-ocr-07 es (recuperación): No encuentro en el contexto el acta de inventario del CEDIS Norte ni la diferencia total valorizada, así que no puedo darte esa cifra.
+
+Los 
+- int-ocr-08 es (recuperación): El contexto no indica quién fue la responsable del inventario físico del CEDIS Norte, y no menciona a ninguna persona con ese nombre ni ese 
+- int-ocr-09 es (recuperación): El contexto no permite responder. No contiene ningún dato sobre la remisión R-4471 ni sobre el número de piezas dañadas.
+
+Lo único relaciona
+- int-ocr-10 es (recuperación): El contexto proporcionado no contiene información sobre la nota **R-4471**, así que no puedo indicar cuántas piezas se remitieron.
+
+Los docu
+- int-imagen-11 es (recuperación): No puedo responder con el contexto proporcionado. Ninguno de los documentos incluye datos de nivel de servicio por CEDIS ni información de s
+- int-imagen-12 es (recuperación): El contexto no incluye el nivel de servicio del CEDIS Norte ni datos de septiembre de 2026, así que no puedo responder con certeza.
+
+Lo que 
+- int-imagen-13 es (recuperación): No encuentro en el contexto el nivel de servicio del CEDIS Centro para septiembre de 2026, ni ningún indicador de desempeño mensual.
+
+Lo úni
+- int-imagen-14 es (recuperación): No puedo responder con el contexto proporcionado. Ninguno de los documentos menciona la zona de cuarentena ni la distribución de pasillos de
+- int-imagen-15 es (recuperación): El contexto no indica junto a qué andén está la zona de SKUs críticos del CEDIS Occidente. No hay ninguna referencia a la ubicación física d
+- rec-11 en (recuperación): The provided context does not specify a safety factor for critical SKUs. It defines **safety stock** as the additional inventory held to cov
+- rec-48 en (recuperación): A critical SKU with less than 7 days of coverage is escalated to **Level 2 (purchasing manager)**. The manager evaluates an urgent purchase 
+- int-ocr-06 en (recuperación): The context doesn't include the accuracy obtained in the September physical inventory at the North distribution center (CEDIS Norte, Monterr
+- int-ocr-07 en (recuperación): The provided context does not include the total valued difference for the North distribution center (CEDIS Norte) inventory record. No docum
+- int-ocr-08 en (recuperación): The context doesn't say who is responsible for the physical inventory at the North distribution center (CEDIS Norte, Monterrey).
+
+The closes
+- int-ocr-09 en (recuperación): The context doesn't contain the information needed to answer. Nothing in it refers to delivery note R-4471 or gives a count of damaged piece
+- int-ocr-10 en (recuperación): The provided context doesn't include delivery note R-4471 or any shipment quantities, so I can't determine how many pieces were shipped. The
+- int-imagen-11 en (recuperación): The context doesn't include service levels by distribution center for September 2026, so I can't identify the lowest one.
+
+It does give the 
+- int-imagen-12 en (recuperación): The context doesn't say what service level the North distribution center (CEDIS Norte, Monterrey) had in September 2026. It only gives the c
+- int-imagen-13 en (recuperación): The context does not contain the service level that the Central distribution center achieved in September 2026.
+
+The only service-level figu
+- int-imagen-14 en (recuperación): The provided context doesn't say which aisle holds the quarantine zone at the West distribution center. It doesn't mention aisles or quarant
+- int-imagen-15 en (recuperación): The context doesn't say which dock is next to the critical SKU zone of the West distribution center. It doesn't describe dock layouts or zon
+
+Consultas con chunks de otro tenant: 0. Métricas sin puntaje: 1. Reranking fallido: 0. Duración 368 s. Costo (recuperación + generación de lo guardado y evaluación de esta corrida): $0.2078

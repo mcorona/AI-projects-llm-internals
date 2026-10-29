@@ -52,7 +52,12 @@ cat > $TMP/permisos_kb.json <<J
   "Condition":{"StringEquals":{"aws:ResourceAccount":"$CUENTA_AWS"}}},
  {"Sid":"VectorBucket","Effect":"Allow","Action":["s3vectors:PutVectors","s3vectors:GetVectors","s3vectors:DeleteVectors","s3vectors:QueryVectors","s3vectors:ListVectors","s3vectors:GetIndex"],
   "Resource":["arn:aws:s3vectors:$REGION:$CUENTA_AWS:bucket/$S3_VECTORES","arn:aws:s3vectors:$REGION:$CUENTA_AWS:bucket/$S3_VECTORES/index/*"]},
- {"Sid":"Embeddings","Effect":"Allow","Action":["bedrock:InvokeModel"],"Resource":[$(lista "arn:aws:bedrock:$REGION::foundation-model/" "${MODELOS_EMB[@]}")]}]}
+ {"Sid":"Embeddings","Effect":"Allow","Action":["bedrock:InvokeModel"],"Resource":[$(lista "arn:aws:bedrock:$REGION::foundation-model/" "${MODELOS_EMB[@]}")]},
+ {"Sid":"AlmacenamientoMultimodal","Effect":"Allow","Action":["s3:PutObject","s3:GetObject","s3:DeleteObject","s3:ListBucket"],
+  "Resource":["arn:aws:s3:::$S3_MULTIMODAL","arn:aws:s3:::$S3_MULTIMODAL/*"],"Condition":{"StringEquals":{"aws:ResourceAccount":"$CUENTA_AWS"}}},
+ {"Sid":"ParserBDA","Effect":"Allow","Action":["bedrock:InvokeDataAutomationAsync"],"Resource":[
+   "arn:aws:bedrock:$REGION:aws:data-automation-project/public-rag-default","arn:aws:bedrock:us-*:$CUENTA_AWS:data-automation-profile/*"]},
+ {"Sid":"ParserBDAEstado","Effect":"Allow","Action":["bedrock:GetDataAutomationStatus"],"Resource":"arn:aws:bedrock:us-*:$CUENTA_AWS:data-automation-invocation/*"}]}
 J
 crear_rol "$ROL_KB" $TMP/confianza_kb.json
 aws iam put-role-policy --role-name "$ROL_KB" --policy-name "${PREFIJO}-kb" --policy-document file://$TMP/permisos_kb.json
@@ -65,7 +70,9 @@ cat > $TMP/permisos_op.json <<J
 {"Version":"2012-10-17","Statement":[
  {"Sid":"Lectura","Effect":"Allow","Action":["bedrock:ListFoundationModels","bedrock:GetFoundationModel","bedrock:ListInferenceProfiles","bedrock:GetInferenceProfile",
    "bedrock:ListKnowledgeBases","s3:ListAllMyBuckets","s3vectors:ListVectorBuckets","budgets:ViewBudget"],"Resource":"*"},
- {"Sid":"KnowledgeBases","Effect":"Allow","Action":["bedrock:CreateKnowledgeBase","bedrock:GetKnowledgeBase","bedrock:UpdateKnowledgeBase","bedrock:DeleteKnowledgeBase",
+ {"Sid":"CrearKnowledgeBase","Effect":"Allow","Action":["bedrock:CreateKnowledgeBase"],"Resource":"*",
+  "Condition":{"StringEquals":{"aws:RequestTag/$ETIQUETA_CLAVE":"$ETIQUETA_VALOR"}}},
+ {"Sid":"KnowledgeBases","Effect":"Allow","Action":["bedrock:GetKnowledgeBase","bedrock:UpdateKnowledgeBase","bedrock:DeleteKnowledgeBase",
    "bedrock:CreateDataSource","bedrock:GetDataSource","bedrock:UpdateDataSource","bedrock:DeleteDataSource","bedrock:ListDataSources",
    "bedrock:StartIngestionJob","bedrock:GetIngestionJob","bedrock:ListIngestionJobs","bedrock:Retrieve","bedrock:TagResource","bedrock:ListTagsForResource"],
   "Resource":"arn:aws:bedrock:$REGION:$CUENTA_AWS:knowledge-base/*"},
@@ -76,7 +83,7 @@ cat > $TMP/permisos_op.json <<J
    $(lista "arn:aws:bedrock:us-*::foundation-model/" "${MODELOS_CLAUDE[@]}")]},
  {"Sid":"Buckets","Effect":"Allow","Action":["s3:CreateBucket","s3:DeleteBucket","s3:ListBucket","s3:GetObject","s3:PutObject","s3:DeleteObject",
    "s3:PutBucketTagging","s3:GetBucketTagging","s3:PutBucketPublicAccessBlock","s3:PutEncryptionConfiguration"],
-  "Resource":["arn:aws:s3:::$S3_DOCS","arn:aws:s3:::$S3_DOCS/*"]},
+  "Resource":["arn:aws:s3:::$S3_DOCS","arn:aws:s3:::$S3_DOCS/*","arn:aws:s3:::$S3_MULTIMODAL","arn:aws:s3:::$S3_MULTIMODAL/*"]},
  {"Sid":"VectorBucket","Effect":"Allow","Action":"s3vectors:*",
   "Resource":["arn:aws:s3vectors:$REGION:$CUENTA_AWS:bucket/$S3_VECTORES","arn:aws:s3vectors:$REGION:$CUENTA_AWS:bucket/$S3_VECTORES/index/*"]},
  {"Sid":"PasarRolKB","Effect":"Allow","Action":"iam:PassRole","Resource":"arn:aws:iam::$CUENTA_AWS:role/$ROL_KB",
