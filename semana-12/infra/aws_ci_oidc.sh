@@ -5,6 +5,7 @@
 set -euo pipefail
 cd "$(dirname "$0")"; source config.sh
 export AWS_PAGER=""
+SUJETO=$(gh_sujeto)
 TMP=$(mktemp -d)
 PROV=$(aws iam list-open-id-connect-providers --query "OpenIDConnectProviderList[?contains(Arn,'token.actions.githubusercontent.com')].Arn" --output text)
 if [ -z "$PROV" ]; then
@@ -17,7 +18,7 @@ fi
 cat > $TMP/confianza.json <<J
 {"Version":"2012-10-17","Statement":[{"Effect":"Allow","Principal":{"Federated":"$PROV"},"Action":"sts:AssumeRoleWithWebIdentity",
  "Condition":{"StringEquals":{"token.actions.githubusercontent.com:aud":"sts.amazonaws.com",
-   "token.actions.githubusercontent.com:sub":"repo:$GH_REPO:environment:$GH_ENTORNO"}}}]}
+   "token.actions.githubusercontent.com:sub":"$SUJETO"}}}]}
 J
 lista() { local p=$1; shift; local out=""; for x in "$@"; do out+="\"${p}${x}\","; done; echo "${out%,}"; }
 cat > $TMP/permisos.json <<J
@@ -38,4 +39,4 @@ else
 fi
 aws iam put-role-policy --role-name $ROL_CI --policy-name ${PREFIJO}-ci --policy-document file://$TMP/permisos.json
 rm -rf $TMP
-echo "rol $ROL_CI: arn:aws:iam::$CUENTA_AWS:role/$ROL_CI (solo repo:$GH_REPO:environment:$GH_ENTORNO)"
+echo "rol $ROL_CI: arn:aws:iam::$CUENTA_AWS:role/$ROL_CI (solo $SUJETO)"
