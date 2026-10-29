@@ -13,7 +13,7 @@ if ! gcloud storage buckets describe gs://$GCS_DOCS --project=$P >/dev/null 2>&1
   echo "bucket gs://$GCS_DOCS: creado (privado, US)"
 fi
 # El agente de servicio de Discovery Engine existe tras activar la API; se fuerza su creación por si aún no existe.
-gcloud beta services identity create --service=discoveryengine.googleapis.com --project=$P >/dev/null 2>&1 || true
+gcloud beta services identity create --service=discoveryengine.googleapis.com --project=$P --quiet >/dev/null 2>&1 || true
 gcloud storage buckets add-iam-policy-binding gs://$GCS_DOCS --member=serviceAccount:$GCP_SA_EMAIL --role=roles/storage.objectAdmin >/dev/null
 gcloud storage buckets add-iam-policy-binding gs://$GCS_DOCS \
   --member=serviceAccount:service-$NUM@gcp-sa-discoveryengine.iam.gserviceaccount.com --role=roles/storage.objectViewer >/dev/null
