@@ -190,7 +190,10 @@ def recuperar_vertex(items, guardar_uno, config):
     base = f"https://discoveryengine.googleapis.com/v1/projects/{proy}/locations/global"
     url = f"{base}/collections/default_collection/engines/{estado['engine']}/servingConfigs/default_search:search"
     for x in items:
-        cuerpo = {"query": x["question"], "pageSize": 20, "filter": FILTRO_VX,
+        # Umbral de relevancia mínimo y expansión de consulta automática: sin ellos el servicio devuelve 0 a 3 resultados
+        # (y ninguno en muchas preguntas en inglés sobre documentos en español). Se pide el top 20 como a las demás opciones.
+        cuerpo = {"query": x["question"], "pageSize": 20, "filter": FILTRO_VX, "relevanceThreshold": "LOWEST",
+                  "queryExpansionSpec": {"condition": "AUTO"},
                   "contentSearchSpec": {"searchResultMode": "CHUNKS" if store == "vx-adm" else "DOCUMENTS"}}
         if busqueda == "vectorial":
             cuerpo.update({"rankingExpressionBackend": "RANK_BY_FORMULA", "rankingExpression": "semantic_similarity_score"})
@@ -200,8 +203,8 @@ def recuperar_vertex(items, guardar_uno, config):
         for z in r.get("results", []):
             if "chunk" in z:
                 uri = z["chunk"].get("documentMetadata", {}).get("uri", "")
-                partes = uri.split("/vx-adm/", 1)[-1].split("/")
-                tenant, stem = partes[0], Path(partes[-1]).stem.removesuffix("_p1")
+                partes = uri.split("/")  # gs://<bucket>/vx-adm/administrado/<tenant>/<archivo>
+                tenant, stem = partes[-2], Path(partes[-1]).stem.removesuffix("_p1")
                 texto = z["chunk"].get("content", "")
             else:
                 tenant, stem, n = z["document"]["id"].split("__")
@@ -216,7 +219,7 @@ def recuperar_vertex(items, guardar_uno, config):
             ranking = [ranking[int(rec["id"])] for rec in rr.get("records", [])]
             costo = PRECIO_RANKING
         guardar_uno(x, {"ranking": ranking, "latencia_s": round(time.perf_counter() - t0, 4), "costo": costo,
-                        "tenants": sorted(tenants)})
+                        "tenants": sorted(tenants), "n_resultados": len(ranking)})
 
 
 BACKENDS = {"propio": recuperar_propio, "bedrock": recuperar_bedrock, "vertex": recuperar_vertex}
@@ -225,6 +228,8 @@ BACKENDS = {"propio": recuperar_propio, "bedrock": recuperar_bedrock, "vertex": 
 # ---------- métricas ----------
 
 def metricas_recuperacion(x, ranking):
+    # Un servicio puede devolver menos de 10 resultados: se completa con vacíos (no relevantes) para las métricas @k.
+    ranking = list(ranking) + [["", ""]] * max(0, 10 - len(ranking))
     m = sr.metricas([tuple(c) for c in ranking], x["gold"])
     fuentes = {Path(g["source"]).stem for g in x["gold"]}
     m["doc_recall@5"] = len(fuentes & {s for s, _ in ranking[:5]}) / len(fuentes)
@@ -330,6 +335,10 @@ def main():
               and v.get("valor") is None)
     resumen["metricas_sin_puntaje"] = sin
     resumen["costo_evaluacion_corrida_usd"] = round((uso["in"] * P["in"] + uso["out"] * P["out"]) / 1e6, 4)
+    nres = [v["n_resultados"] for kk, v in cache.items() if kk.startswith("rec::") and "n_resultados" in v]
+    if nres:
+        resumen["resultados_por_consulta"] = {"media": round(statistics.mean(nres), 1), "cero": sum(1 for n in nres if n == 0),
+                                              "menos_de_5": sum(1 for n in nres if n < 5)}
     resumen["rerank_fallido"] = sum(1 for kk, v in cache.items() if kk.startswith("rec::") and v.get("rerank_fallo"))
     (RES / f"{nombre}_resumen.json").write_text(json.dumps(resumen, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     with (RES / f"{nombre}_detalle.csv").open("w", encoding="utf-8", newline="") as fh:
@@ -358,6 +367,8 @@ def main():
     for f in resumen["fallas"]:
         print(f"- {f['id']} {f['lang']} ({f['atribucion']}): {f['respuesta'][:140]}")
     total = sum(f["costo_rec"] for f in filas) + sum(f["costo_gen"] for f in filas) + resumen["costo_evaluacion_corrida_usd"]
+    if "resultados_por_consulta" in resumen:
+        print(f"\nResultados devueltos por consulta: {resumen['resultados_por_consulta']}")
     print(f"\nConsultas con chunks de otro tenant: {resumen['chunks_fuera_del_tenant']}. Métricas sin puntaje: {sin}. Reranking fallido: {resumen['rerank_fallido']}. Duración {time.time() - t0:.0f} s. "
           f"Costo (recuperación + generación de lo guardado y evaluación de esta corrida): ${total:.4f}")
 
