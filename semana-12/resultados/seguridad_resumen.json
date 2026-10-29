@@ -1,0 +1,173 @@
+{
+ "casos": {
+  "rol": 56,
+  "tenant": 40
+ },
+ "sistemas": {
+  "bedrock adm-pred": {
+   "rol": {
+    "consultas": 56,
+    "chunks_no_autorizados": 0,
+    "consultas_con_fuga": 0,
+    "documento_prohibido": 0,
+    "resultados_media": 5.3,
+    "resultados_min": 5
+   },
+   "tenant": {
+    "consultas": 40,
+    "chunks_no_autorizados": 0,
+    "consultas_con_fuga": 0,
+    "documento_prohibido": 0,
+    "resultados_media": 16.2,
+    "resultados_min": 13
+   }
+  },
+  "bedrock adm-fijo": {
+   "rol": {
+    "consultas": 56,
+    "chunks_no_autorizados": 0,
+    "consultas_con_fuga": 0,
+    "documento_prohibido": 0,
+    "resultados_media": 11.5,
+    "resultados_min": 11
+   },
+   "tenant": {
+    "consultas": 40,
+    "chunks_no_autorizados": 0,
+    "consultas_con_fuga": 0,
+    "documento_prohibido": 0,
+    "resultados_media": 19.1,
+    "resultados_min": 16
+   }
+  },
+  "bedrock adm-fijo-bda": {
+   "rol": {
+    "consultas": 56,
+    "chunks_no_autorizados": 0,
+    "consultas_con_fuga": 0,
+    "documento_prohibido": 0,
+    "resultados_media": 11.4,
+    "resultados_min": 11
+   },
+   "tenant": {
+    "consultas": 40,
+    "chunks_no_autorizados": 0,
+    "consultas_con_fuga": 0,
+    "documento_prohibido": 0,
+    "resultados_media": 18.9,
+    "resultados_min": 16
+   }
+  },
+  "bedrock ctl-chunks": {
+   "rol": {
+    "consultas": 56,
+    "chunks_no_autorizados": 0,
+    "consultas_con_fuga": 0,
+    "documento_prohibido": 0,
+    "resultados_media": 11.3,
+    "resultados_min": 11
+   },
+   "tenant": {
+    "consultas": 40,
+    "chunks_no_autorizados": 0,
+    "consultas_con_fuga": 0,
+    "documento_prohibido": 0,
+    "resultados_media": 20,
+    "resultados_min": 20
+   }
+  },
+  "bedrock adm-fijo-bda RetrieveAndGenerate": {
+   "rol": {
+    "consultas": 56,
+    "chunks_no_autorizados": 0,
+    "consultas_con_fuga": 0,
+    "documento_prohibido": 0,
+    "resultados_media": 0.0,
+    "resultados_min": 0
+   },
+   "tenant": {
+    "consultas": 40,
+    "chunks_no_autorizados": 0,
+    "consultas_con_fuga": 0,
+    "documento_prohibido": 0,
+    "resultados_media": 1.0,
+    "resultados_min": 1
+   }
+  },
+  "vertex vx-adm": {
+   "rol": {
+    "consultas": 56,
+    "chunks_no_autorizados": 0,
+    "consultas_con_fuga": 0,
+    "documento_prohibido": 0,
+    "resultados_media": 5.2,
+    "resultados_min": 5
+   },
+   "tenant": {
+    "consultas": 40,
+    "chunks_no_autorizados": 0,
+    "consultas_con_fuga": 0,
+    "documento_prohibido": 0,
+    "resultados_media": 15,
+    "resultados_min": 10
+   }
+  },
+  "vertex vx-ctl": {
+   "rol": {
+    "consultas": 56,
+    "chunks_no_autorizados": 0,
+    "consultas_con_fuga": 0,
+    "documento_prohibido": 0,
+    "resultados_media": 11.3,
+    "resultados_min": 11
+   },
+   "tenant": {
+    "consultas": 40,
+    "chunks_no_autorizados": 0,
+    "consultas_con_fuga": 0,
+    "documento_prohibido": 0,
+    "resultados_media": 20,
+    "resultados_min": 20
+   }
+  }
+ },
+ "control_sin_filtro": {
+  "CONTROL bedrock ctl-chunks sin filtro": {
+   "rol": {
+    "consultas": 56,
+    "chunks_no_autorizados": 1025,
+    "consultas_con_fuga": 56,
+    "documento_prohibido": 56,
+    "resultados_media": 20,
+    "resultados_min": 20
+   },
+   "tenant": {
+    "consultas": 40,
+    "chunks_no_autorizados": 401,
+    "consultas_con_fuga": 40,
+    "documento_prohibido": 40,
+    "resultados_media": 20,
+    "resultados_min": 20
+   }
+  },
+  "CONTROL vertex vx-ctl sin filtro": {
+   "rol": {
+    "consultas": 56,
+    "chunks_no_autorizados": 1070,
+    "consultas_con_fuga": 56,
+    "documento_prohibido": 56,
+    "resultados_media": 20,
+    "resultados_min": 20
+   },
+   "tenant": {
+    "consultas": 40,
+    "chunks_no_autorizados": 400,
+    "consultas_con_fuga": 40,
+    "documento_prohibido": 40,
+    "resultados_media": 20,
+    "resultados_min": 20
+   }
+  }
+ },
+ "fuga_total": 0
+}

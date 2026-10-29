@@ -1,0 +1,40 @@
+documentos: 24 · pasajes de referencia únicos: 50
+estrategia              chunks  prom_chars    íntegros  partidos
+fijo_400_solape_80          57         348     50/50           0
+recursivo_300               84         203     48/50           2
+    partido: recepcion_almacen.md · Diferencia mayor a 2%: se hace un **rechazo parcial** de la diferencia
+    partido: skus_criticos.md · SKU crítico con menos de **7 días** de cobertura.
+actual_por_seccion          69         242     50/50           0
+casos: 56 por rol, 40 entre tenants
+bedrock adm-pred: 0 chunks no autorizados en 96 consultas
+bedrock adm-fijo: 0 chunks no autorizados en 96 consultas
+bedrock adm-fijo-bda: 0 chunks no autorizados en 96 consultas
+bedrock ctl-chunks: 0 chunks no autorizados en 96 consultas
+bedrock adm-fijo-bda RetrieveAndGenerate: 0 chunks no autorizados en 96 consultas
+vertex vx-adm: 0 chunks no autorizados en 96 consultas
+vertex vx-ctl: 0 chunks no autorizados en 96 consultas
+CONTROL bedrock ctl-chunks sin filtro: 1426 chunks no autorizados en 96 consultas
+CONTROL vertex vx-ctl sin filtro: 1470 chunks no autorizados en 96 consultas
+
+| Sistema | Tipo | Consultas | Chunks no autorizados | Consultas con fuga | Doc. prohibido | Resultados (media / mín) |
+|---|---|---|---|---|---|---|
+| bedrock adm-pred | rol | 56 | 0 | 0 | 0 | 5.3 / 5 |
+| bedrock adm-pred | tenant | 40 | 0 | 0 | 0 | 16.2 / 13 |
+| bedrock adm-fijo | rol | 56 | 0 | 0 | 0 | 11.5 / 11 |
+| bedrock adm-fijo | tenant | 40 | 0 | 0 | 0 | 19.1 / 16 |
+| bedrock adm-fijo-bda | rol | 56 | 0 | 0 | 0 | 11.4 / 11 |
+| bedrock adm-fijo-bda | tenant | 40 | 0 | 0 | 0 | 18.9 / 16 |
+| bedrock ctl-chunks | rol | 56 | 0 | 0 | 0 | 11.3 / 11 |
+| bedrock ctl-chunks | tenant | 40 | 0 | 0 | 0 | 20 / 20 |
+| bedrock adm-fijo-bda RetrieveAndGenerate | rol | 56 | 0 | 0 | 0 | 0.0 / 0 |
+| bedrock adm-fijo-bda RetrieveAndGenerate | tenant | 40 | 0 | 0 | 0 | 1.0 / 1 |
+| vertex vx-adm | rol | 56 | 0 | 0 | 0 | 5.2 / 5 |
+| vertex vx-adm | tenant | 40 | 0 | 0 | 0 | 15 / 10 |
+| vertex vx-ctl | rol | 56 | 0 | 0 | 0 | 11.3 / 11 |
+| vertex vx-ctl | tenant | 40 | 0 | 0 | 0 | 20 / 20 |
+| CONTROL bedrock ctl-chunks sin filtro | rol | 56 | 1025 | 56 | 56 | 20 / 20 |
+| CONTROL bedrock ctl-chunks sin filtro | tenant | 40 | 401 | 40 | 40 | 20 / 20 |
+| CONTROL vertex vx-ctl sin filtro | rol | 56 | 1070 | 56 | 56 | 20 / 20 |
+| CONTROL vertex vx-ctl sin filtro | tenant | 40 | 400 | 40 | 40 | 20 / 20 |
+
+FUGA TOTAL CON FILTRO: 0 (debe ser 0)

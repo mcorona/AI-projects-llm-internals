@@ -193,3 +193,19 @@ Two data stores in project `ejemplo1-9xub`, created by [`infra/vertex_crear.py`]
 - **Managed ingestion:** it reads PDFs and scans, but OCR alone cannot tie chart values to their labels, so the 5 image questions fail.
 - **Leakage:** 0 in every run. Correct abstention: 10/10 everywhere.
 - **Cost:** queries are within the free tier; the semantic ranker costs $0.001 per query. Cost of the activity: ≈ $2.
+
+## 6. Security in the managed services
+
+[`evaluacion/seguridad.py`](evaluacion/seguridad.py) runs the week 10 leakage tests against the managed services. Results: [`resultados/seguridad.md`](resultados/seguridad.md).
+
+- **Tests:** 56 by role (an `alfa` user with one role that cannot see the gold document) and 40 across tenants (`alfa` and `beta` users).
+- **Systems:** 4 Bedrock knowledge bases, RetrieveAndGenerate, and 2 Vertex data stores.
+
+| | Leakage with filter | Same queries without filter (control) |
+|---|---|---|
+| Bedrock (4 KB + RetrieveAndGenerate) | **0** in 480 queries | 1,426 unauthorized chunks in 96 queries (`ctl-chunks`) |
+| Vertex AI Search (2 data stores) | **0** in 192 queries | 1,470 unauthorized chunks in 96 queries (`vx-ctl`) |
+
+- Tenant and roles are checked against the real file path and the frozen manifest, not the service's metadata.
+- **The filter is applied inside the query:** single-role users get exactly the number of chunks they are allowed to see, up to 20.
+- **Neither service is ruled out.** Cost: ≈ $0.20.
