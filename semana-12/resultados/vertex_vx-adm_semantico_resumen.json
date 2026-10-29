@@ -1,0 +1,141 @@
+{
+ "backend": "vertex",
+ "config": "vx-adm:semantico",
+ "modo": "comun",
+ "fecha": "2026-10-28",
+ "preguntas": 150,
+ "generador": "claude-haiku-5-5 medium, prompt solo_documentos",
+ "juez": "claude-haiku-5-5 low",
+ "k_contexto": 5,
+ "chunks_fuera_del_tenant": 0,
+ "recuperacion": {
+  "es": {
+   "recall@1": 0.8154,
+   "recall@3": 0.8308,
+   "recall@5": 0.8308,
+   "recall@10": 0.8308,
+   "mrr": 0.8385,
+   "ndcg@10": 0.8308,
+   "ap@5": 0.8385,
+   "doc_recall@5": 1.0,
+   "n": 65
+  },
+  "en": {
+   "recall@1": 0.8,
+   "recall@3": 0.8308,
+   "recall@5": 0.8308,
+   "recall@10": 0.8308,
+   "mrr": 0.8308,
+   "ndcg@10": 0.8251,
+   "ap@5": 0.8308,
+   "doc_recall@5": 1.0,
+   "n": 65
+  }
+ },
+ "generacion": {
+  "es": {
+   "n": 65,
+   "exactitud": 0.9231,
+   "faithfulness": 0.8522,
+   "answer_relevancy": 0.802,
+   "precision_citas": 0.6154,
+   "cobertura_cita": 0.8462,
+   "abstencion_falsa": "4/65",
+   "abstencion_correcta": "10/10"
+  },
+  "en": {
+   "n": 65,
+   "exactitud": 0.9231,
+   "faithfulness": 0.8539,
+   "answer_relevancy": 0.8126,
+   "precision_citas": 0.6667,
+   "cobertura_cita": 0.8462,
+   "abstencion_falsa": "3/65",
+   "abstencion_correcta": "10/10"
+  }
+ },
+ "costo_usd_por_consulta": {
+  "recuperacion": 0.001,
+  "generacion": 0.000316
+ },
+ "latencia_s": {
+  "recuperacion": {
+   "p50": 0.78,
+   "p95": 1.33
+  },
+  "generacion": {
+   "p50": 1.75,
+   "p95": 5.64
+  }
+ },
+ "fallas": [
+  {
+   "id": "int-imagen-11",
+   "lang": "es",
+   "atribucion": "generación",
+   "respuesta": "El nivel de servicio más bajo fue de **95.1%**, según la gráfica de septiembre de 2026 [D1]. Sin embargo, el texto extraído de la gráfica no asocia claramente cada valor con su CEDIS. Solo aparecen lo"
+  },
+  {
+   "id": "int-imagen-12",
+   "lang": "es",
+   "atribucion": "generación",
+   "respuesta": "No es posible determinar con certeza el nivel de servicio del CEDIS Norte en septiembre de 2026.\n\nLa gráfica [D1] muestra tres valores para septiembre de 2026 (97.8%, 95.1% y 98.6%) y tres etiquetas ("
+  },
+  {
+   "id": "int-imagen-13",
+   "lang": "es",
+   "atribucion": "generación",
+   "respuesta": "No puedo determinar con seguridad el nivel de servicio del CEDIS Centro en septiembre de 2026. El gráfico [D1] tiene el título \"Nivel de servicio por CEDIS, septiembre 2026\" y muestra los valores 95.1"
+  },
+  {
+   "id": "int-imagen-14",
+   "lang": "es",
+   "atribucion": "generación",
+   "respuesta": "El contexto no permite saber en qué pasillo está la zona de cuarentena. El plano del CEDIS Occidente [D1] menciona la \"Zona de cuarentena\" y los pasillos 10 a 14, pero el texto del plano no indica qué"
+  },
+  {
+   "id": "int-imagen-15",
+   "lang": "es",
+   "atribucion": "generación",
+   "respuesta": "El contexto no permite determinar a qué andén está junto la zona de SKUs críticos. El plano [D1] enumera Andén 1 a Andén 8 y la zona de SKUs críticos, pero el texto extraído no indica su posición rela"
+  },
+  {
+   "id": "int-imagen-11",
+   "lang": "en",
+   "atribucion": "generación",
+   "respuesta": "The lowest service level in September 2026 was **95.1%** [D1]. However, the chart text doesn't clearly show which distribution center that value belongs to. The three values listed are 97.8%, 95.1%, a"
+  },
+  {
+   "id": "int-imagen-12",
+   "lang": "en",
+   "atribucion": "generación",
+   "respuesta": "The chart in [D1] appears to show **97.8%** for CEDIS Norte in September 2026. However, the extracted text doesn't clearly link each value to its center, so I can't confirm that mapping. The original "
+  },
+  {
+   "id": "int-imagen-13",
+   "lang": "en",
+   "atribucion": "generación",
+   "respuesta": "The context doesn't let me say with confidence what the Central distribution center's service level was in September 2026.\n\n[D1] is a chart of service level by CEDIS for September 2026. Its text extra"
+  },
+  {
+   "id": "int-imagen-14",
+   "lang": "en",
+   "atribucion": "generación",
+   "respuesta": "The context doesn't say which aisle holds the quarantine zone. The plan of the CEDIS Occidente [D1] lists \"Zona de cuarentena\" together with Pasillos 10 to 14, but the text extracted from the PNG does"
+  },
+  {
+   "id": "int-imagen-15",
+   "lang": "en",
+   "atribucion": "generación",
+   "respuesta": "The context doesn't say which dock is next to the critical SKU zone. The plan [D1] lists Andén 1 through Andén 8 and the \"Zona de SKUs críticos\" label, but the text is only a transcription of the plan"
+  }
+ ],
+ "metricas_sin_puntaje": 1,
+ "costo_evaluacion_corrida_usd": 0.1471,
+ "resultados_por_consulta": {
+  "media": 20,
+  "cero": 0,
+  "menos_de_5": 0
+ },
+ "rerank_fallido": 0
+}

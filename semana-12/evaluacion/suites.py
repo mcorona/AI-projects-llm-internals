@@ -15,7 +15,8 @@ Todo lo demás es común y no cambia entre opciones:
 - costo y latencia por consulta de recuperación y de generación.
 Caché por backend en resultados/<backend>_cache.json (reanuda); resumen en resultados/<backend>_resumen.json y detalle en
 resultados/<backend>_detalle.csv. Backends: propio; bedrock (--config, una Knowledge Base de la actividad 4, con --modo comun
-(generador común) o --modo rag (RetrieveAndGenerate de Bedrock con Claude Haiku 4.5)). Vertex se agrega en la actividad 5.
+(generador común) o --modo rag (RetrieveAndGenerate de Bedrock con Claude Haiku 4.5)); vertex (--config <data store>:<búsqueda>,
+actividad 5).
 """
 import argparse
 import asyncio
@@ -27,6 +28,7 @@ import os
 import statistics
 import sys
 import time
+import urllib.error
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parents[1]
@@ -138,12 +140,96 @@ def generar_rag(items, cache, guardar, config):
         list(ex.map(uno, items))
 
 
-BACKENDS = {"propio": recuperar_propio, "bedrock": recuperar_bedrock}
+# ---------- Vertex AI Search ----------
+VX_TOKEN = {"t": None, "hasta": 0}
+PAQUETE = RAIZ / "ingesta" / "paquete"
+FILTRO_VX = ('tenant_id: ANY("alfa") AND roles: ANY(' + ",".join(f'"{r}"' for r in sorted(a.USUARIO["roles"])) + ")")
+PRECIO_RANKING = 1.0 / 1000   # Vertex AI Search Ranking API, por solicitud (resultados/costos_fijos.md)
+
+
+def _vx_conf():
+    import re as _re
+    cfg = (RAIZ / "infra" / "config.sh").read_text()
+    pref = _re.search(r"^PREFIJO=(\S+)", cfg, _re.M).group(1)
+    proy = _re.search(r"^GCP_PROYECTO=\$\{GCP_PROYECTO:-([^}]+)\}", cfg, _re.M).group(1)
+    return proy, f"{pref}-operador@{proy}.iam.gserviceaccount.com"
+
+
+def _vx(url, cuerpo):
+    import subprocess
+    import urllib.request
+    proy, sa = _vx_conf()
+    if time.time() > VX_TOKEN["hasta"]:
+        VX_TOKEN["t"] = subprocess.run(["gcloud", "auth", "print-access-token", f"--impersonate-service-account={sa}"],
+                                       capture_output=True, text=True, check=True).stdout.strip()
+        VX_TOKEN["hasta"] = time.time() + 2700
+    for intento in range(5):
+        req = urllib.request.Request(url, data=json.dumps(cuerpo).encode(), method="POST", headers={
+            "Authorization": f"Bearer {VX_TOKEN['t']}", "Content-Type": "application/json", "x-goog-user-project": proy})
+        try:
+            with urllib.request.urlopen(req, timeout=60) as r:
+                return json.loads(r.read())
+        except urllib.error.HTTPError as e:
+            if e.code in (429, 500, 503) and intento < 4:
+                time.sleep(2 ** (intento + 1))
+                continue
+            raise SystemExit(f"Vertex HTTP {e.code}: {e.read().decode()[:400]}")
+
+
+def recuperar_vertex(items, guardar_uno, config):
+    """Vertex AI Search, API search de la app del data store, top 20 con el filtro de tenant y roles en la consulta.
+    config = <data store>:<búsqueda>, con búsqueda:
+      hibrida   ranking predeterminado del servicio (palabras clave + embeddings);
+      vectorial ranking por fórmula solo con semantic_similarity_score (reordena los candidatos que recupera el servicio);
+      semantico la híbrida reordenada con el ranker semántico (Ranking API, semantic-ranker-default@latest).
+    vx-adm devuelve chunks del servicio (layout parser); vx-ctl devuelve documentos = chunks propios (texto del paquete)."""
+    import urllib.error  # noqa: F401
+    store, busqueda = config.split(":")
+    estado = json.loads((RAIZ / "infra" / "estado_gcp.json").read_text(encoding="utf-8"))[store]
+    proy, _ = _vx_conf()
+    base = f"https://discoveryengine.googleapis.com/v1/projects/{proy}/locations/global"
+    url = f"{base}/collections/default_collection/engines/{estado['engine']}/servingConfigs/default_search:search"
+    for x in items:
+        # Umbral de relevancia mínimo y expansión de consulta automática: sin ellos el servicio devuelve 0 a 3 resultados
+        # (y ninguno en muchas preguntas en inglés sobre documentos en español). Se pide el top 20 como a las demás opciones.
+        cuerpo = {"query": x["question"], "pageSize": 20, "filter": FILTRO_VX, "relevanceThreshold": "LOWEST",
+                  "queryExpansionSpec": {"condition": "AUTO"},
+                  "contentSearchSpec": {"searchResultMode": "CHUNKS" if store == "vx-adm" else "DOCUMENTS"}}
+        if busqueda == "vectorial":
+            cuerpo.update({"rankingExpressionBackend": "RANK_BY_FORMULA", "rankingExpression": "semantic_similarity_score"})
+        t0 = time.perf_counter()
+        r = _vx(url, cuerpo)
+        ranking, tenants = [], set()
+        for z in r.get("results", []):
+            if "chunk" in z:
+                uri = z["chunk"].get("documentMetadata", {}).get("uri", "")
+                partes = uri.split("/")  # gs://<bucket>/vx-adm/administrado/<tenant>/<archivo>
+                tenant, stem = partes[-2], Path(partes[-1]).stem.removesuffix("_p1")
+                texto = z["chunk"].get("content", "")
+            else:
+                tenant, stem, n = z["document"]["id"].split("__")
+                texto = (PAQUETE / "controlado" / "chunks" / tenant / f"{stem}__{n}.txt").read_text(encoding="utf-8")
+            tenants.add(tenant)
+            ranking.append([stem, texto])
+        costo = 0.0
+        if busqueda == "semantico" and ranking:
+            rr = _vx(f"{base}/rankingConfigs/default_ranking_config:rank", {
+                "model": "semantic-ranker-default@latest", "query": x["question"], "topN": len(ranking),
+                "records": [{"id": str(i), "content": c[:6000]} for i, (_, c) in enumerate(ranking)]})
+            ranking = [ranking[int(rec["id"])] for rec in rr.get("records", [])]
+            costo = PRECIO_RANKING
+        guardar_uno(x, {"ranking": ranking, "latencia_s": round(time.perf_counter() - t0, 4), "costo": costo,
+                        "tenants": sorted(tenants), "n_resultados": len(ranking)})
+
+
+BACKENDS = {"propio": recuperar_propio, "bedrock": recuperar_bedrock, "vertex": recuperar_vertex}
 
 
 # ---------- métricas ----------
 
 def metricas_recuperacion(x, ranking):
+    # Un servicio puede devolver menos de 10 resultados: se completa con vacíos (no relevantes) para las métricas @k.
+    ranking = list(ranking) + [["", ""]] * max(0, 10 - len(ranking))
     m = sr.metricas([tuple(c) for c in ranking], x["gold"])
     fuentes = {Path(g["source"]).stem for g in x["gold"]}
     m["doc_recall@5"] = len(fuentes & {s for s, _ in ranking[:5]}) / len(fuentes)
@@ -153,7 +239,8 @@ def metricas_recuperacion(x, ranking):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--backend", choices=sorted(BACKENDS), default="propio")
-    ap.add_argument("--config", default="", help="bedrock: configuración de KB (adm-pred, adm-fijo, adm-fijo-bda, ctl-chunks)")
+    ap.add_argument("--config", default="", help="bedrock: adm-pred, adm-fijo, adm-fijo-bda o ctl-chunks; "
+                    "vertex: <vx-adm|vx-ctl>:<hibrida|vectorial|semantico>")
     ap.add_argument("--modo", choices=("comun", "rag"), default="comun", help="comun: generador común; rag: RetrieveAndGenerate")
     ap.add_argument("--limite", type=int, default=0, help="N preguntas por idioma y tipo (prueba de humo)")
     args = ap.parse_args()
@@ -163,7 +250,7 @@ def main():
                  for x in [y for y in items if y["lang"] == lang and y["respondible"] == resp][:args.limite]]
     if args.backend != "propio" and not args.config:
         raise SystemExit("--config es obligatorio para los backends administrados")
-    base = args.backend + (f"_{args.config}" if args.config else "")
+    base = args.backend + (f"_{args.config.replace(':', '_')}" if args.config else "")
     nombre = base + ("_rag" if args.modo == "rag" else "") + (f"_humo{args.limite}" if args.limite else "")
     ruta = RES / f"{nombre}_cache.json"
     cache = json.loads(ruta.read_text(encoding="utf-8")) if ruta.exists() else {}
@@ -248,6 +335,10 @@ def main():
               and v.get("valor") is None)
     resumen["metricas_sin_puntaje"] = sin
     resumen["costo_evaluacion_corrida_usd"] = round((uso["in"] * P["in"] + uso["out"] * P["out"]) / 1e6, 4)
+    nres = [v["n_resultados"] for kk, v in cache.items() if kk.startswith("rec::") and "n_resultados" in v]
+    if nres:
+        resumen["resultados_por_consulta"] = {"media": round(statistics.mean(nres), 1), "cero": sum(1 for n in nres if n == 0),
+                                              "menos_de_5": sum(1 for n in nres if n < 5)}
     resumen["rerank_fallido"] = sum(1 for kk, v in cache.items() if kk.startswith("rec::") and v.get("rerank_fallo"))
     (RES / f"{nombre}_resumen.json").write_text(json.dumps(resumen, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     with (RES / f"{nombre}_detalle.csv").open("w", encoding="utf-8", newline="") as fh:
@@ -276,6 +367,8 @@ def main():
     for f in resumen["fallas"]:
         print(f"- {f['id']} {f['lang']} ({f['atribucion']}): {f['respuesta'][:140]}")
     total = sum(f["costo_rec"] for f in filas) + sum(f["costo_gen"] for f in filas) + resumen["costo_evaluacion_corrida_usd"]
+    if "resultados_por_consulta" in resumen:
+        print(f"\nResultados devueltos por consulta: {resumen['resultados_por_consulta']}")
     print(f"\nConsultas con chunks de otro tenant: {resumen['chunks_fuera_del_tenant']}. Métricas sin puntaje: {sin}. Reranking fallido: {resumen['rerank_fallido']}. Duración {time.time() - t0:.0f} s. "
           f"Costo (recuperación + generación de lo guardado y evaluación de esta corrida): ${total:.4f}")
 
