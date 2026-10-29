@@ -4,6 +4,7 @@
     {
       "id": "R-CORTE",
       "nombre": "Fecha de corte",
+      "nombre_en": "Cutoff date",
       "fuente": "convención de semana 13",
       "es": "La fecha de corte de cualquier cálculo con ventas es la última fecha con ventas registradas en vtadia (MAX(vta_fch)), no la fecha de hoy.",
       "en": "The cutoff date for any sales calculation is the last date with recorded sales in vtadia (MAX(vta_fch)), not today's date."
@@ -11,6 +12,7 @@
     {
       "id": "R-STOCK",
       "nombre": "Stock total",
+      "nombre_en": "Total stock",
       "fuente": "politica_reorden.md",
       "es": "El stock total de un SKU es la suma de sus existencias en los tres CEDIS (exidet.exi_qty). Un SKU sin filas en exidet tiene stock total 0.",
       "en": "A SKU's total stock is the sum of its on-hand quantity across the three distribution centers (exidet.exi_qty). A SKU with no rows in exidet has total stock 0."
@@ -18,6 +20,7 @@
     {
       "id": "R-COB",
       "nombre": "Días de cobertura",
+      "nombre_en": "Days of coverage",
       "fuente": "skus_criticos.md",
       "es": "Días de cobertura = stock total ÷ venta diaria promedio de los últimos 30 días. La venta diaria promedio es la suma de unidades de los 30 días calendario que terminan en la fecha de corte (inclusive) dividida entre 30; los días sin venta cuentan como cero. Si la venta diaria promedio es 0, la cobertura no está definida y el SKU no se considera en riesgo.",
       "en": "Days of coverage = total stock ÷ average daily sales over the last 30 days. Average daily sales is the sum of units over the 30 calendar days ending on the cutoff date (inclusive) divided by 30; days without sales count as zero. If average daily sales is 0, coverage is undefined and the SKU is not considered at risk."
@@ -25,6 +28,7 @@
     {
       "id": "R-RIESGO",
       "nombre": "SKU crítico en riesgo",
+      "nombre_en": "Critical SKU at risk",
       "fuente": "skus_criticos.md",
       "es": "Un SKU crítico está en riesgo cuando sus días de cobertura son menores que el tiempo de entrega de su proveedor (prvmst.prv_dte), aunque no haya cruzado su punto de reorden.",
       "en": "A critical SKU is at risk when its days of coverage are lower than its supplier's lead time (prvmst.prv_dte), even if it has not crossed its reorder point."
@@ -32,6 +36,7 @@
     {
       "id": "R-ESCALA",
       "nombre": "Niveles de escalamiento",
+      "nombre_en": "Escalation levels",
       "fuente": "skus_criticos.md",
       "es": "Nivel 1 (comprador): SKU crítico por debajo del punto de reorden o en riesgo. Nivel 2 (gerente de compras): SKU crítico con menos de 7 días de cobertura. Nivel 3 (director de operaciones): SKU crítico con stock total en cero.",
       "en": "Level 1 (buyer): critical SKU below its reorder point or at risk. Level 2 (purchasing manager): critical SKU with fewer than 7 days of coverage. Level 3 (operations director): critical SKU with total stock of zero."
@@ -39,6 +44,7 @@
     {
       "id": "R-REORDEN",
       "nombre": "Por debajo del punto de reorden",
+      "nombre_en": "Below reorder point",
       "fuente": "politica_reorden.md",
       "es": "Un SKU está por debajo de su punto de reorden cuando su stock total es menor que artmst.art_ptr.",
       "en": "A SKU is below its reorder point when its total stock is lower than artmst.art_ptr."
@@ -46,6 +52,7 @@
     {
       "id": "R-PTR-POLITICA",
       "nombre": "Punto de reorden según la política",
+      "nombre_en": "Reorder point according to policy",
       "fuente": "politica_reorden.md",
       "es": "Punto de reorden según la política = demanda diaria promedio de los últimos 90 días × tiempo de entrega del proveedor (días) × factor de seguridad. La demanda diaria promedio es la suma de unidades de los 90 días calendario que terminan en la fecha de corte dividida entre 90. Factor de seguridad: 1.5 para SKUs críticos y 1.2 para los demás.",
       "en": "Reorder point according to policy = average daily demand over the last 90 days × supplier lead time (days) × safety factor. Average daily demand is the sum of units over the 90 calendar days ending on the cutoff date divided by 90. Safety factor: 1.5 for critical SKUs and 1.2 for the rest."
@@ -53,6 +60,7 @@
     {
       "id": "R-ALTERNO",
       "nombre": "Proveedor alterno obligatorio",
+      "nombre_en": "Required alternate supplier",
       "fuente": "skus_criticos.md",
       "es": "Todo SKU crítico cuyo proveedor tenga un tiempo de entrega mayor a 20 días debe tener un proveedor alterno homologado.",
       "en": "Every critical SKU whose supplier has a lead time greater than 20 days must have an approved alternate supplier."
@@ -60,6 +68,7 @@
     {
       "id": "R-EXCEDENTE",
       "nombre": "Excedente en un CEDIS",
+      "nombre_en": "Surplus at a distribution center",
       "fuente": "transferencias_cedis.md",
       "es": "Un CEDIS tiene excedente de un SKU cuando su existencia de ese SKU es mayor que 1.5 veces su participación normal, y la participación normal es un tercio del stock total del SKU. Solo aplica a SKUs con stock total mayor que 0.",
       "en": "A distribution center has a surplus of a SKU when its on-hand quantity of that SKU is greater than 1.5 times its normal share, and the normal share is one third of the SKU's total stock. It only applies to SKUs with total stock greater than 0."
@@ -67,6 +76,7 @@
     {
       "id": "R-OC-MONTO",
       "nombre": "Monto de una orden de compra",
+      "nombre_en": "Purchase order amount",
       "fuente": "ordenes_de_compra.md",
       "es": "El monto de una orden de compra es cantidad (ocpcab.ocp_qty) × costo unitario del artículo (artmst.art_cst), en MXN.",
       "en": "A purchase order's amount is quantity (ocpcab.ocp_qty) × the item's unit cost (artmst.art_cst), in MXN."
@@ -74,6 +84,7 @@
     {
       "id": "R-PROPUESTA",
       "nombre": "Propuestas de orden de compra",
+      "nombre_en": "Purchase order proposals",
       "fuente": "politica_reorden.md",
       "es": "En la fecha de corte se genera una propuesta de orden de compra para cada SKU con stock total por debajo de su punto de reorden y sin una orden abierta. Cantidad = entero superior de (demanda diaria promedio de los últimos 90 días × 45) para SKUs críticos o × 30 para los demás. El stock de seguridad se considera incluido en el punto de reorden y no se suma; no se redondea a múltiplo de empaque porque ese dato no existe. Monto de la propuesta = cantidad × costo unitario, y se aprueba con los mismos niveles que una orden (R-OC-APRUEBA y R-OC-COTIZA).",
       "en": "On the cutoff date a purchase order proposal is generated for every SKU whose total stock is below its reorder point and that has no open order. Quantity = ceiling of (average daily demand over the last 90 days × 45) for critical SKUs or × 30 for the rest. Safety stock is considered included in the reorder point and is not added; no rounding to pack multiples because that data does not exist. Proposal amount = quantity × unit cost, approved with the same levels as an order (R-OC-APRUEBA and R-OC-COTIZA)."
@@ -81,6 +92,7 @@
     {
       "id": "R-OC-APRUEBA",
       "nombre": "Quién aprueba una orden",
+      "nombre_en": "Who approves an order",
       "fuente": "ordenes_de_compra.md",
       "es": "Monto menor a 50,000 MXN: comprador de la categoría. De 50,000 a 250,000 MXN (inclusive): gerente de compras. Más de 250,000 MXN: director de operaciones.",
       "en": "Amount below 50,000 MXN: category buyer. From 50,000 to 250,000 MXN (inclusive): purchasing manager. Above 250,000 MXN: operations director."
@@ -88,6 +100,7 @@
     {
       "id": "R-OC-COTIZA",
       "nombre": "Tres cotizaciones",
+      "nombre_en": "Three quotes",
       "fuente": "ordenes_de_compra.md",
       "es": "Las órdenes con monto mayor a 100,000 MXN requieren tres cotizaciones comparables.",
       "en": "Orders with an amount greater than 100,000 MXN require three comparable quotes."
@@ -95,6 +108,7 @@
     {
       "id": "R-OC-ABIERTA",
       "nombre": "Orden abierta",
+      "nombre_en": "Open order",
       "fuente": "politica_reorden.md, ordenes_de_compra.md",
       "es": "Una orden abierta es una orden pendiente o aprobada: ocpcab.ocp_sts igual a 'PENDING_APPROVAL' o 'APPROVED'. Las órdenes 'REJECTED' no están abiertas.",
       "en": "An open order is a pending or approved order: ocpcab.ocp_sts equal to 'PENDING_APPROVAL' or 'APPROVED'. 'REJECTED' orders are not open."
@@ -102,6 +116,7 @@
     {
       "id": "R-ABC",
       "nombre": "Clase A de inventario cíclico",
+      "nombre_en": "Cycle counting class A",
       "fuente": "inventario_ciclico.md",
       "es": "Clase A: todos los SKUs críticos más el 20% de los SKUs del catálogo con mayor valor de inventario (stock total × costo unitario). El 20% se calcula como el entero superior de 0.2 × número de SKUs del catálogo; los empates se rompen por código de SKU ascendente.",
       "en": "Class A: all critical SKUs plus the 20% of catalog SKUs with the highest inventory value (total stock × unit cost). The 20% is the ceiling of 0.2 × the number of catalog SKUs; ties are broken by ascending SKU code."

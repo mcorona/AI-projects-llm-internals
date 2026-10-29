@@ -1,0 +1,17 @@
+{
+  "nota": "Modelo de permisos sintético de semana 13 sobre el esquema legado. El sistema inyecta los roles del usuario en el contexto de las herramientas; el modelo nunca los recibe ni los puede pasar como argumento.",
+  "tablas_por_rol": {
+    "almacen": ["almmst", "artmst", "exidet"],
+    "ventas": ["almmst", "artmst", "exidet", "vtadia"],
+    "compras": ["almmst", "artmst", "exidet", "vtadia", "prvmst", "ocpcab"],
+    "finanzas": ["almmst", "artmst", "exidet", "vtadia", "prvmst", "ocpcab"]
+  },
+  "columnas_restringidas": {
+    "artmst.art_cst": ["compras", "finanzas"]
+  },
+  "usuarios": {
+    "analista": ["compras", "finanzas"],
+    "almacenista": ["almacen"],
+    "vendedor": ["ventas"]
+  }
+}
