@@ -1,0 +1,153 @@
+{
+ "backend": "vertex",
+ "config": "vx-adm:vectorial",
+ "modo": "comun",
+ "fecha": "2026-10-28",
+ "preguntas": 150,
+ "generador": "claude-haiku-5-5 medium, prompt solo_documentos",
+ "juez": "claude-haiku-5-5 low",
+ "k_contexto": 5,
+ "chunks_fuera_del_tenant": 0,
+ "recuperacion": {
+  "es": {
+   "recall@1": 0.7154,
+   "recall@3": 0.8077,
+   "recall@5": 0.8077,
+   "recall@10": 0.8308,
+   "mrr": 0.7872,
+   "ndcg@10": 0.7871,
+   "ap@5": 0.7846,
+   "doc_recall@5": 0.9769,
+   "n": 65
+  },
+  "en": {
+   "recall@1": 0.7154,
+   "recall@3": 0.8077,
+   "recall@5": 0.8077,
+   "recall@10": 0.8308,
+   "mrr": 0.7872,
+   "ndcg@10": 0.7873,
+   "ap@5": 0.7846,
+   "doc_recall@5": 0.9769,
+   "n": 65
+  }
+ },
+ "generacion": {
+  "es": {
+   "n": 65,
+   "exactitud": 0.9077,
+   "faithfulness": 0.8666,
+   "answer_relevancy": 0.794,
+   "precision_citas": 0.5745,
+   "cobertura_cita": 0.8308,
+   "abstencion_falsa": "4/65",
+   "abstencion_correcta": "10/10"
+  },
+  "en": {
+   "n": 65,
+   "exactitud": 0.9077,
+   "faithfulness": 0.8632,
+   "answer_relevancy": 0.8012,
+   "precision_citas": 0.6136,
+   "cobertura_cita": 0.8308,
+   "abstencion_falsa": "6/65",
+   "abstencion_correcta": "10/10"
+  }
+ },
+ "costo_usd_por_consulta": {
+  "recuperacion": 0.0,
+  "generacion": 0.000325
+ },
+ "latencia_s": {
+  "recuperacion": {
+   "p50": 0.41,
+   "p95": 0.99
+  },
+  "generacion": {
+   "p50": 1.83,
+   "p95": 4.53
+  }
+ },
+ "fallas": [
+  {
+   "id": "rec-12",
+   "lang": "es",
+   "atribucion": "recuperación",
+   "respuesta": "El contexto no indica cada cuánto se revisa la categoría Empaque. Ningún documento menciona esa categoría.\n\nSí hay frecuencias relacionadas, pero no aplican a Empaque de forma específica:\n- Los provee"
+  },
+  {
+   "id": "int-imagen-11",
+   "lang": "es",
+   "atribucion": "generación",
+   "respuesta": "El valor más bajo del gráfico es **95.1%** [D1]. Sin embargo, el texto extraído del gráfico no deja claro a qué CEDIS corresponde ese valor, así que no puedo confirmar el nombre. Los otros dos valores"
+  },
+  {
+   "id": "int-imagen-12",
+   "lang": "es",
+   "atribucion": "generación",
+   "respuesta": "No puedo confirmar el nivel de servicio del CEDIS Norte en septiembre de 2026. La gráfica [D1] muestra tres valores (97.8%, 95.1% y 98.6%) y tres etiquetas (CEDIS Centro, CEDIS Occidente y CEDIS Norte"
+  },
+  {
+   "id": "int-imagen-13",
+   "lang": "es",
+   "atribucion": "generación",
+   "respuesta": "El contexto no permite confirmar con certeza el nivel de servicio del CEDIS Centro en septiembre de 2026. La gráfica [D1] muestra tres valores (95.1%, 97.8% y 98.6%) y tres CEDIS (Centro, Occidente y "
+  },
+  {
+   "id": "int-imagen-14",
+   "lang": "es",
+   "atribucion": "generación",
+   "respuesta": "El contexto no permite saber en qué pasillo está la zona de cuarentena. El plano del CEDIS Occidente [D1] menciona la \"Zona de cuarentena\" y los pasillos 10 a 14, pero el texto no indica qué zona corr"
+  },
+  {
+   "id": "int-imagen-15",
+   "lang": "es",
+   "atribucion": "generación",
+   "respuesta": "El contexto no permite saber a qué andén está junto la zona de SKUs críticos. El plano [D1] incluye tanto los andenes 1 a 8 como la \"Zona de SKUs críticos\", pero el texto extraído no indica su posició"
+  },
+  {
+   "id": "rec-12",
+   "lang": "en",
+   "atribucion": "recuperación",
+   "respuesta": "The provided context doesn't say how often the Packaging category is reviewed. [D2] covers packaging and labeling rules for pallets (GS1-128 labels on two sides, maximum height of 1.20 m, maximum weig"
+  },
+  {
+   "id": "int-imagen-11",
+   "lang": "en",
+   "atribucion": "generación",
+   "respuesta": "The lowest service level in September 2026 was **95.1%**, but the text extracted from the chart does not clearly show which distribution center it belongs to. The values listed are 97.8%, 95.1%, and 9"
+  },
+  {
+   "id": "int-imagen-12",
+   "lang": "en",
+   "atribucion": "generación",
+   "respuesta": "The context doesn't let me determine the North distribution center's service level for September 2026.\n\n[D1] is a bar chart of service level by distribution center for September 2026, but the text ext"
+  },
+  {
+   "id": "int-imagen-13",
+   "lang": "en",
+   "atribucion": "generación",
+   "respuesta": "The context doesn't let me determine the Central distribution center's service level for September 2026. [D1] is a bar chart of service level by distribution center for that month, and it shows three "
+  },
+  {
+   "id": "int-imagen-14",
+   "lang": "en",
+   "atribucion": "generación",
+   "respuesta": "The context doesn't say which aisle the quarantine zone is in. The floor plan [D1] lists a \"Zona de cuarentena\" (quarantine zone) alongside Pasillos 10 to 14 (aisles 10 to 14), but the text extraction"
+  },
+  {
+   "id": "int-imagen-15",
+   "lang": "en",
+   "atribucion": "generación",
+   "respuesta": "The context doesn't say which dock is next to the critical SKU zone. The plan of CEDIS Occidente (Guadalajara), which is the West center, lists the Andén 1 to Andén 8 docks and the \"Zona de SKUS críti"
+  }
+ ],
+ "metricas_sin_puntaje": 0,
+ "costo_evaluacion_corrida_usd": 0.1476,
+ "resultados_por_consulta": {
+  "media": 20,
+  "cero": 0,
+  "menos_de_5": 0
+ },
+ "rerank_fallido": 0
+}

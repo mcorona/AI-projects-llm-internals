@@ -169,3 +169,27 @@ Four knowledge bases on S3 Vectors with Cohere Embed Multilingual v3, created an
   - Bedrock retrieval: ≈ $0.00006 per query, p50 0.5 s.
   - RetrieveAndGenerate: ≈ $0.001 to $0.0017 per answer (Haiku 4.5, estimated), p95 9 to 10 s.
 - Cost of the activity: ≈ $2.2.
+
+## 5. Second cloud: Vertex AI Search
+
+Two data stores in project `ejemplo1-9xub`, created by [`infra/vertex_crear.py`](infra/vertex_crear.py) with the operator service account (impersonation, no keys) and measured with the common evaluator. Results: [`resultados/vertex.md`](resultados/vertex.md).
+
+- **Managed:** `vx-adm`, originals parsed by the layout parser with default 500-token chunking. Markdown becomes HTML and images become PDF, because the service does not import them as they are.
+- **Controlled:** `vx-ctl`, the own 101 chunks pushed as documents.
+- **Filters:** `tenant_id` and `roles` are filterable in the schema and applied inside the query.
+- **Search modes:** hybrid (default), vector (`semantic_similarity_score` ranking) and the semantic ranker (Ranking API).
+
+| Option (ES / EN) | recall@5 | MRR | doc_recall@5 | Correctness |
+|---|---|---|---|---|
+| Own pipeline (baseline) | 1.000 / 1.000 | 0.949 / 0.954 | 1.000 / 1.000 | 1.000 / 1.000 |
+| `vx-adm` hybrid / vector / semantic | 0.83 / 0.81 / 0.83 | 0.82 / 0.79 / 0.84 | 1.00 / 0.98 / 1.00 | 0.92 / 0.91 / 0.92 |
+| `vx-ctl` hybrid | 1.000 / 0.962 | 0.949 / 0.860 | 1.000 / 0.985 | 1.000 / 0.969 |
+| `vx-ctl` vector | 1.000 / 1.000 | 0.897 / 0.881 | 1.000 / 1.000 | 1.000 / 0.985 |
+| `vx-ctl` semantic ranker | **1.000 / 1.000** | **0.977 / 0.962** | 1.000 / 1.000 | 0.985 / 0.985 |
+
+- **Ranking:**
+  - With the same chunks, Google's semantic ranker ranks better than the own Haiku reranking: MRR 0.97 vs 0.95, 0.7 s instead of 2.3 s.
+  - Hybrid search loses in English because of its keyword component.
+- **Managed ingestion:** it reads PDFs and scans, but OCR alone cannot tie chart values to their labels, so the 5 image questions fail.
+- **Leakage:** 0 in every run. Correct abstention: 10/10 everywhere.
+- **Cost:** queries are within the free tier; the semantic ranker costs $0.001 per query. Cost of the activity: ≈ $2.

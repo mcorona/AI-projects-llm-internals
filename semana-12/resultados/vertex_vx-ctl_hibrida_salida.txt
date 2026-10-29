@@ -1,0 +1,37 @@
+documentos: 24 · pasajes de referencia únicos: 50
+estrategia              chunks  prom_chars    íntegros  partidos
+fijo_400_solape_80          57         348     50/50           0
+recursivo_300               84         203     48/50           2
+    partido: recepcion_almacen.md · Diferencia mayor a 2%: se hace un **rechazo parcial** de la diferencia
+    partido: skus_criticos.md · SKU crítico con menos de **7 días** de cobertura.
+actual_por_seccion          69         242     50/50           0
+## vertex_vx-ctl_hibrida (150 preguntas; generador: claude-haiku-5-5 medium, prompt solo_documentos)
+
+### Suite de recuperación (respondibles)
+
+| Idioma | n | recall@1 | recall@3 | recall@5 | recall@10 | mrr | ndcg@10 | ap@5 | doc_recall@5 |
+|---|---|---|---|---|---|---|---|---|---|
+| es | 65 | 0.885 | 0.985 | 1.000 | 1.000 | 0.949 | 0.958 | 0.933 | 1.000 |
+| en | 65 | 0.777 | 0.923 | 0.962 | 0.985 | 0.860 | 0.889 | 0.850 | 0.985 |
+
+### Suite de generación sobre lo recuperado (top 5; generador común)
+
+| Idioma | n | exactitud | faithfulness | answer_relevancy | precisión de citas | cobertura de cita | abstención falsa | abstención correcta |
+|---|---|---|---|---|---|---|---|---|
+| es | 65 | 1.000 | 0.860 | 0.882 | 0.616 | 0.985 | 0/65 | 10/10 |
+| en | 65 | 0.969 | 0.859 | 0.889 | 0.700 | 0.969 | 0/65 | 10/10 |
+
+### Costo y latencia por consulta
+
+| Etapa | USD por consulta | p50 (s) | p95 (s) |
+|---|---|---|---|
+| recuperacion | $0.00000 | 0.39 | 0.56 |
+| generacion | $0.00021 | 1.55 | 3.11 |
+
+Fallas (2):
+- rec-46 en (recuperación): In this context, *shrinkage* corresponds to the Spanish term **"mermas"**, which refers to inventory losses. The documents don't give a form
+- rec-47 en (recuperación): **Before an urgent purchase:** The context doesn't give a complete checklist. The section that would list the checks ("Antes de comprar: tra
+
+Resultados devueltos por consulta: {'media': 20, 'cero': 0, 'menos_de_5': 0}
+
+Consultas con chunks de otro tenant: 0. Métricas sin puntaje: 0. Reranking fallido: 0. Duración 310 s. Costo (recuperación + generación de lo guardado y evaluación de esta corrida): $0.1623

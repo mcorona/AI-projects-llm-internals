@@ -1,0 +1,36 @@
+documentos: 24 · pasajes de referencia únicos: 50
+estrategia              chunks  prom_chars    íntegros  partidos
+fijo_400_solape_80          57         348     50/50           0
+recursivo_300               84         203     48/50           2
+    partido: recepcion_almacen.md · Diferencia mayor a 2%: se hace un **rechazo parcial** de la diferencia
+    partido: skus_criticos.md · SKU crítico con menos de **7 días** de cobertura.
+actual_por_seccion          69         242     50/50           0
+## vertex_vx-ctl_vectorial (150 preguntas; generador: claude-haiku-5-5 medium, prompt solo_documentos)
+
+### Suite de recuperación (respondibles)
+
+| Idioma | n | recall@1 | recall@3 | recall@5 | recall@10 | mrr | ndcg@10 | ap@5 | doc_recall@5 |
+|---|---|---|---|---|---|---|---|---|---|
+| es | 65 | 0.815 | 1.000 | 1.000 | 1.000 | 0.897 | 0.923 | 0.895 | 1.000 |
+| en | 65 | 0.785 | 0.977 | 1.000 | 1.000 | 0.881 | 0.910 | 0.878 | 1.000 |
+
+### Suite de generación sobre lo recuperado (top 5; generador común)
+
+| Idioma | n | exactitud | faithfulness | answer_relevancy | precisión de citas | cobertura de cita | abstención falsa | abstención correcta |
+|---|---|---|---|---|---|---|---|---|
+| es | 65 | 1.000 | 0.844 | 0.881 | 0.632 | 1.000 | 0/65 | 10/10 |
+| en | 65 | 0.985 | 0.869 | 0.890 | 0.675 | 1.000 | 0/65 | 10/10 |
+
+### Costo y latencia por consulta
+
+| Etapa | USD por consulta | p50 (s) | p95 (s) |
+|---|---|---|---|
+| recuperacion | $0.00000 | 0.38 | 0.52 |
+| generacion | $0.00021 | 1.58 | 3.44 |
+
+Fallas (1):
+- rec-26 en (generación): A distribution center (CEDIS) is considered to have a surplus when it holds **more than 1.5 times its normal share** of the SKU's total stoc
+
+Resultados devueltos por consulta: {'media': 20, 'cero': 0, 'menos_de_5': 0}
+
+Consultas con chunks de otro tenant: 0. Métricas sin puntaje: 0. Reranking fallido: 0. Duración 309 s. Costo (recuperación + generación de lo guardado y evaluación de esta corrida): $0.1554

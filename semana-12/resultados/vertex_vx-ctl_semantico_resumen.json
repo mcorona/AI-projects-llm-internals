@@ -1,0 +1,93 @@
+{
+ "backend": "vertex",
+ "config": "vx-ctl:semantico",
+ "modo": "comun",
+ "fecha": "2026-10-28",
+ "preguntas": 150,
+ "generador": "claude-haiku-5-5 medium, prompt solo_documentos",
+ "juez": "claude-haiku-5-5 low",
+ "k_contexto": 5,
+ "chunks_fuera_del_tenant": 0,
+ "recuperacion": {
+  "es": {
+   "recall@1": 0.9385,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 0.9769,
+   "ndcg@10": 0.9827,
+   "ap@5": 0.9711,
+   "doc_recall@5": 1.0,
+   "n": 65
+  },
+  "en": {
+   "recall@1": 0.9077,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 0.9615,
+   "ndcg@10": 0.9713,
+   "ap@5": 0.9551,
+   "doc_recall@5": 1.0,
+   "n": 65
+  }
+ },
+ "generacion": {
+  "es": {
+   "n": 65,
+   "exactitud": 0.9846,
+   "faithfulness": 0.7897,
+   "answer_relevancy": 0.8904,
+   "precision_citas": 0.6504,
+   "cobertura_cita": 1.0,
+   "abstencion_falsa": "0/65",
+   "abstencion_correcta": "10/10"
+  },
+  "en": {
+   "n": 65,
+   "exactitud": 0.9846,
+   "faithfulness": 0.8136,
+   "answer_relevancy": 0.8793,
+   "precision_citas": 0.7212,
+   "cobertura_cita": 0.9846,
+   "abstencion_falsa": "0/65",
+   "abstencion_correcta": "10/10"
+  }
+ },
+ "costo_usd_por_consulta": {
+  "recuperacion": 0.001,
+  "generacion": 0.000213
+ },
+ "latencia_s": {
+  "recuperacion": {
+   "p50": 0.71,
+   "p95": 0.87
+  },
+  "generacion": {
+   "p50": 1.64,
+   "p95": 3.42
+  }
+ },
+ "fallas": [
+  {
+   "id": "rec-02",
+   "lang": "es",
+   "atribucion": "generación",
+   "respuesta": "Sí, pero solo en un caso concreto: **no se aceptan** devoluciones de equipo de protección personal (guantes, cascos, lentes, arneses), de la categoría Seguridad, si el empaque fue abierto, por razones"
+  },
+  {
+   "id": "rec-23",
+   "lang": "en",
+   "atribucion": "generación",
+   "respuesta": "At **7 días de cobertura**. Según el escalamiento de nivel 2, un SKU crítico con menos de 7 días de cobertura pasa al gerente de compras, que evalúa compra urgente y transferencia entre CEDIS [D1][D2]"
+  }
+ ],
+ "metricas_sin_puntaje": 0,
+ "costo_evaluacion_corrida_usd": 0.1294,
+ "resultados_por_consulta": {
+  "media": 20,
+  "cero": 0,
+  "menos_de_5": 0
+ },
+ "rerank_fallido": 0
+}

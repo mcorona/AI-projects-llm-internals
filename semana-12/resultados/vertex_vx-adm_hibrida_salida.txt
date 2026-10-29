@@ -1,0 +1,51 @@
+documentos: 24 · pasajes de referencia únicos: 50
+estrategia              chunks  prom_chars    íntegros  partidos
+fijo_400_solape_80          57         348     50/50           0
+recursivo_300               84         203     48/50           2
+    partido: recepcion_almacen.md · Diferencia mayor a 2%: se hace un **rechazo parcial** de la diferencia
+    partido: skus_criticos.md · SKU crítico con menos de **7 días** de cobertura.
+actual_por_seccion          69         242     50/50           0
+## vertex_vx-adm_hibrida (150 preguntas; generador: claude-haiku-5-5 medium, prompt solo_documentos)
+
+### Suite de recuperación (respondibles)
+
+| Idioma | n | recall@1 | recall@3 | recall@5 | recall@10 | mrr | ndcg@10 | ap@5 | doc_recall@5 |
+|---|---|---|---|---|---|---|---|---|---|
+| es | 65 | 0.777 | 0.831 | 0.831 | 0.831 | 0.823 | 0.816 | 0.821 | 1.000 |
+| en | 65 | 0.731 | 0.823 | 0.823 | 0.831 | 0.797 | 0.795 | 0.797 | 0.992 |
+
+### Suite de generación sobre lo recuperado (top 5; generador común)
+
+| Idioma | n | exactitud | faithfulness | answer_relevancy | precisión de citas | cobertura de cita | abstención falsa | abstención correcta |
+|---|---|---|---|---|---|---|---|---|
+| es | 65 | 0.923 | 0.871 | 0.807 | 0.583 | 0.846 | 4/65 | 10/10 |
+| en | 65 | 0.923 | 0.861 | 0.807 | 0.663 | 0.846 | 3/65 | 10/10 |
+
+### Costo y latencia por consulta
+
+| Etapa | USD por consulta | p50 (s) | p95 (s) |
+|---|---|---|---|
+| recuperacion | $0.00000 | 0.43 | 0.97 |
+| generacion | $0.00034 | 1.76 | 4.02 |
+
+Fallas (10):
+- int-imagen-11 es (generación): El valor más bajo que aparece en la gráfica es **95.1%** [D1]. Sin embargo, el texto de la gráfica no asocia claramente cada porcentaje con 
+- int-imagen-12 es (generación): El contexto no permite determinar el nivel de servicio del CEDIS Norte en septiembre de 2026.
+
+La gráfica [D1] muestra tres valores para sep
+- int-imagen-13 es (generación): No puedo determinar el nivel de servicio del CEDIS Centro en septiembre de 2026 con el contexto disponible.
+
+La gráfica [D1] muestra los val
+- int-imagen-14 es (generación): No puedo determinar en qué pasillo está la zona de cuarentena del CEDIS Occidente con el contexto disponible.
+
+El plano [D1] menciona la "Zo
+- int-imagen-15 es (generación): El contexto no permite saber a qué andén está junto la zona de SKUs críticos del CEDIS Occidente. El plano [D1] muestra los Andenes 1 a 8 y 
+- int-imagen-11 en (generación): The lowest service level in September 2026 was **95.1%**, but the chart text doesn't clearly show which distribution center it belongs to. T
+- int-imagen-12 en (generación): The context doesn't confirm the September 2026 service level for CEDIS Norte. The chart [D1] shows three values (97.8%, 95.1%, and 98.6%) fo
+- int-imagen-13 en (generación): The context doesn't let me say for certain. The chart in [D1] shows three service-level values for September 2026 (97.8%, 95.1%, and 98.6%) 
+- int-imagen-14 en (generación): The context doesn't say which aisle the quarantine zone is in. The floor plan of the West distribution center (CEDIS Occidente, Guadalajara)
+- int-imagen-15 en (generación): El contexto no permite saber con certeza qué andén está junto a la zona de SKUs críticos del CEDIS Occidente. El plano [D2] solo incluye las
+
+Resultados devueltos por consulta: {'media': 20, 'cero': 0, 'menos_de_5': 0}
+
+Consultas con chunks de otro tenant: 0. Métricas sin puntaje: 2. Reranking fallido: 0. Duración 339 s. Costo (recuperación + generación de lo guardado y evaluación de esta corrida): $0.2035
