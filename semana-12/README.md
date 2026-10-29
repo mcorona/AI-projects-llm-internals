@@ -1,6 +1,6 @@
 # Week 12: managed RAG (Bedrock Knowledge Bases and Vertex AI Search)
 
-Status: in progress.
+Status: complete. Every resource was deleted on 2026-10-29; the real cost of the week is recorded after the bill settles (section 10).
 
 Goal: load the same document base into a managed RAG on AWS (Bedrock Knowledge Bases with S3 Vectors) and on Google Cloud (Vertex AI Search), and compare both with the own pipeline from weeks 8 to 10. The comparison covers quality, latency, cost and security, using the week 11 suites.
 
@@ -263,3 +263,89 @@ Cloud runs cost money and need cloud credentials, so they **do not run on every 
 - **Secrets limited to that workflow:** the GitHub environment `nube-semana12` ([`infra/github_entorno.sh`](infra/github_entorno.sh)) deploys from `main` only. It holds the federation variables and the Anthropic and OpenAI keys as **environment secrets**, which only a job declaring that environment can read.
 - **Embeddings:** answer relevancy uses `text-embedding-3-small` in Actions, as in week 11 CI.
 - **Output:** results are uploaded as a run artifact (30 days), not committed.
+
+**Verification (2026-10-28).** After the subject fix (PR #68), both manual runs passed with `limite=2` (2 questions per language and type), as smoke tests rather than comparable measurements:
+
+| Run | Service and configuration | Result | Leakage | Missing judge scores | Duration | Cost |
+|---|---|---|---|---|---|---|
+| 40824216644 | Bedrock `ctl-chunks`, common generator | success | 0 | 0 | 22 s | $0.0139 |
+| 40824645620 | Vertex `vx-ctl:semantico` | success | 0 | 0 | 18 s | $0.0145 |
+
+The semantic ranker works with the read-only CI identity (Discovery Engine viewer); no extra role was needed.
+
+## 10. Deletion and the bill
+
+**Deletion (2026-10-29).** [`infra/aws_borrar.sh`](infra/aws_borrar.sh), [`infra/gcp_borrar.sh`](infra/gcp_borrar.sh) and `infra/github_entorno.sh --borrar` ran first as a simulation (the default) and then with `--confirmar`. They only touch resources with the `semana12` prefix.
+
+| Cloud | Deleted |
+|---|---|
+| AWS | 4 knowledge bases and their data sources; the vector bucket with its 4 indexes; the document and multimodal buckets; the roles `semana12-bedrock-kb`, `semana12-operador` and `semana12-ci`; the GitHub OIDC provider (tagged `proyecto=semana12`) |
+| Google Cloud | 2 apps and 2 data stores; the document bucket; the service accounts `semana12-operador` and `semana12-ci`; the Workload Identity pool (30 days in soft delete, no cost) |
+| GitHub | The environment `nube-semana12`, with its variables and the Anthropic and OpenAI secrets |
+
+- **Failure found:** the first run left the 4 knowledge bases in `DELETE_UNSUCCESSFUL`. The script deleted the indexes and the KB role 15 seconds after requesting the KB deletion, before the KBs had removed their vectors. The fix (PR #71) sets each data source to `dataDeletionPolicy: RETAIN` first (the vectors go away with the vector bucket), waits until no KB is left, and stops before deleting indexes and roles if a KB fails. The second run deleted them; a third run found nothing to delete.
+- **Final inventory** ([`infra/inventario.sh`](infra/inventario.sh)): nothing billable in either cloud. Only the two `semana12` budgets remain; they cost nothing and stay until the bill is reviewed.
+- **Long-term keys:** the admin user's only access key, used by the `default` CLI profile, is deactivated; the admin works with `aws login` (temporary credentials).
+
+**The bill.** Charges take 24 to 48 hours to settle. [`infra/costo_real.sh`](infra/costo_real.sh) makes one Cost Explorer query ($0.01) and summarizes AWS cost by service and day; Google Cloud (billing reports, project `ejemplo1-9xub`, in MXN), Anthropic and OpenAI usage come from their consoles. The real cost goes to `resultados/costo_real.md` and is compared with the estimate in [`resultados/costos_fijos.md`](resultados/costos_fijos.md) (≈ $3 to $4). The activity cost notes in this README add up to about $5.2. After that review, `--presupuesto` deletes the budgets.
+
+## 11. Limits, decisions and failed cases
+
+### Limits
+
+- **Small corpus.** 30 documents, 101 chunks and 150 questions (75 per language). Fixed costs round to zero at this size; the conclusions about fixed versus per-query cost do not carry over to a corpus of many GB without measuring it.
+- **Not the same generator in managed mode.** RetrieveAndGenerate uses Haiku 4.5, because Haiku 5.5 has quota 0 on this AWS account. Its correctness and cost are therefore not a like-for-like comparison with the common generator (Haiku 5.5).
+- **Estimated costs.** RetrieveAndGenerate cost is computed from catalog prices and token counts, not read from the bill. Vertex search is inside the free 10,000 queries a month; the figures above that come from the catalog.
+- **Latency from one client.** One Mac in Guadalajara, concurrency 1, 100 questions. No load test and no region other than `us-east-1` and `global`.
+- **Answer relevancy is not comparable across environments.** It uses bge-m3 locally and `text-embedding-3-small` in Actions.
+- **CI smoke runs are not measurements.** `limite=2` checks that the pipeline, the federation and the filters work.
+- **Azure AI Search was not evaluated.** The criterion asks for a second cloud; Vertex AI Search was chosen.
+- **Security checks only metadata filters.** The leakage tests prove that the filters are applied inside the query. They do not cover access to the buckets or to the console, which IAM controls.
+
+### Decisions
+
+| Decision | Why |
+|---|---|
+| S3 Vectors as the Bedrock vector store | No minimum capacity; OpenSearch Serverless charges per hour even without queries |
+| Cohere Embed Multilingual v3 | Spanish and English in the same index |
+| Two ingestion modes (managed and controlled) in each service | Separates what the service's parser and chunking cost from what retrieval costs |
+| Vertex pay-as-you-go, no subscription | The configurable pricing has a minimum of 1,000 QPM and 50 GB |
+| Same evaluator, gold set and judge for every option | The comparison only changes the retrieval backend |
+| Credentials: roles, impersonation and federation; no keys in Git or CI | "No charge risks" and least privilege |
+| Cloud runs only on demand | Each PR validates the versioned results without credentials |
+| Deletion simulated by default | A deletion runs only after the list is reviewed |
+
+The decision on which option to use is in section 8.
+
+### Failed cases
+
+| Case | Cause | Resolution |
+|---|---|---|
+| Cohere embeddings denied | The Marketplace agreement did not exist | Agreement accepted; wait for propagation |
+| BDA configuration rejected or images ignored | An empty configuration is rejected; text-only BDA ignores images; multimodal needs supplemental storage at a bucket root | A separate multimodal bucket |
+| Default parser loses scans and images (`adm-pred`, `adm-fijo`) | It only extracts text | Measured and documented; BDA or the own chunks |
+| `rec-11` and `rec-48` miss in Bedrock managed mode | Bedrock's chunking split their passages | Controlled mode with the own chunks |
+| 5 image questions per language fail in `vx-adm` | OCR extracts chart labels and values without pairing them | Not fixed in the service; week 10 solves it with a Haiku description at indexing time |
+| Vertex did not import TXT, Markdown or standalone images | Layout parser limits | Markdown to HTML, images to PDF |
+| Few Vertex results | Default relevance threshold | `relevanceThreshold: LOWEST` and automatic query expansion |
+| Wrong tenant from the Vertex URI; AP@5 `IndexError` | Evaluator bugs | Fixed in `suites.py`; rankings padded to 10 |
+| AWS session expired during the latency run | `aws login` sessions last about an hour | Resumed from the cache |
+| First CI dispatch denied (`AssumeRoleWithWebIdentity`) | The repo uses GitHub's immutable OIDC subject | Subject read from the GitHub API (PR #68) |
+| KBs in `DELETE_UNSUCCESSFUL` | Indexes and role deleted too early | `RETAIN` and wait before deleting (PR #71) |
+
+## Exit criterion 11 (Phase 3)
+
+> The same document base is loaded into a managed RAG on AWS (Bedrock Knowledge Bases) and on a second cloud (Azure AI Search or Vertex AI Search), and their quality, latency and cost are compared with the same gold set.
+
+**Verified.**
+
+| Part | Evidence |
+|---|---|
+| Same document base | The frozen package of activity 2 (`ingesta/paquete/manifiesto.json`, with SHA-256 per file) loaded into both services |
+| Bedrock Knowledge Bases | 4 KBs on S3 Vectors, measured in section 4 |
+| Second cloud | Vertex AI Search with 2 data stores and 3 search modes, measured in section 5 |
+| Same gold set | The week 11 gold set (150 questions) in every run, checked by `validar_resultados.py` in each PR |
+| Quality | recall@k, MRR, nDCG@10, AP@5, faithfulness, answer relevancy and correctness in sections 3 to 5 |
+| Latency and cost | Section 7, under equal conditions |
+| Comparison | Section 8 and [`resultados/comparacion.md`](resultados/comparacion.md) |
+| Security (non-negotiable since week 9) | Leakage 0 in 672 queries, section 6 |
