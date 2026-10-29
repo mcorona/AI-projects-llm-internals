@@ -23,6 +23,7 @@ for b in $(gcloud storage buckets list --project=$P --format='value(name)' | gre
 done
 gcloud iam service-accounts describe $GCP_SA_EMAIL --project=$P >/dev/null 2>&1 && \
   { run gcloud projects remove-iam-policy-binding $P --member=serviceAccount:$GCP_SA_EMAIL --role=roles/discoveryengine.editor --condition=None
+    run gcloud projects remove-iam-policy-binding $P --member=serviceAccount:$GCP_SA_EMAIL --role=roles/serviceusage.serviceUsageConsumer --condition=None
     run gcloud iam service-accounts delete $GCP_SA_EMAIL --project=$P --quiet; }
 if [ $PRES -eq 1 ]; then
   CTA=$(gcloud billing projects describe $P --format='value(billingAccountName.basename())')

@@ -29,11 +29,13 @@ if ! gcloud iam service-accounts describe $GCP_SA_EMAIL --project=$P >/dev/null 
   gcloud iam service-accounts create $GCP_SA --project=$P --display-name="Semana 12: operador de Vertex AI Search"
 fi
 gcloud projects add-iam-policy-binding $P --member=serviceAccount:$GCP_SA_EMAIL --role=roles/discoveryengine.editor --condition=None >/dev/null
+# Usar el proyecto como proyecto de cuota (x-goog-user-project) requiere serviceusage.services.use.
+gcloud projects add-iam-policy-binding $P --member=serviceAccount:$GCP_SA_EMAIL --role=roles/serviceusage.serviceUsageConsumer --condition=None >/dev/null
 # 3. Solo tu usuario puede generar tokens de la cuenta de servicio (impersonación); no se crean llaves.
 gcloud iam service-accounts add-iam-policy-binding $GCP_SA_EMAIL --project=$P \
   --member=user:$YO --role=roles/iam.serviceAccountTokenCreator >/dev/null
 N=$(gcloud iam service-accounts keys list --iam-account=$GCP_SA_EMAIL --managed-by=user --format='value(name)' | wc -l | tr -d ' ')
-echo "cuenta de servicio $GCP_SA_EMAIL: roles/discoveryengine.editor; llaves de usuario: $N (deben ser 0)"
+echo "cuenta de servicio $GCP_SA_EMAIL: roles/discoveryengine.editor y serviceusage.serviceUsageConsumer; llaves de usuario: $N (deben ser 0)"
 sleep 20  # propagación de IAM
 gcloud auth print-access-token --impersonate-service-account=$GCP_SA_EMAIL >/dev/null 2>&1 \
   && echo "impersonación: OK" || echo "impersonación: aún no propaga; repite en 1 minuto"
