@@ -14,9 +14,9 @@ cd .. && python -m pytest -q tests/test_keycloak.py
 
 | Element | Value |
 |---|---|
-| Image | `quay.io/keycloak/keycloak:26.8.1` (released 2026-10-13), `start-dev`, published on `127.0.0.1:8080` only |
+| Image | `quay.io/keycloak/keycloak:26.8.1` (released 2026-10-13), `start-dev`, published on `127.0.0.1:8180` only (port 8080 inside the container; 8080 on the host was already taken on the dev Mac) |
 | Feature | `--features=resource-indicators` (RFC 8707, experimental in 26.8) |
-| Issuer | `http://127.0.0.1:8080/realms/legacybridge`, fixed with `--hostname` |
+| Issuer | `http://127.0.0.1:8180/realms/legacybridge`, fixed with `--hostname` |
 | Realm | `legacybridge`. Self-registration and password reset are off, brute-force protection is on, access tokens last 300 s, refresh tokens rotate (`revokeRefreshToken`), signatures use RS256 |
 | Resource server | `legado-mcp`, bearer-only (it starts no flows) with `resource_url = http://127.0.0.1:8014/mcp` |
 | MCP client | `legacybridge-agente`, public. Authorization code only with **PKCE S256 required**. Redirects go to loopback `http://127.0.0.1/callback` and `http://localhost/callback` on any port (RFC 8252). No password grant, no client credentials, no implicit flow, `fullScopeAllowed: false` |
@@ -40,7 +40,7 @@ The docker-compose file is validated with `docker compose config`. The realm, th
 | First run: fresh secrets, realm import, passwords set, `resource_url` confirmed | ✓ |
 | Second run (idempotency): no re-import (`IGNORE_EXISTING`, a single "imported"), same 3 users, same 4 scopes | ✓ |
 | `.secretos.env` permissions | `600` |
-| `tests/test_keycloak.py` | **18/18** |
+| `tests/test_keycloak.py` | **18/18** (VM) and **18/18 against Docker on the dev Mac** |
 | Full `semana-14` suite without a database | 69 passed, 16 skipped |
 
 What the 18 tests cover:
@@ -60,3 +60,6 @@ What the 18 tests cover:
 2. **Keycloak's cookies are `Secure`.** Python's `CookieJar` does not send them over `http://127.0.0.1`, while browsers do, because they treat loopback as a secure context. The lab client (`pkce.py`) applies the same rule as a browser, for loopback only.
 3. **Scopes are assigned per user through role scope mappings.** With `fullScopeAllowed: false` and each scope tied to a role, `almacenista` asks for all four scopes and receives only `legado:leer`. The MCP server therefore gets least privilege directly from the token. In activity 5 it still enforces it on its own side (tool list, database role per scope, `art_prv`).
 4. **RFC 8707 in Keycloak:** it looks for the `resource` value among the audiences produced by the mappers, through the `resource_url` client attribute, and leaves only that one. Without the feature, plan B (a custom Audience mapper) would also give `aud` equal to the URI, but it would not reject an unknown resource.
+5. **Docker on the dev Mac: two issues the VM did not show.**
+   - Port 8080 on the host was taken by another local process, so Keycloak is published on **8180**. Inside the container it still listens on 8080.
+   - The named volume was mounted on `/opt/keycloak/data/h2`, a directory that does not exist in the image. Docker created it owned by `root`, Keycloak (uid 1000) could not open the H2 database, and the container stayed in `Restarting`. The volume now mounts on `/opt/keycloak/data`, which takes its owner from the image. After `./arrancar.sh --borrar`, the first run imported the realm, the second confirmed idempotency, and the tests passed 18/18.

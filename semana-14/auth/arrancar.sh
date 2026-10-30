@@ -12,7 +12,7 @@ set -euo pipefail
 DIR="$(cd "$(dirname "$0")" && pwd)"
 SECRETOS="$DIR/.secretos.env"
 COMPOSE=(docker compose -f "$DIR/docker-compose.yml" --env-file "$SECRETOS")
-KC_URL="${KC_URL:-http://127.0.0.1:8080}"
+KC_URL="${KC_URL:-http://127.0.0.1:8180}"
 REALM=legacybridge
 MODO="${KC_MODO:-docker}"
 USUARIOS=(analista almacenista vendedor)
