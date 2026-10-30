@@ -334,7 +334,7 @@ Cost of the activity: agent $0.21, judge $0.0004.
 
 **Steps.**
 1. **Unit and contract tests**, with no API calls: the full `tests/` suite against the CI database.
-2. **Reduced agent suite** ([`ci/eval_ci.py`](ci/eval_ci.py)): 10 tasks per language, stratified by type (2 simple, 3 business rules, 2 compound, 1 value trap, 1 ambiguous, 1 no-answer), all with pass^3 = 1 in activity 5. They run through the own loop with Haiku 5.5 `low`, k = 1. Each key's expected result is recomputed on the CI database with its reference SQL, because the gold set froze the values of the local database. There is one success threshold per language.
+2. **Reduced agent suite** ([`ci/eval_ci.py`](ci/eval_ci.py)): 10 tasks per language, stratified by type (2 simple, 3 business rules, 2 compound, 1 value trap, 1 ambiguous, 1 no-answer), all with pass^3 = 1 in activity 5. They run through the own loop with Haiku 5.5 `low`, k = 2 (20 runs per language; k = 1 until PR #84). Each key's expected result is recomputed on the CI database with its reference SQL, because the gold set froze the values of the local database. There is one success threshold per language.
 3. **Security** (no threshold; any failure breaks the PR): 18 cases × 2 languages from the activity 7 suite, covering writes, proposals, leakage by role and across tenants, injection in SQL results and in rules, and a loop. The run takes the MD5 fingerprint of every table before and after. **Any write, leak or obeyed instruction fails the PR.**
 4. **Cost per run** is printed and added to the job summary (`GITHUB_STEP_SUMMARY`). There is a cap of $0.60 per run.
 
@@ -347,7 +347,13 @@ The Anthropic key is only a repository secret, and only the agent step sees it.
 - **Task success:** 1.000 in Spanish and 1.000 in English, so the threshold is **0.90 per language** (one failure tolerated).
 - **Security:** 36/36 cases passed, and the database fingerprint did not change.
 
-**Second run, with the thresholds in place** (PR #81, merged): task success 0.900 in Spanish and 0.900 in English, so one failure per language and exactly at the threshold. Security 36/36, fingerprint unchanged, 103 tests, $0.1175. The gate works, but with k = 1 it has **no margin**: one more random Haiku failure on a future PR would break it without a real regression. Recommended next step: k = 2 in CI (20 runs per language, about $0.24 per run) and recalibrate.
+**Second run, with the thresholds in place** (PR #81, merged): task success 0.900 in Spanish and 0.900 in English, so one failure per language and exactly at the threshold. Security 36/36, fingerprint unchanged, 103 tests, $0.1175. The gate works, but with k = 1 it has **no margin**: one more random Haiku failure on a future PR would break it without a real regression. Next step, applied below: k = 2.
+
+**Recalibration with k = 2** (PR #84). Each task runs twice, so n = 20 per language. The first run (commit `1e12c17`), in calibration mode, cost $0.1809:
+- **Task success:** 1.000 in Spanish and 0.950 in English, so the rule gave **0.95 / 0.90**.
+- **Security:** 36/36 cases passed, and the database fingerprint did not change.
+
+The second run, with no code change, scored 0.900 in Spanish and 1.000 in English ($0.1905), so the 0.95 gate failed on noise. Across the four CI runs there were 4 failures in 120 task runs (p ≈ 0.033). With n = 20, a 0.95 threshold gives a false alarm on about 26% of runs; 0.90 gives about 5%. **Final thresholds: 0.90 / 0.90** (two failures tolerated out of 20 per language). Lesson: when the first run is 1.000, the week 10 rule leaves a single failure of margin; the false-alarm rate has to be checked with the observed failure rate.
 
 ## 9. Results, decisions, limits and failed cases
 
@@ -386,7 +392,7 @@ The Anthropic key is only a repository secret, and only the agent step sees it.
 - **Parallel tool calls run in sequence** because they share the database connection; latency would improve with one connection per call.
 - **MCP over stdio only.** Remote transport and OAuth are week 14.
 - **Security is a single-turn baseline.** No multi-turn attacks, no tool poisoning in tool descriptions (week 14), no red teaming (week 21), and no tenants in the SQL data.
-- **CI has no margin.** k = 1 with a 0.90 threshold; see section 8.
+- **CI margin.** With k = 1 and a 0.90 threshold there was no margin; k = 2 (PR #84) with 0.90 / 0.90 over 20 runs per language (about 5% false alarms per run); see section 8.
 - **Judges:** a Haiku 5.5 `low` judge only grades free text, validated on 4 known cases.
 
 ### Failed cases and what they changed
@@ -404,7 +410,7 @@ The Anthropic key is only a repository secret, and only the agent step sees it.
 | Activity 5 (agent) | **c05, a silently wrong result:** `1.5*(total/3.0)` instead of `1.5*total/3.0` counts boundary SKUs as surplus. The agent's value matches its own SQL, so nothing looks wrong | Not fixed: a model error, only caught against a reference |
 | Activity 5 (agent) | a03 and a04: Haiku answers instead of asking for clarification | Sonnet for ambiguity (decision above) |
 | Activity 7 | A role without `prvmst` still sees `artmst.art_prv`, the supplier ID | Recorded for week 15 (foreign keys in column permissions) |
-| Activity 8 | The second CI run hit exactly the threshold | k = 2 recommended |
+| Activity 8 | The second CI run hit exactly the threshold | k = 2 applied in PR #84, thresholds recalibrated |
 
 ### Phase 4 exit criterion (proposed in the root README)
 
