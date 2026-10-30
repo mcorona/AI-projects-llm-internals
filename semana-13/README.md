@@ -1,8 +1,8 @@
 # Week 13: agentic patterns (workflows vs agents) and the Claude Agent SDK
 
-Status: in progress.
+Status: activities 1 to 9 of the week plan are complete. Exit criterion 13 stays pending until the agent is also built with the Claude Agent SDK (section 9).
 
-Phase 4 (weeks 13 to 18) covers agents, MCP and orchestration. This week takes one LegacyBridge flow (question → explore schema and business rules → SQL → validate → run read-only → answer with evidence) and implements it in two patterns: a **workflow** with fixed steps and an **agent** built with the Claude Agent SDK. Both use the same tools, and they are compared on success, cost, latency, consistency and safety with the same frozen gold set. Evaluator-optimizer and orchestrator-workers are measured on a subset.
+Phase 4 (weeks 13 to 18) covers agents, MCP and orchestration. This week takes one LegacyBridge flow (question → explore schema and business rules → SQL → validate → run read-only → answer with evidence). It builds shared tools with a contract, an **own agentic loop** on the Anthropic API, and an **MCP server** that exposes the same tools. The agent is evaluated on a frozen task gold set (success, trajectory, behavior, cost, latency, consistency) and compared with the week 10 **workflow** (fixed routing) on the same tasks. It also gets a security baseline and a CI gate.
 
 Everything runs locally: the legacy schema from week 10 (`legado`, views with cryptic names over the inventory-copilot data) and the read-only role `copilot_ro`. The only cost is the Anthropic API.
 
@@ -346,3 +346,68 @@ The Anthropic key is only a repository secret, and only the agent step sees it.
 - **Unit and contract tests:** 103 passed, 1 skipped.
 - **Task success:** 1.000 in Spanish and 1.000 in English, so the threshold is **0.90 per language** (one failure tolerated).
 - **Security:** 36/36 cases passed, and the database fingerprint did not change.
+
+**Second run, with the thresholds in place** (PR #81, merged): task success 0.900 in Spanish and 0.900 in English, so one failure per language and exactly at the threshold. Security 36/36, fingerprint unchanged, 103 tests, $0.1175. The gate works, but with k = 1 it has **no margin**: one more random Haiku failure on a future PR would break it without a real regression. Recommended next step: k = 2 in CI (20 runs per language, about $0.24 per run) and recalibrate.
+
+## 9. Results, decisions, limits and failed cases
+
+### Results
+
+| Activity | Result | Cost |
+|---|---|---|
+| 1. Task gold set | 42 tasks × 2 languages, 15 business rules from the inventory-copilot documents, 44 output keys validated on the database | $0 |
+| 2. Shared tools | 5 tools (6 after activity 7) with strict JSON Schema, structured errors and permissions injected by the system; sqlglot guard plus `EXPLAIN`; `copilot_nlq` and read-only transactions | $0 |
+| 3. Own agentic loop | Tool use with parallel calls, bounded retry, stop states, Pydantic final answer, JSONL traces. Pilot 10/12, then 12/12 after two fixes | $0.07 |
+| 4. MCP server | stdio server with the same catalog. Identical to the native tools: 107/107 calls, 12/12 gold keys, 39/39 permission cases. Agent through MCP 12/12. Tested with MCP Inspector and registered in Claude Code | $0.03 |
+| 5. Agent evaluation | Haiku 5.5 `low`: pass@1 **0.921** [0.861, 0.972], pass^3 0.905. `medium` adds nothing (−0.008). Clarification 0.500 with Haiku and 1.000 with Sonnet 5.5 `low` on the subset | $4.09 |
+| 6. Agent vs workflow | Agent 0.921, workflow 0.504 (+0.417 [0.310, 0.528]). Tie on direct questions; the agent wins on rules (+0.833), compound tasks (+0.667) and ambiguity (+0.500) | $0.14 |
+| 7. Security baseline | 140/140: database fingerprint unchanged, 0 leaks, 0 obeyed injections (exposed 16/16 in data and 6/8 in rules), loops within limits | $0.21 |
+| 8. CI | `eval-semana-13` on every PR: tests, 10 tasks per language (threshold 0.90), 36 security cases with no threshold, cost in the job summary | $0.24 |
+| **Week** | | **≈ $4.78** |
+
+### Decisions
+
+| Decision | Why |
+|---|---|
+| Own loop first, no framework | Every step is measured and traced. The Claude Agent SDK and other frameworks are compared against this baseline |
+| Haiku 5.5 `low` as the default agent model | Same success as `medium` (−0.008 [−0.032, 0.016]), 20 % cheaper and with a lower p95 |
+| Sonnet 5.5 for requests that may be ambiguous | It asks for clarification 100 % of the time on the subset; Haiku does 50 % |
+| Workflow for direct data questions; agent for rules, multi-part and ambiguous requests | Activity 6: they tie on direct questions, where the workflow is 4 to 8 times cheaper; the agent is the only one that solves rules and multi-part tasks |
+| One tool contract for every path (native, MCP, workflow) | Patterns differ only in orchestration; MCP adds no logic and gives identical results |
+| Permissions in a `Contexto` created by the system, never in tool arguments | The model cannot escalate. Tested with arguments, by role and through MCP |
+| Actions with effects only as proposals (`PENDING_APPROVAL`) | Nothing is executed without a person (human-in-the-loop is week 17) |
+| Expected results recomputed on the CI database | The gold set froze the local values; CI uses synthetic data |
+
+### Limits
+
+- **Small domain:** one legacy schema with 6 tables plus `artnot`, 84 tasks, synthetic company rules. The numbers do not carry over to large or messy schemas without measuring them.
+- **Model coverage:** Sonnet was measured only on a subset of 10 tasks. Haiku was the only model on the full set.
+- **Not built this week:** the Claude Agent SDK, evaluator-optimizer and orchestrator-workers, which are in the week 13 topic of the program, and the hybrid router recommended in activity 6.
+- **Parallel tool calls run in sequence** because they share the database connection; latency would improve with one connection per call.
+- **MCP over stdio only.** Remote transport and OAuth are week 14.
+- **Security is a single-turn baseline.** No multi-turn attacks, no tool poisoning in tool descriptions (week 14), no red teaming (week 21), and no tenants in the SQL data.
+- **CI has no margin.** k = 1 with a 0.90 threshold; see section 8.
+- **Judges:** a Haiku 5.5 `low` judge only grades free text, validated on 4 known cases.
+
+### Failed cases and what they changed
+
+| Where | What happened | Change |
+|---|---|---|
+| Activity 1 | The purchase-order table holds one order, so approval tasks gave 0 | Rules applied to the proposals generated by the reorder policy |
+| Activity 3 | `R-PROPUESTA` did not say which reorder point to use, and the agent used the recalculated one | The rule names `artmst.art_ptr` |
+| Activity 3 | Haiku serialized `resultados` inside the `respuesta` text | `revisar_final` checks the answer against the task's keys and sends it back |
+| Activity 5 | An unterminated quote raised sqlglot `TokenError`, which escaped the guard and stopped the run | The guard catches every sqlglot error; any unexpected exception becomes `error_interno` |
+| Activity 5 | v1 at 0.762: the `filas` key read as a row count, an unstated result shape (`ARRAY_AGG`), an ambiguous question (r04) and an ambiguous rule (`R-ESCALA`) | Key, question and rule reworded; a shape contract added per key type; full re-run |
+| Activity 5 | The first rewording of `filas` ("not a row count") broke s05 ("how many…?") | Neutral wording; simple tasks re-run |
+| Activity 5 | The judge ran out of tokens and returned truncated JSON | 2,000 tokens, 3 attempts, and "no verdict" does not penalize the agent |
+| Activity 5 | The cost cap counted the cumulative cost of the run, so a partial re-run stopped early | Documented; re-run with the original caps |
+| Activity 5 (agent) | **c05, a silently wrong result:** `1.5*(total/3.0)` instead of `1.5*total/3.0` counts boundary SKUs as surplus. The agent's value matches its own SQL, so nothing looks wrong | Not fixed: a model error, only caught against a reference |
+| Activity 5 (agent) | a03 and a04: Haiku answers instead of asking for clarification | Sonnet for ambiguity (decision above) |
+| Activity 7 | A role without `prvmst` still sees `artmst.art_prv`, the supplier ID | Recorded for week 15 (foreign keys in column permissions) |
+| Activity 8 | The second CI run hit exactly the threshold | k = 2 recommended |
+
+### Phase 4 exit criterion (proposed in the root README)
+
+One verifiable criterion per week (13 to 18), plus the cross-cutting security criterion, confirmed on 2026-10-29. This week:
+- **Criterion 13: not marked.** It asks for the flow in at least two patterns, *workflow and agent with the Claude Agent SDK*. Workflow and agent are implemented and compared (activity 6), but the agent is the own loop, not the SDK. It is marked when the SDK agent runs on the same gold set and joins the comparison.
+- **Cross-cutting security: marked.** Zero unapproved writes, zero leaks by role and across tenants, and zero obeyed injected instructions, with a CI check (activities 7 and 8). It is reviewed every week of the phase, and unmarked if a later week breaks it.

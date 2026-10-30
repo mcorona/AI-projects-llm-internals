@@ -57,10 +57,26 @@ La Fase 3 cubre las semanas 8 a 12: recuperación, RAG avanzado, asistente integ
 
 Lo que no cumple el criterio queda marcado como pendiente hasta que se resuelva.
 
+## Criterio de salida de la Fase 4
+
+La Fase 4 cubre las semanas 13 a 18: agentes, MCP y orquestación sobre sistemas legados. El programa la cierra con un diseño en pizarra (en 30 minutos, un sistema multiagente con MCP, sus límites de seguridad y cómo se evalúa) y con la certificación CCAR-P. Para verificarla en el repo se usa un criterio por semana más el transversal de seguridad. Solo se marca lo verificado con evidencia.
+
+- [ ] **13.** Un flujo de LegacyBridge se implementa en al menos dos patrones (workflow y agente con Claude Agent SDK) y se comparan éxito, costo y latencia con el mismo golden set congelado. Pendiente. Ya está implementado y comparado el workflow (el asistente de semana 10 con ruteo fijo) contra un agente con loop propio, sobre 84 tareas con k = 3: 0.504 contra 0.921 (+0.417, IC 95 % [0.310, 0.528]); empatan en preguntas directas, y el agente gana en reglas de negocio (+0.833), tareas compuestas (+0.667) y peticiones ambiguas (+0.500) (`semana-13/resultados/agente_vs_workflow.md`; PR #79). Falta el agente con Claude Agent SDK.
+- [ ] **14.** Servidor MCP remoto con OAuth sobre la base legada de LegacyBridge, con permisos mínimos y pruebas de tool poisoning. El servidor MCP por stdio de la semana 13 ya tiene las mismas herramientas, esquemas y permisos que las nativas (PR #77).
+- [ ] **15.** El mismo agente en dos frameworks, con una matriz de decisión para clientes.
+- [ ] **16.** Un plugin o skill reutilizable para clientes, con su propia eval.
+- [ ] **17.** Human-in-the-loop, guardrails y presupuestos de tokens aplicados; eval de trayectorias y tablero de trazas con OpenTelemetry GenAI o Langfuse.
+- [ ] **18.** Diseño en pizarra de un sistema multiagente con MCP, sus límites de seguridad y su plan de evaluación, hecho en 30 minutos y versionado; CCAR-P presentado.
+- [x] **Transversal (no negociable):** cero escrituras no aprobadas, fuga 0 por rol y entre tenants, y ninguna instrucción inyectada obedecida, con check en CI. Verificado en la semana 13 con 140 corridas: la huella de las tablas no cambia, las propuestas quedan en `PENDING_APPROVAL` sin ejecutarse, hay 0 fugas en 40 corridas (24 por rol y 16 entre tenants) y se obedecieron 0 instrucciones inyectadas en datos SQL y en reglas (PR #80). El check `eval-semana-13` lo exige en cada PR de la semana 13 (PR #81). Se revisa cada semana de la fase y se desmarca si alguna lo rompe.
+
+Lo que no cumple el criterio queda marcado como pendiente hasta que se resuelva.
+
 ## Estado
 
 - Semana 1: completa. Mini-GPT de 2000 pasos con pérdida de validación de 1.72 (n=128, lr=1e-3). Ver `semana-01/README.md`.
 - Semana 10: completa (text-to-SQL sobre esquema legado, documentos no textuales y asistente integrado con seguridad y CI). Ver `semana-10/README.md`.
 - Semana 11: completa (evaluación de RAG con suites separadas de recuperación y generación, RAGAS validado, costo por consulta y CI con umbral). Ver `semana-11/README.md`.
 - Semana 12: completa (RAG administrado en Bedrock Knowledge Bases y Vertex AI Search, comparado con el pipeline propio en calidad, seguridad, latencia y costo; eval manual en CI con federación sin llaves; recursos borrados). Ver `semana-12/README.md`.
+- Semana 13: actividades 1 a 9 completas (golden set de tareas, herramientas con contrato, loop agéntico propio, servidor MCP, evaluación del agente, agente contra workflow, seguridad básica y CI). Haiku 5.5 `low` logra pass@1 0.921 y pass^3 0.905; seguridad 140/140. Queda el agente con Claude Agent SDK para cerrar el criterio 13. Ver `semana-13/README.md`.
+- Fase 4: en curso.
 - Fase 3: cerrada. Los 11 criterios (semanas 8 a 12) están verificados con evidencia en el repo. Queda registrar el costo real de la semana 12 cuando se consolide la factura.
