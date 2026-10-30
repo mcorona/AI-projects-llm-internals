@@ -249,7 +249,13 @@ def test_golden_simple_con_herramientas(conexion):
     r = herramientas("analista", conexion).llamar("ejecutar_sql", {"sql":
         "SELECT p.prv_nm FROM artmst a JOIN prvmst p ON p.prv_id = a.art_prv WHERE a.art_crt "
         "GROUP BY p.prv_nm ORDER BY COUNT(*) DESC, p.prv_nm LIMIT 1"})
-    assert r["filas"] == tarea["salida"]["filas"]["esperado"]
+    # el esperado se recalcula en esta base (en CI los datos son sintéticos, semilla 42) con el SQL de referencia
+    import os
+    import psycopg
+    with psycopg.connect(os.environ.get("PG_ADMIN_DSN") or os.environ["PG_DSN"]) as ref:
+        ref.execute("SET search_path = copilot, public")
+        esperado = [list(f) for f in ref.execute(tarea["salida"]["filas"]["sql_ref"]).fetchall()]
+    assert r["filas"] == esperado
 
 
 def test_nunca_excepcion_hacia_el_modelo(h_sin_base, monkeypatch):

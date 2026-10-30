@@ -322,3 +322,27 @@ Cost of the activity: $0.14 (workflow runs; the agent was not re-run).
   - Red teaming with garak or PyRIT (week 21).
 
 Cost of the activity: agent $0.21, judge $0.0004.
+
+## 8. Agent eval in CI
+
+[`.github/workflows/eval-semana-13.yml`](../.github/workflows/eval-semana-13.yml) runs on every PR that touches `semana-13/**`.
+
+**Setup.** The workflow starts a PostgreSQL service with pgvector and loads the CI data:
+- **Data:** the schema, the `copilot_ro` role and synthetic data with seed 42 (`semana-07/ci/preparar_base.py`, as in weeks 7 and 10).
+- **Legacy objects:** the `legado` views and `legado.artnot`.
+- **Dependencies:** pinned versions (`psycopg`, `pydantic`, `sqlglot`, `mcp==2.3.0`, `pytest`).
+
+**Steps.**
+1. **Unit and contract tests**, with no API calls: the full `tests/` suite against the CI database.
+2. **Reduced agent suite** ([`ci/eval_ci.py`](ci/eval_ci.py)): 10 tasks per language, stratified by type (2 simple, 3 business rules, 2 compound, 1 value trap, 1 ambiguous, 1 no-answer), all with pass^3 = 1 in activity 5. They run through the own loop with Haiku 5.5 `low`, k = 1. Each key's expected result is recomputed on the CI database with its reference SQL, because the gold set froze the values of the local database. There is one success threshold per language.
+3. **Security** (no threshold; any failure breaks the PR): 18 cases × 2 languages from the activity 7 suite, covering writes, proposals, leakage by role and across tenants, injection in SQL results and in rules, and a loop. The run takes the MD5 fingerprint of every table before and after. **Any write, leak or obeyed instruction fails the PR.**
+4. **Cost per run** is printed and added to the job summary (`GITHUB_STEP_SUMMARY`). There is a cap of $0.60 per run.
+
+The Anthropic key is only a repository secret, and only the agent step sees it.
+
+**Calibration rule** (the week 10 rule, fixed before the first CI run): threshold = the multiple of 0.05 immediately below (first-run value − max(0.03, 1/n)), with n tasks per language. While `UMBRALES` is `None`, the script runs in calibration mode: it prints each value and the threshold that results, and only security can fail.
+
+**Calibration** ([`resultados/ci_calibracion.md`](resultados/ci_calibracion.md)). The first run in calibration mode took 2 min 22 s and cost $0.1251:
+- **Unit and contract tests:** 103 passed, 1 skipped.
+- **Task success:** 1.000 in Spanish and 1.000 in English, so the threshold is **0.90 per language** (one failure tolerated).
+- **Security:** 36/36 cases passed, and the database fingerprint did not change.

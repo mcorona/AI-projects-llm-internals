@@ -1,0 +1,45 @@
+name: eval-semana-13
+
+on:
+  pull_request:
+    paths:
+      - "semana-13/**"
+      - ".github/workflows/eval-semana-13.yml"
+
+jobs:
+  eval:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_USER: admin
+          POSTGRES_PASSWORD: ci-admin
+          POSTGRES_DB: inventory
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U admin -d inventory"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      PG_ADMIN_DSN: postgresql://admin:ci-admin@localhost:5432/inventory
+      PG_DSN: postgresql://copilot_ro:ci-ro@localhost:5432/inventory
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - name: Instalar dependencias
+        run: pip install "psycopg[binary]==3.3.6" "pydantic==2.14.1" "sqlglot==30.26.0" "mcp==2.3.0" pytest
+      - name: Preparar base de CI (esquema, copilot_ro y datos sintéticos, semilla 42) y esquema legado
+        run: |
+          python semana-07/ci/preparar_base.py
+          psql "$PG_ADMIN_DSN" -v ON_ERROR_STOP=1 -f semana-10/legado/legado.sql
+          psql "$PG_ADMIN_DSN" -v ON_ERROR_STOP=1 -f semana-13/seguridad/artnot.sql
+      - name: Pruebas unitarias y de contrato (sin API)
+        run: cd semana-13 && python -m pytest -q tests -p no:cacheprovider
+      - name: Suite reducida del agente y seguridad (Haiku 5.5 low)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python semana-13/ci/eval_ci.py
