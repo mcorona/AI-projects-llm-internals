@@ -268,8 +268,9 @@ class ConexionConRol:
         return self._local.conn.execute(*a, **k)
 
 
-def fabrica_oauth(pool: PoolConexiones | None, idioma: str = "es"):
-    """Herramientas de la petición en curso, a partir del token que validó el middleware del SDK."""
+def fabrica_oauth(pool: PoolConexiones | None, idioma: str = "es", reglas_extra: list | None = None):
+    """Herramientas de la petición en curso, a partir del token que validó el middleware del SDK.
+    `reglas_extra` solo lo usa la eval de seguridad (documentos de reglas envenenados, actividad 6)."""
     propuestas: dict[str, list] = defaultdict(list)   # por sujeto: las propuestas no se mezclan entre usuarios
 
     def fabrica() -> Herramientas:
@@ -278,7 +279,8 @@ def fabrica_oauth(pool: PoolConexiones | None, idioma: str = "es"):
             token = AccessToken(token="", client_id="", scopes=[], subject="anonimo")
         rol = rol_bd(token.scopes) if SCOPE_BASE in token.scopes else None
         ctx = ContextoOAuth.de_token(token, conexion=ConexionConRol(pool, rol) if pool else None, idioma=idioma,
-                                     propuestas=propuestas[token.subject or token.client_id])
+                                     propuestas=propuestas[token.subject or token.client_id],
+                                     reglas_extra=list(reglas_extra or []))
         return Herramientas(ctx)
     return fabrica
 
