@@ -40,3 +40,6 @@ semana-12/infra/estado_*.json
 .wt/
 /path
 .claude/
+
+# Semana 14: secretos locales de Keycloak (los genera semana-14/auth/arrancar.sh)
+semana-14/auth/.secretos.env

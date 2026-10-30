@@ -1,0 +1,230 @@
+{
+  "realm": "legacybridge",
+  "displayName": "LegacyBridge (lab)",
+  "enabled": true,
+  "sslRequired": "external",
+  "registrationAllowed": false,
+  "resetPasswordAllowed": false,
+  "rememberMe": false,
+  "loginWithEmailAllowed": false,
+  "bruteForceProtected": true,
+  "failureFactor": 10,
+  "accessTokenLifespan": 300,
+  "ssoSessionIdleTimeout": 1800,
+  "ssoSessionMaxLifespan": 36000,
+  "defaultSignatureAlgorithm": "RS256",
+  "revokeRefreshToken": true,
+  "refreshTokenMaxReuse": 0,
+  "roles": {
+    "realm": [
+      {
+        "name": "legado-lector",
+        "description": "Lectura del esquema legado básico (almmst, artmst sin costo ni proveedor, exidet, artnot)"
+      },
+      {
+        "name": "legado-ventas",
+        "description": "Lectura de ventas (vtadia)"
+      },
+      {
+        "name": "legado-proveedores",
+        "description": "Lectura de proveedores, órdenes, costo y proveedor del artículo"
+      },
+      {
+        "name": "legado-compras",
+        "description": "Registrar propuestas de orden de compra (nunca ejecutarlas)"
+      }
+    ]
+  },
+  "users": [
+    {
+      "username": "analista",
+      "enabled": true,
+      "emailVerified": true,
+      "email": "analista@legacybridge.test",
+      "firstName": "Ana",
+      "lastName": "Analista",
+      "realmRoles": [
+        "legado-lector",
+        "legado-ventas",
+        "legado-proveedores",
+        "legado-compras"
+      ]
+    },
+    {
+      "username": "almacenista",
+      "enabled": true,
+      "emailVerified": true,
+      "email": "almacenista@legacybridge.test",
+      "firstName": "Alma",
+      "lastName": "Almacenista",
+      "realmRoles": [
+        "legado-lector"
+      ]
+    },
+    {
+      "username": "vendedor",
+      "enabled": true,
+      "emailVerified": true,
+      "email": "vendedor@legacybridge.test",
+      "firstName": "Vero",
+      "lastName": "Vendedora",
+      "realmRoles": [
+        "legado-lector",
+        "legado-ventas"
+      ]
+    }
+  ],
+  "clientScopes": [
+    {
+      "name": "basic",
+      "protocol": "openid-connect",
+      "description": "sub en el access token (el import reemplaza los scopes integrados de Keycloak)",
+      "attributes": {
+        "include.in.token.scope": "false",
+        "display.on.consent.screen": "false"
+      },
+      "protocolMappers": [
+        {
+          "name": "sub",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-sub-mapper",
+          "consentRequired": false,
+          "config": {
+            "access.token.claim": "true",
+            "introspection.token.claim": "true"
+          }
+        }
+      ]
+    },
+    {
+      "name": "legado:leer",
+      "protocol": "openid-connect",
+      "description": "Read the basic legacy schema",
+      "attributes": {
+        "include.in.token.scope": "true",
+        "display.on.consent.screen": "true",
+        "consent.screen.text": "Leer el esquema legado básico"
+      }
+    },
+    {
+      "name": "legado:ventas",
+      "protocol": "openid-connect",
+      "description": "Read sales (vtadia)",
+      "attributes": {
+        "include.in.token.scope": "true",
+        "display.on.consent.screen": "true",
+        "consent.screen.text": "Leer ventas"
+      }
+    },
+    {
+      "name": "legado:proveedores",
+      "protocol": "openid-connect",
+      "description": "Read suppliers, orders, cost and item supplier",
+      "attributes": {
+        "include.in.token.scope": "true",
+        "display.on.consent.screen": "true",
+        "consent.screen.text": "Leer proveedores, órdenes y costos"
+      }
+    },
+    {
+      "name": "legado:compras:proponer",
+      "protocol": "openid-connect",
+      "description": "Register purchase order proposals",
+      "attributes": {
+        "include.in.token.scope": "true",
+        "display.on.consent.screen": "true",
+        "consent.screen.text": "Registrar propuestas de orden de compra (no las ejecuta)"
+      }
+    }
+  ],
+  "scopeMappings": [
+    {
+      "clientScope": "legado:leer",
+      "roles": [
+        "legado-lector"
+      ]
+    },
+    {
+      "clientScope": "legado:ventas",
+      "roles": [
+        "legado-ventas"
+      ]
+    },
+    {
+      "clientScope": "legado:proveedores",
+      "roles": [
+        "legado-proveedores"
+      ]
+    },
+    {
+      "clientScope": "legado:compras:proponer",
+      "roles": [
+        "legado-compras"
+      ]
+    }
+  ],
+  "clients": [
+    {
+      "clientId": "legado-mcp",
+      "name": "LegacyBridge MCP server (resource server)",
+      "description": "Recurso protegido. No inicia flujos; solo existe como audiencia (resource_url, RFC 8707).",
+      "enabled": true,
+      "bearerOnly": true,
+      "publicClient": false,
+      "standardFlowEnabled": false,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "attributes": {
+        "resource_url": "http://127.0.0.1:8014/mcp"
+      }
+    },
+    {
+      "clientId": "legacybridge-agente",
+      "name": "LegacyBridge agent (MCP client)",
+      "description": "Cliente público MCP: authorization code + PKCE S256, redirect solo a loopback.",
+      "enabled": true,
+      "publicClient": true,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "frontchannelLogout": false,
+      "fullScopeAllowed": false,
+      "consentRequired": false,
+      "redirectUris": [
+        "http://127.0.0.1/callback",
+        "http://localhost/callback"
+      ],
+      "webOrigins": [],
+      "attributes": {
+        "pkce.code.challenge.method": "S256",
+        "post.logout.redirect.uris": "http://127.0.0.1/*",
+        "use.refresh.tokens": "true"
+      },
+      "defaultClientScopes": [
+        "basic"
+      ],
+      "optionalClientScopes": [
+        "legado:leer",
+        "legado:ventas",
+        "legado:proveedores",
+        "legado:compras:proponer"
+      ],
+      "protocolMappers": [
+        {
+          "name": "audiencia-legado-mcp",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "consentRequired": false,
+          "config": {
+            "included.client.audience": "legado-mcp",
+            "id.token.claim": "false",
+            "access.token.claim": "true",
+            "introspection.token.claim": "true"
+          }
+        }
+      ]
+    }
+  ]
+}
