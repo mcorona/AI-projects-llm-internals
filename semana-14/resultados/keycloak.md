@@ -14,9 +14,9 @@ cd .. && python -m pytest -q tests/test_keycloak.py
 
 | Element | Value |
 |---|---|
-| Image | `quay.io/keycloak/keycloak:26.8.1` (released 2026-10-13), `start-dev`, published on `127.0.0.1:8080` only |
+| Image | `quay.io/keycloak/keycloak:26.8.1` (released 2026-10-13), `start-dev`, published on `127.0.0.1:8180` only (port 8080 inside the container; 8080 on the host was already taken on the dev Mac) |
 | Feature | `--features=resource-indicators` (RFC 8707, experimental in 26.8) |
-| Issuer | `http://127.0.0.1:8080/realms/legacybridge`, fixed with `--hostname` |
+| Issuer | `http://127.0.0.1:8180/realms/legacybridge`, fixed with `--hostname` |
 | Realm | `legacybridge`. Self-registration and password reset are off, brute-force protection is on, access tokens last 300 s, refresh tokens rotate (`revokeRefreshToken`), signatures use RS256 |
 | Resource server | `legado-mcp`, bearer-only (it starts no flows) with `resource_url = http://127.0.0.1:8014/mcp` |
 | MCP client | `legacybridge-agente`, public. Authorization code only with **PKCE S256 required**. Redirects go to loopback `http://127.0.0.1/callback` and `http://localhost/callback` on any port (RFC 8252). No password grant, no client credentials, no implicit flow, `fullScopeAllowed: false` |

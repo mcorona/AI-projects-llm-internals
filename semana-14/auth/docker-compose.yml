@@ -9,13 +9,13 @@ services:
       - start-dev
       - --features=resource-indicators     # RFC 8707 (experimental en Keycloak 26.8)
       - --import-realm                     # importa realm/ solo si el realm no existe (idempotente)
-      - --hostname=http://127.0.0.1:8080   # emisor fijo: http://127.0.0.1:8080/realms/legacybridge
-      - --http-port=8080
+      - --hostname=http://127.0.0.1:8180   # emisor fijo: http://127.0.0.1:8180/realms/legacybridge
+      - --http-port=8080                   # puerto dentro del contenedor
     environment:
       KC_BOOTSTRAP_ADMIN_USERNAME: ${KC_BOOTSTRAP_ADMIN_USERNAME:?usa ./arrancar.sh}
       KC_BOOTSTRAP_ADMIN_PASSWORD: ${KC_BOOTSTRAP_ADMIN_PASSWORD:?usa ./arrancar.sh}
     ports:
-      - "127.0.0.1:8080:8080"              # solo loopback
+      - "127.0.0.1:8180:8080"              # solo loopback; 8180 en el host (8080 suele estar ocupado)
     volumes:
       - ./realm:/opt/keycloak/data/import:ro
       - kc-datos:/opt/keycloak/data/h2

@@ -24,7 +24,7 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
-KC_URL = os.environ.get("KEYCLOAK_URL", "http://127.0.0.1:8080")
+KC_URL = os.environ.get("KEYCLOAK_URL", "http://127.0.0.1:8180")
 REALM = "legacybridge"
 EMISOR = f"{KC_URL}/realms/{REALM}"
 CLIENTE = "legacybridge-agente"

@@ -21,7 +21,7 @@ from pydantic import BaseModel
 VERSION_SDK = "2.3.0"
 VERSION_PROTOCOLO = "2026-07-28"
 RECURSO = "http://127.0.0.1:8014/mcp"
-EMISOR = "http://127.0.0.1:8080/realms/legacybridge"
+EMISOR = "http://127.0.0.1:8180/realms/legacybridge"
 SCOPE_BASE = "legado:leer"
 
 # Lo que el SDK NO resuelve y se construye en la semana (verificado en la actividad 1).

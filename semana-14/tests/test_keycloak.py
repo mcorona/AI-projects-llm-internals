@@ -35,7 +35,7 @@ def meta():
 
 
 def test_descubrimiento(meta):
-    assert meta["issuer"] == EMISOR == "http://127.0.0.1:8080/realms/legacybridge"
+    assert meta["issuer"] == EMISOR == "http://127.0.0.1:8180/realms/legacybridge"
     assert "S256" in meta["code_challenge_methods_supported"]
     assert meta["authorization_response_iss_parameter_supported"] is True          # RFC 9207
     assert "authorization_code" in meta["grant_types_supported"]
