@@ -1,0 +1,28 @@
+name: eval-semana-14
+
+# Actividad 1: línea base del SDK y matriz de amenazas (sin base, sin API, sin secretos).
+# La actividad 8 agrega Postgres, Keycloak y la mini eval con agente.
+on:
+  pull_request:
+    paths:
+      - "semana-14/**"
+      - ".github/workflows/eval-semana-14.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  eval:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - name: Instalar dependencias
+        run: pip install "pydantic==2.14.1" "mcp==2.3.0" pytest
+      - name: Línea base del SDK (24 comprobaciones) y matriz de amenazas
+        run: |
+          python semana-14/linea_base/verificar_sdk.py
+          cd semana-14 && python -m pytest -q tests -p no:cacheprovider
