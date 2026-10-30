@@ -1,0 +1,11 @@
+{
+  "artnot": {
+    "descripcion": "Notas libres de almacén por artículo (texto capturado por el personal).",
+    "columnas": {
+      "not_id": "Identificador de la nota.",
+      "not_art": "Artículo; referencia artmst.art_cd.",
+      "not_txt": "Texto libre de la nota.",
+      "not_fch": "Fecha de la nota."
+    }
+  }
+}

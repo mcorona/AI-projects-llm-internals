@@ -37,9 +37,11 @@ from sqlglot import exp
 AQUI = Path(__file__).resolve().parent
 RAIZ = AQUI.parents[1]
 DICCIONARIO = json.loads((RAIZ / "semana-10" / "legado" / "diccionario.json").read_text(encoding="utf-8"))
+# Semana 13: tabla legada de notas libres (artnot), creada por seguridad/artnot.sql; sirve para probar inyección en datos.
+DICCIONARIO.update(json.loads((AQUI / "diccionario_extra.json").read_text(encoding="utf-8")))
 REGLAS = json.loads((RAIZ / "semana-13" / "golden" / "reglas_negocio.json").read_text(encoding="utf-8"))["reglas"]
 PERMISOS = json.loads((AQUI / "permisos.json").read_text(encoding="utf-8"))
-TABLAS = tuple(DICCIONARIO)  # prvmst, artmst, almmst, exidet, vtadia, ocpcab
+TABLAS = tuple(DICCIONARIO)  # prvmst, artmst, almmst, exidet, vtadia, ocpcab, artnot
 MAX_CARACTERES = 6000
 
 # Funciones que escriben, leen fuera del esquema o pueden bloquear la base. Se comparan por prefijo, en minúsculas.
@@ -79,13 +81,20 @@ class ValidarSql(_Entrada):
     sql: str = Field(min_length=1, max_length=4000, description="One PostgreSQL SELECT over the legacy tables.")
 
 
+class ProponerOrdenCompra(_Entrada):
+    sku: str = Field(pattern=r"^SKU-\d{4}$", description="Item code, e.g. SKU-0009.")
+    cantidad: int = Field(ge=1, le=100000)
+    motivo: str = Field(min_length=1, max_length=200)
+
+
 class EjecutarSql(_Entrada):
     sql: str = Field(min_length=1, max_length=4000, description="One PostgreSQL SELECT over the legacy tables.")
     max_filas: int = Field(default=50, ge=1, le=200, description="Maximum rows to return; the total is always reported.")
 
 
 ENTRADAS = {"describir_esquema": DescribirEsquema, "buscar_regla_negocio": BuscarRegla,
-            "muestrear_valores": MuestrearValores, "validar_sql": ValidarSql, "ejecutar_sql": EjecutarSql}
+            "muestrear_valores": MuestrearValores, "validar_sql": ValidarSql, "ejecutar_sql": EjecutarSql,
+            "proponer_orden_compra": ProponerOrdenCompra}
 
 DESCRIPCIONES = {
     "describir_esquema": "Describe the legacy tables and columns available to the current user, with the data dictionary "
@@ -99,6 +108,9 @@ DESCRIPCIONES = {
                    "that the database can plan it. Returns structured errors with a suggestion.",
     "ejecutar_sql": "Validate and run one SELECT over the legacy tables in a read-only transaction, with time and row "
                     "limits. Returns columns, rows (up to max_filas) and the total row count.",
+    "proponer_orden_compra": "Register a purchase order PROPOSAL for human approval. It never creates, approves or executes "
+                             "an order and writes nothing to the database: a person with the right authorization level "
+                             "must approve it. Only for users with the purchasing role.",
 }
 
 
@@ -126,6 +138,8 @@ class Contexto:
     idioma: Literal["es", "en"] = "es"
     timeout_ms: int = 5000
     llamadas: list[dict] = field(default_factory=list)  # bitácora de llamadas (traza)
+    propuestas: list[dict] = field(default_factory=list)  # propuestas registradas (nunca se ejecutan)
+    reglas_extra: list[dict] = field(default_factory=list)  # solo pruebas de seguridad: documentos de reglas adicionales
 
     @classmethod
     def de_usuario(cls, usuario: str, **kw) -> "Contexto":
@@ -157,6 +171,10 @@ def _error(tipo, mensaje, sugerencia=""):
 def _norm(texto: str) -> str:
     t = unicodedata.normalize("NFKD", texto.lower())
     return "".join(c for c in t if not unicodedata.combining(c))
+
+
+def _literal(texto: str) -> str:
+    return "'" + texto.replace("'", "''") + "'"
 
 
 def _valor(v):
@@ -228,13 +246,13 @@ class Herramientas:
     def _buscar_regla_negocio(self, e: BuscarRegla) -> dict:
         idioma = self.ctx.idioma
         consulta = e.consulta.strip()
-        por_id = [r for r in REGLAS if r["id"].lower() == consulta.lower()]
+        por_id = [r for r in REGLAS + self.ctx.reglas_extra if r["id"].lower() == consulta.lower()]
         if por_id:
             elegidas = por_id
         else:
             tokens = {w for w in re.findall(r"[a-z0-9]+", _norm(consulta)) if len(w) > 2}
             puntajes = []
-            for r in REGLAS:
+            for r in REGLAS + self.ctx.reglas_extra:
                 nombre = set(re.findall(r"[a-z0-9]+", _norm(r["nombre"] + " " + r["nombre_en"] + " " + r["id"])))
                 cuerpo = set(re.findall(r"[a-z0-9]+", _norm(r["es"] + " " + r["en"])))
                 p = 2 * len(tokens & nombre) + len(tokens & cuerpo)
@@ -264,6 +282,21 @@ class Herramientas:
         distintos = self._correr(f"SELECT COUNT(DISTINCT {e.columna}) FROM {e.tabla}")[1][0][0]
         return {"ok": True, "tabla": e.tabla, "columna": e.columna, "valores_distintos": distintos,
                 "valores": [{"valor": _valor(v), "filas": n} for v, n in filas]}
+
+    # proponer_orden_compra
+    def _proponer_orden_compra(self, e: ProponerOrdenCompra) -> dict:
+        permitidos = PERMISOS.get("herramientas_por_rol", {}).get("proponer_orden_compra", [])
+        if not set(permitidos) & set(self.ctx.roles):
+            raise ErrorHerramienta("permiso_denegado", "El usuario no puede registrar propuestas de orden de compra.",
+                                   "Solo el rol de compras puede proponer órdenes.")
+        if self.ctx.conexion is not None and not self._correr("SELECT 1 FROM artmst WHERE art_cd = %s" % _literal(e.sku))[1]:
+            raise ErrorHerramienta("sku_desconocido", f"No existe el artículo {e.sku}.", "Revisa el código con ejecutar_sql.")
+        propuesta = {"id": f"PROP-{len(self.ctx.propuestas) + 1:04d}", "sku": e.sku, "cantidad": e.cantidad, "motivo": e.motivo,
+                     "estado": "PENDING_APPROVAL", "ejecutada": False}
+        self.ctx.propuestas.append(propuesta)
+        return {"ok": True, "propuesta": propuesta,
+                "nota": "Solo se registró la propuesta. No se creó ni aprobó ninguna orden y no se escribió nada en la base; "
+                        "una persona con el nivel de autorización del monto debe aprobarla."}
 
     # validar_sql
     def _validar_sql(self, e: ValidarSql) -> dict:

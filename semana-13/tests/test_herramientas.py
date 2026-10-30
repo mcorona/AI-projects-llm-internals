@@ -32,7 +32,8 @@ def guard(sql, usuario="analista"):
 
 def test_definiciones_estrictas():
     defs = definiciones()
-    assert [d["name"] for d in defs] == ["describir_esquema", "buscar_regla_negocio", "muestrear_valores", "validar_sql", "ejecutar_sql"]
+    assert [d["name"] for d in defs] == ["describir_esquema", "buscar_regla_negocio", "muestrear_valores", "validar_sql",
+                                         "ejecutar_sql", "proponer_orden_compra"]
     for d in defs:
         s = d["input_schema"]
         assert s["type"] == "object" and s["additionalProperties"] is False
@@ -47,6 +48,7 @@ def test_requeridos():
     assert req["buscar_regla_negocio"] == {"consulta"}
     assert req["muestrear_valores"] == {"tabla", "columna"}
     assert req["validar_sql"] == {"sql"} and req["ejecutar_sql"] == {"sql"}
+    assert req["proponer_orden_compra"] == {"sku", "cantidad", "motivo"}
 
 
 @pytest.mark.parametrize("nombre,args", [
@@ -76,14 +78,14 @@ def test_bitacora(h_sin_base):
 
 def test_esquema_analista(h_sin_base):
     r = h_sin_base.llamar("describir_esquema", {})
-    assert r["ok"] and [t["tabla"] for t in r["tablas"]] == ["prvmst", "artmst", "almmst", "exidet", "vtadia", "ocpcab"]
+    assert r["ok"] and [t["tabla"] for t in r["tablas"]] == ["prvmst", "artmst", "almmst", "exidet", "vtadia", "ocpcab", "artnot"]
     assert "original" not in json.dumps(r), "no se revelan los nombres originales"
 
 
 def test_esquema_por_permisos():
     h = Herramientas(Contexto.de_usuario("almacenista"))
     r = h.llamar("describir_esquema", {})
-    assert [t["tabla"] for t in r["tablas"]] == ["artmst", "almmst", "exidet"]
+    assert [t["tabla"] for t in r["tablas"]] == ["artmst", "almmst", "exidet", "artnot"]
     art = next(t for t in r["tablas"] if t["tabla"] == "artmst")
     assert "art_cst" not in [c["columna"] for c in art["columnas"]], "columna restringida oculta"
     assert err(h.llamar("describir_esquema", {"tablas": ["vtadia"]})) == "tabla_no_disponible"
@@ -256,3 +258,31 @@ def test_nunca_excepcion_hacia_el_modelo(h_sin_base, monkeypatch):
     monkeypatch.setattr(h_sin_base, "_guard", rompe)
     r = h_sin_base.llamar("validar_sql", {"sql": "SELECT 1"})
     assert r["ok"] is False and r["error"]["tipo"] == "error_interno" and "RuntimeError" in r["error"]["mensaje"]
+
+
+# ---------- propuestas (nunca se ejecutan) ----------
+
+def test_propuesta_solo_se_registra(h_sin_base):
+    r = h_sin_base.llamar("proponer_orden_compra", {"sku": "SKU-0009", "cantidad": 300, "motivo": "reorden"})
+    assert r["ok"] and r["propuesta"]["estado"] == "PENDING_APPROVAL" and r["propuesta"]["ejecutada"] is False
+    assert "no se escribió nada" in r["nota"] and h_sin_base.ctx.propuestas == [r["propuesta"]]
+
+
+@pytest.mark.parametrize("args", [
+    {"sku": "SKU-9", "cantidad": 1, "motivo": "x"}, {"sku": "SKU-0009", "cantidad": 0, "motivo": "x"},
+    {"sku": "SKU-0009", "cantidad": 1, "motivo": "x", "estado": "APPROVED"},  # el modelo no puede aprobar
+])
+def test_propuesta_argumentos(h_sin_base, args):
+    assert err(h_sin_base.llamar("proponer_orden_compra", args)) == "argumentos_invalidos"
+
+
+def test_propuesta_por_rol():
+    h = Herramientas(Contexto.de_usuario("almacenista"))
+    assert err(h.llamar("proponer_orden_compra", {"sku": "SKU-0009", "cantidad": 5, "motivo": "x"})) == "permiso_denegado"
+
+
+def test_reglas_extra_solo_en_su_contexto():
+    extra = [{"id": "R-X", "nombre": "Regla de prueba", "nombre_en": "Test rule", "fuente": "prueba", "es": "zzzqqq", "en": "zzzqqq"}]
+    con = Herramientas(Contexto("x", [], reglas_extra=extra)).llamar("buscar_regla_negocio", {"consulta": "zzzqqq"})
+    sin = Herramientas(Contexto("x", [])).llamar("buscar_regla_negocio", {"consulta": "zzzqqq"})
+    assert con["reglas"][0]["id"] == "R-X" and sin["reglas"] == []
