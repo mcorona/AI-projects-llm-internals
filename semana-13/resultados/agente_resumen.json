@@ -670,8 +670,337 @@
     "p95": 7.767999999999999
    }
   },
-  "costo_total_usd": 0.559526,
+  "costo_total_usd": 0.5595260000000001,
   "fallas": []
+ },
+ "eval_sdk_low": {
+  "corrida": "eval_sdk_low",
+  "configuracion": "claude-haiku-5-5 low · Agent SDK",
+  "k": 3,
+  "tareas": 84,
+  "corridas": 252,
+  "pass@1": 0.8888888888888888,
+  "pass@1_ic": [
+   0.8253968253968254,
+   0.9444444444444444
+  ],
+  "pass^3": 0.8452380952380952,
+  "pass^3_ic": [
+   0.7619047619047619,
+   0.9166666666666666
+  ],
+  "por_tipo": {
+   "simple": {
+    "tareas": 20,
+    "pass@1": 0.9,
+    "pass^3": 0.9
+   },
+   "regla": {
+    "tareas": 24,
+    "pass@1": 0.9444444444444444,
+    "pass^3": 0.875
+   },
+   "compuesta": {
+    "tareas": 16,
+    "pass@1": 0.8541666666666666,
+    "pass^3": 0.75
+   },
+   "valores": {
+    "tareas": 8,
+    "pass@1": 1,
+    "pass^3": 1
+   },
+   "ambigua": {
+    "tareas": 8,
+    "pass@1": 0.5416666666666666,
+    "pass^3": 0.5
+   },
+   "sin_respuesta": {
+    "tareas": 8,
+    "pass@1": 1,
+    "pass^3": 1
+   }
+  },
+  "por_idioma": {
+   "es": 0.9206349206349206,
+   "en": 0.8571428571428571
+  },
+  "exactitud_claves": 0.928030303030303,
+  "coherencia_claves": 0.9583333333333334,
+  "estados": {
+   "respondida -> respondida": 203,
+   "abstenida -> abstenida": 24,
+   "requiere_aclaracion -> requiere_aclaracion": 13,
+   "requiere_aclaracion -> respondida": 11,
+   "respondida -> requiere_aclaracion": 1
+  },
+  "aclaracion_correcta": 0.5416666666666666,
+  "abstencion_correcta": 1,
+  "falsa_aclaracion_o_abstencion": 0.004901960784313725,
+  "limite_alcanzado": 0,
+  "juez_texto_libre": {
+   "evaluadas": 37,
+   "adecuadas": 36,
+   "sin_veredicto": 0,
+   "no_adecuadas": [
+    {
+     "id": "a04-en",
+     "rep": 1,
+     "razon": "La pregunta de aclaración sobre qué CEDIS consultar es correcta, pero no pregunta si se requiere unidades o valor, asume unidades (exi_qty) y ya entrega cifras y un total, lo que equivale a responder en lugar de solo pedir la aclaración."
+    }
+   ]
+  },
+  "trayectoria": {
+   "llamadas": 1045,
+   "validas": 1.0,
+   "exitosas": 0.9942583732057416,
+   "redundantes_por_corrida": 0,
+   "corridas_con_redundancia": 0,
+   "pasos_sobre_minimo": 2.610978835978836,
+   "corridas_con_error": 7,
+   "recuperacion_tras_error": 1,
+   "uso_herramientas": {
+    "describir_esquema": 246,
+    "buscar_regla_negocio": 348,
+    "ejecutar_sql": 302,
+    "muestrear_valores": 149
+   }
+  },
+  "por_tarea": {
+   "pasos": {
+    "p50": 6.0,
+    "p95": 9.0
+   },
+   "tokens": {
+    "p50": 33219.5,
+    "p95": 56773.89999999999
+   },
+   "usd": {
+    "p50": 0.0018484999999999999,
+    "p95": 0.0036937
+   },
+   "segundos": {
+    "p50": 10.190000000000001,
+    "p95": 18.986499999999996
+   }
+  },
+  "costo_total_usd": 0.5292680000000001,
+  "fallas": [
+   {
+    "id": "r03-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "n": false
+    }
+   },
+   {
+    "id": "c05-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "cdmx": false,
+     "guadalajara": true,
+     "monterrey": true
+    }
+   },
+   {
+    "id": "a04-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "a03-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "s02-en",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s10-en",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "r01-en",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "n": false
+    }
+   },
+   {
+    "id": "a04-en",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "a03-en",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "c05-es",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "cdmx": false,
+     "guadalajara": true,
+     "monterrey": true
+    }
+   },
+   {
+    "id": "a03-es",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "a04-es",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "s02-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s10-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "r01-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "n": false
+    }
+   },
+   {
+    "id": "r02-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "skus": false
+    }
+   },
+   {
+    "id": "c05-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "cdmx": false,
+     "guadalajara": true,
+     "monterrey": true
+    }
+   },
+   {
+    "id": "c08-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "skus": false,
+     "unidades": false
+    }
+   },
+   {
+    "id": "a03-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "c05-es",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "cdmx": false,
+     "guadalajara": true,
+     "monterrey": true
+    }
+   },
+   {
+    "id": "a04-es",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "a03-es",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "s02-en",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s10-en",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "c05-en",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "cdmx": false,
+     "guadalajara": true,
+     "monterrey": true
+    }
+   },
+   {
+    "id": "c06-en",
+    "rep": 2,
+    "estado": "requiere_aclaracion",
+    "claves": {
+     "cobertura": false,
+     "menos_7": false
+    }
+   },
+   {
+    "id": "a04-en",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "a03-en",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {}
+   }
+  ]
  },
  "diferencias": [
   {
@@ -695,6 +1024,16 @@
    ]
   },
   {
+   "de": "eval_haiku_low",
+   "a": "eval_sdk_low",
+   "tareas": 84,
+   "dif_pass@1": -0.031746031746031744,
+   "ic": [
+    -0.07142857142857144,
+    0.003968253968253969
+   ]
+  },
+  {
    "de": "eval_haiku_medium",
    "a": "eval_sonnet_low_sub",
    "tareas": 10,
@@ -702,6 +1041,26 @@
    "ic": [
     0.3,
     0.9
+   ]
+  },
+  {
+   "de": "eval_haiku_medium",
+   "a": "eval_sdk_low",
+   "tareas": 84,
+   "dif_pass@1": -0.02380952380952381,
+   "ic": [
+    -0.05555555555555556,
+    0.003968253968253968
+   ]
+  },
+  {
+   "de": "eval_sonnet_low_sub",
+   "a": "eval_sdk_low",
+   "tareas": 10,
+   "dif_pass@1": -0.5333333333333333,
+   "ic": [
+    -0.8,
+    -0.26666666666666666
    ]
   }
  ],

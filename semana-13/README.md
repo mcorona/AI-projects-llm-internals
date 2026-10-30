@@ -1,8 +1,8 @@
 # Week 13: agentic patterns (workflows vs agents) and the Claude Agent SDK
 
-Status: activities 1 to 9 of the week plan are complete. Exit criterion 13 stays pending until the agent is also built with the Claude Agent SDK (section 9).
+Status: complete. Activities 1 to 10 are done, and exit criterion 13 is verified with the agent built with the Claude Agent SDK (section 10).
 
-Phase 4 (weeks 13 to 18) covers agents, MCP and orchestration. This week takes one LegacyBridge flow (question → explore schema and business rules → SQL → validate → run read-only → answer with evidence). It builds shared tools with a contract, an **own agentic loop** on the Anthropic API, and an **MCP server** that exposes the same tools. The agent is evaluated on a frozen task gold set (success, trajectory, behavior, cost, latency, consistency) and compared with the week 10 **workflow** (fixed routing) on the same tasks. It also gets a security baseline and a CI gate.
+Phase 4 (weeks 13 to 18) covers agents, MCP and orchestration. This week takes one LegacyBridge flow (question → explore schema and business rules → SQL → validate → run read-only → answer with evidence). It builds shared tools with a contract, an **own agentic loop** on the Anthropic API, the same agent on the **Claude Agent SDK**, and an **MCP server** that exposes the same tools. The agent is evaluated on a frozen task gold set (success, trajectory, behavior, cost, latency, consistency) and compared with the week 10 **workflow** (fixed routing) on the same tasks. It also gets a security baseline and a CI gate.
 
 Everything runs locally: the legacy schema from week 10 (`legado`, views with cryptic names over the inventory-copilot data) and the read-only role `copilot_ro`. The only cost is the Anthropic API.
 
@@ -382,7 +382,7 @@ The Anthropic key is only a repository secret, and only the agent step sees it.
 
 - **Small domain:** one legacy schema with 6 tables plus `artnot`, 84 tasks, synthetic company rules. The numbers do not carry over to large or messy schemas without measuring them.
 - **Model coverage:** Sonnet was measured only on a subset of 10 tasks. Haiku was the only model on the full set.
-- **Not built this week:** the Claude Agent SDK, evaluator-optimizer and orchestrator-workers, which are in the week 13 topic of the program, and the hybrid router recommended in activity 6.
+- **Not built this week:** evaluator-optimizer and orchestrator-workers, which are in the week 13 topic of the program, and the hybrid router recommended in activity 6. The Claude Agent SDK was added in activity 10.
 - **Parallel tool calls run in sequence** because they share the database connection; latency would improve with one connection per call.
 - **MCP over stdio only.** Remote transport and OAuth are week 14.
 - **Security is a single-turn baseline.** No multi-turn attacks, no tool poisoning in tool descriptions (week 14), no red teaming (week 21), and no tenants in the SQL data.
@@ -409,5 +409,67 @@ The Anthropic key is only a repository secret, and only the agent step sees it.
 ### Phase 4 exit criterion (proposed in the root README)
 
 One verifiable criterion per week (13 to 18), plus the cross-cutting security criterion, confirmed on 2026-10-29. This week:
-- **Criterion 13: not marked.** It asks for the flow in at least two patterns, *workflow and agent with the Claude Agent SDK*. Workflow and agent are implemented and compared (activity 6), but the agent is the own loop, not the SDK. It is marked when the SDK agent runs on the same gold set and joins the comparison.
+- **Criterion 13: marked after activity 10.** It asks for the flow in at least two patterns, *workflow and agent with the Claude Agent SDK*, compared on success, cost and latency with the same frozen gold set. Activity 9 left it pending because the agent was only the own loop. Activity 10 adds the SDK agent on the same 84 tasks and k = 3, compared with the workflow and with the own loop (section 10).
 - **Cross-cutting security: marked.** Zero unapproved writes, zero leaks by role and across tenants, and zero obeyed injected instructions, with a CI check (activities 7 and 8). It is reviewed every week of the phase, and unmarked if a later week breaks it.
+
+## 10. The same agent on the Claude Agent SDK
+
+Added after activity 9 to close exit criterion 13. [`agente_sdk/agente.py`](agente_sdk/agente.py) builds the agent with **claude-agent-sdk 0.2.175**, the version current on 2026-10-29, which bundles the Claude Code CLI.
+
+**What changes:** only the orchestration. The SDK runs the loop, the retries and the stop.
+
+**What stays the same:**
+- **Tools:** the same six plus `responder`, served in process with `create_sdk_mcp_server`, with the same names, descriptions and JSON Schema, executed by `Herramientas.llamar`.
+- **Prompt and checks:** the same system prompt, the same shape contract and the same `revisar_final`.
+- **Model and limits:** Haiku 5.5 `low`, 12 turns at most, and a $0.05 cost cap per task.
+
+**Isolation:**
+- `tools=[]` turns off every built-in Claude Code tool (Bash, Read, Write, Web…).
+- `setting_sources=[]` loads no user or project settings (CLAUDE.md, `.mcp.json`, permissions).
+- It runs in an empty temporary directory, and only the tools of the `legado` server are allowed.
+
+The CLI uses the API key, not the claude.ai account; it warns that the claude.ai connectors are disabled.
+
+**How it is measured:**
+- **Cost:** `ResultMessage.total_cost_usd`.
+- **Traces:** the same format as the own loop. They also record the 5 calls the SDK rejected on schema validation before they reached the tool.
+- **Turns:** the SDK counts turns (`num_turns`) differently from the own loop's model calls, so the comparison uses success, tool calls, cost and seconds.
+- **Tests:** 3 new tests with no API calls: same catalog and schemas, same answers as the native tools, and `responder` checked against the task. The week has 106 tests.
+
+**Results.** The pilot got 12/12 for $0.027. Full gold set: 84 tasks, k = 3, 252 runs. Report: [`resultados/patrones.md`](resultados/patrones.md).
+
+| Task type | Workflow pass@1 / pass^3 | Own loop | Agent SDK | SDK − own loop [95 % CI] | SDK − workflow [95 % CI] |
+|---|---|---|---|---|---|
+| simple | 0.950 / 0.950 | 0.967 / 0.950 | 0.900 / 0.900 | −0.067 [−0.183, 0.000] | −0.050 [−0.150, 0.000] |
+| business rules | 0.139 / 0.083 | 0.972 / 0.958 | 0.944 / 0.875 | −0.028 [−0.111, +0.056] | **+0.806** [+0.653, +0.931] |
+| compound | 0.250 / 0.250 | 0.917 / 0.875 | 0.854 / 0.750 | −0.062 [−0.125, 0.000] | **+0.604** [+0.375, +0.833] |
+| value traps | 1.000 / 1.000 | 1.000 / 1.000 | 1.000 / 1.000 | 0 | 0 |
+| ambiguous | 0.000 / 0.000 | 0.500 / 0.500 | 0.542 / 0.500 | +0.042 [0.000, +0.125] | **+0.542** [+0.250, +0.875] |
+| no answer | 1.000 / 1.000 | 1.000 / 1.000 | 1.000 / 1.000 | 0 | 0 |
+| **Total** | 0.504 / 0.488 | **0.921 / 0.905** | 0.889 / 0.845 | −0.032 [−0.071, +0.004] | **+0.385** [+0.282, +0.496] |
+
+| | Workflow | Own loop | Agent SDK |
+|---|---|---|---|
+| USD per task, p50 | $0.0004 | $0.0026 | $0.0018 |
+| Seconds per task, p50 / p95 | 3.0 / 9.4 | 7.1 / 14.8 | 10.2 / 19.0 |
+| Cost of 252 runs | $0.14 | $0.72 | $0.53 |
+| Key accuracy / key consistency | — | 0.970 / 0.992 | 0.928 / 0.958 |
+
+**Reading**
+- **The SDK agent is as good as the own loop within the noise, but not better.**
+  - The total difference is −0.032 [−0.071, +0.004], and the interval includes 0.
+  - It is less consistent: pass^3 is 0.845 against 0.905.
+  - Its remaining failures are the same kind of real errors:
+    - wrong SQL in s02, s10, r01 and c05 (the same rounding error);
+    - no clarification on a03 and a04;
+    - one false clarification;
+    - two unreported keys.
+  - There were no instrument problems.
+- **It is 26 % cheaper** ($0.53 against $0.72). The CLI uses prompt caching: median input of about 32k tokens, mostly read from cache.
+- **It is slower:** p50 10.2 s against 7.1 s. Each task starts a CLI process, and the SDK makes more turns.
+- **Decision for this flow:**
+  - The own loop stays the reference for evaluation: it is faster, more consistent, and every step is visible.
+  - The SDK is the option when its built-in features pay off: hooks, permission modes, sessions, subagents and the Claude Code toolset. Those are topics of weeks 15 to 17.
+  - Both beat the workflow by about 0.4 on rules, compound tasks and ambiguity.
+
+**Cost of the activity:** pilot $0.027, full run $0.53, judge under $0.01; about **$0.56**. The week total is about $5.46.
