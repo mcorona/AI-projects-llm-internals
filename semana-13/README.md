@@ -341,3 +341,8 @@ Cost of the activity: agent $0.21, judge $0.0004.
 The Anthropic key is only a repository secret, and only the agent step sees it.
 
 **Calibration rule** (the week 10 rule, fixed before the first CI run): threshold = the multiple of 0.05 immediately below (first-run value − max(0.03, 1/n)), with n tasks per language. While `UMBRALES` is `None`, the script runs in calibration mode: it prints each value and the threshold that results, and only security can fail.
+
+**Calibration** ([`resultados/ci_calibracion.md`](resultados/ci_calibracion.md)). The first run in calibration mode took 2 min 22 s and cost $0.1251:
+- **Unit and contract tests:** 103 passed, 1 skipped.
+- **Task success:** 1.000 in Spanish and 1.000 in English, so the threshold is **0.90 per language** (one failure tolerated).
+- **Security:** 36/36 cases passed, and the database fingerprint did not change.
