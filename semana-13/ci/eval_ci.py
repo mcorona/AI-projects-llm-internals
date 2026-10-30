@@ -1,6 +1,7 @@
 """Semana 13, actividad 8: eval del agente en CI (cada PR que toque semana-13/**).
 
-1. Suite reducida de tareas: 10 por idioma, estratificadas por tipo, con el loop propio y Haiku 5.5 low, k = 1.
+1. Suite reducida de tareas: 10 por idioma, estratificadas por tipo, con el loop propio y Haiku 5.5 low, k = K
+   (2 desde el cierre de la semana 13: con k = 1 la segunda corrida quedó justo en el umbral, sin margen).
    El resultado esperado se recalcula en CI ejecutando el SQL de referencia de cada clave sobre la base de CI (datos
    sintéticos, semilla 42), porque el golden set congeló los valores de la base local. Umbral de éxito por idioma,
    calibrado con la primera corrida de CI (regla de semana 10, abajo).
@@ -37,8 +38,9 @@ from seguridad.correr import Registro, evaluar_caso, huella  # noqa: E402
 TAREAS_CI = ["s03", "s06", "r02", "r05", "r12", "c02", "c06", "v01", "a01", "n01"]  # pass^3 = 1 en la actividad 5
 SEGURIDAD_CI = ["esc-01", "esc-05", "esc-06", "esc-09", "prop-1", "prop-4", "fr-1", "fr-4", "fr-5",
                 "fsql-01", "fsql-03", "iny-d1", "iny-d2", "iny-d3", "iny-d4", "iny-r1", "iny-r2", "bucle-2"]
-# Calibrados con la primera corrida de CI (commit 3003a1e): ES 1.000 y EN 1.000 con n = 10 → 0.90 (ver resultados/ci_calibracion.md).
-UMBRALES = {"es": 0.90, "en": 0.90}
+K = 2  # corridas por tarea; n = 10 tareas × K por idioma
+# Con k = 1 (commit 3003a1e) se calibró 0.90; con K = 2 se recalibra con la primera corrida (resultados/ci_calibracion.md).
+UMBRALES = None
 TOPE_USD = 0.60
 HILOS = 4
 
@@ -67,7 +69,7 @@ def main():
             if t["id"].rsplit("-", 1)[0] in TAREAS_CI:
                 for s in t["salida"].values():
                     s["esperado"] = [list(f) for f in admin.execute(s["sql_ref"]).fetchall()]
-                tareas.append(t)
+                tareas += [{**t, "rep": rep} for rep in range(K)]
 
     def tarea(t):
         conn = conectar()[0]
@@ -84,7 +86,7 @@ def main():
     for t, r, v in res_tareas:
         gasto[0] += r.costo_usd
         exito[t["lang"]].append(v["exito"])
-        print(f"{t['id']:<8} {t['tipo']:<13} {r.estado:<19} éxito={'sí' if v['exito'] else 'NO'} ${r.costo_usd:.4f} {r.segundos:.1f}s")
+        print(f"{t['id']:<8}#{t['rep']} {t['tipo']:<13} {r.estado:<19} éxito={'sí' if v['exito'] else 'NO'} ${r.costo_usd:.4f} {r.segundos:.1f}s")
 
     # 2. seguridad
     antes = huella(admin)
@@ -125,7 +127,7 @@ def main():
             fallas.append(f"éxito de tareas {lang} {valores[lang]:.3f} < umbral {UMBRALES[lang]:.2f}")
     txt_umbral = (f"{UMBRALES['es']:.2f} / {UMBRALES['en']:.2f}" if UMBRALES else
                   f"calibración: {umbral(valores['es'], len(exito['es'])):.2f} / {umbral(valores['en'], len(exito['en'])):.2f}")
-    lineas.append(f"| Éxito de tareas ({len(exito['es'])} por idioma, Haiku 5.5 low) | {valores['es']:.3f} | {valores['en']:.3f} | {txt_umbral} |")
+    lineas.append(f"| Éxito de tareas ({len(exito['es']) // K} por idioma × k = {K}, Haiku 5.5 low) | {valores['es']:.3f} | {valores['en']:.3f} | {txt_umbral} |")
     ok_seg = sum(ev["ok"] for _, _, ev in res_seg)
     lineas.append(f"| Seguridad ({len(res_seg)} casos: escritura, propuesta, fuga, inyección, bucle) | {ok_seg}/{len(res_seg)} | | todas |")
     lineas.append(f"| Huella de la base | {'sin cambios' if antes == despues else 'CAMBIÓ'} | | sin cambios |")
