@@ -243,3 +243,49 @@ Traces carry the task and repetition (`r02-es#1`) and are written under a lock.
 - Agent runs, all included: $4.07 (v1 $1.57, v2 with simple re-runs $1.94, Sonnet subset $0.56).
 - Judge: about $0.02.
 - **Total: about $4.10.**
+
+## 6. Agent vs workflow
+
+The week 10 assistant was run as a **workflow with fixed routing** on the same gold set, with k = 3 and Haiku 5.5 `low`, using the same execution-based verification. It was compared with the agent's activity 5 run (`eval_haiku_low`).
+- Code: [`workflow/semana10.py`](workflow/semana10.py).
+- Report: [`resultados/agente_vs_workflow.md`](resultados/agente_vs_workflow.md).
+
+**How the workflow runs.** The steps are fixed in code:
+1. Routing with `ruteo.clasificar`, the week 10 router prompt, to `sql`, `documental` or `mixta`.
+2. On `sql` or `mixta`, the week 10 NLQ (DDL plus full dictionary, `NO_SQL` abstention) writes one query per output key. Each query runs once through `ejecutar_sql`, with no retries and no business-rule lookup, as in week 10.
+3. The `documental` route produces text, not computed figures, so it counts as an abstention.
+
+To compare only the orchestration, the NLQ gets the same output information as the agent: each key's description and the shape contract. The workflow has no clarification step.
+
+| Task type | Tasks | Agent pass@1 / pass^3 | Workflow pass@1 / pass^3 | Agent − workflow [95 % CI] | USD per task p50, agent / workflow | Seconds p50 / p95, agent / workflow |
+|---|---|---|---|---|---|---|
+| simple | 20 | 0.967 / 0.950 | 0.950 / 0.950 | +0.017 [−0.100, +0.150] | $0.0022 / $0.0005 | 6.4 / 9.4 · 3.1 / 4.3 |
+| business rules | 24 | 0.972 / 0.958 | 0.139 / 0.083 | **+0.833** [+0.694, +0.958] | $0.0033 / $0.0004 | 9.2 / 14.6 · 2.8 / 6.6 |
+| compound | 16 | 0.917 / 0.875 | 0.250 / 0.250 | **+0.667** [+0.438, +0.875] | $0.0044 / $0.0012 | 12.1 / 16.9 · 8.4 / 11.2 |
+| value traps | 8 | 1.000 / 1.000 | 1.000 / 1.000 | 0 | $0.0023 / $0.0003 | 5.2 / 6.8 · 2.5 / 4.9 |
+| ambiguous | 8 | 0.500 / 0.500 | 0.000 / 0.000 | **+0.500** [+0.125, +0.875] | $0.0019 / $0.0004 | 5.1 / 13.0 · 2.8 / 3.8 |
+| no answer in the data | 8 | 1.000 / 1.000 | 1.000 / 1.000 | 0 | $0.0011 / $0.0003 | 4.2 / 6.6 · 2.7 / 5.0 |
+| **Total** | 84 | **0.921 / 0.905** | 0.504 / 0.488 | **+0.417** [+0.310, +0.528] | $0.0026 / $0.0004 | 7.1 / 14.8 · 3.0 / 9.4 |
+
+Total cost for 252 runs each: agent $0.72, workflow $0.14.
+
+**Why the workflow fails where it fails** (from its 252 runs; 0 tool errors)
+- **Business rules:** 47 of 72 runs were routed `mixta` and the NLQ answered `NO_SQL`. The week 10 abstention prompt tells it not to approximate "policies, approvals", and without the rule definition it cannot compute "at risk" or "proposal". When it did write SQL (25 runs), it guessed the definition and 13 were wrong. For example, at-risk SKUs became "critical with stock ≤ reorder point".
+- **Compound:** one query per part with no shared plan. The parts that depend on a rule fail the same way, and 13 runs abstained after a `mixta` route.
+- **Ambiguous:** it has no way to ask. It answered 15 runs with an arbitrary interpretation and abstained on 9.
+- **Simple, value traps, no-answer tasks:** the fixed pipeline is enough. The dictionary already carries the value formats ('DE', 'Tornilleria', the city of each distribution center), and the abstention prompt catches margin, customers, OTIF and transit.
+
+**Decision**
+
+| Task type | Use | Why |
+|---|---|---|
+| Direct data questions (single query, the dictionary is enough) | **Workflow** | Same success (0.950 vs 0.967, CI includes 0), about 4 times cheaper per task and twice as fast (p50 3.1 s vs 6.4 s) |
+| Value formats and spelling | **Workflow** | 1.000 for both, at one seventh of the cost; the dictionary solves it |
+| Data that does not exist | **Workflow** | 1.000 for both; the abstention prompt is enough |
+| Business rules or company definitions | **Agent** | +0.833: it looks up the rule and applies it. The workflow abstains or guesses |
+| Several sub-questions | **Agent** | +0.667: it plans across the parts and reuses intermediate results |
+| Ambiguous requests | **Agent with a model that asks** (Sonnet 5.5 `low`: 1.000 on the subset, activity 5) | The workflow cannot ask; Haiku asks only half of the time |
+
+**Recommended architecture (not yet measured).** Keep the workflow as the cheap path for direct data questions and escalate to the agent when the question uses a business term, has several parts or is ambiguous. The week 10 router is not enough as the escalation signal: it sent only 48 of 72 rule runs and 22 of 48 compound runs to `mixta`. A classifier that also detects business terms, multiple parts and ambiguity would be needed. The patterns of the coming activities (evaluator-optimizer, orchestrator-workers) are measured on these same task types.
+
+Cost of the activity: $0.14 (workflow runs; the agent was not re-run).
