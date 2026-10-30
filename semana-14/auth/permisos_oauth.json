@@ -1,0 +1,28 @@
+{
+  "nota": "Semana 14, actividad 5: permisos derivados del scope del token (no del usuario ni de los argumentos). Reemplaza al modelo por rol de semana-13/herramientas/permisos.json dentro del servidor OAuth. Las FK cuentan como columnas: artmst.art_prv revela el proveedor y exige legado:proveedores (hallazgo art_prv de la semana 13).",
+  "scope_base": "legado:leer",
+  "tablas_por_scope": {
+    "legado:leer": ["almmst", "artmst", "exidet", "artnot"],
+    "legado:ventas": ["vtadia"],
+    "legado:proveedores": ["prvmst", "ocpcab"]
+  },
+  "columnas_restringidas": {
+    "artmst.art_cst": ["legado:proveedores"],
+    "artmst.art_prv": ["legado:proveedores"]
+  },
+  "herramientas": {
+    "describir_esquema": ["legado:leer"],
+    "buscar_regla_negocio": ["legado:leer"],
+    "muestrear_valores": ["legado:leer"],
+    "validar_sql": ["legado:leer"],
+    "ejecutar_sql": ["legado:leer"],
+    "proponer_orden_compra": ["legado:leer", "legado:compras:proponer"]
+  },
+  "roles_internos": {"legado:compras:proponer": "compras"},
+  "roles_bd": {
+    "legado:leer": "legado_perfil_l",
+    "legado:leer legado:ventas": "legado_perfil_lv",
+    "legado:leer legado:proveedores": "legado_perfil_lp",
+    "legado:leer legado:proveedores legado:ventas": "legado_perfil_lvp"
+  }
+}

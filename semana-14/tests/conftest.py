@@ -67,6 +67,10 @@ class ServidorHTTP:
             s.bind((HOST, 0))
             self.puerto = s.getsockname()[1]
         self.trazas = kw.pop("trazas", None) or Trazas()
+        self.recurso = kw.get("recurso") or f"http://{HOST}:{self.puerto}/mcp"
+        v = kw.get("verificador")
+        if callable(v) and not hasattr(v, "verify_token"):   # fábrica: el verificador necesita la URI del recurso
+            kw["verificador"] = v(self.recurso)
         self.app = crear_app(servidor_mcp, self.puerto, trazas=self.trazas, **kw)
         self.server = uvicorn.Server(uvicorn.Config(self.app, host=HOST, port=self.puerto, log_level="error",
                                                     lifespan="on"))

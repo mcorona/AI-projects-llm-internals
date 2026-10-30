@@ -30,7 +30,7 @@ def http_srv(usuario="analista", conexion=None, limites_h=LimitesHerramientas(),
     return ServidorHTTP(crear_servidor(fabrica(usuario, conexion), limites_h), usuario=usuario, **kw)
 
 
-def crudo(s, metodo="POST", cuerpo=None, headers=None, encabezados_mcp=True, chunks=None):
+def crudo(s, metodo="POST", cuerpo=None, headers=None, encabezados_mcp=True, chunks=None, ruta="/mcp"):
     """Petición HTTP cruda; devuelve (estado, headers, cuerpo)."""
     c = http.client.HTTPConnection(HOST, s.puerto, timeout=20)
     h = {"Accept": "application/json, text/event-stream", "Content-Type": "application/json"}
@@ -42,9 +42,9 @@ def crudo(s, metodo="POST", cuerpo=None, headers=None, encabezados_mcp=True, chu
     h |= headers or {}
     datos = json.dumps(cuerpo).encode() if isinstance(cuerpo, dict) else cuerpo
     if chunks is not None:
-        c.request(metodo, "/mcp", body=iter(chunks), headers=h, encode_chunked=True)
+        c.request(metodo, ruta, body=iter(chunks), headers=h, encode_chunked=True)
     else:
-        c.request(metodo, "/mcp", body=datos, headers=h)
+        c.request(metodo, ruta, body=datos, headers=h)
     r = c.getresponse()
     out = r.status, {k.lower(): v for k, v in r.getheaders()}, r.read()
     c.close()

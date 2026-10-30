@@ -112,8 +112,10 @@ async def _responder(send, estado: int, cuerpo: dict | str, extra: list[tuple[by
 class Frontera:
     """Límites de tamaño y concurrencia, y trazas JSONL, alrededor de la app ASGI del SDK."""
 
-    def __init__(self, app, limites: LimitesHTTP, trazas: Trazas, identidad: Callable[[dict], tuple[str, list[str]]]):
+    def __init__(self, app, limites: LimitesHTTP, trazas: Trazas, identidad: Callable[[dict], tuple[str, list[str]]],
+                 autorizador=None):
         self.app, self.limites, self.trazas, self.identidad = app, limites, trazas, identidad
+        self.autorizador = autorizador   # actividad 5: OAuth (servidor/oauth.py); None = usuario fijo del proceso
         self.en_curso = 0
         self._lock = threading.Lock()
 
@@ -121,7 +123,7 @@ class Frontera:
         if scope["type"] != "http":   # lifespan: arranque y cierre del administrador de sesiones del SDK
             return await self.app(scope, receive, send)
         inicio = time.perf_counter()
-        sujeto, scopes = self.identidad(scope)
+        sujeto, scopes = (None, []) if self.autorizador else self.identidad(scope)
         registro = {"ts": round(time.time(), 3), "http": scope["method"], "ruta": scope["path"], "sujeto": sujeto,
                     "scopes": scopes}
 
@@ -155,7 +157,8 @@ class Frontera:
             await send(m)
 
         try:
-            if scope["method"] != "POST":
+            es_mcp = scope["path"] == RUTA
+            if es_mcp and scope["method"] != "POST":
                 # 2026-07-28 no tiene flujo GET ni DELETE de sesión: SHOULD 405 (transports/streamable-http)
                 await _responder(send_traza, 405, "Method Not Allowed", [(b"allow", b"POST")])
                 return
@@ -163,6 +166,16 @@ class Frontera:
                 await _responder(send_traza, 413, {"jsonrpc": "2.0", "id": None, "error": {
                     "code": -32600, "message": f"Request body too large (max {self.limites.max_cuerpo_bytes} bytes)"}})
                 return
+            # OAuth (actividad 5): token válido y scopes suficientes para la operación del cuerpo, antes de todo lo demás
+            if es_mcp and self.autorizador is not None:
+                at, rechazo = await self.autorizador.evaluar(dict(scope["headers"]), registro.get("metodo"),
+                                                             registro.get("nombre"))
+                if at is not None:
+                    registro |= {"sujeto": at.subject, "scopes": sorted(at.scopes), "cliente_oauth": at.client_id}
+                if rechazo is not None:
+                    await _responder(send_traza, rechazo.estado, rechazo.cuerpo,
+                                     [(b"www-authenticate", rechazo.www_authenticate.encode())])
+                    return
             # El SDK enruta por el encabezado: con una versión con handshake no compara contra el `_meta` del cuerpo.
             # La especificación 2026-07-28 exige rechazar si el encabezado no coincide con el `_meta` (HeaderMismatch).
             version_h = dict(scope["headers"]).get(b"mcp-protocol-version", b"").decode()
@@ -209,15 +222,30 @@ def seguridad_transporte(puerto: int) -> TransportSecuritySettings:
 
 
 def crear_app(servidor: Server, puerto: int, *, usuario: str = "analista", limites: LimitesHTTP | None = None,
-              trazas: Trazas | None = None, identidad=None):
+              trazas: Trazas | None = None, identidad=None, verificador=None, emisor: str | None = None,
+              recurso: str | None = None):
+    """Sin `verificador`: usuario fijo del proceso (actividad 3). Con `verificador` (servidor/oauth.py): resource server
+    OAuth con Protected Resource Metadata (RFC 9728), validación del token en la frontera y de nuevo en el SDK."""
     limites = limites or LimitesHTTP()
+    auth = autorizador = None
+    if verificador is not None:
+        from mcp.server.auth.routes import build_resource_metadata_url
+        from mcp.server.auth.settings import AuthSettings
+
+        from .oauth import SCOPE_BASE, Autorizador
+        recurso = recurso or f"http://{HOST}:{puerto}{RUTA}"
+        auth = AuthSettings(issuer_url=emisor, resource_server_url=recurso, validate_token_resource=True,
+                            required_scopes=[SCOPE_BASE])
+        autorizador = Autorizador(verificador, str(build_resource_metadata_url(auth.resource_server_url)))
     app = servidor.streamable_http_app(streamable_http_path=RUTA, json_response=True, stateless_http=True,
                                        transport_security=seguridad_transporte(puerto),
-                                       max_request_body_size=limites.max_cuerpo_bytes, host=HOST)
-    return Frontera(app, limites, trazas or Trazas(), identidad or _identidad_fija(usuario))
+                                       max_request_body_size=limites.max_cuerpo_bytes, host=HOST,
+                                       auth=auth, token_verifier=verificador)
+    return Frontera(app, limites, trazas or Trazas(), identidad or _identidad_fija(usuario), autorizador)
 
 
-def correr(servidor: Server, puerto: int, *, usuario: str, ruta_trazas: Path | None, limites: LimitesHTTP | None = None):
+def correr(servidor: Server, puerto: int, *, usuario: str, ruta_trazas: Path | None, limites: LimitesHTTP | None = None,
+           **oauth):
     import uvicorn
-    app = crear_app(servidor, puerto, usuario=usuario, limites=limites, trazas=Trazas(ruta_trazas))
+    app = crear_app(servidor, puerto, usuario=usuario, limites=limites, trazas=Trazas(ruta_trazas), **oauth)
     uvicorn.run(app, host=HOST, port=puerto, log_level="warning", proxy_headers=False, server_header=False)
