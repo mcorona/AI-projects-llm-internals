@@ -52,46 +52,4 @@ def fabrica(usuario, conexion=None, idioma="es"):
     return lambda: h
 
 
-class ServidorHTTP:
-    """Uvicorn real en 127.0.0.1 con un puerto libre, en un hilo (para probar con el cliente HTTP del SDK)."""
-
-    def __init__(self, servidor_mcp, **kw):
-        import socket
-        import threading
-        import time
-
-        import uvicorn
-        from servidor.http import HOST, Trazas, crear_app
-
-        with socket.socket() as s:
-            s.bind((HOST, 0))
-            self.puerto = s.getsockname()[1]
-        self.trazas = kw.pop("trazas", None) or Trazas()
-        self.recurso = kw.get("recurso") or f"http://{HOST}:{self.puerto}/mcp"
-        v = kw.get("verificador")
-        if callable(v) and not hasattr(v, "verify_token"):   # fábrica: el verificador necesita la URI del recurso
-            kw["verificador"] = v(self.recurso)
-        self.app = crear_app(servidor_mcp, self.puerto, trazas=self.trazas, **kw)
-        self.server = uvicorn.Server(uvicorn.Config(self.app, host=HOST, port=self.puerto, log_level="error",
-                                                    lifespan="on"))
-        self.hilo = threading.Thread(target=self.server.run, daemon=True)
-        self.hilo.start()
-        fin = time.time() + 10
-        while not self.server.started:
-            if time.time() > fin:
-                raise RuntimeError("uvicorn no arrancó")
-            time.sleep(0.02)
-        self.url = f"http://{HOST}:{self.puerto}/mcp"
-
-    def direcciones(self):
-        return [sock.getsockname() for srv in self.server.servers for sock in srv.sockets]
-
-    def cerrar(self):
-        self.server.should_exit = True
-        self.hilo.join(timeout=10)
-
-    def __enter__(self):
-        return self
-
-    def __exit__(self, *a):
-        self.cerrar()
+from servidor.lab import ServidorHTTP  # noqa: E402,F401  (vive en servidor/lab.py; la usa también la eval)
