@@ -1,0 +1,25 @@
+# Semana 14, actividad 4: servidor de autorización OAuth 2.1 local para el servidor MCP de LegacyBridge.
+# No se levanta directo: usa ./arrancar.sh, que genera los secretos locales (.secretos.env, fuera de Git).
+name: legacybridge-auth
+
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.8.1
+    command:
+      - start-dev
+      - --features=resource-indicators     # RFC 8707 (experimental en Keycloak 26.8)
+      - --import-realm                     # importa realm/ solo si el realm no existe (idempotente)
+      - --hostname=http://127.0.0.1:8080   # emisor fijo: http://127.0.0.1:8080/realms/legacybridge
+      - --http-port=8080
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: ${KC_BOOTSTRAP_ADMIN_USERNAME:?usa ./arrancar.sh}
+      KC_BOOTSTRAP_ADMIN_PASSWORD: ${KC_BOOTSTRAP_ADMIN_PASSWORD:?usa ./arrancar.sh}
+    ports:
+      - "127.0.0.1:8080:8080"              # solo loopback
+    volumes:
+      - ./realm:/opt/keycloak/data/import:ro
+      - kc-datos:/opt/keycloak/data/h2
+    restart: unless-stopped
+
+volumes:
+  kc-datos:
