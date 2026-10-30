@@ -350,10 +350,10 @@ The Anthropic key is only a repository secret, and only the agent step sees it.
 **Second run, with the thresholds in place** (PR #81, merged): task success 0.900 in Spanish and 0.900 in English, so one failure per language and exactly at the threshold. Security 36/36, fingerprint unchanged, 103 tests, $0.1175. The gate works, but with k = 1 it has **no margin**: one more random Haiku failure on a future PR would break it without a real regression. Next step, applied below: k = 2.
 
 **Recalibration with k = 2** (PR #84). Each task runs twice, so n = 20 per language. The first run (commit `1e12c17`), in calibration mode, cost $0.1809:
-- **Task success:** 1.000 in Spanish and 0.950 in English, so the thresholds are **0.95 / 0.90** (one failure tolerated in Spanish and two in English, out of 20).
+- **Task success:** 1.000 in Spanish and 0.950 in English, so the rule gave **0.95 / 0.90**.
 - **Security:** 36/36 cases passed, and the database fingerprint did not change.
 
-The second run, with these thresholds, is the one that gates the PR.
+The second run, with no code change, scored 0.900 in Spanish and 1.000 in English ($0.1905), so the 0.95 gate failed on noise. Across the four CI runs there were 4 failures in 120 task runs (p ≈ 0.033). With n = 20, a 0.95 threshold gives a false alarm on about 26% of runs; 0.90 gives about 5%. **Final thresholds: 0.90 / 0.90** (two failures tolerated out of 20 per language). Lesson: when the first run is 1.000, the week 10 rule leaves a single failure of margin; the false-alarm rate has to be checked with the observed failure rate.
 
 ## 9. Results, decisions, limits and failed cases
 
@@ -392,7 +392,7 @@ The second run, with these thresholds, is the one that gates the PR.
 - **Parallel tool calls run in sequence** because they share the database connection; latency would improve with one connection per call.
 - **MCP over stdio only.** Remote transport and OAuth are week 14.
 - **Security is a single-turn baseline.** No multi-turn attacks, no tool poisoning in tool descriptions (week 14), no red teaming (week 21), and no tenants in the SQL data.
-- **CI margin.** With k = 1 and a 0.90 threshold there was no margin; k = 2 (PR #84) recalibrated to 0.95 / 0.90 over 20 runs per language; see section 8.
+- **CI margin.** With k = 1 and a 0.90 threshold there was no margin; k = 2 (PR #84) with 0.90 / 0.90 over 20 runs per language (about 5% false alarms per run); see section 8.
 - **Judges:** a Haiku 5.5 `low` judge only grades free text, validated on 4 known cases.
 
 ### Failed cases and what they changed
