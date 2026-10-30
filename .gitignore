@@ -34,3 +34,9 @@ semana-04/entrenamiento/adapters/
 # Semana 12: ids de recursos de nube (locales)
 semana-12/infra/estado_*.json
 .claude/settings.local.json
+
+# Archivos locales de trabajo (no se versionan)
+.tmpcrop
+.wt/
+/path
+.claude/

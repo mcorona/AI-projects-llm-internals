@@ -72,7 +72,7 @@ This is below both budgets.
 
 | Cloud | Budget | Alerts |
 |---|---|---|
-| AWS (account 412575373510) | `semana12`: $10 per month, account-wide | Email at 50, 90 and 100% actual, and 100% forecasted |
+| AWS (account <AWS_ACCOUNT_ID>) | `semana12`: $10 per month, account-wide | Email at 50, 90 and 100% actual, and 100% forecasted |
 | AWS (existing) | `My Zero-Spend Budget` and `aip-lab-cero` at $1 | Fire on the first cent |
 | Google Cloud (`ejemplo1-9xub`) | `semana12`: 200 MXN, about $10 USD; scoped to the project only. The billing account bills in MXN | Email to billing admins at 50, 90 and 100% actual, and 100% forecasted |
 
