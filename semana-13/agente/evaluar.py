@@ -139,12 +139,12 @@ def main():
     for corrida in a.corridas:
         filas = [json.loads(x) for x in open(RES / f"{corrida}_detalle.jsonl", encoding="utf-8")]
         for f in filas:  # los pilotos no guardaban repetición ni configuración
-            f.setdefault("rep", 0), f.setdefault("modelo", "claude-haiku-5-5"), f.setdefault("esfuerzo", "low")
+            f.setdefault("rep", 0), f.setdefault("modelo", "claude-haiku-5-5"), f.setdefault("esfuerzo", "low"), f.setdefault("patron", "loop")
         eventos = defaultdict(list)
         for x in open(RES / "trazas" / f"{corrida}.jsonl", encoding="utf-8"):
             e = json.loads(x)
             eventos[e["corrida"]].append(e)
-        conf = f"{filas[0]['modelo']} {filas[0]['esfuerzo']}"
+        conf = f"{filas[0]['modelo']} {filas[0]['esfuerzo']}" + (" · Agent SDK" if filas[0]["patron"] == "sdk" else "")
         k = max(f["rep"] for f in filas) + 1
         por_tarea = defaultdict(list)
         for f in filas:
