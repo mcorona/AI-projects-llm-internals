@@ -1,0 +1,1177 @@
+{
+ "calibracion_juez": "4/4",
+ "eval_haiku_low": {
+  "corrida": "eval_haiku_low",
+  "configuracion": "claude-haiku-5-5 low",
+  "k": 3,
+  "tareas": 84,
+  "corridas": 252,
+  "pass@1": 0.7619047619047619,
+  "pass@1_ic": [
+   0.6666666666666666,
+   0.8452380952380952
+  ],
+  "pass^3": 0.7142857142857143,
+  "pass^3_ic": [
+   0.6071428571428571,
+   0.8095238095238095
+  ],
+  "por_tipo": {
+   "simple": {
+    "tareas": 20,
+    "pass@1": 0.48333333333333334,
+    "pass^3": 0.4
+   },
+   "regla": {
+    "tareas": 24,
+    "pass@1": 0.875,
+    "pass^3": 0.8333333333333334
+   },
+   "compuesta": {
+    "tareas": 16,
+    "pass@1": 0.8333333333333334,
+    "pass^3": 0.75
+   },
+   "valores": {
+    "tareas": 8,
+    "pass@1": 1,
+    "pass^3": 1
+   },
+   "ambigua": {
+    "tareas": 8,
+    "pass@1": 0.5,
+    "pass^3": 0.5
+   },
+   "sin_respuesta": {
+    "tareas": 8,
+    "pass@1": 1,
+    "pass^3": 1
+   }
+  },
+  "por_idioma": {
+   "es": 0.7380952380952381,
+   "en": 0.7857142857142857
+  },
+  "exactitud_claves": 0.8106060606060606,
+  "coherencia_claves": 0.9431818181818182,
+  "estados": {
+   "respondida -> respondida": 204,
+   "abstenida -> abstenida": 24,
+   "requiere_aclaracion -> requiere_aclaracion": 12,
+   "requiere_aclaracion -> respondida": 12
+  },
+  "aclaracion_correcta": 0.5,
+  "abstencion_correcta": 1,
+  "falsa_aclaracion_o_abstencion": 0,
+  "limite_alcanzado": 0,
+  "juez_texto_libre": {
+   "evaluadas": 36,
+   "adecuadas": 32,
+   "no_adecuadas": [
+    {
+     "id": "a01-es",
+     "rep": 0,
+     "razon": "salida del juez no es JSON: "
+    },
+    {
+     "id": "a01-en",
+     "rep": 0,
+     "razon": "salida del juez no es JSON: "
+    },
+    {
+     "id": "a01-es",
+     "rep": 1,
+     "razon": "salida del juez no es JSON: "
+    },
+    {
+     "id": "a01-es",
+     "rep": 2,
+     "razon": "salida del juez no es JSON: "
+    }
+   ]
+  },
+  "trayectoria": {
+   "llamadas": 1105,
+   "validas": 1.0,
+   "exitosas": 0.9972850678733032,
+   "redundantes_por_corrida": 0,
+   "corridas_con_redundancia": 0,
+   "pasos_sobre_minimo": 1.5456349206349207,
+   "corridas_con_error": 8,
+   "recuperacion_tras_error": 0.875,
+   "uso_herramientas": {
+    "describir_esquema": 246,
+    "buscar_regla_negocio": 380,
+    "ejecutar_sql": 307,
+    "muestrear_valores": 170,
+    "validar_sql": 2
+   }
+  },
+  "por_tarea": {
+   "pasos": {
+    "p50": 4.0,
+    "p95": 5.0
+   },
+   "tokens": {
+    "p50": 20168.5,
+    "p95": 38700.49999999999
+   },
+   "usd": {
+    "p50": 0.0024845,
+    "p95": 0.005281
+   },
+   "segundos": {
+    "p50": 7.54,
+    "p95": 15.3225
+   }
+  },
+  "costo_total_usd": 0.705363,
+  "fallas": [
+   {
+    "id": "s04-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s01-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s02-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s06-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s08-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s09-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "r04-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "n": false
+    }
+   },
+   {
+    "id": "c05-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "cdmx": false,
+     "guadalajara": true,
+     "monterrey": true
+    }
+   },
+   {
+    "id": "a04-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "a03-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "s02-en",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s04-en",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s08-en",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "r03-en",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "n": false
+    }
+   },
+   {
+    "id": "r04-en",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "n": false
+    }
+   },
+   {
+    "id": "c05-en",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "cdmx": false,
+     "guadalajara": true,
+     "monterrey": true
+    }
+   },
+   {
+    "id": "a04-en",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "a03-en",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "s01-es",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s02-es",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s04-es",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s06-es",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s08-es",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s09-es",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "r04-es",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "n": false
+    }
+   },
+   {
+    "id": "r03-es",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "n": false
+    }
+   },
+   {
+    "id": "c05-es",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "cdmx": false,
+     "guadalajara": true,
+     "monterrey": true
+    }
+   },
+   {
+    "id": "a04-es",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "s01-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "a03-es",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "s02-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s04-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s08-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "r04-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "n": false
+    }
+   },
+   {
+    "id": "r03-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "n": false
+    }
+   },
+   {
+    "id": "c01-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "en_riesgo": false,
+     "con_excedente": false
+    }
+   },
+   {
+    "id": "c05-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "cdmx": false,
+     "guadalajara": true,
+     "monterrey": true
+    }
+   },
+   {
+    "id": "a04-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "a03-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "s01-es",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s04-es",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s02-es",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s07-es",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s06-es",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s08-es",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s09-es",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "r04-es",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "n": false
+    }
+   },
+   {
+    "id": "c05-es",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "cdmx": false,
+     "guadalajara": true,
+     "monterrey": true
+    }
+   },
+   {
+    "id": "a04-es",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "a03-es",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "s01-en",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s02-en",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s03-en",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s04-en",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s08-en",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "r04-en",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "n": false
+    }
+   },
+   {
+    "id": "c05-en",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "cdmx": false,
+     "guadalajara": true,
+     "monterrey": true
+    }
+   },
+   {
+    "id": "a03-en",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "a04-en",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "c01-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "en_riesgo": false,
+     "con_excedente": false
+    }
+   }
+  ]
+ },
+ "eval_haiku_medium": {
+  "corrida": "eval_haiku_medium",
+  "configuracion": "claude-haiku-5-5 medium",
+  "k": 3,
+  "tareas": 84,
+  "corridas": 252,
+  "pass@1": 0.7857142857142857,
+  "pass@1_ic": [
+   0.6984126984126984,
+   0.8650793650793651
+  ],
+  "pass^3": 0.7261904761904762,
+  "pass^3_ic": [
+   0.6309523809523809,
+   0.8214285714285714
+  ],
+  "por_tipo": {
+   "simple": {
+    "tareas": 20,
+    "pass@1": 0.6,
+    "pass^3": 0.5
+   },
+   "regla": {
+    "tareas": 24,
+    "pass@1": 0.875,
+    "pass^3": 0.8333333333333334
+   },
+   "compuesta": {
+    "tareas": 16,
+    "pass@1": 0.8125,
+    "pass^3": 0.6875
+   },
+   "valores": {
+    "tareas": 8,
+    "pass@1": 1,
+    "pass^3": 1
+   },
+   "ambigua": {
+    "tareas": 8,
+    "pass@1": 0.5,
+    "pass^3": 0.5
+   },
+   "sin_respuesta": {
+    "tareas": 8,
+    "pass@1": 1,
+    "pass^3": 1
+   }
+  },
+  "por_idioma": {
+   "es": 0.753968253968254,
+   "en": 0.8174603174603174
+  },
+  "exactitud_claves": 0.8333333333333334,
+  "coherencia_claves": 0.9734848484848485,
+  "estados": {
+   "respondida -> respondida": 204,
+   "abstenida -> abstenida": 24,
+   "requiere_aclaracion -> requiere_aclaracion": 12,
+   "requiere_aclaracion -> respondida": 12
+  },
+  "aclaracion_correcta": 0.5,
+  "abstencion_correcta": 1,
+  "falsa_aclaracion_o_abstencion": 0,
+  "limite_alcanzado": 0,
+  "juez_texto_libre": {
+   "evaluadas": 36,
+   "adecuadas": 30,
+   "no_adecuadas": [
+    {
+     "id": "a01-es",
+     "rep": 0,
+     "razon": "salida del juez no es JSON: "
+    },
+    {
+     "id": "a01-en",
+     "rep": 0,
+     "razon": "salida del juez no es JSON: "
+    },
+    {
+     "id": "a01-es",
+     "rep": 1,
+     "razon": "salida del juez no es JSON: "
+    },
+    {
+     "id": "a01-en",
+     "rep": 1,
+     "razon": "salida del juez no es JSON: "
+    },
+    {
+     "id": "a01-es",
+     "rep": 2,
+     "razon": "salida del juez no es JSON: "
+    },
+    {
+     "id": "a01-en",
+     "rep": 2,
+     "razon": "salida del juez no es JSON: "
+    }
+   ]
+  },
+  "trayectoria": {
+   "llamadas": 1310,
+   "validas": 1.0,
+   "exitosas": 0.9908396946564886,
+   "redundantes_por_corrida": 0,
+   "corridas_con_redundancia": 0,
+   "pasos_sobre_minimo": 1.718915343915344,
+   "corridas_con_error": 21,
+   "recuperacion_tras_error": 0.7142857142857143,
+   "uso_herramientas": {
+    "describir_esquema": 254,
+    "buscar_regla_negocio": 415,
+    "ejecutar_sql": 382,
+    "muestrear_valores": 242,
+    "validar_sql": 17
+   }
+  },
+  "por_tarea": {
+   "pasos": {
+    "p50": 4.0,
+    "p95": 6.0
+   },
+   "tokens": {
+    "p50": 22034.0,
+    "p95": 48592.75
+   },
+   "usd": {
+    "p50": 0.0029119999999999997,
+    "p95": 0.006496299999999999
+   },
+   "segundos": {
+    "p50": 9.559999999999999,
+    "p95": 20.27149999999999
+   }
+  },
+  "costo_total_usd": 0.862402,
+  "fallas": [
+   {
+    "id": "s01-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s04-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s02-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s06-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s09-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "r04-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "n": false
+    }
+   },
+   {
+    "id": "c01-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "en_riesgo": false,
+     "con_excedente": false
+    }
+   },
+   {
+    "id": "c05-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "cdmx": false,
+     "guadalajara": true,
+     "monterrey": true
+    }
+   },
+   {
+    "id": "a03-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "a04-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "s01-en",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s02-en",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s08-en",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "r02-en",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "skus": false
+    }
+   },
+   {
+    "id": "r04-en",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "n": false
+    }
+   },
+   {
+    "id": "c01-en",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "en_riesgo": false,
+     "con_excedente": false
+    }
+   },
+   {
+    "id": "c05-en",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "cdmx": false,
+     "guadalajara": true,
+     "monterrey": true
+    }
+   },
+   {
+    "id": "a03-en",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "a04-en",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "s01-es",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s02-es",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s04-es",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s07-es",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s06-es",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s09-es",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "r04-es",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "n": false
+    }
+   },
+   {
+    "id": "r05-es",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "skus": false
+    }
+   },
+   {
+    "id": "c05-es",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "cdmx": false,
+     "guadalajara": true,
+     "monterrey": true
+    }
+   },
+   {
+    "id": "a04-es",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "a03-es",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "s02-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "r02-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "skus": false
+    }
+   },
+   {
+    "id": "r04-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "n": false
+    }
+   },
+   {
+    "id": "c05-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "cdmx": false,
+     "guadalajara": true,
+     "monterrey": true
+    }
+   },
+   {
+    "id": "a03-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "a04-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "s01-es",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s04-es",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s06-es",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s02-es",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s09-es",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s10-es",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "r04-es",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "n": false
+    }
+   },
+   {
+    "id": "c05-es",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "cdmx": false,
+     "guadalajara": true,
+     "monterrey": true
+    }
+   },
+   {
+    "id": "a04-es",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "a03-es",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "s01-en",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s02-en",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s08-en",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "r04-en",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "n": false
+    }
+   },
+   {
+    "id": "c05-en",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "cdmx": false,
+     "guadalajara": true,
+     "monterrey": true
+    }
+   },
+   {
+    "id": "c08-en",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "skus": false,
+     "unidades": true
+    }
+   },
+   {
+    "id": "a03-en",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "a04-en",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {}
+   }
+  ]
+ },
+ "diferencias": [
+  {
+   "de": "eval_haiku_low",
+   "a": "eval_haiku_medium",
+   "tareas": 84,
+   "dif_pass@1": 0.023809523809523808,
+   "ic": [
+    -0.019841269841269844,
+    0.07142857142857142
+   ]
+  }
+ ],
+ "costo_juez_usd": 0.0083549
+}

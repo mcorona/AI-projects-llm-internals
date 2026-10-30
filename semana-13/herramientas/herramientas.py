@@ -190,6 +190,9 @@ class Herramientas:
                 res = _error("argumentos_invalidos", detalle, "Revisa el esquema de entrada de la herramienta; no admite campos extra.")
             except ErrorHerramienta as e:
                 res = _error(e.tipo, e.mensaje, e.sugerencia)
+            except Exception as e:  # noqa: BLE001  contrato: nunca una excepción hacia el modelo
+                res = _error("error_interno", f"{type(e).__name__}: {str(e).splitlines()[0][:300] if str(e) else ''}",
+                             "Revisa la entrada; si persiste, reformula la consulta de forma más simple.")
         res = self._recortar(res)
         self.ctx.llamadas.append({"herramienta": nombre, "argumentos": argumentos, "ok": res["ok"],
                                   "error": res.get("error", {}).get("tipo"), "ms": round(1000 * (time.perf_counter() - inicio))})
@@ -287,7 +290,7 @@ class Herramientas:
     def _guard(self, sql: str) -> str:
         try:
             sentencias = [s for s in sqlglot.parse(sql, read="postgres") if s is not None]
-        except sqlglot.errors.ParseError as err:
+        except sqlglot.errors.SqlglotError as err:  # ParseError, TokenError y demás errores del analizador
             raise ErrorHerramienta("sql_invalido", f"No se pudo interpretar el SQL: {str(err).splitlines()[0]}",
                                    "Escribe una sola sentencia SELECT de PostgreSQL.")
         if len(sentencias) != 1:

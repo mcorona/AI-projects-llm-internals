@@ -181,3 +181,65 @@ The MCP path adds about one second per task: process spawn and JSON-RPC over std
 **Claude Code:** the server is registered in [`/.mcp.json`](../.mcp.json) as `legado-semana13` (stdio, `uv run python semana-13/servidor_mcp/servidor.py`). It takes `PG_DSN` from the environment, so there are no credentials in Git, and it was approved for the project. The local approval file (`.claude/settings.local.json`) is git-ignored.
 
 **Tests:** [`tests/test_mcp.py`](tests/test_mcp.py) spawns the server over stdio and checks four things: the catalog is identical, 11 cases give the same response for 2 users, permissions are set by the host, and the protocol's `is_error` is set. Against the database, the same execution in 4 cases. The week has 95 tests.
+
+## 5. Agent evaluation
+
+The own agentic loop was run on the full gold set (42 tasks × 2 languages = 84 tasks), k = 3 independent runs per task, with Haiku 5.5 at effort `low` and `medium`. Sonnet 5.5 `low` was run on the subset where Haiku fell short.
+- Report: [`resultados/agente.md`](resultados/agente.md), built by [`agente/evaluar.py`](agente/evaluar.py) from the run details and traces.
+- Machine-readable: [`resultados/agente_resumen.json`](resultados/agente_resumen.json).
+- Confidence intervals: 95 %, bootstrap over tasks. Differences between configurations use a paired bootstrap by task.
+
+| Configuration | Runs | pass@1 [95 % CI] | pass^3 [95 % CI] | Key accuracy | Correct clarification | Correct abstention | p50 / p95 per task | Cost |
+|---|---|---|---|---|---|---|---|---|
+| Haiku 5.5 `low` | 252 | **0.921** [0.861, 0.972] | **0.905** [0.833, 0.964] | 0.970 | 0.500 | 1.000 | $0.0026 / $0.0052 · 7.1 / 14.8 s | $0.72 |
+| Haiku 5.5 `medium` | 252 | 0.913 [0.849, 0.964] | 0.893 [0.821, 0.952] | 0.962 | 0.500 | 1.000 | $0.0031 / $0.0062 · 8.9 / 21.0 s | $0.88 |
+| Sonnet 5.5 `low`, subset (a01–a04, c05; 10 tasks) | 30 | 1.000 | 1.000 | 1.000 | 1.000 | — | $0.0173 / $0.0393 · 3.7 / 7.8 s | $0.56 |
+
+**What the numbers say**
+- **`medium` buys nothing on this set.** The paired difference with `low` is −0.008 [−0.032, 0.016]. It costs about 20 % more and its p95 latency is 42 % higher. `low` is the default.
+- **Haiku fails on clarification.** It asks for clarification on only half of the ambiguous tasks, with either effort. On a03 ("give me the products with low inventory") and a04 ("how much inventory do we have at *the* distribution center?") it picks an interpretation and answers, 12 of 12 times. It never asks for clarification or abstains on a task that has an answer, and it abstains correctly 100 % of the time.
+- **Sonnet 5.5 `low` fixes both weak spots** on the subset: 30 of 30. Clarification goes from 0.500 to 1.000, and it avoids the c05 rounding error. Against Haiku `low`, the paired difference is +0.533 [0.233, 0.800]. It costs about 7 times more per task, but it needs fewer model calls (p50 2 instead of 4) and is faster (3.7 s p50).
+- **Trajectory:**
+  - 100 % of tool calls are valid (the tool exists and the arguments pass the schema), and 98.8 % to 99.8 % succeed.
+  - The agent uses 1.56 times the minimum number of model calls with `low` and 1.73 times with `medium`.
+  - There are no redundant calls (same tool and arguments twice in one run).
+  - Runs with a tool error recover and end successfully 90.5 % of the time with `low` and 81.8 % with `medium`.
+- **Free text, judged:** a Haiku 5.5 `low` judge grades only the clarification question or the abstention explanation, against the reason in the gold set. It was validated first on 2 good and 2 bad known cases, and got 4/4.
+  - Haiku: 35/36 adequate with `low` and 33/36 with `medium`.
+  - Sonnet: 20/24. The judge is strict: it marks a question as not adequate when it asks for only one of the two missing pieces, for example the distribution center but not units versus value.
+
+**Remaining failures are real agent errors**
+- **a03 and a04:** no clarification. This is a model behavior gap that Sonnet closes.
+- **c05, a silently wrong result (SWAR):**
+  - **The error:** Haiku writes `1.5*(total/3.0)` instead of `1.5*total/3.0`. The rounding of `total/3.0` makes SKUs whose stock is exactly half of the total count as a surplus. The result is 34 in Mexico City instead of 32.
+  - **How often:** 4 of 6 runs with `low` and 6 of 6 with `medium`.
+  - **Why it is dangerous:** the agent's value always matches its own SQL, so nothing looks wrong without a reference.
+- **s02 and s10 (intermittent):** extra rows or columns. One row per warehouse instead of one per SKU.
+- **r03-en:** the escalation level 1 count, 2 of 3 runs.
+
+**What the evaluation found in the instrument (fixed and re-run).** The first full run (v1, kept in `resultados/v1/` with its report `agente_v1.md`) had pass@1 0.762 (`low`). Most of its failures were not the agent's:
+- **An ambiguous output key:** the `filas` key was described as "result rows", so the agent answered `SELECT COUNT(*) AS filas`.
+- **An unstated result shape:** the agent returned a correct set as a single `ARRAY_AGG` row.
+- **An ambiguous question:** r04's "reorder point according to the reorder policy" invited the recalculated point.
+- **An ambiguous rule:** `R-ESCALA` did not say that levels are not exclusive.
+
+Fixes:
+- The key, question and rule were reworded; the expected values did not change.
+- Each task now states the shape of each key's result: rows, one row per value with no arrays, or a single value.
+- The first wording of the `filas` fix ("not a row count") broke s05 ("how many…?", expected 0). It was made neutral, and the 20 simple tasks were re-run. The intermediate run is in `resultados/v2_simples/`.
+- **The judge:** it sometimes ran out of tokens and returned truncated JSON. It now gets 2,000 tokens and 3 attempts, and a judge failure is recorded as "no verdict" instead of penalizing the agent.
+
+**Defect found in the tools at scale.** A query with an unterminated quote raised sqlglot's `TokenError`. That is not a `ParseError`, the only error the guard caught, so it reached the runner and stopped the first run at 248 of 252. The guard now catches every sqlglot error and returns `sql_invalido`. `Herramientas.llamar` also turns any unexpected exception into the structured error `error_interno`, which enforces the activity 2 contract (never an exception to the model). There are 3 new tests.
+
+**Runner at scale.** [`agente/correr.py`](agente/correr.py) adds:
+- `--k`: repetitions.
+- `--paralelo`: one read-only connection per thread; the `copilot_nlq` password is created once per process.
+- `--reanudar`: does not repeat finished (task, repetition) pairs.
+- `--tope-usd`: a cap on the cumulative cost of the run.
+
+Traces carry the task and repetition (`r02-es#1`) and are written under a lock.
+
+**Cost of the activity:**
+- Agent runs, all included: $4.07 (v1 $1.57, v2 with simple re-runs $1.94, Sonnet subset $0.56).
+- Judge: about $0.02.
+- **Total: about $4.10.**

@@ -67,8 +67,8 @@ REGLAS = [
      ["R-ESCALA", "R-REORDEN", "R-RIESGO", "R-COB", "R-CORTE", "R-STOCK"],
      {"n": k("numero", "número de SKU", "number of SKUs",
              BASE + "SELECT COUNT(*) FROM tot t JOIN products p USING (sku) WHERE p.critical AND (t.total < p.reorder_point OR t.sku IN (SELECT sku FROM riesgo))")}),
-    ("r04", "¿Cuántos SKU están por debajo de su punto de reorden según la política de reorden?",
-     "How many SKUs are below their reorder point according to the reorder policy?",
+    ("r04", "¿Cuántos SKU tienen un stock total por debajo de su punto de reorden registrado?",
+     "How many SKUs have a total stock below their recorded reorder point?",
      ["R-REORDEN", "R-STOCK"],
      {"n": k("numero", "número de SKU", "number of SKUs",
              BASE + "SELECT COUNT(*) FROM tot t JOIN products p USING (sku) WHERE t.total < p.reorder_point")}),
@@ -234,7 +234,9 @@ def tareas_base():
     for i, h in enumerate(SIMPLES, 1):
         es, en = hard[h]["es"], hard[h]["en"]
         t.append({"id": f"s{i:02d}", "tipo": "simple", "origen": h, "es": es["question"], "en": en["question"], "reglas": [],
-                  "salida": {"filas": k("filas", "filas del resultado", "result rows", es["sql"], es.get("order_matters", False))},
+                  "salida": {"filas": k("filas", "el resultado que responde la pregunta: los registros o valores pedidos o, si pregunta cuántos o cuánto, ese número",
+                                        "the result that answers the question: the records or values asked for or, if it asks how many or how much, that number",
+                                        es["sql"], es.get("order_matters", False))},
                   "estado": "respondida"})
     for tid, es, en, reglas, salida in REGLAS:
         t.append({"id": tid, "tipo": "regla", "es": es, "en": en, "reglas": reglas, "salida": salida, "estado": "respondida"})

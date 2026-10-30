@@ -19,6 +19,7 @@ from __future__ import annotations
 import json
 import os
 import sys
+import threading
 import time
 import urllib.error
 import urllib.request
@@ -35,6 +36,7 @@ from herramientas import Herramientas, definiciones  # noqa: E402
 RAIZ = Path(__file__).resolve().parents[2]
 PRECIOS = json.loads((RAIZ / "semana-07" / "prices.json").read_text(encoding="utf-8"))
 MAX_ERRORES_SEGUIDOS = 3
+_CANDADO = threading.Lock()  # varias tareas en paralelo escriben al mismo archivo de trazas
 
 SISTEMA = """You are a data analyst for a distribution company. You answer business questions over a legacy inventory \
 database whose tables and columns have cryptic names, using only the tools provided.
@@ -125,11 +127,19 @@ def revisar_final(final: dict, tarea: dict) -> str:
     return ""
 
 
+FORMA = """Shape of each key's SQL result (it is re-executed and compared as rows):
+- filas: exactly what answers the question, with only the columns asked for: one row per record when it asks which \
+or what (no extra rows; one row if it asks for a single item), or a single number when it asks how many or how much.
+- conjunto: one row per value, one column; never an array or a concatenated string (no ARRAY_AGG or STRING_AGG).
+- numero: a single row with a single numeric column.
+- texto: a single row with a single text column."""
+
+
 def mensaje_tarea(tarea: dict) -> str:
     texto = tarea["tarea"]
     if tarea.get("salida"):
         claves = "\n".join(f"- {c}: {s['descripcion']} ({s['tipo']})" for c, s in tarea["salida"].items())
-        texto += "\n\nOutput keys to report if you can answer:\n" + claves
+        texto += ("\n\nOutput keys to report if you can answer:\n" + claves + "\n\n" + FORMA)
     return texto
 
 
@@ -145,12 +155,13 @@ class Agente:
     def _traza(self, evento: dict):
         if self.trazas:
             self.trazas.parent.mkdir(parents=True, exist_ok=True)
-            with open(self.trazas, "a", encoding="utf-8") as f:
-                f.write(json.dumps({"ts": round(time.time(), 3), **evento}, ensure_ascii=False, default=str) + "\n")
+            linea = json.dumps({"ts": round(time.time(), 3), **evento}, ensure_ascii=False, default=str) + "\n"
+            with _CANDADO, open(self.trazas, "a", encoding="utf-8") as f:
+                f.write(linea)
 
     def resolver(self, tarea: dict) -> Resultado:
         corrida = uuid.uuid4().hex[:12]
-        tid = tarea.get("id", "")
+        tid = tarea.get("id", "") + (f"#{tarea['rep']}" if "rep" in tarea else "")
         mensajes = [{"role": "user", "content": mensaje_tarea(tarea)}]
         r = Resultado("error", None, 0, 0, 0, 0, 0.0, 0.0, corrida=corrida)
         t0 = time.perf_counter()

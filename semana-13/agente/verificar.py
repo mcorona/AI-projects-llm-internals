@@ -41,6 +41,8 @@ def verificar(tarea: dict, final: dict | None, conexion, estado: str) -> dict:
                     len(filas) == 1 and len(filas[0]) == 1 and re7.results_match(filas, [(reportadas[clave]["valor"],)]))
             except ErrorHerramienta as e:
                 res["error"] = e.tipo
+            except Exception as e:  # noqa: BLE001  un SQL que rompe al verificador cuenta como clave no exacta
+                res["error"] = f"verificacion: {type(e).__name__}"
         out["claves"][clave] = res
     claves = out["claves"].values()
     out["exito"] = out["estado_ok"] and (tarea["estado_esperado"] != "respondida" or all(c["exacta"] for c in claves))
