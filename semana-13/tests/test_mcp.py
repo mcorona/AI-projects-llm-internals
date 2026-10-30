@@ -56,7 +56,7 @@ def test_misma_respuesta_sin_base(nombre, args, mcp_analista, mcp_almacenista):
 
 def test_permisos_del_host_no_del_modelo(mcp_almacenista):
     r = mcp_almacenista.llamar("describir_esquema", {})
-    assert [t["tabla"] for t in r["tablas"]] == ["artmst", "almmst", "exidet"]
+    assert [t["tabla"] for t in r["tablas"]] == ["artmst", "almmst", "exidet", "artnot"]
     assert mcp_almacenista.llamar("validar_sql", {"sql": "SELECT vta_art FROM vtadia"})["error"]["tipo"] == "permiso_denegado"
     assert mcp_almacenista.llamar("describir_esquema", {"usuario": "analista"})["error"]["tipo"] == "argumentos_invalidos"
 

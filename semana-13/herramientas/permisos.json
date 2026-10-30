@@ -1,17 +1,59 @@
 {
-  "nota": "Modelo de permisos sintético de semana 13 sobre el esquema legado. El sistema inyecta los roles del usuario en el contexto de las herramientas; el modelo nunca los recibe ni los puede pasar como argumento.",
+  "nota": "Modelo de permisos sintético de semana 13 sobre el esquema legado. El sistema inyecta los roles del usuario en el contexto de las herramientas; el modelo nunca los recibe ni los puede pasar como argumento. La tabla artnot (notas libres, semana 13) la pueden leer todos los roles. Solo compras puede registrar propuestas de orden de compra, que nunca se ejecutan.",
   "tablas_por_rol": {
-    "almacen": ["almmst", "artmst", "exidet"],
-    "ventas": ["almmst", "artmst", "exidet", "vtadia"],
-    "compras": ["almmst", "artmst", "exidet", "vtadia", "prvmst", "ocpcab"],
-    "finanzas": ["almmst", "artmst", "exidet", "vtadia", "prvmst", "ocpcab"]
+    "almacen": [
+      "almmst",
+      "artmst",
+      "exidet",
+      "artnot"
+    ],
+    "ventas": [
+      "almmst",
+      "artmst",
+      "exidet",
+      "vtadia",
+      "artnot"
+    ],
+    "compras": [
+      "almmst",
+      "artmst",
+      "exidet",
+      "vtadia",
+      "prvmst",
+      "ocpcab",
+      "artnot"
+    ],
+    "finanzas": [
+      "almmst",
+      "artmst",
+      "exidet",
+      "vtadia",
+      "prvmst",
+      "ocpcab",
+      "artnot"
+    ]
   },
   "columnas_restringidas": {
-    "artmst.art_cst": ["compras", "finanzas"]
+    "artmst.art_cst": [
+      "compras",
+      "finanzas"
+    ]
   },
   "usuarios": {
-    "analista": ["compras", "finanzas"],
-    "almacenista": ["almacen"],
-    "vendedor": ["ventas"]
+    "analista": [
+      "compras",
+      "finanzas"
+    ],
+    "almacenista": [
+      "almacen"
+    ],
+    "vendedor": [
+      "ventas"
+    ]
+  },
+  "herramientas_por_rol": {
+    "proponer_orden_compra": [
+      "compras"
+    ]
   }
 }

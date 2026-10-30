@@ -55,7 +55,7 @@ def test_cuerpo_de_la_peticion():
     agente(g).resolver(TAREA)
     c = g.cuerpos[0]
     assert c["output_config"] == {"effort": "low"} and c["model"] == "claude-haiku-5-5"
-    assert [t["name"] for t in c["tools"]][-1] == "responder" and len(c["tools"]) == 6
+    assert [t["name"] for t in c["tools"]][-1] == "responder" and len(c["tools"]) == 7
     assert "Output keys" in c["messages"][0]["content"] and "- n: número de SKU (numero)" in c["messages"][0]["content"]
     assert "ARRAY_AGG" in c["messages"][0]["content"]
     assert "roles" not in json.dumps(c["tools"])
