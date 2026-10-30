@@ -48,6 +48,7 @@ def main():
     ap.add_argument("--reanudar", action="store_true")
     ap.add_argument("--tope-usd", type=float, default=0.50)
     ap.add_argument("--via", choices=["nativo", "mcp"], default="nativo", help="herramientas nativas o por el servidor MCP")
+    ap.add_argument("--patron", choices=["loop", "sdk"], default="loop", help="loop propio o Claude Agent SDK")
     a = ap.parse_args()
 
     tareas = cargar_tareas(a.tareas, a.idiomas)
@@ -93,12 +94,16 @@ def main():
             if total[0] >= a.tope_usd:
                 return None
         h, conn = herramientas_para(t["lang"])
-        r = Agente(h, a.modelo, a.esfuerzo, lim, trazas=trazas).resolver({**t, "rep": rep})
+        if a.patron == "sdk":
+            from agente_sdk.agente import AgenteSDK
+            r = AgenteSDK(h, a.modelo, a.esfuerzo, lim, trazas=trazas).resolver({**t, "rep": rep})
+        else:
+            r = Agente(h, a.modelo, a.esfuerzo, lim, trazas=trazas).resolver({**t, "rep": rep})
         if conn is None:
             conn = getattr(locales, "conn_v", None) or conectar()[0]
             locales.conn_v = conn
         v = verificar(t, r.final, conn, r.estado)
-        fila = {"id": t["id"], "rep": rep, "via": a.via, "modelo": a.modelo, "esfuerzo": a.esfuerzo, "tipo": t["tipo"],
+        fila = {"id": t["id"], "rep": rep, "via": a.via, "patron": a.patron, "modelo": a.modelo, "esfuerzo": a.esfuerzo, "tipo": t["tipo"],
                 "estado": r.estado, "esperado": t["estado_esperado"], "exito": v["exito"],
                 "exactitud_claves": v["exactitud_claves"], "coherencia_claves": v["coherencia_claves"], "claves": v["claves"],
                 "pasos": r.pasos, "herramientas": r.herramientas, "pasos_min": t["pasos_min"],

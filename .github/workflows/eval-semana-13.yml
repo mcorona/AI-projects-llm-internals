@@ -31,7 +31,7 @@ jobs:
         with:
           python-version: "3.13"
       - name: Instalar dependencias
-        run: pip install "psycopg[binary]==3.3.6" "pydantic==2.14.1" "sqlglot==30.26.0" "mcp==2.3.0" pytest
+        run: pip install "psycopg[binary]==3.3.6" "pydantic==2.14.1" "sqlglot==30.26.0" "mcp==2.3.0" "claude-agent-sdk==0.2.175" pytest
       - name: Preparar base de CI (esquema, copilot_ro y datos sintéticos, semilla 42) y esquema legado
         run: |
           python semana-07/ci/preparar_base.py
