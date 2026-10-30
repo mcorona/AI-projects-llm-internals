@@ -1,7 +1,8 @@
 name: eval-semana-14
 
-# Actividad 1: línea base del SDK y matriz de amenazas (sin base, sin API, sin secretos).
-# La actividad 8 agrega Postgres, Keycloak y la mini eval con agente.
+# Actividades 1 y 2: línea base del SDK, matriz de amenazas y primitivas (tools, resources, prompts) con equivalencia
+# contra la semana 13, sobre la base legada de CI. Sin API y sin secretos ($0).
+# La actividad 8 agrega Keycloak y la mini eval con agente.
 on:
   pull_request:
     paths:
@@ -14,15 +15,35 @@ permissions:
 jobs:
   eval:
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_USER: admin
+          POSTGRES_PASSWORD: ci-admin
+          POSTGRES_DB: inventory
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U admin -d inventory"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      PG_ADMIN_DSN: postgresql://admin:ci-admin@localhost:5432/inventory
+      PG_DSN: postgresql://copilot_ro:ci-ro@localhost:5432/inventory
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
         with:
           python-version: "3.13"
       - name: Instalar dependencias
-        run: pip install "pydantic==2.14.1" "mcp==2.3.0" pytest
-      - name: Línea base del SDK (24 comprobaciones) y matriz de amenazas
+        run: pip install "psycopg[binary]==3.3.6" "pydantic==2.14.1" "sqlglot==30.26.0" "mcp==2.3.0" "jsonschema==4.26.0" pytest
+      - name: Preparar base de CI (esquema, copilot_ro y datos sintéticos, semilla 42) y esquema legado
         run: |
-          python semana-14/linea_base/verificar_sdk.py
-          cd semana-14 && python -m pytest -q tests -p no:cacheprovider
+          python semana-07/ci/preparar_base.py
+          psql "$PG_ADMIN_DSN" -v ON_ERROR_STOP=1 -f semana-10/legado/legado.sql
+          psql "$PG_ADMIN_DSN" -v ON_ERROR_STOP=1 -f semana-13/seguridad/artnot.sql
+      - name: Línea base del SDK (24 comprobaciones)
+        run: python semana-14/linea_base/verificar_sdk.py
+      - name: Matriz de amenazas y primitivas con equivalencia (con base)
+        run: cd semana-14 && python -m pytest -q tests -p no:cacheprovider
