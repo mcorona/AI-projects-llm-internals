@@ -50,3 +50,44 @@ def fabrica(usuario, conexion=None, idioma="es"):
     """Una sola instancia por servidor, como en un proceso real (la bitácora y las propuestas son del contexto)."""
     h = Herramientas(Contexto.de_usuario(usuario, conexion=conexion, idioma=idioma))
     return lambda: h
+
+
+class ServidorHTTP:
+    """Uvicorn real en 127.0.0.1 con un puerto libre, en un hilo (para probar con el cliente HTTP del SDK)."""
+
+    def __init__(self, servidor_mcp, **kw):
+        import socket
+        import threading
+        import time
+
+        import uvicorn
+        from servidor.http import HOST, Trazas, crear_app
+
+        with socket.socket() as s:
+            s.bind((HOST, 0))
+            self.puerto = s.getsockname()[1]
+        self.trazas = kw.pop("trazas", None) or Trazas()
+        self.app = crear_app(servidor_mcp, self.puerto, trazas=self.trazas, **kw)
+        self.server = uvicorn.Server(uvicorn.Config(self.app, host=HOST, port=self.puerto, log_level="error",
+                                                    lifespan="on"))
+        self.hilo = threading.Thread(target=self.server.run, daemon=True)
+        self.hilo.start()
+        fin = time.time() + 10
+        while not self.server.started:
+            if time.time() > fin:
+                raise RuntimeError("uvicorn no arrancó")
+            time.sleep(0.02)
+        self.url = f"http://{HOST}:{self.puerto}/mcp"
+
+    def direcciones(self):
+        return [sock.getsockname() for srv in self.server.servers for sock in srv.sockets]
+
+    def cerrar(self):
+        self.server.should_exit = True
+        self.hilo.join(timeout=10)
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *a):
+        self.cerrar()
