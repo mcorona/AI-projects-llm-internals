@@ -34,6 +34,8 @@ def conectar() -> tuple[psycopg.Connection, str]:
         dsn = os.environ["NLQ_LEGADO_DSN"]
     elif os.environ.get("PG_ADMIN_DSN"):
         dsn = crear_rol_nlq()
+        # Las siguientes conexiones del proceso (hilos, servidor MCP hijo) reusan esta clave en lugar de rotarla.
+        os.environ["NLQ_LEGADO_DSN"] = dsn
     else:
         dsn = os.environ["PG_DSN"]
     conn = psycopg.connect(dsn, autocommit=True)

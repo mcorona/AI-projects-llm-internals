@@ -144,6 +144,8 @@ def test_regla_sin_coincidencia(h_sin_base):
     ("SELECT rolname FROM pg_catalog.pg_roles", "permiso_denegado"),
     ("SELECT * FROM products", "tabla_no_disponible"),
     ("SELEC art_cd FRM artmst", "sql_invalido"),
+    ("SELECT art_cd FROM artmst WHERE art_dsc = 'sin cerrar", "sql_invalido"),     # TokenError, no ParseError
+    ('SELECT art_cd AS "sin cerrar FROM artmst', "sql_invalido"),
 ])
 def test_guard(sql, tipo):
     assert guard(sql) == tipo
@@ -246,3 +248,11 @@ def test_golden_simple_con_herramientas(conexion):
         "SELECT p.prv_nm FROM artmst a JOIN prvmst p ON p.prv_id = a.art_prv WHERE a.art_crt "
         "GROUP BY p.prv_nm ORDER BY COUNT(*) DESC, p.prv_nm LIMIT 1"})
     assert r["filas"] == tarea["salida"]["filas"]["esperado"]
+
+
+def test_nunca_excepcion_hacia_el_modelo(h_sin_base, monkeypatch):
+    def rompe(*a, **k):
+        raise RuntimeError("falla inesperada")
+    monkeypatch.setattr(h_sin_base, "_guard", rompe)
+    r = h_sin_base.llamar("validar_sql", {"sql": "SELECT 1"})
+    assert r["ok"] is False and r["error"]["tipo"] == "error_interno" and "RuntimeError" in r["error"]["mensaje"]

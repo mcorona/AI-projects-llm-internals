@@ -1,0 +1,709 @@
+{
+ "calibracion_juez": "4/4",
+ "eval_haiku_low": {
+  "corrida": "eval_haiku_low",
+  "configuracion": "claude-haiku-5-5 low",
+  "k": 3,
+  "tareas": 84,
+  "corridas": 252,
+  "pass@1": 0.9206349206349206,
+  "pass@1_ic": [
+   0.8611111111111112,
+   0.9722222222222222
+  ],
+  "pass^3": 0.9047619047619048,
+  "pass^3_ic": [
+   0.8333333333333334,
+   0.9642857142857143
+  ],
+  "por_tipo": {
+   "simple": {
+    "tareas": 20,
+    "pass@1": 0.9666666666666667,
+    "pass^3": 0.95
+   },
+   "regla": {
+    "tareas": 24,
+    "pass@1": 0.9722222222222222,
+    "pass^3": 0.9583333333333334
+   },
+   "compuesta": {
+    "tareas": 16,
+    "pass@1": 0.9166666666666666,
+    "pass^3": 0.875
+   },
+   "valores": {
+    "tareas": 8,
+    "pass@1": 1,
+    "pass^3": 1
+   },
+   "ambigua": {
+    "tareas": 8,
+    "pass@1": 0.5,
+    "pass^3": 0.5
+   },
+   "sin_respuesta": {
+    "tareas": 8,
+    "pass@1": 1,
+    "pass^3": 1
+   }
+  },
+  "por_idioma": {
+   "es": 0.9285714285714286,
+   "en": 0.9126984126984127
+  },
+  "exactitud_claves": 0.9696969696969697,
+  "coherencia_claves": 0.9924242424242424,
+  "estados": {
+   "respondida -> respondida": 204,
+   "abstenida -> abstenida": 24,
+   "requiere_aclaracion -> requiere_aclaracion": 12,
+   "requiere_aclaracion -> respondida": 12
+  },
+  "aclaracion_correcta": 0.5,
+  "abstencion_correcta": 1,
+  "falsa_aclaracion_o_abstencion": 0,
+  "limite_alcanzado": 0,
+  "juez_texto_libre": {
+   "evaluadas": 36,
+   "adecuadas": 35,
+   "sin_veredicto": 0,
+   "no_adecuadas": [
+    {
+     "id": "a01-en",
+     "rep": 2,
+     "razon": "La pregunta de aclaración pide el criterio que falta, pero afirma que el tiempo de entrega (prvmst.prv_dte), el estado de las órdenes y los SKUs críticos se pueden calcular con los datos disponibles, cuando la referencia indica que el tiempo de entrega, el número de SKU y los indicadores de calidad no están en los datos."
+    }
+   ]
+  },
+  "trayectoria": {
+   "llamadas": 1119,
+   "validas": 1.0,
+   "exitosas": 0.9883824843610366,
+   "redundantes_por_corrida": 0,
+   "corridas_con_redundancia": 0,
+   "pasos_sobre_minimo": 1.5571428571428572,
+   "corridas_con_error": 21,
+   "recuperacion_tras_error": 0.9047619047619048,
+   "uso_herramientas": {
+    "buscar_regla_negocio": 382,
+    "describir_esquema": 246,
+    "muestrear_valores": 178,
+    "ejecutar_sql": 311,
+    "validar_sql": 2
+   }
+  },
+  "por_tarea": {
+   "pasos": {
+    "p50": 4.0,
+    "p95": 5.0
+   },
+   "tokens": {
+    "p50": 20995.5,
+    "p95": 37970.7
+   },
+   "usd": {
+    "p50": 0.002593,
+    "p95": 0.005237399999999998
+   },
+   "segundos": {
+    "p50": 7.09,
+    "p95": 14.816999999999998
+   }
+  },
+  "costo_total_usd": 0.719615,
+  "fallas": [
+   {
+    "id": "c05-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "cdmx": false,
+     "guadalajara": true,
+     "monterrey": true
+    }
+   },
+   {
+    "id": "a04-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "a03-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "c05-en",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "cdmx": false,
+     "guadalajara": true,
+     "monterrey": true
+    }
+   },
+   {
+    "id": "a04-en",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "a03-en",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "c05-es",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "cdmx": false,
+     "guadalajara": true,
+     "monterrey": true
+    }
+   },
+   {
+    "id": "a04-es",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "a03-es",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "r03-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "n": false
+    }
+   },
+   {
+    "id": "a04-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "a03-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "c05-es",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "cdmx": false,
+     "guadalajara": true,
+     "monterrey": true
+    }
+   },
+   {
+    "id": "a04-es",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "a03-es",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "r03-en",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "n": false
+    }
+   },
+   {
+    "id": "a04-en",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "a03-en",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "s02-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s02-en",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   }
+  ]
+ },
+ "eval_haiku_medium": {
+  "corrida": "eval_haiku_medium",
+  "configuracion": "claude-haiku-5-5 medium",
+  "k": 3,
+  "tareas": 84,
+  "corridas": 252,
+  "pass@1": 0.9126984126984127,
+  "pass@1_ic": [
+   0.8492063492063492,
+   0.9642857142857143
+  ],
+  "pass^3": 0.8928571428571429,
+  "pass^3_ic": [
+   0.8214285714285714,
+   0.9523809523809523
+  ],
+  "por_tipo": {
+   "simple": {
+    "tareas": 20,
+    "pass@1": 0.9333333333333333,
+    "pass^3": 0.85
+   },
+   "regla": {
+    "tareas": 24,
+    "pass@1": 1,
+    "pass^3": 1
+   },
+   "compuesta": {
+    "tareas": 16,
+    "pass@1": 0.875,
+    "pass^3": 0.875
+   },
+   "valores": {
+    "tareas": 8,
+    "pass@1": 1,
+    "pass^3": 1
+   },
+   "ambigua": {
+    "tareas": 8,
+    "pass@1": 0.5,
+    "pass^3": 0.5
+   },
+   "sin_respuesta": {
+    "tareas": 8,
+    "pass@1": 1,
+    "pass^3": 1
+   }
+  },
+  "por_idioma": {
+   "es": 0.9206349206349206,
+   "en": 0.9047619047619048
+  },
+  "exactitud_claves": 0.9621212121212122,
+  "coherencia_claves": 0.9696969696969697,
+  "estados": {
+   "respondida -> respondida": 204,
+   "abstenida -> abstenida": 24,
+   "requiere_aclaracion -> requiere_aclaracion": 12,
+   "requiere_aclaracion -> respondida": 12
+  },
+  "aclaracion_correcta": 0.5,
+  "abstencion_correcta": 1,
+  "falsa_aclaracion_o_abstencion": 0,
+  "limite_alcanzado": 0,
+  "juez_texto_libre": {
+   "evaluadas": 36,
+   "adecuadas": 33,
+   "sin_veredicto": 0,
+   "no_adecuadas": [
+    {
+     "id": "a01-en",
+     "rep": 0,
+     "razon": "La pregunta de aclaración es del tipo correcto, pero ofrece como disponibles el tiempo de entrega y el costo (prvmst.prv_dte, artmst.art_cst), que la referencia indica que no están en los datos, por lo que inventa criterios evaluables."
+    },
+    {
+     "id": "a01-es",
+     "rep": 2,
+     "razon": "La pregunta de aclaración pide el criterio faltante, pero propone como opciones el tiempo de entrega, el costo y el número de SKUs, que la referencia indica que no están en los datos, por lo que contradice la fuente en lugar de explicar que no hay criterio disponible."
+    },
+    {
+     "id": "a01-en",
+     "rep": 2,
+     "razon": "La pregunta de aclaración pide el criterio faltante, pero ofrece como opciones disponibles el tiempo de entrega, el costo y los SKUs críticos, que la referencia indica que no están en los datos, y eso presenta como existentes campos que no lo están."
+    }
+   ]
+  },
+  "trayectoria": {
+   "llamadas": 1353,
+   "validas": 1.0,
+   "exitosas": 0.9977827050997783,
+   "redundantes_por_corrida": 0,
+   "corridas_con_redundancia": 0,
+   "pasos_sobre_minimo": 1.7335978835978836,
+   "corridas_con_error": 11,
+   "recuperacion_tras_error": 0.8181818181818182,
+   "uso_herramientas": {
+    "buscar_regla_negocio": 424,
+    "describir_esquema": 248,
+    "ejecutar_sql": 414,
+    "muestrear_valores": 246,
+    "validar_sql": 21
+   }
+  },
+  "por_tarea": {
+   "pasos": {
+    "p50": 4.0,
+    "p95": 6.0
+   },
+   "tokens": {
+    "p50": 23701.5,
+    "p95": 48241.04999999999
+   },
+   "usd": {
+    "p50": 0.0031314999999999997,
+    "p95": 0.0062279499999999995
+   },
+   "segundos": {
+    "p50": 8.870000000000001,
+    "p95": 20.999499999999994
+   }
+  },
+  "costo_total_usd": 0.883891,
+  "fallas": [
+   {
+    "id": "c05-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "cdmx": false,
+     "guadalajara": true,
+     "monterrey": true
+    }
+   },
+   {
+    "id": "a03-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "a04-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "c05-en",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "cdmx": false,
+     "guadalajara": true,
+     "monterrey": true
+    }
+   },
+   {
+    "id": "a04-en",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "a03-en",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "c05-es",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "cdmx": false,
+     "guadalajara": true,
+     "monterrey": true
+    }
+   },
+   {
+    "id": "a04-es",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "a03-es",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "c05-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "cdmx": false,
+     "guadalajara": true,
+     "monterrey": true
+    }
+   },
+   {
+    "id": "a04-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "a03-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "c05-es",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "cdmx": false,
+     "guadalajara": true,
+     "monterrey": true
+    }
+   },
+   {
+    "id": "a04-es",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "a03-es",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "c05-en",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "cdmx": false,
+     "guadalajara": true,
+     "monterrey": true
+    }
+   },
+   {
+    "id": "a04-en",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "a03-en",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {}
+   },
+   {
+    "id": "s02-es",
+    "rep": 0,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s02-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s10-en",
+    "rep": 1,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   },
+   {
+    "id": "s02-en",
+    "rep": 2,
+    "estado": "respondida",
+    "claves": {
+     "filas": false
+    }
+   }
+  ]
+ },
+ "eval_sonnet_low_sub": {
+  "corrida": "eval_sonnet_low_sub",
+  "configuracion": "claude-sonnet-5-5 low (subset: 10 tasks)",
+  "k": 3,
+  "tareas": 10,
+  "corridas": 30,
+  "pass@1": 1,
+  "pass@1_ic": [
+   1,
+   1
+  ],
+  "pass^3": 1,
+  "pass^3_ic": [
+   1,
+   1
+  ],
+  "por_tipo": {
+   "simple": {
+    "tareas": 0,
+    "pass@1": null,
+    "pass^3": null
+   },
+   "regla": {
+    "tareas": 0,
+    "pass@1": null,
+    "pass^3": null
+   },
+   "compuesta": {
+    "tareas": 2,
+    "pass@1": 1,
+    "pass^3": 1
+   },
+   "valores": {
+    "tareas": 0,
+    "pass@1": null,
+    "pass^3": null
+   },
+   "ambigua": {
+    "tareas": 8,
+    "pass@1": 1,
+    "pass^3": 1
+   },
+   "sin_respuesta": {
+    "tareas": 0,
+    "pass@1": null,
+    "pass^3": null
+   }
+  },
+  "por_idioma": {
+   "es": 1,
+   "en": 1
+  },
+  "exactitud_claves": 1,
+  "coherencia_claves": 1,
+  "estados": {
+   "requiere_aclaracion -> requiere_aclaracion": 24,
+   "respondida -> respondida": 6
+  },
+  "aclaracion_correcta": 1,
+  "abstencion_correcta": null,
+  "falsa_aclaracion_o_abstencion": 0,
+  "limite_alcanzado": 0,
+  "juez_texto_libre": {
+   "evaluadas": 24,
+   "adecuadas": 20,
+   "sin_veredicto": 0,
+   "no_adecuadas": [
+    {
+     "id": "a01-en",
+     "rep": 0,
+     "razon": "La aclaración pide el criterio de 'mejor' proveedor, que es la pieza que falta, pero propone opciones como pocas órdenes atrasadas y número de artículos suministrados, que según la referencia no existen en los datos, sin advertir esa limitación."
+    },
+    {
+     "id": "a04-es",
+     "rep": 1,
+     "razon": "La pregunta de aclaración pide solo el CEDIS y da por hecho que se trata de unidades, sin preguntar si se quiere en unidades o en valor, que es la otra información faltante señalada en la referencia."
+    },
+    {
+     "id": "a03-en",
+     "rep": 1,
+     "razon": "The response asks which definition of 'low inventory' the user wants, but it never asks whether the answer should be total or per CEDIS, which the reference names as missing information, and its extra questions about cutoff dates and critical SKUs are not part of that gap."
+    },
+    {
+     "id": "a03-en",
+     "rep": 2,
+     "razon": "La pregunta cubre el criterio de 'poco' (punto de reorden, cobertura, existencia cero), pero no pregunta si se quiere el total o por CEDIS, y su opción (a) asume 'stock total' sin aclararlo."
+    }
+   ]
+  },
+  "trayectoria": {
+   "llamadas": 34,
+   "validas": 1.0,
+   "exitosas": 1.0,
+   "redundantes_por_corrida": 0,
+   "corridas_con_redundancia": 0,
+   "pasos_sobre_minimo": 1.3333333333333333,
+   "corridas_con_error": 0,
+   "recuperacion_tras_error": null,
+   "uso_herramientas": {
+    "buscar_regla_negocio": 11,
+    "describir_esquema": 15,
+    "ejecutar_sql": 8
+   }
+  },
+  "por_tarea": {
+   "pasos": {
+    "p50": 2.0,
+    "p95": 3.0
+   },
+   "tokens": {
+    "p50": 7234.5,
+    "p95": 15498.0
+   },
+   "usd": {
+    "p50": 0.017349,
+    "p95": 0.0393028
+   },
+   "segundos": {
+    "p50": 3.6950000000000003,
+    "p95": 7.767999999999999
+   }
+  },
+  "costo_total_usd": 0.559526,
+  "fallas": []
+ },
+ "diferencias": [
+  {
+   "de": "eval_haiku_low",
+   "a": "eval_haiku_medium",
+   "tareas": 84,
+   "dif_pass@1": -0.007936507936507936,
+   "ic": [
+    -0.031746031746031744,
+    0.015873015873015876
+   ]
+  },
+  {
+   "de": "eval_haiku_low",
+   "a": "eval_sonnet_low_sub",
+   "tareas": 10,
+   "dif_pass@1": 0.5333333333333333,
+   "ic": [
+    0.23333333333333334,
+    0.8
+   ]
+  },
+  {
+   "de": "eval_haiku_medium",
+   "a": "eval_sonnet_low_sub",
+   "tareas": 10,
+   "dif_pass@1": 0.6,
+   "ic": [
+    0.3,
+    0.9
+   ]
+  }
+ ],
+ "costo_juez_usd": 0.0
+}
