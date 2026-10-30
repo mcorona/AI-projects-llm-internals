@@ -1,82 +1,121 @@
-# AI-projects-llm-internals
+# GenAI Engineering Lab
 
-Laboratorio de la Fase 1 del programa "Experto en GenAI para Negocios Internacionales": fundamentos de LLMs, construidos desde cero siguiendo la serie Zero to Hero de Andrej Karpathy, en MLX (Apple Silicon).
+**English** · [Español](README.es.md)
 
-## Estructura
+[![MCP server (week 14)](https://github.com/mcorona/genai-engineering-lab/actions/workflows/eval-semana-14.yml/badge.svg)](https://github.com/mcorona/genai-engineering-lab/actions/workflows/eval-semana-14.yml)
+[![Agent eval (week 13)](https://github.com/mcorona/genai-engineering-lab/actions/workflows/eval-semana-13.yml/badge.svg)](https://github.com/mcorona/genai-engineering-lab/actions/workflows/eval-semana-13.yml)
+[![Regression evals](https://github.com/mcorona/genai-engineering-lab/actions/workflows/evals-semana-06.yml/badge.svg)](https://github.com/mcorona/genai-engineering-lab/actions/workflows/evals-semana-06.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-| Carpeta / archivo | Contenido |
+**Measured, reproducible GenAI engineering on legacy business systems:** RAG, text-to-SQL, agents and MCP over an inventory system that has cryptic table names and decades-old business rules. It is bilingual (Spanish and English), and every claim is backed by an eval in CI.
+
+Most GenAI demos show that something *can* work. This lab measures *how well* it works, *what it costs* and *how it fails*, under the constraints a real company has:
+- Read-only access to a legacy database.
+- Users with different roles and tenants.
+- Untrusted documents and data.
+- A budget.
+
+Author: **Manuel Corona**, independent AI architect and consultant. The lab spans 30 years of software and information systems work, from industry and as a university professor, with a PhD in information technologies.
+
+## How the work is done
+
+| Principle | In practice |
 |---|---|
-| `semana-01/` | Bigram (PyTorch y MLX), atención causal, mini-GPT, entrenamiento y práctica de memoria del KV cache |
-| `semana-01/README.md` | Notas de la semana: resultados, glosario y decisiones |
+| Gold sets frozen before any experiment | Every comparison uses the same frozen set (with hashes), so a change in the score comes from the change being tested |
+| Verification by execution, not by eye | SQL is run and result sets are compared. Agent tasks are checked against the database. LLM judges are validated on known failures before they are used |
+| Evals gate every pull request | GitHub Actions runs the evals on each PR. Thresholds come from a fixed calibration rule, and their false-alarm rate is measured ([example](semana-13/resultados/ci_calibracion.md)) |
+| Security is a hard requirement, tested in CI | Zero unapproved writes, zero leaks across roles and tenants, and zero obeyed injected instructions. Any failure breaks the PR |
+| Cost and latency next to quality | Every result reports cost per query (USD) and p50 latency, with prices taken from the official pricing pages |
+| Negative results are reported | Techniques that did not beat the baseline (hybrid search, HyDE, query rewriting, contextual retrieval, fine-tuning) are documented and **not adopted** |
+| Every number links to its evidence | Results files under `resultados/`, plus the PR that verified each claim |
 
-## Requisitos
+## Key results
 
-- macOS con Apple Silicon.
-- [uv](https://docs.astral.sh/uv/) y Python 3.13.
+| Capability | Result | Evidence |
+|---|---|---|
+| **Agent vs workflow** (84 tasks, k = 3) | Claude Agent SDK agent: pass@1 **0.889**. Fixed-routing workflow: **0.504** (+0.385, 95% CI [0.282, 0.496]). The agent wins on business rules, compound tasks and ambiguous requests. The workflow ties on direct questions at a fraction of the cost ($0.0004 vs $0.0018 per task) | [`semana-13`](semana-13/README.md) |
+| **Agent security** | **140/140** runs: unchanged table fingerprints, proposals kept in `PENDING_APPROVAL`, 0 leaks, 0 injected instructions obeyed | [`semana-13/resultados/seguridad.md`](semana-13/resultados/seguridad.md) |
+| **Text-to-SQL on a legacy schema** | With the data dictionary: execution accuracy **0.977 ES / 1.000 EN** (same as on the original schema), **$0.00033 per question** (Haiku). Without it: 0.884 / 0.953 | [`semana-10`](semana-10/README.md) |
+| **Integrated assistant** (SQL + documents) | Accuracy 0.961 ES / 0.980 EN with citations, vs 0.294 SQL-only and 0.608 documents-only. $0.00083 per question, p50 5.3 s. 0 writes, leak 0 in 128 cases, 0/48 injected instructions obeyed | [`semana-10`](semana-10/README.md) |
+| **Retrieval** | Reranking raises nDCG@10 from 0.904 to **0.982** (ES) and from 0.885 to **0.974** (EN). Hybrid BM25 + vector search does not help and is not adopted | [`semana-08`](semana-08/README.md) |
+| **Multi-tenant RAG** | Tenant and role filters inside the query on pgvector, Qdrant and OpenSearch: **leak 0**, checked in CI | [`semana-09`](semana-09/README.md) |
+| **RAG evaluation** | Separate retrieval and generation suites. RAGAS metrics are validated on known failures before use. $0.28 per CI run | [`semana-11`](semana-11/README.md) |
+| **Managed RAG** (AWS and Google Cloud) | Bedrock Knowledge Bases and Vertex AI Search compared with the own pipeline on the same gold set. Cost from $0.00027 to $0.0012 per query, leak 0 in 672 queries, keyless CI through OIDC federation, all resources deleted afterwards | [`semana-12`](semana-12/README.md) |
+| **Remote MCP server with OAuth** (in progress) | MCP 2026-07-28 with OAuth 2.1 and a 13-threat model (tool poisoning, rug pull, confused deputy, token passthrough…). Tools, resources and prompts are verified equivalent to the in-process tools | [`semana-14`](semana-14/) |
 
-## Cómo correr la semana 1
+## LegacyBridge: the reference system
 
-```bash
-uv sync
-cd semana-01
-./get_data.sh
-uv run python bigram_mlx.py
-uv run python attention_mlx.py
-uv run python minigpt_mlx.py
-uv run python train_minigpt_mlx.py
-uv run python practica_kv_cache.py
+LegacyBridge is the case study that runs through the lab. A company keeps its inventory, sales and purchasing in a legacy PostgreSQL schema:
+- **Cryptic names:** tables such as `artmst` and `exidet` and columns such as `art_ptr`.
+- **Business rules** that live in documents, not in the database.
+- **Users** with different roles (warehouse, sales, purchasing) and tenants.
+
+The goal is to let people ask questions in natural language and get answers backed by evidence, without ever writing to the system or leaking data across roles.
+
+```mermaid
+flowchart LR
+  U[User<br/>ES / EN] --> A[Agent<br/>own loop or Claude Agent SDK]
+  A -->|MCP 2026-07-28<br/>OAuth 2.1 bearer| M[MCP server<br/>tools · resources · prompts]
+  K[Authorization server<br/>Keycloak] -. JWT: iss, aud, scope .-> M
+  M -->|read-only role per scope<br/>guard: SELECT only| DB[(Legacy PostgreSQL<br/>schema legado)]
+  A --> R[Document RAG<br/>rules, policies, scans]
+  R --> V[(pgvector / Qdrant / OpenSearch<br/>tenant + role filters)]
 ```
 
-## Criterio de salida de la Fase 2
+The pieces were built and measured one at a time:
+1. Text-to-SQL ([week 7](semana-07/README.md), [week 10](semana-10/README.md)).
+2. Document RAG ([weeks 8 to 12](semana-08/README.md)).
+3. Agent and MCP ([week 13](semana-13/README.md), [week 14](semana-14/)).
 
-Cada semana de la Fase 2 se cierra solo si cumple lo siguiente:
+## Repository map
 
-- [x] Los prompts y las evals viven en Git con versión (`semana-05/prompts/`, `semana-06/golden/`).
-- [x] Hay una eval automática de regresión (`semana-06/evaluar.py`) que corre en GitHub Actions cuando cambian prompts, evals o `semana-07/`.
-- [x] Los cambios de prompt o modelo entran por pull request, no por push directo a `main`, con la protección de rama `ProteccionRama` y el check `regresion` como requisito (verificado con el PR #2).
-- [x] La eval de NLQ (semana 7) corre en cada PR, con Haiku sobre el set difícil y una base de CI con datos sintéticos de semilla 42. Verificada en el PR #3 (exactitud 0.953 en español y 1.000 en inglés); umbral 0.90 desde el PR siguiente.
-- [x] Cada semana publica sus resultados en su README, con costo y exactitud por modelo.
+Folders are named `semana-NN` (week NN). Each week has its own `README.md` with method, results, cost and decisions.
 
-Lo que no cumple el criterio queda marcado como pendiente hasta que se resuelva.
+| Area | Weeks | What you will find |
+|---|---|---|
+| LLM fundamentals | [1](semana-01/README.md) · [2](semana-02/README.md) · [3](semana-03/README.md) · [4](semana-04/README.md) | Mini-GPT in MLX; token cost and sampling variability by language; a documented *don't fine-tune* decision (LoRA vs prompt); local quantized inference vs API (the API is about 13× faster at p50) |
+| Prompts and evals | [5](semana-05/README.md) · [6](semana-06/README.md) · [7](semana-07/README.md) | Versioned prompt library; regression evals as a required PR check; bilingual NLQ measured by execution |
+| RAG and data | [8](semana-08/README.md) · [9](semana-09/README.md) · [10](semana-10/README.md) · [11](semana-11/README.md) · [12](semana-12/README.md) | Chunking, embeddings and vector DBs; advanced RAG and multi-tenancy; legacy schema, PDFs, OCR and images; RAG evaluation; managed RAG on AWS and Google Cloud |
+| Agents and MCP | [13](semana-13/README.md) · [14](semana-14/) | Agentic patterns and the Claude Agent SDK; remote MCP server with OAuth, least privilege and tool-poisoning tests |
 
-## Criterio de salida de la Fase 3
+## Quickstart
 
-La Fase 3 cubre las semanas 8 a 12: recuperación, RAG avanzado, asistente integrado (8 a 10), evaluación de RAG (11) y RAG administrado en la nube (12). Solo se marca lo verificado con evidencia en el repo.
+These steps run the agent tools, the MCP server and their tests against a synthetic legacy database. They need no API key and cost $0.
 
-- [x] La eval de recuperación corre en CI en cada PR que toca `semana-08/**` o `semana-09/**`, con umbral de recall@5 por idioma (0.90), calibrado con la primera corrida (ES 0.990, EN 0.950). Verificado en los PR #15 y #17 para semana 8 (`semana-08/resultados/ci_recuperacion.md`) y en el PR #29 para semana 9 (`semana-09/resultados/ci_semana09.md`).
-- [x] Hay una comparación documentada de chunking, embeddings y bases vectoriales con recall@k, latencia y costo, en ES y EN (`semana-08/README.md`, actividades 2 a 5; chunking en `semana-08/resultados/chunking.md`, registrado el 2026-10-26).
-- [x] La búsqueda híbrida y el reranking se miden contra la línea base. Reranking: nDCG@10 ES 0.904 → 0.982, EN 0.885 → 0.974. Híbrida (BM25 + vectorial con RRF): no mejora recall@5 (ES 1.000 → 0.970, EN 1.000 → 0.770) y no se adopta (`semana-08/resultados/hibrida.md`).
-- [x] Las respuestas con citas se evalúan con juez, con exactitud y precisión de citas reportadas (`semana-08/README.md`, actividad 8).
-- [x] Las técnicas avanzadas (reescritura, HyDE y contextual retrieval) se miden con el mismo golden set congelado, y se adoptan solo si mejoran. Las tres están medidas; ninguna mejora a la línea base y ninguna se adopta (`semana-09/resultados/comparacion_final.md`; PR #19, #20, #21 y #23).
-- [x] Los filtros por tenant y roles se aplican dentro de la consulta en pgvector, Qdrant y OpenSearch, con fuga de permisos igual a 0 y prueba cruzada entre tenants. Criterio no negociable. Verificado con fuga 0 en las tres bases (PR #25 y #26) y con un check de CI que falla ante cualquier fuga en cada PR de semana 9 (PR #29).
-- [x] El text-to-SQL sobre un esquema legado (vistas con nombres crípticos) se mide por ejecución en tres variantes (sin diccionario, con diccionario completo y con diccionario recuperado) contra el esquema original con el mismo modelo, con costo y latencia. Verificado con Sonnet 5.5 y Haiku 5.5 sobre el set difícil de semana 7: con Haiku, sin diccionario ES 0.884 / EN 0.953, diccionario completo 0.977 / 1.000 ($0.00033 por pregunta), diccionario recuperado 0.767 / 0.721; esquema original 0.977 / 1.000 (`semana-10/resultados/sql_legado.md`; PR #35 y #37).
-- [x] Los documentos no textuales (PDFs con tablas, escaneos con OCR e imágenes) se extraen e indexan, y se mide su exactitud contra la referencia congelada (exactitud por celda, tasa de error por carácter y respuestas correctas) y el recall después de indexar. Verificado: filas íntegras pypdf 0/13, pdfplumber y Haiku 13/13 (PR #38); CER Tesseract 0.009, Haiku 0.001 (PR #39); hechos asociados en imágenes Tesseract 0/7, Haiku 7/7 (PR #40); recall@5 de lo extraído medido en las tres y en CI (1.000 por idioma, PR #44).
-- [x] El asistente integrado (NLQ + RAG documental) se mide por tipo de pregunta (SQL, documental, no textual y mixta): ruteo, exactitud con citas, costo y latencia. Su seguridad es no negociable: cero escrituras SQL, fuga 0 por rol y entre tenants a través del asistente, y ninguna instrucción inyectada en documentos ejecutada, con check en CI. Verificado: ruteo ES 0.882 / EN 0.863 (PR #41); exactitud con juez 0.961 / 0.980 frente a 0.294 solo SQL y 0.608 solo documentos, con precisión de citas, costo ($0.00083 por pregunta) y latencia (p50 5.3 s) por tipo (PR #42); con la NLQ endurecida, 0 escrituras, fuga 0 en 128 casos y 0/48 instrucciones obedecidas (PR #43); check `eval-semana-10` en cada PR de semana 10 (PR #44). Las pruebas de seguridad encontraron que la conexión SQL de la actividad 7 permitía escribir objetos grandes (`lo_create`); se corrigió y el asistente usa la NLQ endurecida desde el PR #44 (`semana-10/README.md`).
-- [x] La recuperación y la generación se evalúan con suites separadas: recall@k para la recuperación, y faithfulness y answer relevance (RAGAS) para la generación, con costo por consulta. Verificado: suite de recuperación con recall@k, MRR, nDCG@10 y AP@5 (más context precision y recall de RAGAS), que distingue el reranking (AP@5 +0.070 ES / +0.095 EN, IC 95 % sin el 0; PR #51); faithfulness y answer relevancy validadas con fallas conocidas antes de usarlas (PR #52); suite de generación con contextos fijos: exactitud 1.000, faithfulness 0.679 / 0.805, answer relevancy 0.890 / 0.860, abstención correcta 20/20 (PR #53); cada suite se mueve solo con su componente (PR #55); costo por consulta: responder $0.00070 (p50 4.2 s) y evaluar $0.00141, $0.28 por corrida de CI (PR #56); las dos suites corren en CI con umbral, en jobs separados (PR #57) (`semana-11/README.md`).
-- [x] La misma base documental se monta en un RAG administrado de AWS (Bedrock Knowledge Bases) y de una segunda nube (Azure AI Search o Vertex AI Search), y se compara su calidad, latencia y costo con el mismo golden set. Verificado con Vertex AI Search como segunda nube: el paquete congelado (SHA-256 por archivo) en 4 KB de Bedrock sobre S3 Vectors y 2 data stores de Vertex, medidos con el golden set de semana 11 (150 preguntas) y el mismo evaluador. Con los chunks propios, Bedrock llega a exactitud 0.985 y Vertex con ranker semántico a MRR 0.977 / 0.962, contra 1.000 del pipeline propio; con la ingesta administrada y el generador común, 0.71 a 0.92 (0.969 con el parser multimodal BDA y RetrieveAndGenerate). Latencia p50 de 1.5 s (RetrieveAndGenerate) a 3.9 s (propio); costo de $0.00027 (Bedrock `Retrieve`) a $0.0012 por consulta (Vertex). Fuga 0 en 672 consultas (PR #59 a #66; `semana-12/README.md`, `semana-12/resultados/comparacion.md`).
+```bash
+# requirements: uv, Python 3.13, Docker and the psql client
+uv sync
+docker run -d --name genai-lab-db -p 5432:5432 \
+  -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=dev-only -e POSTGRES_DB=inventory pgvector/pgvector:pg16
+export PG_ADMIN_DSN=postgresql://admin:dev-only@localhost:5432/inventory
+export PG_DSN=postgresql://copilot_ro:ci-ro@localhost:5432/inventory
 
-Lo que no cumple el criterio queda marcado como pendiente hasta que se resuelva.
+uv run python semana-07/ci/preparar_base.py                       # schema, read-only role, synthetic data (seed 42)
+psql "$PG_ADMIN_DSN" -f semana-10/legado/legado.sql               # legacy views with cryptic names
+psql "$PG_ADMIN_DSN" -f semana-13/seguridad/artnot.sql            # free-text notes (injection tests)
 
-## Criterio de salida de la Fase 4
+uv run python -m pytest -q semana-13/tests semana-14/tests        # tools, guard, permissions, MCP server
+uv run python semana-14/linea_base/verificar_sdk.py               # MCP SDK baseline against the spec
+```
 
-La Fase 4 cubre las semanas 13 a 18: agentes, MCP y orquestación sobre sistemas legados. El programa la cierra con un diseño en pizarra (en 30 minutos, un sistema multiagente con MCP, sus límites de seguridad y cómo se evalúa) y con la certificación CCAR-P. Para verificarla en el repo se usa un criterio por semana más el transversal de seguridad. Solo se marca lo verificado con evidencia.
+Evals that call a model need `ANTHROPIC_API_KEY`. Each one prints its estimated cost, and most CI runs cost between $0.10 and $0.30.
 
-- [x] **13.** Un flujo de LegacyBridge se implementa en al menos dos patrones (workflow y agente con Claude Agent SDK) y se comparan éxito, costo y latencia con el mismo golden set congelado. Verificado sobre 84 tareas con k = 3, Haiku 5.5 `low` y verificación por ejecución. El workflow (el asistente de semana 10 con ruteo fijo) logra pass@1 0.504, y el agente con Claude Agent SDK 0.889 (+0.385, IC 95 % [0.282, 0.496]); el agente gana en reglas de negocio (+0.806), tareas compuestas (+0.604) y peticiones ambiguas (+0.542), y empata en preguntas directas, donde el workflow es más barato ($0.0004 contra $0.0018 por tarea) y más rápido (p50 3.0 s contra 10.2 s). El agente con loop propio queda como referencia: 0.921, sin diferencia significativa con el SDK (−0.032, IC [−0.071, +0.004]) (`semana-13/resultados/patrones.md`; PR #79 y el de la actividad 10).
-- [ ] **14.** Servidor MCP remoto con OAuth sobre la base legada de LegacyBridge, con permisos mínimos y pruebas de tool poisoning. El servidor MCP por stdio de la semana 13 ya tiene las mismas herramientas, esquemas y permisos que las nativas (PR #77).
-- [ ] **15.** El mismo agente en dos frameworks, con una matriz de decisión para clientes.
-- [ ] **16.** Un plugin o skill reutilizable para clientes, con su propia eval.
-- [ ] **17.** Human-in-the-loop, guardrails y presupuestos de tokens aplicados; eval de trayectorias y tablero de trazas con OpenTelemetry GenAI o Langfuse.
-- [ ] **18.** Diseño en pizarra de un sistema multiagente con MCP, sus límites de seguridad y su plan de evaluación, hecho en 30 minutos y versionado; CCAR-P presentado.
-- [x] **Transversal (no negociable):** cero escrituras no aprobadas, fuga 0 por rol y entre tenants, y ninguna instrucción inyectada obedecida, con check en CI. Verificado en la semana 13 con 140 corridas: la huella de las tablas no cambia, las propuestas quedan en `PENDING_APPROVAL` sin ejecutarse, hay 0 fugas en 40 corridas (24 por rol y 16 entre tenants) y se obedecieron 0 instrucciones inyectadas en datos SQL y en reglas (PR #80). El check `eval-semana-13` lo exige en cada PR de la semana 13 (PR #81). Se revisa cada semana de la fase y se desmarca si alguna lo rompe.
+## Status
 
-Lo que no cumple el criterio queda marcado como pendiente hasta que se resuelva.
+| Phase | Weeks | Status |
+|---|---|---|
+| 1. LLM fundamentals | 1–4 | Complete |
+| 2. Prompts, evals and NLQ | 5–7 | Complete |
+| 3. RAG and data | 8–12 | Complete, with all 11 exit criteria verified |
+| 4. Agents, MCP and orchestration | 13–18 | In progress: week 13 complete, week 14 in progress |
 
-## Estado
+The detailed exit criteria for each phase, with the PR that verified each one, are kept in [README.es.md](README.es.md).
 
-- Semana 1: completa. Mini-GPT de 2000 pasos con pérdida de validación de 1.72 (n=128, lr=1e-3). Ver `semana-01/README.md`.
-- Semana 10: completa (text-to-SQL sobre esquema legado, documentos no textuales y asistente integrado con seguridad y CI). Ver `semana-10/README.md`.
-- Semana 11: completa (evaluación de RAG con suites separadas de recuperación y generación, RAGAS validado, costo por consulta y CI con umbral). Ver `semana-11/README.md`.
-- Semana 12: completa (RAG administrado en Bedrock Knowledge Bases y Vertex AI Search, comparado con el pipeline propio en calidad, seguridad, latencia y costo; eval manual en CI con federación sin llaves; recursos borrados). Ver `semana-12/README.md`.
-- Semana 13: completa (golden set de tareas, herramientas con contrato, loop agéntico propio, servidor MCP, evaluación del agente, agente contra workflow, seguridad básica, CI y el agente con Claude Agent SDK). El agente logra pass@1 0.921 con loop propio y 0.889 con el SDK, contra 0.504 del workflow; seguridad 140/140; criterio 13 verificado. Ver `semana-13/README.md`.
-- Fase 4: en curso (criterio 13 y transversal verificados; semanas 14 a 18 pendientes).
-- Fase 3: cerrada. Los 11 criterios (semanas 8 a 12) están verificados con evidencia en el repo. Queda registrar el costo real de la semana 12 cuando se consolide la factura.
+## Security and credentials
+
+- No credentials live in the repository. Cloud access uses CLI sessions and OIDC federation, and API keys exist only as GitHub secrets.
+- To report a vulnerability, see [SECURITY.md](SECURITY.md).
+
+## License
+
+[MIT](LICENSE). All data is synthetic (seed 42), and no customer data is used.

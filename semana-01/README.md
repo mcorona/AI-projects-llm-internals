@@ -1,6 +1,6 @@
 # Semana 1 · Notas de práctica
 
-Proyecto: AI-projects-llm-internals · Fase 1 (Fundamentos profundos de LLMs)
+Proyecto: genai-engineering-lab (antes AI-projects-llm-internals) · Fase 1 (Fundamentos profundos de LLMs)
 Referencia: serie Zero to Hero de Andrej Karpathy, en MLX.
 
 ## Estado
