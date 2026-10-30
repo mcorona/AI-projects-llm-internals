@@ -18,7 +18,7 @@ services:
       - "127.0.0.1:8180:8080"              # solo loopback; 8180 en el host (8080 suele estar ocupado)
     volumes:
       - ./realm:/opt/keycloak/data/import:ro
-      - kc-datos:/opt/keycloak/data/h2
+      - kc-datos:/opt/keycloak/data          # el volumen hereda el dueño (keycloak, uid 1000) del directorio de la imagen
     restart: unless-stopped
 
 volumes:
