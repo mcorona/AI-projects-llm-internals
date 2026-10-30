@@ -249,16 +249,23 @@ def crear_servidor(fabrica: Callable[[], Herramientas], limites: LimitesHerramie
     limitador = anyio.CapacityLimiter(limites.concurrentes)
 
     async def listar_tools(ctx, params) -> types.ListToolsResult:
-        return types.ListToolsResult(tools=herramientas_mcp(), cache_scope="private", ttl_ms=TTL_PRIVADO_MS)
+        visible = getattr(fabrica().ctx, "herramienta_visible", lambda nombre: True)   # actividad 5: por scope
+        return types.ListToolsResult(tools=[t for t in herramientas_mcp() if visible(t.name)], cache_scope="private",
+                                     ttl_ms=TTL_PRIVADO_MS)
 
     async def llamar_tool(ctx, params) -> types.CallToolResult:
         h = fabrica()
         res = None
-        with anyio.move_on_after(limites.tiempo_s):
-            res = await anyio.to_thread.run_sync(h.llamar, params.name, params.arguments or {},
-                                                 limiter=limitador, abandon_on_cancel=True)
-        if res is None:
-            res = error_tiempo_agotado(limites.tiempo_s)
+        if not getattr(h.ctx, "herramienta_visible", lambda nombre: True)(params.name):
+            # defensa en profundidad: la frontera ya respondió 403 insufficient_scope; aquí nunca se ejecuta
+            res = {"ok": False, "error": {"tipo": "permiso_denegado", "mensaje": f"El token no permite {params.name}.",
+                                          "sugerencia": "Pide los scopes que indica el desafío 403 (step-up)."}}
+        else:
+            with anyio.move_on_after(limites.tiempo_s):
+                res = await anyio.to_thread.run_sync(h.llamar, params.name, params.arguments or {},
+                                                     limiter=limitador, abandon_on_cancel=True)
+            if res is None:
+                res = error_tiempo_agotado(limites.tiempo_s)
         del h.ctx.llamadas[:-200]
         return types.CallToolResult(
             content=[types.TextContent(type="text", text=json.dumps(res, ensure_ascii=False, default=str))],
