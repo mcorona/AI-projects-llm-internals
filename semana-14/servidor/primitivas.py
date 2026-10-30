@@ -25,6 +25,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Callable
 
+import anyio
 import mcp_types as types
 from mcp.server.lowlevel import Server
 from mcp.shared.exceptions import MCPError
@@ -226,15 +227,38 @@ def _contenido(uri: str, obj) -> types.TextResourceContents:
 
 # ---------- servidor ----------
 
-def crear_servidor(fabrica: Callable[[], Herramientas]) -> Server:
-    """`fabrica()` devuelve las Herramientas del usuario de la petición en curso (el sistema decide el usuario)."""
+@dataclass(frozen=True)
+class LimitesHerramientas:
+    """Límites de ejecución de herramientas (actividad 3). La consulta en la base además tiene statement_timeout (5 s)."""
+    tiempo_s: float = 15.0          # tiempo máximo por llamada; después se responde tiempo_agotado
+    concurrentes: int = 4           # llamadas ejecutándose a la vez (hilos); las demás esperan su turno
+
+
+def error_tiempo_agotado(tiempo_s: float) -> dict:
+    return {"ok": False, "error": {
+        "tipo": "tiempo_agotado", "mensaje": f"La herramienta excedió el límite de {tiempo_s:g} s.",
+        "sugerencia": "Reduce el alcance (filtros, menos filas o menos columnas) y vuelve a intentar."}}
+
+
+def crear_servidor(fabrica: Callable[[], Herramientas], limites: LimitesHerramientas = LimitesHerramientas()) -> Server:
+    """`fabrica()` devuelve las Herramientas del usuario de la petición en curso (el sistema decide el usuario).
+
+    Cada llamada corre en un hilo (no bloquea el event loop del transporte HTTP), con un máximo de llamadas concurrentes
+    y un tiempo límite. Si se vence, el resultado es el error estructurado `tiempo_agotado` (cumple el outputSchema).
+    """
+    limitador = anyio.CapacityLimiter(limites.concurrentes)
 
     async def listar_tools(ctx, params) -> types.ListToolsResult:
         return types.ListToolsResult(tools=herramientas_mcp(), cache_scope="private", ttl_ms=TTL_PRIVADO_MS)
 
     async def llamar_tool(ctx, params) -> types.CallToolResult:
         h = fabrica()
-        res = h.llamar(params.name, params.arguments or {})
+        res = None
+        with anyio.move_on_after(limites.tiempo_s):
+            res = await anyio.to_thread.run_sync(h.llamar, params.name, params.arguments or {},
+                                                 limiter=limitador, abandon_on_cancel=True)
+        if res is None:
+            res = error_tiempo_agotado(limites.tiempo_s)
         del h.ctx.llamadas[:-200]
         return types.CallToolResult(
             content=[types.TextContent(type="text", text=json.dumps(res, ensure_ascii=False, default=str))],
