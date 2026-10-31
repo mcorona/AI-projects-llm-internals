@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "legado-remoto": {
+      "type": "http",
+      "url": "http://127.0.0.1:8014/mcp",
+      "oauth": {
+        "clientId": "legacybridge-agente",
+        "callbackPort": 53682
+      }
+    }
+  }
+}

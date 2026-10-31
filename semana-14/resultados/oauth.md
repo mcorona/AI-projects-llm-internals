@@ -69,7 +69,7 @@ python -m servidor --transporte http --oauth --trazas resultados/trazas/oauth.js
 | Privilege escalation through arguments (12 cases) | `usuario`, `roles` or `scope` passed as arguments: `argumentos_invalidos`. Plus: `prvmst` in `describir_esquema`; `art_prv` in `muestrear_valores`; `art_prv`, `"ART_PRV"`, `a.*`, a join to `prvmst`, `legado.prvmst`; `SET ROLE`; `set_config('role', …)`. All are rejected |
 | The token stays in the server | A spy on `Herramientas.llamar` sees neither the token nor its signature. Traces carry `sujeto`, `scopes` and `cliente_oauth`, but no token and no `Bearer` |
 | Database (A05) | `SET LOCAL ROLE` per profile, and the role does not carry over to the next transaction. The database denies `art_prv`, `art_cst`, `row_to_json(a)` and `prvmst` to `legado_perfil_l` and `legado_perfil_lv`, and allows them to `legado_perfil_lvp`. Allowed queries return results |
-| End to end with Keycloak | Real tokens from the 3 users (PKCE + `resource`): 6 / 5 / 5 tools. A token without `resource` gets 401. Almacenista calling `proponer_orden_compra` gets 403 |
+| End to end with Keycloak | Real tokens from the 3 users (PKCE + `resource`): 6 / 5 / 5 tools. A token without `resource` got 401 (since activity 7 it gets 200: the client's audience mapper emits the canonical URI, see [`claude_code.md`](claude_code.md)). Almacenista calling `proponer_orden_compra` gets 403 |
 
 | Environment | Result |
 |---|---|

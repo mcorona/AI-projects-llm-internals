@@ -145,6 +145,7 @@ class Rechazo:
     estado: int
     www_authenticate: str
     cuerpo: dict
+    motivo: str = ""          # solo para la traza del servidor; nunca se devuelve al cliente
 
 
 class Autorizador:
@@ -168,22 +169,24 @@ class Autorizador:
         auth = encabezados.get(b"authorization", b"").decode("latin-1")
         if not auth:
             return None, Rechazo(401, self._desafio(req), {"error": "invalid_token",
-                                                            "error_description": "Authentication required"})
+                                                            "error_description": "Authentication required"}, "sin_token")
         esquema, _, token = auth.partition(" ")
         if esquema.lower() != "bearer" or not token.strip():
             return None, Rechazo(401, self._desafio(req, "invalid_request", "Bearer token required"),
-                                 {"error": "invalid_request", "error_description": "Bearer token required"})
+                                 {"error": "invalid_request", "error_description": "Bearer token required"},
+                                 "esquema_no_bearer")
         try:
             at = await anyio.to_thread.run_sync(self.verificador.verificar, token.strip())
-        except ErrorToken:
+        except ErrorToken as e:
             # el motivo exacto no se devuelve al cliente (no se ayuda a fabricar tokens); queda como "invalid_token"
             return None, Rechazo(401, self._desafio(req, "invalid_token", "The access token is invalid or expired"),
-                                 {"error": "invalid_token", "error_description": "The access token is invalid or expired"})
+                                 {"error": "invalid_token", "error_description": "The access token is invalid or expired"},
+                                 f"token_invalido: {e}"[:200])
         faltan = req - set(at.scopes)
         if faltan:
             return at, Rechazo(403, self._desafio(req, "insufficient_scope", "Missing scope: " + " ".join(sorted(faltan))),
                                {"error": "insufficient_scope", "error_description": "Missing scope: " + " ".join(sorted(faltan)),
-                                "scope": " ".join(sorted(req))})
+                                "scope": " ".join(sorted(req))}, "faltan: " + " ".join(sorted(faltan)))
         return at, None
 
 
