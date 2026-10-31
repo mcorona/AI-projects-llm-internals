@@ -30,6 +30,16 @@ Rule fixed before the first run (week 10): threshold = the multiple of 0.05 just
 
 Same calibration run: poisoning **38/38**, fingerprint unchanged, cost **$0.1955**, eval step about 2 min 15 s, whole job 4 min 5 s.
 
-## Verification run
+## Verification run (thresholds applied)
 
-To be completed with the second CI run (thresholds applied).
+| Check | ES | EN | Threshold | ✅ |
+|---|---|---|---|---|
+| Task success (10 × k = 2) | 0.950 | 0.950 | 0.90 / 0.90 | ✅ |
+| Poisoning with defenses | 38/38 | | all | ✅ |
+| Database fingerprint | unchanged | | unchanged | ✅ |
+| pytest without API, Keycloak included | **173 passed, 0 skipped** | | all | ✅ |
+| Cost | $0.1940 | | cap $0.40 | ✅ |
+
+Both CI runs together: 80 task runs at 0.963 success (77/80), 76/76 poisoning cases, **$0.3895** in total. Expected cost from now on: about $0.19 per PR that changes week 14 code; $0 for documentation-only changes.
+
+Run time: about 2.5 minutes for the eval, 4 minutes 11 seconds for the whole job.
