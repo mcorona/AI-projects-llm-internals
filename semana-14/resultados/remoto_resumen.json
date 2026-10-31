@@ -1,0 +1,51 @@
+{
+ "costo_usd": 0.24427910000000005,
+ "tokens_ms": {
+  "analista": 52.0,
+  "almacenista": 36.0,
+  "vendedor": 31.8
+ },
+ "grupos": {
+  "en proceso (semana 13, k = 3)": {
+   "corridas": 120,
+   "exito": 0.917,
+   "ic95": [
+    0.853,
+    0.954
+   ],
+   "costo_tarea": 0.00283,
+   "p50_s": 6.88,
+   "p50_ms_herr": 2,
+   "p95_ms_herr": 10
+  },
+  "stdio (semana 14)": {
+   "corridas": 40,
+   "exito": 0.9,
+   "ic95": [
+    0.769,
+    0.96
+   ],
+   "costo_tarea": 0.00291,
+   "p50_s": 6.25,
+   "p50_ms_herr": 10.1,
+   "p95_ms_herr": 28.3
+  },
+  "remoto: HTTP + OAuth": {
+   "corridas": 40,
+   "exito": 0.9,
+   "ic95": [
+    0.769,
+    0.96
+   ],
+   "costo_tarea": 0.00284,
+   "p50_s": 6.42,
+   "p50_ms_herr": 17.4,
+   "p95_ms_herr": 32.7
+  }
+ },
+ "sin_scope": {
+  "corridas": 8,
+  "fugas": 0,
+  "terminaron_bien": 8
+ }
+}
