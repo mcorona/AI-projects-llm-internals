@@ -173,6 +173,7 @@ class Frontera:
                 if at is not None:
                     registro |= {"sujeto": at.subject, "scopes": sorted(at.scopes), "cliente_oauth": at.client_id}
                 if rechazo is not None:
+                    registro["motivo_auth"] = rechazo.motivo
                     await _responder(send_traza, rechazo.estado, rechazo.cuerpo,
                                      [(b"www-authenticate", rechazo.www_authenticate.encode())])
                     return

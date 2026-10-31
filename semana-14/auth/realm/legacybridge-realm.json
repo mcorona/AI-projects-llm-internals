@@ -32,6 +32,10 @@
       {
         "name": "legado-compras",
         "description": "Registrar propuestas de orden de compra (nunca ejecutarlas)"
+      },
+      {
+        "name": "offline_access",
+        "description": "Refresh token de larga vida para clientes MCP de escritorio (Claude Code lo pide siempre); acotado a 1 día inactivo y 7 días máximo"
       }
     ]
   },
@@ -47,7 +51,8 @@
         "legado-lector",
         "legado-ventas",
         "legado-proveedores",
-        "legado-compras"
+        "legado-compras",
+        "offline_access"
       ]
     },
     {
@@ -58,7 +63,8 @@
       "firstName": "Alma",
       "lastName": "Almacenista",
       "realmRoles": [
-        "legado-lector"
+        "legado-lector",
+        "offline_access"
       ]
     },
     {
@@ -70,7 +76,8 @@
       "lastName": "Vendedora",
       "realmRoles": [
         "legado-lector",
-        "legado-ventas"
+        "legado-ventas",
+        "offline_access"
       ]
     }
   ],
@@ -135,6 +142,16 @@
         "display.on.consent.screen": "true",
         "consent.screen.text": "Registrar propuestas de orden de compra (no las ejecuta)"
       }
+    },
+    {
+      "name": "offline_access",
+      "protocol": "openid-connect",
+      "description": "OpenID Connect offline_access (refresh token offline)",
+      "attributes": {
+        "include.in.token.scope": "true",
+        "display.on.consent.screen": "true",
+        "consent.screen.text": "Acceso sin conexión"
+      }
     }
   ],
   "scopeMappings": [
@@ -160,6 +177,12 @@
       "clientScope": "legado:compras:proponer",
       "roles": [
         "legado-compras"
+      ]
+    },
+    {
+      "clientScope": "offline_access",
+      "roles": [
+        "offline_access"
       ]
     }
   ],
@@ -209,22 +232,26 @@
         "legado:leer",
         "legado:ventas",
         "legado:proveedores",
-        "legado:compras:proponer"
+        "legado:compras:proponer",
+        "offline_access"
       ],
       "protocolMappers": [
         {
-          "name": "audiencia-legado-mcp",
+          "name": "audiencia-uri-canonica",
           "protocol": "openid-connect",
           "protocolMapper": "oidc-audience-mapper",
           "consentRequired": false,
           "config": {
-            "included.client.audience": "legado-mcp",
             "id.token.claim": "false",
             "access.token.claim": "true",
-            "introspection.token.claim": "true"
+            "introspection.token.claim": "true",
+            "included.custom.audience": "http://127.0.0.1:8014/mcp"
           }
         }
       ]
     }
-  ]
+  ],
+  "offlineSessionIdleTimeout": 86400,
+  "offlineSessionMaxLifespanEnabled": true,
+  "offlineSessionMaxLifespan": 604800
 }

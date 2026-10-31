@@ -20,7 +20,7 @@ cd .. && python -m pytest -q tests/test_keycloak.py
 | Realm | `legacybridge`. Self-registration and password reset are off, brute-force protection is on, access tokens last 300 s, refresh tokens rotate (`revokeRefreshToken`), signatures use RS256 |
 | Resource server | `legado-mcp`, bearer-only (it starts no flows) with `resource_url = http://127.0.0.1:8014/mcp` |
 | MCP client | `legacybridge-agente`, public. Authorization code only with **PKCE S256 required**. Redirects go to loopback `http://127.0.0.1/callback` and `http://localhost/callback` on any port (RFC 8252). No password grant, no client credentials, no implicit flow, `fullScopeAllowed: false` |
-| Audience | An Audience mapper on the client adds `legado-mcp`. With `resource`, Keycloak replaces it with the `resource_url` value. An unknown resource gets `invalid_target` |
+| Audience | An Audience mapper on the client adds the canonical URI `http://127.0.0.1:8014/mcp` (until activity 7 it added the client id `legado-mcp`; changed because Keycloak loses the `resource` audience when refreshing offline tokens, see [`claude_code.md`](claude_code.md)). With `resource`, Keycloak uses the `resource_url` value. An unknown resource gets `invalid_target` |
 | Scopes (optional client scopes) | `legado:leer`, `legado:ventas`, `legado:proveedores`, `legado:compras:proponer` |
 | Assignment by profile | Each scope is tied to a realm role (`scopeMappings`), and Keycloak only grants it if the user has that role |
 | Secrets | None in Git. `arrancar.sh` generates the bootstrap admin password and the 3 user passwords (24 random characters) into `.secretos.env` with `chmod 600`, and sets the user passwords with `kcadm` |
@@ -47,7 +47,7 @@ What the 18 tests cover:
 - **Discovery:** the exact issuer, `S256`, `authorization_response_iss_parameter_supported: true` (RFC 9207), the 4 scopes and the JWKS.
 - **Token per profile** (3 users): exact scopes, `aud` equal to the MCP URI, `iss`, `azp`, `sub`, and a lifetime of 300 s.
 - **Signature:** RS256, verified with PyJWT against the JWKS (`audience` and `issuer` exact). A different audience is rejected. This is the activity 5 verifier.
-- **Without `resource`:** the audience is `legado-mcp`, not the URI, so the MCP server will reject that token (A06, A07).
+- **Without `resource`:** originally the audience was `legado-mcp`, which the MCP server rejects (A06, A07). Since activity 7 the mapper always emits the canonical URI, because the realm has a single resource server; a different `resource` is still `invalid_target`, and the server still rejects any other audience.
 - **Unknown `resource`:** `invalid_target` at authorization, and also when the resource changes between authorization and code exchange.
 - **PKCE:** required, and `plain` is not accepted. A wrong verifier gets `invalid_grant`. The code works only once.
 - **Redirects:** only to registered loopback addresses, on any port. `https://evil.example`, another path and a LAN IP are rejected.

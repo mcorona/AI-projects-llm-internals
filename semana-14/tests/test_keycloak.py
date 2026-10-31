@@ -74,10 +74,13 @@ def test_firma_rs256_verificable_con_jwks(meta):
         jwt.decode(tok, clave, algorithms=["RS256"], audience="http://127.0.0.1:9999/mcp", issuer=EMISOR)
 
 
-def test_sin_resource_la_audiencia_no_es_el_servidor():
-    """Sin `resource`, Keycloak deja el client id como audiencia: el servidor MCP (aud = su URI) lo rechazará."""
+def test_sin_resource_la_audiencia_sigue_siendo_la_uri_canonica():
+    """El mapper de audiencia del cliente agente emite la URI canónica del servidor MCP (no el client id `legado-mcp`).
+    Motivo: Keycloak 26.8 pierde la audiencia de `resource` al refrescar tokens offline, y Claude Code siempre pide
+    `offline_access`. Con un solo resource server en el realm, la audiencia queda fija a él; un `resource` distinto
+    sigue siendo `invalid_target` (pruebas siguientes)."""
     c = claims(obtener_token("analista", scopes=["legado:leer"], resource=None)["access_token"])
-    assert RECURSO not in ([c["aud"]] if isinstance(c["aud"], str) else c["aud"])
+    assert c["aud"] in (RECURSO, [RECURSO])
 
 
 def test_resource_desconocido_invalid_target():
@@ -161,3 +164,19 @@ def test_refresh_conserva_audiencia_y_scopes():
     with pytest.raises(ErrorOAuth) as e:
         pkce.refrescar(tok)                      # revokeRefreshToken: el refresh token anterior ya no sirve
     assert e.value.error == "invalid_grant"
+
+
+
+
+def test_offline_access_para_clientes_mcp():
+    """Claude Code pide `scope=<del desafío> offline_access`: el realm lo acepta, el refresh token es offline (acotado
+    por offlineSessionIdleTimeout / offlineSessionMaxLifespan) y la audiencia sobrevive al refresh. Sin el mapper de
+    URI canónica, Keycloak 26.8 devolvía `aud=legado-mcp` tras refrescar un token offline y el servidor respondía 401."""
+    tok = obtener_token("almacenista", scopes=["legado:leer", "offline_access"])
+    c = claims(tok["access_token"])
+    assert c["aud"] in (RECURSO, [RECURSO])
+    assert set(c["scope"].split()) & set(SCOPES_TODOS) == {"legado:leer"}
+    assert claims(tok["refresh_token"])["typ"] == "Offline"
+    nuevo = pkce.refrescar(tok)
+    assert claims(nuevo["access_token"])["aud"] in (RECURSO, [RECURSO])
+    assert claims(pkce.refrescar(nuevo, resource=None)["access_token"])["aud"] in (RECURSO, [RECURSO])

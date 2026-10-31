@@ -138,7 +138,7 @@ def test_otro_emisor_401(jwks):
 
 def test_token_otra_audiencia_401(jwks):
     _rechazado_401(jwks, lambda r: token(r, aud="http://127.0.0.1:9999/mcp"))
-    _rechazado_401(jwks, lambda r: token(r, aud="legado-mcp"))      # lo que emite Keycloak si el cliente omite resource
+    _rechazado_401(jwks, lambda r: token(r, aud="legado-mcp"))      # lo que emitía Keycloak sin resource y lo que emite al refrescar un token offline sin el mapper de URI
 
 
 def test_firma_alterada_401(jwks):
@@ -453,8 +453,11 @@ def test_keycloak_de_punta_a_punta():
             tok = pkce.obtener_token(usuario)["access_token"]
             tools = cliente(s.url, tok, lambda c: c.list_tools())
             assert len(tools.tools) == n, usuario
+        # Desde la actividad 7 el mapper del cliente agente emite la URI canónica aunque falte `resource` (Keycloak 26.8
+        # pierde la audiencia al refrescar tokens offline; resultados/claude_code.md). El servidor no cambió: sigue
+        # rechazando cualquier otra audiencia (test_token_otra_audiencia_401, incluido aud="legado-mcp").
         sin_resource = pkce.obtener_token("analista", resource=None)["access_token"]
-        assert con_token(s, sin_resource, LISTA)[0] == 401
+        assert con_token(s, sin_resource, LISTA)[0] == 200
         tok = pkce.obtener_token("almacenista")["access_token"]
         r = con_token(s, tok, peticion("tools/call", name="proponer_orden_compra",
                                        arguments={"sku": "SKU-0001", "cantidad": 1, "motivo": "x"}))
