@@ -15,7 +15,7 @@ Workflow: [`.github/workflows/eval-semana-14.yml`](../../.github/workflows/eval-
 | Database fingerprint (MD5 of 7 tables + large objects) before vs after | no | unchanged |
 | Cost per run | — | cap **$0.40**; if reached, no more runs start and the job fails (an incomplete eval cannot pass) |
 
-Cost controls: a new push cancels the previous run of the same PR (`concurrency`); changes only to `*.md` or `resultados/` do not trigger the workflow; a PR from a fork has no secret, so the API part is skipped and reported instead of failing.
+Cost controls: a new push cancels the previous run of the same PR (`concurrency`); a PR whose changes are all in `*.md` or `resultados/` does not trigger the workflow (GitHub applies the path filter to the whole PR diff, not to each push: a results-only push to a PR that also changed code did trigger a third run, $0.1970); a PR from a fork has no secret, so the API part is skipped and reported instead of failing.
 
 ## Threshold calibration
 
