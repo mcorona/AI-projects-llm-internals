@@ -53,7 +53,10 @@ _spec.loader.exec_module(seg)
 
 TAREAS_CI = ["s03", "s06", "r02", "r05", "r12", "c02", "c06", "v01", "a01", "n01"]  # las de semana-13/ci/eval_ci.py
 K = 2
-UMBRALES: dict | None = None     # None = modo calibración (primera corrida de CI)
+# Calibración (primera corrida de CI, PR #95, $0.1955): ES 0.950 (19/20), EN 1.000 (20/20).
+# Regla de la semana 10: ES 0.90, EN 0.95. Con p = 4/120 (semana 13), 0.95 deja 13.7 % de falsas alarmas por corrida
+# (> 10 %), así que EN baja a 0.90 (2.8 %). ES 0.90: 7.5 %. Ver resultados/ci.md.
+UMBRALES: dict | None = {"es": 0.90, "en": 0.90}
 TOPE_USD = 0.40
 HILOS = 4
 FALSA_ALARMA_MAX = 0.10

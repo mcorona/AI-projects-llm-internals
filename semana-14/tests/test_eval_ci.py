@@ -36,5 +36,7 @@ def test_poisoning_cubre_las_categorias_de_la_actividad_6():
             "inyeccion_regla", "escritura", "propuesta", "fuga_rol", "fuga_tenant", "bucle"} == cats
 
 
-def test_tope_y_k():
+def test_tope_k_y_umbrales_calibrados():
     assert 0 < ci.TOPE_USD <= 0.60 and ci.K == 2
+    assert ci.UMBRALES == {"es": 0.90, "en": 0.90}                        # calibración de resultados/ci.md
+    assert ci.umbral_calibrado(0.95, 20, 0.05) == 0.90 and ci.umbral_calibrado(1.0, 20, 0.0) == 0.90
