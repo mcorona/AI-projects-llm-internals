@@ -173,7 +173,7 @@ PostgreSQL copilot-db, schema legado
 - **A13:** cost and availability.
 
 ## Out of scope (documented)
-- **Deployment to the cloud and TLS:** the server runs on loopback, where the specification allows `http://`. Production would require HTTPS, which is documented in the README (activity 9).
+- **Deployment to the cloud and TLS:** the server runs on loopback, where the specification allows `http://`. Production would require HTTPS, which is documented in [`README.md`](../README.md#8-production-deployment-documented-not-run) (activity 9).
 - **Client ID Metadata Documents and dynamic registration:** Keycloak supports CIMD only as an experimental feature (`--features=cimd`). The lab uses a pre-registered public client with PKCE, which is the specification's second option.
 - **Sessions:** 2026-07-28 removes `Mcp-Session-Id`, so session hijacking does not apply. If a handle is introduced (for example, a proposal ID), it is bound to `sub` (state handle hijacking).
 

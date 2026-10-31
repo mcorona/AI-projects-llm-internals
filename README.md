@@ -41,7 +41,7 @@ Author: **Manuel Corona**, independent AI architect and consultant. The lab span
 | **Multi-tenant RAG** | Tenant and role filters inside the query on pgvector, Qdrant and OpenSearch: **leak 0**, checked in CI | [`semana-09`](semana-09/README.md) |
 | **RAG evaluation** | Separate retrieval and generation suites. RAGAS metrics are validated on known failures before use. $0.28 per CI run | [`semana-11`](semana-11/README.md) |
 | **Managed RAG** (AWS and Google Cloud) | Bedrock Knowledge Bases and Vertex AI Search compared with the own pipeline on the same gold set. Cost from $0.00027 to $0.0012 per query, leak 0 in 672 queries, keyless CI through OIDC federation, all resources deleted afterwards | [`semana-12`](semana-12/README.md) |
-| **Remote MCP server with OAuth** (in progress) | MCP 2026-07-28 with OAuth 2.1 and a 13-threat model (tool poisoning, rug pull, confused deputy, token passthrough…). Tools, resources and prompts are verified equivalent to the in-process tools | [`semana-14`](semana-14/) |
+| **Remote MCP server with OAuth** | MCP 2026-07-28 over Streamable HTTP; Keycloak as authorization server (PKCE, RFC 8707 audience); least privilege in three layers (scopes, filtered catalogs, a PostgreSQL role per profile). 13/13 threats covered. Tool poisoning: **38/38** with client defenses (without them, shadowing captured 100% of queries). Agent over HTTP + OAuth: same success and cost as in-process, +7 ms per tool call, 0/8 leaks for roles without the scope | [`semana-14`](semana-14/README.md) |
 
 ## LegacyBridge: the reference system
 
@@ -65,7 +65,7 @@ flowchart LR
 The pieces were built and measured one at a time:
 1. Text-to-SQL ([week 7](semana-07/README.md), [week 10](semana-10/README.md)).
 2. Document RAG ([weeks 8 to 12](semana-08/README.md)).
-3. Agent and MCP ([week 13](semana-13/README.md), [week 14](semana-14/)).
+3. Agent and MCP ([week 13](semana-13/README.md), [week 14](semana-14/README.md)).
 
 ## Repository map
 
@@ -76,7 +76,7 @@ Folders are named `semana-NN` (week NN). Each week has its own `README.md` with 
 | LLM fundamentals | [1](semana-01/README.md) · [2](semana-02/README.md) · [3](semana-03/README.md) · [4](semana-04/README.md) | Mini-GPT in MLX; token cost and sampling variability by language; a documented *don't fine-tune* decision (LoRA vs prompt); local quantized inference vs API (the API is about 13× faster at p50) |
 | Prompts and evals | [5](semana-05/README.md) · [6](semana-06/README.md) · [7](semana-07/README.md) | Versioned prompt library; regression evals as a required PR check; bilingual NLQ measured by execution |
 | RAG and data | [8](semana-08/README.md) · [9](semana-09/README.md) · [10](semana-10/README.md) · [11](semana-11/README.md) · [12](semana-12/README.md) | Chunking, embeddings and vector DBs; advanced RAG and multi-tenancy; legacy schema, PDFs, OCR and images; RAG evaluation; managed RAG on AWS and Google Cloud |
-| Agents and MCP | [13](semana-13/README.md) · [14](semana-14/) | Agentic patterns and the Claude Agent SDK; remote MCP server with OAuth, least privilege and tool-poisoning tests |
+| Agents and MCP | [13](semana-13/README.md) · [14](semana-14/README.md) | Agentic patterns and the Claude Agent SDK; remote MCP server with OAuth, least privilege and tool-poisoning tests |
 
 ## Quickstart
 
@@ -107,7 +107,7 @@ Evals that call a model need `ANTHROPIC_API_KEY`. Each one prints its estimated 
 | 1. LLM fundamentals | 1–4 | Complete |
 | 2. Prompts, evals and NLQ | 5–7 | Complete |
 | 3. RAG and data | 8–12 | Complete, with all 11 exit criteria verified |
-| 4. Agents, MCP and orchestration | 13–18 | In progress: week 13 complete, week 14 in progress |
+| 4. Agents, MCP and orchestration | 13–18 | In progress: weeks 13 and 14 complete (exit criteria 13 and 14 verified) |
 
 The detailed exit criteria for each phase, with the PR that verified each one, are kept in [README.es.md](README.es.md).
 
