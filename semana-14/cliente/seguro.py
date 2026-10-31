@@ -25,6 +25,7 @@ import ipaddress
 import json
 import re
 import threading
+import time
 import urllib.parse
 import urllib.request
 from dataclasses import dataclass, field
@@ -106,7 +107,7 @@ def descubrir(url_servidor: str, emisores: tuple[str, ...]) -> str:
 @dataclass
 class ServidorMCP:
     nombre: str
-    destino: Any                     # mcp Server (en proceso) o URL (Streamable HTTP)
+    destino: Any                     # mcp Server (en proceso), URL (Streamable HTTP) o StdioServerParameters
     token: str | None = None
 
 
@@ -298,6 +299,7 @@ class ClienteSeguro:
         if servidor in self._bloqueados:
             return {"ok": False, "error": {"tipo": "servidor_bloqueado", "mensaje": f"El servidor {servidor} está bloqueado.",
                                            "sugerencia": "Responde sin esa herramienta."}}
+        t0 = time.perf_counter()
         try:
             r = self._sesiones[servidor].pedir(lambda c: c.call_tool(original, argumentos))
             res = r.structured_content if isinstance(r.structured_content, dict) else \
@@ -305,7 +307,8 @@ class ClienteSeguro:
         except Exception as e:  # noqa: BLE001  (p. ej. 403 insufficient_scope del servidor legítimo)
             res = {"ok": False, "error": {"tipo": "error_mcp", "mensaje": str(e)[:300], "sugerencia": ""}}
         self.llamadas.append({"servidor": servidor, "herramienta": original, "argumentos": argumentos,
-                              "ok": bool(res.get("ok")), "salida": json.dumps(res, ensure_ascii=False, default=str)})
+                              "ok": bool(res.get("ok")), "salida": json.dumps(res, ensure_ascii=False, default=str),
+                              "ms": round(1000 * (time.perf_counter() - t0), 1)})
         if not self.defensas:
             return res
         sobre = {"ok": bool(res.get("ok")), "fuente": f"{servidor}.{original}", "untrusted_data": res}
