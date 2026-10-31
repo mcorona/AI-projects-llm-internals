@@ -83,7 +83,7 @@ Full matrix: [`seguridad/amenazas.md`](seguridad/amenazas.md). **13/13 threats c
 | A12 | SSRF and mix-up during discovery | Expected issuer only, loopback-only `http`, exact metadata | client tests |
 | A13 | Denial of service and cost | Body, concurrency, time and row limits; agent loop limits; CI cost cap | `test_transporte.py`; agent eval |
 
-**Tests without API** ([`tests/`](tests/)): **173 passed, 0 skipped in CI** (Postgres plus an ephemeral Keycloak per job), 166 passed on the dev Mac. They cover the SDK baseline (24 checks), primitives and equivalence with week 13, HTTP transport, Keycloak (19), OAuth and negative auth (43: missing, expired, other-issuer, other-audience, altered-signature, `alg: none` tokens, insufficient scope, unlisted tool, escalation through arguments), the secure client (26) and the eval harnesses.
+**Tests without API** ([`tests/`](tests/)): **173 passed, 0 skipped** both in CI (Postgres plus an ephemeral Keycloak per job) and on the dev Mac. They cover the SDK baseline (24 checks), primitives and equivalence with week 13, HTTP transport, Keycloak (19), OAuth and negative auth (43: missing, expired, other-issuer, other-audience, altered-signature, `alg: none` tokens, insufficient scope, unlisted tool, escalation through arguments), the secure client (26) and the eval harnesses.
 
 ## 4. Results
 
